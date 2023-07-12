@@ -1,5 +1,4 @@
-import { List, ListItem, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, List, ListItem, Typography } from "@mui/material";
 import { IMAGES_PATH } from "@utils/constants";
 import { IHeadingTitlesData, IInfoblockData, ITabsData } from "model";
 
