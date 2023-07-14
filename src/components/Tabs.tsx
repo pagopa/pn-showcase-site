@@ -4,7 +4,6 @@ import {
   ButtonGroup,
   ClickAwayListener,
   Grow,
-  GrowProps,
   MenuItem,
   MenuList,
   Paper,
@@ -95,9 +94,6 @@ const Tabs = ({
             {({
               TransitionProps,
               placement,
-            }: {
-              TransitionProps?: any;
-              placement: string;
             }) => (
               <Grow
                 {...TransitionProps}
