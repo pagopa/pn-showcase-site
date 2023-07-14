@@ -96,7 +96,7 @@ const Tabs = ({
               TransitionProps,
               placement,
             }: {
-              TransitionProps: GrowProps;
+              TransitionProps?: any;
               placement: string;
             }) => (
               <Grow

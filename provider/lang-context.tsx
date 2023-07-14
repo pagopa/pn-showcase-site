@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode, useEffect, useState } from "react";
+import React, { createContext, ReactNode, useEffect, useState } from "react";
 
 export type LangCode = "de" | "en" | "fr" | "it" | "sl";
 
@@ -16,7 +16,11 @@ const LangContext = createContext<ILangContext>({
   changeLanguage: (lang: LangCode) => {},
 });
 
-export const LangProvider: FC<ReactNode> = ({ children }) => {
+interface Props {
+  children?: ReactNode;
+}
+
+export const LangProvider = ({ children }: Props) => {
   const [selectedLang, setSelectedLang] = useState<LangCode>(DEFAULT_LANG);
 
   const changeLanguageHandler = (newLang: LangCode) => {
