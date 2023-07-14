@@ -185,14 +185,12 @@ export const paInfoBlocks: Array<IInfoblockData> = [
           <Typography variant="body2" tabIndex={0} aria-label={infoblock4_2}>
             Ogni ente può decidere se integrarsi a SEND direttamente oppure
             tramite un fornitore. Nel secondo caso, è disponibile{" "}
-            <Link href={PARTNER_AND_INTERMEDIARIES_PATH}>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="la lista dei Partner e Intermediari tecnologici"
-              >
-                la lista dei Partner e Intermediari tecnologici
-              </a>
+            <Link href={PARTNER_AND_INTERMEDIARIES_PATH}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="la lista dei Partner e Intermediari tecnologici"
+            >
+              la lista dei Partner e Intermediari tecnologici
             </Link>{" "}
             che stanno implementando le attività di integrazione alla
             piattaforma e di cui è possibile avvalersi per un supporto nella
@@ -215,24 +213,19 @@ export const paInfoBlocks: Array<IInfoblockData> = [
               href={
                 "https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
               }
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Area Riservata"
             >
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Area Riservata"
-              >
-                Area Riservata
-              </a>
+              Area Riservata
             </Link>{" "}
             e seguire i passaggi descritti in{" "}
-            <Link href="https://docs.pagopa.it/area-riservata-enti-piattaforma-notifiche/">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="questa guida"
-              >
-                questa guida.
-              </a>
+            <Link href="https://docs.pagopa.it/area-riservata-enti-piattaforma-notifiche/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="questa guida"
+            >
+              questa guida.
             </Link>
             <br></br>
             Una volta sottoscritto l'accordo in digitale, l'ente dovrà caricarlo
@@ -243,33 +236,28 @@ export const paInfoBlocks: Array<IInfoblockData> = [
           <List sx={{ listStyleType: "disc", pl: 4 }}>
             <ListItem sx={{ display: "list-item" }}>
               <Typography variant="body2">
-                <Link
+                <Link 
                   href={
                     "https://docs.pagopa.it/documento-1-termini-condizioni-di-adesione-e-uso/"
                   }
-                >
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Documento 1 - Termini e Condizioni di adesione e uso"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Documento 1 - Termini e Condizioni di adesione e uso"
                   >
                     Documento 1 - Termini e Condizioni di adesione e uso
-                  </a>
                 </Link>
               </Typography>
             </ListItem>
             <ListItem sx={{ display: "list-item" }}>
               <Typography variant="body2">
-                <Link href="https://docs.pagopa.it/doc.2-atto-di-nomina-a-responsabile-trattamento-da/">
-                  <a
-                    aria-label="Documento 2 - Atto di Nomina a Responsabile Trattamento Dati
-                    Personali"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    Documento 2 - Atto di Nomina a Responsabile Trattamento Dati
-                    Personali
-                  </a>
+                <Link href="https://docs.pagopa.it/doc.2-atto-di-nomina-a-responsabile-trattamento-da/"
+                  aria-label="Documento 2 - Atto di Nomina a Responsabile Trattamento Dati
+                  Personali"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Documento 2 - Atto di Nomina a Responsabile Trattamento Dati
+                  Personali
                 </Link>
               </Typography>
             </ListItem>
@@ -284,14 +272,11 @@ export const paInfoBlocks: Array<IInfoblockData> = [
                   href={
                     "https://docs.pagopa.it/documento-3-documentazione-tecnica/"
                   }
+                  aria-label="Documento 3 - Documentazione tecnica"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
-                  <a
-                    aria-label="Documento 3 - Documentazione tecnica"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    Documento 3 - Documentazione tecnica
-                  </a>
+                  Documento 3 - Documentazione tecnica
                 </Link>{" "}
                 per l’integrazione tecnologica dei sistemi dell'ente a SEND
                 sono:
@@ -300,40 +285,34 @@ export const paInfoBlocks: Array<IInfoblockData> = [
               <List sx={{ listStyleType: "circle", pl: 4 }}>
                 <ListItem sx={{ display: "list-item" }}>
                   <Typography variant="body2">
-                    <Link href={MANUALE_URL}>
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Manuale operativo"
-                      >
-                        manuale operativo
-                      </a>
+                    <Link href={MANUALE_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Manuale operativo"
+                    >
+                      manuale operativo
                     </Link>
                   </Typography>
                 </ListItem>
                 <ListItem sx={{ display: "list-item" }}>
                   <Typography variant="body2">
-                    <Link href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/pagopa/pn-delivery/develop/docs/openapi/api-external-b2b-pa-bundle.yaml">
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="API b2b per le pubbliche amministrazioni"
-                      >
-                        API b2b per le pubbliche amministrazioni
-                      </a>
+                    <Link href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/pagopa/pn-delivery/develop/docs/openapi/api-external-b2b-pa-bundle.yaml"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="API b2b per le pubbliche amministrazioni"
+                    >
+                      API b2b per le pubbliche amministrazioni
                     </Link>
                   </Typography>
                 </ListItem>
                 <ListItem sx={{ display: "list-item" }}>
                   <Typography variant="body2">
-                    <Link href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/pagopa/pn-delivery-push/develop/docs/openapi/api-external-b2b-webhook-bundle.yaml">
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="API b2b per l'avanzamento delle notifiche"
-                      >
-                        API b2b per l'avanzamento delle notifiche
-                      </a>
+                    <Link href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/pagopa/pn-delivery-push/develop/docs/openapi/api-external-b2b-webhook-bundle.yaml"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="API b2b per l'avanzamento delle notifiche"
+                    >
+                      API b2b per l'avanzamento delle notifiche
                     </Link>
                   </Typography>
                 </ListItem>
@@ -341,16 +320,12 @@ export const paInfoBlocks: Array<IInfoblockData> = [
             </ListItem>
             <ListItem sx={{ display: "list-item" }}>
               <Typography variant="body2">
-                <Link
-                  href={"https://docs.pagopa.it/documento-4-ciclo-attivo-pn"}
+                <Link href={"https://docs.pagopa.it/documento-4-ciclo-attivo-pn"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Documento 4 - Ciclo attivo"
                 >
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Documento 4 - Ciclo attivo"
-                  >
-                    Documento 4 - Ciclo attivo
-                  </a>
+                  Documento 4 - Ciclo attivo
                 </Link>
               </Typography>
             </ListItem>
@@ -360,7 +335,7 @@ export const paInfoBlocks: Array<IInfoblockData> = [
                 tabIndex={0}
                 aria-label="Modulo di Profilazione necessario per l'avvio in esercizio"
               >
-                <Link
+                <Link 
                   href={"/static/documents/Modulo preventivo di fornitura.xlsx"}
                   aria-label="Modulo di Profilazione"
                 >
@@ -375,7 +350,7 @@ export const paInfoBlocks: Array<IInfoblockData> = [
                 tabIndex={0}
                 aria-label="Modulo Commessa necessario per la fatturazione"
               >
-                <Link
+                <Link 
                   href={
                     "/static/documents/Modulo Ordinativo Commessa per Anticipazione.xlsx"
                   }
@@ -388,24 +363,22 @@ export const paInfoBlocks: Array<IInfoblockData> = [
             </ListItem>
             <ListItem sx={{ display: "list-item" }}>
               <Typography variant="body2">
-                <Link href={"https://docs.pagopa.it/sla-di-servizio/"}>
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="SLA di servizio"
-                  >
-                    SLA di servizio
-                  </a>
+                <Link href={"https://docs.pagopa.it/sla-di-servizio/"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="SLA di servizio"
+                >
+                  SLA di servizio
                 </Link>
               </Typography>
             </ListItem>
           </List>
           <Typography variant="body2" tabIndex={0} aria-label={infoblock4_6}>
             Per ulteriori informazioni e chiarimenti, è possibile consultare{" "}
-            <Link href="https://docs.pagopa.it/faq-enti">
-              <a target="_blank" rel="noopener noreferrer" aria-label="qui">
-                qui
-              </a>
+            <Link href="https://docs.pagopa.it/faq-enti"
+              target="_blank" rel="noopener noreferrer" aria-label="qui"
+            >
+              qui
             </Link>{" "}
             le principali FAQ.
           </Typography>

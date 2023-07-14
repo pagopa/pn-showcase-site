@@ -1,6 +1,9 @@
-const withTM = require("next-transpile-modules")(["@pagopa/mui-italia"]);
-
-module.exports = withTM({
+const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
-});
+  transpilePackages: [
+    '@pagopa/mui-italia',
+  ],
+};
+
+module.exports = nextConfig;
