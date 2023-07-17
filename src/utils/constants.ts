@@ -14,7 +14,8 @@ export const PN_PG_URL = process.env.NEXT_PUBLIC_PIATTAFORMA_NOTIFICHE_PG_URL;
 
 export const MANUALE_URL = "https://docs.pagopa.it/pn-manuale-operativo/";
 
-const ONE_TRUST_DRAFT_MODE = !!process.env.NEXT_PUBLIC_ONE_TRUST_DRAFT_MODE;
+const ONE_TRUST_DRAFT_MODE = process.env.NEXT_PUBLIC_ONE_TRUST_DRAFT_MODE === "true";
+
 const ONE_TRUST_PP = process.env.NEXT_PUBLIC_ONE_TRUST_PP || "";
 export const ONE_TRUST_CDN = `https://privacyportalde-cdn.onetrust.com/77f17844-04c3-4969-a11d-462ee77acbe1/privacy-notices/${ONE_TRUST_DRAFT_MODE ? "draft/" : ""
   }${ONE_TRUST_PP}.json`;
