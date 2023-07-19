@@ -285,9 +285,8 @@ Resources:
           CachePolicyId: !Ref WebsiteCDNCachingPolicy
           ResponseHeadersPolicyId: !Ref DefaultHeaderPolicy
           FunctionAssociations:
-            - - EventType: viewer-request
-                  FunctionARN: !GetAtt RewriteFunction.FunctionMetadata.FunctionARN
-            - !Ref "AWS::NoValue"
+            - EventType: viewer-request
+              FunctionARN: !GetAtt RewriteFunction.FunctionMetadata.FunctionARN
         DefaultRootObject: "pubbliche-amministrazioni/index.html"
         # DefaultRootObject: "cittadini/index.html"
         CustomErrorResponses:
