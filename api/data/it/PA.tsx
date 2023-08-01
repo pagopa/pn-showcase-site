@@ -277,9 +277,7 @@ export const paInfoBlocks: Array<IInfoblockData> = [
                   target="_blank"
                 >
                   Documento 3 - Documentazione tecnica
-                </Link>{" "}
-                per l’integrazione tecnologica dei sistemi dell'ente a SEND
-                sono:
+                </Link>
               </Typography>
 
               <List sx={{ listStyleType: "circle", pl: 4 }}>
