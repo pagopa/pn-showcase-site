@@ -454,6 +454,46 @@ export const itFaqData: IFaqData = {
       ],
     },
     {
+      title: "Annullamento",
+      items: [
+        {
+          id: "perche-notifica-annullata",
+          title: "La notifica che ho ricevuto è stata annullata. Come mai?",
+          description: (
+            <Box>
+              <FaqTextSection
+                ariaLabel={
+                  "L’ente che l’ha inviata può averla annullata per diverse ragioni. Per esempio, potrebbe avere commesso un errore, oppure potrebbero essere intervenute delle circostanze per cui la notifica non ha più effetto. Se hai ricevuto una notifica e questa è stata annullata, ignora il suo contenuto. Se hai dubbi o domande, contatta l’ente che te l’ha inviata."
+                }
+              >
+                {
+                  "L’ente che l’ha inviata può averla annullata per diverse ragioni. Per esempio, potrebbe avere commesso un errore, oppure potrebbero essere intervenute delle circostanze per cui la notifica non ha più effetto. Se hai ricevuto una notifica e questa è stata annullata, ignora il suo contenuto. Se hai dubbi o domande, contatta l’ente che te l’ha inviata"
+                }
+              </FaqTextSection>
+            </Box>
+          ),
+        },
+        {
+          id: "notifica-pagata-rimborso",
+          title:
+            "La notifica che ho ricevuto è stata annullata, ma l’ho già pagata. Cosa devo fare? ",
+          description: (
+            <Box>
+              <FaqTextSection
+                ariaLabel={
+                  "Per ricevere informazioni in merito a un eventuale rimborso, contatta l’ente che te l’ha inviata."
+                }
+              >
+                {
+                  "Per ricevere informazioni in merito a un eventuale rimborso, contatta l’ente che te l’ha inviata."
+                }
+              </FaqTextSection>
+            </Box>
+          ),
+        },
+      ],
+    },
+    {
       title: "Accessibilità",
       items: [
         {
