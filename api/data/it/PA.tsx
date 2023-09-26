@@ -72,15 +72,6 @@ export const paHero: HeroProps = {
       return false;
     },
   },
-  // ctaSecondary: {
-  //   label: "Accedi",
-  //   title: "Accedi",
-  //   /* Carlotta Dimatteo - aggiunta della CTA richiesta dal team di comunicazione il 17/02/2023 */
-  //   onClick: function onClick() {
-  //     window.open(selfCareUrl, "_blank");
-  //     return false;
-  //   },
-  // },
 };
 /* ************************************** */
 
