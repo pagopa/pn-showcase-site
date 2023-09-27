@@ -22,10 +22,8 @@ import {
   UploadIcon,
 } from "../icons";
 
-const selfCareUrl = "https://selfcare.pagopa.it/auth/login?onSuccess=dashboard";
-
 const heroSubtitle =
-  "E da oggi anche a farsi. SEND, Servizio Notifiche Digitali (anche nota come Piattaforma Notifiche Digitali di cui all'art. 26 del decreto-legge 76/2020 s.m.i.)  digitalizza la gestione delle comunicazioni a valore legale, semplificando il processo per tutti: chi le invia, e chi le riceve.";
+  "E da oggi anche a farsi. SEND, Servizio Notifiche Digitali (anche nota come Piattaforma Notifiche Digitali di cui all'art. 26 del decreto-legge 76/2020 s.m.i.)  digitalizza la gestione delle comunicazioni a valore legale, semplificando il processo per tutti: chi le invia, e chi le riceve. Se il tuo ente ha già aderito, ";
 export const paHero: HeroProps = {
   type: "image",
   title: "Inviare notifiche? Facile a dirsi.",
@@ -39,6 +37,22 @@ export const paHero: HeroProps = {
       }}
     >
       {heroSubtitle}
+      <Link
+        href="https://selfcare.pagopa.it/auth/login"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="accedi tramite l’Area Riservata"
+      >
+        <Typography
+          component="span"
+          sx={{
+            color: "primary.contrastText",
+            textDecoration: "underline",
+          }}
+        >
+        accedi tramite l’Area Riservata.
+        </Typography>
+      </Link>
     </Typography>
   ),
   inverse: false,
@@ -53,15 +67,6 @@ export const paHero: HeroProps = {
     onClick: function onClick() {
       const loc = document.location.toString().split("#")[0];
       document.location = loc + "#start-integration";
-      return false;
-    },
-  },
-  ctaSecondary: {
-    label: "Accedi",
-    title: "Accedi",
-    /* Carlotta Dimatteo - aggiunta della CTA richiesta dal team di comunicazione il 17/02/2023 */
-    onClick: function onClick() {
-      window.open(selfCareUrl, "_blank");
       return false;
     },
   },
