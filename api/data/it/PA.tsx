@@ -22,8 +22,6 @@ import {
   UploadIcon,
 } from "../icons";
 
-const selfCareUrl = "https://selfcare.pagopa.it/auth/login?onSuccess=dashboard";
-
 const heroSubtitle =
   "E da oggi anche a farsi. SEND, Servizio Notifiche Digitali (anche nota come Piattaforma Notifiche Digitali di cui all'art. 26 del decreto-legge 76/2020 s.m.i.)  digitalizza la gestione delle comunicazioni a valore legale, semplificando il processo per tutti: chi le invia, e chi le riceve. Se il tuo ente ha già aderito, ";
 export const paHero: HeroProps = {
