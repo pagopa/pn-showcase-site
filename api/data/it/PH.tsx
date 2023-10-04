@@ -3,32 +3,40 @@ import { HeroProps } from "@pagopa/mui-italia";
 import { IMAGES_PATH, PN_PF_URL, PN_PG_URL } from "@utils/constants";
 import { IInfoblockData } from "model";
 
-const onReadClick = () => {
-  window.open(PN_PF_URL, "_blank");
+const onReadClickEnti = () => {
+  window.open("/pubbliche-amministrazioni", "_blank");
+};
+
+const onReadClickCittadini = () => {
+  window.open("/cittadini", "_blank");
+};
+
+const onReadClickImprese = () => {
+  window.open("/", "_blank");
 };
 
 // eslint-disable-next-line no-extra-boolean-cast
-const entiCta = !!PN_PF_URL
+const entiCta = !!"/pubbliche-amministrazioni"
   ? {
       label: "Scopri i vantaggi per gli enti",
       title: "Scopri i vantaggi per gli enti",
-      onClick: onReadClick,
+      onClick: onReadClickEnti,
     }
   : undefined;
 
-const cittadiniCta = !!PN_PF_URL
+const cittadiniCta = !!"/cittadini"
 ? {
     label: "Scopri i vantaggi per i cittadini",
     title: "Scopri i vantaggi per i cittadini",
-    onClick: onReadClick,
+    onClick: onReadClickCittadini,
   }
 : undefined;
 
-const impreseCta = !!PN_PF_URL
+const impreseCta = !!"/"
 ? {
     label: "Scopri i vantaggi per le imprese",
     title: "Scopri i vantaggi per le imprese",
-    onClick: onReadClick,
+    onClick: onReadClickImprese,
   }
 : undefined;
 
