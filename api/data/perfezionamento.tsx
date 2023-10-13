@@ -9,8 +9,9 @@ const headingTitles: Array<IHeadingTitlesData> = [
       title: "Quando si perfeziona una notifica?",
       subtitle: (
         <>
-          Dipende dal modo in cui la si riceve: seleziona i canali per sapere
-          quando avviene il perfezionamento.
+          Una notifica si perfeziona il giorno e l’ora in cui visualizzi online i documenti notificati o,
+          se non lo fai entro un certo termine, a seconda del canale con cui l’hai ricevuta.
+          Seleziona i canali qui sotto per conoscere le tempistiche del perfezionamento.
         </>
       ),
     },
@@ -34,9 +35,9 @@ const infoblocks: Array<IInfoblockData> = [
       inverse: false,
       image: `${IMAGES_PATH}/pf-notification-viewed-1.png`,
       imageShadow: false,
+      overline: "LA NOTIFICA SI PERFEZIONA",
       content: (
         <>
-          <Typography variant="overline">LA NOTIFICA SI PERFEZIONA</Typography>
           <Typography variant="h4" color="primary">
             dopo 7 o 15 giorni
           </Typography>
@@ -51,13 +52,17 @@ const infoblocks: Array<IInfoblockData> = [
               </ListItem>
               <ListItem sx={{ display: "list-item", pl: 0, pt: 0, pb: 0.5 }}>
                 <Typography variant="body2">
-                  <b>Se la PEC è satura, non valida o inattiva</b>, si
+                  <b>Se la PEC è satura</b>, non valida o inattiva, si
                   perfeziona 15 giorni dopo la data di emissione dell'avviso di
                   mancato recapito. Lo troverai su SEND, nel dettaglio della
                   notifica.
                 </Typography>
               </ListItem>
             </List>
+            <Typography variant="body2">
+              <b>Se visualizzi su SEND o app IO i documenti notificati prima delle tempistiche indicate qui sopra,
+                il perfezionamento avviene al momento della visualizzazione.</b>
+            </Typography>
           </Box>
         </>
       ),
@@ -70,9 +75,9 @@ const infoblocks: Array<IInfoblockData> = [
       inverse: false,
       image: `${IMAGES_PATH}/pf-notification-viewed-2.png`,
       imageShadow: false,
+      overline: "LA NOTIFICA SI PERFEZIONA",
       content: (
         <>
-          <Typography variant="overline">LA NOTIFICA SI PERFEZIONA</Typography>
           <Typography variant="h4" color="primary">
             dopo 10 o 20 giorni
           </Typography>
@@ -105,6 +110,10 @@ const infoblocks: Array<IInfoblockData> = [
                 </Typography>
               </ListItem>
             </List>
+            <Typography variant="body2">
+              <b>Se visualizzi su SEND o app IO i documenti notificati prima delle tempistiche indicate qui sopra,
+                il perfezionamento avviene al momento della visualizzazione.</b>
+            </Typography>
           </Box>
         </>
       ),
@@ -117,18 +126,17 @@ const infoblocks: Array<IInfoblockData> = [
       inverse: false,
       image: `${IMAGES_PATH}/pf-notification-viewed-3.png`,
       imageShadow: false,
+      overline: "LA NOTIFICA SI PERFEZIONA",
       content: (
         <>
-          <Typography variant="overline">LA NOTIFICA SI PERFEZIONA</Typography>
           <Typography variant="h4" color="primary">
             il giorno in cui apri il messaggio
           </Typography>
           <Box sx={{ pr: { lg: "20%", xs: 0 } }}>
             <Typography variant="body2" sx={{ mb: 3 }}>
-              che hai ricevuto su IO dal servizio “Notifiche digitali” di SEND,
-              a meno che non si sia già perfezionata prima tramite PEC o
-              raccomandata. Per aprire il messaggio, selezionalo dalla lista e
-              premi “Continua”.
+              che hai ricevuto su IO dal servizio “SEND - Notifiche digitali”,
+              a meno che non si sia già perfezionata tramite visualizzazione su SEND o
+              per decorrenza termini dopo la ricezione della PEC o della raccomandata.
             </Typography>
           </Box>
         </>
@@ -142,17 +150,17 @@ const infoblocks: Array<IInfoblockData> = [
       inverse: false,
       image: `${IMAGES_PATH}/pf-notification-viewed-4.png`,
       imageShadow: false,
+      overline: "LA NOTIFICA SI PERFEZIONA",
       content: (
         <>
-          <Typography variant="overline">LA NOTIFICA SI PERFEZIONA</Typography>
           <Typography variant="h4" color="primary">
             il giorno in cui la visualizzi
           </Typography>
           <Box sx={{ pr: { lg: "20%", xs: 0 } }}>
             <Typography variant="body2">
-              dopo avere effettuato l’accesso con SPID o CIE e avere premuto
-              sulla notifica, a meno che non si sia già perfezionata prima
-              tramite PEC o raccomandata.
+              dopo avere effettuato l’accesso a SEND con SPID o CIE e avere premuto sulla notifica,
+              a meno che non si sia già perfezionata tramite visualizzazione su app IO o
+              per decorrenza termini dopo la ricezione della PEC o della raccomandata.
             </Typography>
           </Box>
         </>
@@ -166,17 +174,17 @@ const infoblocks: Array<IInfoblockData> = [
       inverse: false,
       image: `${IMAGES_PATH}/pf-notification-viewed-5.png`,
       imageShadow: false,
+      overline: "LA NOTIFICA SI PERFEZIONA",
       content: (
         <>
-          <Typography variant="overline">LA NOTIFICA SI PERFEZIONA</Typography>
           <Typography variant="h4" color="primary">
             il giorno in cui la visualizzi
           </Typography>
           <Box sx={{ pr: { lg: "20%", xs: 0 } }}>
             <Typography variant="body2">
-              su SEND, dopo avere effettuato l’accesso con SPID o CIE e avere
-              premuto sulla notifica, a meno che non si sia già perfezionata
-              prima tramite PEC o raccomandata.
+              dopo avere effettuato l’accesso a SEND con SPID o CIE e avere premuto sulla notifica,
+              a meno che non si sia già perfezionata tramite visualizzazione su app IO o
+              per decorrenza termini dopo la ricezione della PEC o della raccomandata.
             </Typography>
           </Box>
         </>
