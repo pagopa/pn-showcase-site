@@ -405,6 +405,16 @@ export const itFaqData: IFaqData = {
           relativo avviso di mancato recapito.`,
           ],
         },
+        {
+          id: "costi-di-notifica",
+          title: `In una notifica con più avvisi, alcuni includono i costi di notifica e altri no. Come mai?`,
+          description: [
+            `Alcune notifiche prevedono un costo per l’invio, che va pagato una sola volta per notifica. 
+            Nel caso di notifiche con più avvisi di pagamento il costo per l’invio sarà incluso soltanto in uno, 
+            e non in tutti.`,
+            `Per esempio, ci sono dei casi in cui si può decidere se pagare la notifica in un’unica soluzione o a rate. Se si sceglie di pagare in un’unica soluzione, il costo per l’invio sarà incluso nel relativo avviso di pagamento. Se si sceglie di pagare a rate il costo di invio sarà incluso in uno solo dei vari avvisi, generalmente in quello relativo alla prima rata.`,
+          ],
+        },
       ],
     },
     {
@@ -467,7 +477,7 @@ export const itFaqData: IFaqData = {
                 }
               >
                 {
-                  "L’ente che l’ha inviata può averla annullata per diverse ragioni. Per esempio, potrebbe avere commesso un errore, oppure potrebbero essere intervenute delle circostanze per cui la notifica non ha più effetto. Se hai ricevuto una notifica e questa è stata annullata, ignora il suo contenuto. Se hai dubbi o domande, contatta l’ente che te l’ha inviata"
+                  "L’ente che l’ha inviata può averla annullata per diverse ragioni. Per esempio, potrebbe avere commesso un errore, oppure potrebbero essere intervenute delle circostanze per cui la notifica non ha più effetto. Se hai ricevuto una notifica e questa è stata annullata, ignora il suo contenuto. Se hai dubbi o domande, contatta l’ente che te l’ha inviata."
                 }
               </FaqTextSection>
             </Box>
