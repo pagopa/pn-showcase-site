@@ -479,7 +479,7 @@ export const itFaqData: IFaqData = {
                 }
               >
                 {
-                  "L’ente che l’ha inviata può averla annullata per diverse ragioni. Per esempio, potrebbe avere commesso un errore, oppure potrebbero essere intervenute delle circostanze per cui la notifica non ha più effetto. Se hai ricevuto una notifica e questa è stata annullata, ignora il suo contenuto. Se hai dubbi o domande, contatta l’ente che te l’ha inviata"
+                  "L’ente che l’ha inviata può averla annullata per diverse ragioni. Per esempio, potrebbe avere commesso un errore, oppure potrebbero essere intervenute delle circostanze per cui la notifica non ha più effetto. Se hai ricevuto una notifica e questa è stata annullata, ignora il suo contenuto. Se hai dubbi o domande, contatta l’ente che te l’ha inviata."
                 }
               </FaqTextSection>
             </Box>
