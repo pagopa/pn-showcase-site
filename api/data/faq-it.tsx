@@ -412,9 +412,7 @@ export const itFaqData: IFaqData = {
             `Alcune notifiche prevedono un costo per l’invio, che va pagato una sola volta per notifica. 
             Nel caso di notifiche con più avvisi di pagamento il costo per l’invio sarà incluso soltanto in uno, 
             e non in tutti.`,
-            `Per esempio, ci sono dei casi in cui si può decidere se pagare la notifica in un’unica soluzione o a rate.
-             Se si sceglie di pagare in un’unica soluzione, il costo per l’invio sarà incluso nel relativo avviso di 
-             pagamento. Se si sceglie di pagare a rate il costo di invio sarà incluso in uno solo dei vari avvisi generalmente in quello relativo alla prima rata.`,
+            `Per esempio, ci sono dei casi in cui si può decidere se pagare la notifica in un’unica soluzione o a rate. Se si sceglie di pagare in un’unica soluzione, il costo per l’invio sarà incluso nel relativo avviso di pagamento. Se si sceglie di pagare a rate il costo di invio sarà incluso in uno solo dei vari avvisi, generalmente in quello relativo alla prima rata.`,
           ],
         },
       ],
