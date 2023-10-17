@@ -61,7 +61,7 @@ export const phHero: HeroProps = {
   image: `${IMAGES_PATH}/ph-hero-foreground.png`,
   altText:
     "Immagine della piattaforma SEND per Desktop e Mobile",
-  background: `${IMAGES_PATH}/hero-background.png`,
+  background: `${IMAGES_PATH}/hero-home-background.png`,
 };
 /* ************************************** */
 
