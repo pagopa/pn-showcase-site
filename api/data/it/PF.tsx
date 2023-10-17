@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
 import { HeroProps, WalkthroughProps } from "@pagopa/mui-italia";
 import { IMAGES_PATH, PN_PF_URL } from "@utils/constants";
 import { IInfoblockData, IShowcaseData } from "model";
@@ -22,10 +22,10 @@ const onReadClick = () => {
 // eslint-disable-next-line no-extra-boolean-cast
 const heroCta = !!PN_PF_URL
   ? {
-      label: "Leggi le tue notifiche",
-      title: "Leggi le tue notifiche",
-      onClick: onReadClick,
-    }
+    label: "Leggi le tue notifiche",
+    title: "Leggi le tue notifiche",
+    onClick: onReadClick,
+  }
   : undefined;
 
 const heroSubtitle = `Con SEND - Servizio Notifiche Digitali (anche nota come Piattaforma Notifiche Digitali di cui all'art. 26 del decreto-legge 76/2020 s.m.i.) puoi ricevere istantaneamente le comunicazioni a valore legale da parte di un ente. 
@@ -46,12 +46,12 @@ export const pfHero: HeroProps = {
       {heroSubtitle}
     </Typography>
   ),
-  ctaPrimary: heroCta,
+  ctaSecondary: heroCta,
   inverse: false,
-  image: `${IMAGES_PATH}/pf-hero-foreground.png`,
+  image: `${IMAGES_PATH}/hero-cittadini-foreground.png`,
   altText:
-    "Un computer portatile mostra il dettaglio di una notifica nella piattaforma SEND.",
-  background: `${IMAGES_PATH}/hero-background.png`,
+    "Una mano regge uno smartphone. Lo schermo mostra il dettaglio di una notifica.",
+  background: `${IMAGES_PATH}/hero-cittadini-background.png`,
 };
 /* ************************************** */
 
@@ -91,6 +91,7 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 1",
     data: {
+      overline: "PER I CITTADINI",
       title: "Non perderti più nessuna notifica",
       content: (
         <>
@@ -103,9 +104,9 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
         </>
       ),
       inverse: false,
-      image: `${IMAGES_PATH}/pf-infoblock-1.png`,
+      image: `${IMAGES_PATH}/pf-infoblock-4.png`,
       altText:
-        "Una donna, in piedi nel salotto di casa, guarda lo schermo del suo smartphone.",
+        "Immagine di due notifiche",
       imageShadow: false,
     },
   },
@@ -121,31 +122,35 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
         </>
       ),
       inverse: true,
-      image: `${IMAGES_PATH}/pf-infoblock-2.png`,
+      image: `${IMAGES_PATH}/pf-infoblock-3.png`,
+      aspectRatio: "9/16",
       altText:
-        "Una mano regge uno smartphone. Lo schermo mostra il dettaglio di una notifica.",
+        "Un uomo, con uno smartphone in mano, guarda in camera.",
       imageShadow: false,
     },
   },
   {
     name: "infoblock 3",
     data: {
-      title: "Il futuro delle comunicazioni a valore legale",
+      title: "",
       content: (
         <>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock3_1}>
+          <Typography style={{ color: "white" }} variant="h4" tabIndex={0} aria-label={infoblock3_1}>
+            Il futuro delle comunicazioni a valore legale
+          </Typography>
+          <Typography style={{ color: "white" }} variant="body2" tabIndex={0} aria-label={infoblock3_1}>
             SEND è a disposizione di tutte le Pubbliche Amministrazioni che
             vorranno utilizzarlo per inviare notifiche ai destinatari delle loro
             comunicazioni a valore legale.
           </Typography>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock3_2}>
+          <Typography style={{ color: "white" }} variant="body2" tabIndex={0} aria-label={infoblock3_2}>
             {infoblock3_2}
           </Typography>
         </>
       ),
       inverse: false,
-      image: `${IMAGES_PATH}/pf-infoblock-3.png`,
-      altText: "Un uomo, con uno smartphone in mano, guarda in camera.",
+      image: `${IMAGES_PATH}/pa-infoblock-4.png`,
+      altText: "Una donna guarda il monitor del notebook.",
       aspectRatio: "9/16",
       imageShadow: false,
     },
@@ -155,7 +160,7 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
 
 /** Showcase mocked data */
 const showcase1_1 =
-  "Il recapito delle notifiche in digitale comporta minori costi di notificazione e spedizione";
+  "Il recapito delle notifiche in digitale comporta ";
 const showcase1_2 =
   "Niente più attese o code per il ritiro delle comunicazioni cartacee";
 const showcase1_3 =
@@ -192,7 +197,17 @@ export const pfShowcases: Array<IShowcaseData> = [
           subtitle: (
             <Typography variant="body2" tabIndex={0} aria-label={showcase1_1}>
               {showcase1_1}
+              <Link
+                href="/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="minori costi di notificazione e spedizione"
+                sx={{fontWeight: "bold"}}
+              >
+                minori costi di notificazione e spedizione
+              </Link>
             </Typography>
+
           ),
         },
         {
@@ -277,7 +292,10 @@ e non accedi online  alla notifica attraverso SEND, riceverai una raccomandata c
 const walkthrough2 = `
 Dal messaggio ricevuto, puoi accedere online alla piattaforma per leggere la notifica e scaricare i relativi 
 documenti allegati. Se attivi il servizio su IO, puoi visualizzare il contenuto direttamente in app: questo 
-equivale alla firma della ricevuta di ritorno di una raccomandata tradizionale e al perfezionamento immediato della notifica.
+equivale alla firma della ricevuta di ritorno di una raccomandata tradizionale e al
+`;
+const walkthrough2B = `
+ immediato della notifica.
 `;
 const walkthrough3 = `
 Se c'è un importo da pagare, grazie all'integrazione con pagoPA, puoi procedere contestualmente online da SEND 
@@ -304,9 +322,21 @@ export const pfWalkthrough: WalkthroughProps = {
       icon: <DocCheckIcon color="primary" />,
       title: "Leggi il contenuto",
       subtitle: (
-        <Typography variant="body2" tabIndex={0} aria-label={walkthrough2}>
-          {walkthrough2}
-        </Typography>
+        <>
+          <Typography variant="body2" tabIndex={0} aria-label={walkthrough2}>
+            {walkthrough2}
+            <Link
+              href="/perfezionamento"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="perfezionamento"
+              sx={{fontWeight: "bold"}}
+            >
+              perfezionamento
+            </Link>
+            {walkthrough2B}
+          </Typography>
+        </>
       ),
     },
     {
@@ -326,7 +356,7 @@ export const pfWalkthrough: WalkthroughProps = {
           {walkthrough4}
         </Typography>
       ),
-      isSequential: false,
+      // isSequential: false,
     },
   ],
 };
