@@ -87,6 +87,12 @@ assicurerà l'invio anche della copia analogica conforme degli atti
 notificati tramite raccomandata cartacea ai destinatari non dotati
 di domicilio digitale.`;
 
+const infoblock3_3 = `Il futuro delle comunicazioni a valore legale`;
+
+const infoblock3_4 = `SEND è a disposizione di tutte le Pubbliche Amministrazioni che
+vorranno utilizzarlo per inviare notifiche ai destinatari delle loro
+comunicazioni a valore legale.`;
+
 export const pfInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 1",
@@ -135,15 +141,13 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
       title: "",
       content: (
         <>
-          <Typography style={{ color: "white" }} variant="h4" tabIndex={0} aria-label={infoblock3_1}>
-            Il futuro delle comunicazioni a valore legale
+          <Typography variant="h4" tabIndex={0} aria-label={infoblock3_3} sx={{color: "primary.contrastText"}}>
+            {infoblock3_3}
           </Typography>
-          <Typography style={{ color: "white" }} variant="body2" tabIndex={0} aria-label={infoblock3_1}>
-            SEND è a disposizione di tutte le Pubbliche Amministrazioni che
-            vorranno utilizzarlo per inviare notifiche ai destinatari delle loro
-            comunicazioni a valore legale.
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock3_4} sx={{color: "primary.contrastText"}}>
+            {infoblock3_4}
           </Typography>
-          <Typography style={{ color: "white" }} variant="body2" tabIndex={0} aria-label={infoblock3_2}>
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock3_2} sx={{color: "primary.contrastText"}}>
             {infoblock3_2}
           </Typography>
         </>
@@ -167,6 +171,8 @@ const showcase1_3 =
   "Contribuisci a ridurre il consumo di carta e le emissioni per il trasporto";
 const showcase1_4 =
   "Non devi più conservare i documenti stampati, grazie alla possibilità di scaricare e archiviare gli atti in digitale";
+const showcase1_5 =
+  "minori costi di notificazione e spedizione";
 
 const showcase2_1 = `Se hai un indirizzo PEC, le notifiche ti risulteranno legalmente
   consegnate, senza più raccomandate cartacee. L'avviso di avvenuta
@@ -201,10 +207,10 @@ export const pfShowcases: Array<IShowcaseData> = [
                 href="/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="minori costi di notificazione e spedizione"
+                aria-label={showcase1_5}
                 sx={{fontWeight: "bold"}}
               >
-                minori costi di notificazione e spedizione
+                {showcase1_5}
               </Link>
             </Typography>
 
@@ -294,8 +300,11 @@ Dal messaggio ricevuto, puoi accedere online alla piattaforma per leggere la not
 documenti allegati. Se attivi il servizio su IO, puoi visualizzare il contenuto direttamente in app: questo 
 equivale alla firma della ricevuta di ritorno di una raccomandata tradizionale e al
 `;
-const walkthrough2B = `
+const walkthrough2_1 = `
  immediato della notifica.
+`;
+const walkthrough2_2 = `
+ perfezionamento
 `;
 const walkthrough3 = `
 Se c'è un importo da pagare, grazie all'integrazione con pagoPA, puoi procedere contestualmente online da SEND 
@@ -329,12 +338,12 @@ export const pfWalkthrough: WalkthroughProps = {
               href="/perfezionamento"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="perfezionamento"
+              aria-label={walkthrough2_2}
               sx={{fontWeight: "bold"}}
             >
-              perfezionamento
+              {walkthrough2_2}
             </Link>
-            {walkthrough2B}
+            {walkthrough2_1}
           </Typography>
         </>
       ),
