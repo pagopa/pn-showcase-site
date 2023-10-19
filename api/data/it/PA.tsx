@@ -299,16 +299,16 @@ export const paInfoBlocks: Array<IInfoblockData> = [
                 </ListItem>
                 <ListItem sx={{ display: "list-item" }}>
                   <Typography variant="body2">
-                    <Link href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/pagopa/pn-delivery/main/docs/openapi/api-external-b2b-pa-bundle.yaml"
+                    <Link href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/pagopa/pn-delivery/pn-openapi-prod/docs/openapi/api-external-b2b-pa-bundle.yaml"
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label="API b2b per le pubbliche amministrazioni"
+                      aria-label="API b2b per le pubbliche amministrazioni e per l'avanzamento delle notifiche"
                     >
-                      API b2b per le pubbliche amministrazioni
+                      API b2b per le pubbliche amministrazioni e per l'avanzamento delle notifiche
                     </Link>
                   </Typography>
                 </ListItem>
-                <ListItem sx={{ display: "list-item" }}>
+                {/* <ListItem sx={{ display: "list-item" }}>
                   <Typography variant="body2">
                     <Link href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/pagopa/pn-delivery-push/main/docs/openapi/api-external-b2b-webhook-bundle.yaml"
                       target="_blank"
@@ -318,7 +318,7 @@ export const paInfoBlocks: Array<IInfoblockData> = [
                       API b2b per l'avanzamento delle notifiche
                     </Link>
                   </Typography>
-                </ListItem>
+                </ListItem> */}
               </List>
             </ListItem>
             <ListItem sx={{ display: "list-item" }}>
