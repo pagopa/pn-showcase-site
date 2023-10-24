@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import { HeroProps } from "@pagopa/mui-italia";
-import { IMAGES_PATH, PN_PF_URL, PN_PG_URL } from "@utils/constants";
+import { IMAGES_PATH } from "@utils/constants";
 import { IInfoblockData } from "model";
 
 const onReadClickEnti = () => {
