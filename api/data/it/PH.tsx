@@ -4,41 +4,41 @@ import { IMAGES_PATH, PN_PF_URL, PN_PG_URL } from "@utils/constants";
 import { IInfoblockData } from "model";
 
 const onReadClickEnti = () => {
-  window.open("/pubbliche-amministrazioni", "_blank");
+  window.open("/pubbliche-amministrazioni", "_self");
 };
 
 const onReadClickCittadini = () => {
-  window.open("/cittadini", "_blank");
+  window.open("/cittadini", "_self");
 };
 
 const onReadClickImprese = () => {
-  window.open("/", "_blank");
+  window.open("/", "_self");
 };
 
 // eslint-disable-next-line no-extra-boolean-cast
-const entiCta = !!"/pubbliche-amministrazioni"
+const entiCta = "/pubbliche-amministrazioni"
   ? {
-      label: "Scopri i vantaggi per gli enti",
-      title: "Scopri i vantaggi per gli enti",
-      onClick: onReadClickEnti,
-    }
+    label: "Scopri i vantaggi per gli enti",
+    title: "Scopri i vantaggi per gli enti",
+    onClick: onReadClickEnti,
+  }
   : undefined;
 
-const cittadiniCta = !!"/cittadini"
-? {
+const cittadiniCta = "/cittadini"
+  ? {
     label: "Scopri i vantaggi per i cittadini",
     title: "Scopri i vantaggi per i cittadini",
     onClick: onReadClickCittadini,
   }
-: undefined;
+  : undefined;
 
-const impreseCta = !!"/"
-? {
+const impreseCta = "/"
+  ? {
     label: "Scopri i vantaggi per le imprese",
     title: "Scopri i vantaggi per le imprese",
     onClick: onReadClickImprese,
   }
-: undefined;
+  : undefined;
 
 const heroSubtitle = `SEND è la piattaforma che rende più veloce, economico e sicuro l’invio e la ricezione delle notifiche a valore legale, semplificando il processo per tutti: gli enti che le inviano e i cittadini che le ricevono.`;
 
@@ -66,7 +66,7 @@ export const phHero: HeroProps = {
 /* ************************************** */
 
 /** Infoblocks mocked data */
-const infoblock1_1 = `SEND - Servizio Notifiche DIgitali solleva gli enti da tutti gli adempimenti legati alla gestione delle comunicazioni a valore legale e riduce l’incertezza della reperibilità del destinatario.`;
+const infoblock1_1 = `SEND - Servizio Notifiche Digitali solleva gli enti da tutti gli adempimenti legati alla gestione delle comunicazioni a valore legale e riduce l’incertezza della reperibilità del destinatario.`;
 
 const infoblock1_2 = `Le amministrazioni non devono fare altro che depositare l’atto da notificare: sarà la piattaforma a occuparsi dell’invio, per via digitale o analogica, con conseguente risparmio di  tempi e costi dell’intero processo.`;
 
