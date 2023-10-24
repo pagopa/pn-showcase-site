@@ -9,9 +9,9 @@ import Router from "next/router";
 // Carlotta Dimatteo 08/09/2022
 
 const HomePage: NextPage = () => {
-  useEffect(() => {
-    void Router.push("/cittadini/index.html");
-  }, []);
+  // useEffect(() => {
+  //   void Router.push("/cittadini/index.html");
+  // }, []);
 
   return (
     <>
