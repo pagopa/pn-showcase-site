@@ -30,9 +30,9 @@ const NavigationBar = ({
 
   return (
     <Box>
-      <Stack direction={{ xs: "column", sm: "row" }}>
+      <Stack direction={{ xs: "column", sm: "row" }} > 
         <Stack direction="row" alignItems="center" mx={3} my={2}>
-          <Box sx={{ pr: 2 }}>
+          <Box sx={{ pr: 2, cursor: 'pointer'}} onClick={() => window.open('/', '_self')}>
             <img src={image} alt={title} aria-label={title} />
           </Box>
           <Chip label={chip} size="small" color="primary" />
