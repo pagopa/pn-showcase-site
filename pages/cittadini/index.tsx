@@ -23,7 +23,7 @@ const CittadiniPage: NextPage = () => (
       <Showcase {...getShowcaseData(USER_TYPE, "showcase 1")} />
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 2")} />
       <Showcase {...getShowcaseData(USER_TYPE, "showcase 2")} />
-      <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 3")} />
+      <div className="dark"><Infoblock {...getInfoblockData(USER_TYPE, "infoblock 3")} /></div>
       <Walkthrough {...getWalkthroughData(USER_TYPE)} />
     </main>
   </>

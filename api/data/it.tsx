@@ -27,8 +27,6 @@ import {
   phHero,
   phHorizontalNav,
   phInfoBlocks,
-  phShowcases,
-  phWalkthrough,
 } from "./it/PH";
 
 /** Application Data Mock */
@@ -59,9 +57,9 @@ export const itAppData: IAppData = {
   ph: {
     hero: phHero,
     infoblocks: phInfoBlocks,
-    showcases: phShowcases,
-    walkthrough: phWalkthrough,
     horizontalNav: phHorizontalNav,
+    showcases: [],
+    walkthrough: { title: '', items: [] }
   },
 };
 
