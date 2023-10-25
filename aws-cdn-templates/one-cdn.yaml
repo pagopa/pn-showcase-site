@@ -287,8 +287,7 @@ Resources:
           FunctionAssociations:
             - EventType: viewer-request
               FunctionARN: !GetAtt RewriteFunction.FunctionMetadata.FunctionARN
-        DefaultRootObject: "pubbliche-amministrazioni/index.html"
-        # DefaultRootObject: "cittadini/index.html"
+        DefaultRootObject: "/index.html"
         CustomErrorResponses:
           - ErrorCode: 404
             ResponseCode: 200
@@ -330,7 +329,7 @@ Resources:
                 - " "
                 - - "default-src 'self';"
                   - "object-src 'self' https://www.notifichedigitali.pagopa.it/ https://notifichedigitali.pagopa.it ;"
-                  - !Sub " connect-src 'self' https://api-eu.mixpanel.com/track/  \
+                  - !Sub " connect-src 'self' \
                     https://selfcare.pagopa.it/assets/ \
                     https://privacyportalde-cdn.onetrust.com/ \
                     ${WebApiUrl}; \
