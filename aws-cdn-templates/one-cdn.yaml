@@ -287,7 +287,7 @@ Resources:
           FunctionAssociations:
             - EventType: viewer-request
               FunctionARN: !GetAtt RewriteFunction.FunctionMetadata.FunctionARN
-        DefaultRootObject: "/index.html"
+        DefaultRootObject: "index.html"
         CustomErrorResponses:
           - ErrorCode: 404
             ResponseCode: 200
@@ -404,7 +404,7 @@ Resources:
               else if (!uri.includes('.')) {
                 request.uri += '/index.html';
               }
-            }
+             }
             
             return request;
         }
