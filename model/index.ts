@@ -11,6 +11,7 @@ import {
 export enum UserType {
   PA = "pa",
   PF = "pf",
+  PD = "pd"
 }
 
 export interface ILinkData {
@@ -94,6 +95,7 @@ export interface IAppData {
   };
   pa: ILandingComponents;
   pf: ILandingComponents;
+  pd: ILandingComponents;
 }
 
 export interface IHeadingTitlesData {
