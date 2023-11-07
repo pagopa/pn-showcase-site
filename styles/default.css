@@ -87,3 +87,31 @@ body {
 .MuiTabs-flexContainer .MuiSvgIcon-root  {
   color: #0073E6;
 }
+
+.entiMenuItems [class$="MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper"] {
+  margin-left: -2em;
+  margin-top: 1em;
+}
+
+.customCardContent .MuiTypography-body2 {
+  margin-top: 0.6em;
+}
+
+.customCardContent .MuiButtonBase-root {
+  padding: 0;
+}
+
+.customCardContent .MuiButtonBase-root:hover {
+  background-color: transparent;
+}
+
+.customCard .MuiPaper-root {
+  border-radius: 16px;
+} 
+
+@media screen and (min-width:900px) {
+  .customCard .MuiPaper-root {
+    margin-bottom: 8px;
+    margin-right: 8px;
+  } 
+}

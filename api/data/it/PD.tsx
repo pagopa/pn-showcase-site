@@ -2,15 +2,15 @@ import { Box, Button, Card, CardActions, CardContent, Container, Grid, Link, Sta
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CodeIcon from '@mui/icons-material/Code';
 
-export const Cards = () => {
-    const cardsData = [
+export const Cards1 = () => {
+    const cards1Data = [
         {
             title: "1. Termini e Condizioni di adesione e uso",
             buttons: [
                 {
                     label: "Leggi i Termini e Condizioni",
                     color: "primary",
-                    link: "#",
+                    link: "https://docs.pagopa.it/documento-1-termini-condizioni-di-adesione-e-uso/",
                     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
                 },
             ],
@@ -21,7 +21,7 @@ export const Cards = () => {
                 {
                     label: "Leggi l’Atto di Nomina",
                     color: "primary",
-                    link: "#",
+                    link: "https://docs.pagopa.it/doc.2-atto-di-nomina-a-responsabile-trattamento-da/",
                     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
                 },
             ],
@@ -106,7 +106,7 @@ export const Cards = () => {
 
     return (
         <Box pb={8} pt={8}>
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" className="customCard">
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={4} pb={4} sx={{ pr: { md: 10, xs: 0, sm: 0 } }}>
                         <Box>
@@ -176,9 +176,9 @@ export const Cards = () => {
                         {/* Left column */}
                         <Grid item xs={12} md={6}>
                             <Grid container spacing={2} direction="column" justifyContent="space-between">
-                                {cardsData.slice(0, Math.ceil(cardsData.length / 2)).map((card, index) => (
+                                {cards1Data.slice(0, Math.ceil(cards1Data.length / 2)).map((card, index) => (
                                     <Grid item key={index}>
-                                        <Card>
+                                        <Card className="customCardContent">
                                             <CardContent sx={{ textAlign: "left" }}>
                                                 <Typography variant="h5" component="div">
                                                     {card.title}
@@ -199,6 +199,7 @@ export const Cards = () => {
                                                             href={button.link}
                                                             endIcon={button.icon || <ArrowForwardIcon />}
                                                             sx={{ justifyContent: "start" }}
+                                                            disableRipple={true}
                                                         >
                                                             {button.label}
                                                         </Button>
@@ -214,9 +215,9 @@ export const Cards = () => {
                         {/* Right column */}
                         <Grid item xs={12} md={6}>
                             <Grid container spacing={2} direction="column" justifyContent="space-between">
-                                {cardsData.slice(Math.ceil(cardsData.length / 2)).map((card, index) => (
+                                {cards1Data.slice(Math.ceil(cards1Data.length / 2)).map((card, index) => (
                                     <Grid item key={index}>
-                                        <Card>
+                                        <Card className="customCardContent">
                                             <CardContent sx={{ textAlign: "left" }}>
                                                 <Typography variant="h5" component="div">
                                                     {card.title}
@@ -237,6 +238,7 @@ export const Cards = () => {
                                                             href={button.link}
                                                             endIcon={button.icon || <ArrowForwardIcon />}
                                                             sx={{ justifyContent: "start" }}
+                                                            disableRipple={true}
                                                         >
                                                             {button.label}
                                                         </Button>
@@ -256,8 +258,8 @@ export const Cards = () => {
 };
 
 
-export const CardComponents = () => {
-  const cardComponentsData = [
+export const Cards2 = () => {
+  const cards2Data = [
       {
           title: "Manuale onboarding dell’ente",
           description: "",
@@ -294,11 +296,23 @@ export const CardComponents = () => {
               },
           ],
       },
+    //   {
+    //       title: "Kit di comunicazione",
+    //       description: "",
+    //       buttons: [
+    //           {
+    //               label: "Vai al kit",
+    //               color: "primary",
+    //               link: "#",
+    //               icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+    //           },
+    //       ],
+    //   },
   ];
 
   return (
-      <Box pb={8} pt={8}>
-          <Container maxWidth="xl">
+      <Box pb={8} pt={8} className="customCardContent">
+          <Container maxWidth="xl" className="customCard">
               <Grid container spacing={2}>
                   <Grid item xs={12} md={4} sx={{ pr: { md: 10, xs: 0, sm: 0 } }}>
                       <Box>
@@ -313,9 +327,9 @@ export const CardComponents = () => {
                       {/* Left column */}
                       <Grid item xs={12} md={6}>
                           <Grid container spacing={2} direction="column" justifyContent="space-between">
-                              {cardComponentsData.slice(0, Math.ceil(cardComponentsData.length / 2)).map((card, index) => (
+                              {cards2Data.slice(0, Math.ceil(cards2Data.length / 2)).map((card, index) => (
                                   <Grid item key={index}>
-                                      <Card>
+                                      <Card className="customCardContent">
                                           <CardContent sx={{ textAlign: "left" }}>
                                               <Typography variant="h5" component="div">
                                                   {card.title}
@@ -336,6 +350,7 @@ export const CardComponents = () => {
                                                           href={button.link}
                                                           endIcon={button.icon || <ArrowForwardIcon />}
                                                           sx={{ justifyContent: "start" }}
+                                                          disableRipple={true}
                                                       >
                                                           {button.label}
                                                       </Button>
@@ -350,9 +365,9 @@ export const CardComponents = () => {
                       {/* Right column */}
                       <Grid item xs={12} md={6}>
                           <Grid container spacing={2} direction="column" justifyContent="space-between">
-                              {cardComponentsData.slice(Math.ceil(cardComponentsData.length / 2)).map((card, index) => (
+                              {cards2Data.slice(Math.ceil(cards2Data.length / 2)).map((card, index) => (
                                   <Grid item key={index}>
-                                      <Card>
+                                      <Card className="customCardContent">
                                           <CardContent sx={{ textAlign: "left" }}>
                                               <Typography variant="h5" component="div">
                                                   {card.title}
@@ -373,6 +388,7 @@ export const CardComponents = () => {
                                                           href={button.link}
                                                           endIcon={button.icon || <ArrowForwardIcon />}
                                                           sx={{ justifyContent: "start" }}
+                                                          disableRipple={true}
                                                       >
                                                           {button.label}
                                                       </Button>

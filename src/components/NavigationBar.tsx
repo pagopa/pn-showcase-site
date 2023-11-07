@@ -75,9 +75,10 @@ const NavigationBar = ({
             anchorEl={anchorEl}
             open={open}
             onClose={handleCloseMenu}
+            className="entiMenuItems"
           >
             <MenuItem onClick={() => handleMenuItemClick('/documenti')}>
-              Come aderire a SEND
+              Documentazione
             </MenuItem>
           </Menu>
           <Tab

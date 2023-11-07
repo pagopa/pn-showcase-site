@@ -10,7 +10,7 @@ import {
   getWalkthroughData,
 } from "../../api";
 import { Link, Tab, Tabs, Stack } from "@mui/material";
-import { Cards, CardComponents, StripeLink } from "api/data/it/PD";
+import { Cards1, Cards2, StripeLink } from "api/data/it/PD";
 
 const USER_TYPE = UserType.PD;
 
@@ -22,8 +22,8 @@ const DocumentiPage: NextPage = () => (
     />
 
     <main>
-      <div id="dark"><Cards></Cards></div>
-      <CardComponents></CardComponents>
+      <div id="dark"><Cards1></Cards1></div>
+      <Cards2></Cards2>
       <StripeLink></StripeLink>
     </main>
   </>
