@@ -14,6 +14,7 @@ export const navigation: INavigationBarProps = {
   pa: "Enti",
   faq: "FAQ",
   image: `${IMAGES_PATH}/logo.svg`,
+  pi: "Imprese",
 };
 
 export const productJson = "/static/product.json";

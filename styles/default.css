@@ -69,3 +69,7 @@ body {
 .dark {
   background-color: #0B3EE3;
 }
+
+.light .MuiBox-root {
+  background-color: #FFFFFF;
+}

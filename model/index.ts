@@ -12,6 +12,7 @@ export enum UserType {
   PA = "pa",
   PF = "pf",
   PH = "ph",
+  PI = "pi",
 }
 
 export interface ILinkData {
@@ -45,6 +46,7 @@ export interface INavigationBarProps {
   pa: string;
   faq: string;
   image: string;
+  pi: string;
 }
 
 /**
@@ -96,6 +98,7 @@ export interface IAppData {
   pa: ILandingComponents;
   pf: ILandingComponents;
   ph: ILandingComponents;
+  pi: ILandingComponents;
 }
 
 export interface IHeadingTitlesData {
