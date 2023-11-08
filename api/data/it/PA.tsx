@@ -1,4 +1,4 @@
-import { Typography, List, ListItem, SvgIcon, Box, Stack } from "@mui/material";
+import { Typography, List, ListItem, SvgIcon, Box, Stack, Container, Grid, Button } from "@mui/material";
 import {
   HeroProps,
   HorizontalNavProps,
@@ -21,6 +21,9 @@ import {
   SyncIcon,
   UploadIcon,
 } from "../icons";
+
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import MessageIcon from '@mui/icons-material/Message';
 
 const heroSubtitle =
   "SEND, Servizio Notifiche Digitali (anche nota come Piattaforma Notifiche Digitali di cui all'art. 26 del decreto-legge 76/2020 s.m.i.)  digitalizza la gestione delle comunicazioni a valore legale, semplificando il processo per tutti: chi le invia, e chi le riceve.";
@@ -70,28 +73,30 @@ export const paHero: HeroProps = {
 
 /** Infoblocks mocked data */
 const infoblock1_1 =
-  "SEND digitalizza e semplifica la gestione delle comunicazioni a valore legale. Gli enti mittenti devono solo depositare l'atto da notificare: sarà la piattaforma a occuparsi dell'invio, per via digitale o analogica.";
+  "SEND - Servizio Notifiche Digitali solleva gli enti da tutti gli adempimenti legati alla gestione delle comunicazioni a valore legale e riduce l’incertezza della reperibilità del destinatario.";
 const infoblock1_2 =
-  "Con SEND diminuisce l'incertezza della reperibilità dei destinatari e si riducono i tempi e i costi di gestione.";
+  "Gli enti non devono fare altro che depositare l’atto da notificare: sarà la piattaforma a occuparsi dell’invio, per via digitale o analogica, con conseguente risparmio di  tempi e costi dell’intero processo.";
 const infoblock2_1 =
   "SEND si integra con il protocollo degli enti e offre sia API per l'invio automatico delle notifiche, sia la possibilità di fare invii manuali. Una volta effettuato il caricamento degli atti e dei moduli di pagamento, la piattaforma genera lo IUN, un codice univoco identificativo della notifica.";
 const infoblock2_2 =
-  "Successivamente, cerca nei suoi archivi e nei registri pubblici una PEC riconducibile al destinatario e invia la notifica. Poi, invia un avviso di cortesia agli altri recapiti digitali (app IO, email e SMS) del destinatario.";
+  "Successivamente, cerca nei suoi archivi e nei registri pubblici una PEC riconducibile al destinatario e invia la notifica. Al contempo, invia un avviso di cortesia agli altri recapiti digitali (app IO, email e numero di cellulare) del destinatario.";
 const infoblock2_3 =
   "Se il destinatario non ha indicato alcun recapito digitale e non ha accesso alla piattaforma, questa procede con la ricerca di un indirizzo fisico, e quindi con l'invio tramite raccomandata cartacea.";
 const infoblock3_1 =
-  "Il destinatario accede alla piattaforma tramite SPID o CIE, dove può visionare e scaricare l'atto notificato. Grazie all'integrazione con pagoPA, può anche pagare contestualmente quanto dovuto. Se ha attivato il servizio su app IO, potrà fare tutto direttamente in app.";
+  "Il destinatario accede alla piattaforma tramite SPID o CIE, dove può visualizzare e scaricare l'atto notificato. Grazie all'integrazione con pagoPA, può anche pagare contestualmente ,se previsto, quanto dovuto. Se ha attivato il servizio su IO, potrà fare tutto direttamente in app.";
 const infoblock3_2 =
   "Come l'ente, anche il destinatario ha accesso alla cronologia degli stati della notifica e alle attestazioni opponibili a terzi che ne danno prova.";
 const infoblock4_2 =
-  "Hai già aderito a SEND?";
+  "Il tuo ente ha già aderito a SEND?";
+const infoblock4_3 =
+  "Se il tuo ente ha aderito a SEND e sei un utente autorizzato, accedi tramite l'Area Riservata.";
 
 export const paInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 1",
     data: {
       overline: "PER GLI ENTI",
-      title: "Un modo più semplice di gestire le notifiche",
+      title: "Il processo di notificazione diventa più semplice",
       content: (
         <>
           <Typography variant="body2" tabIndex={0} aria-label={infoblock1_1}>
@@ -163,6 +168,9 @@ export const paInfoBlocks: Array<IInfoblockData> = [
           <Typography sx={{color: "primary.contrastText"}} variant="h4" tabIndex={0} aria-label={infoblock4_2}>
             {infoblock4_2}
           </Typography>
+          <Typography sx={{color: "primary.contrastText"}} variant="body2" tabIndex={0} aria-label={infoblock4_3}>
+            {infoblock4_3}
+          </Typography>
         </>
       ),
       inverse: false,
@@ -185,7 +193,7 @@ export const paInfoBlocks: Array<IInfoblockData> = [
 const showcase_1 =
   "Le notifiche sono inviate, gestite e monitorate tramite un solo canale, accessibile da più referenti dello stesso ente";
 const showcase_2 =
-  "Si possono caricare notifiche tramite API o manualmente: depositati i documenti, la piattaforma si occupa dell'invio e tiene traccia dei cambi di stato";
+  "Si possono caricare notifiche tramite API o manualmente: depositato l’atto, la piattaforma si occupa dell'invio e tiene traccia dei cambi di stato";
 const showcase_3 =
   "Se il destinatario ha un recapito digitale, i tempi di invio diminuiscono notevolmente";
 const showcase_4 =
@@ -195,7 +203,7 @@ export const paShowcases: Array<IShowcaseData> = [
   {
     name: "showcase 1",
     data: {
-      title: "Un solo modo per risparmiare in tanti modi",
+      title: "Un nuovo modo per gestire le notifiche",
       items: [
         {
           icon: <PeopleIcon />,
@@ -243,7 +251,7 @@ export const paShowcases: Array<IShowcaseData> = [
 const paWalkthrough1 =
   "Con l'uso di API Key o manualmente, l'ente crea la richiesta di notifica e carica gli allegati.";
 const paWalkthrough2 =
-  "SEND verifica la completezza e correttezza delle informazioni. Ad ogni cambio di stato, viene sempre generata la relativa attestazione opponibile a terzi.";
+  "SEND verifica la completezza delle informazioni. Ad ogni cambio di stato, viene sempre generata la relativa attestazione opponibile a terzi.";
 const paWalkthrough3 =
   "SEND comunica al destinatario la presenza di una notifica tramite diversi possibili canali: PEC, App IO, email, SMS. In alternativa, invia una raccomandata cartacea all'indirizzo fisico fornito dall'ente.";
 const paWalkthrough4 =
@@ -340,3 +348,26 @@ export const paHorizontalNav: HorizontalNavProps = {
   ],
 };
 /* ************************************** */
+
+
+export const StripeLinkEnti = () => {
+  return (
+      <Box sx={{ backgroundColor: "#17324D" }} padding={2}>
+          <Container maxWidth="xl">
+              <Grid container spacing={2} >
+                  <Grid item xs={12} md={6} display={"flex"} justifyContent={"center"} alignItems={"center"}>
+                      <Typography variant="body2" color="white" display={"flex"} justifyContent={"center"} alignItems={"center"}>
+                          <MessageIcon sx={{ fontSize: "20px", marginRight: "10px" }} />
+                          Vuoi comunicare l’adesione a SEND ai cittadini?
+                      </Typography>
+                      <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} sx={{ marginLeft: "1em" }}>
+                        Vai al kit di comunicazione
+                      </Button>
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                  </Grid>
+              </Grid>
+          </Container>
+      </Box>
+  );
+};
