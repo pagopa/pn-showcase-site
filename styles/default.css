@@ -73,3 +73,9 @@ body {
 .light .MuiBox-root {
   background-color: #FFFFFF;
 }
+
+#faqHero .MuiContainer-root .MuiTypography-root {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
