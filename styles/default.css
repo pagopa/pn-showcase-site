@@ -69,3 +69,9 @@ body {
 .dark {
   background-color: #0B3EE3;
 }
+
+#faqHero .MuiContainer-root .MuiTypography-root {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
