@@ -82,7 +82,7 @@ const NavigationBar = ({
               Documentazione
             </MenuItem>
           </Menu>
-          <Tab
+          {/* <Tab
             sx={{ paddingTop: 6, paddingBottom: 5 }}
             component="a"
             onClick={(
@@ -96,7 +96,7 @@ const NavigationBar = ({
             label={pa}
             href={paths[0]}
             {...a11yProps(0)}
-          />
+          /> */}
           <Tab
             sx={{ paddingTop: 6, paddingBottom: 5 }}
             component="a"
