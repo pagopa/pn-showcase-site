@@ -38,21 +38,21 @@ export const Cards1 = () => {
                 {
                     label: "Leggi il manuale operativo",
                     color: "primary",
-                    link: "#",
+                    link: "https://docs.pagopa.it/manuale-operativo/",
                     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
                 },
                 {
-                    label: "Vai alle API B2B per le pubbliche amministrazioni",
+                    label: "API b2b per le pubbliche amministrazioni e per l'avanzamento delle notifiche",
                     color: "primary",
-                    link: "#",
+                    link: "https://petstore.swagger.io/?url=https://raw.githubusercontent.com/pagopa/pn-delivery/pn-openapi-prod/docs/openapi/api-external-b2b-pa-bundle.yaml",
                     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
                 },
-                {
-                    label: "Vai alle API B2B per l’avanzamento delle notifiche",
-                    color: "primary",
-                    link: "#",
-                    icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
-                },
+                // {
+                //     label: "Vai alle API B2B per l’avanzamento delle notifiche",
+                //     color: "primary",
+                //     link: "#",
+                //     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                // },
             ],
         },
         {
@@ -61,7 +61,7 @@ export const Cards1 = () => {
                 {
                     label: "Vai al documento",
                     color: "primary",
-                    link: "#",
+                    link: "https://docs.pagopa.it/documento-4-ciclo-attivo-pn",
                     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
                 },
             ],
@@ -73,7 +73,7 @@ export const Cards1 = () => {
                 {
                     label: "Apri il documento",
                     color: "primary",
-                    link: "#",
+                    link: "/static/documents/Modulo preventivo di fornitura.xlsx",
                     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
                 },
             ],
@@ -85,7 +85,7 @@ export const Cards1 = () => {
                 {
                     label: "Compila il modulo",
                     color: "primary",
-                    link: "#",
+                    link: "/static/documents/Modulo Ordinativo Commessa per Anticipazione.xlsx",
                     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
                 },
             ],
@@ -96,7 +96,7 @@ export const Cards1 = () => {
                 {
                     label: "Vai al documento",
                     color: "primary",
-                    link: "#",
+                    link: "https://docs.pagopa.it/sla-di-servizio/",
                     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
                 },
             ],
@@ -155,7 +155,7 @@ export const Cards1 = () => {
                                 </Typography>
                                 <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
                                     Per ulteriori informazioni e chiarimenti, è possibile{" "}
-                                    <Link href="/faq"
+                                    <Link href="https://docs.pagopa.it/faq-enti"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         aria-label=""
@@ -165,7 +165,7 @@ export const Cards1 = () => {
                                     </Link>
                                     {" "}dedicate agli enti.
                                 </Typography>
-                                <Button variant="contained" sx={{ width: "max-content", backgroundColor: "#FFFFFF", color: "#0073E6", '&:hover': { backgroundColor: "#FFFFFF", color: "#0073E6"}}} >
+                                <Button variant="contained" sx={{ width: "max-content", backgroundColor: "#FFFFFF", color: "#0073E6", '&:hover': { backgroundColor: "#FFFFFF", color: "#0073E6"}}} href="https://cittadini.notifichedigitali.it">
                                     Aderisci a SEND
                                 </Button>
                             </Stack>
@@ -260,18 +260,18 @@ export const Cards1 = () => {
 
 export const Cards2 = () => {
   const cards2Data = [
-      {
-          title: "Manuale onboarding dell’ente",
-          description: "",
-          buttons: [
-              {
-                  label: "Vai al manuale",
-                  color: "primary",
-                  link: "#",
-                  icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
-              },
-          ],
-      },
+    //   {
+    //       title: "Manuale onboarding dell’ente",
+    //       description: "",
+    //       buttons: [
+    //           {
+    //               label: "Vai al manuale",
+    //               color: "primary",
+    //               link: "#",
+    //               icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+    //           },
+    //       ],
+    //   },
       {
           title: "Workflow della notifica",
           description: "",
@@ -291,7 +291,7 @@ export const Cards2 = () => {
               {
                   label: "Vai ai costi",
                   color: "primary",
-                  link: "#",
+                  link: "/static/documents/Analisi Ente - Cittadino v1.0.xlsx - ENTE (PagoPA).pdf",
                   icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
               },
           ],
@@ -420,7 +420,7 @@ export const StripeLink = () => {
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />}>
+                        <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} href="https://developer.pagopa.it/send/overview">
                             Vai alla documentazione tecnica
                         </Button>
                     </Grid>

@@ -21,8 +21,8 @@ const DocumentiPage: NextPage = () => (
       description="Pagina Documenti"
     />
 
-    <main>
-      <div id="dark"><Cards1></Cards1></div>
+    <main className="documenti">
+      <div className="cardsContainerDark"><Cards1></Cards1></div>
       <Cards2></Cards2>
       <StripeLink></StripeLink>
     </main>
