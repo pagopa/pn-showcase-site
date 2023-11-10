@@ -61,11 +61,8 @@ export const paHero: HeroProps = {
   ctaPrimary: {
     label: "Scopri come aderire a SEND",
     title: "Scopri come aderire a SEND",
-    /* Carlotta Dimatteo - workaround per gestire un anchor interno alla pagina richiesto dal team di comunicazione il 16/02/2023 */
     onClick: function onClick() {
-      const loc = document.location.toString().split("#")[0];
-      document.location = loc + "#start-integration";
-      return false;
+      window.open("/documenti", "_self");
     },
   },
 };
@@ -83,7 +80,7 @@ const infoblock2_2 =
 const infoblock2_3 =
   "Se il destinatario non ha indicato alcun recapito digitale e non ha accesso alla piattaforma, questa procede con la ricerca di un indirizzo fisico, e quindi con l'invio tramite raccomandata cartacea.";
 const infoblock3_1 =
-  "Il destinatario accede alla piattaforma tramite SPID o CIE, dove può visualizzare e scaricare l'atto notificato. Grazie all'integrazione con pagoPA, può anche pagare contestualmente ,se previsto, quanto dovuto. Se ha attivato il servizio su IO, potrà fare tutto direttamente in app.";
+  "Il destinatario accede alla piattaforma tramite SPID o CIE, dove può visualizzare e scaricare l'atto notificato. Grazie all'integrazione con pagoPA, può anche pagare contestualmente, se previsto, quanto dovuto. Se ha attivato il servizio su IO, potrà fare tutto direttamente in app.";
 const infoblock3_2 =
   "Come l'ente, anche il destinatario ha accesso alla cronologia degli stati della notifica e alle attestazioni opponibili a terzi che ne danno prova.";
 const infoblock4_2 =
@@ -134,7 +131,7 @@ export const paInfoBlocks: Array<IInfoblockData> = [
       inverse: true,
       image: `${IMAGES_PATH}/pa-infoblock-6.png`,
       altText:
-        "Un esempio della sezione “Invia una nuova” della piattaforma SEND.",
+        "Un esempio della sezione “Invia una nuova notifica” della piattaforma SEND.",
       imageShadow: false,
     },
   },
@@ -181,7 +178,8 @@ export const paInfoBlocks: Array<IInfoblockData> = [
       ctaPrimary: {
         label: "Accedi a SEND",
         title: "Accedi a SEND",
-        onClick: function() {
+        onClick: function onClick() {
+          window.open("https://selfcare.pagopa.it/auth/login", "_self");
         },
       },
     },
