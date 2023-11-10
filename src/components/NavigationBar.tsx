@@ -16,13 +16,14 @@ const NavigationBar = ({
   pa,
   faq,
   image,
+  pi
 }: INavigationBarProps) => {
   const { pathname, push } = useRouter();
   const [index, setIndex] = useState<number | undefined>();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const paths = ["/pubbliche-amministrazioni", "/cittadini", "/faq"];
+  const paths = ["/pubbliche-amministrazioni", "/imprese", "/cittadini", "/faq"];
 
   function a11yProps(index: number) {
     return {
@@ -51,9 +52,9 @@ const NavigationBar = ({
 
   return (
     <Box>
-      <Stack direction={{ xs: "column", sm: "row" }}>
+      <Stack direction={{ xs: "column", sm: "row" }} >
         <Stack direction="row" alignItems="center" mx={3} my={2}>
-          <Box sx={{ pr: 2 }}>
+          <Box sx={{ pr: 2, cursor: 'pointer' }} onClick={() => window.open('/', '_self')}>
             <img src={image} alt={title} aria-label={title} />
           </Box>
           <Chip label={chip} size="small" color="primary" />
@@ -84,9 +85,30 @@ const NavigationBar = ({
           <Tab
             sx={{ paddingTop: 6, paddingBottom: 5 }}
             component="a"
-            onClick={() => push(paths[1])}
-            key="persona-fisica"
-            label={pf}
+            onClick={(
+              event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+            ) => {
+              if (pathname === `${paths[0]}/`) {
+                event.preventDefault();
+              }
+            }}
+            key="pubblica-amminstrazione"
+            label={pa}
+            href={paths[0]}
+            {...a11yProps(0)}
+          />
+          <Tab
+            sx={{ paddingTop: 6, paddingBottom: 5 }}
+            component="a"
+            onClick={(
+              event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+            ) => {
+              if (pathname === `${paths[1]}/`) {
+                event.preventDefault();
+              }
+            }}
+            key="imprese"
+            label={pi}
             href={paths[1]}
             {...a11yProps(1)}
             disableRipple={true}
@@ -94,12 +116,34 @@ const NavigationBar = ({
           <Tab
             sx={{ paddingTop: 6, paddingBottom: 5 }}
             component="a"
-            onClick={() => push(paths[2])}
-            key="faq"
-            label={faq}
+            onClick={(
+              event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+            ) => {
+              if (pathname === `${paths[2]}/`) {
+                event.preventDefault();
+              }
+            }}
+            key="persona-fisica"
+            label={pf}
             href={paths[2]}
             {...a11yProps(2)}
             disableRipple={true}
+          />
+
+          <Tab
+            sx={{ paddingTop: 6, paddingBottom: 5 }}
+            component="a"
+            onClick={(
+              event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+            ) => {
+              if (pathname === `${paths[3]}/`) {
+                event.preventDefault();
+              }
+            }}
+            key="faq"
+            label={faq}
+            href={paths[3]}
+            {...a11yProps(3)}
           />
         </Tabs>
       </Stack>

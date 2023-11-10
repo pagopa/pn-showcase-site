@@ -30,6 +30,18 @@ import {
   preLoginLinks,
   productJson,
 } from "./it/common";
+import {
+  phHero,
+  phHorizontalNav,
+  phInfoBlocks,
+} from "./it/PH";
+import {
+  piHero,
+  piInfoBlocks,
+  piShowcases,
+  piWalkthrough,
+  piHorizontalNav
+} from "./it/PI";
 
 /** Application Data Mock */
 export const itAppData: IAppData = {
@@ -63,4 +75,19 @@ export const itAppData: IAppData = {
     walkthrough: pdWalkthrough,
     horizontalNav: pdHorizontalNav,
   },
+  ph: {
+    hero: phHero,
+    infoblocks: phInfoBlocks,
+    horizontalNav: phHorizontalNav,
+    showcases: [],
+    walkthrough: { title: '', items: [] }
+  },
+  pi: {
+    hero: piHero,
+    infoblocks: piInfoBlocks,
+    showcases: piShowcases,
+    walkthrough: piWalkthrough,
+    horizontalNav: piHorizontalNav,
+  },
 };
+

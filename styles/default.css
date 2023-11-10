@@ -114,4 +114,18 @@ body {
     margin-bottom: 8px;
     margin-right: 8px;
   } 
+.dark {
+  background-color: #0B3EE3;
 }
+}
+
+.light .MuiBox-root {
+  background-color: #FFFFFF;
+}
+
+#faqHero .MuiContainer-root .MuiTypography-root {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
