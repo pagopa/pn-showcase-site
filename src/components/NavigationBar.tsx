@@ -11,11 +11,12 @@ const NavigationBar = ({
   pa,
   faq,
   image,
+  pi
 }: INavigationBarProps) => {
   const { pathname } = useRouter();
   const [index, setIndex] = useState<number | undefined>();
 
-  const paths = ["/pubbliche-amministrazioni", "/cittadini", "/faq"];
+  const paths = ["/pubbliche-amministrazioni", "/imprese", "/cittadini", "/faq"];
 
   function a11yProps(index: number) {
     return {
@@ -30,9 +31,9 @@ const NavigationBar = ({
 
   return (
     <Box>
-      <Stack direction={{ xs: "column", sm: "row" }}>
+      <Stack direction={{ xs: "column", sm: "row" }} >
         <Stack direction="row" alignItems="center" mx={3} my={2}>
-          <Box sx={{ pr: 2 }}>
+          <Box sx={{ pr: 2, cursor: 'pointer' }} onClick={() => window.open('/', '_self')}>
             <img src={image} alt={title} aria-label={title} />
           </Box>
           <Chip label={chip} size="small" color="primary" />
@@ -63,12 +64,11 @@ const NavigationBar = ({
                 event.preventDefault();
               }
             }}
-            key="persona-fisica"
-            label={pf}
+            key="imprese"
+            label={pi}
             href={paths[1]}
             {...a11yProps(1)}
           />
-
           <Tab
             sx={{ paddingTop: 6, paddingBottom: 5 }}
             component="a"
@@ -79,10 +79,26 @@ const NavigationBar = ({
                 event.preventDefault();
               }
             }}
-            key="faq"
-            label={faq}
+            key="persona-fisica"
+            label={pf}
             href={paths[2]}
             {...a11yProps(2)}
+          />
+
+          <Tab
+            sx={{ paddingTop: 6, paddingBottom: 5 }}
+            component="a"
+            onClick={(
+              event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+            ) => {
+              if (pathname === `${paths[3]}/`) {
+                event.preventDefault();
+              }
+            }}
+            key="faq"
+            label={faq}
+            href={paths[3]}
+            {...a11yProps(3)}
           />
         </Tabs>
       </Stack>

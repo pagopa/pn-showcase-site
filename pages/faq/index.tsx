@@ -146,11 +146,11 @@ const FaqPage: NextPage = () => {
     <>
       <PageHead title={faqData.title} description="Pagina di FAQ" />
 
-      <main>
+      <main id="faqHero">
         <Hero
           title="FAQ"
           type="text"
-          background={`${IMAGES_PATH}/hero-faq-background.png`}
+          background={`${IMAGES_PATH}/hero-faq-background-2.png`}
         />
         <Stack
           direction="column"

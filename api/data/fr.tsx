@@ -23,6 +23,7 @@ import {
   preLoginLinks,
   productJson,
 } from "./fr/common";
+import { phHero, phInfoBlocks, phHorizontalNav } from "./it/PH";
 
 /** Application Data Mock */
 export const frAppData: IAppData = {
@@ -50,5 +51,12 @@ export const frAppData: IAppData = {
     showcases: pfShowcases,
     walkthrough: pfWalkthrough,
     horizontalNav: pfHorizontalNav,
+  },
+  ph: {
+    hero: phHero,
+    infoblocks: phInfoBlocks,
+    horizontalNav: phHorizontalNav,
+    showcases: [],
+    walkthrough: { title: '', items: [] }
   },
 };
