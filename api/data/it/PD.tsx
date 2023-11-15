@@ -272,18 +272,18 @@ export const Cards2 = () => {
     //           },
     //       ],
     //   },
-      {
-          title: "Workflow della notifica",
-          description: "",
-          buttons: [
-              {
-                  label: "Vai al documento",
-                  color: "primary",
-                  link: "#",
-                  icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
-              },
-          ],
-      },
+    //   {
+    //       title: "Workflow della notifica",
+    //       description: "",
+    //       buttons: [
+    //           {
+    //               label: "Vai al documento",
+    //               color: "primary",
+    //               link: "#",
+    //               icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+    //           },
+    //       ],
+    //   },
       {
           title: "Costi di notifica digitale e analogica",
           description: "",
