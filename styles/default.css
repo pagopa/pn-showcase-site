@@ -114,6 +114,31 @@ body {
     margin-bottom: 8px;
     margin-right: 8px;
   } 
+#lightWalkthrough .MuiBox-root {
+  background-color: #FFFFFF;
+}
+
+#darkInfoblock .MuiBox-root {
+  background-color: #0B3EE3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#darkInfoblock .MuiBox-root a {
+  background-color: #FFFFFF;
+  color: #0066CC;
+}
+
+#darkInfoblock .MuiBox-root img {
+  visibility: hidden;
+}
+
+#darkInfoblock [class$="MuiStack-root"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .dark {
   background-color: #0B3EE3;
 }
