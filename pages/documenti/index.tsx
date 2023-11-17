@@ -23,8 +23,8 @@ const DocumentiPage: NextPage = () => (
 
     <main className="documenti">
       <div className="cardsContainerDark"><Cards1></Cards1></div>
-      <Cards2></Cards2>
-      <StripeLink></StripeLink>
+      {/* <Cards2></Cards2> */}
+      {/* <StripeLink></StripeLink> */}
     </main>
   </>
 );

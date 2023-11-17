@@ -32,7 +32,7 @@ export const Cards1 = () => {
                 {
                     label: "Vai al documento",
                     color: "primary",
-                    link: "#",
+                    link: "https://developer.pagopa.it/send/overview",
                     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
                 },
                 {
