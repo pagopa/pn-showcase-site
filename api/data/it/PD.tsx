@@ -161,11 +161,11 @@ export const Cards1 = () => {
                                         aria-label=""
                                         sx={{ color: "primary.contrastText", textDecoration: "underline", fontWeight: "bold" }}
                                     >
-                                        consultare le FAQ 
+                                        consultare le FAQ
                                     </Link>
                                     {" "}dedicate agli enti.
                                 </Typography>
-                                <Button variant="contained" sx={{ width: "max-content", backgroundColor: "#FFFFFF", color: "#0073E6", '&:hover': { backgroundColor: "#FFFFFF", color: "#0073E6"}}} href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn">
+                                <Button variant="contained" sx={{ width: "max-content", backgroundColor: "#FFFFFF", color: "#0073E6", '&:hover': { backgroundColor: "#FFFFFF", color: "#0073E6" } }} href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn">
                                     Aderisci a SEND
                                 </Button>
                             </Stack>
@@ -195,7 +195,7 @@ export const Cards1 = () => {
                                                         <Button
                                                             key={buttonIndex}
                                                             size="small"
-                                                            color={button.color || "primary"}
+                                                            color={"primary"}
                                                             href={button.link}
                                                             endIcon={button.icon || <ArrowForwardIcon />}
                                                             sx={{ justifyContent: "start" }}
@@ -234,7 +234,7 @@ export const Cards1 = () => {
                                                         <Button
                                                             key={buttonIndex}
                                                             size="small"
-                                                            color={button.color || "primary"}
+                                                            color={"primary"}
                                                             href={button.link}
                                                             endIcon={button.icon || <ArrowForwardIcon />}
                                                             sx={{ justifyContent: "start" }}
@@ -259,152 +259,152 @@ export const Cards1 = () => {
 
 
 export const Cards2 = () => {
-  const cards2Data = [
-    //   {
-    //       title: "Manuale onboarding dell’ente",
-    //       description: "",
-    //       buttons: [
-    //           {
-    //               label: "Vai al manuale",
-    //               color: "primary",
-    //               link: "#",
-    //               icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
-    //           },
-    //       ],
-    //   },
-    //   {
-    //       title: "Workflow della notifica",
-    //       description: "",
-    //       buttons: [
-    //           {
-    //               label: "Vai al documento",
-    //               color: "primary",
-    //               link: "#",
-    //               icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
-    //           },
-    //       ],
-    //   },
-      {
-          title: "Costi di notifica digitale e analogica",
-          description: "",
-          buttons: [
-              {
-                  label: "Vai ai costi",
-                  color: "primary",
-                  link: "/static/documents/Analisi Ente - Cittadino v1.0.xlsx - ENTE (PagoPA).pdf",
-                  icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
-              },
-          ],
-      },
-    //   {
-    //       title: "Kit di comunicazione",
-    //       description: "",
-    //       buttons: [
-    //           {
-    //               label: "Vai al kit",
-    //               color: "primary",
-    //               link: "#",
-    //               icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
-    //           },
-    //       ],
-    //   },
-  ];
+    const cards2Data = [
+        //   {
+        //       title: "Manuale onboarding dell’ente",
+        //       description: "",
+        //       buttons: [
+        //           {
+        //               label: "Vai al manuale",
+        //               color: "primary",
+        //               link: "#",
+        //               icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+        //           },
+        //       ],
+        //   },
+        //   {
+        //       title: "Workflow della notifica",
+        //       description: "",
+        //       buttons: [
+        //           {
+        //               label: "Vai al documento",
+        //               color: "primary",
+        //               link: "#",
+        //               icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+        //           },
+        //       ],
+        //   },
+        {
+            title: "Costi di notifica digitale e analogica",
+            description: "",
+            buttons: [
+                {
+                    label: "Vai ai costi",
+                    color: "primary",
+                    link: "/static/documents/Analisi Ente - Cittadino v1.0.xlsx - ENTE (PagoPA).pdf",
+                    icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                },
+            ],
+        },
+        //   {
+        //       title: "Kit di comunicazione",
+        //       description: "",
+        //       buttons: [
+        //           {
+        //               label: "Vai al kit",
+        //               color: "primary",
+        //               link: "#",
+        //               icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+        //           },
+        //       ],
+        //   },
+    ];
 
-  return (
-      <Box pb={8} pt={8} className="customCardContent">
-          <Container maxWidth="xl" className="customCard">
-              <Grid container spacing={2}>
-                  <Grid item xs={12} md={4} sx={{ pr: { md: 10, xs: 0, sm: 0 } }}>
-                      <Box>
-                          <Stack>
-                              <Typography variant="h4" tabIndex={0} aria-label="Vuoi approfondire?" pb={4}>
-                                  Vuoi approfondire?
-                              </Typography>
-                          </Stack>
-                      </Box>
-                  </Grid>
-                  <Grid container spacing={2} xs={12} md={8} sx={{ ml: { xs: 0, sm: 0 } }}>
-                      {/* Left column */}
-                      <Grid item xs={12} md={6}>
-                          <Grid container spacing={2} direction="column" justifyContent="space-between">
-                              {cards2Data.slice(0, Math.ceil(cards2Data.length / 2)).map((card, index) => (
-                                  <Grid item key={index}>
-                                      <Card className="customCardContent">
-                                          <CardContent sx={{ textAlign: "left" }}>
-                                              <Typography variant="h5" component="div">
-                                                  {card.title}
-                                              </Typography>
-                                              {card.description && (
-                                                  <Typography variant="body2">
-                                                      {card.description}
-                                                  </Typography>
-                                              )}
-                                          </CardContent>
-                                          <CardActions>
-                                              <Stack direction="column" spacing={1}>
-                                                  {card.buttons.map((button, buttonIndex) => (
-                                                      <Button
-                                                          key={buttonIndex}
-                                                          size="small"
-                                                          color={button.color || "primary"}
-                                                          href={button.link}
-                                                          endIcon={button.icon || <ArrowForwardIcon />}
-                                                          sx={{ justifyContent: "start" }}
-                                                          disableRipple={true}
-                                                      >
-                                                          {button.label}
-                                                      </Button>
-                                                  ))}
-                                              </Stack>
-                                          </CardActions>
-                                      </Card>
-                                  </Grid>
-                              ))}
-                          </Grid>
-                      </Grid>
-                      {/* Right column */}
-                      <Grid item xs={12} md={6}>
-                          <Grid container spacing={2} direction="column" justifyContent="space-between">
-                              {cards2Data.slice(Math.ceil(cards2Data.length / 2)).map((card, index) => (
-                                  <Grid item key={index}>
-                                      <Card className="customCardContent">
-                                          <CardContent sx={{ textAlign: "left" }}>
-                                              <Typography variant="h5" component="div">
-                                                  {card.title}
-                                              </Typography>
-                                              {card.description && (
-                                                  <Typography variant="body2">
-                                                      {card.description}
-                                                  </Typography>
-                                              )}
-                                          </CardContent>
-                                          <CardActions>
-                                              <Stack direction="column" spacing={1}>
-                                                  {card.buttons.map((button, buttonIndex) => (
-                                                      <Button
-                                                          key={buttonIndex}
-                                                          size="small"
-                                                          color={button.color || "primary"}
-                                                          href={button.link}
-                                                          endIcon={button.icon || <ArrowForwardIcon />}
-                                                          sx={{ justifyContent: "start" }}
-                                                          disableRipple={true}
-                                                      >
-                                                          {button.label}
-                                                      </Button>
-                                                  ))}
-                                              </Stack>
-                                          </CardActions>
-                                      </Card>
-                                  </Grid>
-                              ))}
-                          </Grid>
-                      </Grid>
-                  </Grid>
-              </Grid>
-          </Container>
-      </Box>
-  );
+    return (
+        <Box pb={8} pt={8} className="customCardContent">
+            <Container maxWidth="xl" className="customCard">
+                <Grid container spacing={2}>
+                    <Grid item xs={12} md={4} sx={{ pr: { md: 10, xs: 0, sm: 0 } }}>
+                        <Box>
+                            <Stack>
+                                <Typography variant="h4" tabIndex={0} aria-label="Vuoi approfondire?" pb={4}>
+                                    Vuoi approfondire?
+                                </Typography>
+                            </Stack>
+                        </Box>
+                    </Grid>
+                    <Grid container spacing={2} xs={12} md={8} sx={{ ml: { xs: 0, sm: 0 } }}>
+                        {/* Left column */}
+                        <Grid item xs={12} md={6}>
+                            <Grid container spacing={2} direction="column" justifyContent="space-between">
+                                {cards2Data.slice(0, Math.ceil(cards2Data.length / 2)).map((card, index) => (
+                                    <Grid item key={index}>
+                                        <Card className="customCardContent">
+                                            <CardContent sx={{ textAlign: "left" }}>
+                                                <Typography variant="h5" component="div">
+                                                    {card.title}
+                                                </Typography>
+                                                {card.description && (
+                                                    <Typography variant="body2">
+                                                        {card.description}
+                                                    </Typography>
+                                                )}
+                                            </CardContent>
+                                            <CardActions>
+                                                <Stack direction="column" spacing={1}>
+                                                    {card.buttons.map((button, buttonIndex) => (
+                                                        <Button
+                                                            key={buttonIndex}
+                                                            size="small"
+                                                            color={"primary"}
+                                                            href={button.link}
+                                                            endIcon={button.icon || <ArrowForwardIcon />}
+                                                            sx={{ justifyContent: "start" }}
+                                                            disableRipple={true}
+                                                        >
+                                                            {button.label}
+                                                        </Button>
+                                                    ))}
+                                                </Stack>
+                                            </CardActions>
+                                        </Card>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </Grid>
+                        {/* Right column */}
+                        <Grid item xs={12} md={6}>
+                            <Grid container spacing={2} direction="column" justifyContent="space-between">
+                                {cards2Data.slice(Math.ceil(cards2Data.length / 2)).map((card, index) => (
+                                    <Grid item key={index}>
+                                        <Card className="customCardContent">
+                                            <CardContent sx={{ textAlign: "left" }}>
+                                                <Typography variant="h5" component="div">
+                                                    {card.title}
+                                                </Typography>
+                                                {card.description && (
+                                                    <Typography variant="body2">
+                                                        {card.description}
+                                                    </Typography>
+                                                )}
+                                            </CardContent>
+                                            <CardActions>
+                                                <Stack direction="column" spacing={1}>
+                                                    {card.buttons.map((button, buttonIndex) => (
+                                                        <Button
+                                                            key={buttonIndex}
+                                                            size="small"
+                                                            color={ "primary"}
+                                                            href={button.link}
+                                                            endIcon={button.icon || <ArrowForwardIcon />}
+                                                            sx={{ justifyContent: "start" }}
+                                                            disableRipple={true}
+                                                        >
+                                                            {button.label}
+                                                        </Button>
+                                                    ))}
+                                                </Stack>
+                                            </CardActions>
+                                        </Card>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Container>
+        </Box>
+    );
 };
 
 

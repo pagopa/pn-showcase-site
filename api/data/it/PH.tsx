@@ -130,11 +130,9 @@ export const phInfoBlocks: Array<IInfoblockData> = [
       overline: "PER LE IMPRESE",
       title: "Tutto in un unico luogo ",
       content: (
-        <>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock1_1}>
-            {infoblock3_1}
-          </Typography>
-        </>
+        <Typography variant="body2" tabIndex={0} aria-label={infoblock1_1}>
+          {infoblock3_1}
+        </Typography>
       ),
       ctaPrimary: impreseCta,
       inverse: false,

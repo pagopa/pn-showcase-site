@@ -15,13 +15,6 @@ import {
   pfWalkthrough,
 } from "./it/PF";
 import {
-  pdHero,
-  pdHorizontalNav,
-  pdInfoBlocks,
-  pdShowcases,
-  pdWalkthrough,
-} from "./it/PD";
-import {
   assistanceLink,
   companyLegalInfo,
   navigation,
@@ -67,13 +60,6 @@ export const itAppData: IAppData = {
     showcases: pfShowcases,
     walkthrough: pfWalkthrough,
     horizontalNav: pfHorizontalNav,
-  },
-  pd: {
-    hero: pdHero,
-    infoblocks: pdInfoBlocks,
-    showcases: pdShowcases,
-    walkthrough: pdWalkthrough,
-    horizontalNav: pdHorizontalNav,
   },
   ph: {
     hero: phHero,
