@@ -23,7 +23,7 @@ const NavigationBar = ({
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const paths = ["/pubbliche-amministrazioni", "/imprese", "/cittadini", "/faq"];
+  const paths = ["/pubbliche-amministrazioni", "/cittadini", "/imprese", "/faq"];
 
   function a11yProps(index: number) {
     return {
@@ -107,8 +107,8 @@ const NavigationBar = ({
                 event.preventDefault();
               }
             }}
-            key="imprese"
-            label={pi}
+            key="persona-fisica"
+            label={pf}
             href={paths[1]}
             {...a11yProps(1)}
             disableRipple={true}
@@ -123,13 +123,12 @@ const NavigationBar = ({
                 event.preventDefault();
               }
             }}
-            key="persona-fisica"
-            label={pf}
+            key="imprese"
+            label={pi}
             href={paths[2]}
             {...a11yProps(2)}
             disableRipple={true}
           />
-
           <Tab
             sx={{ paddingTop: 6, paddingBottom: 5 }}
             component="a"
