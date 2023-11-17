@@ -12,7 +12,7 @@ const onReadClickCittadini = () => {
 };
 
 const onReadClickImprese = () => {
-  window.open("/", "_self");
+  window.open("/imprese", "_self");
 };
 
 // eslint-disable-next-line no-extra-boolean-cast
@@ -32,7 +32,7 @@ const cittadiniCta = "/cittadini"
   }
   : undefined;
 
-const impreseCta = "/"
+const impreseCta = "/imprese"
   ? {
     label: "Scopri i vantaggi per le imprese",
     title: "Scopri i vantaggi per le imprese",
@@ -40,7 +40,7 @@ const impreseCta = "/"
   }
   : undefined;
 
-const heroSubtitle = `SEND è la piattaforma che rende più veloce, economico e sicuro l’invio e la ricezione delle notifiche a valore legale, semplificando il processo per tutti: gli enti che le inviano e i cittadini che le ricevono.`;
+const heroSubtitle = `SEND è la piattaforma che rende più veloce, economico e sicuro l’invio e la ricezione delle notifiche a valore legale, semplificando il processo per tutti: gli enti che le inviano e i destinatari che le ricevono.`;
 
 export const phHero: HeroProps = {
   type: "image",
@@ -66,15 +66,15 @@ export const phHero: HeroProps = {
 /* ************************************** */
 
 /** Infoblocks mocked data */
-const infoblock1_1 = `SEND - Servizio Notifiche Digitali solleva gli enti da tutti gli adempimenti legati alla gestione delle comunicazioni a valore legale e riduce l’incertezza della reperibilità del destinatario.`;
+const infoblock1_1 = `SEND - Servizio Notifiche Digitali solleva gli enti da tutti gli adempimenti legati alla gestione delle comunicazioni a valore legale.`;
 
-const infoblock1_2 = `Le amministrazioni non devono fare altro che depositare l’atto da notificare: sarà la piattaforma a occuparsi dell’invio, per via digitale o analogica, con conseguente risparmio di  tempi e costi dell’intero processo.`;
+const infoblock1_2 = `Gli enti non devono fare altro che depositare l’atto da notificare: sarà la piattaforma a occuparsi dell’invio, per via digitale o analogica, con conseguente risparmio di tempi e costi dell’intero processo.`;
 
 const infoblock2_1 = `I cittadini che lo desiderano possono ricevere e consultare le notifiche in digitale, accedendo a SEND tramite SPID o CIE o direttamente dall’app IO.`;
 
-const infoblock2_2 = `In ogni caso la piattaforma garantisce libertà di scelta: i destinatari possono sempre indicare come ricevere le comunicazioni secondo le proprie preferenze e avere accesso alle notifiche in qualsiasi momento, via mobile e via web o da punti fisici.`;
+const infoblock2_2 = `In ogni caso la piattaforma garantisce libertà di scelta: i destinatari possono sempre indicare come ricevere le comunicazioni secondo le proprie preferenze e avere accesso alle notifiche in qualsiasi momento, online o da punti fisici.`;
 
-const infoblock3_1 = `SEND mette a disposizione un unico spazio condiviso in cui diversi referenti di una stessa impresa possono visualizzare e gestire in modo totalmente digitale tutte le notifiche ricevute dalle varie Pubbliche Amministrazioni e pagare eventuali importi dovuti.`;
+const infoblock3_1 = `SEND mette a disposizione un unico spazio condiviso in cui diversi referenti di una stessa impresa possono visualizzare e gestire in modo totalmente digitale tutte le notifiche ricevute dai vari enti e pagare eventuali importi dovuti. `;
 
 export const phInfoBlocks: Array<IInfoblockData> = [
   {
@@ -130,11 +130,9 @@ export const phInfoBlocks: Array<IInfoblockData> = [
       overline: "PER LE IMPRESE",
       title: "Tutto in un unico luogo ",
       content: (
-        <>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock1_1}>
-            {infoblock3_1}
-          </Typography>
-        </>
+        <Typography variant="body2" tabIndex={0} aria-label={infoblock1_1}>
+          {infoblock3_1}
+        </Typography>
       ),
       ctaPrimary: impreseCta,
       inverse: false,

@@ -1,4 +1,4 @@
-import { Typography, List, ListItem, SvgIcon } from "@mui/material";
+import { Typography, List, ListItem, SvgIcon, Box, Stack, Container, Grid, Button } from "@mui/material";
 import {
   HeroProps,
   HorizontalNavProps,
@@ -22,8 +22,13 @@ import {
   UploadIcon,
 } from "../icons";
 
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import MessageIcon from '@mui/icons-material/Message';
+
 const heroSubtitle =
-  "E da oggi anche a farsi. SEND, Servizio Notifiche Digitali (anche nota come Piattaforma Notifiche Digitali di cui all'art. 26 del decreto-legge 76/2020 s.m.i.)  digitalizza la gestione delle comunicazioni a valore legale, semplificando il processo per tutti: chi le invia, e chi le riceve. Se il tuo ente ha già aderito, ";
+  "SEND, Servizio Notifiche Digitali (anche nota come Piattaforma Notifiche Digitali di cui all'art. 26 del decreto-legge 76/2020 s.m.i.)  digitalizza la gestione delle comunicazioni a valore legale, semplificando il processo per tutti: chi le invia, e chi le riceve.";
+const heroSubtitle2 =
+  "E da oggi anche a farsi. ";
 export const paHero: HeroProps = {
   type: "image",
   title: "Inviare notifiche? Facile a dirsi.",
@@ -36,38 +41,28 @@ export const paHero: HeroProps = {
         color: "primary.contrastText",
       }}
     >
-      {heroSubtitle}
-      <Link
-        href="https://selfcare.pagopa.it/auth/login"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="accedi tramite l’Area Riservata"
+      <Typography
+        component="span"
+        sx={{
+          fontWeight: "bold",
+          color: "primary.contrastText",
+        }}
       >
-        <Typography
-          component="span"
-          sx={{
-            color: "primary.contrastText",
-            textDecoration: "underline",
-          }}
-        >
-        accedi tramite l’Area Riservata.
-        </Typography>
-      </Link>
+        {heroSubtitle2}
+      </Typography>
+      {heroSubtitle}
     </Typography>
   ),
   inverse: false,
-  image: `${IMAGES_PATH}/pa-hero-foreground.png`,
+  image: `${IMAGES_PATH}/hero-enti-foreground.png`,
   altText:
-    "Lo schermo di un computer portatile mostra la pagina principale della piattaforma SEND.",
-  background: `${IMAGES_PATH}/hero-background.png`,
+    "Immagini di alcuni form per l'invio di nofiche digitali",
+  background: `${IMAGES_PATH}/hero-enti-background.png`,
   ctaPrimary: {
-    label: "Scopri come aderire",
-    title: "Scopri come aderire",
-    /* Carlotta Dimatteo - workaround per gestire un anchor interno alla pagina richiesto dal team di comunicazione il 16/02/2023 */
+    label: "Scopri come aderire a SEND",
+    title: "Scopri come aderire a SEND",
     onClick: function onClick() {
-      const loc = document.location.toString().split("#")[0];
-      document.location = loc + "#start-integration";
-      return false;
+      window.open("/documenti", "_self");
     },
   },
 };
@@ -75,38 +70,30 @@ export const paHero: HeroProps = {
 
 /** Infoblocks mocked data */
 const infoblock1_1 =
-  "SEND digitalizza e semplifica la gestione delle comunicazioni a valore legale. Gli enti mittenti devono solo depositare l'atto da notificare: sarà la piattaforma a occuparsi dell'invio, per via digitale o analogica.";
+  "SEND - Servizio Notifiche Digitali solleva gli enti da tutti gli adempimenti legati alla gestione delle comunicazioni a valore legale e riduce l’incertezza della reperibilità del destinatario.";
 const infoblock1_2 =
-  "Con SEND diminuisce l'incertezza della reperibilità dei destinatari e si riducono i tempi e i costi di gestione.";
+  "Gli enti non devono fare altro che depositare l’atto da notificare: sarà la piattaforma a occuparsi dell’invio, per via digitale o analogica, con conseguente risparmio di tempi e costi dell’intero processo.";
 const infoblock2_1 =
   "SEND si integra con il protocollo degli enti e offre sia API per l'invio automatico delle notifiche, sia la possibilità di fare invii manuali. Una volta effettuato il caricamento degli atti e dei moduli di pagamento, la piattaforma genera lo IUN, un codice univoco identificativo della notifica.";
 const infoblock2_2 =
-  "Successivamente, cerca nei suoi archivi e nei registri pubblici una PEC riconducibile al destinatario e invia la notifica. Poi, invia un avviso di cortesia agli altri recapiti digitali (app IO, email e SMS) del destinatario.";
+  "Successivamente, cerca nei suoi archivi e nei registri pubblici una PEC riconducibile al destinatario e invia la notifica. Al contempo, invia un avviso di cortesia agli altri recapiti digitali (app IO, email e numero di cellulare) del destinatario.";
 const infoblock2_3 =
   "Se il destinatario non ha indicato alcun recapito digitale e non ha accesso alla piattaforma, questa procede con la ricerca di un indirizzo fisico, e quindi con l'invio tramite raccomandata cartacea.";
 const infoblock3_1 =
-  "Il destinatario accede alla piattaforma tramite SPID o CIE, dove può visionare e scaricare l'atto notificato. Grazie all'integrazione con pagoPA, può anche pagare contestualmente quanto dovuto. Se ha attivato il servizio su app IO, potrà fare tutto direttamente in app.";
+  "Il destinatario accede alla piattaforma tramite SPID o CIE, dove può visualizzare e scaricare l'atto notificato. Grazie all'integrazione con pagoPA, può anche pagare contestualmente, se previsto, quanto dovuto. Se ha attivato il servizio su IO, potrà fare tutto direttamente in app.";
 const infoblock3_2 =
   "Come l'ente, anche il destinatario ha accesso alla cronologia degli stati della notifica e alle attestazioni opponibili a terzi che ne danno prova.";
-const infoblock4_1 =
-  "La procedura per avviare le attività tecniche e amministrative necessarie per l'adesione e l'integrazione degli enti a SEND, Servizio Notifiche Digitali, prevede le seguenti fasi:";
 const infoblock4_2 =
-  "Ogni ente può decidere se integrarsi a SEND direttamente oppure tramite un fornitore. Nel secondo caso, è disponibile la lista dei Partner e Intermediari tecnologici che stanno implementando le attività di integrazione alla piattaforma e di cui è possibile avvalersi per un supporto nella gestione degli aspetti tecnici.";
+  "Il tuo ente ha già aderito a SEND?";
 const infoblock4_3 =
-  "I soggetti che intendono integrarsi a SEND in qualità di Partner o Intermediari Tecnologici possono manifestare il proprio interesse ad avviare la procedura ed essere inseriti nella lista inviando una mail all'indirizzo account@pagopa.it.";
-const infoblock4_4 =
-  "Per ricevere l'accordo di adesione, l'ente dovrà accedere all'Area Riservata e seguire i passaggi descritti in questa guida. Una volta sottoscritto l'accordo in digitale, l'ente dovrà caricarlo e inviarlo a PagoPA S.p.A. sempre dall'Area Riservata. Inoltre, a integrazione dell'accordo, dovranno essere inviati i seguenti moduli debitamente compilati ove richiesto:";
-const infoblock4_5 =
-  "Di seguito sono consultabili i materiali necessari per integrare i sistemi dell'ente a SEND:";
-const infoblock4_6 =
-  "Per ulteriori informazioni e chiarimenti, è possibile consultare qui le principali FAQ.";
+  "Se il tuo ente ha aderito a SEND e sei un utente autorizzato, accedi tramite l'Area Riservata.";
 
 export const paInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 1",
     data: {
-      // overline: "Rappresenti un ente?",
-      title: "Un modo più semplice di gestire le notifiche",
+      overline: "PER GLI ENTI",
+      title: "Il processo di notificazione diventa più semplice",
       content: (
         <>
           <Typography variant="body2" tabIndex={0} aria-label={infoblock1_1}>
@@ -118,9 +105,9 @@ export const paInfoBlocks: Array<IInfoblockData> = [
         </>
       ),
       inverse: false,
-      image: `${IMAGES_PATH}/pa-infoblock-1.png`,
+      image: `${IMAGES_PATH}/pa-infoblock-5.png`,
       altText:
-        "Un uomo lavora al computer, seduto alla scrivania di un ufficio.",
+        "Un esempio della sezione “stato della notifica” della piattaforma SEND.",
       imageShadow: true,
     },
   },
@@ -142,9 +129,9 @@ export const paInfoBlocks: Array<IInfoblockData> = [
         </>
       ),
       inverse: true,
-      image: `${IMAGES_PATH}/pa-infoblock-2.png`,
+      image: `${IMAGES_PATH}/pa-infoblock-6.png`,
       altText:
-        "Un esempio della sezione “stato della notifica” della piattaforma SEND.",
+        "Un esempio della sezione “Invia una nuova notifica” della piattaforma SEND.",
       imageShadow: false,
     },
   },
@@ -172,227 +159,29 @@ export const paInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 4",
     data: {
-      title: "Scopri come aderire",
+      title: "",
       content: (
         <>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock4_1}>
-            {infoblock4_1}
+          <Typography sx={{color: "primary.contrastText"}} variant="h4" tabIndex={0} aria-label={infoblock4_2}>
+            {infoblock4_2}
           </Typography>
-
-          <Typography
-            variant="h6"
-            tabIndex={0}
-            aria-label="01. Scegli come integrarti"
-          >
-            01. Scegli come integrarti
-          </Typography>
-
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock4_2}>
-            Ogni ente può decidere se integrarsi a SEND direttamente oppure
-            tramite un fornitore. Nel secondo caso, è disponibile{" "}
-            <Link href={PARTNER_AND_INTERMEDIARIES_PATH}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="la lista dei Partner e Intermediari tecnologici"
-            >
-              la lista dei Partner e Intermediari tecnologici
-            </Link>{" "}
-            che stanno implementando le attività di integrazione alla
-            piattaforma e di cui è possibile avvalersi per un supporto nella
-            gestione degli aspetti tecnici.
-          </Typography>
-          <Typography variant="caption" tabIndex={0} aria-label={infoblock4_3}>
+          <Typography sx={{color: "primary.contrastText"}} variant="body2" tabIndex={0} aria-label={infoblock4_3}>
             {infoblock4_3}
-          </Typography>
-
-          <Typography
-            variant="h6"
-            tabIndex={0}
-            aria-label="02. Sottoscrivi l'accordo di adesione"
-          >
-            02. Sottoscrivi l'accordo di adesione
-          </Typography>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock4_4}>
-            Per ricevere l'accordo di adesione, l'ente dovrà accedere all'
-            <Link
-              href={
-                "https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
-              }
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Area Riservata"
-            >
-              Area Riservata
-            </Link>{" "}
-            e seguire i passaggi descritti in{" "}
-            <Link href="https://docs.pagopa.it/area-riservata-enti-piattaforma-notifiche/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="questa guida"
-            >
-              questa guida.
-            </Link>
-            <br></br>
-            Una volta sottoscritto l'accordo in digitale, l'ente dovrà caricarlo
-            e inviarlo a PagoPA S.p.A. sempre dall'Area Riservata. Inoltre, a
-            integrazione dell'accordo, dovranno essere inviati i seguenti moduli
-            debitamente compilati ove richiesto:
-          </Typography>
-          <List sx={{ listStyleType: "disc", pl: 4 }}>
-            <ListItem sx={{ display: "list-item" }}>
-              <Typography variant="body2">
-                <Link 
-                  href={
-                    "https://docs.pagopa.it/documento-1-termini-condizioni-di-adesione-e-uso/"
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Documento 1 - Termini e Condizioni di adesione e uso"
-                  >
-                    Documento 1 - Termini e Condizioni di adesione e uso
-                </Link>
-              </Typography>
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <Typography variant="body2">
-                <Link href="https://docs.pagopa.it/doc.2-atto-di-nomina-a-responsabile-trattamento-da/"
-                  aria-label="Documento 2 - Atto di Nomina a Responsabile Trattamento Dati
-                  Personali"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Documento 2 - Atto di Nomina a Responsabile Trattamento Dati
-                  Personali
-                </Link>
-              </Typography>
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <Typography
-                variant="body2"
-                tabIndex={0}
-                aria-label="Documento 3 - Documentazione tecnica per l’integrazione tecnologica dei sistemi dell'ente a SEND
-                sono:"
-              >
-                <Link
-                  href={
-                    "https://docs.pagopa.it/documento-3-documentazione-tecnica/"
-                  }
-                  aria-label="Documento 3 - Documentazione tecnica"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Documento 3 - Documentazione tecnica
-                </Link>
-              </Typography>
-
-              <List sx={{ listStyleType: "circle", pl: 4 }}>
-                <ListItem sx={{ display: "list-item" }}>
-                  <Typography variant="body2">
-                    <Link href={MANUALE_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Manuale operativo"
-                    >
-                      manuale operativo
-                    </Link>
-                  </Typography>
-                </ListItem>
-                <ListItem sx={{ display: "list-item" }}>
-                  <Typography variant="body2">
-                    <Link href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/pagopa/pn-delivery/pn-openapi-prod/docs/openapi/api-external-b2b-pa-bundle.yaml"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="API b2b per le pubbliche amministrazioni e per l'avanzamento delle notifiche"
-                    >
-                      API b2b per le pubbliche amministrazioni e per l'avanzamento delle notifiche
-                    </Link>
-                  </Typography>
-                </ListItem>
-                {/* <ListItem sx={{ display: "list-item" }}>
-                  <Typography variant="body2">
-                    <Link href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/pagopa/pn-delivery-push/main/docs/openapi/api-external-b2b-webhook-bundle.yaml"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="API b2b per l'avanzamento delle notifiche"
-                    >
-                      API b2b per l'avanzamento delle notifiche
-                    </Link>
-                  </Typography>
-                </ListItem> */}
-              </List>
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <Typography variant="body2">
-                <Link href={"https://docs.pagopa.it/documento-4-ciclo-attivo-pn"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Documento 4 - Ciclo attivo"
-                >
-                  Documento 4 - Ciclo attivo
-                </Link>
-              </Typography>
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <Typography
-                variant="body2"
-                tabIndex={0}
-                aria-label="Modulo di Profilazione necessario per l'avvio in esercizio"
-              >
-                <Link 
-                  href={"/static/documents/Modulo preventivo di fornitura.xlsx"}
-                  aria-label="Modulo di Profilazione"
-                >
-                  Modulo di Profilazione
-                </Link>{" "}
-                necessario per l'avvio in esercizio
-              </Typography>
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <Typography
-                variant="body2"
-                tabIndex={0}
-                aria-label="Modulo Commessa necessario per la fatturazione"
-              >
-                <Link 
-                  href={
-                    "/static/documents/Modulo Ordinativo Commessa per Anticipazione.xlsx"
-                  }
-                  aria-label="Modulo Commessa"
-                >
-                  Modulo Commessa
-                </Link>{" "}
-                necessario per la fatturazione
-              </Typography>
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <Typography variant="body2">
-                <Link href={"https://docs.pagopa.it/sla-di-servizio/"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="SLA di servizio"
-                >
-                  SLA di servizio
-                </Link>
-              </Typography>
-            </ListItem>
-          </List>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock4_6}>
-            Per ulteriori informazioni e chiarimenti, è possibile consultare{" "}
-            <Link href="https://docs.pagopa.it/faq-enti"
-              target="_blank" rel="noopener noreferrer" aria-label="qui"
-            >
-              qui
-            </Link>{" "}
-            le principali FAQ.
           </Typography>
         </>
       ),
       inverse: false,
-      image: `${IMAGES_PATH}/pa-infoblock-4.png`,
+      image: `${IMAGES_PATH}/pa-infoblock-3.png`,
       altText:
-        "Una donna lavora al computer, seduta alla scrivania di un ufficio.",
-      aspectRatio: "9/16",
+        "Le mani di una persona digitano sulla tastiera di un computer portatile. Lo schermo mostra una pagina della piattaforma SEND.",
       imageShadow: false,
+      ctaPrimary: {
+        label: "Accedi a SEND",
+        title: "Accedi a SEND",
+        onClick: function onClick() {
+          window.open("https://selfcare.pagopa.it/auth/login", "_self");
+        },
+      },
     },
   },
 ];
@@ -402,7 +191,7 @@ export const paInfoBlocks: Array<IInfoblockData> = [
 const showcase_1 =
   "Le notifiche sono inviate, gestite e monitorate tramite un solo canale, accessibile da più referenti dello stesso ente";
 const showcase_2 =
-  "Si possono caricare notifiche tramite API o manualmente: depositati i documenti, la piattaforma si occupa dell'invio e tiene traccia dei cambi di stato";
+  "Si possono caricare notifiche tramite API o manualmente: depositato l’atto, la piattaforma si occupa dell'invio e tiene traccia dei cambi di stato";
 const showcase_3 =
   "Se il destinatario ha un recapito digitale, i tempi di invio diminuiscono notevolmente";
 const showcase_4 =
@@ -412,7 +201,7 @@ export const paShowcases: Array<IShowcaseData> = [
   {
     name: "showcase 1",
     data: {
-      title: "Un solo modo per risparmiare in tanti modi",
+      title: "Un nuovo modo per gestire le notifiche",
       items: [
         {
           icon: <PeopleIcon />,
@@ -460,9 +249,9 @@ export const paShowcases: Array<IShowcaseData> = [
 const paWalkthrough1 =
   "Con l'uso di API Key o manualmente, l'ente crea la richiesta di notifica e carica gli allegati.";
 const paWalkthrough2 =
-  "SEND verifica la completezza e correttezza delle informazioni. Ad ogni cambio di stato, viene sempre generata la relativa attestazione opponibile a terzi.";
+  "SEND verifica la completezza delle informazioni. Ad ogni cambio di stato, viene sempre generata la relativa attestazione opponibile a terzi.";
 const paWalkthrough3 =
-  "SEND comunica al destinatario la presenza di una notifica tramite diversi possibili canali: PEC, App IO, email, SMS. In alternativa, ricerca un indirizzo fisico e invia una raccomandata cartacea.";
+  "SEND comunica al destinatario la presenza di una notifica tramite diversi possibili canali: PEC, App IO, email, SMS. In alternativa, invia una raccomandata cartacea all'indirizzo fisico fornito dall'ente.";
 const paWalkthrough4 =
   "Il destinatario accede alla piattaforma. Lì, può scaricare i documenti notificati e pagare  contestualmente quanto dovuto, grazie all'integrazione con pagoPA. Se la riceve tramite IO, può fare  tutto direttamente in app.";
 
@@ -557,3 +346,26 @@ export const paHorizontalNav: HorizontalNavProps = {
   ],
 };
 /* ************************************** */
+
+
+export const StripeLinkEnti = () => {
+  return (
+      <Box sx={{ backgroundColor: "#17324D" }} padding={2}>
+          <Container maxWidth="xl">
+              <Grid container spacing={2} >
+                  <Grid item xs={12} md={6} display={"flex"} justifyContent={"center"} alignItems={"center"}>
+                      <Typography variant="body2" color="white" display={"flex"} justifyContent={"center"} alignItems={"center"}>
+                          <MessageIcon sx={{ fontSize: "20px", marginRight: "10px" }} />
+                          Vuoi comunicare l’adesione a SEND ai cittadini?
+                      </Typography>
+                      <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} sx={{ marginLeft: "1em" }}>
+                        Vai al kit di comunicazione
+                      </Button>
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                  </Grid>
+              </Grid>
+          </Container>
+      </Box>
+  );
+};
