@@ -1,4 +1,5 @@
-import { Link, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Link, Stack, Typography, useMediaQuery } from "@mui/material";
+import { useTheme } from '@mui/material/styles';
 import { HeroProps, WalkthroughProps } from "@pagopa/mui-italia";
 import { IMAGES_PATH, PN_PF_URL } from "@utils/constants";
 import { IInfoblockData, IShowcaseData } from "model";
@@ -14,6 +15,9 @@ import {
   NotificationIcon,
   WalletIcon,
 } from "../icons";
+
+import PlayStoreIcon from '@mui/icons-material/PlayCircleOutline'; // Replace with the actual icon you're using
+import AppStoreIcon from '@mui/icons-material/Apple';
 
 const onReadClick = () => {
   window.open(PN_PF_URL, "_blank");
@@ -67,6 +71,8 @@ const infoblock2_1 = `entro i tempi indicati`;
 
 const infoblock2_2 = `, continuerai a ricevere le notifiche tramite raccomandata cartacea.`;
 
+const infoblock2_3 = `Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID e CIE per indicare o aggiornare o il tuo recapito legale (PEC) oppure i tuo recapiti di cortesia (app IO, email e/o numero di cellulare). Se non indichi alcun recapito o non accedi alla notifica attraverso SEND da canali diversi dalla PEC entro i tempi indicati, riceverai via posta un Avviso di Avvenuta Ricezione (AAR), contenente le indicazioni per visualizzare online la notifica o  ritirare i  documenti notificati presso un qualsiasi ufficio postale.`;
+
 const infoblock3_1 = `SEND è a disposizione di tutte le Pubbliche
 Amministrazioni che vorranno utilizzarlo per inviare notifiche ai
 destinatari delle loro comunicazioni a valore legale.`;
@@ -76,6 +82,12 @@ const infoblock3_2 = `Il servizio sarà adottato dagli enti progressivamente e, 
 const infoblock3_3 = `Il futuro delle comunicazioni a valore legale`;
 
 const infoblock3_4 = `SEND è a disposizione di tutti gli enti che vorranno utilizzarlo per inviare notifiche ai destinatari delle loro comunicazioni a valore legale.`;
+
+const infoblock4 = `Se hai indicato un indirizzo PEC, le notifiche risulteranno legalmente consegnate, senza più raccomandate cartacee. L'avviso di avvenuta ricezione che ti sarà inviato contiene il link per accedere ai documenti su SEND.`;
+
+const infoblock5 = `Se attivi il servizio “SEND - Notifiche digitali”, puoi ricevere un avviso di cortesia e gestire direttamente in app le comunicazioni a valore legale. Se non hai un indirizzo PEC ma accedi alla notifica dall'app e leggi la notifica entro 5 giorni (120 ore) dalla sua ricezione, questa risulterà legalmente recapitata e non riceverai alcuna raccomandata cartacea.`;
+
+const infoblock5_1 = `Scarica l’app IO dagli store.`;
 
 export const pfInfoBlocks: Array<IInfoblockData> = [
   {
@@ -103,10 +115,11 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 2",
     data: {
+      overline: "RECAPITI LEGALI E DI CORTESIA",
       title: "Scegli tu come ricevere le notifiche",
       content: (
         <>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock2}>
+          {/* <Typography variant="body2" tabIndex={0} aria-label={infoblock2}>
               {infoblock2}
               <Link
                 href="/perfezionamento"
@@ -118,6 +131,9 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
                 {infoblock2_1}
               </Link>
               {infoblock2_2}
+          </Typography> */}
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock2_3}>
+            {infoblock2_3}
           </Typography>
         </>
       ),
@@ -151,6 +167,61 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
       altText: "Una donna guarda il monitor del notebook.",
       aspectRatio: "9/16",
       imageShadow: false,
+    },
+  },
+  {
+    name: "infoblock 4",
+    data: {
+      title: "PEC",
+      content: (
+        <>
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock4}>
+            {infoblock4}
+          </Typography>
+        </>
+      ),
+      inverse: false,
+      image: `${IMAGES_PATH}/pf-infoblock-5.png`,
+      aspectRatio: "4/3",
+      altText:
+        "Immagine di una notifica su SEND",
+      imageShadow: false,
+    },
+  },
+  {
+    name: "infoblock 5",
+    data: {
+      title: "App IO",
+      content: (
+        <>
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock5}>
+            {infoblock5}
+          </Typography>
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock5_1}>
+            {infoblock5_1}
+          </Typography>
+        </>
+      ),
+      inverse: true,
+      image: `${IMAGES_PATH}/pf-infoblock-6.png`,
+      aspectRatio: "4/3",
+      altText:
+        "Immagine di una notifica su SEND",
+      imageShadow: false,
+      ctaPrimary: {
+        label: "Accedi a SEND",
+        title: "Accedi a SEND",
+        onClick: function onClick() {
+          window.open("https://selfcare.pagopa.it/auth/login", "_self");
+        },
+      },
+      ctaSecondary: {
+        label: "Accedi a SEND",
+        title: "Accedi a SEND",
+        onClick: function onClick() {
+          window.open("https://selfcare.pagopa.it/auth/login", "_self");
+        },
+      },
     },
   },
 ];
@@ -358,3 +429,93 @@ export const pfHorizontalNav = {
   ],
 };
 /* ************************************** */
+
+
+export const InfoblockCustomCittadini = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const buttonStyle = {
+    backgroundColor: "#FFFFFF",
+    color: "#0073E6",
+    '&:hover': {
+      backgroundColor: "#FFFFFF",
+      color: "#0073E6"
+    },
+    textTransform: 'none',
+    width: '100%', // Buttons always full width
+  };
+
+  // const buttonStyle = {
+  //   color: "#0073E6", // Text color
+  //   borderColor: "#0073E6", // Border color
+  //   borderWidth: 1, // Border width
+  //   borderStyle: 'solid', // Border style
+  //   '&:hover': {
+  //     backgroundColor: "rgba(0, 115, 230, 0.04)", // Slight background color on hover for feedback
+  //     borderColor: "#005bb5", // Slightly darker border on hover
+  //   },
+  //   textTransform: 'none',
+  //   width: '100%', // Buttons always full width
+  // };
+  
+
+  return (
+    <Box pb={8} pt={8} sx={{ background: 'blue', color: 'white' }}>
+      <Container maxWidth="xl">
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Box sx={{ width: '100%', padding: isMobile ? 1 : 4 }}>
+              <img
+                src="/static/images/pf-infoblock-6.png"
+                alt="Descrizione immagine"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'contain'
+                }}
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <Typography variant="h4" tabIndex={0} aria-label="Come aderire a SEND" sx={{ color: "primary.contrastText" }} pb={4}>
+              App IO
+            </Typography>
+            <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
+              Se attivi il servizio “SEND - Notifiche digitali”, puoi ricevere un avviso di cortesia e gestire direttamente in app le comunicazioni a valore legale. Se non hai un indirizzo PEC ma accedi alla notifica dall'app e leggi la notifica entro 5 giorni (120 ore) dalla sua ricezione, questa risulterà legalmente recapitata e non riceverai alcuna raccomandata cartacea.
+            </Typography>
+            <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
+              Scarica l’app IO dagli store.
+            </Typography>
+            <Grid container spacing={2} justifyContent="center">
+              <Grid item xs={12} sm={6}>
+                <Button
+                  variant="outlined"
+                  color="inherit"
+                  startIcon={<PlayStoreIcon />}
+                  sx={buttonStyle}
+                  href="https://play.google.com/store/apps/details?id=it.pagopa.io.app"
+                  fullWidth
+                >
+                  Disponibile su Play store
+                </Button>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Button
+                  variant="outlined"
+                  color="inherit"
+                  startIcon={<AppStoreIcon />}
+                  sx={buttonStyle}
+                  href="https://apps.apple.com/it/app/io/id1501681835"
+                  fullWidth
+                >
+                  Disponibile su App store
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
+  );
+};
