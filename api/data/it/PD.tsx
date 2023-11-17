@@ -29,12 +29,12 @@ export const Cards1 = () => {
         {
             title: "3. Documentazione tecnica",
             buttons: [
-                {
-                    label: "Vai al documento",
-                    color: "primary",
-                    link: "https://developer.pagopa.it/send/overview",
-                    icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
-                },
+                // {
+                //     label: "Vai al documento",
+                //     color: "primary",
+                //     link: "https://developer.pagopa.it/send/overview",
+                //     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                // },
                 {
                     label: "Leggi il manuale operativo",
                     color: "primary",
@@ -165,7 +165,7 @@ export const Cards1 = () => {
                                     </Link>
                                     {" "}dedicate agli enti.
                                 </Typography>
-                                <Button variant="contained" sx={{ width: "max-content", backgroundColor: "#FFFFFF", color: "#0073E6", '&:hover': { backgroundColor: "#FFFFFF", color: "#0073E6"}}} href="https://cittadini.notifichedigitali.it">
+                                <Button variant="contained" sx={{ width: "max-content", backgroundColor: "#FFFFFF", color: "#0073E6", '&:hover': { backgroundColor: "#FFFFFF", color: "#0073E6"}}} href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn">
                                     Aderisci a SEND
                                 </Button>
                             </Stack>
