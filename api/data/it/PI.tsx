@@ -32,7 +32,7 @@ import {
 } from "../icons";
 
 const heroSubtitleImprese =
-  "SEND - Servizio Notifiche Digitali è la piattaforma che semplifica la ricezione delle notifiche a valore legale. Visualizza, paga e archivia le notifiche inviate alla tua impresa in un unico spazio e accessibile anche dai tuoi collaboratori.";
+  "SEND - Servizio Notifiche Digitali è la piattaforma che semplifica la ricezione delle notifiche a valore legale. Visualizza, paga e archivia le notifiche inviate alla tua impresa in un unico spazio accessibile anche dai tuoi collaboratori.";
 export const piHero: HeroProps = {
   type: "image",
   title: "Le notifiche della tua impresa? Tutte qui.",
@@ -130,7 +130,7 @@ export const piInfoBlocks: Array<IInfoblockData> = [
 
 /** Showcase mocked data */
 const showcase_1 =
-  "Gestisci a tutte le notifiche inviate all’azienda in un solo posto";
+  "Gestisci tutte le notifiche inviate all’azienda in un solo posto";
 const showcase_2 =
   "Grazie all’integrazione con pagoPA, pagare è semplice e veloce";
 const showcase_3 =
@@ -142,7 +142,7 @@ export const piShowcases: Array<IShowcaseData> = [
   {
     name: "showcase 1",
     data: {
-      title: "Per essere un’impresa innovativa ",
+      title: "Un nuovo servizio per essere un’impresa innovativa ",
       items: [
         {
           icon: <PeopleIcon />,

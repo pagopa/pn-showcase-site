@@ -72,7 +72,7 @@ export const paHero: HeroProps = {
 const infoblock1_1 =
   "SEND - Servizio Notifiche Digitali solleva gli enti da tutti gli adempimenti legati alla gestione delle comunicazioni a valore legale e riduce l’incertezza della reperibilità del destinatario.";
 const infoblock1_2 =
-  "Gli enti non devono fare altro che depositare l’atto da notificare: sarà la piattaforma a occuparsi dell’invio, per via digitale o analogica, con conseguente risparmio di  tempi e costi dell’intero processo.";
+  "Gli enti non devono fare altro che depositare l’atto da notificare: sarà la piattaforma a occuparsi dell’invio, per via digitale o analogica, con conseguente risparmio di tempi e costi dell’intero processo.";
 const infoblock2_1 =
   "SEND si integra con il protocollo degli enti e offre sia API per l'invio automatico delle notifiche, sia la possibilità di fare invii manuali. Una volta effettuato il caricamento degli atti e dei moduli di pagamento, la piattaforma genera lo IUN, un codice univoco identificativo della notifica.";
 const infoblock2_2 =

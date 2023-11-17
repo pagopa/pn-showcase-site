@@ -61,7 +61,7 @@ const infoblock1_1 = `Le notifiche sono comunicazioni a valore legale emesse in 
 
 const infoblock1_2 = `Puoi anche pagare eventuali costi grazie all'integrazione con pagoPA, visualizzare lo storico delle notifiche ricevute e gestirle direttamente online. Inoltre, ti basta accettare una delega per accedere anche alle notifiche dei tuoi familiari.`;
 
-const infoblock2 = `Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID e CIE per indicare o aggiornare o il tuo recapito legale (PEC) oppure i tuo recapiti di cortesia (app IO, email e/o numero di cellulare). Se non indichi alcun recapito o non accedi alla notifica attraverso SEND da canali diversi dalla PEC `;
+const infoblock2 = `Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID e CIE per indicare o aggiornare il tuo recapito legale (PEC) oppure i tuo recapiti di cortesia (app IO, email e/o numero di cellulare). Se non indichi alcun recapito o non accedi alla notifica attraverso SEND da canali diversi dalla PEC `;
 
 const infoblock2_1 = `entro i tempi indicati`;
 
