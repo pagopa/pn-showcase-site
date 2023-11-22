@@ -107,7 +107,7 @@ const NavigationBar = ({
                 event.preventDefault();
               }
             }}
-            key="persona-fisica"
+            key="cittadini"
             label={pf}
             href={paths[1]}
             {...a11yProps(1)}
