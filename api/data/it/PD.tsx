@@ -106,7 +106,7 @@ export const Cards1 = () => {
 
     return (
         <Box pb={8} pt={8}>
-            <Container maxWidth="xl" className="customCard">
+            <Container maxWidth="xl" className="documentiCustomCard">
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={4} pb={4} sx={{ pr: { md: 10, xs: 0, sm: 0 } }}>
                         <Box>
@@ -178,7 +178,7 @@ export const Cards1 = () => {
                             <Grid container spacing={2} direction="column" justifyContent="space-between">
                                 {cards1Data.slice(0, Math.ceil(cards1Data.length / 2)).map((card, index) => (
                                     <Grid item key={index}>
-                                        <Card className="customCardContent">
+                                        <Card className="documentiCustomCardContent">
                                             <CardContent sx={{ textAlign: "left" }}>
                                                 <Typography variant="h5" component="div">
                                                     {card.title}
@@ -217,7 +217,7 @@ export const Cards1 = () => {
                             <Grid container spacing={2} direction="column" justifyContent="space-between">
                                 {cards1Data.slice(Math.ceil(cards1Data.length / 2)).map((card, index) => (
                                     <Grid item key={index}>
-                                        <Card className="customCardContent">
+                                        <Card className="documentiCustomCardContent">
                                             <CardContent sx={{ textAlign: "left" }}>
                                                 <Typography variant="h5" component="div">
                                                     {card.title}
@@ -311,8 +311,8 @@ export const Cards2 = () => {
     ];
 
     return (
-        <Box pb={8} pt={8} className="customCardContent">
-            <Container maxWidth="xl" className="customCard">
+        <Box pb={8} pt={8} className="documentiCustomCardContent">
+            <Container maxWidth="xl" className="documentiCustomCard">
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={4} sx={{ pr: { md: 10, xs: 0, sm: 0 } }}>
                         <Box>
@@ -329,7 +329,7 @@ export const Cards2 = () => {
                             <Grid container spacing={2} direction="column" justifyContent="space-between">
                                 {cards2Data.slice(0, Math.ceil(cards2Data.length / 2)).map((card, index) => (
                                     <Grid item key={index}>
-                                        <Card className="customCardContent">
+                                        <Card className="documentiCustomCardContent">
                                             <CardContent sx={{ textAlign: "left" }}>
                                                 <Typography variant="h5" component="div">
                                                     {card.title}
@@ -367,7 +367,7 @@ export const Cards2 = () => {
                             <Grid container spacing={2} direction="column" justifyContent="space-between">
                                 {cards2Data.slice(Math.ceil(cards2Data.length / 2)).map((card, index) => (
                                     <Grid item key={index}>
-                                        <Card className="customCardContent">
+                                        <Card className="documentiCustomCardContent">
                                             <CardContent sx={{ textAlign: "left" }}>
                                                 <Typography variant="h5" component="div">
                                                     {card.title}

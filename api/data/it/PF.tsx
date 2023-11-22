@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Link, Stack, Typography, useMediaQuery } from "@mui/material";
+import { Box, Button, Container, Grid, Link, List, ListItem, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import { HeroProps, WalkthroughProps } from "@pagopa/mui-italia";
 import { IMAGES_PATH, PN_PF_URL } from "@utils/constants";
@@ -65,13 +65,9 @@ const infoblock1_1 = `Le notifiche sono comunicazioni a valore legale emesse in 
 
 const infoblock1_2 = `Puoi anche pagare eventuali costi grazie all'integrazione con pagoPA, visualizzare lo storico delle notifiche ricevute e gestirle direttamente online. Inoltre, ti basta accettare una delega per accedere anche alle notifiche dei tuoi familiari.`;
 
-const infoblock2 = `Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID e CIE per indicare o aggiornare il tuo recapito legale (PEC) oppure i tuo recapiti di cortesia (app IO, email e/o numero di cellulare). Se non indichi alcun recapito o non accedi alla notifica attraverso SEND da canali diversi dalla PEC `;
+const infoblock2 = `Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID e CIE per indicare o aggiornare il tuo indirizzo di Posta Elettronica Certificata (PEC), che rappresenta a tutti gli effetti il domicilio digitale di un cittadino, oppure i tuoi recapiti dove ricevere un messaggio di cortesia quando un ente ti invia una notifica: app IO, email e/o numero di cellulare.`;
 
-const infoblock2_1 = `entro i tempi indicati`;
-
-const infoblock2_2 = `, continuerai a ricevere le notifiche tramite raccomandata cartacea.`;
-
-const infoblock2_3 = `Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID e CIE per indicare o aggiornare o il tuo recapito legale (PEC) oppure i tuo recapiti di cortesia (app IO, email e/o numero di cellulare). Se non indichi alcun recapito o non accedi alla notifica attraverso SEND da canali diversi dalla PEC entro i tempi indicati, riceverai via posta un Avviso di Avvenuta Ricezione (AAR), contenente le indicazioni per visualizzare online la notifica o  ritirare i  documenti notificati presso un qualsiasi ufficio postale.`;
+const infoblock2_1 = `Se non indichi alcun recapito o non accedi alla notifica su SEND da canali digitali diversi dalla PEC entro i tempi indicati, riceverai tramite raccomandata cartacea un Avviso di Avvenuta Ricezione (AAR) con le indicazioni per visualizzare online gli atti notificati o ritirarli presso un qualsiasi ufficio postale.`;
 
 const infoblock3_1 = `SEND è a disposizione di tutte le Pubbliche
 Amministrazioni che vorranno utilizzarlo per inviare notifiche ai
@@ -85,15 +81,25 @@ const infoblock3_4 = `SEND è a disposizione di tutti gli enti che vorranno util
 
 const infoblock4 = `Se hai indicato un indirizzo PEC, le notifiche risulteranno legalmente consegnate, senza più raccomandate cartacee. L'avviso di avvenuta ricezione che ti sarà inviato contiene il link per accedere ai documenti su SEND.`;
 
-const infoblock5 = `Se attivi il servizio “SEND - Notifiche digitali”, puoi ricevere un avviso di cortesia e gestire direttamente in app le comunicazioni a valore legale. Se non hai un indirizzo PEC ma accedi alla notifica dall'app e leggi la notifica entro 5 giorni (120 ore) dalla sua ricezione, questa risulterà legalmente recapitata e non riceverai alcuna raccomandata cartacea.`;
+const infoblock5 = `In più, puoi anche scegliere di ricevere un avviso di cortesia al tuo indirizzo e-mail o tramite SMS. Se non hai la PEC ma accedi alla notifica attraverso SEND dall'apposito link entro 5 giorni (120 ore) dalla ricezione della notifica, questa risulterà legalmente recapitata e non riceverai alcuna raccomandata cartacea.`;
 
-const infoblock5_1 = `Scarica l’app IO dagli store.`;
+const infoblock6 = `L’avviso di avvenuta ricezione è un documento di una pagina in formato digitale che SEND invia al destinatario della notifica. Ha valore legale e contiene le informazioni essenziali per consultare l’atto notificato.`;
+
+const infoblock6_1 = `Se non accedi alla notifica in digitale nei tempi previsti, riceverai via posta un avviso di avvenuta ricezione cartaceo. Segui le istruzioni  riportate sull’Avviso per scegliere come ottenere la notifica e i documenti ad essa allegati secondo le tue preferenze:`;
+
+const infoblock6_2 = `Se vuoi delegare qualcuno al ritiro della notifica presso l’ufficio postale, ti basterà compilare il modulo presente sull’avviso.`;
+
+const infoblock6_3 = `Puoi consulare i termini e le condizioni del servizio “Stampa Notifica” su `;
+
+const infoblock6_4 = `poste.it`;
+
+const infoblock6_5 = ` e in Ufficio Postale.`;
 
 export const pfInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 1",
     data: {
-      overline: "PER I CITTADINI",
+      // overline: "PER I CITTADINI",
       title: "Non perderti più nessuna notifica",
       content: (
         <>
@@ -115,25 +121,15 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 2",
     data: {
-      overline: "RECAPITI LEGALI E DI CORTESIA",
+      // overline: "RECAPITI LEGALI E DI CORTESIA",
       title: "Scegli tu come ricevere le notifiche",
       content: (
         <>
-          {/* <Typography variant="body2" tabIndex={0} aria-label={infoblock2}>
-              {infoblock2}
-              <Link
-                href="/perfezionamento"
-                // target="_blank"
-                rel="noopener noreferrer"
-                aria-label={infoblock2_1}
-                sx={{fontWeight: "bold"}}
-              >
-                {infoblock2_1}
-              </Link>
-              {infoblock2_2}
-          </Typography> */}
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock2_3}>
-            {infoblock2_3}
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock2}>
+            {infoblock2}
+          </Typography>
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock2_1}>
+            {infoblock2_1}
           </Typography>
         </>
       ),
@@ -191,37 +187,74 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 5",
     data: {
-      title: "App IO",
+      title: "Email e SMS",
       content: (
         <>
           <Typography variant="body2" tabIndex={0} aria-label={infoblock5}>
             {infoblock5}
           </Typography>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock5_1}>
-            {infoblock5_1}
-          </Typography>
         </>
       ),
-      inverse: true,
-      image: `${IMAGES_PATH}/pf-infoblock-6.png`,
+      inverse: false,
+      image: `${IMAGES_PATH}/pf-infoblock-7.png`,
       aspectRatio: "4/3",
       altText:
         "Immagine di una notifica su SEND",
       imageShadow: false,
-      ctaPrimary: {
-        label: "Accedi a SEND",
-        title: "Accedi a SEND",
-        onClick: function onClick() {
-          window.open("https://selfcare.pagopa.it/auth/login", "_self");
-        },
-      },
-      ctaSecondary: {
-        label: "Accedi a SEND",
-        title: "Accedi a SEND",
-        onClick: function onClick() {
-          window.open("https://selfcare.pagopa.it/auth/login", "_self");
-        },
-      },
+    },
+  },
+  {
+    name: "infoblock 6",
+    data: {
+      title: "Avviso di avvenuta ricezione",
+      content: (
+        <>
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock6}>
+            {infoblock6}
+          </Typography>
+
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock6_1}>
+            {infoblock6_1}
+          </Typography>
+
+          <List sx={{ listStyleType: "disc", pl: 4 }}>
+            <ListItem sx={{ display: "list-item" }}>
+              <Typography variant="body2">
+                online, inquadrando il QR code riportato sull’AAR o con accesso diretto al sito di SEND tramite SPID o CIE;
+              </Typography>
+            </ListItem>
+            <ListItem sx={{ display: "list-item" }}>
+              <Typography variant="body2">
+                recandoti di persona presso un ufficio postale, dove potrai richiedere il servizio a pagamento “Stampa notifica”, disponibile anche senza SPID o CIE
+              </Typography>
+            </ListItem>
+          </List>
+
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock6_2}>
+            {infoblock6_2}
+          </Typography>
+
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock6_3}>
+            {infoblock6_3}
+            <Link
+              href="https://poste.it/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={infoblock6_4}
+              sx={{ fontWeight: "bold", color: "#0073E6" }}
+            >
+              {infoblock6_4}
+            </Link>
+            {infoblock6_5}
+          </Typography>
+        </>
+      ),
+      inverse: true,
+      image: `${IMAGES_PATH}/pf-infoblock-8.png`,
+      aspectRatio: "4/3",
+      altText:
+        "Immagine di un avviso di avvenuta ricezione di una notifica su SEND",
+      imageShadow: false,
     },
   },
 ];
@@ -373,7 +406,7 @@ export const pfWalkthrough: WalkthroughProps = {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={walkthrough2_2}
-              sx={{ fontWeight: "bold" }}
+              sx={{ fontWeight: "bold", color: "#0073E6" }}
             >
               {walkthrough2_2}
             </Link>
@@ -436,29 +469,22 @@ export const InfoblockCustomCittadini = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const buttonStyle = {
-    backgroundColor: "#FFFFFF",
-    color: "#0073E6",
+    color: "rgba(255, 255, 255, 1)",
+    borderColor: "rgba(255, 255, 255, 0.5)",
+    borderWidth: 2,
+    borderStyle: 'solid',
+    backgroundColor: 'transparent',
     '&:hover': {
-      backgroundColor: "#FFFFFF",
-      color: "#0073E6"
+      backgroundColor: "rgba(255, 255, 255, 0.1)",
+      borderColor: "rgba(255, 255, 255, 0.7)",
+      color: "#FFFFFF",
+      boxShadow: 'none',
     },
     textTransform: 'none',
-    width: '100%', // Buttons always full width
+    width: '100%',
+    boxShadow: 'none',
+    padding: '6px 12px',
   };
-
-  // const buttonStyle = {
-  //   color: "#0073E6", // Text color
-  //   borderColor: "#0073E6", // Border color
-  //   borderWidth: 1, // Border width
-  //   borderStyle: 'solid', // Border style
-  //   '&:hover': {
-  //     backgroundColor: "rgba(0, 115, 230, 0.04)", // Slight background color on hover for feedback
-  //     borderColor: "#005bb5", // Slightly darker border on hover
-  //   },
-  //   textTransform: 'none',
-  //   width: '100%', // Buttons always full width
-  // };
-  
 
   return (
     <Box pb={8} pt={8} sx={{ background: 'blue', color: 'white' }}>
@@ -482,13 +508,14 @@ export const InfoblockCustomCittadini = () => {
               App IO
             </Typography>
             <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
-              Se attivi il servizio “SEND - Notifiche digitali”, puoi ricevere un avviso di cortesia e gestire direttamente in app le comunicazioni a valore legale. Se non hai un indirizzo PEC ma accedi alla notifica dall'app e leggi la notifica entro 5 giorni (120 ore) dalla sua ricezione, questa risulterà legalmente recapitata e non riceverai alcuna raccomandata cartacea.
+              Se attivi il servizio “SEND - Notifiche digitali”, a ogni notifica riceverai un messaggio su IO. Potrai visualizzare i documenti notificati e pagare eventuali spese direttamente in app. Se non hai un indirizzo PEC ma accedi alla notifica dall'app e leggi la notifica entro 5 giorni (120 ore) dalla sua ricezione, questa risulterà legalmente recapitata e non riceverai alcuna raccomandata cartacea.
             </Typography>
             <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
-              Scarica l’app IO dagli store.
+              Scarica l’app:
             </Typography>
-            <Grid container spacing={2} justifyContent="center">
-              <Grid item xs={12} sm={6}>
+
+            {/* <Grid container spacing={2} justifyContent="center">
+              <Grid item xs={12} sm={4}>
                 <Button
                   variant="outlined"
                   color="inherit"
@@ -500,7 +527,7 @@ export const InfoblockCustomCittadini = () => {
                   Disponibile su Play store
                 </Button>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={4}>
                 <Button
                   variant="outlined"
                   color="inherit"
@@ -512,7 +539,38 @@ export const InfoblockCustomCittadini = () => {
                   Disponibile su App store
                 </Button>
               </Grid>
-            </Grid>
+            </Grid> */}
+
+
+
+            <Stack direction="row" spacing={2} justifyContent={"flex-start"} alignItems={"center"} className="stack-responsive">
+              <a
+                href="https://play.google.com/store/apps/details?id=it.pagopa.io.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'block', width: 'auto' }}
+              >
+                <img
+                  src="/static/images/google-play-badge.png"
+                  alt="Disponibile su Google Play"
+                  className="button-cittadini"
+                />
+              </a>
+              <a
+                href="https://apps.apple.com/it/app/io/id1501681835"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'block', width: 'auto' }}
+              >
+                <img
+                  src="/static/images/app-store-badge.png"
+                  alt="Disponibile su App store"
+                  className="button-cittadini"
+                />
+              </a>
+            </Stack>
+
+
           </Grid>
         </Grid>
       </Container>
