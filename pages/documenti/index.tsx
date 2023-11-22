@@ -13,7 +13,10 @@ const DocumentiPage: NextPage = () => (
 
     <main className="documenti">
       <div className="cardsContainerDark"><Cards1></Cards1></div>
-      <Cards2></Cards2>
+      {/**
+       * Le due sezioni sottostanti verranno ripristinate per la release del 30 novembre
+       */}
+      {/* <Cards2></Cards2> */}
       {/* <StripeLink></StripeLink> */}
     </main>
   </>
