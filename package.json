@@ -16,7 +16,7 @@
     "@mui/lab": "5.0.0-alpha.119",
     "@mui/material": "5.11.8",
     "@pagopa/mui-italia": "^0.9.5",
-    "next": "13.4.8",
+    "next": "13.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
