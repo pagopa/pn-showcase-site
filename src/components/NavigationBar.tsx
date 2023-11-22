@@ -48,7 +48,7 @@ const NavigationBar = ({
     handleCloseMenu();
     push(path);
   };
-  
+
 
   return (
     <Box>
@@ -60,18 +60,33 @@ const NavigationBar = ({
           <Chip label={chip} size="small" color="primary" />
         </Stack>
         <Tabs value={index} component="nav">
-          <Box sx={{ paddingTop: 6, paddingBottom: 5, display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-            <Typography component="a" href={paths[0]} sx={{ flexGrow: 1, textDecoration: "none" }}>
-              {pa}
-            </Typography>
-            <IconButton
-              onClick={handleOpenMenu}
+          <Tab sx={{ paddingTop: 6, paddingBottom: 5 }}
+            component="a"
+            onClick={(
+              event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+            ) => {
+              if (pathname === `${paths[0]}/`) {
+                event.preventDefault();
+              }
+            }}
+            key="pubblica-amministrazione"
+            label={pa}
+            href={paths[0]}
+            {...a11yProps(0)}
+            disableRipple={true}
+            icon={<IconButton
+              onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+                handleOpenMenu(event);
+                event.preventDefault();
+              }}
               size="small"
               sx={{ marginLeft: 1 }}
+
             >
               {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-            </IconButton>
-          </Box>
+            </IconButton>}
+            iconPosition="end"
+          />
           <Menu
             anchorEl={anchorEl}
             open={open}
@@ -82,21 +97,6 @@ const NavigationBar = ({
               Documentazione
             </MenuItem>
           </Menu>
-          {/* <Tab
-            sx={{ paddingTop: 6, paddingBottom: 5 }}
-            component="a"
-            onClick={(
-              event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-            ) => {
-              if (pathname === `${paths[0]}/`) {
-                event.preventDefault();
-              }
-            }}
-            key="pubblica-amminstrazione"
-            label={pa}
-            href={paths[0]}
-            {...a11yProps(0)}
-          /> */}
           <Tab
             sx={{ paddingTop: 6, paddingBottom: 5 }}
             component="a"
