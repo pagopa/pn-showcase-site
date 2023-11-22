@@ -51,7 +51,7 @@ const NavigationBar = ({
 
 
   return (
-    <Box>
+    <Box className="sendNavbar">
       <Stack direction={{ xs: "column", sm: "row" }} >
         <Stack direction="row" alignItems="center" mx={3} my={2}>
           <Box sx={{ pr: 2, cursor: 'pointer' }} onClick={() => window.open('/', '_self')}>
@@ -61,13 +61,13 @@ const NavigationBar = ({
         </Stack>
         <Tabs value={index} component="nav">
           <Box sx={{ paddingTop: 6, paddingBottom: 5, display: 'flex', alignItems: 'center', cursor: 'pointer' }} >
-            <Typography component="a" href={paths[0]} sx={{ flexGrow: 1, textDecoration: "none" }} className="tab-enti">
+            <Typography component="a" href={paths[0]} sx={{ flexGrow: 1, textDecoration: "none", color: index === 0 ? '#0073E6' : '#5C6F82' }} className="tab-enti">
               {pa}
             </Typography>
             <IconButton
               onClick={handleOpenMenu}
               size="small"
-              sx={{ marginLeft: 1 }}
+              sx={{ marginLeft: 1, color: index === 0 ? '#0073E6' : '#5C6F82' }}
             >
               {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
             </IconButton>
@@ -83,7 +83,7 @@ const NavigationBar = ({
             </MenuItem>
           </Menu>
           {/* <Tab
-            sx={{ paddingTop: 6, paddingBottom: 5 }}
+            sx={{ paddingTop: 6, paddingBottom: 5, color: index === 1 ? '#0073E6' : '#5C6F82'  }}
             component="a"
             onClick={(
               event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -99,7 +99,7 @@ const NavigationBar = ({
             disableRipple={true}
           /> */}
           <Tab
-            sx={{ paddingTop: 6, paddingBottom: 5 }}
+            sx={{ paddingTop: 6, paddingBottom: 5, color: index === 1 ? '#0073E6' : '#5C6F82' }}
             component="a"
             onClick={(
               event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -115,7 +115,7 @@ const NavigationBar = ({
             disableRipple={true}
           />
           <Tab
-            sx={{ paddingTop: 6, paddingBottom: 5 }}
+            sx={{ paddingTop: 6, paddingBottom: 5, color: index === 2 ? '#0073E6' : '#5C6F82' }}
             component="a"
             onClick={(
               event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -131,7 +131,7 @@ const NavigationBar = ({
             disableRipple={true}
           />
           <Tab
-            sx={{ paddingTop: 6, paddingBottom: 5 }}
+            sx={{ paddingTop: 6, paddingBottom: 5, color: index === 3 ? '#0073E6' : '#5C6F82' }}
             component="a"
             onClick={(
               event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -153,108 +153,3 @@ const NavigationBar = ({
 };
 
 export default NavigationBar;
-
-
-
-// import React, { useState } from 'react';
-// import { useRouter } from 'next/router';
-// import { Box, Chip, Stack, Typography, IconButton, Menu, MenuItem } from '@mui/material';
-// import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-// import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-
-// interface NavigationBarProps {
-//   title: string;
-//   chip: string;
-//   image: string;
-//   pf: string;
-//   pa: string;
-//   faq: string;
-//   pi: string;
-// }
-
-// const NavigationBar: React.FC<NavigationBarProps> = ({ title, chip, image, pf, pa, faq, pi }) => {
-//   const router = useRouter();
-//   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-
-//   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-//     setAnchorEl(event.currentTarget);
-//   };
-
-//   const handleClose = () => {
-//     setAnchorEl(null);
-//   };
-
-//   const isPathActive = (path: string) => {
-//     return router.pathname === path;
-//   };
-
-//   return (
-//     <Box sx={{ bgcolor: 'white', color: 'primary.main' }}>
-//       <Stack direction="row" alignItems="center" spacing={2}>
-//         <Box sx={{ cursor: 'pointer' }} mt={2} mb={2} ml={3} onClick={() => router.push('/')}>
-//           <img src={image} alt={title} aria-label={title} />
-//         </Box>
-//         <Chip label={chip} size="small" color="primary" onClick={() => router.push('/')} />
-//         <Stack direction="row" alignItems="center">
-//           <Typography
-//             onClick={() => router.push('/pubbliche-amministrazioni')}
-//             sx={{
-//               textDecoration: isPathActive('/pubbliche-amministrazioni') ? 'underline' : 'none',
-//               color: isPathActive('/pubbliche-amministrazioni') ? '#0073e6' : '#5c6f82',
-//               cursor: 'pointer',
-//               mr: 2,
-//             }}
-//           >
-//             {pa}
-//           </Typography>
-//           <IconButton onClick={handleClick} size="small">
-//             {anchorEl ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-//           </IconButton>
-//           <Menu
-//             anchorEl={anchorEl}
-//             open={Boolean(anchorEl)}
-//             onClose={handleClose}
-//             className="entiMenuItems"
-//           >
-//             <MenuItem onClick={() => { handleClose(); router.push('/documenti'); }}>Documentazione</MenuItem>
-//           </Menu>
-//           <Typography
-//             onClick={() => router.push('/cittadini')}
-//             sx={{
-//               textDecoration: isPathActive('/cittadini') ? 'underline' : 'none',
-//               color: isPathActive('/cittadini') ? '#0073e6' : '#5c6f82',
-//               cursor: 'pointer',
-//               mr: 2,
-//             }}
-//           >
-//             {pf}
-//           </Typography>
-//           <Typography
-//             onClick={() => router.push('/imprese')}
-//             sx={{
-//               textDecoration: isPathActive('/imprese') ? 'underline' : 'none',
-//               color: isPathActive('/imprese') ? '#0073e6' : '#5c6f82',
-//               cursor: 'pointer',
-//               mr: 2,
-//             }}
-//           >
-//             {pi}
-//           </Typography>
-//           <Typography
-//             onClick={() => router.push('/faq')}
-//             sx={{
-//               textDecoration: isPathActive('/faq') ? 'underline' : 'none',
-//               color: isPathActive('/faq') ? '#0073e6' : '#5c6f82',
-//               cursor: 'pointer',
-//               mr: 2,
-//             }}
-//           >
-//             {faq}
-//           </Typography>
-//         </Stack>
-//       </Stack>
-//     </Box>
-//   );
-// };
-
-// export default NavigationBar;

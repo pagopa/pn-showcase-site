@@ -96,13 +96,6 @@ body {
   border-radius: 16px;
 } 
 
-@media screen and (min-width:900px) {
-  .documentiCustomCard .MuiPaper-root {
-    margin-bottom: 8px;
-    margin-right: 8px;
-  } 
-}
-
 .lightWalkthrough .MuiBox-root {
   background-color: #FFFFFF;
 }
@@ -163,25 +156,25 @@ body {
   flex-direction: row;
 }
 
-/* inizio colore e font delle tabs*/
-[class$="MuiButtonBase-root-MuiTab-root"] {
-  color: #0073E6;
-}
-
-.MuiTabs-flexContainer .MuiTypography-root {
-  color: #0073E6;
+.sendNavbar .MuiTabs-flexContainer .MuiTypography-root {
   font-weight: 600;
   font-size: 1rem;
 }
 
-.MuiTabs-flexContainer .MuiSvgIcon-root  {
-  color: #0073E6;
+.sendNavbar .MuiButtonBase-root.MuiTab-root.Mui-selected {
+  color: #5C6F82 !important;
 }
-/* fine colore e font delle tabs*/
 
 .button-cittadini {
   height: 4em;
   width: 100%; 
+}
+
+@media screen and (min-width:900px) {
+  .documentiCustomCard .MuiPaper-root {
+    margin-bottom: 8px;
+    margin-right: 8px;
+  } 
 }
 
 @media (max-width: 640px) {
