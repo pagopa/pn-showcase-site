@@ -161,9 +161,9 @@ body {
   font-size: 1rem;
 }
 
-.sendNavbar .MuiButtonBase-root.MuiTab-root.Mui-selected {
+/* .sendNavbar .MuiButtonBase-root.MuiTab-root.Mui-selected {
   color: #5C6F82 !important;
-}
+} */
 
 .button-cittadini {
   height: 4em;

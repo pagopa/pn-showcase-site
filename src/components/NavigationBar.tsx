@@ -6,7 +6,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import IconButton from "@mui/material/IconButton";
 
-import { Box, Chip, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Chip, Stack, Tab, Tabs } from "@mui/material";
 import { INavigationBarProps } from "model";
 
 const NavigationBar = ({
@@ -33,7 +33,8 @@ const NavigationBar = ({
   }
 
   useEffect(() => {
-    setIndex(paths.indexOf(pathname));
+    let currentIndex = paths.indexOf(pathname);
+    setIndex(currentIndex);
   }, [pathname]);
 
   const handleOpenMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -49,6 +50,10 @@ const NavigationBar = ({
     push(path);
   };
 
+  // const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
+  //   setIndex(newValue);
+  // };
+
 
   return (
     <Box className="sendNavbar">
@@ -60,18 +65,34 @@ const NavigationBar = ({
           <Chip label={chip} size="small" color="primary" />
         </Stack>
         <Tabs value={index} component="nav">
-          <Box sx={{ paddingTop: 6, paddingBottom: 5, display: 'flex', alignItems: 'center', cursor: 'pointer' }} >
-            <Typography component="a" href={paths[0]} sx={{ flexGrow: 1, textDecoration: "none", color: index === 0 ? '#0073E6' : '#5C6F82' }} className="tab-enti">
-              {pa}
-            </Typography>
-            <IconButton
-              onClick={handleOpenMenu}
+          <Tab sx={{ paddingTop: 6, paddingBottom: 5 }}
+            value={0}
+            component="a"
+            onClick={(
+              event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+            ) => {
+              if (pathname === `${paths[0]}/`) {
+                event.preventDefault();
+              }
+            }}
+            key="pubblica-amministrazione"
+            label={pa}
+            href={paths[0]}
+            {...a11yProps(0)}
+            disableRipple={true}
+            icon={<IconButton
+              onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+                handleOpenMenu(event);
+                event.preventDefault();
+              }}
               size="small"
-              sx={{ marginLeft: 1, color: index === 0 ? '#0073E6' : '#5C6F82' }}
+              sx={{ marginLeft: 1 }}
+
             >
               {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-            </IconButton>
-          </Box>
+            </IconButton>}
+            iconPosition="end"
+          />
           <Menu
             anchorEl={anchorEl}
             open={open}
@@ -82,24 +103,9 @@ const NavigationBar = ({
               Documentazione
             </MenuItem>
           </Menu>
-          {/* <Tab
-            sx={{ paddingTop: 6, paddingBottom: 5, color: index === 1 ? '#0073E6' : '#5C6F82'  }}
-            component="a"
-            onClick={(
-              event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-            ) => {
-              if (pathname === `${paths[0]}/`) {
-                event.preventDefault();
-              }
-            }}
-            key="pubblica-amminstrazione"
-            label={pa}
-            href={paths[0]}
-            {...a11yProps(0)}
-            disableRipple={true}
-          /> */}
           <Tab
-            sx={{ paddingTop: 6, paddingBottom: 5, color: index === 1 ? '#0073E6' : '#5C6F82' }}
+            sx={{ paddingTop: 6, paddingBottom: 5 }}
+            value={1}
             component="a"
             onClick={(
               event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -108,14 +114,15 @@ const NavigationBar = ({
                 event.preventDefault();
               }
             }}
-            key="persona-fisica"
+            key="cittadini"
             label={pf}
             href={paths[1]}
             {...a11yProps(1)}
             disableRipple={true}
           />
           <Tab
-            sx={{ paddingTop: 6, paddingBottom: 5, color: index === 2 ? '#0073E6' : '#5C6F82' }}
+            value={2}
+            sx={{ paddingTop: 6, paddingBottom: 5 }}
             component="a"
             onClick={(
               event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -131,7 +138,8 @@ const NavigationBar = ({
             disableRipple={true}
           />
           <Tab
-            sx={{ paddingTop: 6, paddingBottom: 5, color: index === 3 ? '#0073E6' : '#5C6F82' }}
+            value={3}
+            sx={{ paddingTop: 6, paddingBottom: 5 }}
             component="a"
             onClick={(
               event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
