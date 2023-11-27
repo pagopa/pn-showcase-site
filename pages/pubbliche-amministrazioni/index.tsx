@@ -26,13 +26,13 @@ const EntiPage: NextPage = () => (
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 2")}></Infoblock>
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 3")}></Infoblock>
       <Showcase {...getShowcaseData(USER_TYPE, "showcase 1")} />
-      <div id="lightWalkthrough"><Walkthrough {...getWalkthroughData(USER_TYPE)} /></div>  
+      <div className="lightWalkthrough"><Walkthrough {...getWalkthroughData(USER_TYPE)} /></div>  
       {/* Carlotta Dimatteo - workaround per gestire un anchor interno alla pagina richiesto dal team di comunicazione il 16/02/2023  */}
       <div id="start-integration">
         <></>
       </div>
       {/* <StripeLinkEnti></StripeLinkEnti> */}
-      <div id="darkInfoblock"><Infoblock {...getInfoblockData(USER_TYPE, "infoblock 4")}></Infoblock></div>
+      <div className="darkInfoblockEnti"><Infoblock {...getInfoblockData(USER_TYPE, "infoblock 4")}></Infoblock></div>
     </main>
   </>
 );

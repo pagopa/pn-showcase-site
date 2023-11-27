@@ -92,7 +92,7 @@ export const paInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 1",
     data: {
-      overline: "PER GLI ENTI",
+      // overline: "PER GLI ENTI",
       title: "Il processo di notificazione diventa più semplice",
       content: (
         <>
