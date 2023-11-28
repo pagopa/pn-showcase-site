@@ -9,7 +9,7 @@ import {
   getShowcaseData,
   getWalkthroughData,
 } from "../../api";
-import { StripeLinkEnti } from "api/data/it/PA";
+import { StripeLinkEnti, DarkInfoblockEnti } from "api/data/it/PA";
 
 const USER_TYPE = UserType.PA;
 
@@ -27,12 +27,8 @@ const EntiPage: NextPage = () => (
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 3")}></Infoblock>
       <Showcase {...getShowcaseData(USER_TYPE, "showcase 1")} />
       <div className="lightWalkthrough"><Walkthrough {...getWalkthroughData(USER_TYPE)} /></div>  
-      {/* Carlotta Dimatteo - workaround per gestire un anchor interno alla pagina richiesto dal team di comunicazione il 16/02/2023  */}
-      <div id="start-integration">
-        <></>
-      </div>
-      {/* <StripeLinkEnti></StripeLinkEnti> */}
-      <div className="darkInfoblockEnti"><Infoblock {...getInfoblockData(USER_TYPE, "infoblock 4")}></Infoblock></div>
+      <StripeLinkEnti></StripeLinkEnti>
+      <DarkInfoblockEnti></DarkInfoblockEnti>
     </main>
   </>
 );

@@ -1,4 +1,4 @@
-import { Typography, List, ListItem, SvgIcon, Box, Stack, Container, Grid, Button } from "@mui/material";
+import { Typography, SvgIcon, Box, Container, Grid, Button } from "@mui/material";
 import {
   HeroProps,
   HorizontalNavProps,
@@ -6,11 +6,8 @@ import {
 } from "@pagopa/mui-italia";
 import {
   IMAGES_PATH,
-  MANUALE_URL,
-  PARTNER_AND_INTERMEDIARIES_PATH,
 } from "@utils/constants";
 import { IInfoblockData, IShowcaseData } from "model";
-import Link from "next/link";
 import {
   PeopleIcon,
   FireworksIcon,
@@ -23,7 +20,7 @@ import {
 } from "../icons";
 
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import MessageIcon from '@mui/icons-material/Message';
+import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 
 const heroSubtitle =
   "SEND, Servizio Notifiche Digitali (anche nota come Piattaforma Notifiche Digitali di cui all'art. 26 del decreto-legge 76/2020 s.m.i.)  digitalizza la gestione delle comunicazioni a valore legale, semplificando il processo per tutti: chi le invia, e chi le riceve.";
@@ -83,16 +80,11 @@ const infoblock3_1 =
   "Il destinatario accede alla piattaforma tramite SPID o CIE, dove può visualizzare e scaricare l'atto notificato. Grazie all'integrazione con pagoPA, può anche pagare contestualmente, se previsto, quanto dovuto. Se ha attivato il servizio su IO, potrà fare tutto direttamente in app.";
 const infoblock3_2 =
   "Come l'ente, anche il destinatario ha accesso alla cronologia degli stati della notifica e alle attestazioni opponibili a terzi che ne danno prova.";
-const infoblock4_2 =
-  "Il tuo ente ha già aderito a SEND?";
-const infoblock4_3 =
-  "Se il tuo ente ha aderito a SEND e sei un utente autorizzato, accedi tramite l'Area Riservata.";
 
 export const paInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 1",
     data: {
-      // overline: "PER GLI ENTI",
       title: "Il processo di notificazione diventa più semplice",
       content: (
         <>
@@ -156,34 +148,7 @@ export const paInfoBlocks: Array<IInfoblockData> = [
       imageShadow: false,
     },
   },
-  {
-    name: "infoblock 4",
-    data: {
-      title: "",
-      content: (
-        <>
-          <Typography sx={{color: "primary.contrastText"}} variant="h4" tabIndex={0} aria-label={infoblock4_2}>
-            {infoblock4_2}
-          </Typography>
-          <Typography sx={{color: "primary.contrastText"}} variant="body2" tabIndex={0} aria-label={infoblock4_3}>
-            {infoblock4_3}
-          </Typography>
-        </>
-      ),
-      inverse: false,
-      image: `${IMAGES_PATH}/pa-infoblock-3.png`,
-      altText:
-        "Le mani di una persona digitano sulla tastiera di un computer portatile. Lo schermo mostra una pagina della piattaforma SEND.",
-      imageShadow: false,
-      ctaPrimary: {
-        label: "Accedi a SEND",
-        title: "Accedi a SEND",
-        onClick: function onClick() {
-          window.open("https://selfcare.pagopa.it/auth/login", "_self");
-        },
-      },
-    },
-  },
+
 ];
 /* ************************************** */
 
@@ -350,22 +315,45 @@ export const paHorizontalNav: HorizontalNavProps = {
 
 export const StripeLinkEnti = () => {
   return (
-      <Box sx={{ backgroundColor: "#17324D" }} padding={2}>
-          <Container maxWidth="xl">
-              <Grid container spacing={2} >
-                  <Grid item xs={12} md={6} display={"flex"} justifyContent={"center"} alignItems={"center"}>
-                      <Typography variant="body2" color="white" display={"flex"} justifyContent={"center"} alignItems={"center"}>
-                          <MessageIcon sx={{ fontSize: "20px", marginRight: "10px" }} />
-                          Vuoi comunicare l’adesione a SEND ai cittadini?
-                      </Typography>
-                      <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} sx={{ marginLeft: "1em" }}>
-                        Vai al kit di comunicazione
-                      </Button>
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                  </Grid>
-              </Grid>
-          </Container>
-      </Box>
+    <Box sx={{ backgroundColor: "info.contrastText" }} padding={2}>
+      <Container maxWidth="xl">
+        <Grid container spacing={2} >
+          <Grid item xs={12} md={6} display={"flex"} justifyContent={"center"} alignItems={"center"}>
+            <Typography variant="body2" color="white" display={"flex"} justifyContent={"center"} alignItems={"center"}>
+              <SpeakerNotesIcon sx={{ fontSize: "20px", marginRight: "10px" }} />
+              Vuoi comunicare l’adesione a SEND ai cittadini?
+            </Typography>
+            <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} sx={{ marginLeft: "1em" }}>
+              Vai al kit di comunicazione
+            </Button>
+          </Grid>
+          <Grid item xs={12} md={6}>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
+  );
+};
+
+
+export const DarkInfoblockEnti = () => {
+  return (
+    <Box sx={{ backgroundColor: "#0B3EE3", paddingTop: 8, paddingBottom: 8 }}>
+      <Container maxWidth="xl">
+        <Grid container alignItems="center" justifyContent="center">
+          <Grid item xs={12} display="flex" flexDirection="column" alignItems="center">
+            <Typography variant="h4" component="h1" color="white" gutterBottom>
+              Il tuo ente ha già aderito a SEND?
+            </Typography>
+            <Typography variant="body2" color="white" textAlign="center" marginBottom={2}>
+              Se il tuo ente ha aderito a SEND e sei un utente autorizzato, accedi tramite l'Area Riservata.
+            </Typography>
+            <Button variant="contained" sx={{ alignSelf: "center", backgroundColor: "background.paper", color: "pagoPA.main", ":hover": { backgroundColor: "background.paper", color: "pagoPA.main" } }} href="https://selfcare.pagopa.it/auth/login">
+              Accedi a SEND
+            </Button>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 };

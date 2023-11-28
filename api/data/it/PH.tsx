@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import { HeroProps } from "@pagopa/mui-italia";
-import { IMAGES_PATH } from "@utils/constants";
+import { IMAGES_PATH, PN_PF_URL, PN_PG_URL } from "@utils/constants";
 import { IInfoblockData } from "model";
 
 const onReadClickEnti = () => {
@@ -11,8 +11,16 @@ const onReadClickCittadini = () => {
   window.open("/cittadini", "_self");
 };
 
+const onReadClickCittadiniSecondary = () => {
+  window.open(PN_PF_URL, "_self");
+};
+
 const onReadClickImprese = () => {
   window.open("/imprese", "_self");
+};
+
+const onReadClickImpreseSecondary = () => {
+  window.open(PN_PG_URL, "_self");
 };
 
 // eslint-disable-next-line no-extra-boolean-cast
@@ -32,11 +40,27 @@ const cittadiniCta = "/cittadini"
   }
   : undefined;
 
+const cittadiniCtaSecondary = PN_PF_URL
+  ? {
+    label: "Leggi le tue notifiche ",
+    title: "Leggi le tue notifiche ",
+    onClick: onReadClickCittadiniSecondary,
+  }
+  : undefined;
+
 const impreseCta = "/imprese"
   ? {
     label: "Scopri i vantaggi per le imprese",
     title: "Scopri i vantaggi per le imprese",
     onClick: onReadClickImprese,
+  }
+  : undefined;
+
+const impreseCtaSecondary = PN_PG_URL
+  ? {
+    label: "Vai alle notifiche ",
+    title: "Vai alle notifiche ",
+    onClick: onReadClickImpreseSecondary,
   }
   : undefined;
 
@@ -116,6 +140,7 @@ export const phInfoBlocks: Array<IInfoblockData> = [
         </>
       ),
       ctaPrimary: cittadiniCta,
+      ctaSecondary: cittadiniCtaSecondary,
       inverse: true,
       image: `${IMAGES_PATH}/ph-infoblock-2.png`,
       altText:
@@ -135,6 +160,7 @@ export const phInfoBlocks: Array<IInfoblockData> = [
         </Typography>
       ),
       ctaPrimary: impreseCta,
+      ctaSecondary: impreseCtaSecondary,
       inverse: false,
       image: `${IMAGES_PATH}/ph-infoblock-3.png`,
       altText: "Un uomo ed una donna seduti al tavolo guardano un notebook",

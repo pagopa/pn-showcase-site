@@ -75,10 +75,10 @@ body {
   box-shadow: 0px 8px 38px 7px #002B551A;
 }
 
-.entiMenuItems [class$="MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper"] {
+/* .entiMenuItems [class$="MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper"] {
   margin-left: -2em;
   margin-top: 1em;
-}
+} */
 
 .documentiCustomCardContent .MuiTypography-body2 {
   margin-top: 0.6em;
@@ -98,48 +98,6 @@ body {
 
 .lightWalkthrough .MuiBox-root {
   background-color: #FFFFFF;
-}
-
-.darkInfoblockEnti .MuiBox-root {
-  background-color: #0B3EE3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.darkInfoblockEnti .MuiBox-root a {
-  background-color: #FFFFFF;
-  color: #0066CC;
-}
-
-.darkInfoblockEnti .MuiBox-root img {
-  visibility: hidden;
-}
-
-.darkInfoblockEnti [class$="MuiStack-root"] {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.customInfoblockImprese {
-  border-top: 1px solid #E3E7EB;
-}
-
-.customInfoblockImprese .MuiBox-root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.customInfoblockImprese .MuiBox-root img {
-  visibility: hidden;
-}
-
-.customInfoblockImprese [class$="MuiStack-root"] {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .dark {
