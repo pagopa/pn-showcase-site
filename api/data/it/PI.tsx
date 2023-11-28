@@ -32,7 +32,7 @@ import {
 } from "../icons";
 
 const heroSubtitleImprese =
-  "SEND - Servizio Notifiche Digitali è la piattaforma che semplifica la ricezione delle notifiche a valore legale. Visualizza, paga e archivia le notifiche inviate alla tua impresa in un unico spazio e accessibile anche dai tuoi collaboratori.";
+  "SEND - Servizio Notifiche Digitali è la piattaforma che semplifica la ricezione delle notifiche a valore legale. Visualizza, paga e archivia le notifiche inviate alla tua impresa in un unico spazio accessibile anche dai tuoi collaboratori.";
 export const piHero: HeroProps = {
   type: "image",
   title: "Le notifiche della tua impresa? Tutte qui.",
@@ -72,12 +72,24 @@ const infoblock2_1 =
   "Puoi abilitare più utenti all’uso della piattaforma. Così, le comunicazioni potranno essere gestite da più persone, che resteranno aggiornate sul lavoro degli altri in tempo reale.";
 const infoblock2_2 =
   "Un modo efficace per migliorare la gestione delle notifiche all’interno dell’impresa  e avere maggiore controllo delle scadenze e di quanto versato.";
+const infoblock3 =
+  "Se lo desideri, puoi delegare altre persone, fisiche o giuridiche, a visualizzare le tue notifiche online. Per farlo, accedi a SEND con SPID o CIE e inserisci nella sezione Deleghe i dati della persona che vuoi delegare.";
+const infoblock4 =
+  "Se non accedi a SEND";
+const infoblock4_1 =
+  "Riceverai un Avviso di Avvenuta Ricezione (AAR) tramite raccomandata, con tutte le indicazioni per visualizzare online la notifica e i documenti ad essa allegati, oppure per ottenerli in formato cartaceo. In questo caso dovrai recarti presso un qualsiasi ufficio postale e richiedere il servizio a pagamento “Stampa notifica”, disponibile anche senza SPID o CIE. Se vuoi delegare qualcuno al ritiro della notifica, ti basterà compilare il modulo presente sull’Avviso.";
+
+const infoblock4_2 = `Puoi consulare i termini e le condizioni del servizio “Stampa Notifica” su `;
+
+const infoblock4_3 = `poste.it`;
+
+const infoblock4_4 = ` e in Ufficio Postale.`;
 
 export const piInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 1",
     data: {
-      overline: "PER LE IMPRESE",
+      // overline: "PER LE IMPRESE",
       title: "Un nuovo modo per gestire le notifiche della tua impresa",
       content: (
         <>
@@ -125,12 +137,67 @@ export const piInfoBlocks: Array<IInfoblockData> = [
       }
     },
   },
+  {
+    name: "infoblock 3",
+    data: {
+      title: "Puoi delegare o essere delegato",
+      content: (
+        <>
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock3}>
+            {infoblock3}
+          </Typography>
+        </>
+      ),
+      inverse: true,
+      image: `${IMAGES_PATH}/pi-infoblock-3.png`,
+      altText:
+        "Un esempio della sezione “stato della notifica” della piattaforma SEND.",
+      imageShadow: false,
+    },
+  },
+  {
+    name: "infoblock 4",
+    data: {
+      title: "",
+      content: (
+        <>
+          <Typography variant="h4" tabIndex={0} aria-label={infoblock4}>
+            {infoblock4}
+          </Typography>
+
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock4_1}>
+            {infoblock4_1}
+          </Typography>
+
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock4_2}>
+            {infoblock4_2}
+            <Link
+              href="https://poste.it/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={infoblock4_3}
+              style={{ fontWeight: "bold", color: "#0073E6" }}
+            >
+              {infoblock4_3}
+            </Link>
+            {infoblock4_4}
+          </Typography>
+        </>
+      ),
+      inverse: true,
+      image: `${IMAGES_PATH}/pf-infoblock-8.png`,
+      aspectRatio: "4/3",
+      altText:
+        "Immagine di un avviso di avvenuta ricezione di una notifica su SEND",
+      imageShadow: false,
+    },
+  },
 ];
 /* ************************************** */
 
 /** Showcase mocked data */
 const showcase_1 =
-  "Gestisci a tutte le notifiche inviate all’azienda in un solo posto";
+  "Gestisci tutte le notifiche inviate all’azienda in un solo posto";
 const showcase_2 =
   "Grazie all’integrazione con pagoPA, pagare è semplice e veloce";
 const showcase_3 =
@@ -142,7 +209,7 @@ export const piShowcases: Array<IShowcaseData> = [
   {
     name: "showcase 1",
     data: {
-      title: "Per essere un’impresa innovativa ",
+      title: "Un nuovo servizio per essere un’impresa innovativa ",
       items: [
         {
           icon: <PeopleIcon />,

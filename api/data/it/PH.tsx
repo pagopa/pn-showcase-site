@@ -68,7 +68,7 @@ export const phHero: HeroProps = {
 /** Infoblocks mocked data */
 const infoblock1_1 = `SEND - Servizio Notifiche Digitali solleva gli enti da tutti gli adempimenti legati alla gestione delle comunicazioni a valore legale.`;
 
-const infoblock1_2 = `Gli enti non devono fare altro che depositare l’atto da notificare: sarà la piattaforma a occuparsi dell’invio, per via digitale o analogica, con conseguente risparmio di  tempi e costi dell’intero processo.`;
+const infoblock1_2 = `Gli enti non devono fare altro che depositare l’atto da notificare: sarà la piattaforma a occuparsi dell’invio, per via digitale o analogica, con conseguente risparmio di tempi e costi dell’intero processo.`;
 
 const infoblock2_1 = `I cittadini che lo desiderano possono ricevere e consultare le notifiche in digitale, accedendo a SEND tramite SPID o CIE o direttamente dall’app IO.`;
 
@@ -130,11 +130,9 @@ export const phInfoBlocks: Array<IInfoblockData> = [
       overline: "PER LE IMPRESE",
       title: "Tutto in un unico luogo ",
       content: (
-        <>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock1_1}>
-            {infoblock3_1}
-          </Typography>
-        </>
+        <Typography variant="body2" tabIndex={0} aria-label={infoblock1_1}>
+          {infoblock3_1}
+        </Typography>
       ),
       ctaPrimary: impreseCta,
       inverse: false,

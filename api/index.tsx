@@ -11,11 +11,11 @@ import {
 import { IAppData, ITabsProps, UserType, IFaqData, IHeadingTitleProps } from "model";
 import LangContext from "provider/lang-context";
 
-import { deAppData } from "./data/de";
-import { enAppData } from "./data/en";
-import { frAppData } from "./data/fr";
+// import { deAppData } from "./data/de";
+// import { enAppData } from "./data/en";
+// import { frAppData } from "./data/fr";
+// import { slAppData } from "./data/sl";
 import { itAppData } from "./data/it";
-import { slAppData } from "./data/sl";
 import { itFaqData } from "./data/faq-it";
 import { perfezionamentoData } from "./data/perfezionamento";
 
@@ -25,14 +25,14 @@ export const getAppData = (): IAppData => {
   switch (lang.selectedLanguage) {
     case "it":
       return itAppData;
-    case "en":
-      return enAppData;
-    case "fr":
-      return frAppData;
-    case "de":
-      return deAppData;
-    case "sl":
-      return slAppData;
+    // case "en":
+    //   return enAppData;
+    // case "fr":
+    //   return frAppData;
+    // case "de":
+    //   return deAppData;
+    // case "sl":
+    //   return slAppData;
     default:
       return itAppData;
   }
