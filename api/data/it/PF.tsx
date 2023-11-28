@@ -474,7 +474,7 @@ export const InfoblockCustomCittadini = () => {
   };
 
   return (
-    <Box pb={8} pt={8} sx={{ background: 'blue', color: 'white' }}>
+    <Box pb={8} pt={8} sx={{ background: '#0b3ee3', color: 'white' }}>
       <Container maxWidth="xl">
         <Grid container spacing={4}>
           <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
