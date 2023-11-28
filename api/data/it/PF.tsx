@@ -16,9 +16,6 @@ import {
   WalletIcon,
 } from "../icons";
 
-import PlayStoreIcon from '@mui/icons-material/PlayCircleOutline'; // Replace with the actual icon you're using
-import AppStoreIcon from '@mui/icons-material/Apple';
-
 const onReadClick = () => {
   window.open(PN_PF_URL, "_blank");
 };
@@ -65,25 +62,21 @@ const infoblock1_1 = `Le notifiche sono comunicazioni a valore legale emesse in 
 
 const infoblock1_2 = `Puoi anche pagare eventuali costi grazie all'integrazione con pagoPA, visualizzare lo storico delle notifiche ricevute e gestirle direttamente online. Inoltre, ti basta accettare una delega per accedere anche alle notifiche dei tuoi familiari.`;
 
-const infoblock2 = `Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID e CIE per indicare o aggiornare il tuo indirizzo di Posta Elettronica Certificata (PEC), che rappresenta a tutti gli effetti il domicilio digitale di un cittadino, oppure i tuoi recapiti dove ricevere un messaggio di cortesia quando un ente ti invia una notifica: app IO, email e/o numero di cellulare.`;
+const infoblock2 = `Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID o CIE per indicare o aggiornare il tuo domicilio digitale di piattaforma oppure i tuoi recapiti per ricevere un messaggio di cortesia, quando un ente ti invia una notifica: app IO, email e/o numero di cellulare.`;
 
-const infoblock2_1 = `Se non indichi alcun recapito o non accedi alla notifica su SEND da canali digitali diversi dalla PEC entro i tempi indicati, riceverai tramite raccomandata cartacea un Avviso di Avvenuta Ricezione (AAR) con le indicazioni per visualizzare online gli atti notificati o ritirarli presso un qualsiasi ufficio postale.`;
+const infoblock2_1 = `Se non hai indicato nessuno di questi recapiti digitali, non risulta a te associata una pec e non accedi alla notifica su SEND entro i tempi indicati, riceverai tramite raccomandata cartacea un Avviso di Avvenuta Ricezione con le indicazioni per visualizzare online gli atti notificati o ritirarli presso un qualsiasi ufficio postale.`;
 
-const infoblock3_1 = `SEND è a disposizione di tutte le Pubbliche
-Amministrazioni che vorranno utilizzarlo per inviare notifiche ai
-destinatari delle loro comunicazioni a valore legale.`;
-
-const infoblock3_2 = `Il servizio sarà adottato dagli enti progressivamente e, per favorirne la graduale diffusione tra i cittadini, in una prima fase assicurerà l'invio anche della copia analogica conforme degli atti notificati tramite raccomandata cartacea ai destinatari non dotati di recapito legale (PEC).`;
+const infoblock3_2 = `Le Pubbliche Amministrazioni stanno gradualmente adottando il nuovo Servizio Notifiche Digitali, per questo è possibile che non tutti gli atti ti saranno già notificati con questa modalità.`;
 
 const infoblock3_3 = `Il futuro delle comunicazioni a valore legale`;
 
-const infoblock3_4 = `SEND è a disposizione di tutti gli enti che vorranno utilizzarlo per inviare notifiche ai destinatari delle loro comunicazioni a valore legale.`;
+const infoblock3_4 = `SEND è a disposizione degli enti che potranno utilizzarlo per inviare notifiche ai destinatari delle loro comunicazioni a valore legale.`;
 
 const infoblock4 = `Se hai indicato un indirizzo PEC, le notifiche risulteranno legalmente consegnate, senza più raccomandate cartacee. L'avviso di avvenuta ricezione che ti sarà inviato contiene il link per accedere ai documenti su SEND.`;
 
 const infoblock5 = `In più, puoi anche scegliere di ricevere un avviso di cortesia al tuo indirizzo e-mail o tramite SMS. Se non hai la PEC ma accedi alla notifica attraverso SEND dall'apposito link entro 5 giorni (120 ore) dalla ricezione della notifica, questa risulterà legalmente recapitata e non riceverai alcuna raccomandata cartacea.`;
 
-const infoblock6 = `L’avviso di avvenuta ricezione è un documento di una pagina in formato digitale che SEND invia al destinatario della notifica. Ha valore legale e contiene le informazioni essenziali per consultare l’atto notificato.`;
+const infoblock6 = `L’Avviso di Avvenuta Ricezione è un documento che SEND invia al destinatario della notifica, che ha valore legale e contiene le informazioni essenziali per consultare i documenti notificati.`;
 
 const infoblock6_1 = `Se non accedi alla notifica in digitale nei tempi previsti, riceverai via posta un avviso di avvenuta ricezione cartaceo. Segui le istruzioni  riportate sull’Avviso per scegliere come ottenere la notifica e i documenti ad essa allegati secondo le tue preferenze:`;
 
@@ -121,7 +114,6 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 2",
     data: {
-      // overline: "RECAPITI LEGALI E DI CORTESIA",
       title: "Scegli tu come ricevere le notifiche",
       content: (
         <>
@@ -220,12 +212,12 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
           <List sx={{ listStyleType: "disc", pl: 4 }}>
             <ListItem sx={{ display: "list-item" }}>
               <Typography variant="body2">
-                online, inquadrando il QR code riportato sull’AAR o con accesso diretto al sito di SEND tramite SPID o CIE;
+                online, inquadrando il QR code riportato sull’Avviso o con accesso diretto al sito di SEND tramite SPID o CIE;
               </Typography>
             </ListItem>
             <ListItem sx={{ display: "list-item" }}>
               <Typography variant="body2">
-                recandoti di persona presso un ufficio postale, dove potrai richiedere il servizio a pagamento “Stampa notifica”, disponibile anche senza SPID o CIE
+                recandoti di persona presso un ufficio postale, dove potrai richiedere il servizio a pagamento “Stampa notifica”, disponibile anche senza SPID o CIE.
               </Typography>
             </ListItem>
           </List>
@@ -364,12 +356,8 @@ export const pfShowcases: Array<IShowcaseData> = [
 /* ************************************** */
 
 /** Walkthrough mocked data */
-const walkthrough1 = `
-Per ogni notifica, SEND verifica che ci sia una PEC a te associata o da te indicata per l'invio dell'avviso 
-di avvenuta ricezione. Invia anche un avviso di cortesia agli altri tuoi recapiti digitali 
-(app IO, e-mail e numero di cellulare), se li hai inseriti. Se non hai indicato alcun recapito digitale 
-e non accedi online  alla notifica attraverso SEND, riceverai una raccomandata cartacea.
-`;
+const walkthrough1 = `Per ogni notifica, SEND verifica che ci sia una PEC a te associata o da te indicata per l'invio dell'avviso di avvenuta ricezione. Invia anche un avviso di cortesia agli altri tuoi recapiti digitali (app IO, e-mail e numero di cellulare), se li hai inseriti. Se non hai indicato alcun recapito digitale e non accedi online alla notifica attraverso SEND, riceverai l’Avviso di Avvenuta Ricezione tramite raccomandata cartacea.`;
+
 const walkthrough2 = `Dal messaggio ricevuto, puoi accedere online alla piattaforma per leggere la notifica e scaricare i relativi documenti allegati. Se attivi il servizio su IO, puoi visualizzare il contenuto direttamente in app: questo equivale alla firma della ricevuta di ritorno di una raccomandata tradizionale e al `;
 
 const walkthrough2_1 = `
@@ -432,7 +420,6 @@ export const pfWalkthrough: WalkthroughProps = {
           {walkthrough4}
         </Typography>
       ),
-      // isSequential: false,
     },
   ],
 };
@@ -513,36 +500,6 @@ export const InfoblockCustomCittadini = () => {
             <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
               Scarica l’app:
             </Typography>
-
-            {/* <Grid container spacing={2} justifyContent="center">
-              <Grid item xs={12} sm={4}>
-                <Button
-                  variant="outlined"
-                  color="inherit"
-                  startIcon={<PlayStoreIcon />}
-                  sx={buttonStyle}
-                  href="https://play.google.com/store/apps/details?id=it.pagopa.io.app"
-                  fullWidth
-                >
-                  Disponibile su Play store
-                </Button>
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <Button
-                  variant="outlined"
-                  color="inherit"
-                  startIcon={<AppStoreIcon />}
-                  sx={buttonStyle}
-                  href="https://apps.apple.com/it/app/io/id1501681835"
-                  fullWidth
-                >
-                  Disponibile su App store
-                </Button>
-              </Grid>
-            </Grid> */}
-
-
-
             <Stack direction="row" spacing={2} justifyContent={"flex-start"} alignItems={"center"} className="stack-responsive">
               <a
                 href="https://play.google.com/store/apps/details?id=it.pagopa.io.app"
@@ -569,8 +526,6 @@ export const InfoblockCustomCittadini = () => {
                 />
               </a>
             </Stack>
-
-
           </Grid>
         </Grid>
       </Container>

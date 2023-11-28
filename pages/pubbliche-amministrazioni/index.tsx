@@ -9,7 +9,7 @@ import {
   getShowcaseData,
   getWalkthroughData,
 } from "../../api";
-import { StripeLinkEnti } from "api/data/it/PA";
+import { StripeLinkEnti, DarkInfoblockEnti } from "api/data/it/PA";
 
 const USER_TYPE = UserType.PA;
 
@@ -31,8 +31,8 @@ const EntiPage: NextPage = () => (
       <div id="start-integration">
         <></>
       </div>
-      {/* <StripeLinkEnti></StripeLinkEnti> */}
-      <div className="darkInfoblockEnti"><Infoblock {...getInfoblockData(USER_TYPE, "infoblock 4")}></Infoblock></div>
+      <StripeLinkEnti></StripeLinkEnti>
+      <DarkInfoblockEnti></DarkInfoblockEnti>
     </main>
   </>
 );

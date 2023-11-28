@@ -15,7 +15,7 @@ const DocumentiPage: NextPage = () => (
       <div className="cardsContainerDark"><Cards1></Cards1></div>
       <Cards2></Cards2>
       {/* Disabilitato per ora il link al devportal */}
-      {/* <StripeLink></StripeLink> */}
+      <StripeLink></StripeLink>
     </main>
   </>
 );
