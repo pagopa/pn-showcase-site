@@ -1,4 +1,4 @@
-import { Typography, List, ListItem, SvgIcon, Box, Stack, Container, Grid, Button } from "@mui/material";
+import { Typography, SvgIcon, Box, Container, Grid, Button } from "@mui/material";
 import {
   HeroProps,
   HorizontalNavProps,
@@ -6,11 +6,8 @@ import {
 } from "@pagopa/mui-italia";
 import {
   IMAGES_PATH,
-  MANUALE_URL,
-  PARTNER_AND_INTERMEDIARIES_PATH,
 } from "@utils/constants";
 import { IInfoblockData, IShowcaseData } from "model";
-import Link from "next/link";
 import {
   PeopleIcon,
   FireworksIcon,
@@ -318,23 +315,23 @@ export const paHorizontalNav: HorizontalNavProps = {
 
 export const StripeLinkEnti = () => {
   return (
-      <Box sx={{ backgroundColor: "#17324D" }} padding={2}>
-          <Container maxWidth="xl">
-              <Grid container spacing={2} >
-                  <Grid item xs={12} md={6} display={"flex"} justifyContent={"center"} alignItems={"center"}>
-                      <Typography variant="body2" color="white" display={"flex"} justifyContent={"center"} alignItems={"center"}>
-                          <SpeakerNotesIcon sx={{ fontSize: "20px", marginRight: "10px" }} />
-                          Vuoi comunicare l’adesione a SEND ai cittadini?
-                      </Typography>
-                      <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} sx={{ marginLeft: "1em" }}>
-                        Vai al kit di comunicazione
-                      </Button>
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                  </Grid>
-              </Grid>
-          </Container>
-      </Box>
+    <Box sx={{ backgroundColor: "info.contrastText" }} padding={2}>
+      <Container maxWidth="xl">
+        <Grid container spacing={2} >
+          <Grid item xs={12} md={6} display={"flex"} justifyContent={"center"} alignItems={"center"}>
+            <Typography variant="body2" color="white" display={"flex"} justifyContent={"center"} alignItems={"center"}>
+              <SpeakerNotesIcon sx={{ fontSize: "20px", marginRight: "10px" }} />
+              Vuoi comunicare l’adesione a SEND ai cittadini?
+            </Typography>
+            <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} sx={{ marginLeft: "1em" }}>
+              Vai al kit di comunicazione
+            </Button>
+          </Grid>
+          <Grid item xs={12} md={6}>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 
@@ -344,14 +341,14 @@ export const DarkInfoblockEnti = () => {
     <Box sx={{ backgroundColor: "#0B3EE3", paddingTop: 8, paddingBottom: 8 }}>
       <Container maxWidth="xl">
         <Grid container alignItems="center" justifyContent="center">
-          <Grid item xs={12}  display="flex" flexDirection="column" alignItems="center">
+          <Grid item xs={12} display="flex" flexDirection="column" alignItems="center">
             <Typography variant="h4" component="h1" color="white" gutterBottom>
               Il tuo ente ha già aderito a SEND?
             </Typography>
             <Typography variant="body2" color="white" textAlign="center" marginBottom={2}>
               Se il tuo ente ha aderito a SEND e sei un utente autorizzato, accedi tramite l'Area Riservata.
             </Typography>
-            <Button variant="contained" sx={{ alignSelf: "center" , backgroundColor: "#FFFFFF", color: "#0066CC", ":hover": {backgroundColor: "#FFFFFF", color: "#0066CC"} }} href="https://selfcare.pagopa.it/auth/login">
+            <Button variant="contained" sx={{ alignSelf: "center", backgroundColor: "background.paper", color: "pagoPA.main", ":hover": { backgroundColor: "background.paper", color: "pagoPA.main" } }} href="https://selfcare.pagopa.it/auth/login">
               Accedi a SEND
             </Button>
           </Grid>

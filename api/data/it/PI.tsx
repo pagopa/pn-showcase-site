@@ -317,7 +317,7 @@ export const piHorizontalNav: HorizontalNavProps = {
 
 export const CustomInfoblockImprese = () => {
   return (
-    <Box sx={{ backgroundColor: "#FFFFFF", paddingTop: 8, paddingBottom: 8, borderTop: "1px solid #E3E7EB" }}>
+    <Box sx={{ backgroundColor: "background.paper", paddingTop: 8, paddingBottom: 8, borderTop: "1px solid #E3E7EB" }}>
       <Container maxWidth="xl">
         <Grid container justifyContent="center" pr={{ xs: 0, lg: 32 }} pl={{ xs: 0, lg: 32 }}>
           <Grid item xs={12} sx={{
@@ -357,7 +357,7 @@ export const CustomInfoblockImprese = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="poste.it"
-                style={{ fontWeight: "bold", color: "#0073E6" }}>
+                style={{ fontWeight: "bold", color: "primary.main" }}>
                 poste.it
               </Link>
               {" "} e in Ufficio Postale.

@@ -233,7 +233,7 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
               target="_blank"
               rel="noopener noreferrer"
               aria-label={infoblock6_4}
-              sx={{ fontWeight: "bold", color: "#0073E6" }}
+              sx={{ fontWeight: "bold", color: "primary.main" }}
             >
               {infoblock6_4}
             </Link>
@@ -394,7 +394,7 @@ export const pfWalkthrough: WalkthroughProps = {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={walkthrough2_2}
-              sx={{ fontWeight: "bold", color: "#0073E6" }}
+              sx={{ fontWeight: "bold", color: "primary.main" }}
             >
               {walkthrough2_2}
             </Link>
@@ -464,7 +464,7 @@ export const InfoblockCustomCittadini = () => {
     '&:hover': {
       backgroundColor: "rgba(255, 255, 255, 0.1)",
       borderColor: "rgba(255, 255, 255, 0.7)",
-      color: "#FFFFFF",
+      color: "background.paper",
       boxShadow: 'none',
     },
     textTransform: 'none',

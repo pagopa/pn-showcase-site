@@ -11,7 +11,7 @@ export const Cards1 = () => {
                     label: "Leggi i Termini e Condizioni",
                     color: "primary",
                     link: "https://docs.pagopa.it/documento-1-termini-condizioni-di-adesione-e-uso/",
-                    icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
             ],
         },
@@ -22,7 +22,7 @@ export const Cards1 = () => {
                     label: "Leggi l’Atto di Nomina",
                     color: "primary",
                     link: "https://docs.pagopa.it/doc.2-atto-di-nomina-a-responsabile-trattamento-da/",
-                    icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
             ],
         },
@@ -33,25 +33,25 @@ export const Cards1 = () => {
                     label: "Vai al documento",
                     color: "primary",
                     link: "https://docs.pagopa.it/documento-3-documentazione-tecnica/",
-                    icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
                 {
                     label: "Leggi il manuale operativo",
                     color: "primary",
                     link: "https://docs.pagopa.it/manuale-operativo/",
-                    icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
                 {
                     label: "API b2b per le pubbliche amministrazioni e per l'avanzamento delle notifiche",
                     color: "primary",
                     link: "https://developer.pagopa.it/send/api#/",
-                    icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
                 // {
                 //     label: "Vai alle API B2B per l’avanzamento delle notifiche",
                 //     color: "primary",
                 //     link: "#",
-                //     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                //     icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 // },
             ],
         },
@@ -62,7 +62,7 @@ export const Cards1 = () => {
                     label: "Vai al documento",
                     color: "primary",
                     link: "https://docs.pagopa.it/documento-4-ciclo-attivo-pn",
-                    icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
             ],
         },
@@ -74,7 +74,7 @@ export const Cards1 = () => {
                     label: "Apri il documento",
                     color: "primary",
                     link: "/static/documents/Modulo preventivo di fornitura.xlsx",
-                    icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
             ],
         },
@@ -86,7 +86,7 @@ export const Cards1 = () => {
                     label: "Compila il modulo",
                     color: "primary",
                     link: "/static/documents/Modulo Ordinativo Commessa per Anticipazione.xlsx",
-                    icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
             ],
         },
@@ -97,7 +97,7 @@ export const Cards1 = () => {
                     label: "Vai al documento",
                     color: "primary",
                     link: "https://docs.pagopa.it/sla-di-servizio/",
-                    icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
             ],
         },
@@ -165,7 +165,7 @@ export const Cards1 = () => {
                                     </Link>
                                     {" "}dedicate agli enti.
                                 </Typography>
-                                <Button variant="contained" sx={{ width: "max-content", backgroundColor: "#FFFFFF", color: "#0073E6", '&:hover': { backgroundColor: "#FFFFFF", color: "#0073E6" } }} href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn">
+                                <Button variant="contained" sx={{ width: "max-content", backgroundColor: "background.paper", color: "primary.main", '&:hover': { backgroundColor: "background.paper", color: "primary.main" } }} href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn">
                                     Aderisci a SEND
                                 </Button>
                             </Stack>
@@ -268,7 +268,7 @@ export const Cards2 = () => {
         //               label: "Vai al manuale",
         //               color: "primary",
         //               link: "#",
-        //               icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+        //               icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
         //           },
         //       ],
         //   },
@@ -280,7 +280,7 @@ export const Cards2 = () => {
         //               label: "Vai al documento",
         //               color: "primary",
         //               link: "#",
-        //               icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+        //               icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
         //           },
         //       ],
         //   },
@@ -292,7 +292,7 @@ export const Cards2 = () => {
                     label: "Vai ai costi",
                     color: "primary",
                     link: "/static/documents/Analisi Ente - Cittadino v1.0.xlsx - ENTE (PagoPA).pdf",
-                    icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
             ],
         },
@@ -304,7 +304,7 @@ export const Cards2 = () => {
         //               label: "Vai al kit",
         //               color: "primary",
         //               link: "#",
-        //               icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+        //               icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
         //           },
         //       ],
         //   },
@@ -410,7 +410,7 @@ export const Cards2 = () => {
 
 export const StripeLink = () => {
     return (
-        <Box sx={{ backgroundColor: "#17324D" }} padding={2}>
+        <Box sx={{ backgroundColor: "info.contrastText" }} padding={2}>
             <Container maxWidth="xl">
                 <Grid container spacing={2} >
                     <Grid item xs={12} md={6} display={"flex"} justifyContent={"center"} alignItems={"center"}>
