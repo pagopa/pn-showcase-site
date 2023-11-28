@@ -23,8 +23,8 @@ const onReadClick = () => {
 // eslint-disable-next-line no-extra-boolean-cast
 const heroCta = !!PN_PF_URL
   ? {
-    label: "Accedi a SEND",
-    title: "Accedi a SEND",
+    label: "Leggi le tue notifiche",
+    title: "Leggi le tue notifiche",
     onClick: function onClick() {
       window.open(PN_PF_URL, "_self");
     },

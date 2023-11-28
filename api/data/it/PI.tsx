@@ -54,8 +54,8 @@ export const piHero: HeroProps = {
     "Lo schermo di un computer portatile mostra la pagina principale della piattaforma SEND.",
   background: `${IMAGES_PATH}/pi-hero-background.png`,
   ctaSecondary: {
-    label: "Accedi a SEND",
-    title: "Accedi a SEND",
+    label: "Leggi le tue notifiche",
+    title: "Leggi le tue notifiche",
     onClick: function onClick() {
       window.open(PN_PG_URL, "_self");
     },
