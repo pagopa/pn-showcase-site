@@ -43,7 +43,7 @@ const NavigationBar = ({
       const mobile = window.innerWidth < 900;
       setIsMobile(mobile);
       if (!mobile) {
-        setIsMobileMenuOpen(false); 
+        setIsMobileMenuOpen(false);
       }
     }
     handleResize();
@@ -95,7 +95,12 @@ const NavigationBar = ({
           {isMobile && (
             <IconButton
               onClick={toggleMobileMenu}
-              sx={{ position: 'absolute', top: 80, right: 20 }}
+              sx={{
+                position: 'absolute', top: 80, right: 20, color: 'primary.main',
+                '&:hover': {
+                  backgroundColor: 'transparent'
+                },
+              }}
             >
               {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
@@ -112,32 +117,46 @@ const NavigationBar = ({
                 horizontal: 'left',
               }}
               transformOrigin={{
-                vertical: 'top', 
-                horizontal: 'left', 
+                vertical: 'top',
+                horizontal: 'left',
               }}
               sx={{
                 '& .MuiPaper-root': {
-                  width: '-webkit-fill-available', 
-                  top: '150px !important', 
+                  width: '96%',
+                  top: '152px !important',
                   boxShadow: "none",
                 },
               }}
             >
-              <MenuItem onClick={() => setSubMenuOpen(!subMenuOpen)}>
-                Enti {subMenuOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-              </MenuItem>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer',}}>
+                <Typography 
+                sx={{ flexGrow: 1, color: index === 0 ? 'primary.main' : 'text.secondary', fontWeight: "600", fontSize: "1rem", paddingLeft: "16px" }} 
+                onClick={() => handleMenuItemClick('/pubbliche-amministrazioni')}
+                >
+                  Enti
+                </Typography>
+                <IconButton
+                  size="small"
+                  onClick={() => setSubMenuOpen(!subMenuOpen)}
+                  sx={{ color: index === 0 ? 'primary.main' : 'text.secondary' }}
+                >
+                  {subMenuOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                </IconButton>
+              </Box>
               {subMenuOpen && (
-                <MenuItem onClick={() => handleMenuItemClick('/documenti')}>
-                  Documentazione
-                </MenuItem>
+                <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.paper' }}>
+                  <MenuItem onClick={() => handleMenuItemClick('/documenti')} sx={{ color: pathname === '/documenti' ? 'primary.main' : 'text.secondary' }}>
+                    Documentazione
+                  </MenuItem>
+                </Box>
               )}
-              <MenuItem onClick={() => handleMenuItemClick('/cittadini')}>
+              <MenuItem onClick={() => handleMenuItemClick('/cittadini')} sx={{ color: index === 1 ? 'primary.main' : 'text.secondary' }}>
                 Cittadini
               </MenuItem>
-              <MenuItem onClick={() => handleMenuItemClick('/imprese')}>
+              <MenuItem onClick={() => handleMenuItemClick('/imprese')} sx={{ color: index === 2 ? 'primary.main' : 'text.secondary' }}>
                 Imprese
               </MenuItem>
-              <MenuItem onClick={() => handleMenuItemClick('/faq')}>
+              <MenuItem onClick={() => handleMenuItemClick('/faq')} sx={{ color: index === 3 ? 'primary.main' : 'text.secondary' }}>
                 FAQ
               </MenuItem>
             </Menu>
@@ -162,7 +181,7 @@ const NavigationBar = ({
               onClose={handleCloseMenu}
               sx={{ marginLeft: -4, marginTop: 2 }}
             >
-              <MenuItem onClick={() => handleMenuItemClick('/documenti')}>
+              <MenuItem onClick={() => handleMenuItemClick('/documenti')} sx={{ color: pathname === '/documenti' ? 'primary.main' : 'text.secondary' }}>
                 Documentazione
               </MenuItem>
             </Menu>
