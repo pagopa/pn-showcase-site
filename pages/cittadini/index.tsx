@@ -22,7 +22,7 @@ const CittadiniPage: NextPage = () => (
     <main>
       <Hero {...getHeroData(USER_TYPE)} />
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 1")} />
-      <Showcase {...getShowcaseData(USER_TYPE, "showcase 1")} />
+      <div className="showcasePadding"><Showcase {...getShowcaseData(USER_TYPE, "showcase 1")} /></div> 
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 2")} />
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 4")} />
       <div className="dark"><InfoblockCustomCittadini></InfoblockCustomCittadini></div>

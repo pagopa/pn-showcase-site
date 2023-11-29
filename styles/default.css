@@ -118,6 +118,10 @@ body {
   flex-direction: row;
 }
 
+.customFaqHero [class$="MuiStack-root"] > [class$="MuiStack-root"]:nth-of-type(2) {
+  display: none;
+}
+
 .sendNavbar .MuiTabs-flexContainer .MuiTypography-root {
   font-weight: 600;
   font-size: 1rem;
@@ -130,6 +134,11 @@ body {
 .button-cittadini {
   height: 4em;
   width: 100%; 
+}
+
+.showcasePadding .MuiContainer-root {
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 @media screen and (min-width:900px) {
