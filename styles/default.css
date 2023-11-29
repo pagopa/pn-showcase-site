@@ -96,6 +96,10 @@ body {
   border-radius: 16px;
 } 
 
+.documentiCustomCard .MuiCardContent-root, .MuiCardActions-root {
+  padding: 32px;
+} 
+
 .lightWalkthrough .MuiBox-root {
   background-color: #FFFFFF;
 }

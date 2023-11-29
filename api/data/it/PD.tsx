@@ -108,13 +108,16 @@ export const Cards1 = () => {
         <Box pb={8} pt={8}>
             <Container maxWidth="xl" className="documentiCustomCard">
                 <Grid container spacing={2}>
-                    <Grid item xs={12} md={4} pb={4} sx={{ pr: { md: 10, xs: 0, sm: 0 } }}>
+
+                    <Grid item xs={0} md={1} lg={1}></Grid>
+
+                    <Grid item xs={12} md={10} lg={3} pb={4}>
                         <Box>
                             <Stack>
-                                <Typography variant="h4" tabIndex={0} aria-label="Come aderire a SEND" sx={{ color: "primary.contrastText" }} pb={4}>
+                                <Typography variant="h4" tabIndex={0} aria-label="Come aderire a SEND" sx={{ color: "primary.contrastText" }} pb={2}>
                                     Come aderire a SEND
                                 </Typography>
-                                <Typography variant="h6" tabIndex={0} aria-label="Per gli enti" sx={{ color: "primary.contrastText" }} pb={4}>
+                                <Typography variant="h6" tabIndex={0} aria-label="Per gli enti" sx={{ color: "primary.contrastText" }} pb={2}>
                                     Per gli enti
                                 </Typography>
                                 <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
@@ -153,7 +156,7 @@ export const Cards1 = () => {
                                 <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
                                     Una volta sottoscritto l'accordo in digitale, l'ente dovrà caricarlo e inviarlo a PagoPA S.p.A. sempre dall'Area Riservata integrando i seguenti documenti e moduli debitamente compilati ove richiesto.
                                 </Typography>
-                                <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
+                                <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={4}>
                                     Per ulteriori informazioni e chiarimenti, è possibile{" "}
                                     <Link href="https://docs.pagopa.it/faq-enti"
                                         target="_blank"
@@ -172,9 +175,13 @@ export const Cards1 = () => {
                         </Box>
                     </Grid>
 
-                    <Grid container spacing={2} xs={12} md={8} sx={{ ml: { xs: 0, sm: 0 } }}>
+                    <Grid item xs={0} md={0} lg={1}></Grid>
+
+                    <Grid item xs={12} md={1} sx={{ display: { xs: 'none', sm: 'none', md: 'initial', lg: 'none' } }}></Grid>
+
+                    <Grid container spacing={2} xs={12} md={10} lg={6} sx={{ ml: { xs: 0, sm: 0 } }}>
                         {/* Left column */}
-                        <Grid item xs={12} md={6}>
+                        <Grid item xs={12} sm={6} md={6}>
                             <Grid container spacing={2} direction="column" justifyContent="space-between">
                                 {cards1Data.slice(0, Math.ceil(cards1Data.length / 2)).map((card, index) => (
                                     <Grid item key={index}>
@@ -213,7 +220,7 @@ export const Cards1 = () => {
                         </Grid>
 
                         {/* Right column */}
-                        <Grid item xs={12} md={6}>
+                        <Grid item xs={12} sm={6} md={6}>
                             <Grid container spacing={2} direction="column" justifyContent="space-between">
                                 {cards1Data.slice(Math.ceil(cards1Data.length / 2)).map((card, index) => (
                                     <Grid item key={index}>
@@ -251,6 +258,9 @@ export const Cards1 = () => {
                             </Grid>
                         </Grid>
                     </Grid>
+
+                    <Grid item xs={false} md={1} lg={1}></Grid>
+
                 </Grid>
             </Container>
         </Box>
@@ -314,18 +324,27 @@ export const Cards2 = () => {
         <Box pb={8} pt={8} className="documentiCustomCardContent">
             <Container maxWidth="xl" className="documentiCustomCard">
                 <Grid container spacing={2}>
-                    <Grid item xs={12} md={4} sx={{ pr: { md: 10, xs: 0, sm: 0 } }}>
+
+                    <Grid item xs={0} md={1} lg={1}></Grid>
+
+                    <Grid item xs={12} md={10} lg={3} pb={4}>
                         <Box>
                             <Stack>
-                                <Typography variant="h4" tabIndex={0} aria-label="Vuoi approfondire?" pb={4}>
+                                <Typography variant="h4" tabIndex={0} aria-label="Vuoi approfondire?" pb={2}>
                                     Vuoi approfondire?
                                 </Typography>
                             </Stack>
                         </Box>
                     </Grid>
-                    <Grid container spacing={2} xs={12} md={8} sx={{ ml: { xs: 0, sm: 0 } }}>
+
+
+                    <Grid item xs={0} md={0} lg={1}></Grid>
+
+                    <Grid item xs={12} md={1} sx={{ display: { xs: 'none', sm: 'none', md: 'initial', lg: 'none' } }}></Grid>
+
+                    <Grid container spacing={2} xs={12} md={10} lg={6} sx={{ ml: { xs: 0, sm: 0 } }}>
                         {/* Left column */}
-                        <Grid item xs={12} md={6}>
+                        <Grid item xs={12} sm={6} md={6}>
                             <Grid container spacing={2} direction="column" justifyContent="space-between">
                                 {cards2Data.slice(0, Math.ceil(cards2Data.length / 2)).map((card, index) => (
                                     <Grid item key={index}>
@@ -363,7 +382,7 @@ export const Cards2 = () => {
                             </Grid>
                         </Grid>
                         {/* Right column */}
-                        <Grid item xs={12} md={6}>
+                        <Grid item xs={12} sm={6} md={6}>
                             <Grid container spacing={2} direction="column" justifyContent="space-between">
                                 {cards2Data.slice(Math.ceil(cards2Data.length / 2)).map((card, index) => (
                                     <Grid item key={index}>
@@ -401,6 +420,9 @@ export const Cards2 = () => {
                             </Grid>
                         </Grid>
                     </Grid>
+
+                    <Grid item xs={false} md={1} lg={1}></Grid>
+
                 </Grid>
             </Container>
         </Box>
