@@ -336,7 +336,7 @@ export const CustomInfoblockImprese = () => {
               },
               mb: 4
             }}>
-              Se non ricevi l’Avviso via PEC e/o non accedi alla notifica digitale
+              Se non ricevi l’Avviso via PEC <br /> e/o non accedi alla notifica digitale
             </Typography>
             <Typography variant="body2" sx={{
               '@media (max-width:899px)': {

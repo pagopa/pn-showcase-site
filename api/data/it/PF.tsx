@@ -64,7 +64,7 @@ const infoblock1_2 = `Puoi anche pagare eventuali costi grazie all'integrazione 
 
 const infoblock2 = `Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID o CIE per indicare o aggiornare il tuo domicilio digitale di piattaforma oppure i tuoi recapiti per ricevere un messaggio di cortesia, quando un ente ti invia una notifica: app IO, email e/o numero di cellulare.`;
 
-const infoblock2_1 = `Se non hai indicato nessuno di questi recapiti digitali, non risulta a te associata una pec e non accedi alla notifica su SEND entro i tempi indicati, riceverai tramite raccomandata cartacea un Avviso di Avvenuta Ricezione con le indicazioni per visualizzare online gli atti notificati o ritirarli presso un qualsiasi ufficio postale.`;
+const infoblock2_1 = `Se non hai indicato nessuno di questi recapiti digitali, non risulta a te associata una PEC e non accedi alla notifica su SEND entro i tempi indicati, riceverai tramite raccomandata cartacea un Avviso di Avvenuta Ricezione con le indicazioni per visualizzare online gli atti notificati o ritirarli presso un qualsiasi ufficio postale.`;
 
 const infoblock3_2 = `Le Pubbliche Amministrazioni stanno gradualmente adottando il nuovo Servizio Notifiche Digitali, per questo è possibile che non tutti gli atti ti saranno già notificati con questa modalità.`;
 
@@ -358,18 +358,16 @@ export const pfShowcases: Array<IShowcaseData> = [
 /** Walkthrough mocked data */
 const walkthrough1 = `Per ogni notifica, SEND verifica che ci sia una PEC a te associata o da te indicata per l'invio dell'avviso di avvenuta ricezione. Invia anche un avviso di cortesia agli altri tuoi recapiti digitali (app IO, e-mail e numero di cellulare), se li hai inseriti. Se non hai indicato alcun recapito digitale e non accedi online alla notifica attraverso SEND, riceverai l’Avviso di Avvenuta Ricezione tramite raccomandata cartacea.`;
 
-const walkthrough2 = `Dal messaggio ricevuto, puoi accedere online alla piattaforma per leggere la notifica e scaricare i relativi documenti allegati. Se attivi il servizio su IO, puoi visualizzare il contenuto direttamente in app: questo equivale alla firma della ricevuta di ritorno di una raccomandata tradizionale e al `;
+const walkthrough2 = `Dall' avviso ricevuto, puoi accedere online a SEND per leggere la notifica e scaricare i relativi documenti allegati. Se attivi il servizio su IO, puoi visualizzare il contenuto direttamente in app: questo equivale alla firma della ricevuta di ritorno di una raccomandata tradizionale e al `;
 
-const walkthrough2_1 = `
- immediato della notifica.
-`;
-const walkthrough2_2 = `perfezionamento`;
-const walkthrough3 = `
-Se c'è un importo da pagare, grazie all'integrazione con pagoPA, puoi procedere contestualmente online da SEND 
-oppure direttamente da IO. Se preferisci recarti presso uno sportello, dovrai avere con te il modulo di pagamento 
-allegato alla notifica.
-`;
+const walkthrough2_1 = `perfezionamento`;
+
+const walkthrough2_2 = ` immediato della notifica. In alternativa, puoi ottenere i documenti notificati recandoti presso qualsiasi ufficio postale.`;
+
+const walkthrough3 = `Se c'è un importo da pagare, grazie all'integrazione con pagoPA, puoi procedere contestualmente online da SEND oppure direttamente da IO. Se preferisci recarti presso uno sportello, dovrai avere con te il modulo di pagamento allegato alla notifica.`;
+
 const walkthrough4 = `Se lo desideri, puoi delegare altre persone, fisiche o giuridiche, a visualizzare le tue notifiche online. Per farlo, accedi a SEND con SPID o CIE e inserisci nella sezione Deleghe i dati della persona che vuoi delegare.`;
+
 export const pfWalkthrough: WalkthroughProps = {
   title: "Come funziona?",
   items: [
@@ -393,12 +391,12 @@ export const pfWalkthrough: WalkthroughProps = {
               href="/perfezionamento"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={walkthrough2_2}
+              aria-label={walkthrough2_1}
               sx={{ fontWeight: "bold", color: "primary.main" }}
             >
-              {walkthrough2_2}
+              {walkthrough2_1}
             </Link>
-            {walkthrough2_1}
+            {walkthrough2_2}
           </Typography>
         </>
       ),

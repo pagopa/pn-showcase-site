@@ -132,7 +132,7 @@ body {
 }
 
 .button-cittadini {
-  height: 4em;
+  height: 3em;
   width: 100%; 
 }
 
@@ -151,13 +151,6 @@ body {
 @media (max-width: 640px) {
   .tab-enti{
     margin-left: 10px!important;
-  }
-}
-
-@media (max-width: 500px) {
-  .button-cittadini {
-    height: 3.5em;
-    width: 100%; 
   }
 }
 

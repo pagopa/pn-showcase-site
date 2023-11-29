@@ -442,7 +442,7 @@ export const StripeLink = () => {
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} href="https://developer.pagopa.it/send/overview">
+                        <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} href="https://docs.pagopa.it/send-kit-di-comunicazione-per-gli-enti-aderenti/">
                             Vai alla documentazione tecnica
                         </Button>
                     </Grid>
