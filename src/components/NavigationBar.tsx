@@ -29,38 +29,6 @@ const NavigationBar = ({
   const [isMobile, setIsMobile] = useState(false)
   const [subMenuOpen, setSubMenuOpen] = useState(false);
 
-  const paths = ["/pubbliche-amministrazioni", "/cittadini", "/imprese", "/faq"];
-
-  function a11yProps(index: number) {
-    return {
-      id: `page-tab-${index}`,
-      'aria-controls': `page-tabpanel-${index}`,
-    };
-  }
-
-  useEffect(() => {
-    function handleResize() {
-      const mobile = window.innerWidth < 900;
-      setIsMobile(mobile);
-      if (!mobile) {
-        setIsMobileMenuOpen(false);
-      }
-    }
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    setIndex(paths.indexOf(pathname));
-  }, [pathname]);
-
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prevState) => !prevState);
   };
@@ -83,6 +51,33 @@ const NavigationBar = ({
     setIsMobileMenuOpen(false);
   };
 
+  const paths = ["/pubbliche-amministrazioni", "/cittadini", "/imprese", "/faq"];
+
+  function a11yProps(index: number) {
+    return {
+      id: `page-tab-${index}`,
+      'aria-controls': `page-tabpanel-${index}`,
+    };
+  }
+
+  useEffect(() => {
+    setIndex(paths.indexOf(pathname));
+    setIsMobileMenuOpen(false);
+    setSubMenuOpen(false);
+
+    function handleResize() {
+      const mobile = window.innerWidth < 900;
+      setIsMobile(mobile);
+      if (!mobile) {
+        setIsMobileMenuOpen(false);
+      }
+    }
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [pathname]);
 
   return (
     <Box className="sendNavbar">
@@ -122,30 +117,34 @@ const NavigationBar = ({
               }}
               sx={{
                 '& .MuiPaper-root': {
-                  width: '96%',
-                  top: '152px !important',
+                  width: '100%',
+                  top: '152px!important',
                   boxShadow: "none",
+                  left: "0px!important",
+                  maxWidth: "none"
                 },
               }}
             >
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer',}}>
-                <Typography 
-                sx={{ flexGrow: 1, color: index === 0 ? 'primary.main' : 'text.secondary', fontWeight: "600", fontSize: "1rem", paddingLeft: "16px" }} 
-                onClick={() => handleMenuItemClick('/pubbliche-amministrazioni')}
-                >
-                  Enti
-                </Typography>
-                <IconButton
-                  size="small"
-                  onClick={() => setSubMenuOpen(!subMenuOpen)}
-                  sx={{ color: index === 0 ? 'primary.main' : 'text.secondary' }}
-                >
-                  {subMenuOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-                </IconButton>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', }}>
+                <div style={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
+                  <Typography
+                    sx={{ flexGrow: 1, color: index === 0 ? 'primary.main' : 'text.secondary', fontWeight: "600", fontSize: "1rem", paddingLeft: "16px", paddingRight: "8px"  }}
+                    onClick={() => handleMenuItemClick('/pubbliche-amministrazioni')}
+                  >
+                    Enti
+                  </Typography>
+                  <IconButton
+                    size="small"
+                    onClick={() => setSubMenuOpen(!subMenuOpen)}
+                    sx={{ color: index === 0 ? 'primary.main' : 'text.secondary' }}
+                  >
+                    {subMenuOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                  </IconButton>
+                </div>
               </Box>
               {subMenuOpen && (
                 <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.paper' }}>
-                  <MenuItem onClick={() => handleMenuItemClick('/documenti')} sx={{ color: pathname === '/documenti' ? 'primary.main' : 'text.secondary' }}>
+                  <MenuItem onClick={() => handleMenuItemClick('/documenti')} sx={{ color: pathname === '/documenti' ? 'primary.main' : 'text.secondary', fontWeight: "400", fontSize: "1rem", paddingLeft: "32px" }}>
                     Documentazione
                   </MenuItem>
                 </Box>
