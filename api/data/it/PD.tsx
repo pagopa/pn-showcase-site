@@ -284,30 +284,30 @@ export const Cards2 = () => {
         //           },
         //       ],
         //   },
+        // {
+        //     title: "Costi di notifica digitale e analogica",
+        //     description: "",
+        //     buttons: [
+        //         {
+        //             label: "Vai ai costi",
+        //             color: "primary",
+        //             link: "/static/documents/Analisi Ente - Cittadino v1.0.xlsx - ENTE (PagoPA).pdf",
+        //             icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
+        //         },
+        //     ],
+        // },
         {
-            title: "Costi di notifica digitale e analogica",
+            title: "Kit di comunicazione",
             description: "",
             buttons: [
                 {
-                    label: "Vai ai costi",
+                    label: "Vai al kit",
                     color: "primary",
-                    link: "/static/documents/Analisi Ente - Cittadino v1.0.xlsx - ENTE (PagoPA).pdf",
+                    link: "https://docs.pagopa.it/send-kit-di-comunicazione-per-gli-enti-aderenti/",
                     icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
             ],
-        },
-        //   {
-        //       title: "Kit di comunicazione",
-        //       description: "",
-        //       buttons: [
-        //           {
-        //               label: "Vai al kit",
-        //               color: "primary",
-        //               link: "#",
-        //               icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
-        //           },
-        //       ],
-        //   },
+        }
     ];
 
     return (
