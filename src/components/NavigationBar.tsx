@@ -14,7 +14,6 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const NavigationBar = ({
   title,
-  chip,
   pf,
   pa,
   faq,
@@ -128,10 +127,10 @@ const NavigationBar = ({
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', }}>
                 <div style={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
                   <Typography
-                    sx={{ flexGrow: 1, color: index === 0 ? 'primary.main' : 'text.secondary', fontWeight: "600", fontSize: "1rem", paddingLeft: "16px", paddingRight: "8px"  }}
-                    onClick={() => handleMenuItemClick('/pubbliche-amministrazioni')}
+                    sx={{ flexGrow: 1, color: index === 0 ? 'primary.main' : 'text.secondary', fontWeight: "600", fontSize: "1rem", paddingLeft: "16px", paddingRight: "8px" }}
+                    onClick={() => handleMenuItemClick(paths[0])}
                   >
-                    Enti
+                    {pa}
                   </Typography>
                   <IconButton
                     size="small"
@@ -149,14 +148,14 @@ const NavigationBar = ({
                   </MenuItem>
                 </Box>
               )}
-              <MenuItem onClick={() => handleMenuItemClick('/cittadini')} sx={{ color: index === 1 ? 'primary.main' : 'text.secondary' }}>
-                Cittadini
+              <MenuItem onClick={() => handleMenuItemClick(paths[1])} sx={{ color: index === 1 ? 'primary.main' : 'text.secondary' }}>
+                {pf}
               </MenuItem>
-              <MenuItem onClick={() => handleMenuItemClick('/imprese')} sx={{ color: index === 2 ? 'primary.main' : 'text.secondary' }}>
-                Imprese
+              <MenuItem onClick={() => handleMenuItemClick(paths[2])} sx={{ color: index === 2 ? 'primary.main' : 'text.secondary' }}>
+                {pi}
               </MenuItem>
-              <MenuItem onClick={() => handleMenuItemClick('/faq')} sx={{ color: index === 3 ? 'primary.main' : 'text.secondary' }}>
-                FAQ
+              <MenuItem onClick={() => handleMenuItemClick(paths[3])} sx={{ color: index === 3 ? 'primary.main' : 'text.secondary' }}>
+                {faq}
               </MenuItem>
             </Menu>
           </>
