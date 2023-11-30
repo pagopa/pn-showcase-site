@@ -6,11 +6,8 @@ import {
 } from "@pagopa/mui-italia";
 import {
   IMAGES_PATH,
-  MANUALE_URL,
-  PARTNER_AND_INTERMEDIARIES_PATH,
 } from "@utils/constants";
 import { IInfoblockData, IShowcaseData } from "model";
-import Link from "next/link";
 import {
   PeopleIcon,
   FireworksIcon,
@@ -23,7 +20,7 @@ import {
 } from "../icons";
 
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import MessageIcon from '@mui/icons-material/Message';
+import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 
 const heroSubtitle =
   "SEND, Servizio Notifiche Digitali (anche nota come Piattaforma Notifiche Digitali di cui all'art. 26 del decreto-legge 76/2020 s.m.i.)  digitalizza la gestione delle comunicazioni a valore legale, semplificando il processo per tutti: chi le invia, e chi le riceve.";
@@ -350,22 +347,45 @@ export const paHorizontalNav: HorizontalNavProps = {
 
 export const StripeLinkEnti = () => {
   return (
-      <Box sx={{ backgroundColor: "#17324D" }} padding={2}>
-          <Container maxWidth="xl">
-              <Grid container spacing={2} >
-                  <Grid item xs={12} md={6} display={"flex"} justifyContent={"center"} alignItems={"center"}>
-                      <Typography variant="body2" color="white" display={"flex"} justifyContent={"center"} alignItems={"center"}>
-                          <MessageIcon sx={{ fontSize: "20px", marginRight: "10px" }} />
-                          Vuoi comunicare l’adesione a SEND ai cittadini?
-                      </Typography>
-                      <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} sx={{ marginLeft: "1em" }}>
-                        Vai al kit di comunicazione
-                      </Button>
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                  </Grid>
-              </Grid>
-          </Container>
-      </Box>
+    <Box sx={{ backgroundColor: "info.contrastText" }} padding={2}>
+      <Container maxWidth="xl">
+        <Grid container spacing={2} >
+          <Grid item xs={12} md={6} display={"flex"} justifyContent={"center"} alignItems={"center"}>
+            <Typography variant="body2" color="white" display={"flex"} justifyContent={"center"} alignItems={"center"}>
+              <SpeakerNotesIcon sx={{ fontSize: "20px", marginRight: "10px" }} />
+              Vuoi comunicare l’adesione a SEND ai cittadini?
+            </Typography>
+            <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} sx={{ marginLeft: "1em" }} href="https://docs.pagopa.it/send-kit-di-comunicazione-per-gli-enti-aderenti/">
+              Vai al kit di comunicazione
+            </Button>
+          </Grid>
+          <Grid item xs={12} md={6}>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
+  );
+};
+
+
+export const DarkInfoblockEnti = () => {
+  return (
+    <Box sx={{ backgroundColor: "#0B3EE3", paddingTop: 8, paddingBottom: 8 }}>
+      <Container maxWidth="xl">
+        <Grid container alignItems="center" justifyContent="center">
+          <Grid item xs={12} display="flex" flexDirection="column" alignItems="center">
+            <Typography variant="h4" component="h1" color="white" gutterBottom>
+              Il tuo ente ha già aderito a SEND?
+            </Typography>
+            <Typography variant="body2" color="white" textAlign="center" marginBottom={2}>
+              Se il tuo ente ha aderito a SEND e sei un utente autorizzato, accedi tramite l'Area Riservata.
+            </Typography>
+            <Button variant="contained" sx={{ alignSelf: "center", backgroundColor: "background.paper", color: "pagoPA.main", ":hover": { backgroundColor: "background.paper", color: "pagoPA.main" } }} href="https://selfcare.pagopa.it/auth/login">
+              Accedi a SEND
+            </Button>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 };
