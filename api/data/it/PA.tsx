@@ -323,7 +323,7 @@ export const StripeLinkEnti = () => {
               <SpeakerNotesIcon sx={{ fontSize: "20px", marginRight: "10px" }} />
               Vuoi comunicare l’adesione a SEND ai cittadini?
             </Typography>
-            <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} sx={{ marginLeft: "1em" }}>
+            <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} sx={{ marginLeft: "1em" }} href="https://docs.pagopa.it/send-kit-di-comunicazione-per-gli-enti-aderenti/">
               Vai al kit di comunicazione
             </Button>
           </Grid>
