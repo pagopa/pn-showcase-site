@@ -51,8 +51,7 @@ export const itFaqData: IFaqData = {
             `Fino ad ora ogni notifica era composta da uno o più “atti”, cioè i documenti notificati, 
             e da eventuali altri documenti. Per esempio, una multa poteva essere composta da un verbale di contravvenzione 
             (il documento notificato), da una fotografia dell’autovelox e da un bollettino per il pagamento (gli altri documenti).`,
-            `Con SEND invece, la notifica si concretizza in un avviso che include le istruzioni per 
-            ottenere i documenti notificati e gli eventuali altri documenti.`,
+            `Con SEND invece, la notifica si concretizza in un avviso (tecnicamente Avviso di Avvenuta Ricezione) che include le istruzioni per ottenere i documenti notificati e gli eventuali altri documenti.`,
           ],
         },
       ],
@@ -179,7 +178,7 @@ export const itFaqData: IFaqData = {
           description: (
             <Box>
               <Typography variant="body2" component="span" sx={{ mr: "4px" }}>
-                Se nei registri pubblici c’è una PEC riconducibile a te, riceverai l’avviso di avvenuta ricezione a quell’indirizzo.
+                Se nei registri pubblici (INAD, INIPEC o registri di un ente) c’è una PEC riconducibile a te, riceverai l’avviso di avvenuta ricezione a quell’indirizzo di posta elettronica certificata.
                 Se non c’è, riceverai l’avviso di avvenuta ricezione tramite raccomandata cartacea. In entrambi i casi, dovrai
               </Typography>
               <Typography variant="body2" component="span">
@@ -202,12 +201,11 @@ export const itFaqData: IFaqData = {
                 c’è una PEC a te riconducibile, riceverai l’avviso di avvenuta ricezione a quell’indirizzo. 
                 Per visualizzare i documenti notificati e pagare eventuali spese, dovrai"
               >
-                Se nella sezione “I tuoi recapiti” di SEND o in uno dei registri pubblici 
-                c’è una PEC a te riconducibile, riceverai l’avviso di avvenuta ricezione a quell’indirizzo. 
+                Se nella sezione “I tuoi recapiti” di SEND o in uno dei registri pubblici (INAD, INIPEC o registri di un ente) c’è una PEC a te riconducibile, riceverai l’avviso di avvenuta ricezione a quell’indirizzo di posta elettronica certificata.
                 Per visualizzare i documenti notificati e pagare eventuali spese, dovrai
               </FaqTextSection>
               <FaqLink href={PN_PF_URL} noSpaceAfter>
-                accedere a SEND 
+                accedere a SEND
               </FaqLink>
               <FaqTextSection
                 ariaLabel={` con SPID o CIE.`}
@@ -215,25 +213,25 @@ export const itFaqData: IFaqData = {
                 {` con SPID o CIE.`}
               </FaqTextSection>
 
-              <br/><br/>
+              <br /><br />
 
               <FaqParagraph
                 ariaLabel="Se hai attivato il servizio “Notifiche digitali” di IO, quando c’è una notifica per te riceverai un messaggio in app. 
                 Potrai visualizzare i documenti notificati e pagare eventuali spese direttamente in IO, senza dover accedere a SEND con SPID o CIE. "
               >
-                Se hai attivato il servizio “Notifiche digitali” di IO, quando c’è una notifica per te riceverai un messaggio in app. 
-                Potrai visualizzare i documenti notificati e pagare eventuali spese direttamente in IO, senza dover accedere a SEND con SPID o CIE. 
+                Se hai attivato il servizio “Notifiche digitali” di IO, quando c’è una notifica per te riceverai un messaggio in app.
+                Potrai visualizzare i documenti notificati e pagare eventuali spese direttamente in IO, senza dover accedere a SEND con SPID o CIE.
               </FaqParagraph>
 
               <FaqTextSection
                 ariaLabel="Se hai inserito un’e-mail o un numero di cellulare, quando c’è una notifica per te riceverai un messaggio su questi canali. 
                 Per visualizzare i documenti notificati e pagare eventuali spese, dovrai"
               >
-                Se hai inserito un’e-mail o un numero di cellulare, quando c’è una notifica per te riceverai un messaggio su questi canali. 
+                Se hai inserito un’e-mail o un numero di cellulare, quando c’è una notifica per te riceverai un messaggio su questi canali.
                 Per visualizzare i documenti notificati e pagare eventuali spese, dovrai
               </FaqTextSection>
               <FaqLink href={PN_PF_URL} noSpaceAfter>
-                accedere a SEND 
+                accedere a SEND
               </FaqLink>
               <FaqTextSection
                 ariaLabel={`con SPID o CIE.`}
@@ -241,7 +239,7 @@ export const itFaqData: IFaqData = {
                 {` con SPID o CIE.`}
               </FaqTextSection>
 
-              <br/><br/>
+              <br /><br />
 
               <FaqTextSection
                 ariaLabel="Se vuoi inserire o modificare i recapiti,"
@@ -249,12 +247,20 @@ export const itFaqData: IFaqData = {
                 Se vuoi inserire o modificare i recapiti,
               </FaqTextSection>
               <FaqLink href={PN_PF_URL} noSpaceAfter>
-                accedi a SEND 
+                accedi a SEND
               </FaqLink>
               <FaqTextSection
                 ariaLabel={` e vai alla sezione “I tuoi recapiti”. `}
               >
                 {` e vai alla sezione “I tuoi recapiti”. `}
+              </FaqTextSection>
+
+              <br /><br />
+
+              <FaqTextSection
+                ariaLabel="Se non hai inserito nessun recapito digitale (PEC, app IO, e-mail o numero di cellulare), se l’invio al tuo recapito non va a buon fine o se non leggi la notifica online o da app IO entro i tempi stabiliti, riceverai a casa una raccomandata contentente un avviso di avvenuta ricezione che contiene le informazioni essenziali della notifica e ha di per sé valore legale. Per ottenere i documenti notificati, dovrai comunque accedere a SEND con SPID o CIE oppure recarti in qualsiasi Ufficio Postale e chiedere di usufruire del servizio “Stampa notifica”."
+              >
+                Se non hai inserito nessun recapito digitale (PEC, app IO, e-mail o numero di cellulare), se l’invio al tuo recapito non va a buon fine o se non leggi la notifica online o da app IO entro i tempi stabiliti, riceverai a casa una raccomandata contentente un avviso di avvenuta ricezione che contiene le informazioni essenziali della notifica e ha di per sé valore legale. Per ottenere i documenti notificati, dovrai comunque accedere a SEND con SPID o CIE oppure recarti in qualsiasi Ufficio Postale e chiedere di usufruire del servizio “Stampa notifica”.
               </FaqTextSection>
 
             </Box>
@@ -472,9 +478,8 @@ export const itFaqData: IFaqData = {
           id: "ricezione-raccomandata-cartacea",
           title: `Ho ricevuto un avviso di avvenuta ricezione tramite raccomandata cartacea. Cosa devo fare?`,
           description: [
-            `Devi ottenere e leggere i documenti notificati e gli eventuali altri documenti. Hai due modi per farlo: gratis, inquadrando il codice QR o digitando nella barra di ricerca del tuo browser l’URL che trovi nell’avviso di avvenuta ricezione, o a pagamento in qualsiasi Ufficio Postale.`,
+            `L’avviso di avvenuta ricezione contiene le informazioni essenziali della notifica e ha valore legale. Per questo, devi seguire le indicazioni riportate nell’avviso per i ottenere e leggere il prima possibile i documenti notificati e gli eventuali altri documenti. Hai due modi per farlo: gratis, inquadrando il codice QR o digitando nella barra di ricerca del tuo browser l’URL che trovi nell’avviso di avvenuta ricezione; oppure a pagamento, in qualsiasi Ufficio Postale.`,
             `Se li ritiri in Ufficio Postale, porta con te l’avviso di avvenuta ricezione, un tuo documento di riconoscimento e il tuo Codice Fiscale. Se hai ricevuto la notifica in qualità di persona giuridica, dovrai mostrare anche un documento che attesti il tuo ruolo di legale rappresentante. Una volta ottenuti i documenti, leggili e paga eventuali spese.`,
-            `L’invio dell’avviso di avvenuta ricezione ha di per sé valore legale perché contiene le informazioni essenziali della notifica.`,
           ],
         },
       ],
