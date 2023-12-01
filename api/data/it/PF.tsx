@@ -478,7 +478,7 @@ export const InfoblockCustomCittadini = () => {
           <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <Box sx={{ width: '100%', padding: isMobile ? 1 : 4 }}>
               <img
-                src="/static/images/pf-infoblock-6.png"
+                src={`${IMAGES_PATH}/pf-infoblock-6.png`}
                 alt="Descrizione immagine"
                 style={{
                   width: '100%',
@@ -503,10 +503,9 @@ export const InfoblockCustomCittadini = () => {
                 href="https://play.google.com/store/apps/details?id=it.pagopa.io.app"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: 'block', width: 'auto' }}
               >
                 <img
-                  src="/static/images/google-play-badge.png"
+                  src={`${IMAGES_PATH}/google-play-badge.png`}
                   alt="Disponibile su Google Play"
                   className="button-cittadini"
                 />
@@ -515,10 +514,9 @@ export const InfoblockCustomCittadini = () => {
                 href="https://apps.apple.com/it/app/io/id1501681835"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: 'block', width: 'auto' }}
               >
                 <img
-                  src="/static/images/app-store-badge.png"
+                  src={`${IMAGES_PATH}/app-store-badge.png`}
                   alt="Disponibile su App store"
                   className="button-cittadini"
                 />
