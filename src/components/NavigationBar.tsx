@@ -6,7 +6,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import IconButton from "@mui/material/IconButton";
 
-import { Box, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Chip, Stack, Tab, Tabs, Typography } from "@mui/material";
 import { INavigationBarProps } from "model";
 
 import MenuIcon from '@mui/icons-material/Menu';
@@ -18,7 +18,8 @@ const NavigationBar = ({
   pa,
   faq,
   image,
-  pi
+  pi,
+  chip
 }: INavigationBarProps) => {
   const { pathname, push } = useRouter();
   const [index, setIndex] = useState<number | undefined>();
@@ -85,7 +86,7 @@ const NavigationBar = ({
           <Box sx={{ pr: 2, cursor: 'pointer' }} onClick={() => window.open('/', '_self')}>
             <img src={image} alt={title} aria-label={title} />
           </Box>
-          {/* <Chip label={chip} size="small" color="primary" /> */}
+          <Chip label={chip} size="small" color="primary" />
           {isMobile && (
             <IconButton
               onClick={toggleMobileMenu}
@@ -101,8 +102,7 @@ const NavigationBar = ({
           )}
         </Stack>
         {isMobile ? (
-          <>
-            <Menu
+          <Menu
               anchorEl={anchorEl}
               open={isMobileMenuOpen}
               onClose={closeMobileMenu}
@@ -158,7 +158,6 @@ const NavigationBar = ({
                 {faq}
               </MenuItem>
             </Menu>
-          </>
         ) : (
           <Tabs value={index} component="nav">
             <Box sx={{ paddingTop: 6, paddingBottom: 5, display: 'flex', alignItems: 'center', cursor: 'pointer' }} >
