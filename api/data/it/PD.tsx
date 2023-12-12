@@ -284,30 +284,30 @@ export const Cards2 = () => {
         //           },
         //       ],
         //   },
+        // {
+        //     title: "Costi di notifica digitale e analogica",
+        //     description: "",
+        //     buttons: [
+        //         {
+        //             label: "Vai ai costi",
+        //             color: "primary",
+        //             link: "/static/documents/Analisi Ente - Cittadino v1.0.xlsx - ENTE (PagoPA).pdf",
+        //             icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
+        //         },
+        //     ],
+        // },
         {
-            title: "Costi di notifica digitale e analogica",
+            title: "Kit di comunicazione",
             description: "",
             buttons: [
                 {
-                    label: "Vai ai costi",
+                    label: "Vai al kit",
                     color: "primary",
-                    link: "/static/documents/Analisi Ente - Cittadino v1.0.xlsx - ENTE (PagoPA).pdf",
+                    link: "https://docs.pagopa.it/send-kit-di-comunicazione-per-gli-enti-aderenti/",
                     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
                 },
             ],
         },
-        //   {
-        //       title: "Kit di comunicazione",
-        //       description: "",
-        //       buttons: [
-        //           {
-        //               label: "Vai al kit",
-        //               color: "primary",
-        //               link: "#",
-        //               icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
-        //           },
-        //       ],
-        //   },
     ];
 
     return (
@@ -384,7 +384,7 @@ export const Cards2 = () => {
                                                         <Button
                                                             key={buttonIndex}
                                                             size="small"
-                                                            color={ "primary"}
+                                                            color={"primary"}
                                                             href={button.link}
                                                             endIcon={button.icon || <ArrowForwardIcon />}
                                                             sx={{ justifyContent: "start" }}

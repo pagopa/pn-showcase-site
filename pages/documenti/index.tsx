@@ -16,7 +16,7 @@ const DocumentiPage: NextPage = () => (
       {/**
        * Le due sezioni sottostanti verranno ripristinate per la release del 30 novembre
        */}
-      {/* <Cards2></Cards2> */}
+      <Cards2></Cards2>
       {/* <StripeLink></StripeLink> */}
     </main>
   </>

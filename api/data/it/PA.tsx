@@ -1,4 +1,4 @@
-import { Typography, List, ListItem, SvgIcon, Box, Stack, Container, Grid, Button } from "@mui/material";
+import { Typography, SvgIcon, Box, Container, Grid, Button } from "@mui/material";
 import {
   HeroProps,
   HorizontalNavProps,
@@ -159,10 +159,10 @@ export const paInfoBlocks: Array<IInfoblockData> = [
       title: "",
       content: (
         <>
-          <Typography sx={{color: "primary.contrastText"}} variant="h4" tabIndex={0} aria-label={infoblock4_2}>
+          <Typography sx={{ color: "primary.contrastText" }} variant="h4" tabIndex={0} aria-label={infoblock4_2}>
             {infoblock4_2}
           </Typography>
-          <Typography sx={{color: "primary.contrastText"}} variant="body2" tabIndex={0} aria-label={infoblock4_3}>
+          <Typography sx={{ color: "primary.contrastText" }} variant="body2" tabIndex={0} aria-label={infoblock4_3}>
             {infoblock4_3}
           </Typography>
         </>
