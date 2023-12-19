@@ -161,6 +161,7 @@ const FaqPage: NextPage = () => {
             pt: "100px",
             backgroundColor: "#FAFAFA",
           }}
+          className="faqItems"
         >
           {faqData.sections.map((section, ix) => (
             <FaqDataSectionBlock

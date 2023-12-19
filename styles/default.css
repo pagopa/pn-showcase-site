@@ -141,6 +141,10 @@ body {
   padding-right: 32px;
 }
 
+.faqItems .MuiAccordionSummary-content {
+  margin: 21px 0px;
+}
+
 @media screen and (min-width:900px) {
   .documentiCustomCard .MuiPaper-root {
     margin-bottom: 8px;
