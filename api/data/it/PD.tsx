@@ -73,7 +73,7 @@ export const Cards1 = () => {
                 {
                     label: "Apri il documento",
                     color: "primary",
-                    link: "/static/documents/Modulo preventivo di fornitura.xlsx",
+                    link: "/static/documents/Modulo preventivo di fornitura REV1.xlsx",
                     icon: <ArrowForwardIcon sx={{ color: "#0073E6" }} />,
                 },
             ],

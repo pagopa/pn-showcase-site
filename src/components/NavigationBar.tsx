@@ -102,8 +102,7 @@ const NavigationBar = ({
           )}
         </Stack>
         {isMobile ? (
-          <>
-            <Menu
+          <Menu
               anchorEl={anchorEl}
               open={isMobileMenuOpen}
               onClose={closeMobileMenu}
@@ -159,7 +158,6 @@ const NavigationBar = ({
                 {faq}
               </MenuItem>
             </Menu>
-          </>
         ) : (
           <Tabs value={index} component="nav">
             <Box sx={{ paddingTop: 6, paddingBottom: 5, display: 'flex', alignItems: 'center', cursor: 'pointer' }} >
