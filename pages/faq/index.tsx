@@ -147,11 +147,13 @@ const FaqPage: NextPage = () => {
       <PageHead title={faqData.title} description="Pagina di FAQ" />
 
       <main id="faqHero">
-        <Hero
-          title="FAQ"
-          type="text"
-          background={`${IMAGES_PATH}/hero-faq-background-2.png`}
-        />
+        <div className="customFaqHero">
+          <Hero
+            title="FAQ"
+            type="text"
+            background={`${IMAGES_PATH}/hero-faq-background-2.png`}
+          />
+        </div>
         <Stack
           direction="column"
           sx={{
@@ -159,6 +161,7 @@ const FaqPage: NextPage = () => {
             pt: "100px",
             backgroundColor: "#FAFAFA",
           }}
+          className="faqItems"
         >
           {faqData.sections.map((section, ix) => (
             <FaqDataSectionBlock
