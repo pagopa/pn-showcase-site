@@ -222,7 +222,7 @@ Resources:
             CachedMethods:
               - GET
               - HEAD
-            TargetOriginId: !Sub 'pn-showcase'
+            TargetOriginId: 'pn-showcase'
             ViewerProtocolPolicy: redirect-to-https
             CachePolicyId: !Ref WebsiteCDNCachingPolicyFiveMinutes
             ResponseHeadersPolicyId: !Ref DefaultHeaderPolicy
@@ -233,7 +233,7 @@ Resources:
             CachedMethods:
               - GET
               - HEAD
-            TargetOriginId: !Sub 'pn-showcase'
+            TargetOriginId: 'pn-showcase'
             ViewerProtocolPolicy: redirect-to-https
             CachePolicyId: b2884449-e4de-46a7-ac36-70bc7f1ddd6d ## CachingOptimizedForUncompressedObjects - Default TTL: 86,400 seconds (24 hours) - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html#managed-cache-policies-list
             ResponseHeadersPolicyId: !Ref DefaultHeaderPolicy
@@ -244,7 +244,7 @@ Resources:
             CachedMethods:
               - GET
               - HEAD
-            TargetOriginId: !Sub 'pn-showcase'
+            TargetOriginId: 'pn-showcase'
             ViewerProtocolPolicy: redirect-to-https
             CachePolicyId: b2884449-e4de-46a7-ac36-70bc7f1ddd6d ## CachingOptimizedForUncompressedObjects - Default TTL: 86,400 seconds (24 hours) - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html#managed-cache-policies-list
             ResponseHeadersPolicyId: !Ref DefaultHeaderPolicy
@@ -255,7 +255,7 @@ Resources:
             CachedMethods:
               - GET
               - HEAD
-            TargetOriginId: !Sub 'pn-showcase'
+            TargetOriginId: 'pn-showcase'
             ViewerProtocolPolicy: redirect-to-https
             CachePolicyId: !Ref WebsiteCDNCachingPolicyOneHour
             ResponseHeadersPolicyId: !Ref DefaultHeaderPolicy
@@ -266,7 +266,7 @@ Resources:
             CachedMethods:
               - GET
               - HEAD
-            TargetOriginId: !Sub 'pn-showcase'
+            TargetOriginId: 'pn-showcase'
             ViewerProtocolPolicy: redirect-to-https
             CachePolicyId: !Ref WebsiteCDNCachingPolicyOneHour
             ResponseHeadersPolicyId: !Ref DefaultHeaderPolicy
@@ -278,7 +278,7 @@ Resources:
           CachedMethods:
             - GET
             - HEAD
-          TargetOriginId: !Sub 'pn-showcase'
+          TargetOriginId: 'pn-showcase'
           ViewerProtocolPolicy: redirect-to-https
           CachePolicyId: !Ref WebsiteCDNCachingPolicy
           ResponseHeadersPolicyId: !Ref DefaultHeaderPolicy
@@ -328,8 +328,10 @@ Resources:
           ContentSecurityPolicy: 
             ContentSecurityPolicy: 
               "default-src 'self' https://www.notifichedigitali.it/ ;
-              connect-src 'self' https://www.notifichedigitali.it/ \
-              https://selfcare.pagopa.it/assets/ ; \
+              connect-src 'self' \
+              https://selfcare.pagopa.it/assets/ \
+              https://privacyportalde-cdn.onetrust.com/ \
+              https://www.notifichedigitali.it/; \
               style-src 'self' 'unsafe-inline' https://www.notifichedigitali.it/ ; \
               worker-src 'none'; \
               font-src 'self' https://www.notifichedigitali.it/ ; \
