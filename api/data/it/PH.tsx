@@ -96,7 +96,7 @@ const infoblock1_2 = `Gli enti non devono fare altro che depositare l’atto da 
 
 const infoblock2_1 = `I cittadini che lo desiderano possono ricevere e consultare le notifiche in digitale, accedendo a SEND tramite SPID o CIE o direttamente dall’app IO.`;
 
-const infoblock2_2 = `In ogni caso la piattaforma garantisce libertà di scelta: i destinatari possono sempre indicare come ricevere le comunicazioni secondo le proprie preferenze e avere accesso alle notifiche in qualsiasi momento, online o da punti fisici.`;
+const infoblock2_2 = `In ogni caso la piattaforma garantisce libertà di scelta: i destinatari possono sempre indicare come ricevere le comunicazioni secondo le proprie preferenze.`;
 
 const infoblock3_1 = `SEND mette a disposizione un unico spazio condiviso in cui diversi referenti di una stessa impresa possono visualizzare e gestire in modo totalmente digitale tutte le notifiche ricevute dai vari enti e pagare eventuali importi dovuti. `;
 

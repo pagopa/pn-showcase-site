@@ -48,10 +48,8 @@ export const itFaqData: IFaqData = {
           id: "notifiche-composizione",
           title: "Da cosa è composta una notifica?",
           description: [
-            `Fino ad ora ogni notifica era composta da uno o più “atti”, cioè i documenti notificati, 
-            e da eventuali altri documenti. Per esempio, una multa poteva essere composta da un verbale di contravvenzione 
-            (il documento notificato), da una fotografia dell’autovelox e da un bollettino per il pagamento (gli altri documenti).`,
-            `Con SEND invece, la notifica si concretizza in un avviso (tecnicamente Avviso di Avvenuta Ricezione) che include le istruzioni per ottenere i documenti notificati e gli eventuali altri documenti.`,
+            `Ogni notifica è composta da uno o più “atti”, cioè i documenti notificati, e da eventuali altri documenti. Per esempio, una multa può essere composta da un verbale di contravvenzione (il documento notificato), da una fotografia dell'autovelox e da un bollettino per il pagamento (gli altri documenti).`,
+            `Una notifica inviata per via digitale con SEND si concretizza in un avviso con le istruzioni per visualizzare online i documenti. Una notifica inviata tramite raccomandata cartacea, invece, contiene sia l'avviso che i documenti.`,
           ],
         },
       ],
@@ -175,96 +173,21 @@ export const itFaqData: IFaqData = {
           id: "recapiti-se-non-inserisco",
           title:
             "Cosa succede se non inserisco nessun recapito digitale o se non posso accedere a SEND?",
-          description: (
-            <Box>
-              <Typography variant="body2" component="span" sx={{ mr: "4px" }}>
-                Se nei registri pubblici (INAD, INIPEC o registri di un ente) c’è una PEC riconducibile a te, riceverai l’avviso di avvenuta ricezione a quell’indirizzo di posta elettronica certificata.
-                Se non c’è, riceverai l’avviso di avvenuta ricezione tramite raccomandata cartacea. In entrambi i casi, dovrai
-              </Typography>
-              <Typography variant="body2" component="span">
-                <a href={PN_PF_URL}>accedere a SEND</a>
-              </Typography>
-              <Typography variant="body2" component="span" sx={{ mr: "4px" }}>
-                {" "}o andare in qualsiasi Ufficio Postale per ottenere i documenti notificati e gli eventuali altri documenti.
-              </Typography>
-            </Box>
-          ),
+          description: [
+            `Se nei registri pubblici c'è una PEC riconducibile a te, riceverai l'avviso di avvenuta ricezione a quell'indirizzo. Per ottenere i documenti notificati, dovrai accedere a SEND.`,
+            `Se nei registri pubblici non c'è una PEC riconducibile a te, riceverai la notifica, comprensiva dei documenti, tramite raccomandata cartacea.`,
+          ],
         },
         {
           id: "recapiti-differenza-tra-tipi",
           title: `Che differenza c'è tra PEC, app IO, e-mail, numero di cellulare e raccomandata cartacea?`,
-          description: (
-            <Box>
-
-              <FaqTextSection
-                ariaLabel="Se nella sezione “I tuoi recapiti” di SEND o in uno dei registri pubblici 
-                c’è una PEC a te riconducibile, riceverai l’avviso di avvenuta ricezione a quell’indirizzo. 
-                Per visualizzare i documenti notificati e pagare eventuali spese, dovrai"
-              >
-                Se nella sezione “I tuoi recapiti” di SEND o in uno dei registri pubblici (INAD, INIPEC o registri di un ente) c’è una PEC a te riconducibile, riceverai l’avviso di avvenuta ricezione a quell’indirizzo di posta elettronica certificata.
-                Per visualizzare i documenti notificati e pagare eventuali spese, dovrai
-              </FaqTextSection>
-              <FaqLink href={PN_PF_URL} noSpaceAfter>
-                accedere a SEND
-              </FaqLink>
-              <FaqTextSection
-                ariaLabel={` con SPID o CIE.`}
-              >
-                {` con SPID o CIE.`}
-              </FaqTextSection>
-
-              <br /><br />
-
-              <FaqParagraph
-                ariaLabel="Se hai attivato il servizio “Notifiche digitali” di IO, quando c’è una notifica per te riceverai un messaggio in app. 
-                Potrai visualizzare i documenti notificati e pagare eventuali spese direttamente in IO, senza dover accedere a SEND con SPID o CIE. "
-              >
-                Se hai attivato il servizio “Notifiche digitali” di IO, quando c’è una notifica per te riceverai un messaggio in app.
-                Potrai visualizzare i documenti notificati e pagare eventuali spese direttamente in IO, senza dover accedere a SEND con SPID o CIE.
-              </FaqParagraph>
-
-              <FaqTextSection
-                ariaLabel="Se hai inserito un’e-mail o un numero di cellulare, quando c’è una notifica per te riceverai un messaggio su questi canali. 
-                Per visualizzare i documenti notificati e pagare eventuali spese, dovrai"
-              >
-                Se hai inserito un’e-mail o un numero di cellulare, quando c’è una notifica per te riceverai un messaggio su questi canali.
-                Per visualizzare i documenti notificati e pagare eventuali spese, dovrai
-              </FaqTextSection>
-              <FaqLink href={PN_PF_URL} noSpaceAfter>
-                accedere a SEND
-              </FaqLink>
-              <FaqTextSection
-                ariaLabel={`con SPID o CIE.`}
-              >
-                {` con SPID o CIE.`}
-              </FaqTextSection>
-
-              <br /><br />
-
-              <FaqTextSection
-                ariaLabel="Se vuoi inserire o modificare i recapiti,"
-              >
-                Se vuoi inserire o modificare i recapiti,
-              </FaqTextSection>
-              <FaqLink href={PN_PF_URL} noSpaceAfter>
-                accedi a SEND
-              </FaqLink>
-              <FaqTextSection
-                ariaLabel={` e vai alla sezione “I tuoi recapiti”. `}
-              >
-                {` e vai alla sezione “I tuoi recapiti”. `}
-              </FaqTextSection>
-
-              <br /><br />
-
-              <FaqTextSection
-                ariaLabel="Se non hai inserito nessun recapito digitale (PEC, app IO, e-mail o numero di cellulare), se l’invio al tuo recapito non va a buon fine o se non leggi la notifica online o da app IO entro i tempi stabiliti, riceverai a casa una raccomandata contentente un avviso di avvenuta ricezione che contiene le informazioni essenziali della notifica e ha di per sé valore legale. Per ottenere i documenti notificati, dovrai comunque accedere a SEND con SPID o CIE oppure recarti in qualsiasi Ufficio Postale e chiedere di usufruire del servizio “Stampa notifica”."
-              >
-                Se non hai inserito nessun recapito digitale (PEC, app IO, e-mail o numero di cellulare), se l’invio al tuo recapito non va a buon fine o se non leggi la notifica online o da app IO entro i tempi stabiliti, riceverai a casa una raccomandata contentente un avviso di avvenuta ricezione che contiene le informazioni essenziali della notifica e ha di per sé valore legale. Per ottenere i documenti notificati, dovrai comunque accedere a SEND con SPID o CIE oppure recarti in qualsiasi Ufficio Postale e chiedere di usufruire del servizio “Stampa notifica”.
-              </FaqTextSection>
-
-            </Box>
-          ),
+          description: [
+            `Se nella sezione "I tuoi recapiti" di SEND o in uno dei registri pubblici c'è una PEC a te riconducibile, riceverai l'avviso di avvenuta ricezione a quell'indirizzo. Per visualizzare i documenti notificati e pagare eventuali spese, dovrai accedere a SEND con SPID o CIE, seguendo le indicazioni riportate nell'avviso.`,
+            `Se hai attivato il servizio "Notifiche digitali" di IO, quando c'è una notifica per te riceverai un messaggio in app. Potrai visualizzare i documenti notificati e pagare eventuali spese direttamente in IO, senza dover accedere a SEND con SPID o CIE.`,
+            `Se hai inserito un'e-mail o un numero di cellulare, quando c'è una notifica per te riceverai un messaggio su questi canali. Per visualizzare i documenti notificati e pagare eventuali spese, dovrai accedere a SEND con SPID o CIE seguendo le indicazioni.`,
+            `Se vuoi inserire o modificare i recapiti, accedi a SEND e vai alla sezione "I tuoi recapiti".`,
+            `Se non hai inserito nessun recapito digitale riceverai la notifica, comprensiva dei documenti, tramite raccomandata cartacea.`,
+          ],
         },
         {
           id: "recapiti-pec-recapito-principale",
@@ -293,13 +216,9 @@ export const itFaqData: IFaqData = {
             <Box>
               <FaqParagraph
                 flat
-                ariaLabel={`È il documento che ricevi quando la notifica ti viene inviata tramite PEC o raccomandata cartacea. 
-                L’invio di questo documento ha di per sé valore legale perché contiene 
-                le informazioni essenziali della notifica, ossia:`}
+                ariaLabel={`È il documento che ricevi via PEC o tramite raccomandata quando c’è una notifica per te. L'invio di questo documento ha di per sé valore legale perché contiene le informazioni essenziali della notifica, ossia:`}
               >
-                {`È il documento che ricevi quando la notifica ti viene inviata tramite PEC o raccomandata cartacea. 
-                L’invio di questo documento ha di per sé valore legale perché contiene 
-                le informazioni essenziali della notifica, ossia:`}
+                {`È il documento che ricevi via PEC o tramite raccomandata quando c’è una notifica per te. L'invio di questo documento ha di per sé valore legale perché contiene le informazioni essenziali della notifica, ossia:`}
               </FaqParagraph>
               <ul style={{ marginTop: 0 }}>
                 <li>
@@ -445,10 +364,7 @@ export const itFaqData: IFaqData = {
                 <a href={PERFEZIONAMENTO_PATH}>data di perfezionamento</a>
               </Typography>
               <Typography variant="body2" component="span" sx={{ mr: "4px" }}>
-                {`. 
-              Oltre quel termine, non potrai più né visualizzarli dall’app IO o da SEND, né richiederne la stampa presso un Ufficio Postale. 
-              Dovrai contattare l’ente che te li ha inviati.
-              `}
+                {`. Oltre quel termine, non potrai più visualizzarli né dall’app IO né da SEND. Dovrai contattare l’ente che te li ha inviati. L’avviso di avvenuta ricezione, invece, resta disponibile per 10 anni dalla data di perfezionamento.`}
               </Typography>
             </Box>
           ),
@@ -472,14 +388,6 @@ export const itFaqData: IFaqData = {
             Nel caso di notifiche con più avvisi di pagamento il costo per l’invio sarà incluso soltanto in uno, 
             e non in tutti.`,
             `Per esempio, ci sono dei casi in cui si può decidere se pagare la notifica in un’unica soluzione o a rate. Se si sceglie di pagare in un’unica soluzione, il costo per l’invio sarà incluso nel relativo avviso di pagamento. Se si sceglie di pagare a rate il costo di invio sarà incluso in uno solo dei vari avvisi, generalmente in quello relativo alla prima rata.`,
-          ],
-        },
-        {
-          id: "ricezione-raccomandata-cartacea",
-          title: `Ho ricevuto un avviso di avvenuta ricezione tramite raccomandata cartacea. Cosa devo fare?`,
-          description: [
-            `L’avviso di avvenuta ricezione contiene le informazioni essenziali della notifica e ha valore legale. Per questo, devi seguire le indicazioni riportate nell’avviso per i ottenere e leggere il prima possibile i documenti notificati e gli eventuali altri documenti. Hai due modi per farlo: gratis, inquadrando il codice QR o digitando nella barra di ricerca del tuo browser l’URL che trovi nell’avviso di avvenuta ricezione; oppure a pagamento, in qualsiasi Ufficio Postale.`,
-            `Se li ritiri in Ufficio Postale, porta con te l’avviso di avvenuta ricezione, un tuo documento di riconoscimento e il tuo Codice Fiscale. Se hai ricevuto la notifica in qualità di persona giuridica, dovrai mostrare anche un documento che attesti il tuo ruolo di legale rappresentante. Una volta ottenuti i documenti, leggili e paga eventuali spese.`,
           ],
         },
       ],
