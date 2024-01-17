@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Link, List, ListItem, Stack, Typography, useMediaQuery } from "@mui/material";
+import { Box, Container, Grid, Link, List, ListItem, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import { HeroProps, WalkthroughProps } from "@pagopa/mui-italia";
 import { IMAGES_PATH, PN_PF_URL } from "@utils/constants";
@@ -62,7 +62,7 @@ const infoblock1_1 = `Le notifiche sono comunicazioni a valore legale emesse in 
 
 const infoblock1_2 = `Puoi anche pagare eventuali costi grazie all'integrazione con pagoPA, visualizzare lo storico delle notifiche ricevute e gestirle direttamente online. Inoltre, ti basta accettare una delega per accedere anche alle notifiche dei tuoi familiari.`;
 
-const infoblock2 = `Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID e CIE per indicare o aggiornare o il tuo recapito legale (PEC) oppure i tuo recapiti di cortesia (app IO, email e/o numero di cellulare).`;
+const infoblock2 = `Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID e CIE per indicare o aggiornare o il tuo recapito legale (PEC) oppure i tuoi recapiti di cortesia (app IO, email e/o numero di cellulare).`;
 
 const infoblock2_1 = `Se non indichi alcun recapito o non accedi alla notifica attraverso SEND da canali diversi dalla PEC `;
 
@@ -177,11 +177,9 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
     data: {
       title: "PEC",
       content: (
-        <>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock4}>
+        <Typography variant="body2" tabIndex={0} aria-label={infoblock4}>
             {infoblock4}
           </Typography>
-        </>
       ),
       inverse: false,
       image: `${IMAGES_PATH}/pf-infoblock-5.png`,
@@ -196,11 +194,9 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
     data: {
       title: "Email e SMS",
       content: (
-        <>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock5}>
+        <Typography variant="body2" tabIndex={0} aria-label={infoblock5}>
             {infoblock5}
           </Typography>
-        </>
       ),
       inverse: false,
       image: `${IMAGES_PATH}/pf-infoblock-7.png`,
@@ -343,11 +339,7 @@ export const pfShowcases: Array<IShowcaseData> = [
           ),
         },
         {
-          /**
-           * Waiting for IOIcon
-           */
-          // icon: <IOIcon />,
-          icon: <img src={`${IMAGES_PATH}/IOIcon.svg`} />,
+          icon: <img src={`${IMAGES_PATH}/IOIcon.svg`} alt="Icona di appIO"/>,
           title: "App IO",
           subtitle: (
             <Typography variant="body2" tabIndex={0} aria-label={showcase2_2}>
