@@ -207,7 +207,7 @@ export const piShowcases: Array<IShowcaseData> = [
 
 /** Walkthrough mocked data */
 const paWalkthrough1 =
-  "Per ogni notifica, SEND verifica che ci sia una PEC associata alla tua impresa, o da te indicata, per l'invio dell'avviso di avvenuta ricezione. Invia anche un avviso di cortesia agli altri tuoi recapiti digitali (e-mail e numero di cellulare), se inseriti. Se non hai indicato alcun recapito digitale, non c’è alcuna pec associata alla tua impresa e non accedi alla notifica attraverso SEND, riceverai un Avviso di Avvenuta Ricezione tramite raccomandata.";
+  "Per ogni notifica, SEND verifica che ci sia una PEC associata alla tua impresa per l'invio dell'avviso di avvenuta ricezione. Invia anche un avviso di cortesia agli altri tuoi recapiti digitali (e-mail e numero di cellulare), se li hai inseriti. Se non hai indicato alcun recapito digitale e non accedi online alla notifica attraverso SEND, riceverai una raccomandata cartacea.";
 const paWalkthrough2 =
   "Dal messaggio ricevuto, puoi accedere online alla piattaforma per leggere la notifica e scaricare i relativi atti notificati.";
 const paWalkthrough2_1 =

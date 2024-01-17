@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Link, List, ListItem, Stack, Typography, useMediaQuery } from "@mui/material";
+import { Box, Container, Grid, Link, List, ListItem, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import { HeroProps, WalkthroughProps } from "@pagopa/mui-italia";
 import { IMAGES_PATH, PN_PF_URL } from "@utils/constants";
@@ -62,9 +62,13 @@ const infoblock1_1 = `Le notifiche sono comunicazioni a valore legale emesse in 
 
 const infoblock1_2 = `Puoi anche pagare eventuali costi grazie all'integrazione con pagoPA, visualizzare lo storico delle notifiche ricevute e gestirle direttamente online. Inoltre, ti basta accettare una delega per accedere anche alle notifiche dei tuoi familiari.`;
 
-const infoblock2 = `Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID o CIE per indicare o aggiornare il tuo domicilio digitale di piattaforma oppure i tuoi recapiti per ricevere un messaggio di cortesia, quando un ente ti invia una notifica: app IO, email e/o numero di cellulare.`;
+const infoblock2 = `Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID e CIE per indicare o aggiornare o il tuo recapito legale (PEC) oppure i tuoi recapiti di cortesia (app IO, email e/o numero di cellulare).`;
 
-const infoblock2_1 = `Se non hai indicato nessuno di questi recapiti digitali, non risulta a te associata una PEC e non accedi alla notifica su SEND entro i tempi indicati, riceverai tramite raccomandata cartacea un Avviso di Avvenuta Ricezione con le indicazioni per visualizzare online gli atti notificati o ritirarli presso un qualsiasi ufficio postale.`;
+const infoblock2_1 = `Se non indichi alcun recapito o non accedi alla notifica attraverso SEND da canali diversi dalla PEC `;
+
+const infoblock2_2 = `entro i tempi indicati`;
+
+const infoblock2_3 = `, continuerai a ricevere le notifiche tramite raccomandata cartacea.`;
 
 const infoblock3_2 = `Le Pubbliche Amministrazioni stanno gradualmente adottando il nuovo Servizio Notifiche Digitali, per questo è possibile che non tutti gli atti ti saranno già notificati con questa modalità.`;
 
@@ -120,8 +124,19 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
           <Typography variant="body2" tabIndex={0} aria-label={infoblock2}>
             {infoblock2}
           </Typography>
+
           <Typography variant="body2" tabIndex={0} aria-label={infoblock2_1}>
             {infoblock2_1}
+            <Link
+              href="/perfezionamento"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={infoblock2_2}
+              sx={{ fontWeight: "bold", color: "primary.main" }}
+            >
+              {infoblock2_2}
+            </Link>
+            {infoblock2_3}
           </Typography>
         </>
       ),
@@ -162,11 +177,9 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
     data: {
       title: "PEC",
       content: (
-        <>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock4}>
+        <Typography variant="body2" tabIndex={0} aria-label={infoblock4}>
             {infoblock4}
           </Typography>
-        </>
       ),
       inverse: false,
       image: `${IMAGES_PATH}/pf-infoblock-5.png`,
@@ -181,11 +194,9 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
     data: {
       title: "Email e SMS",
       content: (
-        <>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock5}>
+        <Typography variant="body2" tabIndex={0} aria-label={infoblock5}>
             {infoblock5}
           </Typography>
-        </>
       ),
       inverse: false,
       image: `${IMAGES_PATH}/pf-infoblock-7.png`,
@@ -328,11 +339,7 @@ export const pfShowcases: Array<IShowcaseData> = [
           ),
         },
         {
-          /**
-           * Waiting for IOIcon
-           */
-          // icon: <IOIcon />,
-          icon: <img src={`${IMAGES_PATH}/IOIcon.svg`} />,
+          icon: <img src={`${IMAGES_PATH}/IOIcon.svg`} alt="Icona di appIO"/>,
           title: "App IO",
           subtitle: (
             <Typography variant="body2" tabIndex={0} aria-label={showcase2_2}>
@@ -356,13 +363,13 @@ export const pfShowcases: Array<IShowcaseData> = [
 /* ************************************** */
 
 /** Walkthrough mocked data */
-const walkthrough1 = `Per ogni notifica, SEND verifica che ci sia una PEC a te associata o da te indicata per l'invio dell'avviso di avvenuta ricezione. Invia anche un avviso di cortesia agli altri tuoi recapiti digitali (app IO, e-mail e numero di cellulare), se li hai inseriti. Se non hai indicato alcun recapito digitale e non accedi online alla notifica attraverso SEND, riceverai l’Avviso di Avvenuta Ricezione tramite raccomandata cartacea.`;
+const walkthrough1 = `Per ogni notifica, SEND verifica che ci sia una PEC a te associata o da te indicata per l'invio dell'avviso di avvenuta ricezione. Invia anche un avviso di cortesia agli altri tuoi recapiti digitali (app IO, e-mail e numero di cellulare), se li hai inseriti. Se non hai indicato alcun recapito digitale e non accedi online alla notifica attraverso SEND, riceverai una raccomandata cartacea.`;
 
-const walkthrough2 = `Dall' avviso ricevuto, puoi accedere online a SEND per leggere la notifica e scaricare i relativi documenti allegati. Se attivi il servizio su IO, puoi visualizzare il contenuto direttamente in app: questo equivale alla firma della ricevuta di ritorno di una raccomandata tradizionale e al `;
+const walkthrough2 = `Dal messaggio ricevuto, puoi accedere online alla piattaforma per leggere la notifica e scaricare i relativi documenti allegati. Se attivi il servizio su IO, puoi visualizzare il contenuto direttamente in app: questo equivale alla firma della ricevuta di ritorno di una raccomandata tradizionale e al `;
 
 const walkthrough2_1 = `perfezionamento`;
 
-const walkthrough2_2 = ` immediato della notifica. In alternativa, puoi ottenere i documenti notificati recandoti presso qualsiasi ufficio postale.`;
+const walkthrough2_2 = ` immediato della notifica.`;
 
 const walkthrough3 = `Se c'è un importo da pagare, grazie all'integrazione con pagoPA, puoi procedere contestualmente online da SEND oppure direttamente da IO. Se preferisci recarti presso uno sportello, dovrai avere con te il modulo di pagamento allegato alla notifica.`;
 
@@ -385,18 +392,18 @@ export const pfWalkthrough: WalkthroughProps = {
       title: "Leggi il contenuto",
       subtitle: (
         <Typography variant="body2" tabIndex={0} aria-label={walkthrough2}>
-            {walkthrough2}
-            <Link
-              href="/perfezionamento"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={walkthrough2_1}
-              sx={{ fontWeight: "bold", color: "primary.main" }}
-            >
-              {walkthrough2_1}
-            </Link>
-            {walkthrough2_2}
-          </Typography>
+          {walkthrough2}
+          <Link
+            href="/perfezionamento"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={walkthrough2_1}
+            sx={{ fontWeight: "bold", color: "primary.main" }}
+          >
+            {walkthrough2_1}
+          </Link>
+          {walkthrough2_2}
+        </Typography>
       ),
     },
     {
