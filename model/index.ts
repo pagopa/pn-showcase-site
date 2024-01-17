@@ -26,7 +26,7 @@ export interface ILandingComponents {
   infoblocks: Array<IInfoblockData>;
   showcases: Array<IShowcaseData>;
   walkthrough: WalkthroughProps;
-  horizontalNav: HorizontalNavProps;
+  horizontalNav?: HorizontalNavProps;
 }
 
 export interface IInfoblockData {

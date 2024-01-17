@@ -6,7 +6,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import IconButton from "@mui/material/IconButton";
 
-import { Box, Chip, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Stack, Tab, Tabs, Typography } from "@mui/material";
 import { INavigationBarProps } from "model";
 
 import MenuIcon from '@mui/icons-material/Menu';
@@ -19,7 +19,6 @@ const NavigationBar = ({
   faq,
   image,
   pi,
-  chip
 }: INavigationBarProps) => {
   const { pathname, push } = useRouter();
   const [index, setIndex] = useState<number | undefined>();
@@ -80,13 +79,13 @@ const NavigationBar = ({
   }, [pathname]);
 
   return (
-    <Box>
+    <Box className="sendNavbar">
       <Stack direction={{ xs: "column", sm: "row" }} >
         <Stack direction="row" alignItems="center" mx={3} my={2}>
           <Box sx={{ pr: 2, cursor: 'pointer' }} onClick={() => window.open('/', '_self')}>
             <img src={image} alt={title} aria-label={title} />
           </Box>
-          <Chip label={chip} size="small" color="primary" />
+          {/* <Chip label={chip} size="small" color="primary" /> */}
           {isMobile && (
             <IconButton
               onClick={toggleMobileMenu}

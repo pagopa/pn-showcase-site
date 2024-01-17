@@ -43,8 +43,8 @@ const LandingLayout = ({ children }: Props) => {
           sx={{
             justifyContent: "center",
             borderBottom: "1px solid",
-            borderColor: "#E3E7EB",
-            backgroundColor: "#FFFFFF",
+            borderColor: "divider",
+            backgroundColor: "background.paper",
             minHeight: "48px",
             flexDirection: "column",
           }}

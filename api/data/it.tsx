@@ -2,7 +2,6 @@ import { IAppData } from "model";
 
 import {
   paHero,
-  paHorizontalNav,
   paInfoBlocks,
   paShowcases,
   paWalkthrough,
@@ -51,8 +50,7 @@ export const itAppData: IAppData = {
     hero: paHero,
     infoblocks: paInfoBlocks,
     showcases: paShowcases,
-    walkthrough: paWalkthrough,
-    horizontalNav: paHorizontalNav,
+    walkthrough: paWalkthrough
   },
   pf: {
     hero: pfHero,

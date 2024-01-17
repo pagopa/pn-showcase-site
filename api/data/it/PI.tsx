@@ -1,4 +1,4 @@
-import { Typography, List, ListItem, SvgIcon } from "@mui/material";
+import { Typography, List, ListItem, SvgIcon, Box, Container, Grid } from "@mui/material";
 import {
   HeroProps,
   HorizontalNavProps,
@@ -54,10 +54,10 @@ export const piHero: HeroProps = {
     "Lo schermo di un computer portatile mostra la pagina principale della piattaforma SEND.",
   background: `${IMAGES_PATH}/pi-hero-background.png`,
   ctaSecondary: {
-    label: "Accedi a SEND",
-    title: "Accedi a SEND",
+    label: "Leggi le tue notifiche",
+    title: "Leggi le tue notifiche",
     onClick: function onClick() {
-        window.open(PN_PG_URL, "_self");
+      window.open(PN_PG_URL, "_self");
     },
   },
 };
@@ -72,12 +72,13 @@ const infoblock2_1 =
   "Puoi abilitare più utenti all’uso della piattaforma. Così, le comunicazioni potranno essere gestite da più persone, che resteranno aggiornate sul lavoro degli altri in tempo reale.";
 const infoblock2_2 =
   "Un modo efficace per migliorare la gestione delle notifiche all’interno dell’impresa  e avere maggiore controllo delle scadenze e di quanto versato.";
+const infoblock3 =
+  "Se lo desideri, puoi delegare altre persone, fisiche o giuridiche, a visualizzare le tue notifiche online. Per farlo, accedi a SEND con SPID o CIE e inserisci nella sezione Deleghe i dati della persona che vuoi delegare.";
 
 export const piInfoBlocks: Array<IInfoblockData> = [
   {
     name: "infoblock 1",
     data: {
-      overline: "PER LE IMPRESE",
       title: "Un nuovo modo per gestire le notifiche della tua impresa",
       content: (
         <>
@@ -120,9 +121,27 @@ export const piInfoBlocks: Array<IInfoblockData> = [
         label: "Leggi le notifiche della tua impresa",
         title: "Leggi le notifiche della tua impresa",
         onClick: function onClick() {
-            window.open(PN_PG_URL, "_self");
+          window.open(PN_PG_URL, "_self");
         },
       }
+    },
+  },
+  {
+    name: "infoblock 3",
+    data: {
+      title: "Puoi delegare o essere delegato",
+      content: (
+        <>
+          <Typography variant="body2" tabIndex={0} aria-label={infoblock3}>
+            {infoblock3}
+          </Typography>
+        </>
+      ),
+      inverse: true,
+      image: `${IMAGES_PATH}/pi-infoblock-3.png`,
+      altText:
+        "Un esempio della sezione “stato della notifica” della piattaforma SEND.",
+      imageShadow: false,
     },
   },
 ];
@@ -214,9 +233,14 @@ export const piWalkthrough: WalkthroughProps = {
       icon: <DocCheckIcon color="primary" />,
       title: "Leggi il contenuto",
       subtitle: (
-        <Typography variant="body2" tabIndex={0} aria-label={paWalkthrough2}>
-          {paWalkthrough2}
-        </Typography>
+        <>
+          <Typography variant="body2" tabIndex={0} aria-label={paWalkthrough2}>
+            {paWalkthrough2}
+          </Typography>
+          <Typography variant="body2" tabIndex={0} aria-label={paWalkthrough2_1}>
+            {paWalkthrough2_1}
+          </Typography>
+        </>
       ),
     },
     {
@@ -289,3 +313,58 @@ export const piHorizontalNav: HorizontalNavProps = {
   ],
 };
 /* ************************************** */
+
+
+export const CustomInfoblockImprese = () => {
+  return (
+    <Box sx={{ backgroundColor: "background.paper", paddingTop: 8, paddingBottom: 8, borderTop: "1px solid #E3E7EB" }}>
+      <Container maxWidth="xl">
+        <Grid container justifyContent="center" pr={{ xs: 0, lg: 32 }} pl={{ xs: 0, lg: 32 }}>
+          <Grid item xs={12} sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: { xs: 'center', sm: 'center' },
+            textAlign: { xs: 'left', sm: 'center' },
+            '@media (min-width:900px)': {
+              alignItems: 'center',
+              textAlign: 'center',
+            },
+          }}>
+            <Typography variant="h4" sx={{
+              '@media (max-width:899px)': {
+                textAlign: 'center'
+              },
+              mb: 4
+            }}>
+              Se non ricevi l’Avviso via PEC <br/> e/o non accedi alla notifica digitale
+            </Typography>
+            <Typography variant="body2" sx={{
+              '@media (max-width:899px)': {
+                textAlign: 'left'
+              },
+              mb: 4
+            }}>
+              Riceverai un Avviso di Avvenuta Ricezione tramite raccomandata, con tutte le indicazioni per visualizzare online la notifica e i documenti ad essa allegati, oppure per ottenerli in formato cartaceo. In questo caso dovrai recarti presso un qualsiasi ufficio postale e richiedere il servizio a pagamento “Stampa notifica”, disponibile anche senza SPID o CIE. Se vuoi delegare qualcuno al ritiro della notifica, ti basterà compilare il modulo presente sull’Avviso.
+            </Typography>
+            <Typography variant="body2" sx={{
+              '@media (max-width:899px)': {
+                textAlign: 'left'
+              },
+              mb: 4
+            }}>
+              Puoi consulare i termini e le condizioni del servizio “Stampa Notifica” su{" "}
+              <Link href="https://poste.it/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="poste.it"
+                style={{ fontWeight: "bold", color: "primary.main" }}>
+                poste.it
+              </Link>
+              {" "} e in Ufficio Postale.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
+  );
+};

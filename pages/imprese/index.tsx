@@ -9,6 +9,7 @@ import {
   getShowcaseData,
   getWalkthroughData,
 } from "../../api";
+import { CustomInfoblockImprese } from "api/data/it/PI";
 
 const USER_TYPE = UserType.PI;
 
@@ -23,8 +24,10 @@ const ImpresePage: NextPage = () => (
       <Hero {...getHeroData(USER_TYPE)} />
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 1")}></Infoblock>
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 2")}></Infoblock>
+      <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 3")}></Infoblock> 
       <Showcase {...getShowcaseData(USER_TYPE, "showcase 1")} />
       <div className="light"><Walkthrough {...getWalkthroughData(USER_TYPE)} /></div> 
+      {/* <CustomInfoblockImprese></CustomInfoblockImprese> */}
     </main>
   </>
 );

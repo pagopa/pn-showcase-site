@@ -48,11 +48,8 @@ export const itFaqData: IFaqData = {
           id: "notifiche-composizione",
           title: "Da cosa è composta una notifica?",
           description: [
-            `Ogni notifica è composta da uno o più “atti”, cioè i documenti notificati, e da eventuali altri documenti. 
-          Per esempio, una multa può essere composta da un verbale di contravvenzione (il documento notificato), 
-          da una fotografia dell'autovelox e da un bollettino per il pagamento (gli altri documenti).`,
-            `Una notifica inviata per via digitale con SEND si concretizza in un avviso con le istruzioni per visualizzare 
-          online i documenti. Una notifica inviata tramite raccomandata cartacea, invece, contiene sia l'avviso che i documenti.`,
+            `Ogni notifica è composta da uno o più “atti”, cioè i documenti notificati, e da eventuali altri documenti. Per esempio, una multa può essere composta da un verbale di contravvenzione (il documento notificato), da una fotografia dell'autovelox e da un bollettino per il pagamento (gli altri documenti).`,
+            `Una notifica inviata per via digitale con SEND si concretizza in un avviso con le istruzioni per visualizzare online i documenti. Una notifica inviata tramite raccomandata cartacea, invece, contiene sia l'avviso che i documenti.`,
           ],
         },
       ],
@@ -177,32 +174,18 @@ export const itFaqData: IFaqData = {
           title:
             "Cosa succede se non inserisco nessun recapito digitale o se non posso accedere a SEND?",
           description: [
-            `
-                Se nei registri pubblici c'è una PEC riconducibile a te,
-                riceverai l'avviso di avvenuta ricezione a quell'indirizzo. Per
-                ottenere i documenti notificati, dovrai accedere a SEND.`,
-            `
-                Se nei registri pubblici non c'è una PEC riconducibile a te,
-                riceverai la notifica, comprensiva dei documenti, tramite
-                raccomandata cartacea.`,
+            `Se nei registri pubblici c'è una PEC riconducibile a te, riceverai l'avviso di avvenuta ricezione a quell'indirizzo. Per ottenere i documenti notificati, dovrai accedere a SEND.`,
+            `Se nei registri pubblici non c'è una PEC riconducibile a te, riceverai la notifica, comprensiva dei documenti, tramite raccomandata cartacea.`,
           ],
         },
         {
           id: "recapiti-differenza-tra-tipi",
           title: `Che differenza c'è tra PEC, app IO, e-mail, numero di cellulare e raccomandata cartacea?`,
           description: [
-            `Se nella sezione "I tuoi recapiti" di SEND o in uno dei registri pubblici c'è una PEC
-          a te riconducibile, riceverai l'avviso di avvenuta ricezione a quell'indirizzo. Per
-          visualizzare i documenti notificati e pagare eventuali spese, dovrai accedere a
-          SEND con SPID o CIE, seguendo le indicazioni riportate nell'avviso.`,
-            `Se hai attivato il servizio "Notifiche digitali" di IO, quando c'è una notifica per te
-          riceverai un messaggio in app. Potrai visualizzare i documenti notificati e pagare
-          eventuali spese direttamente in IO, senza dover accedere a SEND con SPID o CIE.`,
-            `Se hai inserito un'e-mail o un numero di cellulare, quando c'è una notifica per te
-          riceverai un messaggio su questi canali. Per visualizzare i documenti notificati e
-          pagare eventuali spese, dovrai accedere a SEND con SPID o CIE seguendo le indicazioni.`,
-            `Se vuoi inserire o modificare i recapiti, accedi a SEND e vai alla sezione "I tuoi
-          recapiti".`,
+            `Se nella sezione "I tuoi recapiti" di SEND o in uno dei registri pubblici c'è una PEC a te riconducibile, riceverai l'avviso di avvenuta ricezione a quell'indirizzo. Per visualizzare i documenti notificati e pagare eventuali spese, dovrai accedere a SEND con SPID o CIE, seguendo le indicazioni riportate nell'avviso.`,
+            `Se hai attivato il servizio "Notifiche digitali" di IO, quando c'è una notifica per te riceverai un messaggio in app. Potrai visualizzare i documenti notificati e pagare eventuali spese direttamente in IO, senza dover accedere a SEND con SPID o CIE.`,
+            `Se hai inserito un'e-mail o un numero di cellulare, quando c'è una notifica per te riceverai un messaggio su questi canali. Per visualizzare i documenti notificati e pagare eventuali spese, dovrai accedere a SEND con SPID o CIE seguendo le indicazioni.`,
+            `Se vuoi inserire o modificare i recapiti, accedi a SEND e vai alla sezione "I tuoi recapiti".`,
             `Se non hai inserito nessun recapito digitale riceverai la notifica, comprensiva dei documenti, tramite raccomandata cartacea.`,
           ],
         },
@@ -233,21 +216,17 @@ export const itFaqData: IFaqData = {
             <Box>
               <FaqParagraph
                 flat
-                ariaLabel={`È il documento che ricevi via PEC o tramite raccomandata quando c’è una notifica per te. 
-                L'invio di questo documento ha di per sé valore legale perché contiene le informazioni 
-                essenziali della notifica, ossia:`}
+                ariaLabel={`È il documento che ricevi via PEC o tramite raccomandata quando c’è una notifica per te. L'invio di questo documento ha di per sé valore legale perché contiene le informazioni essenziali della notifica, ossia:`}
               >
-                {`È il documento che ricevi via PEC o tramite raccomandata quando c’è una notifica per te. 
-                L'invio di questo documento ha di per sé valore legale perché contiene le informazioni 
-                essenziali della notifica, ossia:`}
+                {`È il documento che ricevi via PEC o tramite raccomandata quando c’è una notifica per te. L'invio di questo documento ha di per sé valore legale perché contiene le informazioni essenziali della notifica, ossia:`}
               </FaqParagraph>
               <ul style={{ marginTop: 0 }}>
                 <li>
                   <FaqTextSection
                     noSpaceAfter
-                    ariaLabel={`l'ente che te l'ha inviata;`}
+                    ariaLabel={`l’ente che te l’ha inviata;`}
                   >
-                    {`l'ente che te l'ha inviata;`}
+                    {`l’ente che te l’ha inviata;`}
                   </FaqTextSection>
                 </li>
                 <li>
@@ -385,11 +364,7 @@ export const itFaqData: IFaqData = {
                 <a href={PERFEZIONAMENTO_PATH}>data di perfezionamento</a>
               </Typography>
               <Typography variant="body2" component="span" sx={{ mr: "4px" }}>
-                {`. 
-              Oltre quel termine, non potrai più visualizzarli né dall’app IO né da SEND. 
-              Dovrai contattare l’ente che te li ha inviati. L’avviso di avvenuta ricezione, 
-              invece, resta disponibile per 10 anni dalla data di perfezionamento.
-              `}
+                {`. Oltre quel termine, non potrai più visualizzarli né dall’app IO né da SEND. Dovrai contattare l’ente che te li ha inviati. L’avviso di avvenuta ricezione, invece, resta disponibile per 10 anni dalla data di perfezionamento.`}
               </Typography>
             </Box>
           ),

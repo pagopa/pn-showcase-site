@@ -66,6 +66,7 @@ body {
 }
 /* END: ONETRUST STYLES */
 
+
 .documenti .cardsContainerDark .MuiBox-root {
   background-color: #0B3EE3;
 }
@@ -74,74 +75,33 @@ body {
   box-shadow: 0px 8px 38px 7px #002B551A;
 }
 
-[class$="MuiButtonBase-root-MuiTab-root"] {
-  color: #0073E6;
-}
-
-.MuiTabs-flexContainer .MuiTypography-root {
-  color: #0073E6;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.MuiTabs-flexContainer .MuiSvgIcon-root  {
-  color: #0073E6;
-}
-
-.entiMenuItems [class$="MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper"] {
+/* .entiMenuItems [class$="MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper"] {
   margin-left: -2em;
   margin-top: 1em;
-}
+} */
 
-.customCardContent .MuiTypography-body2 {
+.documentiCustomCardContent .MuiTypography-body2 {
   margin-top: 0.6em;
 }
 
-.customCardContent .MuiButtonBase-root {
+.documentiCustomCardContent .MuiButtonBase-root {
   padding: 0;
 }
 
-.customCardContent .MuiButtonBase-root:hover {
+.documentiCustomCardContent .MuiButtonBase-root:hover {
   background-color: transparent;
 }
 
-.customCard .MuiPaper-root {
+.documentiCustomCard .MuiPaper-root {
   border-radius: 16px;
 } 
 
-@media screen and (min-width:900px) {
-  .customCard .MuiPaper-root {
-    margin-bottom: 8px;
-    margin-right: 8px;
-  } 
-#lightWalkthrough .MuiBox-root {
+.lightWalkthrough .MuiBox-root {
   background-color: #FFFFFF;
 }
 
-#darkInfoblock .MuiBox-root {
-  background-color: #0B3EE3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#darkInfoblock .MuiBox-root a {
-  background-color: #FFFFFF;
-  color: #0066CC;
-}
-
-#darkInfoblock .MuiBox-root img {
-  visibility: hidden;
-}
-
-#darkInfoblock [class$="MuiStack-root"] {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .dark {
   background-color: #0B3EE3;
-}
 }
 
 .light .MuiBox-root {
@@ -154,3 +114,45 @@ body {
   flex-direction: row;
 }
 
+.sendNavbar .MuiTabs-flexContainer .MuiTypography-root {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.sendNavbar .MuiButtonBase-root.MuiTab-root.Mui-selected {
+  color: #5C6F82 !important;
+}
+
+.button-cittadini {
+  height: 4em;
+}
+
+@media screen and (min-width:900px) {
+  .documentiCustomCard .MuiPaper-root {
+    margin-bottom: 8px;
+    margin-right: 8px;
+  } 
+}
+
+@media (max-width: 640px) {
+  .tab-enti{
+    margin-left: 10px!important;
+  }
+}
+
+@media (max-width: 500px) {
+  .button-cittadini {
+    height: 3.5em;
+  }
+}
+
+@media (max-width: 420px) {
+  .stack-responsive {
+    flex-direction: column;
+    align-items: baseline;
+  }
+  .stack-responsive a {
+    margin-left: 0px!important;
+    margin-bottom: 1em!important;
+  }
+}
