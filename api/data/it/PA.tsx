@@ -1,7 +1,6 @@
-import { Typography, SvgIcon, Box, Container, Grid, Button } from "@mui/material";
+import { Typography, Box, Container, Grid, Button } from "@mui/material";
 import {
   HeroProps,
-  HorizontalNavProps,
   WalkthroughProps,
 } from "@pagopa/mui-italia";
 import {
@@ -148,7 +147,34 @@ export const paInfoBlocks: Array<IInfoblockData> = [
       imageShadow: false,
     },
   },
-
+  // {
+  //   name: "infoblock 4",
+  //   data: {
+  //     title: "",
+  //     content: (
+  //       <>
+  //         <Typography sx={{ color: "primary.contrastText" }} variant="h4" tabIndex={0} aria-label={infoblock4_2}>
+  //           {infoblock4_2}
+  //         </Typography>
+  //         <Typography sx={{ color: "primary.contrastText" }} variant="body2" tabIndex={0} aria-label={infoblock4_3}>
+  //           {infoblock4_3}
+  //         </Typography>
+  //       </>
+  //     ),
+  //     inverse: false,
+  //     image: `${IMAGES_PATH}/pa-infoblock-3.png`,
+  //     altText:
+  //       "Le mani di una persona digitano sulla tastiera di un computer portatile. Lo schermo mostra una pagina della piattaforma SEND.",
+  //     imageShadow: false,
+  //     ctaPrimary: {
+  //       label: "Accedi a SEND",
+  //       title: "Accedi a SEND",
+  //       onClick: function onClick() {
+  //         window.open("https://selfcare.pagopa.it/auth/login", "_self");
+  //       },
+  //     },
+  //   },
+  // },
 ];
 /* ************************************** */
 
@@ -262,56 +288,6 @@ export const paWalkthrough: WalkthroughProps = {
   ],
 };
 /* ************************************** */
-
-/** HorizontalNav mocked data */
-const horizontalNav1 =
-  "Gestisci le notifiche della tua impresa in un unico spazio, in collaborazione con i colleghi.";
-const horizontalNav2 =
-  "Attiva il servizio sull'app IO: così se accederai a XYZ entro 7 giorni dalla ricezione del messaggio in app, non riceverai il cartaceo e rispamierai tempo e denaro.";
-
-export const paHorizontalNav: HorizontalNavProps = {
-  // const paHorizontalNav = {
-  sections: [
-    {
-      icon: (
-        <SvgIcon component="image">
-          <img src="static/icons/HORIZONTAL-NAV-1.svg" />
-        </SvgIcon>
-      ),
-      title: "Rappresenti un'impresa?",
-      subtitle: (
-        <Typography variant="body2" tabIndex={0} aria-label={horizontalNav1}>
-          {horizontalNav1}
-        </Typography>
-      ),
-      cta: {
-        label: "Scopri i vantaggi per le imprese",
-        title: "CTA1",
-        href: "#",
-      },
-    },
-    {
-      icon: (
-        <SvgIcon component="image">
-          <img src="static/icons/HORIZONTAL-NAV-2.svg" />
-        </SvgIcon>
-      ),
-      title: "Sei una cittadina o un cittadino?",
-      subtitle: (
-        <Typography variant="body2" tabIndex={0} aria-label={horizontalNav2}>
-          {horizontalNav2}
-        </Typography>
-      ),
-      cta: {
-        label: "Scopri i vantaggi per i cittadini",
-        title: "CTA1",
-        href: "#",
-      },
-    },
-  ],
-};
-/* ************************************** */
-
 
 export const StripeLinkEnti = () => {
   return (

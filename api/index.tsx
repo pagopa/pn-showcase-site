@@ -82,7 +82,7 @@ export const getWalkthroughData = (
  */
 export const getHorizontalNavData = (
   userType: UserType = UserType.PA
-): HorizontalNavProps => getAppData()[userType].horizontalNav;
+): HorizontalNavProps | undefined => getAppData()[userType].horizontalNav;
 
 // I preferred to keep FAQ data outside the language-dependent info
 // while we have the FAQ definition for one language (i.e. Italian) only.
