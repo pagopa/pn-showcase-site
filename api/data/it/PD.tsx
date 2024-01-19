@@ -173,7 +173,7 @@ export const Cards1 = () => {
 
 
                     {/* Stack per le cards */}
-                    <Stack direction={{ sm: 'row', xs: 'column' }} spacing={2} sx={{ width: { lg: '50%', md: '85%', sm: '100%' }, ml: { lg: '12.5%', xs: 0 }, mr: { lg: '12.5%', xs: 0 } }}>
+                    <Stack direction={{ sm: 'row', xs: 'column' }} spacing={2} sx={{ width: { lg: '50%', md: '85%', sm: '100%', xs: cards1Data.length === 1 ? '100%' : '50%' }, ml: { lg: '12.5%', xs: 0 }, mr: { lg: '12.5%', xs: 0 } }}>
 
                         {/* Stack Cards 1 */}
                         <Stack sx={{ width: { sm: '50%', xs: '100%' } }} spacing={2} direction="column" >
@@ -324,7 +324,7 @@ export const Cards2 = () => {
 
 
                     {/* Stack per le cards */}
-                    <Stack direction={{ sm: 'row', xs: 'column' }} spacing={2} sx={{ width: { lg: '50%', md: '85%', sm: '100%' }, ml: { lg: '12.5%', xs: 0 }, mr: { lg: '12.5%', xs: 0 } }}>
+                    <Stack direction={{ sm: 'row', xs: 'column' }} spacing={2} sx={{ width: { lg: '50%', md: '85%', sm: '100%', xs: cards2Data.length === 1 ? '100%' : '50%' }, ml: { lg: '12.5%', xs: 0 }, mr: { lg: '12.5%', xs: 0 } }}>
 
                         {/* Stack Cards 1 */}
                         <Stack sx={{ width: { sm: '50%', xs: '100%' } }} spacing={2} direction="column" >
