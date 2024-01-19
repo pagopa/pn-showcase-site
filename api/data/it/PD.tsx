@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, Container, Grid, Link, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, CardActions, CardContent, Container, Divider, Grid, Link, Stack, Typography } from "@mui/material";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CodeIcon from '@mui/icons-material/Code';
 
@@ -105,86 +105,82 @@ export const Cards1 = () => {
     ];
 
     return (
+
         <Box pb={8} pt={8}>
             <Container maxWidth="xl" className="documentiCustomCard">
-                <Grid container spacing={2}>
+                <Stack direction={{ lg: 'row', xs: 'column' }} spacing={2} justifyContent="center" sx={{ alignItems: { lg: 'flex-start', md: 'center', sm: 'center', xs: 'center' } }}>
 
-                    <Grid item xs={0} md={1} lg={1}></Grid>
+                    {/* Box per il testo */}
+                    <Box sx={{ width: { lg: '25%', md: '85%', sm: '100%' }, mb: { xs: 4, lg: 0 }, ml: { lg: 0, xs: 0 }, mr: { lg: '10%', xs: 0 } }}>
+                        <Stack>
+                            <Typography variant="h4" tabIndex={0} aria-label="Come aderire a SEND" sx={{ color: "primary.contrastText" }}
+                                pb={2}>
+                                Come aderire a SEND
+                            </Typography>
+                            <Typography variant="h6" tabIndex={0} aria-label="Per gli enti" sx={{ color: "primary.contrastText" }} pb={2}>
+                                Per gli enti
+                            </Typography>
+                            <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
+                                Per aderire a SEND è necessario scegliere come integrarsi, direttamente o avvalendosi di uno dei{" "}
+                                <Link href="https://docs.pagopa.it/lista-partner-tecnologici-pn_pagopa-s.p.a./" target="_blank"
+                                    rel="noopener noreferrer" aria-label="" sx={{
+                                        color: "primary.contrastText", textDecoration: "underline"
+                                        , fontWeight: "bold"
+                                    }}>
+                                    Partner e Intermediari tecnologici
+                                </Link>
+                                , e sottoscrivere l’accordo di adesione.
+                            </Typography>
+                            <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
+                                Per ricevere l'accordo di adesione, l'ente deve accedere all'
+                                <Link href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn" target="_blank"
+                                    rel="noopener noreferrer" aria-label="" sx={{
+                                        color: "primary.contrastText", textDecoration: "underline"
+                                        , fontWeight: "bold"
+                                    }}>
+                                    Area Riservata
+                                </Link>
+                                {" "}e seguire i passaggi descritti in{" "}
+                                <Link href="https://docs.pagopa.it/area-riservata-enti-piattaforma-notifiche/" target="_blank"
+                                    rel="noopener noreferrer" aria-label="" sx={{
+                                        color: "primary.contrastText", textDecoration: "underline"
+                                        , fontWeight: "bold"
+                                    }}>
+                                    questa guida
+                                </Link>
+                                .
+                            </Typography>
+                            <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
+                                Una volta sottoscritto l'accordo in digitale, l'ente dovrà caricarlo e inviarlo a PagoPA S.p.A. sempre
+                                dall'Area Riservata integrando i seguenti documenti e moduli debitamente compilati ove richiesto.
+                            </Typography>
+                            <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={4}>
+                                Per ulteriori informazioni e chiarimenti, è possibile{" "}
+                                <Link href="https://docs.pagopa.it/faq-enti" target="_blank" rel="noopener noreferrer" aria-label="" sx={{
+                                    color: "primary.contrastText", textDecoration: "underline", fontWeight: "bold"
+                                }}>
+                                    consultare le FAQ
+                                </Link>
+                                {" "}dedicate agli enti.
+                            </Typography>
+                            <Button variant="contained" sx={{
+                                width: "max-content", backgroundColor: "background.paper",
+                                color: "primary.main", '&:hover': { backgroundColor: "background.paper", color: "primary.main" }
+                            }}
+                                href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn">
+                                Aderisci a SEND
+                            </Button>
+                        </Stack>
+                    </Box>
 
-                    <Grid item xs={12} md={10} lg={3} pb={4}>
-                        <Box>
-                            <Stack>
-                                <Typography variant="h4" tabIndex={0} aria-label="Come aderire a SEND" sx={{ color: "primary.contrastText" }} pb={2}>
-                                    Come aderire a SEND
-                                </Typography>
-                                <Typography variant="h6" tabIndex={0} aria-label="Per gli enti" sx={{ color: "primary.contrastText" }} pb={2}>
-                                    Per gli enti
-                                </Typography>
-                                <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
-                                    Per aderire a SEND è necessario scegliere come integrarsi, direttamente o avvalendosi di uno dei{" "}
-                                    <Link href="https://docs.pagopa.it/lista-partner-tecnologici-pn_pagopa-s.p.a./"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label=""
-                                        sx={{ color: "primary.contrastText", textDecoration: "underline", fontWeight: "bold" }}
-                                    >
-                                        Partner e Intermediari tecnologici
-                                    </Link>
-                                    , e sottoscrivere l’accordo di adesione.
-                                </Typography>
-                                <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
-                                    Per ricevere l'accordo di adesione, l'ente deve accedere all'
-                                    <Link href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label=""
-                                        sx={{ color: "primary.contrastText", textDecoration: "underline", fontWeight: "bold" }}
-                                    >
-                                        Area Riservata
-                                    </Link>
-                                    {" "}e seguire i passaggi descritti in{" "}
-                                    <Link href="https://docs.pagopa.it/area-riservata-enti-piattaforma-notifiche/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label=""
-                                        sx={{ color: "primary.contrastText", textDecoration: "underline", fontWeight: "bold" }}
-                                    >
-                                        questa guida
-                                    </Link>
-                                    .
-                                </Typography>
-                                <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={2}>
-                                    Una volta sottoscritto l'accordo in digitale, l'ente dovrà caricarlo e inviarlo a PagoPA S.p.A. sempre dall'Area Riservata integrando i seguenti documenti e moduli debitamente compilati ove richiesto.
-                                </Typography>
-                                <Typography variant="body2" tabIndex={0} aria-label="" sx={{ color: "primary.contrastText" }} pb={4}>
-                                    Per ulteriori informazioni e chiarimenti, è possibile{" "}
-                                    <Link href="https://docs.pagopa.it/faq-enti"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label=""
-                                        sx={{ color: "primary.contrastText", textDecoration: "underline", fontWeight: "bold" }}
-                                    >
-                                        consultare le FAQ
-                                    </Link>
-                                    {" "}dedicate agli enti.
-                                </Typography>
-                                <Button variant="contained" sx={{ width: "max-content", backgroundColor: "background.paper", color: "primary.main", '&:hover': { backgroundColor: "background.paper", color: "primary.main" } }} href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn">
-                                    Aderisci a SEND
-                                </Button>
-                            </Stack>
-                        </Box>
-                    </Grid>
+                    {/* Box per le cards */}
+                    <Box sx={{ width: { lg: '50%', md: '85%', sm: '100%' }, ml: { lg: '12.5%', xs: 0 }, mr: { lg: '12.5%', xs: 0 } }}>
 
-                    <Grid item xs={0} md={0} lg={1}></Grid>
-
-                    <Grid item xs={12} md={1} sx={{ display: { xs: 'none', sm: 'none', md: 'initial', lg: 'none' } }}></Grid>
-
-                    <Grid container spacing={2} xs={12} md={10} lg={6} sx={{ ml: { xs: 0, sm: 0 } }}>
-                        {/* Left column */}
-                        <Grid item xs={12} sm={6} md={6}>
-                            <Grid container spacing={2} direction="column" justifyContent="space-between">
+                        {/* Stack Cards 1 */}
+                        <Stack direction={{ sm: 'row', xs: 'column' }} spacing={2} >
+                            <Stack sx={{ width: { sm: '50%', xs: '100%' } }} spacing={2} direction="column" >
                                 {cards1Data.slice(0, Math.ceil(cards1Data.length / 2)).map((card, index) => (
-                                    <Grid item key={index}>
+                                    <Box key={index} sx={{ width: '100%' }}>
                                         <Card className="documentiCustomCardContent">
                                             <CardContent sx={{ textAlign: "left" }}>
                                                 <Typography variant="h5" component="div">
@@ -202,7 +198,7 @@ export const Cards1 = () => {
                                                         <Button
                                                             key={buttonIndex}
                                                             size="small"
-                                                            color={"primary"}
+                                                            color="primary"
                                                             href={button.link}
                                                             endIcon={button.icon || <ArrowForwardIcon />}
                                                             sx={{ justifyContent: "start" }}
@@ -214,16 +210,14 @@ export const Cards1 = () => {
                                                 </Stack>
                                             </CardActions>
                                         </Card>
-                                    </Grid>
+                                    </Box>
                                 ))}
-                            </Grid>
-                        </Grid>
+                            </Stack>
 
-                        {/* Right column */}
-                        <Grid item xs={12} sm={6} md={6}>
-                            <Grid container spacing={2} direction="column" justifyContent="space-between">
+                            {/* Stack Cards 2 */}
+                            <Stack sx={{ width: { sm: '50%', xs: '100%' } }} spacing={2} direction="column" >
                                 {cards1Data.slice(Math.ceil(cards1Data.length / 2)).map((card, index) => (
-                                    <Grid item key={index}>
+                                    <Box key={index} sx={{ width: '100%' }}>
                                         <Card className="documentiCustomCardContent">
                                             <CardContent sx={{ textAlign: "left" }}>
                                                 <Typography variant="h5" component="div">
@@ -241,7 +235,7 @@ export const Cards1 = () => {
                                                         <Button
                                                             key={buttonIndex}
                                                             size="small"
-                                                            color={"primary"}
+                                                            color="primary"
                                                             href={button.link}
                                                             endIcon={button.icon || <ArrowForwardIcon />}
                                                             sx={{ justifyContent: "start" }}
@@ -253,15 +247,14 @@ export const Cards1 = () => {
                                                 </Stack>
                                             </CardActions>
                                         </Card>
-                                    </Grid>
+                                    </Box>
                                 ))}
-                            </Grid>
-                        </Grid>
-                    </Grid>
+                            </Stack>
 
-                    <Grid item xs={false} md={1} lg={1}></Grid>
+                        </Stack>
+                    </Box>
 
-                </Grid>
+                </Stack>
             </Container>
         </Box>
     );
@@ -321,33 +314,27 @@ export const Cards2 = () => {
     ];
 
     return (
-        <Box pb={8} pt={8} className="documentiCustomCardContent">
+        <Box pb={8} pt={8}>
             <Container maxWidth="xl" className="documentiCustomCard">
-                <Grid container spacing={2}>
+                <Stack direction={{ lg: 'row', xs: 'column' }} spacing={2} justifyContent="center" sx={{ alignItems: { lg: 'flex-start', md: 'center', sm: 'center', xs: 'center' } }}>
 
-                    <Grid item xs={0} md={1} lg={1}></Grid>
+                    {/* Box per il testo */}
+                    <Box sx={{ width: { lg: '25%', md: '85%', sm: '100%' }, mb: { xs: 4, lg: 0 }, ml: { lg: 0, xs: 0 }, mr: { lg: '10%', xs: 0 } }}>
+                        <Stack>
+                            <Typography variant="h4" tabIndex={0} aria-label="Vuoi approfondire?" pb={2}>
+                                Vuoi approfondire?
+                            </Typography>
+                        </Stack>
+                    </Box>
 
-                    <Grid item xs={12} md={10} lg={3} pb={4}>
-                        <Box>
-                            <Stack>
-                                <Typography variant="h4" tabIndex={0} aria-label="Vuoi approfondire?" pb={2}>
-                                    Vuoi approfondire?
-                                </Typography>
-                            </Stack>
-                        </Box>
-                    </Grid>
+                    {/* Box per le cards */}
+                    <Box sx={{ width: { lg: '50%', md: '85%', sm: '100%' }, ml: { lg: '12.5%', xs: 0 }, mr: { lg: '12.5%', xs: 0 } }}>   
 
-
-                    <Grid item xs={0} md={0} lg={1}></Grid>
-
-                    <Grid item xs={12} md={1} sx={{ display: { xs: 'none', sm: 'none', md: 'initial', lg: 'none' } }}></Grid>
-
-                    <Grid container spacing={2} xs={12} md={10} lg={6} sx={{ ml: { xs: 0, sm: 0 } }}>
-                        {/* Left column */}
-                        <Grid item xs={12} sm={6} md={6}>
-                            <Grid container spacing={2} direction="column" justifyContent="space-between">
+                        {/* Stack Cards 1 */}
+                        <Stack direction={{ sm: 'row', xs: 'column' }} spacing={2} >
+                            <Stack sx={{ width: { sm: '50%', xs: '100%' } }} spacing={2} direction="column" >  
                                 {cards2Data.slice(0, Math.ceil(cards2Data.length / 2)).map((card, index) => (
-                                    <Grid item key={index}>
+                                    <Box key={index} sx={{ width: '100%' }}> 
                                         <Card className="documentiCustomCardContent">
                                             <CardContent sx={{ textAlign: "left" }}>
                                                 <Typography variant="h5" component="div">
@@ -365,7 +352,7 @@ export const Cards2 = () => {
                                                         <Button
                                                             key={buttonIndex}
                                                             size="small"
-                                                            color={"primary"}
+                                                            color="primary"
                                                             href={button.link}
                                                             endIcon={button.icon || <ArrowForwardIcon />}
                                                             sx={{ justifyContent: "start" }}
@@ -377,15 +364,14 @@ export const Cards2 = () => {
                                                 </Stack>
                                             </CardActions>
                                         </Card>
-                                    </Grid>
+                                    </Box>
                                 ))}
-                            </Grid>
-                        </Grid>
-                        {/* Right column */}
-                        <Grid item xs={12} sm={6} md={6}>
-                            <Grid container spacing={2} direction="column" justifyContent="space-between">
+                            </Stack>
+
+                            {/* Stack Cards 2 */}
+                            <Stack sx={{ width: { sm: '50%', xs: '100%' } }} spacing={2} direction="column" >
                                 {cards2Data.slice(Math.ceil(cards2Data.length / 2)).map((card, index) => (
-                                    <Grid item key={index}>
+                                    <Box key={index} sx={{ width: '100%' }}>
                                         <Card className="documentiCustomCardContent">
                                             <CardContent sx={{ textAlign: "left" }}>
                                                 <Typography variant="h5" component="div">
@@ -403,7 +389,7 @@ export const Cards2 = () => {
                                                         <Button
                                                             key={buttonIndex}
                                                             size="small"
-                                                            color={"primary"}
+                                                            color="primary"
                                                             href={button.link}
                                                             endIcon={button.icon || <ArrowForwardIcon />}
                                                             sx={{ justifyContent: "start" }}
@@ -415,15 +401,14 @@ export const Cards2 = () => {
                                                 </Stack>
                                             </CardActions>
                                         </Card>
-                                    </Grid>
+                                    </Box>
                                 ))}
-                            </Grid>
-                        </Grid>
-                    </Grid>
+                            </Stack>
 
-                    <Grid item xs={false} md={1} lg={1}></Grid>
+                        </Stack>
+                    </Box>
 
-                </Grid>
+                </Stack>
             </Container>
         </Box>
     );
@@ -442,7 +427,7 @@ export const StripeLink = () => {
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} href="https://docs.pagopa.it/send-kit-di-comunicazione-per-gli-enti-aderenti/">
+                        <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} href="https://developer.pagopa.it/send/overview">
                             Vai alla documentazione tecnica
                         </Button>
                     </Grid>
