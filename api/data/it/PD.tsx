@@ -29,12 +29,12 @@ export const Cards1 = () => {
         {
             title: "3. Documentazione tecnica",
             buttons: [
-                {
-                    label: "Vai al documento",
-                    color: "primary",
-                    link: "https://docs.pagopa.it/documento-3-documentazione-tecnica/",
-                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
-                },
+                // {
+                //     label: "Vai al documento",
+                //     color: "primary",
+                //     link: "https://docs.pagopa.it/documento-3-documentazione-tecnica/",
+                //     icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
+                // },
                 {
                     label: "Leggi il manuale operativo",
                     color: "primary",
@@ -78,20 +78,20 @@ export const Cards1 = () => {
                 },
             ],
         },
+        // {
+        //     title: "6. Modulo di Commessa",
+        //     description: "Necessario per la fatturazione",
+        //     buttons: [
+        //         {
+        //             label: "Compila il modulo",
+        //             color: "primary",
+        //             link: "/static/documents/Modulo Ordinativo Commessa per Anticipazione.xlsx",
+        //             icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
+        //         },
+        //     ],
+        // },
         {
-            title: "6. Modulo di Commessa",
-            description: "Necessario per la fatturazione",
-            buttons: [
-                {
-                    label: "Compila il modulo",
-                    color: "primary",
-                    link: "/static/documents/Modulo Ordinativo Commessa per Anticipazione.xlsx",
-                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
-                },
-            ],
-        },
-        {
-            title: "7. SLA di servizio",
+            title: "6. SLA di servizio",
             buttons: [
                 {
                     label: "Vai al documento",
@@ -284,18 +284,18 @@ export const Cards2 = () => {
         //           },
         //       ],
         //   },
-        // {
-        //     title: "Costi di notifica digitale e analogica",
-        //     description: "",
-        //     buttons: [
-        //         {
-        //             label: "Vai ai costi",
-        //             color: "primary",
-        //             link: "/static/documents/Analisi Ente - Cittadino v1.0.xlsx - ENTE (PagoPA).pdf",
-        //             icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
-        //         },
-        //     ],
-        // },
+        {
+            title: "Costi di notifica digitale e analogica",
+            description: "",
+            buttons: [
+                {
+                    label: "Vai ai costi",
+                    color: "primary",
+                    link: "/static/documents/Prezzi Ente 2024.pdf",
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
+                },
+            ],
+        },
         {
             title: "Kit di comunicazione",
             description: "",
