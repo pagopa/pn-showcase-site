@@ -357,7 +357,7 @@ export const CustomInfoblockImprese = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="poste.it"
-                style={{ fontWeight: "bold", color: "primary.main" }}>
+                style={{ fontWeight: "bold", color: "#0073E6" }}>
                 poste.it
               </Link>
               {" "} e in Ufficio Postale.
