@@ -111,7 +111,7 @@ export const Cards1 = () => {
                 <Stack direction={{ lg: 'row', xs: 'column' }} spacing={2} justifyContent="center" sx={{ alignItems: { lg: 'flex-start', md: 'center', sm: 'center', xs: 'center' } }}>
 
                     {/* Stack per il testo */}
-                    <Stack sx={{ width: { lg: '25%', md: '85%', sm: '100%' }, mb: { xs: 4, lg: 0 }, ml: { lg: 0, xs: 0 }, mr: { lg: '10%', xs: 0 } }}>
+                    <Stack sx={{ width: { lg: '25%', md: '85%', sm: '100%', xs: '100%' }, mb: { xs: 4, lg: 0 }, ml: { lg: 0, xs: 0 }, mr: { lg: '10%', xs: 0 } }}>
                         <Typography variant="h4" tabIndex={0} aria-label="Come aderire a SEND" sx={{ color: "primary.contrastText" }}
                             pb={2}>
                             Come aderire a SEND
@@ -173,7 +173,7 @@ export const Cards1 = () => {
 
 
                     {/* Stack per le cards */}
-                    <Stack direction={{ sm: 'row', xs: 'column' }} spacing={2} sx={{ width: { lg: '50%', md: '85%', sm: '100%', xs: cards1Data.length === 1 ? '100%' : '50%' }, ml: { lg: '12.5%', xs: 0 }, mr: { lg: '12.5%', xs: 0 } }}>
+                    <Stack direction={{ sm: 'row', xs: 'column' }} spacing={2} sx={{ width: { lg: '50%', md: '85%', sm: '100%', xs: '100%' }, ml: { lg: '12.5%', xs: 0 }, mr: { lg: '12.5%', xs: 0 } }}>
 
                         {/* Stack Cards 1 */}
                         <Stack sx={{ width: { sm: '50%', xs: '100%' } }} spacing={2} direction="column" >
@@ -316,7 +316,7 @@ export const Cards2 = () => {
                 <Stack direction={{ lg: 'row', xs: 'column' }} spacing={2} justifyContent="center" sx={{ alignItems: { lg: 'flex-start', md: 'center', sm: 'center', xs: 'center' } }}>
 
                     {/* Stack per il testo */}
-                    <Stack sx={{ width: { lg: '25%', md: '85%', sm: '100%' }, mb: { xs: 4, lg: 0 }, ml: { lg: 0, xs: 0 }, mr: { lg: '10%', xs: 0 } }}>
+                    <Stack sx={{ width: { lg: '25%', md: '85%', sm: '100%', xs: '100%' }, mb: { xs: 4, lg: 0 }, ml: { lg: 0, xs: 0 }, mr: { lg: '10%', xs: 0 } }}>
                         <Typography variant="h4" tabIndex={0} aria-label="Vuoi approfondire?" pb={2}>
                             Vuoi approfondire?
                         </Typography>
@@ -324,7 +324,7 @@ export const Cards2 = () => {
 
 
                     {/* Stack per le cards */}
-                    <Stack direction={{ sm: 'row', xs: 'column' }} spacing={2} sx={{ width: { lg: '50%', md: '85%', sm: '100%', xs: cards2Data.length === 1 ? '100%' : '50%' }, ml: { lg: '12.5%', xs: 0 }, mr: { lg: '12.5%', xs: 0 } }}>
+                    <Stack direction={{ sm: 'row', xs: 'column' }} spacing={2} sx={{ width: { lg: '50%', md: '85%', sm: '100%', xs: '100%' }, ml: { lg: '12.5%', xs: 0 }, mr: { lg: '12.5%', xs: 0 } }}>
 
                         {/* Stack Cards 1 */}
                         <Stack sx={{ width: { sm: '50%', xs: '100%' } }} spacing={2} direction="column" >
