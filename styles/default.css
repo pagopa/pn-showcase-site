@@ -96,6 +96,10 @@ body {
   border-radius: 16px;
 } 
 
+.documentiCustomCard .MuiCardContent-root, .MuiCardActions-root {
+  padding: 32px;
+} 
+
 .lightWalkthrough .MuiBox-root {
   background-color: #FFFFFF;
 }
@@ -114,6 +118,10 @@ body {
   flex-direction: row;
 }
 
+.customFaqHero [class$="MuiStack-root"] > [class$="MuiStack-root"]:nth-of-type(2) {
+  display: none;
+}
+
 .sendNavbar .MuiTabs-flexContainer .MuiTypography-root {
   font-weight: 600;
   font-size: 1rem;
@@ -124,7 +132,17 @@ body {
 }
 
 .button-cittadini {
-  height: 4em;
+  height: 3em;
+  width: 100%; 
+}
+
+.showcasePadding .MuiContainer-root {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.faqItems .MuiAccordionSummary-content {
+  margin: 21px 0px;
 }
 
 @media screen and (min-width:900px) {
@@ -137,12 +155,6 @@ body {
 @media (max-width: 640px) {
   .tab-enti{
     margin-left: 10px!important;
-  }
-}
-
-@media (max-width: 500px) {
-  .button-cittadini {
-    height: 3.5em;
   }
 }
 

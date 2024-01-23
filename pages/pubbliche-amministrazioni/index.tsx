@@ -25,7 +25,7 @@ const EntiPage: NextPage = () => (
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 1")}></Infoblock>
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 2")}></Infoblock>
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 3")}></Infoblock>
-      <Showcase {...getShowcaseData(USER_TYPE, "showcase 1")} />
+      <div className="showcasePadding"><Showcase {...getShowcaseData(USER_TYPE, "showcase 1")} /></div>
       <div className="lightWalkthrough"><Walkthrough {...getWalkthroughData(USER_TYPE)} /></div>  
       <StripeLinkEnti></StripeLinkEnti>
       <DarkInfoblockEnti></DarkInfoblockEnti>
