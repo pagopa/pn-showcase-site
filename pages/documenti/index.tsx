@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 
 import PageHead from "../../src/components/PageHead";
 
-import { Cards1, Cards2, StripeLink } from "api/data/it/PD";
+import { DocsCards, InDepthCard, StripeLink } from "api/data/it/PD";
 
 const DocumentiPage: NextPage = () => (
   <>
@@ -12,9 +12,8 @@ const DocumentiPage: NextPage = () => (
     />
 
     <main className="documenti">
-      <div className="cardsContainerDark"><Cards1></Cards1></div>
-      {/* <Cards2></Cards2> */}
-      {/* Disabilitato per ora il link al devportal */}
+      <div className="cardsContainerDark"><DocsCards></DocsCards></div>
+      <InDepthCard></InDepthCard>
       <StripeLink></StripeLink>
     </main>
   </>

@@ -2,7 +2,7 @@ import { Box, Button, Card, CardActions, CardContent, Container, Divider, Grid, 
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CodeIcon from '@mui/icons-material/Code';
 
-export const Cards1 = () => {
+export const DocsCards = () => {
     const cards1Data = [
         {
             title: "1. Termini e Condizioni di adesione e uso",
@@ -258,7 +258,7 @@ export const Cards1 = () => {
 };
 
 
-export const Cards2 = () => {
+export const InDepthCard = () => {
     const cards2Data = [
         //   {
         //       title: "Manuale onboarding dell’ente",
