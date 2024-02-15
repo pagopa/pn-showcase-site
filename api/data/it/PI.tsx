@@ -10,6 +10,7 @@ import {
   PARTNER_AND_INTERMEDIARIES_PATH,
   PN_PF_URL,
   PN_PG_URL,
+  PN_PG_URL_LOGIN,
 } from "@utils/constants";
 import { IInfoblockData, IShowcaseData } from "model";
 import Link from "next/link";
@@ -57,7 +58,7 @@ export const piHero: HeroProps = {
     label: "Leggi le tue notifiche",
     title: "Leggi le tue notifiche",
     onClick: function onClick() {
-      window.open(PN_PG_URL, "_self");
+      window.open(PN_PG_URL_LOGIN, "_self");
     },
   },
 };
@@ -121,7 +122,7 @@ export const piInfoBlocks: Array<IInfoblockData> = [
         label: "Leggi le notifiche della tua impresa",
         title: "Leggi le notifiche della tua impresa",
         onClick: function onClick() {
-          window.open(PN_PG_URL, "_self");
+          window.open(PN_PG_URL_LOGIN, "_self");
         },
       }
     },

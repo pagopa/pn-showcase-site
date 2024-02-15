@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import { HeroProps } from "@pagopa/mui-italia";
-import { IMAGES_PATH, PN_PF_URL, PN_PG_URL } from "@utils/constants";
+import { IMAGES_PATH, PN_PF_URL, PN_PF_URL_LOGIN, PN_PG_URL, PN_PG_URL_LOGIN } from "@utils/constants";
 import { IInfoblockData } from "model";
 
 const onReadClickEnti = () => {
@@ -12,7 +12,7 @@ const onReadClickCittadini = () => {
 };
 
 const onReadClickCittadiniSecondary = () => {
-  window.open(PN_PF_URL, "_self");
+  window.open(PN_PF_URL_LOGIN, "_self");
 };
 
 const onReadClickImprese = () => {
@@ -20,7 +20,7 @@ const onReadClickImprese = () => {
 };
 
 const onReadClickImpreseSecondary = () => {
-  window.open(PN_PG_URL, "_self");
+  window.open(PN_PG_URL_LOGIN, "_self");
 };
 
 // eslint-disable-next-line no-extra-boolean-cast
@@ -40,7 +40,7 @@ const cittadiniCta = "/cittadini"
   }
   : undefined;
 
-const cittadiniCtaSecondary = PN_PF_URL
+const cittadiniCtaSecondary = PN_PF_URL_LOGIN
   ? {
     label: "Leggi le tue notifiche ",
     title: "Leggi le tue notifiche ",
@@ -56,7 +56,7 @@ const impreseCta = "/imprese"
   }
   : undefined;
 
-const impreseCtaSecondary = PN_PG_URL
+const impreseCtaSecondary = PN_PG_URL_LOGIN
   ? {
     label: "Vai alle notifiche ",
     title: "Vai alle notifiche ",

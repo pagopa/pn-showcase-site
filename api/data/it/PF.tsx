@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Link, List, ListItem, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import { HeroProps, WalkthroughProps } from "@pagopa/mui-italia";
-import { IMAGES_PATH, PN_PF_URL } from "@utils/constants";
+import { IMAGES_PATH, PN_PF_URL, PN_PF_URL_LOGIN } from "@utils/constants";
 import { IInfoblockData, IShowcaseData } from "model";
 import {
   PiggyIcon,
@@ -21,12 +21,12 @@ const onReadClick = () => {
 };
 
 // eslint-disable-next-line no-extra-boolean-cast
-const heroCta = !!PN_PF_URL
+const heroCta = !!PN_PF_URL_LOGIN
   ? {
     label: "Leggi le tue notifiche",
     title: "Leggi le tue notifiche",
     onClick: function onClick() {
-      window.open(PN_PF_URL, "_self");
+      window.open(PN_PF_URL_LOGIN, "_self");
     },
   }
   : undefined;
