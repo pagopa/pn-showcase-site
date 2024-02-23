@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://gist.githubusercontent.com/StefanoFrontini/2edd2bb0e6e267a42dd6934526a881a3/raw/5f0391401dc1ff7434edc51ee16b2cdf45f53bde/dashboard-send-1-v4.json",
+    "format": { "property": "tempo_medio_perfezionamento" }
+  },
+  "params": [{ "name": "year", "value": null }],
+  "transform": [
+    { "filter": "year == datum.year || year === +datum.year" },
+    {
+      "calculate": "datum.type_notification === 'ANALOG' ? 'Analogiche': 'Digitali'",
+      "as": "type_notification_IT"
+    },
+    {
+      "calculate": "datum.tms_medio_perfezionamento / 86400",
+      "as": "tms_medio_perfezionamento_gio"
+    }
+  ],
+  "height": { "step": 56 },
+  "width": "container",
+  "encoding": {
+    "y": {
+      "field": "type_notification_IT",
+      "sort": {
+        "field": "tms_medio_perfezionamento_gio",
+        "order": "descending",
+        "op": "sum"
+      },
+      "scale": { "padding": 0 },
+      "axis": {
+        "domain": false,
+        "labelAlign": "left",
+        "labelLimit": 0,
+        "labelOffset": -20,
+        "labelPadding": 0,
+        "ticks": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": { "type": "bar", "height": 19 },
+      "encoding": {
+        "x": {
+          "field": "tms_medio_perfezionamento_gio",
+          "type": "quantitative",
+          "aggregate": "sum",
+          "axis": {
+            "format": ",d",
+            "gridDash": [21, 35],
+            "gridDashOffset": 38
+          }
+        }
+      }
+    },
+    {
+      "mark": { "type": "bar", "tooltip": true, "color": "transparent" },
+      "encoding": {
+        "tooltip": [
+          { "field": "type_notification_IT", "title": "Tempo medio" },
+          {
+            "field": "tms_medio_perfezionamento_gio",
+            "aggregate": "sum",
+            "title": "Giorni",
+            "format": ",d"
+          }
+        ]
+      }
+    }
+  ]
+}

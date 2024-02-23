@@ -1,0 +1,11 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://gist.githubusercontent.com/StefanoFrontini/2edd2bb0e6e267a42dd6934526a881a3/raw/5f0391401dc1ff7434edc51ee16b2cdf45f53bde/dashboard-send-1-v4.json"
+  },
+  "transform": [{ "calculate": "toDate(datum.last_run)", "as": "run_date" }],
+  "mark": "text",
+  "encoding": {
+    "text": { "field": "run_date", "type": "temporal", "format": "%d/%m/%Y" }
+  }
+}

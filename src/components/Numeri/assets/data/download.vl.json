@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": "container",
+  "data": {
+    "url": "https://gist.githubusercontent.com/StefanoFrontini/2edd2bb0e6e267a42dd6934526a881a3/raw/5f0391401dc1ff7434edc51ee16b2cdf45f53bde/dashboard-send-1-v4.json",
+    "format": { "property": "notifiche_per_giorno" }
+  },
+  "params": [
+    { "name": "is_cumulative", "value": true },
+    { "name": "notification_type", "value": "analog" },
+    {
+      "name": "year",
+      "value": null
+    }
+  ],
+  "transform": [
+    {
+      "filter": "year(datum.date) === year || year === null"
+    },
+    {
+      "calculate": "datum['num_iun_' + notification_type]",
+      "as": "notification_value"
+    },
+    {
+      "window": [
+        {
+          "op": "sum",
+          "field": "notification_value",
+          "as": "cumulative"
+        }
+      ],
+      "sort": [{ "field": "date" }]
+    },
+    {
+      "calculate": "is_cumulative ? datum.cumulative : datum.notification_value",
+      "as": "metric_value"
+    }
+  ],
+  "mark": { "type": "area", "line": true },
+  "encoding": {
+    "y": {
+      "field": "metric_value",
+      "type": "quantitative",
+      "axis": { "format": "~s" }
+    },
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "timeUnit": "yearmonthdate",
+      "axis": { "format": "%b %Y" }
+    },
+    "tooltip": [
+      {
+        "field": "date",
+        "type": "temporal",
+        "title": "Giorno",
+        "format": "%d/%m/%Y"
+      },
+      { "field": "cumulative", "title": "Notifiche cumulate", "format": "," },
+      {
+        "field": "num_iun_total",
+        "title": "Notifiche giornaliere",
+        "format": ","
+      }
+    ]
+  }
+}

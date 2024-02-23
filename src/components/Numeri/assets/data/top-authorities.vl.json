@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://gist.githubusercontent.com/StefanoFrontini/ff37d161c3387fcedafdc8a16cb78abd/raw/8c8b004054a3b31acbe513184450020629693632/dashboard-send-2.json",
+    "format": { "property": "top10_enti" }
+  },
+  "height": { "step": 56 },
+  "width": "container",
+  "encoding": {
+    "y": {
+      "field": "denominazione_ente",
+      "sort": { "field": "num_iun", "order": "descending", "op": "sum" },
+      "scale": { "padding": 0 },
+      "axis": {
+        "domain": false,
+        "labelAlign": "left",
+        "labelLimit": 0,
+        "labelOffset": -20,
+        "labelPadding": 0,
+        "ticks": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": { "type": "bar", "height": 19 },
+      "encoding": {
+        "x": {
+          "field": "num_iun",
+          "type": "quantitative",
+          "aggregate": "sum",
+          "axis": { "format": "~s", "gridDash": [21, 35], "gridDashOffset": 38 }
+        }
+      }
+    },
+    {
+      "mark": { "type": "bar", "tooltip": true, "color": "transparent" },
+      "encoding": {
+        "tooltip": [
+          { "field": "denominazione_ente", "title": "Ente" },
+          {
+            "field": "num_iun",
+            "aggregate": "sum",
+            "title": "Notifiche",
+            "format": ",d"
+          }
+        ]
+      }
+    }
+  ]
+}

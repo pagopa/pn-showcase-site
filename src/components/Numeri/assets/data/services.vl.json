@@ -1,0 +1,10 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://gist.githubusercontent.com/StefanoFrontini/ff37d161c3387fcedafdc8a16cb78abd/raw/8c8b004054a3b31acbe513184450020629693632/dashboard-send-2.json"
+  },
+  "mark": "text",
+  "encoding": {
+    "text": { "field": "enti_attivi", "type": "quantitative", "format": ",d" }
+  }
+}
