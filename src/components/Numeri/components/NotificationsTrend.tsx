@@ -1,8 +1,8 @@
 import { useState } from "react";
-import CardWrapper from "./CardWrapper";
 import CumulativeChart from "./CumulativeChart";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import downloadSpec from "../assets/data/download.vl.json";
+import { Card, CardContent, CardHeader, MenuItem, Select, Stack, Typography } from "@mui/material";
 
 type Props = {
   selYear: number | null;
@@ -68,47 +68,50 @@ const NotificationsTrend = ({ selYear }: Props): JSX.Element => {
     setCurOptionTotalDigitalAnalog(result ? result.label : "total");
   };
   return (
-    <CardWrapper>
-      <h4>Andamento delle notifiche</h4>
-      <p>
-        Andamento
-        <select
-          className="form-select fw-semibold d-inline mx-2 border border-dark "
-          style={{
-            width: "auto",
-          }}
-          onChange={(e) => handleOptionCumulativeDaily(+e.target.value)}
-        >
-          {optionsCumulativeDaily.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-        delle notifiche
-        <select
-          className="form-select fw-semibold d-inline mx-2 border border-dark "
-          style={{
-            width: "auto",
-          }}
-          onChange={(e) => handleOptionsTotalDigitalAnalog(+e.target.value)}
-        >
-          {optionsTotalDigitalAnalog.map((option) => (
-            <option key={option.id} value={option.id}>
-              {optionsTotalDigitalAnalogToItalian(option.label)}
-            </option>
-          ))}
-        </select>
-      </p>
-      <div style={{ height: "22rem" }}>
+    <Card>
+      <CardHeader title="Andamento delle notifiche" subheader={
+        <Stack direction="row"><Typography>Andamento</Typography>
+
+          <Select
+            className="form-select fw-semibold d-inline mx-2 border border-dark "
+            style={{
+              width: "auto",
+            }}
+            onChange={(e:any) => handleOptionCumulativeDaily(+e.target.value)}
+          >
+            {optionsCumulativeDaily.map((option) => (
+              <MenuItem key={option.id} value={option.id}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </Select>
+          <Typography> delle notifiche</Typography>
+          <Select
+            className="form-select fw-semibold d-inline mx-2 border border-dark "
+            style={{
+              width: "auto",
+            }}
+            onChange={(e:any) => handleOptionsTotalDigitalAnalog(+e.target.value)}
+          >
+            {optionsTotalDigitalAnalog.map((option) => (
+              <MenuItem key={option.id} value={option.id}>
+                {optionsTotalDigitalAnalogToItalian(option.label)}
+              </MenuItem>
+            ))}
+          </Select>
+        </Stack>
+      }>
+
+      </CardHeader>
+      <CardContent style={{ height: "22rem" }}>
         <CumulativeChart
           spec={toVegaLiteSpec(downloadSpec)}
           cumulativeSignal={curOptionCumulativeDaily === 1 ? true : false}
           filterSignal={curOptionTotalDigitalAnalog}
           yearSignal={selYear}
         />
-      </div>
-    </CardWrapper>
+      </CardContent>
+    </Card>
   );
 };
 export default NotificationsTrend;

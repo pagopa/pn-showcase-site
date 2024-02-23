@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import embed, { Result } from "vega-embed";
 import { TopLevelSpec } from "vega-lite";
 import chartConfig from "../shared/chart-config";
+import { Box } from "@mui/material";
 
 type Props = {
   spec: TopLevelSpec;
@@ -40,7 +41,7 @@ const CumulativeChart = ({
   }, [chart, yearSignal]);
 
   return (
-    <div className="w-100 h-100" ref={chartContent} id="chart-content"></div>
+    <Box sx={{ height: '100%', width: '100%' }} ref={chartContent} id="chart-content"></Box>
   );
 };
 export default CumulativeChart;

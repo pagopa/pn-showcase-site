@@ -1,3 +1,5 @@
+import { Card } from "@mui/material";
+
 type Props = {
   className?: string;
   cardClass?: string;
@@ -9,15 +11,9 @@ const CardWrapper = ({
   children,
 }: Props): JSX.Element => {
   return (
-    <div
-      className={[
-        "card card-bg h-100 m-0 no-after ",
-        className,
-        cardClass,
-      ].join(" ")}
-    >
-      <div className="card-body p-3">{children}</div>
-    </div>
+  <Card sx={{height: '100%'}}>
+   {children}
+  </Card>
   );
 };
 

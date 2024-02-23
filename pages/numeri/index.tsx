@@ -12,7 +12,7 @@ import TabsNav from "src/components/Numeri/components/TabsNav";
 import TopServices from "src/components/Numeri/components/TopServices";
 import { curYear, firstYear } from "src/components/Numeri/shared/constants";
 import { useState } from "react";
-import { Container, Typography, Grid } from "@mui/material";
+import { Container, Typography, Box, Stack } from "@mui/material";
 
 type Tabs = {
     id: number | null;
@@ -41,34 +41,37 @@ const NumeriPage: NextPage = () => {
                         title="I numeri di SEND"
                         type="text"
                         background={`${IMAGES_PATH}/hero-faq-background-2.png`}
+                        subtitle={<DashboardIntro />}
                     />
                     <Container>
-                        <DashboardIntro />
+
                         <section>
-                            <Typography variant="h4">Volumi e andamento notifiche</Typography>
                             <TabsNav items={tabs} value={selYear} valueChange={setSelYear} />
-                            <Grid container spacing={2}>
-                                <Grid item xs={12} md={6}>
+                            <Typography variant="h4">Volumi e andamento notifiche</Typography>
+
+                            <Stack flexDirection="column" spacing={2}>
+                                <Box mb={2}>
                                     <KpiNotifications selYear={selYear} />
-                                </Grid>
-                                <Grid item xs={12} md={6}>
+                                </Box>
+                                <Box mb={2}>
                                     <Completion selYear={selYear} />
-                                </Grid>
-                                <Grid item xs={12}>
+                                </Box>
+                                <Box>
                                     <NotificationsTrend selYear={selYear} />
-                                </Grid>
-                            </Grid>
+                                </Box>
+                            </Stack>
+
                         </section>
                         <section style={{ marginTop: '5rem' }}>
                             <Typography variant="h4" gutterBottom>Enti e Servizi</Typography>
-                            <Grid container spacing={2}>
-                                <Grid item xs={12} md={6}>
+                            <Stack flexDirection="column" spacing={2}>
+                                <Box mb={2}>
                                     <KpiAuthoritiesServices />
-                                </Grid>
-                                <Grid item xs={12} md={6}>
+                                </Box>
+                                <Box mb={2}>
                                     <TopServices />
-                                </Grid>
-                            </Grid>
+                                </Box>
+                            </Stack>
                         </section>
                     </Container>
                 </div>

@@ -29,7 +29,7 @@ const KpiWrapper = ({ spec, ...restProps }: Props): JSX.Element => {
     });
   });
 
-  return <span {...restProps}>{text}</span>;
+  return <p color='#fff' {...restProps}>{text}</p>;
 };
 
 export default KpiWrapper;

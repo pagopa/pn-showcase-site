@@ -8,12 +8,10 @@ const DashboardIntro = () => {
 
 
   return (
-    <aside>
-      <Typography variant="body2" align="right" >
+      <Typography variant="body2" align="right" color={'#ffff'}>
         Ultimo aggiornamento:
         <KpiWrapper spec={toVegaLiteSpec(lastUpdateSpec)} />
       </Typography>
-    </aside >
   );
 };
 

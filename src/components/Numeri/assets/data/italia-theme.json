@@ -1,8 +1,8 @@
 {
   "padding": 0,
   "view": { "stroke": null },
-  "arc": { "fill": "#0066CC", "hover": { "color": "#0BDAD3" } },
-  "area": { "fill": "#0066CC" },
+  "arc": { "fill": "#0062C3", "hover": { "color": "#0BDAD3" } },
+  "area": { "fill": "#0062C3" },
   "axis": {
     "domainColor": "#cbcbcb",
     "grid": true,
@@ -30,23 +30,23 @@
     "titleFontSize": 14,
     "titlePadding": 10
   },
-  "line": { "stroke": "#0066CC", "strokeWidth": 2 },
+  "line": { "stroke": "#0062C3", "strokeWidth": 2 },
   "header": {
     "labelFont": "inherit",
     "titleFont": "inherit",
     "labelFontSize": 12
   },
-  "path": { "stroke": "#0066CC", "strokeWidth": 0.5 },
-  "rect": { "fill": "#0066CC", "hover": { "color": "#0BDAD3" } },
+  "path": { "stroke": "#0062C3", "strokeWidth": 0.5 },
+  "rect": { "fill": "#0062C3", "hover": { "color": "#0BDAD3" } },
   "range": {
-    "category": ["#0BD9D3", "#15c5f8", "#0066CC", "#2d489d", "#00264D"],
+    "category": ["#0BD9D3", "#15c5f8", "#0062C3", "#2d489d", "#00264D"],
     "diverging": ["#43ecee", "#b947ff"],
-    "heatmap": ["#9ff5f2", "#0066CC", "#fd338b"]
+    "heatmap": ["#9ff5f2", "#0062C3", "#fd338b"]
   },
   "point": { "filled": true, "shape": "circle" },
-  "shape": { "stroke": "#0066CC" },
+  "shape": { "stroke": "#0062C3" },
   "text": { "font": "inherit" },
-  "bar": { "binSpacing": 2, "fill": "#0066CC", "stroke": null },
+  "bar": { "binSpacing": 2, "fill": "#0062C3", "stroke": null },
   "title": {
     "anchor": "start",
     "font": "inherit",

@@ -13,6 +13,7 @@ import { expressionInterpreter } from "vega-interpreter";
 import { TopLevelSpec } from "vega-lite";
 import { VegaSceneRoot, searchTree, toVegaSpec } from "../shared/chart-utils";
 import { cacheLoader } from "../shared/vega-cache-loader";
+import { Typography } from "@mui/material";
 
 type Props = {
   spec: TopLevelSpec | VegaSpec;
@@ -61,7 +62,7 @@ const KpiSignal = ({ spec, yearSignal, ...restProps }: Props): JSX.Element => {
       ); // Force text
   }, [view, yearSignal]);
 
-  return <span {...restProps}>{text}</span>;
+  return <Typography variant="h4" {...restProps}>{text}</Typography>;
 };
 
 export default KpiSignal;
