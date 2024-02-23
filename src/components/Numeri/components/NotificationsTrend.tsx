@@ -68,16 +68,16 @@ const NotificationsTrend = ({ selYear }: Props): JSX.Element => {
     setCurOptionTotalDigitalAnalog(result ? result.label : "total");
   };
   return (
-    <Card>
+    <Card elevation={8}
+      sx={{
+        p: 3,
+        borderRadius: 2,
+      }}>
       <CardHeader title="Andamento delle notifiche" subheader={
         <Stack direction="row"><Typography>Andamento</Typography>
 
           <Select
-            className="form-select fw-semibold d-inline mx-2 border border-dark "
-            style={{
-              width: "auto",
-            }}
-            onChange={(e:any) => handleOptionCumulativeDaily(+e.target.value)}
+            onChange={(e: any) => handleOptionCumulativeDaily(+e.target.value)}
           >
             {optionsCumulativeDaily.map((option) => (
               <MenuItem key={option.id} value={option.id}>
@@ -87,11 +87,7 @@ const NotificationsTrend = ({ selYear }: Props): JSX.Element => {
           </Select>
           <Typography> delle notifiche</Typography>
           <Select
-            className="form-select fw-semibold d-inline mx-2 border border-dark "
-            style={{
-              width: "auto",
-            }}
-            onChange={(e:any) => handleOptionsTotalDigitalAnalog(+e.target.value)}
+            onChange={(e: any) => handleOptionsTotalDigitalAnalog(+e.target.value)}
           >
             {optionsTotalDigitalAnalog.map((option) => (
               <MenuItem key={option.id} value={option.id}>

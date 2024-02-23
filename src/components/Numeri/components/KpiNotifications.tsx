@@ -1,12 +1,11 @@
 "use client";
-import CardWrapper from "./CardWrapper";
+import DataCard from "./DataCard";
 import KpiSignal from "./KpiSignal";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import notificationsAnalogSpec from "../assets/data/notifications-analog.vl.json";
 import notificationsDigitalSpec from "../assets/data/notifications-digital.vl.json";
 import notificationsTotalSpec from "../assets/data/notifications-total.vl.json";
-import { Box, IconButton, Stack, Tooltip, Typography } from "@mui/material";
-import InfoIcon from '@mui/icons-material/Info';
+import { Box, Stack } from "@mui/material";
 
 
 type Props = {
@@ -19,53 +18,32 @@ const KpiNotifications = ({ selYear }: Props): JSX.Element => {
 
   return (
     <article>
-      <Stack direction="row" spacing={3}>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
         <Box style={{ flex: '1 0 0' }} mb={3}>
-          <CardWrapper>
-            <Typography variant="h6">
-              Totale notifiche {yearLabel}{" "}
-              <Tooltip title="Somma delle notifiche che hanno intrapreso workflow analogico o digitale per raggiungere un destinatario" placement="right-end">
-                <IconButton>
-                  <InfoIcon />
-                </IconButton>
-              </Tooltip>
-            </Typography>
-            {/* <h6>
-              Totale notifiche {yearLabel}{" "}
-              <a
-                href="#"
-                ref={refTooltip}
-                className={!isAllYears ? "d-none" : ""}
-                data-bs-toggle="tooltip"
-                title="Somma delle notifiche che hanno intrapreso workflow analogico o digitale per raggiungere un destinatario"
-              >
-              </a>
-            </h6> */}
+          <DataCard label={`Totale notifiche ${yearLabel}`} notes="Somma delle notifiche che hanno intrapreso workflow analogico o digitale per raggiungere un destinatario">
             <KpiSignal
               spec={toVegaLiteSpec(notificationsTotalSpec)}
               yearSignal={selYear}
             />
-          </CardWrapper>
+          </DataCard>
         </Box>
 
         <Box style={{ flex: '1 0 0' }} mb={3}>
-          <CardWrapper>
-            <Typography variant="h6">Totale notifiche analogiche</Typography>
+          <DataCard label="Totale notifiche analogiche">
             <KpiSignal
               spec={toVegaLiteSpec(notificationsAnalogSpec)}
               yearSignal={selYear}
             />
-          </CardWrapper>
+          </DataCard>
         </Box>
 
         <Box style={{ flex: '1 0 0' }} mb={3}>
-          <CardWrapper>
-            <Typography variant="h6">Totale notifiche digitali</Typography>
+          <DataCard label="Totale notifiche digitali">
             <KpiSignal
               spec={toVegaLiteSpec(notificationsDigitalSpec)}
               yearSignal={selYear}
             />
-          </CardWrapper>
+          </DataCard>
         </Box>
       </Stack>
     </article>

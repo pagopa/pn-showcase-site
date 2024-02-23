@@ -14,9 +14,13 @@ const TopServices = (): JSX.Element => {
 
   return (
     <article>
-      <Stack direction="row" spacing={3}>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
         <Box style={{ flex: '1 0 0' }} mb={3}>
-          <Card>
+          <Card elevation={8}
+            sx={{
+              p: 3,
+              borderRadius: 2,
+            }}>
             <CardHeader title="Principali enti attivi" subheader={
               <Typography variant="body1">
                 Ordinati per numero di notifiche depositate da sempre
@@ -34,7 +38,11 @@ const TopServices = (): JSX.Element => {
           </Card>
         </Box>
         <Box style={{ flex: '1 0 0' }} mb={3}>
-          <Card>
+          <Card elevation={8}
+            sx={{
+              p: 3,
+              borderRadius: 2,
+            }}>
             <CardHeader title="Principali ambiti" subheader={
               <Typography variant="body1">
                 Ordinati per numero di notifiche depositate da sempre{" "}

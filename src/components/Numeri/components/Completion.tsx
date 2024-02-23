@@ -1,6 +1,6 @@
 "use client";
 
-import CardWrapper from "./CardWrapper";
+import DataCard from "./DataCard";
 import ChartSignal from "./ChartSignal";
 
 import completionAvgTimeSpec from "../assets/data/completion-avg-time.vl.json";
@@ -17,26 +17,22 @@ const Completion = ({ selYear }: Props): JSX.Element => {
     <article>
       <Grid container spacing={3} justifyContent="center" alignItems="center" sx={{ my: 3 }}>
         <Grid item xs={12} md={6}>
-          <CardWrapper>
-            <Typography variant="h5" fontWeight="bold">
-              Perfezionamento per modalità di invio
-            </Typography>
+          <DataCard label="Perfezionamento per modalità di invio">
+
             <Typography variant="body2" color="textSecondary">
               Dati in percentuale
             </Typography>
             <ChartSignal spec={toVegaLiteSpec(completionByMethodSpec)} yearSignal={selYear} />
-          </CardWrapper>
+          </DataCard>
         </Grid>
         <Grid item xs={12} md={6}>
-          <CardWrapper>
-            <Typography variant="h5" fontWeight="bold">
-              Tempo medio di perfezionamento per modalità di invio
-            </Typography>
+          <DataCard label="Tempo medio di perfezionamento per modalità di invio">
+
             <Typography variant="body2" color="textSecondary">
               Dati in giorni
             </Typography>
             <ChartSignal spec={toVegaLiteSpec(completionAvgTimeSpec)} yearSignal={selYear} />
-          </CardWrapper>
+          </DataCard>
         </Grid>
       </Grid>
     </article>

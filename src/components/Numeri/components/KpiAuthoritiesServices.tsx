@@ -1,42 +1,32 @@
 "use client";
 import actsSpec from "../assets/data/acts.vl.json";
 import servicesSpec from "../assets/data/services.vl.json";
-import CardWrapper from "./CardWrapper";
+import DataCard from "./DataCard";
 import KpiAuthority from "./KpiAuthority";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import Stack from "@mui/material/Stack";
-import { Box, IconButton, Tooltip, Typography } from "@mui/material";
-import InfoIcon from '@mui/icons-material/Info';
+import { Box } from "@mui/material";
 
 const KpiAuthoritiesServices = (): JSX.Element => {
 
 
   return (
     <article>
-      <Stack direction="row" spacing={3}>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
         <Box style={{ flex: '1 0 0' }} mb={3}>
-          <CardWrapper >
-            <Typography variant="h6">
-              Enti attivi
-              <Tooltip title="Enti che hanno inviato almeno una notifica" placement="right-end">
-                <IconButton>
-                  <InfoIcon />
-                </IconButton>
-              </Tooltip>
-            </Typography>
+          <DataCard label="Enti attivi" notes="Enti che hanno inviato almeno una notifica">
             <KpiAuthority
               spec={toVegaLiteSpec(servicesSpec)}
             />
-          </CardWrapper>
+          </DataCard>
         </Box>
 
         <Box style={{ flex: '1 0 0' }} mb={3}>
-          <CardWrapper>
-            <Typography variant="h6">Tipologie di atto</Typography>
+          <DataCard label="Tipologie di atto">
             <KpiAuthority
               spec={toVegaLiteSpec(actsSpec)}
             />
-          </CardWrapper>
+          </DataCard>
         </Box>
       </Stack>
     </article>
