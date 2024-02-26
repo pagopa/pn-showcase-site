@@ -76,7 +76,6 @@ const NumeriPage: NextPage = () => {
                 <DataSectionWrapper title="Enti e Servizi" description="Scopri quanti enti stanno usando SEND e per quali servizi" background="grey">
                     <Box mb={2}>
                         <KpiAuthoritiesServices />
-
                         <TopServices />
                     </Box>
                 </DataSectionWrapper>
