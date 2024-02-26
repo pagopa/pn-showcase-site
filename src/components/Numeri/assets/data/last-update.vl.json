@@ -1,0 +1,11 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione1.json"
+  },
+  "transform": [{ "calculate": "toDate(datum.last_run)", "as": "run_date" }],
+  "mark": "text",
+  "encoding": {
+    "text": { "field": "run_date", "type": "temporal", "format": "%d/%m/%Y" }
+  }
+}

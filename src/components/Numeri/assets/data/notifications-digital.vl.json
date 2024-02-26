@@ -1,0 +1,16 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione1.json",
+    "format": { "property": "totale_notifiche" }
+  },
+  "params": [{ "name": "year", "value": null }],
+  "transform": [
+    { "filter": "year == datum.year || year === +datum.year" },
+    { "filter": "datum.type_notification == 'DIGITAL'" }
+  ],
+  "mark": "text",
+  "encoding": {
+    "text": { "field": "num_iun", "aggregate": "sum", "format": ",d" }
+  }
+}

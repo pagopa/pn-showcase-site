@@ -11,7 +11,7 @@ const nextConfig = {
     "@mui/material": {
       transform: "@mui/material/{{member}}",
     },
-  },
+  }
 };
 
 module.exports = nextConfig;
