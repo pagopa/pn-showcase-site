@@ -32,11 +32,11 @@ const NumeriPage: NextPage = () => {
 
     const handleTabChange = (tab: number) => {
         if (tab === tabs[tab].id) {
-          return;
+            return;
         }
         setSelYear(tabs[tab].id);
-      };
-    
+    };
+
     return (
         <>
             <PageHead
@@ -47,9 +47,7 @@ const NumeriPage: NextPage = () => {
                 <HeadingTitle title="I numeri di SEND" subtitle={<Stack>
                     <Typography>Scopri i numeri di Piattaforma Notifiche ......</Typography> <DashboardIntro />
 
-                </Stack>}>
-
-                </HeadingTitle>
+                </Stack>} />
             </Box>
 
 
