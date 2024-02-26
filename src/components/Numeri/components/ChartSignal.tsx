@@ -1,10 +1,9 @@
 "use client";
+import { Box } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import embed, { Result } from "vega-embed";
 import { TopLevelSpec } from "vega-lite";
 import chartConfig from "../shared/chart-config";
-import { Box } from "@mui/material";
-import { Height } from "@mui/icons-material";
 
 type Props = {
   spec: TopLevelSpec;
@@ -26,7 +25,11 @@ const ChartSignal = ({ spec, yearSignal }: Props): JSX.Element => {
   }, [chart, yearSignal]);
 
   return (
-    <Box sx={{ height: '100%', width: '100%' }} ref={chartContent} id="chart-content"></Box>
+    <Box
+      sx={{ height: "100%", width: "100%", mt: 3 }}
+      ref={chartContent}
+      id="chart-content"
+    ></Box>
   );
 };
 

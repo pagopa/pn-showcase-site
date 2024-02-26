@@ -17,11 +17,7 @@
   "encoding": {
     "y": {
       "field": "type_notification_IT",
-      "sort": {
-        "field": "perc_perfezionamento",
-        "order": "descending",
-        "op": "sum"
-      },
+      "sort": ["Digitali", "Analogiche"],
       "scale": { "padding": 0 },
       "axis": {
         "domain": false,
@@ -61,6 +57,28 @@
             "format": ".0%"
           }
         ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": -20,
+        "dy": -18
+      },
+      "encoding": {
+        "x": {
+          "field": "perc_perfezionamento",
+          "type": "quantitative",
+          "aggregate": "sum"
+        },
+        "text": {
+          "field": "perc_perfezionamento",
+          "type": "quantitative",
+          "aggregate": "sum",
+          "format": ".0%"
+        }
       }
     }
   ]
