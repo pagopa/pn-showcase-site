@@ -154,7 +154,10 @@ const NavigationBar = ({
               <MenuItem onClick={() => handleMenuItemClick(paths[2])} sx={{ color: index === 2 ? 'primary.main' : 'text.secondary' }}>
                 {pi}
               </MenuItem>
-              <MenuItem onClick={() => handleMenuItemClick(paths[3])} sx={{ color: index === 3 ? 'primary.main' : 'text.secondary' }}>
+              <MenuItem onClick={() => handleMenuItemClick(paths[3])} sx={{ color: index === 2 ? 'primary.main' : 'text.secondary' }}>
+                {numeri}
+              </MenuItem>
+              <MenuItem onClick={() => handleMenuItemClick(paths[4])} sx={{ color: index === 3 ? 'primary.main' : 'text.secondary' }}>
                 {faq}
               </MenuItem>
             </Menu>
