@@ -13,8 +13,7 @@ const TopServices = (): JSX.Element => {
 
 
   return (
-    <article>
-      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 2, sm: 2, md: 4 }} mt={3}>
         <Box style={{ flex: '1 0 0' }} mb={3}>
           <Card elevation={8}
             sx={{
@@ -59,7 +58,6 @@ const TopServices = (): JSX.Element => {
 
         </Box>
       </Stack>
-    </article>
   );
 };
 

@@ -17,8 +17,7 @@ const KpiNotifications = ({ selYear }: Props): JSX.Element => {
   const yearLabel = isAllYears ? "dal 2023" : `nel ${selYear}`;
 
   return (
-    <article>
-      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 2, sm: 2, md: 4 }}>
         <Box style={{ flex: '1 0 0' }} mb={3}>
           <DataCard label={`Totale notifiche ${yearLabel}`} notes="Somma delle notifiche che hanno intrapreso workflow analogico o digitale per raggiungere un destinatario">
             <KpiSignal
@@ -46,7 +45,6 @@ const KpiNotifications = ({ selYear }: Props): JSX.Element => {
           </DataCard>
         </Box>
       </Stack>
-    </article>
   );
 };
 
