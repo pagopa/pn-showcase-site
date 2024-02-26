@@ -67,11 +67,8 @@ const NumeriPage: NextPage = () => {
                 <DataSectionWrapper title="Volumi e andamento notifiche" description="Le notifiche vengono inviate dagli enti mittenti">
                     <Box mb={2}>
                         <KpiNotifications selYear={selYear} />
-                    </Box>
-                    <Box mb={2}>
+
                         <Completion selYear={selYear} />
-                    </Box>
-                    <Box>
                         <NotificationsTrend selYear={selYear} />
                     </Box>
                 </DataSectionWrapper>
@@ -79,8 +76,7 @@ const NumeriPage: NextPage = () => {
                 <DataSectionWrapper title="Enti e Servizi" description="Scopri quanti enti stanno usando SEND e per quali servizi" background="grey">
                     <Box mb={2}>
                         <KpiAuthoritiesServices />
-                    </Box>
-                    <Box mb={2}>
+
                         <TopServices />
                     </Box>
                 </DataSectionWrapper>

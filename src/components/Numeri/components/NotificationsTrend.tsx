@@ -74,9 +74,9 @@ const NotificationsTrend = ({ selYear }: Props): JSX.Element => {
         borderRadius: 2,
       }}>
       <CardHeader title="Andamento delle notifiche" subheader={
-        <Stack direction="row"><Typography>Andamento</Typography>
+        <Stack direction="row" spacing={2} alignItems={'center'}><Typography>Andamento</Typography>
 
-          <Select
+          <Select value={curOptionCumulativeDaily} size="small"
             onChange={(e: any) => handleOptionCumulativeDaily(+e.target.value)}
           >
             {optionsCumulativeDaily.map((option) => (
@@ -86,7 +86,7 @@ const NotificationsTrend = ({ selYear }: Props): JSX.Element => {
             ))}
           </Select>
           <Typography> delle notifiche</Typography>
-          <Select
+          <Select size={'small'}
             onChange={(e: any) => handleOptionsTotalDigitalAnalog(+e.target.value)}
           >
             {optionsTotalDigitalAnalog.map((option) => (

@@ -11,7 +11,6 @@ const KpiAuthoritiesServices = (): JSX.Element => {
 
 
   return (
-    <article>
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
         <Box style={{ flex: '1 0 0' }} mb={3}>
           <DataCard label="Enti attivi" notes="Enti che hanno inviato almeno una notifica">
@@ -29,7 +28,6 @@ const KpiAuthoritiesServices = (): JSX.Element => {
           </DataCard>
         </Box>
       </Stack>
-    </article>
   );
 };
 
