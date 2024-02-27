@@ -21,11 +21,7 @@
   "encoding": {
     "y": {
       "field": "type_notification_IT",
-      "sort": {
-        "field": "tms_medio_perfezionamento_gio",
-        "order": "descending",
-        "op": "sum"
-      },
+      "sort": ["Digitali", "Analogiche"],
       "scale": { "padding": 0 },
       "axis": {
         "domain": false,
@@ -65,6 +61,28 @@
             "format": ",d"
           }
         ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": -15,
+        "dy": -18
+      },
+      "encoding": {
+        "x": {
+          "field": "tms_medio_perfezionamento_gio",
+          "type": "quantitative",
+          "aggregate": "sum"
+        },
+        "text": {
+          "field": "tms_medio_perfezionamento_gio",
+          "type": "quantitative",
+          "aggregate": "sum",
+          "format": ",d"
+        }
       }
     }
   ]

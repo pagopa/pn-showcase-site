@@ -1,63 +1,43 @@
 "use client";
 
-import ChartServices from "./ChartServices";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
+import ChartServices from "./ChartServices";
 
+import { Box, Stack } from "@mui/material";
 import topAreasSpec from "../assets/data/top-areas.vl.json";
-import topAuthoritiesSpec from "../assets/data/top-authorities.vl.json";
-import { Box, Card, CardContent, CardHeader, IconButton, Stack, Tooltip, Typography } from "@mui/material";
-import InfoIcon from '@mui/icons-material/Info';
+import actsSpec from "../assets/data/acts.vl.json";
 
+import KpiCard from "./KpiCard";
+import KpiAuthority from "./KpiAuthority";
 
 const TopServices = (): JSX.Element => {
-
-
   return (
-      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 2, sm: 2, md: 4 }} mt={3}>
-        <Box style={{ flex: '1 0 0' }} mb={3}>
-          <Card elevation={8}
-            sx={{
-              p: 3,
-              borderRadius: 2,
-            }}>
-            <CardHeader title="Principali enti attivi" subheader={
-              <Typography variant="body1">
-                Ordinati per numero di notifiche depositate da sempre
-                <Tooltip title="Enti che hanno inviato almeno una notifica" placement="right-end">
-                  <IconButton>
-                    <InfoIcon />
-                  </IconButton>
-                </Tooltip>
-              </Typography>
-            }></CardHeader>
-            <CardContent>
-              <ChartServices spec={toVegaLiteSpec(topAuthoritiesSpec)} />
-            </CardContent>
+    <Stack
+      direction={{ xs: "column", sm: "row" }}
+      spacing={{ xs: 2, sm: 2, md: 4 }}
+      mt={3}
+    >
+      <Box mb={3}>
+        <KpiCard
+          label="Tipologie di notifiche inviate"
+          subLabel="La tipologia rappresenta l'ambito di appartenenza della notifica (es. multe, tributi, anagrafe etc.)"
+        >
+          <KpiAuthority spec={toVegaLiteSpec(actsSpec)} />
+        </KpiCard>
 
-          </Card>
-        </Box>
-        <Box style={{ flex: '1 0 0' }} mb={3}>
-          <Card elevation={8}
-            sx={{
-              p: 3,
-              borderRadius: 2,
-            }}>
-            <CardHeader title="Principali ambiti" subheader={
-              <Typography variant="body1">
-                Ordinati per numero di notifiche depositate da sempre{" "}
-                <Tooltip title="Enti che hanno inviato almeno una notifica" placement="right-end">
-                  <IconButton>
-                    <InfoIcon />
-                  </IconButton>
-                </Tooltip>
-              </Typography>
-            }></CardHeader>
-            <ChartServices spec={toVegaLiteSpec(topAreasSpec)} />
-            <CardContent></CardContent>
-          </Card>
+      </Box>
+      <Box style={{ flex: "1 0 0" }} mb={3}>
+        <KpiCard
+          label="Principali ambiti"
+          subLabel="Servizi ordinati per numero di notifiche depositate a partire dall'adozione di SEND"
+          borderLeft=""
+        >
+          <ChartServices spec={toVegaLiteSpec(topAreasSpec)} />
+        </KpiCard>
 
-        </Box>
-      </Stack>
+      </Box>
+
+    </Stack>
   );
 };
 

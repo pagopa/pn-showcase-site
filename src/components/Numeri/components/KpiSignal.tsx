@@ -10,10 +10,10 @@ import {
 } from "vega";
 import { expressionInterpreter } from "vega-interpreter";
 
+import { Typography } from "@mui/material";
 import { TopLevelSpec } from "vega-lite";
 import { VegaSceneRoot, searchTree, toVegaSpec } from "../shared/chart-utils";
 import { cacheLoader } from "../shared/vega-cache-loader";
-import { Typography } from "@mui/material";
 
 type Props = {
   spec: TopLevelSpec | VegaSpec;
@@ -62,7 +62,11 @@ const KpiSignal = ({ spec, yearSignal, ...restProps }: Props): JSX.Element => {
       ); // Force text
   }, [view, yearSignal]);
 
-  return <Typography variant="h4" {...restProps}>{text}</Typography>;
+  return (
+    <Typography variant="h4" sx={{ mt: 3 }} {...restProps}>
+      {text}
+    </Typography>
+  );
 };
 
 export default KpiSignal;
