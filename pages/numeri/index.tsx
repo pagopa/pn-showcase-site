@@ -84,8 +84,8 @@ const NumeriPage: NextPage = () => {
         </DataSectionWrapper>
 
         <DataSectionWrapper
-          title="Enti e Servizi"
-          description="Scopri quanti enti stanno usando SEND e per quali servizi"
+          title="Enti e tipologie di notifica inviate"
+          description="I seguenti dati mostrano quanti Enti stanno utilizzando SEND e per quale tipologia di servizi"
           background="grey"
         >
           <Box mb={2}>

@@ -1,0 +1,42 @@
+{
+  "last_run": "2024-02-27T08:03:13.222858",
+  "nb_version": "0.0.1",
+  "enti_attivi": 2666,
+  "tipologie_atto": 24,
+  "top10_enti": [
+    { "denominazione_ente": "Regione Lombardia", "num_iun": 865801 },
+    { "denominazione_ente": "Regione Puglia", "num_iun": 569309 },
+    {
+      "denominazione_ente": "Sorit Societa' Servizi e Riscossioni Italia Spa",
+      "num_iun": 297953
+    },
+    { "denominazione_ente": "Regione Marche", "num_iun": 141867 },
+    { "denominazione_ente": "Comune di Cagliari", "num_iun": 32102 },
+    { "denominazione_ente": "Fintel Engineering S.R.L.", "num_iun": 20224 },
+    { "denominazione_ente": "Ministero dell'Interno", "num_iun": 16717 },
+    { "denominazione_ente": "Comune di Foggia", "num_iun": 14621 },
+    { "denominazione_ente": "San Marco S.p.a", "num_iun": 9700 },
+    { "denominazione_ente": "Comune di Cesena", "num_iun": 8717 }
+  ],
+  "top10_cat_enti": [
+    { "categoria_ente": "regioni", "num_iun": 1576977 },
+    { "categoria_ente": "utility", "num_iun": 335822 },
+    { "categoria_ente": "comuni", "num_iun": 111911 },
+    { "categoria_ente": "pa_centrali", "num_iun": 16717 },
+    { "categoria_ente": "enti_comunali", "num_iun": 8 },
+    { "categoria_ente": "salute_locale", "num_iun": 3 },
+    { "categoria_ente": "aet", "num_iun": 2 }
+  ],
+  "top10_ambiti": [
+    { "ambito": "Recupero Bolli non Pagati", "num_iun": 1573843 },
+    { "ambito": "Riscossione Coattiva", "num_iun": 335583 },
+    { "ambito": "Tributi", "num_iun": 77995 },
+    { "ambito": "Polizia Locale", "num_iun": 37455 },
+    { "ambito": "Decreto", "num_iun": 15753 },
+    { "ambito": "Anagrafe", "num_iun": 378 },
+    { "ambito": "Ordinanze", "num_iun": 161 },
+    { "ambito": "Scuola", "num_iun": 97 },
+    { "ambito": "Ufficio Tecnico / SUAP", "num_iun": 73 },
+    { "ambito": "Patrimonio", "num_iun": 67 }
+  ]
+}

@@ -9,7 +9,7 @@ type Props = {
   yearSignal: number | null;
 };
 
-const ChartSignal = ({ spec, yearSignal }: Props): JSX.Element => {
+const PieChart = ({ spec, yearSignal }: Props): JSX.Element => {
   const [chart, setChart] = useState<Result | null>(null);
   const chartContent = useRef<HTMLDivElement>(null);
 
@@ -23,13 +23,7 @@ const ChartSignal = ({ spec, yearSignal }: Props): JSX.Element => {
     chart.view.signal("year", yearSignal).runAsync();
   }, [chart, yearSignal]);
 
-  return (
-    <Box
-      sx={{ height: "100%", width: "100%", mt: 3 }}
-      ref={chartContent}
-      id="chart-content"
-    ></Box>
-  );
+  return <Box ref={chartContent} id="chart-content"></Box>;
 };
 
-export default ChartSignal;
+export default PieChart;

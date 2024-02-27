@@ -18,7 +18,7 @@ const Completion = ({ selYear }: Props): JSX.Element => {
         spacing={3}
         justifyContent="center"
         alignItems="flex-start"
-        sx={{ my: 3 }}
+        sx={{ mb: 3, mt: 1 }}
       >
         <Grid item xs={12} md={6}>
           <KpiCard label="Perfezionamento per modalità di invio" borderLeft="">
