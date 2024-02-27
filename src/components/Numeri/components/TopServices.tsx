@@ -5,8 +5,10 @@ import ChartServices from "./ChartServices";
 
 import { Box, Stack } from "@mui/material";
 import topAreasSpec from "../assets/data/top-areas.vl.json";
-import topAuthoritiesSpec from "../assets/data/top-authorities.vl.json";
+import actsSpec from "../assets/data/acts.vl.json";
+
 import KpiCard from "./KpiCard";
+import KpiAuthority from "./KpiAuthority";
 
 const TopServices = (): JSX.Element => {
   return (
@@ -15,14 +17,14 @@ const TopServices = (): JSX.Element => {
       spacing={{ xs: 2, sm: 2, md: 4 }}
       mt={3}
     >
-      <Box style={{ flex: "1 0 0" }} mb={3}>
+      <Box mb={3}>
         <KpiCard
-          label="Principali categorie di enti attivi"
-          subLabel="Enti ordinati per numero di notifiche depositate a partire dall'adozione di SEND"
-          borderLeft=""
+          label="Tipologie di notifiche inviate"
+          subLabel="La tipologia rappresenta l'ambito di appartenenza della notifica (es. multe, tributi, anagrafe etc.)"
         >
-          <ChartServices spec={toVegaLiteSpec(topAuthoritiesSpec)} />
+          <KpiAuthority spec={toVegaLiteSpec(actsSpec)} />
         </KpiCard>
+
       </Box>
       <Box style={{ flex: "1 0 0" }} mb={3}>
         <KpiCard
@@ -32,7 +34,9 @@ const TopServices = (): JSX.Element => {
         >
           <ChartServices spec={toVegaLiteSpec(topAreasSpec)} />
         </KpiCard>
+
       </Box>
+
     </Stack>
   );
 };

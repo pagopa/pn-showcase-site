@@ -46,29 +46,9 @@ const NumeriPage: NextPage = () => {
           SEND in numeri
         </Typography>
         <DashboardIntro />
-        {/* <HeadingTitle
-          title="SEND in numeri"
-          subtitle={
-            <Stack>
-              <Typography>
-                Scopri i numeri di Piattaforma Notifiche ......
-              </Typography>{" "}
-              <DashboardIntro />
-            </Stack>
-          }
-        /> */}
+
       </Box>
 
-      {/* <Hero
-                title="I numeri di SEND"
-                type="text"
-                background={`${IMAGES_PATH}/hero-faq-background-2.png`}
-                subtitle={
-                    <Stack>
-                        <Typography color="#fff">Scopri i numeri di Piattaforma Notifiche ......</Typography> <DashboardIntro />
-
-                    </Stack>
-                } /> */}
       <Tabs tabs={tabs.map((tab) => tab.label)} onTabChange={handleTabChange} />
       <Box sx={{ overflowX: "hidden" }}>
         <DataSectionWrapper
