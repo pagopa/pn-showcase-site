@@ -59,7 +59,7 @@ const KpiNotifications = ({ selYear }: Props): JSX.Element => {
                 Totale notifiche digitali
               </Typography>
               <Typography variant="caption" color="textSecondary">
-                Enti che hanno inviato almeno una notifica
+                Notifiche inviate ai destinatari tramite canali digitali
               </Typography>
 
               <KpiSignal

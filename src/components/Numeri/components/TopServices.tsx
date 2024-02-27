@@ -4,11 +4,11 @@ import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import ChartServices from "./ChartServices";
 
 import { Box, Stack } from "@mui/material";
-import topAreasSpec from "../assets/data/top-areas.vl.json";
 import actsSpec from "../assets/data/acts.vl.json";
+import topAreasSpec from "../assets/data/top-areas.vl.json";
 
-import KpiCard from "./KpiCard";
 import KpiAuthority from "./KpiAuthority";
+import KpiCard from "./KpiCard";
 
 const TopServices = (): JSX.Element => {
   return (
@@ -17,14 +17,13 @@ const TopServices = (): JSX.Element => {
       spacing={{ xs: 2, sm: 2, md: 4 }}
       mt={3}
     >
-      <Box mb={3}>
+      <Box mb={3} sx={{ flex: "0 0 25%" }}>
         <KpiCard
           label="Tipologie di notifiche inviate"
-          subLabel="La tipologia rappresenta l'ambito di appartenenza della notifica (es. multe, tributi, anagrafe etc.)"
+          subLabel="La tipologia rappresenta la sfera di appartenenza della notifica (es. multe, tributi, anagrafe etc.)"
         >
           <KpiAuthority spec={toVegaLiteSpec(actsSpec)} />
         </KpiCard>
-
       </Box>
       <Box style={{ flex: "1 0 0" }} mb={3}>
         <KpiCard
@@ -34,9 +33,7 @@ const TopServices = (): JSX.Element => {
         >
           <ChartServices spec={toVegaLiteSpec(topAreasSpec)} />
         </KpiCard>
-
       </Box>
-
     </Stack>
   );
 };

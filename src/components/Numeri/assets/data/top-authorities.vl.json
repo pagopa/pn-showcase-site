@@ -46,6 +46,28 @@
           }
         ]
       }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 2,
+        "dy": 0
+      },
+      "encoding": {
+        "x": {
+          "field": "num_iun",
+          "type": "quantitative",
+          "aggregate": "sum"
+        },
+        "text": {
+          "field": "num_iun",
+          "type": "quantitative",
+          "aggregate": "sum",
+          "format": ",d"
+        }
+      }
     }
   ]
 }
