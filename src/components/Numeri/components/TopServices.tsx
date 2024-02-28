@@ -1,9 +1,7 @@
-"use client";
-
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import ChartServices from "./ChartServices";
 
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import actsSpec from "../assets/data/acts.vl.json";
 import topAreasSpec from "../assets/data/top-areas.vl.json";
 
@@ -32,6 +30,12 @@ const TopServices = (): JSX.Element => {
           borderLeft=""
         >
           <ChartServices spec={toVegaLiteSpec(topAreasSpec)} />
+          <Box mt={2}>
+            <Typography variant="caption" color="textSecondary">
+              * diversa/o da quelli la cui notificazione è esclusa tramite SEND
+              ai sensi dell’art.26, comma 17 D.L. 76/2020
+            </Typography>
+          </Box>
         </KpiCard>
       </Box>
     </Stack>

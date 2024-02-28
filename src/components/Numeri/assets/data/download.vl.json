@@ -48,7 +48,7 @@
       "field": "date",
       "type": "temporal",
       "timeUnit": "yearmonthdate",
-      "axis": { "format": "%b %Y" }
+      "axis": { "format": "%d %b %Y" }
     },
     "tooltip": [
       {

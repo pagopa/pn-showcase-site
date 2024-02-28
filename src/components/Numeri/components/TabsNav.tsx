@@ -1,7 +1,6 @@
-"use client";
-import { useState } from "react";
-import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import { useState } from "react";
 
 type Props = {
   items: { id: number | null; label: string }[];
@@ -18,7 +17,7 @@ const TabsNav = ({ value, valueChange, items }: Props): JSX.Element => {
   }
 
   return (
-    <Tabs component="nav" variant="fullWidth" value={itemCur} >
+    <Tabs component="nav" variant="fullWidth" value={itemCur}>
       {items.map((item) => (
         <Tab
           key={item.id}
@@ -26,7 +25,7 @@ const TabsNav = ({ value, valueChange, items }: Props): JSX.Element => {
           value={item.id}
           disableRipple={true}
           onClick={() => {
-            handleChange(item.id)
+            handleChange(item.id);
           }}
         />
       ))}

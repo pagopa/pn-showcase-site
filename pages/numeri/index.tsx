@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
-import Completion from "src/components/Numeri/components/Completion";
 import DashboardIntro from "src/components/Numeri/components/DashboardIntro";
 import { DataSectionWrapper } from "src/components/Numeri/components/DataSectionWrapper";
 import KpiAuthoritiesServices from "src/components/Numeri/components/KpiAuthoritiesServices";
@@ -46,7 +45,6 @@ const NumeriPage: NextPage = () => {
           SEND in numeri
         </Typography>
         <DashboardIntro />
-
       </Box>
 
       <Tabs tabs={tabs.map((tab) => tab.label)} onTabChange={handleTabChange} />
@@ -58,7 +56,7 @@ const NumeriPage: NextPage = () => {
           <Box mb={2}>
             <KpiNotifications selYear={selYear} />
 
-            <Completion selYear={selYear} />
+            {/* <Completion selYear={selYear} /> */}
             <NotificationsTrend selYear={selYear} />
           </Box>
         </DataSectionWrapper>

@@ -20,10 +20,6 @@ const DashboardIntro = () => {
         </Typography>
       </Stack>
     </Box>
-    // <Typography variant="body2" align="center">
-    //   Ultimo aggiornamento:
-    //   <KpiWrapper spec={toVegaLiteSpec(lastUpdateSpec)} />
-    // </Typography>
   );
 };
 
