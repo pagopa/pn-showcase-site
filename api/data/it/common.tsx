@@ -14,6 +14,7 @@ export const navigation: INavigationBarProps = {
   pa: "Enti",
   faq: "FAQ",
   image: `${IMAGES_PATH}/logo.svg`,
+  numeri: "SEND in numeri",
   pi: "Imprese",
 };
 

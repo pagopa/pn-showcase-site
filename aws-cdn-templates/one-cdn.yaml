@@ -332,6 +332,8 @@ Resources:
                   - !Sub " connect-src 'self' \
                     https://selfcare.pagopa.it/assets/ \
                     https://privacyportalde-cdn.onetrust.com/ \
+                    https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/ \
+                    https://vega.github.io/schema/vega-lite/v5.json \
                     ${WebApiUrl}; \
                     style-src 'self' 'unsafe-inline' https://privacyportalde-cdn.onetrust.com/; \
                     worker-src 'none'; \

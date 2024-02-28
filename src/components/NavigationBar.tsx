@@ -19,6 +19,7 @@ const NavigationBar = ({
   faq,
   image,
   pi,
+  numeri
 }: INavigationBarProps) => {
   const { pathname, push } = useRouter();
   const [index, setIndex] = useState<number | undefined>();
@@ -50,7 +51,7 @@ const NavigationBar = ({
     setIsMobileMenuOpen(false);
   };
 
-  const paths = ["/pubbliche-amministrazioni", "/cittadini", "/imprese", "/faq"];
+  const paths = ["/pubbliche-amministrazioni", "/cittadini", "/imprese","/numeri", "/faq"];
 
   function a11yProps(index: number) {
     return {
@@ -153,7 +154,10 @@ const NavigationBar = ({
               <MenuItem onClick={() => handleMenuItemClick(paths[2])} sx={{ color: index === 2 ? 'primary.main' : 'text.secondary' }}>
                 {pi}
               </MenuItem>
-              <MenuItem onClick={() => handleMenuItemClick(paths[3])} sx={{ color: index === 3 ? 'primary.main' : 'text.secondary' }}>
+              <MenuItem onClick={() => handleMenuItemClick(paths[3])} sx={{ color: index === 2 ? 'primary.main' : 'text.secondary' }}>
+                {numeri}
+              </MenuItem>
+              <MenuItem onClick={() => handleMenuItemClick(paths[4])} sx={{ color: index === 3 ? 'primary.main' : 'text.secondary' }}>
                 {faq}
               </MenuItem>
             </Menu>
@@ -223,10 +227,26 @@ const NavigationBar = ({
                   event.preventDefault();
                 }
               }}
-              key="faq"
-              label={faq}
+              key="numeri"
+              label={numeri}
               href={paths[3]}
               {...a11yProps(3)}
+              disableRipple={true}
+            />
+            <Tab
+              sx={{ paddingTop: 6, paddingBottom: 5, color: index === 3 ? 'primary.main' : 'text.secondary' }}
+              component="a"
+              onClick={(
+                event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+              ) => {
+                if (pathname === `${paths[4]}/`) {
+                  event.preventDefault();
+                }
+              }}
+              key="faq"
+              label={faq}
+              href={paths[4]}
+              {...a11yProps(4)}
               disableRipple={true}
             />
           </Tabs>

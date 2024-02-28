@@ -1,0 +1,39 @@
+{
+  "last_run": "2024-02-28T10:00:21.369161",
+  "nb_version": "1.0.0",
+  "enti_attivi": 2680,
+  "tipologie_atto": 24,
+  "top10_cat_enti": [
+    { "categoria_ente": "Regioni", "num_iun": 1576977 },
+    { "categoria_ente": "Utility", "num_iun": 339689 },
+    { "categoria_ente": "Comuni", "num_iun": 115544 },
+    {
+      "categoria_ente": "Pubbliche Amministrazioni Centrali",
+      "num_iun": 18079
+    },
+    { "categoria_ente": "Enti Comunali", "num_iun": 8 },
+    { "categoria_ente": "Salute Locale", "num_iun": 3 },
+    { "categoria_ente": "Altri Enti Territoriali", "num_iun": 2 }
+  ],
+  "top10_cat_enti_n_enti": [
+    { "categoria_ente": "Comuni", "num_enti": 2663 },
+    { "categoria_ente": "Utility", "num_enti": 7 },
+    { "categoria_ente": "Enti Comunali", "num_enti": 4 },
+    { "categoria_ente": "Regioni", "num_enti": 3 },
+    { "categoria_ente": "Altri Enti Territoriali", "num_enti": 1 },
+    { "categoria_ente": "Pubbliche Amministrazioni Centrali", "num_enti": 1 },
+    { "categoria_ente": "Salute Locale", "num_enti": 1 }
+  ],
+  "top10_ambiti": [
+    { "ambito": "Recupero Bolli non Pagati", "num_iun": 1573843 },
+    { "ambito": "Riscossione Coattiva", "num_iun": 339450 },
+    { "ambito": "Tributi", "num_iun": 78025 },
+    { "ambito": "Polizia Locale", "num_iun": 41050 },
+    { "ambito": "Decreto", "num_iun": 17115 },
+    { "ambito": "Anagrafe", "num_iun": 381 },
+    { "ambito": "Ordinanze", "num_iun": 164 },
+    { "ambito": "Scuola", "num_iun": 99 },
+    { "ambito": "Ufficio Tecnico / SUAP", "num_iun": 73 },
+    { "ambito": "Patrimonio", "num_iun": 67 }
+  ]
+}

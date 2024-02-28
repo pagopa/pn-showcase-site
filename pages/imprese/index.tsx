@@ -9,7 +9,6 @@ import {
   getShowcaseData,
   getWalkthroughData,
 } from "../../api";
-import { CustomInfoblockImprese } from "api/data/it/PI";
 
 const USER_TYPE = UserType.PI;
 
