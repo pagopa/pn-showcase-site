@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Link, List, ListItem, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import { HeroProps, WalkthroughProps } from "@pagopa/mui-italia";
-import { IMAGES_PATH, PN_PF_URL, PN_PF_URL_LOGIN } from "@utils/constants";
+import { IMAGES_PATH, PN_PF_URL } from "@utils/constants";
 import { IInfoblockData, IShowcaseData } from "model";
 import {
   PiggyIcon,
@@ -16,17 +16,13 @@ import {
   WalletIcon,
 } from "../icons";
 
-const onReadClick = () => {
-  window.open(PN_PF_URL, "_blank");
-};
-
 // eslint-disable-next-line no-extra-boolean-cast
-const heroCta = !!PN_PF_URL_LOGIN
+const heroCta = !!PN_PF_URL
   ? {
     label: "Leggi le tue notifiche",
     title: "Leggi le tue notifiche",
     onClick: function onClick() {
-      window.open(PN_PF_URL_LOGIN, "_self");
+      window.open(PN_PF_URL, "_self");
     },
   }
   : undefined;
@@ -178,8 +174,8 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
       title: "PEC",
       content: (
         <Typography variant="body2" tabIndex={0} aria-label={infoblock4}>
-            {infoblock4}
-          </Typography>
+          {infoblock4}
+        </Typography>
       ),
       inverse: false,
       image: `${IMAGES_PATH}/pf-infoblock-5.png`,
@@ -195,8 +191,8 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
       title: "Email e SMS",
       content: (
         <Typography variant="body2" tabIndex={0} aria-label={infoblock5}>
-            {infoblock5}
-          </Typography>
+          {infoblock5}
+        </Typography>
       ),
       inverse: false,
       image: `${IMAGES_PATH}/pf-infoblock-7.png`,
@@ -339,7 +335,7 @@ export const pfShowcases: Array<IShowcaseData> = [
           ),
         },
         {
-          icon: <img src={`${IMAGES_PATH}/IOIcon.svg`} alt="Icona di appIO"/>,
+          icon: <img src={`${IMAGES_PATH}/IOIcon.svg`} alt="Icona di appIO" />,
           title: "App IO",
           subtitle: (
             <Typography variant="body2" tabIndex={0} aria-label={showcase2_2}>

@@ -4,9 +4,7 @@ import { IFaqData } from "model";
 import {
   PERFEZIONAMENTO_PATH,
   PN_PF_URL,
-  PN_PF_URL_LOGIN,
   PN_PG_URL,
-  PN_PG_URL_LOGIN,
   SEND_PF_HELP_EMAIL,
 } from "@utils/constants";
 import {
@@ -85,7 +83,7 @@ export const itFaqData: IFaqData = {
                 Per accedere a SEND e leggere le notifiche che ricevi come
                 cittadino o cittadina vai su
               </FaqTextSection>
-              <FaqLink href={PN_PF_URL_LOGIN} noSpaceAfter>
+              <FaqLink href={PN_PF_URL} noSpaceAfter>
                 cittadini.notifichedigitali.it
               </FaqLink>
               <FaqTextSection
@@ -97,7 +95,7 @@ export const itFaqData: IFaqData = {
             Se sei Legale Rappresentante di un'impresa o hai i
             permessi per leggere le sue notifiche, vai su`}
               </FaqTextSection>
-              <FaqLink href={PN_PG_URL_LOGIN} noSpaceAfter>
+              <FaqLink href={PN_PG_URL} noSpaceAfter>
                 imprese.notifichedigitali.it
               </FaqLink>
               <FaqTextSection noSpaceAfter ariaLabel="">
@@ -139,7 +137,7 @@ export const itFaqData: IFaqData = {
                 cittadino o cittadina vai su
               </Typography>
               <Typography variant="body2" component="span">
-                <a href={PN_PF_URL_LOGIN}>cittadini.notifichedigitali.it</a>
+                <a href={PN_PF_URL}>cittadini.notifichedigitali.it</a>
               </Typography>
               <Typography variant="body2" component="span" sx={{ mr: "4px" }}>
                 {`. 
@@ -147,7 +145,7 @@ export const itFaqData: IFaqData = {
             permessi per leggere le sue notifiche, vai su`}
               </Typography>
               <Typography variant="body2" component="span">
-                <a href={PN_PG_URL_LOGIN}>imprese.notifichedigitali.it</a>
+                <a href={PN_PG_URL}>imprese.notifichedigitali.it</a>
               </Typography>
               <Typography variant="body2" component="span">
                 . In entrambi i casi dovrai inserire le tue credenziali SPID o

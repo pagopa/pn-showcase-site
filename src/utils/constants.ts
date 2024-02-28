@@ -10,11 +10,7 @@ export const SEND_PF_HELP_EMAIL = process.env.NEXT_PUBLIC_SEND_PF_HELP_EMAIL || 
 
 export const PN_PF_URL = process.env.NEXT_PUBLIC_PIATTAFORMA_NOTIFICHE_PF_URL;
 
-export const PN_PF_URL_LOGIN = "https://cittadini.notifichedigitali.it/auth/login";
-
 export const PN_PG_URL = process.env.NEXT_PUBLIC_PIATTAFORMA_NOTIFICHE_PG_URL;
-
-export const PN_PG_URL_LOGIN = "https://imprese.notifichedigitali.it/auth/login";
 
 export const MANUALE_URL = "https://docs.pagopa.it/pn-manuale-operativo/";
 

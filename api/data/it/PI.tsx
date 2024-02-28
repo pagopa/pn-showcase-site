@@ -1,4 +1,4 @@
-import { Typography, List, ListItem, SvgIcon, Box, Container, Grid } from "@mui/material";
+import { Typography, SvgIcon, Box, Container, Grid } from "@mui/material";
 import {
   HeroProps,
   HorizontalNavProps,
@@ -6,23 +6,12 @@ import {
 } from "@pagopa/mui-italia";
 import {
   IMAGES_PATH,
-  MANUALE_URL,
-  PARTNER_AND_INTERMEDIARIES_PATH,
-  PN_PF_URL,
   PN_PG_URL,
-  PN_PG_URL_LOGIN,
 } from "@utils/constants";
 import { IInfoblockData, IShowcaseData } from "model";
 import Link from "next/link";
 import {
   PeopleIcon,
-  FireworksIcon,
-  EasyIcon,
-  CheckmarkIcon,
-  DeliverIcon,
-  SendIcon,
-  SyncIcon,
-  UploadIcon,
   HistoryIcon,
   CloudIcon,
   HourglassIcon,
@@ -58,7 +47,7 @@ export const piHero: HeroProps = {
     label: "Leggi le tue notifiche",
     title: "Leggi le tue notifiche",
     onClick: function onClick() {
-      window.open(PN_PG_URL_LOGIN, "_self");
+      window.open(PN_PG_URL, "_self");
     },
   },
 };
@@ -122,7 +111,7 @@ export const piInfoBlocks: Array<IInfoblockData> = [
         label: "Leggi le notifiche della tua impresa",
         title: "Leggi le notifiche della tua impresa",
         onClick: function onClick() {
-          window.open(PN_PG_URL_LOGIN, "_self");
+          window.open(PN_PG_URL, "_self");
         },
       }
     },
@@ -132,11 +121,9 @@ export const piInfoBlocks: Array<IInfoblockData> = [
     data: {
       title: "Puoi delegare o essere delegato",
       content: (
-        <>
-          <Typography variant="body2" tabIndex={0} aria-label={infoblock3}>
+        <Typography variant="body2" tabIndex={0} aria-label={infoblock3}>
             {infoblock3}
           </Typography>
-        </>
       ),
       inverse: true,
       image: `${IMAGES_PATH}/pi-infoblock-3.png`,
@@ -278,7 +265,7 @@ export const piHorizontalNav: HorizontalNavProps = {
     {
       icon: (
         <SvgIcon component="image">
-          <img src="static/icons/HORIZONTAL-NAV-1.svg" />
+          <img src="static/icons/HORIZONTAL-NAV-1.svg" alt=""/>
         </SvgIcon>
       ),
       title: "Rappresenti un'impresa?",
@@ -296,7 +283,7 @@ export const piHorizontalNav: HorizontalNavProps = {
     {
       icon: (
         <SvgIcon component="image">
-          <img src="static/icons/HORIZONTAL-NAV-2.svg" />
+          <img src="static/icons/HORIZONTAL-NAV-2.svg" alt=""/>
         </SvgIcon>
       ),
       title: "Sei una cittadina o un cittadino?",
