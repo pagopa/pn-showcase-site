@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useState } from "react";
 import {
   SceneText,
@@ -29,7 +28,11 @@ const KpiWrapper = ({ spec, ...restProps }: Props): JSX.Element => {
     });
   });
 
-  return <p color='#fff' {...restProps}>{text}</p>;
+  return (
+    <p color="#fff" {...restProps}>
+      {text}
+    </p>
+  );
 };
 
 export default KpiWrapper;

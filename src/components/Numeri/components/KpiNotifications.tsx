@@ -1,4 +1,3 @@
-"use client";
 import { Box, Paper, Stack, Typography } from "@mui/material";
 import notificationAnalogSpec from "../assets/data/notifications-analog.vl.json";
 import notificationsDigitalSpec from "../assets/data/notifications-digital.vl.json";
@@ -15,13 +14,11 @@ type Props = {
 };
 
 const KpiNotifications = ({ selYear }: Props): JSX.Element => {
-  // const isAllYears = selYear === null;
-  // const yearLabel = isAllYears ? "dal 2023" : `nel ${selYear}`;
-
   return (
     <Stack
       direction={{ xs: "column", sm: "row" }}
       spacing={{ xs: 2, sm: 2, md: 4 }}
+      sx={{ mb: 3 }}
     >
       <Box style={{ flex: "1 0 0" }} mb={3}>
         <KpiCard

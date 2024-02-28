@@ -4,11 +4,17 @@
     "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione2.json ",
     "format": { "property": "top10_ambiti" }
   },
+  "transform": [
+    {
+      "calculate": "datum.ambito === 'Riscossione Coattiva' || datum.ambito === 'Ordinanze' || datum.ambito === 'Decreto' ? datum.ambito + '*' : datum.ambito",
+      "as": "ambito_label"
+    }
+  ],
   "height": { "step": 56 },
   "width": "container",
   "encoding": {
     "y": {
-      "field": "ambito",
+      "field": "ambito_label",
       "sort": { "field": "num_iun", "order": "descending", "op": "sum" },
       "scale": { "padding": 0 },
       "axis": {

@@ -1,4 +1,3 @@
-"use client";
 import { Box } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import topAuthoritiesSpec from "../assets/data/top-authorities.vl.json";
@@ -26,7 +25,7 @@ const KpiAuthoritiesServices = (): JSX.Element => {
       <Box style={{ flex: "1 0 0" }} mb={3}>
         <KpiCard
           label="Principali categorie di enti attivi"
-          subLabel="Categorie di enti ordinate per numero di notifiche depositate a partire dall’adozione di SEND"
+          subLabel="Categorie di enti ordinate per numero di enti attivi"
           borderLeft=""
         >
           <ChartServices spec={toVegaLiteSpec(topAuthoritiesSpec)} />

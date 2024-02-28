@@ -2,14 +2,14 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
     "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione2.json ",
-    "format": { "property": "top10_cat_enti" }
+    "format": { "property": "top10_cat_enti_n_enti" }
   },
   "height": { "step": 56 },
   "width": "container",
   "encoding": {
     "y": {
       "field": "categoria_ente",
-      "sort": { "field": "num_iun", "order": "descending", "op": "sum" },
+      "sort": { "field": "num_enti", "order": "descending", "op": "sum" },
       "scale": { "padding": 0 },
       "axis": {
         "domain": false,
@@ -26,7 +26,7 @@
       "mark": { "type": "bar", "height": 19 },
       "encoding": {
         "x": {
-          "field": "num_iun",
+          "field": "num_enti",
           "type": "quantitative",
           "aggregate": "sum",
           "axis": { "format": "~s", "gridDash": [21, 35], "gridDashOffset": 38 }
@@ -39,9 +39,9 @@
         "tooltip": [
           { "field": "categoria_ente", "title": "Ente" },
           {
-            "field": "num_iun",
+            "field": "num_enti",
             "aggregate": "sum",
-            "title": "Notifiche",
+            "title": "Totale enti attivi",
             "format": ",d"
           }
         ]
@@ -57,12 +57,12 @@
       },
       "encoding": {
         "x": {
-          "field": "num_iun",
+          "field": "num_enti",
           "type": "quantitative",
           "aggregate": "sum"
         },
         "text": {
-          "field": "num_iun",
+          "field": "num_enti",
           "type": "quantitative",
           "aggregate": "sum",
           "format": ",d"
