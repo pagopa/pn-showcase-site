@@ -9,7 +9,7 @@ type Props = {
   selYear: number | null;
 };
 
-type LabelsCumulativeDaily = "cumulato" | "giornaliero";
+type LabelsCumulativeDaily = "cumulato" | "mensile";
 type LabelsTotalDigitalAnalog = "total" | "digital" | "analog";
 type LabelsTotalDigitalAnalogItalian =
   | "complessive"
@@ -27,7 +27,7 @@ type OptionsTotalDigitalAnalog = {
 
 const optionsCumulativeDaily: OptionsCumulativeDaily[] = [
   { id: 1, label: "cumulato" },
-  { id: 2, label: "giornaliero" },
+  { id: 2, label: "mensile" },
 ];
 
 const optionsTotalDigitalAnalog: OptionsTotalDigitalAnalog[] = [
