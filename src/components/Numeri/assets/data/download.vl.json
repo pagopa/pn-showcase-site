@@ -2,9 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": "container",
+  "padding": 5,
   "data": {
     "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione1.json",
-    "format": { "property": "notifiche_per_giorno" }
+    "format": { "property": "notifiche_per_mese" }
   },
   "params": [
     { "name": "is_cumulative", "value": true },
@@ -16,7 +17,7 @@
   ],
   "transform": [
     {
-      "filter": "year(datum.date) === year || year === null"
+      "filter": "year(datum.month) === year || year === null"
     },
     {
       "calculate": "datum['num_iun_' + notification_type]",
@@ -30,14 +31,14 @@
           "as": "cumulative"
         }
       ],
-      "sort": [{ "field": "date" }]
+      "sort": [{ "field": "month" }]
     },
     {
       "calculate": "is_cumulative ? datum.cumulative : datum.notification_value",
       "as": "metric_value"
     }
   ],
-  "mark": { "type": "area", "line": true },
+  "mark": { "type": "bar", "width": { "band": 0.7 } },
   "encoding": {
     "y": {
       "field": "metric_value",
@@ -45,22 +46,22 @@
       "axis": { "format": "~s" }
     },
     "x": {
-      "field": "date",
-      "type": "temporal",
-      "timeUnit": "yearmonthdate",
-      "axis": { "format": "%d %b %Y" }
+      "field": "month",
+      "type": "ordinal",
+      "timeUnit": "yearmonth",
+      "axis": { "format": "%b %Y" }
     },
     "tooltip": [
       {
-        "field": "date",
+        "field": "month",
         "type": "temporal",
-        "title": "Giorno",
-        "format": "%d/%m/%Y"
+        "title": "Mese",
+        "format": "%m/%Y"
       },
       { "field": "cumulative", "title": "Notifiche cumulate", "format": "," },
       {
         "field": "num_iun_total",
-        "title": "Notifiche giornaliere",
+        "title": "Notifiche mensili",
         "format": ","
       }
     ]
