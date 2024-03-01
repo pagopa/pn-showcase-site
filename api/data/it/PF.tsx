@@ -16,10 +16,6 @@ import {
   WalletIcon,
 } from "../icons";
 
-const onReadClick = () => {
-  window.open(PN_PF_URL, "_blank");
-};
-
 // eslint-disable-next-line no-extra-boolean-cast
 const heroCta = !!PN_PF_URL
   ? {
@@ -178,8 +174,8 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
       title: "PEC",
       content: (
         <Typography variant="body2" tabIndex={0} aria-label={infoblock4}>
-            {infoblock4}
-          </Typography>
+          {infoblock4}
+        </Typography>
       ),
       inverse: false,
       image: `${IMAGES_PATH}/pf-infoblock-5.png`,
@@ -195,8 +191,8 @@ export const pfInfoBlocks: Array<IInfoblockData> = [
       title: "Email e SMS",
       content: (
         <Typography variant="body2" tabIndex={0} aria-label={infoblock5}>
-            {infoblock5}
-          </Typography>
+          {infoblock5}
+        </Typography>
       ),
       inverse: false,
       image: `${IMAGES_PATH}/pf-infoblock-7.png`,
@@ -339,7 +335,7 @@ export const pfShowcases: Array<IShowcaseData> = [
           ),
         },
         {
-          icon: <img src={`${IMAGES_PATH}/IOIcon.svg`} alt="Icona di appIO"/>,
+          icon: <img src={`${IMAGES_PATH}/IOIcon.svg`} alt="Icona di appIO" />,
           title: "App IO",
           subtitle: (
             <Typography variant="body2" tabIndex={0} aria-label={showcase2_2}>
