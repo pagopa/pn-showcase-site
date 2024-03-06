@@ -38,7 +38,7 @@ export const DocsCards = () => {
                 {
                     label: "Leggi il manuale operativo",
                     color: "primary",
-                    link: "https://docs.pagopa.it/manuale-operativo/",
+                    link: "https://developer.pagopa.it/send/guides/manuale-operativo",
                     icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
                 {
@@ -86,6 +86,12 @@ export const DocsCards = () => {
                     label: "Compila il modulo",
                     color: "primary",
                     link: "/static/documents/Modulo Ordinativo Commessa per Anticipazione.xlsx",
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
+                },
+                {
+                    label: "Accedi all’Area Riservata e compila il modulo nella sezione Fatturazione",
+                    color: "primary",
+                    link: "https://selfcare.pagopa.it/auth/login",
                     icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
             ],
