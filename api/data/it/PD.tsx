@@ -83,7 +83,7 @@ export const DocsCards = () => {
             description: "Necessario per la fatturazione",
             buttons: [
                 {
-                    label: "Compila il modulo",
+                    label: "Prendi visione del modulo",
                     color: "primary",
                     link: "/static/documents/Modulo Ordinativo Commessa per Anticipazione.xlsx",
                     icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
