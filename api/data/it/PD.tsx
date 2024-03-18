@@ -80,7 +80,6 @@ export const DocsCards = () => {
         },
         {
             title: "6. Modulo di Commessa",
-            description: "Necessario per la fatturazione",
             buttons: [
                 {
                     label: "Prendi visione del modulo",
