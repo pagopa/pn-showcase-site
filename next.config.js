@@ -1,6 +1,8 @@
 const nextConfig = {
+  output: 'export',
   reactStrictMode: true,
   trailingSlash: true,
+  distDir: 'build',
   transpilePackages: [
     '@pagopa/mui-italia',
   ],
