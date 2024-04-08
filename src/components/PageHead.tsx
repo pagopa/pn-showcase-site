@@ -1,15 +1,26 @@
 import Head from "next/head";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface Props {
   title: string;
   description: string;
 }
 
-const PageHead = ({ title, description }: Props) => (
-  <Head>
+const PageHead = ({ title, description }: Props) => {
+
+  const [windowOrigin, setWindowOrigin] = useState<string>();
+  const regex = /https:\/\/www.((dev|test|uat|hotfix)?.?)notifichedigitali.it/;
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setWindowOrigin(window.origin);
+    }
+  }, []);
+
+  return <Head>
     <title>{title}</title>
     <meta name="description" content={description} />
+    {windowOrigin && regex.test(windowOrigin) && <meta name="robots" content="noindex"></meta>}
     <link
       rel="manifest"
       href="/static/manifest.webmanifest"
@@ -32,7 +43,9 @@ const PageHead = ({ title, description }: Props) => (
       sizes="16x16"
       href="/static/icons/favicon-16x16.png"
     />
+
+
   </Head>
-);
+};
 
 export default PageHead;
