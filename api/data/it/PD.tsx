@@ -265,18 +265,18 @@ export const DocsCards = () => {
 
 export const InDepthCard = () => {
     const cards2Data = [
-        //   {
-        //       title: "Manuale onboarding dell’ente",
-        //       description: "",
-        //       buttons: [
-        //           {
-        //               label: "Vai al manuale",
-        //               color: "primary",
-        //               link: "#",
-        //               icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
-        //           },
-        //       ],
-        //   },
+          {
+              title: "Manuale onboarding dell’ente",
+              description: "",
+              buttons: [
+                  {
+                      label: "Vai al manuale",
+                      color: "primary",
+                      link: "https://docs.pagopa.it/manuale-per-onboarding-degli-enti",
+                      icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
+                  },
+              ],
+          },
         //   {
         //       title: "Workflow della notifica",
         //       description: "",
