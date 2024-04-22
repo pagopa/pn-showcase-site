@@ -6,15 +6,23 @@ import { theme } from "@pagopa/mui-italia";
 import LandingLayout from "../src/layout/LandingLayout";
 import { LangProvider } from "../provider/lang-context";
 
-import '../styles/default.css';
+import "../styles/default.css";
 
 function Main({ Component, pageProps }: AppProps) {
+  const noLayout = pageProps.noLayout;
+
   return (
     <ThemeProvider theme={theme}>
       <LangProvider>
-        <LandingLayout>
+        {noLayout ? (
+          // Se noLayout è true, renderizza solo il componente
           <Component {...pageProps} />
-        </LandingLayout>
+        ) : (
+          // Altrimenti, avvolgilo nel LandingLayout
+          <LandingLayout>
+            <Component {...pageProps} />
+          </LandingLayout>
+        )}
       </LangProvider>
     </ThemeProvider>
   );

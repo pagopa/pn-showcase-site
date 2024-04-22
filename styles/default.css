@@ -169,3 +169,9 @@ body {
     margin-bottom: 1em!important;
   }
 }
+
+.flexIframe {
+  flex-grow: 1;
+  width: 100%;
+  border: none;
+}
