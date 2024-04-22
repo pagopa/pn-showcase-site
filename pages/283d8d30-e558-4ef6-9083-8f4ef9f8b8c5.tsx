@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import type { NextPage } from "next";
 import { Box, Typography } from "@mui/material";
-import { useState } from "react";
 import DashboardIntro from "src/components/Numeri/components/DashboardIntro";
 import { DataSectionWrapper } from "src/components/Numeri/components/DataSectionWrapper";
 import KpiAuthoritiesServices from "src/components/Numeri/components/KpiAuthoritiesServices";
@@ -10,7 +9,6 @@ import NotificationsTrend from "src/components/Numeri/components/NotificationsTr
 import TopServices from "src/components/Numeri/components/TopServices";
 import { curYear, firstYear } from "src/components/Numeri/shared/constants";
 import Tabs from "src/components/Tabs";
-import PageHead from "../src/components/PageHead";
 
 type Tabs = {
   id: number | null;
@@ -36,10 +34,6 @@ const DashboardContent: NextPage = () => {
 
   return (
     <>
-      <PageHead
-        title="dashboardContent"
-        description="dashboardContent"
-      />
       <Box mt={10}>
         <Typography align="center" variant="h2">
           SEND in numeri
