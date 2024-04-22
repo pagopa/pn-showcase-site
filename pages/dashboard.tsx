@@ -5,9 +5,9 @@ export default function Home() {
   const resizeIFrameToFitContent = (iFrame: HTMLElement, timeout?: number) => {
     setTimeout(() => {
       // @ts-ignore
-      // Resize adding a 80px margin to avoid awkward 1-pixel scrollbars on resize.
+      // Resize adding a 16px margin to avoid awkward 1-pixel scrollbars on resize.
       // A better solution would be to have the body inside the iFrame have overflow-y: hidden, but that's out of our control.
-      iFrame.height = iFrame.contentDocument.body.scrollHeight + 80;
+      iFrame.height = iFrame.contentDocument.body.scrollHeight + 16;
     }, timeout ?? 0);
   };
 
@@ -38,4 +38,3 @@ export default function Home() {
     </>
   );
 }
-  
