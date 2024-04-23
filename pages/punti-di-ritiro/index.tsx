@@ -1,13 +1,20 @@
 import type { NextPage } from "next";
 
 import PageHead from "../../src/components/PageHead";
-
-import { Autocomplete, Box, Stack, TextField, Typography } from "@mui/material";
+import {
+  Autocomplete,
+  Box,
+  IconButton,
+  InputAdornment,
+  Stack,
+  TextField,
+  Theme,
+  Typography,
+  createTheme,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import BasicTable from "src/components/Ritiro/BasicTable";
 import Papa from "papaparse";
-import { config } from "process";
-import { parse } from "path";
+import OperatorsTable from "src/components/Ritiro/BasicTable";
 
 const ritiroPoints = `paese;citta;provincia;cap;via;dataInizioValidit�;dataFineValidit�;descrizione;orariApertura;coordinateGeoReferenziali;Telefono;capacita;exsternalCode
 ITALIA;SAN MAURO PASCOLI;FC;47030;V. XX SETTEMBRE, 35;2005-01-01;;SEDE CAF UIL S. MAURO PASCOLI;;;0541/930568;;99833
@@ -1176,7 +1183,29 @@ ITALIA;TRIESTE;TS;34151;VIA DI PROSECCO;2023-10-27;;CAF UIL OPICINA;;;;;4549880
 ITALIA;GIARRE;CT;95014;VIA SARDEGNA;2023-11-13;;CAF UIL GIARRE;;;3497921058;;4549921
 ITALIA;UDINE;UD;33100;PIAZZALE CAVEDALIS 6;2023-11-13;;CAF UDINE;;;0432504459;;4549964
 `;
-const parsedData = Papa.parse(ritiroPoints, { header: true }).data;
+const parsedData = Papa.parse<CSVData>(ritiroPoints, { header: true }).data;
+
+interface RaddOperator {
+  denomination: string;
+  region: string;
+  city: string;
+  address: string;
+  contacts: string;
+}
+interface CSVData {
+  citta: string;
+  via: string;
+  descrizione: string;
+  Telefono: string;
+}
+
+const rows: RaddOperator[] = parsedData.map((e) => ({
+  denomination: e.descrizione,
+  region: "N.D.",
+  city: e.citta,
+  address: e.via,
+  contacts: e.Telefono,
+}));
 
 const RitiroPage: NextPage = () => (
   <>
@@ -1208,7 +1237,7 @@ const RitiroPage: NextPage = () => (
           Cerca i punti di ritiro più vicini a te.
         </Typography>
       </Stack>
-      {/* <Stack
+      <Stack
         mt={4}
         mb={6}
         direction="row"
@@ -1216,10 +1245,12 @@ const RitiroPage: NextPage = () => (
         alignItems="center"
       >
         <Autocomplete
-          popupIcon={<SearchIcon />}
-          sx={{ width: 736 }}
+          sx={{ width: "100%", maxWidth: 736 }}
           disableClearable
-          options={parsedData.map((option) => option.denomination)}
+          options={rows}
+          getOptionLabel={(option: RaddOperator) =>
+            `${option.city} - ${option.address}`
+          }
           renderInput={(params) => (
             <TextField
               {...params}
@@ -1227,11 +1258,18 @@ const RitiroPage: NextPage = () => (
               InputProps={{
                 ...params.InputProps,
                 type: "search",
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton>
+                      <SearchIcon sx={{ paddingRight: 0 }} />
+                    </IconButton>
+                  </InputAdornment>
+                ),
               }}
             />
           )}
         />
-      </Stack> */}
+      </Stack>
     </Box>
     <Box
       sx={{
@@ -1240,10 +1278,9 @@ const RitiroPage: NextPage = () => (
         justifyContent: "center",
       }}
       padding={5}
-      marginTop={10}
     >
       <Stack sx={{ maxWidth: 1092, width: "100%" }}>
-        <BasicTable parsedData={parsedData} />
+        <OperatorsTable rows={rows} />
       </Stack>
     </Box>
   </>
