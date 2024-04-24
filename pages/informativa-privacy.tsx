@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import type { NextPage } from "next";
 import Script from "next/script";
 
-import { ONE_TRUST_CDN } from "@utils/constants";
+import { ONE_TRUST_PP_PAGE } from "@utils/constants";
 import PageHead from "src/components/PageHead";
 
 declare const OneTrust: {
@@ -17,9 +17,9 @@ declare const OneTrust: {
 
 const PrivacyPage: NextPage = () => {
   useEffect(() => {
-    if (ONE_TRUST_CDN) {
+    if (ONE_TRUST_PP_PAGE) {
       OneTrust.NoticeApi.Initialized.then(() => {
-        OneTrust.NoticeApi.LoadNotices([ONE_TRUST_CDN], false);
+        OneTrust.NoticeApi.LoadNotices([ONE_TRUST_PP_PAGE], false);
       });
     }
   }, []);

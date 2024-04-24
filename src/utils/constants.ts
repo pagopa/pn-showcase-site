@@ -17,8 +17,11 @@ export const MANUALE_URL = "https://docs.pagopa.it/pn-manuale-operativo/";
 const ONE_TRUST_DRAFT_MODE = process.env.NEXT_PUBLIC_ONE_TRUST_DRAFT_MODE === "true";
 
 const ONE_TRUST_PP = process.env.NEXT_PUBLIC_ONE_TRUST_PP || "";
-export const ONE_TRUST_CDN = `https://privacyportalde-cdn.onetrust.com/77f17844-04c3-4969-a11d-462ee77acbe1/privacy-notices/${ONE_TRUST_DRAFT_MODE ? "draft/" : ""
+const ONE_TRUST_RADD = process.env.NEXT_PUBLIC_ONE_TRUST_RADD || "";
+export const ONE_TRUST_PP_PAGE = `https://privacyportalde-cdn.onetrust.com/77f17844-04c3-4969-a11d-462ee77acbe1/privacy-notices/${ONE_TRUST_DRAFT_MODE ? "draft/" : ""
   }${ONE_TRUST_PP}.json`;
+export const ONE_TRUST_RADD_TOS = `https://privacyportalde-cdn.onetrust.com/77f17844-04c3-4969-a11d-462ee77acbe1/privacy-notices/${ONE_TRUST_DRAFT_MODE ? "draft/" : ""
+  }${ONE_TRUST_RADD}.json`;
 
 export const PARTNER_AND_INTERMEDIARIES_PATH =
   "https://docs.pagopa.it/lista-partner-tecnologici-pn_pagopa-s.p.a./";
