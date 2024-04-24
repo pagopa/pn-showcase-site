@@ -8,15 +8,13 @@ import {
   InputAdornment,
   Stack,
   TextField,
-  Theme,
   Typography,
-  createTheme,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Papa from "papaparse";
-import OperatorsTable from "src/components/Ritiro/BasicTable";
+import OperatorsTable from "src/components/Ritiro/OperatorsTable";
 
-const ritiroPoints = `paese;citta;provincia;cap;via;dataInizioValidit�;dataFineValidit�;descrizione;orariApertura;coordinateGeoReferenziali;Telefono;capacita;exsternalCode
+const sendPoints = `paese;citta;provincia;cap;via;dataInizioValidit�;dataFineValidit�;descrizione;orariApertura;coordinateGeoReferenziali;Telefono;capacita;exsternalCode
 ITALIA;SAN MAURO PASCOLI;FC;47030;V. XX SETTEMBRE, 35;2005-01-01;;SEDE CAF UIL S. MAURO PASCOLI;;;0541/930568;;99833
 ITALIA;FORLIMPOPOLI;FC;47034;VIA SAFFI, 5;2005-01-01;;SEDE CAF UIL FORLIMPOPOLI;;;0543/742455;;99852
 ITALIA;MELDOLA;FC;47014;VIA CARLO GOLDONI, 7/A;2005-01-01;;SEDE CAF UIL MELDOLA;;;0543/492389;;99853
@@ -1183,7 +1181,6 @@ ITALIA;TRIESTE;TS;34151;VIA DI PROSECCO;2023-10-27;;CAF UIL OPICINA;;;;;4549880
 ITALIA;GIARRE;CT;95014;VIA SARDEGNA;2023-11-13;;CAF UIL GIARRE;;;3497921058;;4549921
 ITALIA;UDINE;UD;33100;PIAZZALE CAVEDALIS 6;2023-11-13;;CAF UDINE;;;0432504459;;4549964
 `;
-const parsedData = Papa.parse<CSVData>(ritiroPoints, { header: true }).data;
 
 interface RaddOperator {
   denomination: string;
@@ -1199,91 +1196,97 @@ interface CSVData {
   Telefono: string;
 }
 
-const rows: RaddOperator[] = parsedData.map((e) => ({
-  denomination: e.descrizione,
-  region: "N.D.",
-  city: e.citta,
-  address: e.via,
-  contacts: e.Telefono,
-}));
+const RitiroPage: NextPage = () => {
+  const parsedDataOriginal = Papa.parse<CSVData>(sendPoints, {
+    header: true,
+  }).data;
 
-const RitiroPage: NextPage = () => (
-  <>
-    <PageHead
-      title="SEND - Punti di ritiro"
-      description="Quando ricevi una comunicazione a valore legale tramite SEND puoi ritirare una copia stampata dei documenti notificati presso gli esercenti convenzionati. 
+  const rows: RaddOperator[] = parsedDataOriginal.map((e) => ({
+    denomination: e.descrizione,
+    region: "N.D.",
+    city: e.citta,
+    address: e.via,
+    contacts: e.Telefono,
+  }));
+
+  return (
+    <>
+      <PageHead
+        title="SEND - Punti di ritiro"
+        description="Quando ricevi una comunicazione a valore legale tramite SEND puoi ritirare una copia stampata dei documenti notificati presso gli esercenti convenzionati. 
         Cerca i punti di ritiro più vicini a te."
-    />
-    <Box mt={10}>
-      <Typography align="center" variant="h2">
-        Trova un punto di ritiro SEND
-      </Typography>
-      <Stack
-        direction="row"
-        alignItems="center"
-        spacing={0}
-        justifyContent="center"
-      >
-        <Typography
-          mt={3}
-          color="textSecondary"
-          variant="body2"
-          sx={{ maxWidth: 554 }}
-          textAlign="center"
-        >
-          Quando ricevi una comunicazione a valore legale tramite SEND puoi
-          ritirare una copia stampata dei documenti notificati presso gli{" "}
-          <strong>esercenti convenzionati</strong>. <br />
-          Cerca i punti di ritiro più vicini a te.
+      />
+      <Box mt={10}>
+        <Typography align="center" variant="h2">
+          Trova un punto di ritiro SEND
         </Typography>
-      </Stack>
-      <Stack
-        mt={4}
-        mb={6}
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
+        <Stack
+          direction="row"
+          alignItems="center"
+          spacing={0}
+          justifyContent="center"
+        >
+          <Typography
+            mt={3}
+            color="textSecondary"
+            variant="body2"
+            sx={{ maxWidth: 554 }}
+            textAlign="center"
+          >
+            Quando ricevi una comunicazione a valore legale tramite SEND puoi
+            ritirare una copia stampata dei documenti notificati presso gli{" "}
+            <strong>esercenti convenzionati</strong>. <br />
+            Cerca i punti di ritiro più vicini a te.
+          </Typography>
+        </Stack>
+        <Stack
+          mt={4}
+          mb={6}
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Autocomplete
+            sx={{ width: "100%", maxWidth: 736 }}
+            disableClearable
+            options={rows}
+            getOptionLabel={(option: RaddOperator) =>
+              `${option.city} - ${option.address}`
+            }
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Cerca per città o indirizzo"
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton>
+                        <SearchIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            )}
+          />
+        </Stack>
+      </Box>
+      <Box
+        sx={{
+          backgroundColor: "#FAFAFA",
+          display: "flex",
+          justifyContent: "center",
+        }}
+        padding={5}
       >
-        <Autocomplete
-          sx={{ width: "100%", maxWidth: 736 }}
-          disableClearable
-          options={rows}
-          getOptionLabel={(option: RaddOperator) =>
-            `${option.city} - ${option.address}`
-          }
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="Cerca per città o indirizzo"
-              InputProps={{
-                ...params.InputProps,
-                type: "search",
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton>
-                      <SearchIcon sx={{ paddingRight: 0 }} />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-          )}
-        />
-      </Stack>
-    </Box>
-    <Box
-      sx={{
-        backgroundColor: "#FAFAFA",
-        display: "flex",
-        justifyContent: "center",
-      }}
-      padding={5}
-    >
-      <Stack sx={{ maxWidth: 1092, width: "100%" }}>
-        <OperatorsTable rows={rows} />
-      </Stack>
-    </Box>
-  </>
-);
+        <Stack sx={{ maxWidth: 1092, width: "100%" }}>
+          <OperatorsTable rows={rows} />
+        </Stack>
+      </Box>
+    </>
+  );
+};
 
 export default RitiroPage;
