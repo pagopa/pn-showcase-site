@@ -1197,11 +1197,14 @@ interface CSVData {
 }
 
 const RitiroPage: NextPage = () => {
-  const parsedDataOriginal = Papa.parse<CSVData>(sendPoints, {
+  const parsedData = Papa.parse<CSVData>(sendPoints, {
     header: true,
   }).data;
 
-  const rows: RaddOperator[] = parsedDataOriginal.map((e) => ({
+  const filteredData = parsedData.filter(
+    (operator) => operator.descrizione !== ""
+  );
+  const rows: RaddOperator[] = filteredData.map((e) => ({
     denomination: e.descrizione,
     region: "N.D.",
     city: e.citta,

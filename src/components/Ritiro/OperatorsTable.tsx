@@ -6,7 +6,14 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { TablePagination } from "@mui/material";
+import {
+  Box,
+  Pagination,
+  TablePagination,
+  PaginationItem,
+} from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 function OperatorsTable({ rows }) {
   const keys = ["Denominazione", "Regione", "Città", "Indirizzo", "Contatti"];
@@ -16,9 +23,10 @@ function OperatorsTable({ rows }) {
 
   const handleChangePage = (
     _event: any,
-    newPage: React.SetStateAction<number>
+    page: React.SetStateAction<number>
   ) => {
-    setPage(newPage);
+    page = page - 1;
+    setPage(page);
   };
 
   const handleChangeRowsPerPage = (event: { target: { value: string } }) => {
@@ -56,11 +64,29 @@ function OperatorsTable({ rows }) {
           </TableBody>
         </Table>
       </TableContainer>
+      <Box mt={3}>
+        <Pagination
+          count={Math.ceil(rows.length / rowsPerPage)}
+          color="primary"
+          onChange={handleChangePage}
+          renderItem={(item) => (
+            <PaginationItem
+              slots={{
+                previous: ArrowBackIcon,
+                next: ArrowForwardIcon,
+                first: ArrowBackIcon,
+              }}
+              {...item}
+            />
+          )}
+        />
+      </Box>
       <TablePagination
+        color="primary"
+        page={page}
         rowsPerPageOptions={[10, 20, 50]}
         count={rows.length}
         rowsPerPage={rowsPerPage}
-        page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
