@@ -13,6 +13,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import Papa from "papaparse";
 import OperatorsTable from "src/components/Ritiro/OperatorsTable";
+import { DarkInfoblockRitiro } from "api/data/it/common";
 
 const sendPoints = `paese;citta;provincia;cap;via;dataInizioValidit�;dataFineValidit�;descrizione;orariApertura;coordinateGeoReferenziali;Telefono;capacita;exsternalCode
 ITALIA;SAN MAURO PASCOLI;FC;47030;V. XX SETTEMBRE, 35;2005-01-01;;SEDE CAF UIL S. MAURO PASCOLI;;;0541/930568;;99833
@@ -1285,9 +1286,10 @@ const RitiroPage: NextPage = () => {
         padding={5}
       >
         <Stack sx={{ maxWidth: 1092, width: "100%" }}>
-          <OperatorsTable rows={rows} />
+          <OperatorsTable rows={rows.slice(0, rows.length - 1)} />
         </Stack>
       </Box>
+      <DarkInfoblockRitiro></DarkInfoblockRitiro>
     </>
   );
 };

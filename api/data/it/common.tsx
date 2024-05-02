@@ -1,5 +1,14 @@
-import { PreLoginFooterLinksType, FooterLinksType } from "@pagopa/mui-italia";
-import { ACCESSIBILITY_PARTICULAR_LINK, IMAGES_PATH, PAGOPA_HOME } from "@utils/constants";
+import { Box, Container, Grid, Link, Typography } from "@mui/material";
+import {
+  PreLoginFooterLinksType,
+  FooterLinksType,
+  IllusSharingInfo,
+} from "@pagopa/mui-italia";
+import {
+  ACCESSIBILITY_PARTICULAR_LINK,
+  IMAGES_PATH,
+  PAGOPA_HOME,
+} from "@utils/constants";
 import { ILinkData, INavigationBarProps } from "model";
 
 export const assistanceLink = {
@@ -40,7 +49,9 @@ export const companyLegalInfo = (
   </>
 );
 
-export const preLoginLinks: (windowURL?: string) => PreLoginFooterLinksType = (windowURL) => ({
+export const preLoginLinks: (windowURL?: string) => PreLoginFooterLinksType = (
+  windowURL
+) => ({
   // First column
   aboutUs: {
     title: undefined,
@@ -157,9 +168,12 @@ export const preLoginLinks: (windowURL?: string) => PreLoginFooterLinksType = (w
     links: [
       {
         label: "Accessibilità",
-        href: windowURL && ACCESSIBILITY_PARTICULAR_LINK.LANDING_URL_PATTERN && windowURL.includes(ACCESSIBILITY_PARTICULAR_LINK.LANDING_URL_PATTERN)
-          ? ACCESSIBILITY_PARTICULAR_LINK.PARTICULAR_ACCESSIBILITY_URL
-          : "https://form.agid.gov.it/view/eca3487c-f3cb-40be-a590-212eafc70058/",
+        href:
+          windowURL &&
+          ACCESSIBILITY_PARTICULAR_LINK.LANDING_URL_PATTERN &&
+          windowURL.includes(ACCESSIBILITY_PARTICULAR_LINK.LANDING_URL_PATTERN)
+            ? ACCESSIBILITY_PARTICULAR_LINK.PARTICULAR_ACCESSIBILITY_URL
+            : "https://form.agid.gov.it/view/eca3487c-f3cb-40be-a590-212eafc70058/",
         ariaLabel: "Vai al link: Accessibilità",
         linkType: "internal",
       },
@@ -181,3 +195,59 @@ export const postLoginLinks: Array<FooterLinksType> = [
     linkType: "internal",
   },
 ];
+
+export const DarkInfoblockRitiro = () => {
+  return (
+    <Box
+      sx={{
+        backgroundColor: "#0B3EE3",
+        paddingTop: 8,
+        paddingBottom: 8,
+      }}
+    >
+      <Container>
+        <Grid container alignItems="center" justifyContent="center">
+          <Grid
+            item
+            xs={12}
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          >
+            <IllusSharingInfo />
+            <Typography
+              variant="h6"
+              my={3}
+              component="h6"
+              color="white"
+              gutterBottom
+            >
+              Cosa portare
+            </Typography>
+            <Typography
+              variant="body2"
+              color="white"
+              textAlign="center"
+              marginBottom={2}
+            >
+              Per ritirare i documenti notificati avrai sempre bisogno del tuo
+              documento d’identità e del tuo codice fiscale.
+            </Typography>
+            <Typography
+              variant="body2"
+              color="white"
+              textAlign="center"
+              marginBottom={2}
+            >
+              Per altri dettagli scopri{" "}
+              <Link variant="body2" color="inherit" href="/come-funziona">
+                <strong>come funzionano i punti di ritiro SEND</strong>
+              </Link>
+              .
+            </Typography>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
+  );
+};
