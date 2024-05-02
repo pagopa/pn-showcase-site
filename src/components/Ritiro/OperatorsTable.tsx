@@ -12,12 +12,12 @@ import {
   Stack,
   TableSortLabel,
 } from "@mui/material";
+import { RaddOperator } from "model";
 
-function OperatorsTable({ rows }) {
-  const keys = ["denomination", "region", "city", "address", "contacts"];
-  const columnNames = {
+function OperatorsTable({ rows }: Readonly<{ rows: RaddOperator[] }>) {
+  const keys = ["denomination", "city", "address", "contacts"];
+  const columnNames: { [key: string]: string } = {
     denomination: "Denominazione",
-    region: "Regione",
     city: "Città",
     address: "Indirizzo",
     contacts: "Contatti",
@@ -110,7 +110,6 @@ function OperatorsTable({ rows }) {
                   <TableCell component="th" scope="row">
                     {row.denomination}
                   </TableCell>
-                  <TableCell>{row.region}</TableCell>
                   <TableCell>{row.city}</TableCell>
                   <TableCell>{row.address}</TableCell>
                   <TableCell>{row.contacts}</TableCell>
@@ -136,7 +135,6 @@ function OperatorsTable({ rows }) {
           rowsPerPageOptions={[10, 20, 30]} // Rimuovi le opzioni per il selettore delle righe per pagina
         />
         <Pagination
-          variant="outlined"
           color="primary"
           count={Math.ceil(rows.length / rowsPerPage)}
           onChange={handleChangePage}

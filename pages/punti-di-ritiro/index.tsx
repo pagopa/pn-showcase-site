@@ -18,21 +18,7 @@ import OperatorsTable from "src/components/Ritiro/OperatorsTable";
 import { DarkInfoblockRitiro } from "api/data/it/common";
 import OperatorsList from "src/components/Ritiro/OperatorsList";
 import { useEffect, useState } from "react";
-
-interface RaddOperator {
-  denomination: string;
-  region: string;
-  city: string;
-  address: string;
-  contacts: string;
-}
-
-interface Point {
-  descrizione: string;
-  citta: string;
-  via: string;
-  Telefono: string;
-}
+import { Point, RaddOperator } from "model";
 
 const RitiroPage: NextPage = () => {
   const theme = useTheme();
@@ -59,7 +45,6 @@ const RitiroPage: NextPage = () => {
 
   const rows: RaddOperator[] = points.map((e) => ({
     denomination: e.descrizione,
-    region: "N.D.",
     city: e.citta,
     address: e.via,
     contacts: e.Telefono,

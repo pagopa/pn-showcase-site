@@ -5,7 +5,7 @@ import {
   InfoblockProps,
   PreLoginFooterLinksType,
   ShowcaseProps,
-  WalkthroughProps
+  WalkthroughProps,
 } from "@pagopa/mui-italia";
 
 export enum UserType {
@@ -55,11 +55,11 @@ export interface INavigationBarProps {
  * If string, then it will be wrapped into a conveniently styled Box when rendered.
  * If array of strings, each element of the array will be analogously wrapped.
  * If JSX element, then it's rendered without any wrapper.
- * 
- * The intent is to simplify the specification of the FAQ content for texts which do not need special styling 
+ *
+ * The intent is to simplify the specification of the FAQ content for texts which do not need special styling
  * inside them. E.g. texts including links must be specified as JSX elements. But for straight texts or
  * array of paragraph, a string / array of strings will do.
- * 
+ *
  * Cfr. the implementation of the FAQ page
  * ----------------------------------------
  * Carlos Lombardi, 2023.04.06
@@ -119,4 +119,19 @@ export interface ITabsData {
 
 export interface ITabsProps {
   tabs: Array<string>;
+}
+
+export interface RaddOperator {
+  denomination: string;
+  // region: string;
+  city: string;
+  address: string;
+  contacts: string;
+}
+
+export interface Point {
+  descrizione: string;
+  citta: string;
+  via: string;
+  Telefono: string;
 }
