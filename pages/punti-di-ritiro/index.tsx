@@ -9,11 +9,14 @@ import {
   Stack,
   TextField,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import Papa from "papaparse";
 import OperatorsTable from "src/components/Ritiro/OperatorsTable";
 import { DarkInfoblockRitiro } from "api/data/it/common";
+import OperatorsList from "src/components/Ritiro/OperatorsList";
 
 const sendPoints = `paese;citta;provincia;cap;via;dataInizioValidit�;dataFineValidit�;descrizione;orariApertura;coordinateGeoReferenziali;Telefono;capacita;exsternalCode
 ITALIA;SAN MAURO PASCOLI;FC;47030;V. XX SETTEMBRE, 35;2005-01-01;;SEDE CAF UIL S. MAURO PASCOLI;;;0541/930568;;99833
@@ -1198,6 +1201,8 @@ interface CSVData {
 }
 
 const RitiroPage: NextPage = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const parsedData = Papa.parse<CSVData>(sendPoints, {
     header: true,
   }).data;
@@ -1220,7 +1225,7 @@ const RitiroPage: NextPage = () => {
         description="Quando ricevi una comunicazione a valore legale tramite SEND puoi ritirare una copia stampata dei documenti notificati presso gli esercenti convenzionati. 
         Cerca i punti di ritiro più vicini a te."
       />
-      <Box mt={10}>
+      <Box mt={10} mx={3}>
         <Typography align="center" variant="h2">
           Trova un punto di ritiro SEND
         </Typography>
@@ -1277,18 +1282,32 @@ const RitiroPage: NextPage = () => {
           />
         </Stack>
       </Box>
-      <Box
-        sx={{
-          backgroundColor: "#FAFAFA",
-          display: "flex",
-          justifyContent: "center",
-        }}
-        padding={5}
-      >
-        <Stack sx={{ maxWidth: 1092, width: "100%" }}>
-          <OperatorsTable rows={rows.slice(0, rows.length - 1)} />
-        </Stack>
-      </Box>
+      {!isMobile && (
+        <Box
+          sx={{
+            backgroundColor: "#FAFAFA",
+            display: "flex",
+            justifyContent: "center",
+          }}
+          padding={5}
+        >
+          <Stack sx={{ maxWidth: 1092, width: "100%" }}>
+            <OperatorsTable rows={rows.slice(0, rows.length - 1)} />
+          </Stack>
+        </Box>
+      )}
+      {isMobile && (
+        <Box
+          sx={{
+            backgroundColor: "#FAFAFA",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <OperatorsList rows={rows.slice(0, rows.length - 1)} />
+        </Box>
+      )}
+
       <DarkInfoblockRitiro></DarkInfoblockRitiro>
     </>
   );
