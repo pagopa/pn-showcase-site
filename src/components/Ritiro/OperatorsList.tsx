@@ -44,21 +44,23 @@ function OperatorsList({ rows }: Readonly<{ rows: RaddOperator[] }>) {
                 width="100%"
                 sx={{ borderBottom: "solid 1px #E3E7EB" }}
               >
-                <Box mb={3}>
+                <Box mb={1}>
                   <Typography variant="body2">Denominazione</Typography>
-                  <Typography variant="body1">{row.denomination}</Typography>
+                  <Typography variant="subtitle1">
+                    {row.denomination}
+                  </Typography>
                 </Box>
-                <Box mb={3}>
+                <Box mb={1}>
                   <Typography variant="body2">Città</Typography>
-                  <Typography variant="body1">{row.city}</Typography>
+                  <Typography variant="subtitle1">{row.city}</Typography>
                 </Box>
-                <Box mb={3}>
+                <Box mb={1}>
                   <Typography variant="body2">Indirizzo</Typography>
-                  <Typography variant="body1">{row.address}</Typography>
+                  <Typography variant="subtitle1">{row.address}</Typography>
                 </Box>
-                <Box mb={3}>
+                <Box mb={1}>
                   <Typography variant="body2">Telefono</Typography>
-                  <Typography variant="body1">{row.contacts}</Typography>
+                  <Typography variant="subtitle1">{row.contacts}</Typography>
                 </Box>
               </Stack>
             </ListItem>

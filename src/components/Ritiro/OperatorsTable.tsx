@@ -26,7 +26,6 @@ function OperatorsTable({ rows }: Readonly<{ rows: RaddOperator[] }>) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-  // stato per gestire ordinamento in base ad una chiave e se è ascendente o discendente
   const [orderBy, setOrderBy] = React.useState("");
   const [order, setOrder] = React.useState<"asc" | "desc">("asc");
 
@@ -41,10 +40,7 @@ function OperatorsTable({ rows }: Readonly<{ rows: RaddOperator[] }>) {
     setPage(0);
   };
 
-  // funzione di gestione del cambio di ordinamento
   const handleRequestSort = (property: string) => {
-    // se orderBy è uguale a property, quindi è già ordinata in base a property, bisogna cambiare direzione ordinamento in discendente
-    // se orderBy NON è uguale a property, quindi NON è già ordinata in base a property, bisogna ordinare in direzione ascendente (default)
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
