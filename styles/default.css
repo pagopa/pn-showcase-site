@@ -178,6 +178,10 @@ body {
   }
 }
 
+#iconLeggi {
+  width: 5rem;
+}
+
 @media screen and (min-width: 900px) {
   .documentiCustomCard .MuiPaper-root {
     margin-bottom: 8px;

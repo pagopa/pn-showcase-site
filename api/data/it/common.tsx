@@ -1,15 +1,12 @@
 import { Box, Container, Grid, Link, Typography } from "@mui/material";
-import {
-  PreLoginFooterLinksType,
-  FooterLinksType,
-  IllusSharingInfo,
-} from "@pagopa/mui-italia";
+import { PreLoginFooterLinksType, FooterLinksType } from "@pagopa/mui-italia";
 import {
   ACCESSIBILITY_PARTICULAR_LINK,
   IMAGES_PATH,
   PAGOPA_HOME,
 } from "@utils/constants";
 import { ILinkData, INavigationBarProps } from "model";
+import { LeggiIcon } from "../icons";
 
 export const assistanceLink = {
   label: "Assistenza",
@@ -214,7 +211,7 @@ export const DarkInfoblockRitiro = () => {
             flexDirection="column"
             alignItems="center"
           >
-            <IllusSharingInfo />
+            <LeggiIcon />
             <Typography
               variant="h6"
               my={3}
