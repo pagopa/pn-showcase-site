@@ -79,7 +79,7 @@ function OperatorsList({ rows }: Readonly<{ rows: RaddOperator[] }>) {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          rowsPerPageOptions={[10, 20, 30]} // Rimuovi le opzioni per il selettore delle righe per pagina
+          rowsPerPageOptions={[10, 20, 30]}
         />
         <Pagination
           sx={{ width: 170, justifyContent: "flex-end" }}
