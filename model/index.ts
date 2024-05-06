@@ -123,15 +123,18 @@ export interface ITabsProps {
 
 export interface RaddOperator {
   denomination: string;
-  // region: string;
   city: string;
   address: string;
+  province: string;
+  cap: string;
   contacts: string;
 }
 
 export interface Point {
   descrizione: string;
-  citta: string;
+  città: string;
   via: string;
-  Telefono: string;
+  provincia: string;
+  cap: string;
+  telefono: string;
 }

@@ -24,32 +24,46 @@ const RitiroPage: NextPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  // elenco punti di ritiro dal csv
   const [points, setPoints] = useState<Point[]>([]);
+  // valore del campo di ricerca
+  const [searchValue, setSearchValue] = useState("");
+  // valore da passare a OperatorsTable
+  const [valueToPass, setValueToPass] = useState<RaddOperator>();
+
+  let hasData = false;
   useEffect(() => {
-    const csvFilePath = "/static/documents/data-ritiro.csv";
+    if (!hasData) {
+      hasData = true;
+      const csvFilePath = "/static/documents/data-ritiro.csv";
 
-    Papa.parse(csvFilePath, {
-      download: true,
-      header: true,
-      dynamicTyping: true,
-      complete: (result) => {
-        if (result.data && result.data.length > 0) {
-          setPoints(result.data as Point[]);
-        }
-      },
-      error: (error) => {
-        console.error("Error parsing CSV:", error);
-      },
-    });
+      Papa.parse(csvFilePath, {
+        download: true,
+        header: true,
+        dynamicTyping: false,
+        complete: (result) => {
+          if (result.data && result.data.length > 0) {
+            setPoints(result.data as Point[]);
+          }
+        },
+        error: (error) => {
+          console.error("Error parsing CSV:", error);
+        },
+      });
+    }
   }, []);
-
   const rows: RaddOperator[] = points.map((e) => ({
     denomination: e.descrizione,
-    city: e.citta,
+    city: e.città,
     address: e.via,
-    contacts: e.Telefono,
+    province: e.provincia,
+    cap: e.cap,
+    contacts: e.telefono,
   }));
 
+  function handleSelectChange(value: RaddOperator | null) {
+    if (value) setValueToPass(value);
+  }
   return (
     <>
       <PageHead
@@ -86,14 +100,21 @@ const RitiroPage: NextPage = () => {
           direction="row"
           justifyContent="center"
           alignItems="center"
+          id="operatorList"
         >
           <Autocomplete
-            sx={{ width: "100%", maxWidth: 736 }}
-            disableClearable
+            blurOnSelect
+            sx={{
+              width: "100%",
+              maxWidth: 736,
+            }}
             options={rows}
             getOptionLabel={(option: RaddOperator) =>
-              `${option.city} - ${option.address}`
+              `${option.city} (${option.province}) - ${option.address}`
             }
+            inputValue={searchValue}
+            onInputChange={(event, newValue) => setSearchValue(newValue)}
+            onChange={(event, value) => handleSelectChange(value)}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -124,7 +145,10 @@ const RitiroPage: NextPage = () => {
           padding={5}
         >
           <Stack sx={{ maxWidth: 1092, width: "100%" }}>
-            <OperatorsTable rows={rows.slice(0, rows.length - 1)} />
+            <OperatorsTable
+              searchValue={valueToPass}
+              rows={rows.slice(0, rows.length - 1)}
+            />
           </Stack>
         </Box>
       )}

@@ -182,6 +182,10 @@ body {
   width: 5rem;
 }
 
+.MuiPopperUnstyled-root .MuiAutocomplete-paper {
+  box-shadow: 5px 5px 20px 0px #e1e0e0;
+}
+
 @media screen and (min-width: 900px) {
   .documentiCustomCard .MuiPaper-root {
     margin-bottom: 8px;

@@ -14,7 +14,12 @@ import {
 } from "@mui/material";
 import { RaddOperator } from "model";
 
-function OperatorsTable({ rows }: Readonly<{ rows: RaddOperator[] }>) {
+type Props = {
+  rows: RaddOperator[];
+  searchValue: RaddOperator | undefined;
+};
+
+function OperatorsTable({ rows, searchValue }: Readonly<Props>) {
   const keys = ["denomination", "city", "address", "contacts"];
   const columnNames: { [key: string]: string } = {
     denomination: "Denominazione",
@@ -45,8 +50,10 @@ function OperatorsTable({ rows }: Readonly<{ rows: RaddOperator[] }>) {
     setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
   };
-
-  const sortedRows = stableSort(rows, getComparator(order, orderBy));
+  const filteredRows = searchValue
+    ? rows.filter((row) => row.city === searchValue.city)
+    : rows;
+  const sortedRows = stableSort(filteredRows, getComparator(order, orderBy));
 
   function stableSort(array: any[], comparator: (a: any, b: any) => number) {
     const stabilizedThis = array.map(
@@ -106,8 +113,12 @@ function OperatorsTable({ rows }: Readonly<{ rows: RaddOperator[] }>) {
                   <TableCell component="th" scope="row">
                     {row.denomination}
                   </TableCell>
-                  <TableCell>{row.city}</TableCell>
-                  <TableCell>{row.address}</TableCell>
+                  <TableCell>
+                    {row.city} ({row.province})
+                  </TableCell>
+                  <TableCell>
+                    {row.address} - {row.cap}
+                  </TableCell>
                   <TableCell>{row.contacts}</TableCell>
                 </TableRow>
               ))}
@@ -132,7 +143,7 @@ function OperatorsTable({ rows }: Readonly<{ rows: RaddOperator[] }>) {
         />
         <Pagination
           color="primary"
-          count={Math.ceil(rows.length / rowsPerPage)}
+          count={Math.ceil(filteredRows.length / rowsPerPage)}
           onChange={handleChangePage}
           boundaryCount={1}
           siblingCount={1}
