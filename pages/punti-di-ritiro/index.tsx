@@ -200,6 +200,7 @@ const RitiroPage: NextPage = () => {
           }}
         >
           <OperatorsList
+            key={JSON.stringify(originalRaddOperators)}
             searchValue={valueToSearch}
             allRows={originalRaddOperators}
           />
