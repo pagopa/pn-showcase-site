@@ -28,8 +28,17 @@ const RitiroPage: NextPage = () => {
   const [points, setPoints] = useState<Point[]>([]);
   // valore del campo di ricerca
   const [searchValue, setSearchValue] = useState("");
+  // check se il campo di ricerca è vuoto
+  const [isSearchEmpty, setIsSearchEmpty] = useState(true);
   // valore da passare a OperatorsTable
-  const [valueToPass, setValueToPass] = useState<RaddOperator>();
+  const [valueToSearch, setValueToSearch] = useState<RaddOperator | undefined>(
+    undefined
+  );
+  // elenco punti di ritiro parsati
+  const [originalRaddOperators, setOriginalRaddOperators] = useState<
+    RaddOperator[]
+  >([]);
+  const [open, setOpen] = useState(true);
 
   let hasData = false;
   useEffect(() => {
@@ -52,7 +61,7 @@ const RitiroPage: NextPage = () => {
       });
     }
   }, []);
-  const rows: RaddOperator[] = points.map((e) => ({
+  const initialRaddOperators: RaddOperator[] = points.map((e) => ({
     denomination: e.descrizione,
     city: e.città,
     address: e.via,
@@ -60,10 +69,35 @@ const RitiroPage: NextPage = () => {
     cap: e.cap,
     contacts: e.telefono,
   }));
+  useEffect(() => {
+    // Inizializzazione dell'elenco originale degli operatori di ritiro
+    if (isSearchEmpty) setOriginalRaddOperators(initialRaddOperators);
+  }, [points]);
 
   function handleSelectChange(value: RaddOperator | null) {
-    if (value) setValueToPass(value);
+    // Controlla se il campo è vuoto
+    if (value === null) {
+      setOpen(false);
+      setIsSearchEmpty(true);
+      setValueToSearch(undefined);
+      if (isSearchEmpty) setOriginalRaddOperators(initialRaddOperators);
+    } else {
+      setValueToSearch(value);
+      setIsSearchEmpty(false);
+    }
   }
+
+  // useEffect per gestire l'aggiornamento di isSearchEmpty
+  useEffect(() => {
+    if (isSearchEmpty) {
+      setOriginalRaddOperators(initialRaddOperators);
+    }
+  }, [isSearchEmpty]);
+
+  function handleInputChage(value: string) {
+    setSearchValue(value);
+  }
+
   return (
     <>
       <PageHead
@@ -103,17 +137,20 @@ const RitiroPage: NextPage = () => {
           id="operatorList"
         >
           <Autocomplete
+            open={open} // Stato di apertura controllato
+            onOpen={() => setOpen(true)}
+            onClose={() => setOpen(false)}
             blurOnSelect
             sx={{
               width: "100%",
               maxWidth: 736,
             }}
-            options={rows}
+            options={originalRaddOperators}
             getOptionLabel={(option: RaddOperator) =>
               `${option.city} (${option.province}) - ${option.address}`
             }
             inputValue={searchValue}
-            onInputChange={(event, newValue) => setSearchValue(newValue)}
+            onInputChange={(event, newValue) => handleInputChage(newValue)}
             onChange={(event, value) => handleSelectChange(value)}
             renderInput={(params) => (
               <TextField
@@ -146,8 +183,9 @@ const RitiroPage: NextPage = () => {
         >
           <Stack sx={{ maxWidth: 1092, width: "100%" }}>
             <OperatorsTable
-              searchValue={valueToPass}
-              rows={rows.slice(0, rows.length - 1)}
+              key={JSON.stringify(originalRaddOperators)}
+              searchValue={valueToSearch}
+              allRows={originalRaddOperators}
             />
           </Stack>
         </Box>
@@ -161,7 +199,10 @@ const RitiroPage: NextPage = () => {
             justifyContent: "center",
           }}
         >
-          <OperatorsList rows={rows.slice(0, rows.length - 1)} />
+          <OperatorsList
+            searchValue={valueToSearch}
+            allRows={originalRaddOperators}
+          />
         </Box>
       )}
 

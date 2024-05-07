@@ -237,7 +237,11 @@ export const DarkInfoblockRitiro = () => {
               marginBottom={2}
             >
               Per altri dettagli scopri{" "}
-              <Link variant="body2" color="inherit" href="/come-funziona">
+              <Link
+                variant="body2"
+                color="inherit"
+                href="/punti-di-ritiro/come-funziona"
+              >
                 <strong>come funzionano i punti di ritiro SEND</strong>
               </Link>
               .

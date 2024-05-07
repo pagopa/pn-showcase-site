@@ -13,13 +13,44 @@ import {
   TableSortLabel,
 } from "@mui/material";
 import { RaddOperator } from "model";
+import { useEffect, useState } from "react";
 
 type Props = {
-  rows: RaddOperator[];
+  allRows: RaddOperator[];
   searchValue: RaddOperator | undefined;
 };
+function stableSort(array: any[], comparator: (a: any, b: any) => number) {
+  const stabilizedThis = array.map((el, index) => [el, index] as [any, number]);
+  stabilizedThis.sort((a, b) => {
+    const order = comparator(a[0], b[0]);
+    if (order !== 0) return order;
+    return a[1] - b[1];
+  });
+  return stabilizedThis.map((el) => el[0]);
+}
 
-function OperatorsTable({ rows, searchValue }: Readonly<Props>) {
+function getComparator(order: "asc" | "desc", orderBy: string) {
+  return order === "desc"
+    ? (a: any, b: any) => descendingComparator(a, b, orderBy)
+    : (a: any, b: any) => -descendingComparator(a, b, orderBy);
+}
+
+function descendingComparator(a: any, b: any, orderBy: string) {
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    return 1;
+  }
+  return 0;
+}
+
+function OperatorsTable({ allRows, searchValue }: Readonly<Props>) {
+  const [orderBy, setOrderBy] = useState("");
+  const [order, setOrder] = useState<"asc" | "desc">("asc");
+  const [filteredRows, setFilteredRows] = useState<RaddOperator[]>(allRows);
+
+  const sortedRows = stableSort(filteredRows, getComparator(order, orderBy));
   const keys = ["denomination", "city", "address", "contacts"];
   const columnNames: { [key: string]: string } = {
     denomination: "Denominazione",
@@ -28,11 +59,12 @@ function OperatorsTable({ rows, searchValue }: Readonly<Props>) {
     contacts: "Contatti",
   };
 
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const [orderBy, setOrderBy] = React.useState("");
-  const [order, setOrder] = React.useState<"asc" | "desc">("asc");
+  useEffect(() => {
+    setPage(0); // Resetta la pagina quando cambiano le rows o la searchValue
+  }, [searchValue]);
 
   const handleChangePage = (_event: any, page: number | null) => {
     if (page !== null) {
@@ -50,38 +82,16 @@ function OperatorsTable({ rows, searchValue }: Readonly<Props>) {
     setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
   };
-  const filteredRows = searchValue
-    ? rows.filter((row) => row.city === searchValue.city)
-    : rows;
-  const sortedRows = stableSort(filteredRows, getComparator(order, orderBy));
 
-  function stableSort(array: any[], comparator: (a: any, b: any) => number) {
-    const stabilizedThis = array.map(
-      (el, index) => [el, index] as [any, number]
-    );
-    stabilizedThis.sort((a, b) => {
-      const order = comparator(a[0], b[0]);
-      if (order !== 0) return order;
-      return a[1] - b[1];
-    });
-    return stabilizedThis.map((el) => el[0]);
-  }
-
-  function getComparator(order: "asc" | "desc", orderBy: string) {
-    return order === "desc"
-      ? (a: any, b: any) => descendingComparator(a, b, orderBy)
-      : (a: any, b: any) => -descendingComparator(a, b, orderBy);
-  }
-
-  function descendingComparator(a: any, b: any, orderBy: string) {
-    if (b[orderBy] < a[orderBy]) {
-      return -1;
+  useEffect(() => {
+    // Codice da eseguire quando searchValue cambia
+    if (!searchValue) {
+      // ricalcolare filteredRows
+      setFilteredRows(allRows);
+    } else {
+      setFilteredRows(allRows.filter((row) => row.city === searchValue.city));
     }
-    if (b[orderBy] > a[orderBy]) {
-      return 1;
-    }
-    return 0;
-  }
+  }, [searchValue]);
 
   return (
     <>
@@ -134,7 +144,7 @@ function OperatorsTable({ rows, searchValue }: Readonly<Props>) {
         <TablePagination
           id="ritiroPagination"
           component="div"
-          count={rows.length}
+          count={filteredRows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

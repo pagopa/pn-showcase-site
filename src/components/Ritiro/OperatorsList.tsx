@@ -11,8 +11,15 @@ import {
   Pagination,
 } from "@mui/material";
 import { RaddOperator } from "model";
+import { useEffect, useState } from "react";
 
-function OperatorsList({ rows }: Readonly<{ rows: RaddOperator[] }>) {
+type Props = {
+  allRows: RaddOperator[];
+  searchValue: RaddOperator | undefined;
+};
+
+function OperatorsList({ allRows, searchValue }: Readonly<Props>) {
+  const [filteredRows, setFilteredRows] = useState<RaddOperator[]>(allRows);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const handleChangePage = (_event: any, page: number | null) => {
@@ -25,10 +32,21 @@ function OperatorsList({ rows }: Readonly<{ rows: RaddOperator[] }>) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+  useEffect(() => {
+    // Codice da eseguire quando searchValue cambia
+    if (!searchValue) {
+      // ricalcolare filteredRows
+      setFilteredRows(allRows);
+    } else {
+      setFilteredRows(allRows.filter((row) => row.city === searchValue.city));
+    }
+  }, [searchValue]);
+
   return (
     <Stack>
       <List>
-        {rows
+        {filteredRows
           .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           .map((row, index: number) => (
             <ListItem
@@ -76,7 +94,7 @@ function OperatorsList({ rows }: Readonly<{ rows: RaddOperator[] }>) {
         <TablePagination
           id="ritiroPagination"
           component="div"
-          count={rows.length}
+          count={filteredRows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
@@ -84,9 +102,10 @@ function OperatorsList({ rows }: Readonly<{ rows: RaddOperator[] }>) {
           rowsPerPageOptions={[10, 20, 30]}
         />
         <Pagination
-          sx={{ width: 170, justifyContent: "flex-end" }}
+          id="ritiroPagination_page_mobile"
+          sx={{ width: 170 }}
           color="primary"
-          count={Math.ceil(rows.length / rowsPerPage)}
+          count={Math.ceil(filteredRows.length / rowsPerPage)}
           onChange={handleChangePage}
           boundaryCount={1}
           siblingCount={1}
