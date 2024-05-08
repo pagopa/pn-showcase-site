@@ -62,7 +62,7 @@ const RitiroPage: NextPage = () => {
     address: e.via,
     province: e.provincia,
     cap: e.cap,
-    contacts: e.telefono,
+    contacts: e.telefono.replace("/", " "),
   }));
   useEffect(() => {
     if (isSearchEmpty) setOriginalRaddOperators(initialRaddOperators);
