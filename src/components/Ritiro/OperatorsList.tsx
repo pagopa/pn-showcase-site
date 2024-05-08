@@ -34,9 +34,7 @@ function OperatorsList({ allRows, searchValue }: Readonly<Props>) {
   };
 
   useEffect(() => {
-    // Codice da eseguire quando searchValue cambia
     if (!searchValue) {
-      // ricalcolare filteredRows
       setFilteredRows(allRows);
     } else {
       setFilteredRows(allRows.filter((row) => row.city === searchValue.city));

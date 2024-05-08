@@ -9,8 +9,8 @@ import IconButton from "@mui/material/IconButton";
 import { Box, Stack, Tab, Tabs, Typography } from "@mui/material";
 import { INavigationBarProps } from "model";
 
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
 const NavigationBar = ({
   title,
@@ -19,14 +19,15 @@ const NavigationBar = ({
   faq,
   image,
   pi,
-  numeri
+  numeri,
+  ritiro,
 }: INavigationBarProps) => {
   const { pathname, push } = useRouter();
   const [index, setIndex] = useState<number | undefined>();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(false);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -51,12 +52,19 @@ const NavigationBar = ({
     setIsMobileMenuOpen(false);
   };
 
-  const paths = ["/pubbliche-amministrazioni", "/cittadini", "/imprese","/numeri", "/faq"];
+  const paths = [
+    "/pubbliche-amministrazioni",
+    "/cittadini",
+    "/imprese",
+    "/punti-di-ritiro",
+    "/numeri",
+    "/faq",
+  ];
 
   function a11yProps(index: number) {
     return {
       id: `page-tab-${index}`,
-      'aria-controls': `page-tabpanel-${index}`,
+      "aria-controls": `page-tabpanel-${index}`,
     };
   }
 
@@ -73,17 +81,20 @@ const NavigationBar = ({
       }
     }
     handleResize();
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, [pathname]);
 
   return (
     <Box className="sendNavbar">
-      <Stack direction={{ xs: "column", sm: "row" }} >
+      <Stack direction={{ xs: "column", sm: "row" }}>
         <Stack direction="row" alignItems="center" mx={3} my={2}>
-          <Box sx={{ pr: 2, cursor: 'pointer' }} onClick={() => window.open('/', '_self')}>
+          <Box
+            sx={{ pr: 2, cursor: "pointer" }}
+            onClick={() => window.open("/", "_self")}
+          >
             <img src={image} alt={title} aria-label={title} />
           </Box>
           {/* <Chip label={chip} size="small" color="primary" /> */}
@@ -91,9 +102,12 @@ const NavigationBar = ({
             <IconButton
               onClick={toggleMobileMenu}
               sx={{
-                position: 'absolute', top: 80, right: 20, color: 'primary.main',
-                '&:hover': {
-                  backgroundColor: 'transparent'
+                position: "absolute",
+                top: 80,
+                right: 20,
+                color: "primary.main",
+                "&:hover": {
+                  backgroundColor: "transparent",
                 },
               }}
             >
@@ -103,74 +117,151 @@ const NavigationBar = ({
         </Stack>
         {isMobile ? (
           <Menu
-              anchorEl={anchorEl}
-              open={isMobileMenuOpen}
-              onClose={closeMobileMenu}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
+            anchorEl={anchorEl}
+            open={isMobileMenuOpen}
+            onClose={closeMobileMenu}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            sx={{
+              "& .MuiPaper-root": {
+                width: "100%",
+                top: "152px!important",
+                boxShadow: "none",
+                left: "0px!important",
+                maxWidth: "none",
+              },
+            }}
+          >
+            <Box
               sx={{
-                '& .MuiPaper-root': {
-                  width: '100%',
-                  top: '152px!important',
-                  boxShadow: "none",
-                  left: "0px!important",
-                  maxWidth: "none"
-                },
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                cursor: "pointer",
               }}
             >
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', }}>
-                <div style={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
-                  <Typography
-                    sx={{ flexGrow: 1, color: index === 0 ? 'primary.main' : 'text.secondary', fontWeight: "600", fontSize: "1rem", paddingLeft: "16px", paddingRight: "8px" }}
-                    onClick={() => handleMenuItemClick(paths[0])}
-                  >
-                    {pa}
-                  </Typography>
-                  <IconButton
-                    size="small"
-                    onClick={() => setSubMenuOpen(!subMenuOpen)}
-                    sx={{ color: index === 0 ? 'primary.main' : 'text.secondary' }}
-                  >
-                    {subMenuOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-                  </IconButton>
-                </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "start",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  sx={{
+                    flexGrow: 1,
+                    color: index === 0 ? "primary.main" : "text.secondary",
+                    fontWeight: "600",
+                    fontSize: "1rem",
+                    paddingLeft: "16px",
+                    paddingRight: "8px",
+                  }}
+                  onClick={() => handleMenuItemClick(paths[0])}
+                >
+                  {pa}
+                </Typography>
+                <IconButton
+                  size="small"
+                  onClick={() => setSubMenuOpen(!subMenuOpen)}
+                  sx={{
+                    color: index === 0 ? "primary.main" : "text.secondary",
+                  }}
+                >
+                  {subMenuOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                </IconButton>
+              </div>
+            </Box>
+            {subMenuOpen && (
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  bgcolor: "background.paper",
+                }}
+              >
+                <MenuItem
+                  onClick={() => handleMenuItemClick("/documenti")}
+                  sx={{
+                    color:
+                      pathname === "/documenti"
+                        ? "primary.main"
+                        : "text.secondary",
+                    fontWeight: "400",
+                    fontSize: "1rem",
+                    paddingLeft: "32px",
+                  }}
+                >
+                  Documentazione
+                </MenuItem>
               </Box>
-              {subMenuOpen && (
-                <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.paper' }}>
-                  <MenuItem onClick={() => handleMenuItemClick('/documenti')} sx={{ color: pathname === '/documenti' ? 'primary.main' : 'text.secondary', fontWeight: "400", fontSize: "1rem", paddingLeft: "32px" }}>
-                    Documentazione
-                  </MenuItem>
-                </Box>
-              )}
-              <MenuItem onClick={() => handleMenuItemClick(paths[1])} sx={{ color: index === 1 ? 'primary.main' : 'text.secondary' }}>
-                {pf}
-              </MenuItem>
-              <MenuItem onClick={() => handleMenuItemClick(paths[2])} sx={{ color: index === 2 ? 'primary.main' : 'text.secondary' }}>
-                {pi}
-              </MenuItem>
-              <MenuItem onClick={() => handleMenuItemClick(paths[3])} sx={{ color: index === 2 ? 'primary.main' : 'text.secondary' }}>
-                {numeri}
-              </MenuItem>
-              <MenuItem onClick={() => handleMenuItemClick(paths[4])} sx={{ color: index === 3 ? 'primary.main' : 'text.secondary' }}>
-                {faq}
-              </MenuItem>
-            </Menu>
+            )}
+            <MenuItem
+              onClick={() => handleMenuItemClick(paths[1])}
+              sx={{ color: index === 1 ? "primary.main" : "text.secondary" }}
+            >
+              {pf}
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleMenuItemClick(paths[2])}
+              sx={{ color: index === 2 ? "primary.main" : "text.secondary" }}
+            >
+              {pi}
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleMenuItemClick(paths[3])}
+              sx={{ color: index === 2 ? "primary.main" : "text.secondary" }}
+            >
+              {ritiro}
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleMenuItemClick(paths[4])}
+              sx={{ color: index === 2 ? "primary.main" : "text.secondary" }}
+            >
+              {numeri}
+            </MenuItem>
+            <MenuItem
+              onClick={() => handleMenuItemClick(paths[5])}
+              sx={{ color: index === 3 ? "primary.main" : "text.secondary" }}
+            >
+              {faq}
+            </MenuItem>
+          </Menu>
         ) : (
           <Tabs value={index} component="nav">
-            <Box sx={{ paddingTop: 6, paddingBottom: 5, display: 'flex', alignItems: 'center', cursor: 'pointer' }} >
-              <Typography component="a" href={paths[0]} sx={{ flexGrow: 1, textDecoration: "none", color: index === 0 ? 'primary.main' : 'text.secondary' }} className="tab-enti">
+            <Box
+              sx={{
+                paddingTop: 6,
+                paddingBottom: 5,
+                display: "flex",
+                alignItems: "center",
+                cursor: "pointer",
+              }}
+            >
+              <Typography
+                component="a"
+                href={paths[0]}
+                sx={{
+                  flexGrow: 1,
+                  textDecoration: "none",
+                  color: index === 0 ? "primary.main" : "text.secondary",
+                }}
+                className="tab-enti"
+              >
                 {pa}
               </Typography>
               <IconButton
                 onClick={handleOpenMenu}
                 size="small"
-                sx={{ marginLeft: 1, color: index === 0 ? 'primary.main' : 'text.secondary' }}
+                sx={{
+                  marginLeft: 1,
+                  color: index === 0 ? "primary.main" : "text.secondary",
+                }}
               >
                 {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
               </IconButton>
@@ -181,12 +272,24 @@ const NavigationBar = ({
               onClose={handleCloseMenu}
               sx={{ marginLeft: -4, marginTop: 2 }}
             >
-              <MenuItem onClick={() => handleMenuItemClick('/documenti')} sx={{ color: pathname === '/documenti' ? 'primary.main' : 'text.secondary' }}>
+              <MenuItem
+                onClick={() => handleMenuItemClick("/documenti")}
+                sx={{
+                  color:
+                    pathname === "/documenti"
+                      ? "primary.main"
+                      : "text.secondary",
+                }}
+              >
                 Documentazione
               </MenuItem>
             </Menu>
             <Tab
-              sx={{ paddingTop: 6, paddingBottom: 5, color: index === 1 ? 'primary.main' : 'text.secondary' }}
+              sx={{
+                paddingTop: 6,
+                paddingBottom: 5,
+                color: index === 1 ? "primary.main" : "text.secondary",
+              }}
               component="a"
               onClick={(
                 event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -202,7 +305,11 @@ const NavigationBar = ({
               disableRipple={true}
             />
             <Tab
-              sx={{ paddingTop: 6, paddingBottom: 5, color: index === 2 ? 'primary.main' : 'text.secondary' }}
+              sx={{
+                paddingTop: 6,
+                paddingBottom: 5,
+                color: index === 2 ? "primary.main" : "text.secondary",
+              }}
               component="a"
               onClick={(
                 event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -218,7 +325,11 @@ const NavigationBar = ({
               disableRipple={true}
             />
             <Tab
-              sx={{ paddingTop: 6, paddingBottom: 5, color: index === 3 ? 'primary.main' : 'text.secondary' }}
+              sx={{
+                paddingTop: 6,
+                paddingBottom: 5,
+                color: index === 3 ? "primary.main" : "text.secondary",
+              }}
               component="a"
               onClick={(
                 event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -227,14 +338,18 @@ const NavigationBar = ({
                   event.preventDefault();
                 }
               }}
-              key="numeri"
-              label={numeri}
+              key="ritiro"
+              label={ritiro}
               href={paths[3]}
               {...a11yProps(3)}
               disableRipple={true}
             />
             <Tab
-              sx={{ paddingTop: 6, paddingBottom: 5, color: index === 3 ? 'primary.main' : 'text.secondary' }}
+              sx={{
+                paddingTop: 6,
+                paddingBottom: 5,
+                color: index === 4 ? "primary.main" : "text.secondary",
+              }}
               component="a"
               onClick={(
                 event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -243,10 +358,30 @@ const NavigationBar = ({
                   event.preventDefault();
                 }
               }}
-              key="faq"
-              label={faq}
+              key="numeri"
+              label={numeri}
               href={paths[4]}
               {...a11yProps(4)}
+              disableRipple={true}
+            />
+            <Tab
+              sx={{
+                paddingTop: 6,
+                paddingBottom: 5,
+                color: index === 5 ? "primary.main" : "text.secondary",
+              }}
+              component="a"
+              onClick={(
+                event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+              ) => {
+                if (pathname === `${paths[5]}/`) {
+                  event.preventDefault();
+                }
+              }}
+              key="faq"
+              label={faq}
+              href={paths[5]}
+              {...a11yProps(5)}
               disableRipple={true}
             />
           </Tabs>

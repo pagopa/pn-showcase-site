@@ -22,6 +22,7 @@ export const navigation: INavigationBarProps = {
   image: `${IMAGES_PATH}/logo.svg`,
   numeri: "SEND in numeri",
   pi: "Imprese",
+  ritiro: "Punti di ritiro",
 };
 
 export const productJson = "/static/product.json";

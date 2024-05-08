@@ -24,21 +24,16 @@ const RitiroPage: NextPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  // elenco punti di ritiro dal csv
   const [points, setPoints] = useState<Point[]>([]);
-  // valore del campo di ricerca
   const [searchValue, setSearchValue] = useState("");
-  // check se il campo di ricerca è vuoto
   const [isSearchEmpty, setIsSearchEmpty] = useState(true);
-  // valore da passare a OperatorsTable
   const [valueToSearch, setValueToSearch] = useState<RaddOperator | undefined>(
     undefined
   );
-  // elenco punti di ritiro parsati
   const [originalRaddOperators, setOriginalRaddOperators] = useState<
     RaddOperator[]
   >([]);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   let hasData = false;
   useEffect(() => {
@@ -70,12 +65,10 @@ const RitiroPage: NextPage = () => {
     contacts: e.telefono,
   }));
   useEffect(() => {
-    // Inizializzazione dell'elenco originale degli operatori di ritiro
     if (isSearchEmpty) setOriginalRaddOperators(initialRaddOperators);
   }, [points]);
 
   function handleSelectChange(value: RaddOperator | null) {
-    // Controlla se il campo è vuoto
     if (value === null) {
       setOpen(false);
       setIsSearchEmpty(true);
@@ -87,7 +80,6 @@ const RitiroPage: NextPage = () => {
     }
   }
 
-  // useEffect per gestire l'aggiornamento di isSearchEmpty
   useEffect(() => {
     if (isSearchEmpty) {
       setOriginalRaddOperators(initialRaddOperators);
@@ -137,7 +129,7 @@ const RitiroPage: NextPage = () => {
           id="operatorList"
         >
           <Autocomplete
-            open={open} // Stato di apertura controllato
+            open={open}
             onOpen={() => setOpen(true)}
             onClose={() => setOpen(false)}
             blurOnSelect

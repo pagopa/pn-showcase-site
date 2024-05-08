@@ -62,10 +62,6 @@ function OperatorsTable({ allRows, searchValue }: Readonly<Props>) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  useEffect(() => {
-    setPage(0); // Resetta la pagina quando cambiano le rows o la searchValue
-  }, [searchValue]);
-
   const handleChangePage = (_event: any, page: number | null) => {
     if (page !== null) {
       setPage(page - 1);
@@ -84,10 +80,9 @@ function OperatorsTable({ allRows, searchValue }: Readonly<Props>) {
   };
 
   useEffect(() => {
-    // Codice da eseguire quando searchValue cambia
     if (!searchValue) {
-      // ricalcolare filteredRows
       setFilteredRows(allRows);
+      setPage(0);
     } else {
       setFilteredRows(allRows.filter((row) => row.city === searchValue.city));
     }
@@ -96,7 +91,10 @@ function OperatorsTable({ allRows, searchValue }: Readonly<Props>) {
   return (
     <>
       <TableContainer component={Paper}>
-        <Table sx={{ width: "100%", maxWidth: 1092 }} aria-label="simple table">
+        <Table
+          sx={{ width: "100%", maxWidth: 1092 }}
+          aria-label="operators table"
+        >
           <TableHead>
             <TableRow sx={{ backgroundColor: "#FAFAFA" }}>
               {keys.map((key) => (

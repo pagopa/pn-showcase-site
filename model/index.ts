@@ -48,6 +48,7 @@ export interface INavigationBarProps {
   image: string;
   pi: string;
   numeri: string;
+  ritiro: string;
 }
 
 /**
