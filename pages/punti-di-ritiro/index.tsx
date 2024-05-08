@@ -33,7 +33,6 @@ const RitiroPage: NextPage = () => {
   const [originalRaddOperators, setOriginalRaddOperators] = useState<
     RaddOperator[]
   >([]);
-  const [open, setOpen] = useState(false);
 
   let hasData = false;
   useEffect(() => {
@@ -70,7 +69,6 @@ const RitiroPage: NextPage = () => {
 
   function handleSelectChange(value: RaddOperator | null) {
     if (value === null) {
-      setOpen(false);
       setIsSearchEmpty(true);
       setValueToSearch(undefined);
       if (isSearchEmpty) setOriginalRaddOperators(initialRaddOperators);
@@ -129,10 +127,12 @@ const RitiroPage: NextPage = () => {
           id="operatorList"
         >
           <Autocomplete
-            open={open}
-            onOpen={() => setOpen(true)}
-            onClose={() => setOpen(false)}
-            blurOnSelect
+            autoFocus={false}
+            clearOnBlur={false}
+            openOnFocus={true}
+            handleHomeEndKeys={true}
+            blurOnSelect={true}
+            selectOnFocus={true}
             sx={{
               width: "100%",
               maxWidth: 736,
@@ -145,21 +145,7 @@ const RitiroPage: NextPage = () => {
             onInputChange={(event, newValue) => handleInputChage(newValue)}
             onChange={(event, value) => handleSelectChange(value)}
             renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Cerca per città o indirizzo"
-                InputProps={{
-                  ...params.InputProps,
-                  type: "search",
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton>
-                        <SearchIcon />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
+              <TextField {...params} label="Cerca per città o indirizzo" />
             )}
           />
         </Stack>
