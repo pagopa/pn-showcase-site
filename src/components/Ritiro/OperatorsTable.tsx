@@ -46,7 +46,7 @@ function descendingComparator(a: any, b: any, orderBy: string) {
 }
 
 function OperatorsTable({ rows }: Readonly<Props>) {
-  const [orderBy, setOrderBy] = useState("");
+  const [orderBy, setOrderBy] = useState("city");
   const [order, setOrder] = useState<"asc" | "desc">("asc");
 
   const sortedRows: RaddOperator[] = stableSort(

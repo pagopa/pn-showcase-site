@@ -11,7 +11,6 @@ import {
   Pagination,
 } from "@mui/material";
 import { RaddOperator } from "model";
-import { useEffect, useState } from "react";
 
 type Props = {
   rows: RaddOperator[];
@@ -58,11 +57,15 @@ function OperatorsList({ rows }: Readonly<Props>) {
                 </Box>
                 <Box mb={1}>
                   <Typography variant="body2">Città</Typography>
-                  <Typography variant="subtitle1">{row.city}</Typography>
+                  <Typography variant="subtitle1">
+                    {row.city} ({row.province})
+                  </Typography>
                 </Box>
                 <Box mb={1}>
                   <Typography variant="body2">Indirizzo</Typography>
-                  <Typography variant="subtitle1">{row.address}</Typography>
+                  <Typography variant="subtitle1">
+                    {row.address} - {row.cap}
+                  </Typography>
                 </Box>
                 <Box mb={1}>
                   <Typography variant="body2">Telefono</Typography>

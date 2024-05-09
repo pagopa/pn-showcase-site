@@ -25,13 +25,9 @@ const RitiroPage: NextPage = () => {
 
   const [points, setPoints] = useState<Point[]>([]);
   const [searchValue, setSearchValue] = useState("");
-
-  // valori filtrati
   const [filteredOperators, setFilteredOperators] = useState<RaddOperator[]>(
     []
   );
-
-  // check la ricerca ha restituito valori
   const [isSearchFailed, setIsSearchFailed] = useState<boolean>(false);
 
   let hasData = false;
@@ -70,16 +66,17 @@ const RitiroPage: NextPage = () => {
   };
 
   const handleSearchClick = () => {
-    if (initialRaddOperators.length > 0 && searchValue) {
-      const operators = initialRaddOperators.filter(
-        (operator) => operator.city.toLowerCase() === searchValue
-      );
-      if (operators.length > 0) {
-        setFilteredOperators(operators);
-      } else {
-        setIsSearchFailed(true);
-        setFilteredOperators([]);
-      }
+    const operators = initialRaddOperators.filter(
+      (operator) => operator.city.toLowerCase() === searchValue
+    );
+
+    if (searchValue && operators.length > 0) {
+      setFilteredOperators(operators);
+    } else if (searchValue && operators.length === 0) {
+      setIsSearchFailed(true);
+      setFilteredOperators([]);
+    } else {
+      setFilteredOperators(initialRaddOperators);
     }
   };
 
@@ -88,7 +85,7 @@ const RitiroPage: NextPage = () => {
   if (filteredOperators.length > 0) {
     rowsToSet = filteredOperators;
   } else if (filteredOperators.length === 0 && isSearchFailed) {
-    rowsToSet = null;
+    rowsToSet = [];
   } else {
     rowsToSet = initialRaddOperators;
   }
@@ -136,7 +133,6 @@ const RitiroPage: NextPage = () => {
                 handleSearchClick();
               }
             }}
-            helperText={isSearchFailed ?? "La ricerca non ha prodotto valori"}
             onChange={handleInputChange}
             sx={{ maxWidth: 498, width: "100%" }}
             InputProps={{
@@ -152,29 +148,7 @@ const RitiroPage: NextPage = () => {
           />
         </Stack>
       </Box>
-      {!isMobile && (
-        <Box
-          sx={{
-            backgroundColor: "#FAFAFA",
-            display: "flex",
-            justifyContent: "center",
-          }}
-          padding={5}
-        >
-          {rowsToSet && (
-            <Stack sx={{ maxWidth: 1092, width: "100%" }}>
-              <OperatorsTable
-                key={JSON.stringify(filteredOperators)}
-                rows={rowsToSet}
-              />
-            </Stack>
-          )}
-          {!rowsToSet && (
-            <Typography textAlign="center">Non sono presenti valori</Typography>
-          )}
-        </Box>
-      )}
-      {isMobile && (
+      {isMobile ? (
         <Box
           py={3}
           sx={{
@@ -183,13 +157,32 @@ const RitiroPage: NextPage = () => {
             justifyContent: "center",
           }}
         >
-          {rowsToSet && (
+          {rowsToSet.length > 0 ? (
             <OperatorsList
               key={JSON.stringify(initialRaddOperators)}
               rows={rowsToSet}
             />
+          ) : (
+            <Typography textAlign="center">Non sono presenti valori</Typography>
           )}
-          {!rowsToSet && (
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            backgroundColor: "#FAFAFA",
+            display: "flex",
+            justifyContent: "center",
+          }}
+          padding={5}
+        >
+          {rowsToSet.length > 0 ? (
+            <Stack sx={{ maxWidth: 1092, width: "100%" }}>
+              <OperatorsTable
+                key={JSON.stringify(filteredOperators)}
+                rows={rowsToSet}
+              />
+            </Stack>
+          ) : (
             <Typography textAlign="center">Non sono presenti valori</Typography>
           )}
         </Box>
