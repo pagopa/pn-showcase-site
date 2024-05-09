@@ -14,12 +14,10 @@ import { RaddOperator } from "model";
 import { useEffect, useState } from "react";
 
 type Props = {
-  allRows: RaddOperator[];
-  searchValue: RaddOperator | undefined;
+  rows: RaddOperator[];
 };
 
-function OperatorsList({ allRows, searchValue }: Readonly<Props>) {
-  const [filteredRows, setFilteredRows] = useState<RaddOperator[]>(allRows);
+function OperatorsList({ rows }: Readonly<Props>) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const handleChangePage = (_event: any, page: number | null) => {
@@ -33,18 +31,10 @@ function OperatorsList({ allRows, searchValue }: Readonly<Props>) {
     setPage(0);
   };
 
-  useEffect(() => {
-    if (!searchValue) {
-      setFilteredRows(allRows);
-    } else {
-      setFilteredRows(allRows.filter((row) => row.city === searchValue.city));
-    }
-  }, [searchValue]);
-
   return (
     <Stack>
       <List>
-        {filteredRows
+        {rows
           .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           .map((row, index: number) => (
             <ListItem
@@ -92,7 +82,7 @@ function OperatorsList({ allRows, searchValue }: Readonly<Props>) {
         <TablePagination
           id="ritiroPagination"
           component="div"
-          count={filteredRows.length}
+          count={rows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
@@ -103,7 +93,7 @@ function OperatorsList({ allRows, searchValue }: Readonly<Props>) {
           id="ritiroPagination_page_mobile"
           sx={{ width: 170 }}
           color="primary"
-          count={Math.ceil(filteredRows.length / rowsPerPage)}
+          count={Math.ceil(rows.length / rowsPerPage)}
           onChange={handleChangePage}
           boundaryCount={1}
           siblingCount={1}
