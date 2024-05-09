@@ -84,85 +84,77 @@ function OperatorsTable({ rows }: Readonly<Props>) {
 
   return (
     <>
-      {rows ? (
-        <>
-          <TableContainer component={Paper}>
-            <Table
-              sx={{ width: "100%", maxWidth: 1092 }}
-              aria-label="operators table"
-            >
-              <TableHead>
-                <TableRow sx={{ backgroundColor: "#FAFAFA" }}>
-                  {keys.map((key) => (
-                    <TableCell key={key}>
-                      <TableSortLabel
-                        active={orderBy === key}
-                        direction={orderBy === key ? order : "asc"}
-                        onClick={() => handleRequestSort(key)}
-                      >
-                        {columnNames[key]}
-                      </TableSortLabel>
-                    </TableCell>
-                  ))}
+      <TableContainer component={Paper}>
+        <Table
+          sx={{ width: "100%", maxWidth: 1092 }}
+          aria-label="operators table"
+        >
+          <TableHead>
+            <TableRow sx={{ backgroundColor: "#FAFAFA" }}>
+              {keys.map((key) => (
+                <TableCell key={key}>
+                  <TableSortLabel
+                    active={orderBy === key}
+                    direction={orderBy === key ? order : "asc"}
+                    onClick={() => handleRequestSort(key)}
+                  >
+                    {columnNames[key]}
+                  </TableSortLabel>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {sortedRows
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row, index: number) => (
+                <TableRow
+                  key={`${row.denomination}-${index}`}
+                  sx={{
+                    "&:last-child td, &:last-child th": { border: 0 },
+                  }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.denomination}
+                  </TableCell>
+                  <TableCell>
+                    {row.city} ({row.province})
+                  </TableCell>
+                  <TableCell>
+                    {row.address} - {row.cap}
+                  </TableCell>
+                  <TableCell>{row.contacts}</TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {sortedRows
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row, index: number) => (
-                    <TableRow
-                      key={`${row.denomination}-${index}`}
-                      sx={{
-                        "&:last-child td, &:last-child th": { border: 0 },
-                      }}
-                    >
-                      <TableCell component="th" scope="row">
-                        {row.denomination}
-                      </TableCell>
-                      <TableCell>
-                        {row.city} ({row.province})
-                      </TableCell>
-                      <TableCell>
-                        {row.address} - {row.cap}
-                      </TableCell>
-                      <TableCell>{row.contacts}</TableCell>
-                    </TableRow>
-                  ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <Stack
-            mt={3}
-            direction="row"
-            alignItems="center"
-            justifyContent="space-between"
-          >
-            <TablePagination
-              id="ritiroPagination"
-              component="div"
-              count={rows.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-              rowsPerPageOptions={[10, 20, 30]}
-            />
-            <Pagination
-              color="primary"
-              count={Math.ceil(rows.length / rowsPerPage)}
-              onChange={handleChangePage}
-              boundaryCount={1}
-              siblingCount={1}
-              hidePrevButton
-              hideNextButton
-            />
-          </Stack>
-        </>
-      ) : (
-        <Stack justifyContent="center">
-          <Typography>prova render in operatorsTable</Typography>
-        </Stack>
-      )}
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <Stack
+        mt={3}
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <TablePagination
+          id="ritiroPagination"
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          rowsPerPageOptions={[10, 20, 30]}
+        />
+        <Pagination
+          color="primary"
+          count={Math.ceil(rows.length / rowsPerPage)}
+          onChange={handleChangePage}
+          boundaryCount={1}
+          siblingCount={1}
+          hidePrevButton
+          hideNextButton
+        />
+      </Stack>
     </>
   );
 }
