@@ -16,8 +16,8 @@ const USER_TYPE = UserType.PA;
 const EntiPage: NextPage = () => (
   <>
     <PageHead
-      title="SEND - Enti"
-      description="Pagina per gli enti e le pubbliche amministrazioni"
+      title="SEND - Servizio Notifiche Digitali | Per gli enti"
+      description="Scopri come aderire a SEND per rendere il processo di notificazione del tuo ente più semplice, sicuro ed efficiente"
     />
 
     <main>
@@ -26,7 +26,7 @@ const EntiPage: NextPage = () => (
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 2")}></Infoblock>
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 3")}></Infoblock>
       <div className="showcasePadding"><Showcase {...getShowcaseData(USER_TYPE, "showcase 1")} /></div>
-      <div className="lightWalkthrough"><Walkthrough {...getWalkthroughData(USER_TYPE)} /></div>  
+      <div className="lightWalkthrough"><Walkthrough {...getWalkthroughData(USER_TYPE)} /></div>
       <StripeLinkEnti></StripeLinkEnti>
       <DarkInfoblockEnti></DarkInfoblockEnti>
     </main>
