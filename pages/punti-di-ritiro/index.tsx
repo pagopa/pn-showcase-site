@@ -80,6 +80,11 @@ const RitiroPage: NextPage = () => {
     }
   };
 
+  const handleRefreshClick = () => {
+    setSearchValue("");
+    setFilteredOperators(initialRaddOperators);
+  };
+
   let rowsToSet: RaddOperator[] | null = null;
 
   if (filteredOperators.length > 0) {
@@ -109,7 +114,7 @@ const RitiroPage: NextPage = () => {
         >
           <Typography
             mt={3}
-            color="textSecondary"
+            color="textPrimary"
             variant="body2"
             sx={{ maxWidth: 554 }}
             textAlign="center"
@@ -128,6 +133,7 @@ const RitiroPage: NextPage = () => {
           alignItems="center"
         >
           <TextField
+            value={searchValue}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 handleSearchClick();
@@ -163,15 +169,24 @@ const RitiroPage: NextPage = () => {
               rows={rowsToSet}
             />
           ) : (
-            <Typography textAlign="center">Non sono presenti valori</Typography>
+            <Stack sx={{ maxWidth: 1092, width: "100%" }}>
+              <Box bgcolor="white" p={3} m={3} textAlign="center">
+                <Typography>
+                  Non ci sono ancora punti di ritiro SEND attivi in questa
+                  città.
+                </Typography>
+              </Box>
+            </Stack>
           )}
         </Box>
       ) : (
         <Box
+          minHeight={823}
           sx={{
             backgroundColor: "#FAFAFA",
             display: "flex",
             justifyContent: "center",
+            alignItems: "flex-start",
           }}
           padding={5}
         >
@@ -183,7 +198,24 @@ const RitiroPage: NextPage = () => {
               />
             </Stack>
           ) : (
-            <Typography textAlign="center">Non sono presenti valori</Typography>
+            <Stack my={5} sx={{ maxWidth: 1092, width: "100%" }}>
+              <Box
+                bgcolor="white"
+                height={56}
+                width={1092}
+                sx={{
+                  margin: "auto",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  display: "flex",
+                }}
+              >
+                <Typography>
+                  Non ci sono ancora punti di ritiro SEND attivi in questa
+                  città.
+                </Typography>
+              </Box>
+            </Stack>
           )}
         </Box>
       )}

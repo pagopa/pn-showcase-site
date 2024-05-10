@@ -77,9 +77,8 @@ function OperatorsTable({ rows }: Readonly<Props>) {
   };
 
   const handleRequestSort = (property: string) => {
-    const isAsc = orderBy === property && order === "asc";
+    const isAsc = property === "city" && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
-    setOrderBy(property);
   };
 
   return (
@@ -94,8 +93,9 @@ function OperatorsTable({ rows }: Readonly<Props>) {
               {keys.map((key) => (
                 <TableCell key={key}>
                   <TableSortLabel
-                    active={orderBy === key}
-                    direction={orderBy === key ? order : "asc"}
+                    disabled={key !== "city"}
+                    active={key === "city"}
+                    direction={key === "city" ? order : "asc"}
                     onClick={() => handleRequestSort(key)}
                   >
                     {columnNames[key]}
@@ -129,32 +129,34 @@ function OperatorsTable({ rows }: Readonly<Props>) {
           </TableBody>
         </Table>
       </TableContainer>
-      <Stack
-        mt={3}
-        direction="row"
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <TablePagination
-          id="ritiroPagination"
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-          rowsPerPageOptions={[10, 20, 30]}
-        />
-        <Pagination
-          color="primary"
-          count={Math.ceil(rows.length / rowsPerPage)}
-          onChange={handleChangePage}
-          boundaryCount={1}
-          siblingCount={1}
-          hidePrevButton
-          hideNextButton
-        />
-      </Stack>
+      {rows.length > 10 && (
+        <Stack
+          mt={3}
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <TablePagination
+            id="ritiroPagination"
+            component="div"
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+            rowsPerPageOptions={[10, 20, 30]}
+          />
+          <Pagination
+            color="primary"
+            count={Math.ceil(rows.length / rowsPerPage)}
+            onChange={handleChangePage}
+            boundaryCount={1}
+            siblingCount={1}
+            hidePrevButton
+            hideNextButton
+          />
+        </Stack>
+      )}
     </>
   );
 }
