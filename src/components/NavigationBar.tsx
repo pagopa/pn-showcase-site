@@ -51,7 +51,7 @@ const NavigationBar = ({
     setIsMobileMenuOpen(false);
   };
 
-  const paths = ["/pubbliche-amministrazioni", "/cittadini", "/imprese","/numeri", "/faq"];
+  const paths = ["/pubbliche-amministrazioni", "/cittadini", "/imprese", "/numeri", "/faq"];
 
   function a11yProps(index: number) {
     return {
@@ -103,64 +103,64 @@ const NavigationBar = ({
         </Stack>
         {isMobile ? (
           <Menu
-              anchorEl={anchorEl}
-              open={isMobileMenuOpen}
-              onClose={closeMobileMenu}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              sx={{
-                '& .MuiPaper-root': {
-                  width: '100%',
-                  top: '152px!important',
-                  boxShadow: "none",
-                  left: "0px!important",
-                  maxWidth: "none"
-                },
-              }}
-            >
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', }}>
-                <div style={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
-                  <Typography
-                    sx={{ flexGrow: 1, color: index === 0 ? 'primary.main' : 'text.secondary', fontWeight: "600", fontSize: "1rem", paddingLeft: "16px", paddingRight: "8px" }}
-                    onClick={() => handleMenuItemClick(paths[0])}
-                  >
-                    {pa}
-                  </Typography>
-                  <IconButton
-                    size="small"
-                    onClick={() => setSubMenuOpen(!subMenuOpen)}
-                    sx={{ color: index === 0 ? 'primary.main' : 'text.secondary' }}
-                  >
-                    {subMenuOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-                  </IconButton>
-                </div>
+            anchorEl={anchorEl}
+            open={isMobileMenuOpen}
+            onClose={closeMobileMenu}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            sx={{
+              '& .MuiPaper-root': {
+                width: '100%',
+                top: '152px!important',
+                boxShadow: "none",
+                left: "0px!important",
+                maxWidth: "none"
+              },
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', }}>
+              <div style={{ display: "flex", justifyContent: "start", alignItems: "center" }}>
+                <Typography
+                  sx={{ flexGrow: 1, color: index === 0 ? 'primary.main' : 'text.secondary', fontWeight: "600", fontSize: "1rem", paddingLeft: "16px", paddingRight: "8px" }}
+                  onClick={() => handleMenuItemClick(paths[0])}
+                >
+                  {pa}
+                </Typography>
+                <IconButton
+                  size="small"
+                  onClick={() => setSubMenuOpen(!subMenuOpen)}
+                  sx={{ color: index === 0 ? 'primary.main' : 'text.secondary' }}
+                >
+                  {subMenuOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                </IconButton>
+              </div>
+            </Box>
+            {subMenuOpen && (
+              <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.paper' }}>
+                <MenuItem onClick={() => handleMenuItemClick('/pubbliche-amministrazioni/documenti')} sx={{ color: pathname === '/pubbliche-amministrazioni/documenti' ? 'primary.main' : 'text.secondary', fontWeight: "400", fontSize: "1rem", paddingLeft: "32px" }}>
+                  Documentazione
+                </MenuItem>
               </Box>
-              {subMenuOpen && (
-                <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.paper' }}>
-                  <MenuItem onClick={() => handleMenuItemClick('/documenti')} sx={{ color: pathname === '/documenti' ? 'primary.main' : 'text.secondary', fontWeight: "400", fontSize: "1rem", paddingLeft: "32px" }}>
-                    Documentazione
-                  </MenuItem>
-                </Box>
-              )}
-              <MenuItem onClick={() => handleMenuItemClick(paths[1])} sx={{ color: index === 1 ? 'primary.main' : 'text.secondary' }}>
-                {pf}
-              </MenuItem>
-              <MenuItem onClick={() => handleMenuItemClick(paths[2])} sx={{ color: index === 2 ? 'primary.main' : 'text.secondary' }}>
-                {pi}
-              </MenuItem>
-              <MenuItem onClick={() => handleMenuItemClick(paths[3])} sx={{ color: index === 2 ? 'primary.main' : 'text.secondary' }}>
-                {numeri}
-              </MenuItem>
-              <MenuItem onClick={() => handleMenuItemClick(paths[4])} sx={{ color: index === 3 ? 'primary.main' : 'text.secondary' }}>
-                {faq}
-              </MenuItem>
-            </Menu>
+            )}
+            <MenuItem onClick={() => handleMenuItemClick(paths[1])} sx={{ color: index === 1 ? 'primary.main' : 'text.secondary' }}>
+              {pf}
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuItemClick(paths[2])} sx={{ color: index === 2 ? 'primary.main' : 'text.secondary' }}>
+              {pi}
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuItemClick(paths[3])} sx={{ color: index === 2 ? 'primary.main' : 'text.secondary' }}>
+              {numeri}
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuItemClick(paths[4])} sx={{ color: index === 3 ? 'primary.main' : 'text.secondary' }}>
+              {faq}
+            </MenuItem>
+          </Menu>
         ) : (
           <Tabs value={index} component="nav">
             <Box sx={{ paddingTop: 6, paddingBottom: 5, display: 'flex', alignItems: 'center', cursor: 'pointer' }} >
@@ -181,7 +181,7 @@ const NavigationBar = ({
               onClose={handleCloseMenu}
               sx={{ marginLeft: -4, marginTop: 2 }}
             >
-              <MenuItem onClick={() => handleMenuItemClick('/documenti')} sx={{ color: pathname === '/documenti' ? 'primary.main' : 'text.secondary' }}>
+              <MenuItem onClick={() => handleMenuItemClick('/pubbliche-amministrazioni/documenti')} sx={{ color: pathname === '/pubbliche-amministrazioni/documenti' ? 'primary.main' : 'text.secondary' }}>
                 Documentazione
               </MenuItem>
             </Menu>

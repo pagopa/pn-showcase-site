@@ -58,7 +58,7 @@ export const paHero: HeroProps = {
     label: "Scopri come aderire a SEND",
     title: "Scopri come aderire a SEND",
     onClick: function onClick() {
-      window.open("/documenti", "_self");
+      window.open("/pubbliche-amministrazioni/documenti", "_self");
     },
   },
 };

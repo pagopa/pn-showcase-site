@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+
+<url>
+  <loc>https://notifichedigitali.pagopa.it/</loc>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://notifichedigitali.pagopa.it/cittadini</loc>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://notifichedigitali.pagopa.it/imprese</loc>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://notifichedigitali.pagopa.it/pubbliche-amministrazioni</loc>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://notifichedigitali.pagopa.it/pubbliche-amministrazioni/documenti</loc>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://notifichedigitali.pagopa.it/perfezionamento</loc>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
+  <priority>0.81</priority>
+</url>
+<url>
+  <loc>https://notifichedigitali.pagopa.it/faq</loc>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://notifichedigitali.pagopa.it/numeri</loc>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://notifichedigitali.pagopa.it/informativa-privacy/</loc>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+</urlset>
