@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
+import CloseIcon from "@mui/icons-material/Close";
 import Papa from "papaparse";
 import OperatorsTable from "src/components/Ritiro/OperatorsTable";
 import { DarkInfoblockRitiro } from "api/data/it/common";
@@ -67,7 +68,9 @@ const RitiroPage: NextPage = () => {
 
   const handleSearchClick = () => {
     const operators = initialRaddOperators.filter(
-      (operator) => operator.city.toLowerCase() === searchValue
+      (operator) =>
+        operator.city.toLowerCase().replace(/[^aA-zZ]/g, "") ===
+        searchValue.toLowerCase().replace(/[^aA-zZ]/g, "")
     );
 
     if (searchValue && operators.length > 0) {
@@ -80,7 +83,7 @@ const RitiroPage: NextPage = () => {
     }
   };
 
-  const handleRefreshClick = () => {
+  const handleCleanField = () => {
     setSearchValue("");
     setFilteredOperators(initialRaddOperators);
   };
@@ -143,7 +146,12 @@ const RitiroPage: NextPage = () => {
             sx={{ maxWidth: 498, width: "100%" }}
             InputProps={{
               endAdornment: (
-                <InputAdornment position="end">
+                <InputAdornment position="end" sx={{ paddingRight: 0 }}>
+                  {searchValue && (
+                    <IconButton>
+                      <CloseIcon onClick={handleCleanField} />
+                    </IconButton>
+                  )}
                   <IconButton onClick={handleSearchClick}>
                     <SearchIcon />
                   </IconButton>
