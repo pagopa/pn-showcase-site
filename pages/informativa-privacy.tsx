@@ -27,8 +27,8 @@ const PrivacyPage: NextPage = () => {
   return (
     <>
       <PageHead
-        title="SEND"
-        description="Informativa Privacy Servizio notifiche digitali"
+        title="SEND - Servizio Notifiche Digitali | Informativa Privacy"
+        description="Consulta l'informativa sul trattamento dei dati personali di SEND - Servizio Notifiche digitali"
       />
       <Script
         src="/onetrust/privacy-notice-scripts/otnotice-1.0.min.js"

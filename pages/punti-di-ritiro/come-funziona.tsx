@@ -27,8 +27,8 @@ const PrivacyPage: NextPage = () => {
     return (
         <>
             <PageHead
-                title="SEND | Come funziona il ritiro"
-                description="Scopri cosa sono i punti di ritiro SEND"
+                title="SEND - Servizio Notifiche Digitali | Come funzionano i punti di ritiro"
+                description="Scopri come funziona il servizio per ritirare sul territorio una copia delle comunicazioni a valore legale che ricevi tramite SEND"
             />
             <Script
                 src="/onetrust/privacy-notice-scripts/otnotice-1.0.min.js"

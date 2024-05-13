@@ -144,7 +144,10 @@ const FaqPage: NextPage = () => {
 
   return (
     <>
-      <PageHead title={faqData.title} description="Pagina di FAQ" />
+      <PageHead
+        title="SEND - Servizio Notifiche Digitali | FAQ"
+        description="Consulta le domande frequenti sulla piattaforma SEND dedicata alla ricezione di notifiche digitali a valore legale"
+      />
 
       <main id="faqHero">
         <div className="customFaqHero">

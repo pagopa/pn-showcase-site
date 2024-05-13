@@ -37,8 +37,8 @@ const NumeriPage: NextPage = () => {
   return (
     <>
       <PageHead
-        title="SEND - SEND in numeri"
-        description="In questa pagina trovi le statistiche relative a SEND, aggiornate quotidianamente"
+        title="SEND - Servizio Notifiche Digitali | I numeri di SEND"
+        description="Scopri i dati relativi a notifiche inviate, enti che stanno usando SEND e tipologie di servizi dati"
       />
       <Box mt={10}>
         <Typography align="center" variant="h2">

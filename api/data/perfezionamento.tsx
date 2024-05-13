@@ -1,4 +1,4 @@
-import { Box, List, ListItem, Typography } from "@mui/material";
+import { Box, Link, List, ListItem, Typography } from "@mui/material";
 import { IMAGES_PATH } from "@utils/constants";
 import { IHeadingTitlesData, IInfoblockData, ITabsData } from "model";
 
@@ -9,9 +9,16 @@ const headingTitles: Array<IHeadingTitlesData> = [
       title: "Quando si perfeziona una notifica?",
       subtitle: (
         <>
-          Una notifica si perfeziona il giorno e l’ora in cui visualizzi online i documenti notificati o,
-          se non lo fai entro un certo termine, a seconda del canale con cui l’hai ricevuta.
-          Seleziona i canali qui sotto per conoscere le tempistiche del perfezionamento.
+          Una notifica si perfeziona, cioè{" "}
+          <Link href="https://notifichedigitali.pagopa.it/faq#perfezionamento-cosa-significa">
+            <strong>
+              assume valore di legge per tutte le diverse finalità
+            </strong>
+          </Link>
+          , il giorno e l’ora in cui visualizzi online i documenti notificati o,
+          se non lo fai entro un certo termine, a seconda del canale con cui
+          l’hai ricevuta. <br></br>Seleziona i canali qui sotto per conoscere le
+          tempistiche del perfezionamento.
         </>
       ),
     },
@@ -60,8 +67,11 @@ const infoblocks: Array<IInfoblockData> = [
               </ListItem>
             </List>
             <Typography variant="body2">
-              <b>Se visualizzi su SEND o app IO i documenti notificati prima delle tempistiche indicate qui sopra,
-                il perfezionamento avviene al momento della visualizzazione.</b>
+              <b>
+                Se visualizzi su SEND o app IO i documenti notificati prima
+                delle tempistiche indicate qui sopra, il perfezionamento avviene
+                al momento della visualizzazione.
+              </b>
             </Typography>
           </Box>
         </>
@@ -111,8 +121,11 @@ const infoblocks: Array<IInfoblockData> = [
               </ListItem>
             </List>
             <Typography variant="body2">
-              <b>Se visualizzi su SEND o app IO i documenti notificati prima delle tempistiche indicate qui sopra,
-                il perfezionamento avviene al momento della visualizzazione.</b>
+              <b>
+                Se visualizzi su SEND o app IO i documenti notificati prima
+                delle tempistiche indicate qui sopra, il perfezionamento avviene
+                al momento della visualizzazione.
+              </b>
             </Typography>
           </Box>
         </>
@@ -134,9 +147,10 @@ const infoblocks: Array<IInfoblockData> = [
           </Typography>
           <Box sx={{ pr: { lg: "20%", xs: 0 } }}>
             <Typography variant="body2" sx={{ mb: 3 }}>
-              che hai ricevuto su IO dal servizio “SEND - Notifiche digitali”,
-              a meno che non si sia già perfezionata tramite visualizzazione su SEND o
-              per decorrenza termini dopo la ricezione della PEC o della raccomandata.
+              che hai ricevuto su IO dal servizio “SEND - Notifiche digitali”, a
+              meno che non si sia già perfezionata tramite visualizzazione su
+              SEND o per decorrenza termini dopo la ricezione della PEC o della
+              raccomandata.
             </Typography>
           </Box>
         </>
@@ -158,9 +172,10 @@ const infoblocks: Array<IInfoblockData> = [
           </Typography>
           <Box sx={{ pr: { lg: "20%", xs: 0 } }}>
             <Typography variant="body2">
-              dopo avere effettuato l’accesso a SEND con SPID o CIE e avere premuto sulla notifica,
-              a meno che non si sia già perfezionata tramite visualizzazione su app IO o
-              per decorrenza termini dopo la ricezione della PEC o della raccomandata.
+              dopo avere effettuato l’accesso a SEND con SPID o CIE e avere
+              premuto sulla notifica, a meno che non si sia già perfezionata
+              tramite visualizzazione su app IO o per decorrenza termini dopo la
+              ricezione della PEC o della raccomandata.
             </Typography>
           </Box>
         </>
@@ -182,9 +197,10 @@ const infoblocks: Array<IInfoblockData> = [
           </Typography>
           <Box sx={{ pr: { lg: "20%", xs: 0 } }}>
             <Typography variant="body2">
-              dopo avere effettuato l’accesso a SEND con SPID o CIE e avere premuto sulla notifica,
-              a meno che non si sia già perfezionata tramite visualizzazione su app IO o
-              per decorrenza termini dopo la ricezione della PEC o della raccomandata.
+              dopo avere effettuato l’accesso a SEND con SPID o CIE e avere
+              premuto sulla notifica, a meno che non si sia già perfezionata
+              tramite visualizzazione su app IO o per decorrenza termini dopo la
+              ricezione della PEC o della raccomandata.
             </Typography>
           </Box>
         </>
