@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 
 const HeadingTitle = ({
   title,
@@ -7,7 +7,7 @@ const HeadingTitle = ({
   title?: string;
   subtitle?: string | JSX.Element;
 }) => (
-  <Box sx={{ textAlign: "center", px: 2 }}>
+  <Box sx={{ textAlign: "center", px: 2, maxWidth: "920px" }}>
     <Typography variant="h4" sx={{ mb: 3 }}>
       {title}
     </Typography>
