@@ -69,8 +69,8 @@ const RitiroPage: NextPage = () => {
   const handleSearchClick = () => {
     const operators = initialRaddOperators.filter(
       (operator) =>
-        operator.city.toLowerCase().replace(/[^aA-zZ]/g, "") ===
-        searchValue.toLowerCase().replace(/[^aA-zZ]/g, "")
+        operator.city.toLowerCase().replace(/[^a-zA-Z]/g, "") ===
+        searchValue.toLowerCase().replace(/[^a-zA-Z]/g, "")
     );
 
     if (searchValue && operators.length > 0) {
