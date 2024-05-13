@@ -17,12 +17,15 @@ const USER_TYPE = UserType.PF;
 
 const CittadiniPage: NextPage = () => (
   <>
-    <PageHead title="SEND - Cittadini" description="Pagina dei cittadini" />
+    <PageHead
+      title="SEND - Servizio Notifiche Digitali | Per i cittadini"
+      description="Ricevi in tempo reale le comunicazioni a valore legale da parte degli enti. Leggi, gestisci o paga online sulla piattaforma SEND o dall'app IO "
+    />
 
     <main>
       <Hero {...getHeroData(USER_TYPE)} />
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 1")} />
-      <div className="showcasePadding"><Showcase {...getShowcaseData(USER_TYPE, "showcase 1")} /></div> 
+      <div className="showcasePadding"><Showcase {...getShowcaseData(USER_TYPE, "showcase 1")} /></div>
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 2")} />
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 4")} />
       <div className="dark"><InfoblockCustomCittadini></InfoblockCustomCittadini></div>

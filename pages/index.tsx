@@ -13,7 +13,7 @@ const USER_TYPE = UserType.PH;
 
 const IndexPage: NextPage = () => (
   <>
-    <PageHead title="SEND - Homepage" description="Pagina home" />
+    <PageHead title="SEND - Servizio Notifiche Digitali" description="SeND è la piattaforma che rende più veloce, semplice e sicuro l'invio e la ricezione delle comunicazioni a valore legale" />
 
     <main>
       <Hero {...getHeroData(USER_TYPE)} />

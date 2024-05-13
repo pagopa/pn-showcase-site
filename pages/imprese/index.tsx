@@ -15,8 +15,8 @@ const USER_TYPE = UserType.PI;
 const ImpresePage: NextPage = () => (
   <>
     <PageHead
-      title="SEND - Imprese"
-      description="Pagina per le imprese"
+      title="SEND - Servizio Notifiche Digitali | Per le imprese"
+      description="Leggi, paga e archivia le comunicazioni a valore legale inviate alla tua impresa in un unico spazio accessibile anche dai tuoi collaboratori"
     />
 
     <main>

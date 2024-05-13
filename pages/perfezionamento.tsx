@@ -34,8 +34,8 @@ const Perfezionamento: NextPage = () => {
   return (
     <Stack alignItems="center">
       <PageHead
-        title="SEND - Perfezionamento"
-        description="Come funziona il perfezionamento di una notifica"
+        title="SEND - Servizio Notifiche Digitali | Perfezionamento della notifica"
+        description="Cos'è e come funziona il perfezionamento di una notifica, a seconda del canale con cui l’hai ricevuta"
       />
       <HeadingTitle {...headingTitleData} />
       <Tabs {...tabsData} onTabChange={handleTabChange} />
