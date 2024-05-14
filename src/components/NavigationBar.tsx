@@ -178,25 +178,8 @@ const NavigationBar = ({
               </div>
             </Box>
             {subMenuOpen && (
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  bgcolor: "background.paper",
-                }}
-              >
-                <MenuItem
-                  onClick={() => handleMenuItemClick("/documenti")}
-                  sx={{
-                    color:
-                      pathname === "/documenti"
-                        ? "primary.main"
-                        : "text.secondary",
-                    fontWeight: "400",
-                    fontSize: "1rem",
-                    paddingLeft: "32px",
-                  }}
-                >
+              <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'background.paper' }}>
+                <MenuItem onClick={() => handleMenuItemClick('/pubbliche-amministrazioni/documenti')} sx={{ color: pathname === '/pubbliche-amministrazioni/documenti' ? 'primary.main' : 'text.secondary', fontWeight: "400", fontSize: "1rem", paddingLeft: "32px" }}>
                   Documentazione
                 </MenuItem>
               </Box>
@@ -272,15 +255,7 @@ const NavigationBar = ({
               onClose={handleCloseMenu}
               sx={{ marginLeft: -4, marginTop: 2 }}
             >
-              <MenuItem
-                onClick={() => handleMenuItemClick("/documenti")}
-                sx={{
-                  color:
-                    pathname === "/documenti"
-                      ? "primary.main"
-                      : "text.secondary",
-                }}
-              >
+              <MenuItem onClick={() => handleMenuItemClick('/pubbliche-amministrazioni/documenti')} sx={{ color: pathname === '/pubbliche-amministrazioni/documenti' ? 'primary.main' : 'text.secondary' }}>
                 Documentazione
               </MenuItem>
             </Menu>

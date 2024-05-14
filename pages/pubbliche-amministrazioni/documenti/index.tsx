@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import PageHead from "../../src/components/PageHead";
+import PageHead from "../../../src/components/PageHead";
 
 import { DocsCards, InDepthCard, StripeLink } from "api/data/it/PD";
 
