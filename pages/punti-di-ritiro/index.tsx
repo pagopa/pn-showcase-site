@@ -101,9 +101,8 @@ const RitiroPage: NextPage = () => {
   return (
     <>
       <PageHead
-        title="SEND - Punti di ritiro"
-        description="Quando ricevi una comunicazione a valore legale tramite SEND puoi ritirare una copia stampata dei documenti notificati presso gli esercenti convenzionati. 
-        Cerca i punti di ritiro più vicini a te."
+        title="SEND - Servizio Notifiche digitali | Punti di ritiro SEND"
+        description="Cerca il Punto di ritiro SEND più vicino a te per ritirare una copia degli atti notificati o scoprire se c'è un avviso di avvenuta ricezione a te destinato"
       />
       <Box mt={10} mx={3}>
         <Typography align="center" variant="h2">
