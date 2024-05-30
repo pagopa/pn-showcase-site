@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-before-interactive-script-outside-document */
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "@mui/system";
-import { useEffect } from "react";
+import Head from "next/head";
 
 import { theme } from "@pagopa/mui-italia";
 import LandingLayout from "../src/layout/LandingLayout";
@@ -12,20 +12,15 @@ import "../styles/default.css";
 function Main({ Component, pageProps }: AppProps) {
   const noLayout = pageProps.noLayout;
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "/node_modules/@iframe-resizer/child/index.umd.js";
-    script.async = true;
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
-
   return (
     <ThemeProvider theme={theme}>
       <LangProvider>
+        <Head>
+          <script
+            src="/node_modules/@iframe-resizer/child/index.umd.js"
+            async
+          ></script>
+        </Head>
         {noLayout ? (
           // Se noLayout è true, renderizza solo il componente
           <Component {...pageProps} />
