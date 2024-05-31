@@ -9,7 +9,6 @@ import NotificationsTrend from "src/components/Numeri/components/NotificationsTr
 import TopServices from "src/components/Numeri/components/TopServices";
 import { curYear, firstYear } from "src/components/Numeri/shared/constants";
 import Tabs from "src/components/Tabs";
-import 'iframe-resizer/js/iframeResizer.contentWindow'; // Importa il contenuto di iframe-resizer per child
 
 type Tabs = {
   id: number | null;

@@ -18,7 +18,6 @@ function Main({ Component, pageProps }: AppProps) {
         <Head>
           <script
             src="/node_modules/@iframe-resizer/child/index.umd.js"
-            async
           ></script>
         </Head>
         {noLayout ? (
