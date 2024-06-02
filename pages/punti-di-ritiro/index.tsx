@@ -35,12 +35,19 @@ const RitiroPage: NextPage = () => {
   useEffect(() => {
     if (!hasData) {
       hasData = true;
-      const csvFilePath = "/static/documents/data-ritiro.csv";
 
+      /* 
+        Storelocator file is saved on showcase-site bucket s3 at /static/documents/radd-stores-registry.csv,
+        however this file is not accessible by localhost.
+        To test in local environment you need to download file http://www.dev.notifichedigitali.it/public/static/documents/radd-stores-registry.csv and save at the same path. The file is already referred in .gitignore.
+        ---------------------------------------------------
+        Sarah Donvito, 31/05/2024
+        ---------------------------------------------------
+      */
+      const csvFilePath = "/static/documents/radd-stores-registry.csv";
       Papa.parse(csvFilePath, {
         download: true,
         header: true,
-        dynamicTyping: false,
         complete: (result) => {
           if (result.data && result.data.length > 0) {
             setPoints(result.data as Point[]);
@@ -59,7 +66,7 @@ const RitiroPage: NextPage = () => {
     address: e.via,
     province: e.provincia,
     cap: e.cap,
-    contacts: e.telefono.replace("/", " "),
+    contacts: e.telefono,
   }));
 
   const handleInputChange = (event: any) => {
