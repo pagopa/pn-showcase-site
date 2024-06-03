@@ -9,6 +9,7 @@ import NotificationsTrend from "src/components/Numeri/components/NotificationsTr
 import TopServices from "src/components/Numeri/components/TopServices";
 import { curYear, firstYear } from "src/components/Numeri/shared/constants";
 import Tabs from "src/components/Tabs";
+import Script from "next/script";
 
 type Tabs = {
   id: number | null;
@@ -34,6 +35,13 @@ const DashboardContent: NextPage = () => {
 
   return (
     <>
+      <Script
+        src="/iframe-resizer/child/index.umd.js"
+        type="text/javascript"
+        id="iframe-resizer-child"
+        strategy="beforeInteractive"
+      />
+
       <Box mt={10}>
         <Typography align="center" variant="h2">
           SEND in numeri
