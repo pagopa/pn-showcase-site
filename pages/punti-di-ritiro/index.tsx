@@ -44,7 +44,7 @@ const RitiroPage: NextPage = () => {
         Sarah Donvito, 31/05/2024
         ---------------------------------------------------
       */
-      const csvFilePath = "/static/documents/radd-stores-registry.csv";
+      const csvFilePath = "/public/static/documents/radd-stores-registry.csv";
       Papa.parse(csvFilePath, {
         download: true,
         header: true,
