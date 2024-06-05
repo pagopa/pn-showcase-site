@@ -144,7 +144,12 @@ const FaqPage: NextPage = () => {
   );
 
   const handleChipClick = (section: string) => {
-    setSelectedSection(section);
+    // If the section is already selected, deselect it (reset to initial state)
+    if (selectedSection === section) {
+      setSelectedSection(null);
+    } else {
+      setSelectedSection(section);
+    }
   };
 
   const sections = [
