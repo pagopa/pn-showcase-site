@@ -37,9 +37,10 @@ const RitiroPage: NextPage = () => {
       hasData = true;
 
       /* 
-        Storelocator file is saved on showcase-site bucket s3 at /static/documents/radd-stores-registry.csv,
+        Storelocator file is saved on showcase-site bucket s3 at /public/static/documents/radd-stores-registry.csv,
         however this file is not accessible by localhost.
-        To test in local environment you need to download file http://www.dev.notifichedigitali.it/public/static/documents/radd-stores-registry.csv and save at the same path. The file is already referred in .gitignore.
+        To test in local environment you need to download file http://www.dev.notifichedigitali.it/public/static/documents/radd-stores-registry.csv and save at the same path but use csvFilePath = "/static/documents/radd-stores-registry.csv".
+        The file is already referred in .gitignore.
         ---------------------------------------------------
         Sarah Donvito, 31/05/2024
         ---------------------------------------------------
@@ -74,10 +75,11 @@ const RitiroPage: NextPage = () => {
   };
 
   const handleSearchClick = () => {
-    const operators = initialRaddOperators.filter(
-      (operator) =>
-        operator.city.toLowerCase().replace(/[^a-zA-Z]/g, "") ===
-        searchValue.toLowerCase().replace(/[^a-zA-Z]/g, "")
+    const operators = initialRaddOperators.filter((operator) =>
+      operator.city
+        ? operator.city.toLowerCase().replace(/[^a-zA-Z]/g, "") ===
+          searchValue.toLowerCase().replace(/[^a-zA-Z]/g, "")
+        : ""
     );
 
     if (searchValue && operators.length > 0) {
@@ -87,6 +89,7 @@ const RitiroPage: NextPage = () => {
       setFilteredOperators([]);
     } else {
       setFilteredOperators(initialRaddOperators);
+      console.log("entra qui");
     }
   };
 
@@ -154,8 +157,15 @@ const RitiroPage: NextPage = () => {
               endAdornment: (
                 <InputAdornment position="end" sx={{ paddingRight: 0 }}>
                   {searchValue && (
-                    <IconButton>
-                      <CloseIcon onClick={handleCleanField} />
+                    <IconButton
+                      onClick={handleCleanField}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          handleCleanField();
+                        }
+                      }}
+                    >
+                      <CloseIcon />
                     </IconButton>
                   )}
                   <IconButton onClick={handleSearchClick}>
