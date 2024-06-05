@@ -156,14 +156,7 @@ const RitiroPage: NextPage = () => {
               endAdornment: (
                 <InputAdornment position="end" sx={{ paddingRight: 0 }}>
                   {searchValue && (
-                    <IconButton
-                      onClick={handleCleanField}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          handleCleanField();
-                        }
-                      }}
-                    >
+                    <IconButton onClick={handleCleanField}>
                       <CloseIcon />
                     </IconButton>
                   )}
