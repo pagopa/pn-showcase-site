@@ -64,8 +64,8 @@ const contentBlocks = [
                 </Stack>
               </Stack>
             </Container>
-            <Box sx={{ textAlign: 'center', mt: 4 }}>
-              <Button variant="contained" color="primary">Scopri tutte le FAQ</Button>
+            <Box sx={{ textAlign: 'center', mt: 4, mb: 4 }}>
+              <Button variant="contained" color="primary" href="/faq">Scopri tutte le FAQ</Button>
             </Box>
           </>
         ),
@@ -107,8 +107,8 @@ const contentBlocks = [
                 </Stack>
               </Stack>
             </Container>
-            <Box sx={{ textAlign: 'center', mt: 4 }}>
-              <Button variant="contained" color="primary">Esplora le risorse per gli enti</Button>
+            <Box sx={{ textAlign: 'center', mt: 4, mb: 4 }}>
+              <Button variant="contained" color="primary" href="/pubbliche-amministrazioni">Esplora le risorse per gli enti</Button>
             </Box>
           </>
         ),

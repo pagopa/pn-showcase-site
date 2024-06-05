@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { useRef, useState } from "react";
-import { Box, Button, Fade, Stack, Typography, Grid } from "@mui/material";
+import { Box, Button, Fade, Stack, Typography, Grid, Link } from "@mui/material";
 import MailIcon from '@mui/icons-material/Mail';
 import PhoneIcon from '@mui/icons-material/Phone';
 
@@ -28,23 +28,6 @@ const DarkInfoblockAssistenza = () => {
   );
 };
 
-const LightStripeAssistenza = () => {
-  return (
-    <Box sx={{ backgroundColor: "#F5F5F5", paddingTop: 8, paddingBottom: 8, width: '100%' }}>
-      <Stack alignItems="center" justifyContent="center">
-        <MailIcon sx={{ fontSize: "40px", color: "#0062C3" }} />
-        <Typography variant="h6" component="h2" sx={{ color: "#17324D" }} gutterBottom>
-          Siamo qui per te
-        </Typography>
-        <Typography variant="body2" sx={{ color: "#17324D" }} textAlign="center" marginBottom={2}>
-          Non hai trovato la risposta che cercavi? Scrivici inviando una richiesta di assistenza o chiama il contact center.
-        </Typography>
-        <Button variant="outlined" color="primary">Scrivici</Button>
-      </Stack>
-    </Box>
-  );
-};
-
 const ContactInfoAssistenza = () => {
   return (
     <Grid container spacing={0} sx={{ width: '100%' }}>
@@ -55,9 +38,9 @@ const ContactInfoAssistenza = () => {
             Scrivici
           </Typography>
           <Typography variant="body2" sx={{ color: "#17324D" }} textAlign="center" marginBottom={2}>
-            Richiedi assistenza via email scrivendo a destinatari-send@assistenza.pagopa.it: includi informazioni utili come il codice univoco della notifica (IUN).
+            Richiedi assistenza via email scrivendo a <Link href="mailto:destinatari-send@assistenza.pagopa.it" sx={{ fontWeight: 'bold', textDecoration: 'none', color: '#17324D' }}>destinatari-send@assistenza.pagopa.it</Link>: includi informazioni utili come il codice univoco della notifica (IUN).
           </Typography>
-          <Button variant="outlined" color="primary">Scrivici</Button>
+          <Button variant="outlined" color="primary" component="a" href="mailto:destinatari-send@assistenza.pagopa.it">Scrivici</Button>
         </Stack>
       </Grid>
       <Grid item xs={12} md={6} sx={{ backgroundColor: '#FAFAFA', padding: 4 }}>
@@ -67,9 +50,28 @@ const ContactInfoAssistenza = () => {
             Chiamaci
           </Typography>
           <Typography variant="body2" sx={{ color: "#17324D" }} textAlign="center" marginBottom={2}>
-            Il contact center di PagoPA S.p.A. è a tua disposizione al numero 06.4520.2323 per assistenza dedicata dal lunedì al venerdì dalle 08 alle 20 e il sabato dalle 08.00 alle 14.00.
+            Il contact center di PagoPA S.p.A. è a tua disposizione al numero <Link href="tel:0645202323" sx={{ fontWeight: 'bold', textDecoration: 'none', color: '#17324D' }}>06.4520.2323</Link> per assistenza dedicata dal lunedì al venerdì dalle 08 alle 20 e il sabato dalle 08.00 alle 14.00.
           </Typography>
-          <Button variant="outlined" color="primary">Chiamaci</Button>
+          <Button variant="outlined" color="primary" component="a" href="tel:0645202323">Chiamaci</Button>
+        </Stack>
+      </Grid>
+    </Grid>
+  );
+};
+
+const ContactInfoAssistenzaMittenti = () => {
+  return (
+    <Grid container spacing={0} sx={{ width: '100%' }}>
+      <Grid item xs={12} sx={{ backgroundColor: '#F5F5F5', padding: 4 }}>
+        <Stack alignItems="center" justifyContent="center" spacing={2}>
+          <MailIcon sx={{ fontSize: "40px", color: "#0062C3" }} />
+          <Typography variant="h6" component="h2" sx={{ color: "#17324D" }} gutterBottom>
+            Scrivici
+          </Typography>
+          <Typography variant="body2" sx={{ color: "#17324D" }} textAlign="center" marginBottom={2}>
+            Richiedi assistenza come ente mittente via email scrivendo a <Link href="mailto:mittenti-send@assistenza.pagopa.it" sx={{ fontWeight: 'bold', textDecoration: 'none', color: '#17324D' }}>mittenti-send@assistenza.pagopa.it</Link>.
+          </Typography>
+          <Button variant="outlined" color="primary" component="a" href="mailto:mittenti-send@assistenza.pagopa.it">Scrivici</Button>
         </Stack>
       </Grid>
     </Grid>
@@ -111,8 +113,8 @@ const Assistenza: NextPage = () => {
         </Fade>
       </Box>
       {currentTab.index === 0 && <DarkInfoblockAssistenza />}
-      {currentTab.index === 1 && <LightStripeAssistenza />}
       {currentTab.index === 0 && <ContactInfoAssistenza />}
+      {currentTab.index === 1 && <ContactInfoAssistenzaMittenti />}
     </Stack>
   );
 };
