@@ -107,9 +107,9 @@ const NavigationBar = ({
   };
 
   const paths = [
-    "/pubbliche-amministrazioni",
     "/cittadini",
     "/imprese",
+    "/pubbliche-amministrazioni",
     "/punti-di-ritiro",
     "/numeri",
     "/faq",
@@ -228,7 +228,7 @@ const NavigationBar = ({
                   <IconButton
                     onClick={toggleMobileMenu}
                     sx={{
-                      color: "#17324D",
+                      color: "#5C6F82",
                       display: "flex",
                       alignItems: "center",
                       "&:hover": {
@@ -240,7 +240,7 @@ const NavigationBar = ({
                     <Typography
                       sx={{
                         marginLeft: 1,
-                        color: "#17324D",
+                        color: "#5C6F82",
                         fontWeight: 600,
                       }}
                     >
@@ -258,198 +258,222 @@ const NavigationBar = ({
                 </Button>
               </Box>
               <Menu
-                anchorEl={anchorEl}
-                open={isMobileMenuOpen}
-                onClose={closeMobileMenu}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                sx={{
-                  "& .MuiPaper-root": {
-                    width: "100%",
-                    top: "0px!important",
-                    boxShadow: "none",
-                    left: "0px!important",
-                    maxWidth: "none",
-                    height: "100vh",
-                  },
-                }}
-              >
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    bgcolor: "background.paper",
-                    position: "relative", // Ensure the close button can be positioned inside
-                  }}
-                >
-                  <IconButton
-                    onClick={closeMobileMenu}
-                    sx={{
-                      position: "absolute",
-                      top: 8,
-                      right: 8,
-                      color: "#17324D",
-                    }}
-                  >
-                    <CloseIcon />
-                  </IconButton>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      cursor: "pointer",
-                      marginTop: "48px", // Add margin to push content below the close button
-                    }}
-                    onClick={() => handleMenuItemClick(paths[0])}
-                  >
-                    <Typography
-                      sx={{
-                        flexGrow: 1,
-                        color: getTabColor(paths[0]),
-                        fontSize: "1rem",
-                        paddingLeft: "16px",
-                        paddingRight: "8px",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {pa}
-                    </Typography>
-                    <IconButton
-                      size="small"
-                      sx={{
-                        color: getTabColor(paths[0]),
-                      }}
-                      onClick={handleToggleSubMenu}
-                    >
-                      {openSubMenu ? (
-                        <ArrowDropUpIcon />
-                      ) : (
-                        <ArrowDropDownIcon />
-                      )}
-                    </IconButton>
-                  </Box>
-                  {openSubMenu && (
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        bgcolor: "background.paper",
-                      }}
-                    >
-                      <MenuItem
-                        onClick={() =>
-                          handleMenuItemClick(
-                            "/pubbliche-amministrazioni/documenti"
-                          )
-                        }
-                        sx={{
-                          color: getTabColor(
-                            "/pubbliche-amministrazioni/documenti"
-                          ),
-                          fontSize: "1rem",
-                          paddingLeft: "32px",
-                        }}
-                      >
-                        Documentazione
-                      </MenuItem>
-                    </Box>
-                  )}
-                  <MenuItem
-                    onClick={() => handleMenuItemClick(paths[1])}
-                    sx={{
-                      color: getTabColor(paths[1]),
-                    }}
-                  >
-                    {pf}
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => handleMenuItemClick(paths[2])}
-                    sx={{
-                      color: getTabColor(paths[2]),
-                    }}
-                  >
-                    {pi}
-                  </MenuItem>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => handleMenuItemClick(paths[3])}
-                  >
-                    <Typography
-                      sx={{
-                        flexGrow: 1,
-                        color: getTabColor(paths[3]),
-                        fontSize: "1rem",
-                        paddingLeft: "16px",
-                        paddingRight: "8px",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {ritiro}
-                    </Typography>
-                    <IconButton
-                      size="small"
-                      sx={{
-                        color: getTabColor(paths[3]),
-                      }}
-                      onClick={handleToggleRitiroSubMenu}
-                    >
-                      {openRitiroSubMenu ? (
-                        <ArrowDropUpIcon />
-                      ) : (
-                        <ArrowDropDownIcon />
-                      )}
-                    </IconButton>
-                  </Box>
-                  {openRitiroSubMenu && (
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        bgcolor: "background.paper",
-                      }}
-                    >
-                      <MenuItem
-                        onClick={() =>
-                          handleMenuItemClick("/punti-di-ritiro/come-funziona")
-                        }
-                        sx={{
-                          color: getTabColor("/punti-di-ritiro/come-funziona"),
-                          fontSize: "1rem",
-                          paddingLeft: "32px",
-                        }}
-                      >
-                        Come funziona
-                      </MenuItem>
-                    </Box>
-                  )}
-                  <MenuItem
-                    onClick={() => handleMenuItemClick(paths[4])}
-                    sx={{
-                      color: getTabColor(paths[4]),
-                    }}
-                  >
-                    {numeri}
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => handleMenuItemClick(paths[5])}
-                    sx={{
-                      color: getTabColor(paths[5]),
-                    }}
-                  >
-                    {faq}
-                  </MenuItem>
-                </Box>
-              </Menu>
+  anchorEl={anchorEl}
+  open={isMobileMenuOpen}
+  onClose={closeMobileMenu}
+  anchorOrigin={{
+    vertical: "bottom",
+    horizontal: "left",
+  }}
+  transformOrigin={{
+    vertical: "top",
+    horizontal: "left",
+  }}
+  sx={{
+    "& .MuiPaper-root": {
+      width: "100%",
+      top: "0px!important",
+      boxShadow: "none",
+      left: "0px!important",
+      maxWidth: "none",
+      height: "100vh",
+    },
+  }}
+>
+  <Box
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      bgcolor: "background.paper",
+      position: "relative", // Ensure the close button can be positioned inside
+      padding: "10px",
+    }}
+  >
+    <IconButton
+      onClick={closeMobileMenu}
+      sx={{
+        position: "absolute",
+        top: 8,
+        right: 8,
+        color: "#5C6F82",
+      }}
+    >
+      <CloseIcon />
+    </IconButton>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        cursor: "pointer",
+        marginTop: "48px", // Add margin to push content below the close button
+        marginBottom: "16px", // Ensure consistent spacing
+        paddingLeft: "16px",
+      }}
+      onClick={() => handleMenuItemClick(paths[0])}
+    >
+      <Typography
+        sx={{
+          flexGrow: 1,
+          color: getTabColor(paths[0]),
+          fontSize: "1rem",
+          paddingRight: "8px",
+          fontWeight: 600,
+        }}
+      >
+        {pf}
+      </Typography>
+    </Box>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        cursor: "pointer",
+        marginBottom: "16px", // Ensure consistent spacing
+        paddingLeft: "16px",
+      }}
+      onClick={() => handleMenuItemClick(paths[1])}
+    >
+      <Typography
+        sx={{
+          flexGrow: 1,
+          color: getTabColor(paths[1]),
+          fontSize: "1rem",
+          paddingRight: "8px",
+          fontWeight: 600,
+        }}
+      >
+        {pi}
+      </Typography>
+    </Box>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        cursor: "pointer",
+        marginBottom: "16px", // Ensure consistent spacing
+        paddingLeft: "16px",
+      }}
+      onClick={() => handleMenuItemClick(paths[2])}
+    >
+      <Typography
+        sx={{
+          flexGrow: 1,
+          color: getTabColor(paths[2]),
+          fontSize: "1rem",
+          paddingRight: "8px",
+          fontWeight: 600,
+        }}
+      >
+        {pa}
+      </Typography>
+      <IconButton
+        size="small"
+        sx={{
+          color: getTabColor(paths[2]),
+        }}
+        onClick={handleToggleSubMenu}
+      >
+        {openSubMenu ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+      </IconButton>
+    </Box>
+    {openSubMenu && (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          bgcolor: "background.paper",
+          marginBottom: "16px", // Ensure consistent spacing
+          paddingLeft: "32px",
+        }}
+      >
+        <MenuItem
+          onClick={() =>
+            handleMenuItemClick("/pubbliche-amministrazioni/documenti")
+          }
+          sx={{
+            color: getTabColor("/pubbliche-amministrazioni/documenti"),
+            fontSize: "1rem",
+          }}
+        >
+          Documentazione
+        </MenuItem>
+      </Box>
+    )}
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        cursor: "pointer",
+        marginBottom: "16px", // Ensure consistent spacing
+        paddingLeft: "16px",
+      }}
+      onClick={() => handleMenuItemClick(paths[3])}
+    >
+      <Typography
+        sx={{
+          flexGrow: 1,
+          color: getTabColor(paths[3]),
+          fontSize: "1rem",
+          paddingRight: "8px",
+          fontWeight: 600,
+        }}
+      >
+        {ritiro}
+      </Typography>
+      <IconButton
+        size="small"
+        sx={{
+          color: getTabColor(paths[3]),
+        }}
+        onClick={handleToggleRitiroSubMenu}
+      >
+        {openRitiroSubMenu ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+      </IconButton>
+    </Box>
+    {openRitiroSubMenu && (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          bgcolor: "background.paper",
+          marginBottom: "16px", // Ensure consistent spacing
+          paddingLeft: "32px",
+        }}
+      >
+        <MenuItem
+          onClick={() => handleMenuItemClick("/punti-di-ritiro/come-funziona")}
+          sx={{
+            color: getTabColor("/punti-di-ritiro/come-funziona"),
+            fontSize: "1rem",
+          }}
+        >
+          Come funziona
+        </MenuItem>
+      </Box>
+    )}
+    <MenuItem
+      onClick={() => handleMenuItemClick(paths[4])}
+      sx={{
+        color: getTabColor(paths[4]),
+        marginBottom: "16px", // Ensure consistent spacing
+        paddingLeft: "16px",
+      }}
+    >
+      {numeri}
+    </MenuItem>
+    <MenuItem
+      onClick={() => handleMenuItemClick(paths[5])}
+      sx={{
+        color: getTabColor(paths[5]),
+        paddingLeft: "16px",
+      }}
+    >
+      {faq}
+    </MenuItem>
+  </Box>
+</Menu>
+
+
               <Menu
                 anchorEl={anchorEl}
                 open={isSendMenuOpen}
@@ -488,7 +512,7 @@ const NavigationBar = ({
                       position: "absolute",
                       top: 8,
                       right: 8,
-                      color: "#17324D",
+                      color: "#5C6F82",
                     }}
                   >
                     <CloseIcon />
@@ -659,6 +683,24 @@ const NavigationBar = ({
                 sx={{ display: "flex", alignItems: "center" }}
               >
                 <Tab
+                  label={pf}
+                  value={paths[0]}
+                  sx={{
+                    textTransform: "none",
+                    minWidth: 0,
+                    color: getTabColor(paths[0]),
+                  }}
+                />
+                <Tab
+                  label={pi}
+                  value={paths[1]}
+                  sx={{
+                    textTransform: "none",
+                    minWidth: 0,
+                    color: getTabColor(paths[1]),
+                  }}
+                />
+                <Tab
                   label={
                     <Box sx={{ display: "flex", alignItems: "center" }}>
                       {pa}
@@ -666,7 +708,7 @@ const NavigationBar = ({
                         size="small"
                         sx={{
                           marginLeft: 1,
-                          color: getTabColor(paths[0]),
+                          color: getTabColor(paths[2]),
                         }}
                         onClick={handleOpenSubMenu}
                       >
@@ -678,24 +720,6 @@ const NavigationBar = ({
                       </IconButton>
                     </Box>
                   }
-                  value={paths[0]}
-                  sx={{
-                    textTransform: "none",
-                    minWidth: 0,
-                    color: getTabColor(paths[0]),
-                  }}
-                />
-                <Tab
-                  label={pf}
-                  value={paths[1]}
-                  sx={{
-                    textTransform: "none",
-                    minWidth: 0,
-                    color: getTabColor(paths[1]),
-                  }}
-                />
-                <Tab
-                  label={pi}
                   value={paths[2]}
                   sx={{
                     textTransform: "none",
@@ -704,6 +728,7 @@ const NavigationBar = ({
                   }}
                 />
               </Tabs>
+
               <Menu
                 anchorEl={subMenuAnchorEl}
                 open={openSubMenu}
@@ -864,7 +889,7 @@ const NavigationBar = ({
               position: "absolute",
               top: 8,
               right: 8,
-              color: "#17324D",
+              color: "#5C6F82",
             }}
           >
             <CloseIcon />
