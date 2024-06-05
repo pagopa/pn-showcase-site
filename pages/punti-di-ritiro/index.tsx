@@ -89,7 +89,6 @@ const RitiroPage: NextPage = () => {
       setFilteredOperators([]);
     } else {
       setFilteredOperators(initialRaddOperators);
-      console.log("entra qui");
     }
   };
 
