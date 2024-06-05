@@ -65,7 +65,7 @@ const LandingLayout = ({ children }: Props) => {
             >
               {appData.common.pagoPALink.label}
             </ButtonNaked>
-            <ButtonNaked
+            {/* <ButtonNaked
               size="small"
               aria-label={appData.common.assistance.ariaLabel}
               href={`mailto:${assistanceEmail}`}
@@ -77,7 +77,7 @@ const LandingLayout = ({ children }: Props) => {
               startIcon={<HelpOutlineOutlinedIcon fontSize="inherit" />}
             >
               {appData.common.assistance.label}
-            </ButtonNaked>
+            </ButtonNaked> */}
           </Stack>
         </Stack>
         <NavigationBar {...appData.common.navigation} />

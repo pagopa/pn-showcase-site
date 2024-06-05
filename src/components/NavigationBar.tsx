@@ -167,7 +167,7 @@ const NavigationBar = ({
           <Box>
             <Typography
               component="a"
-              href="/"
+              href="/assistenza"
               sx={{
                 textDecoration: "none",
                 color: "primary.main",
@@ -276,6 +276,7 @@ const NavigationBar = ({
                     boxShadow: "none",
                     left: "0px!important",
                     maxWidth: "none",
+                    height: "100vh",
                   },
                 }}
               >
@@ -468,6 +469,7 @@ const NavigationBar = ({
                     boxShadow: "none",
                     left: "0px!important",
                     maxWidth: "none",
+                    height: "100vh",
                   },
                 }}
               >
@@ -507,7 +509,7 @@ const NavigationBar = ({
                         border: "1px solid #E3E7EB",
                         borderRadius: 4,
                         padding: 2,
-                        textAlign: "center",
+                        textAlign: "left",
                       }}
                     >
                       <PeopleIcon sx={{ color: "#0066CC", fontSize: "32px" }} />
@@ -524,8 +526,16 @@ const NavigationBar = ({
                       <Button
                         variant="text"
                         color="primary"
-                        sx={{ textTransform: "none" }}
-                        onClick={() => handleMenuItemClick("/cittadini")}
+                        sx={{
+                          textTransform: "none",
+                          textAlign: "left",
+                          justifyContent: "flex-start",
+                          padding: 0,
+                        }}
+                        onClick={() =>
+                          (window.location.href =
+                            "https://cittadini.notifichedigitali.it/auth/login")
+                        }
                         endIcon={<ArrowForwardIcon />}
                       >
                         Accedi
@@ -537,7 +547,7 @@ const NavigationBar = ({
                         border: "1px solid #E3E7EB",
                         borderRadius: 4,
                         padding: 2,
-                        textAlign: "center",
+                        textAlign: "left",
                       }}
                     >
                       <BusinessIcon
@@ -555,8 +565,16 @@ const NavigationBar = ({
                       <Button
                         variant="text"
                         color="primary"
-                        sx={{ textTransform: "none" }}
-                        onClick={() => handleMenuItemClick("/imprese")}
+                        sx={{
+                          textTransform: "none",
+                          textAlign: "left",
+                          justifyContent: "flex-start",
+                          padding: 0,
+                        }}
+                        onClick={() =>
+                          (window.location.href =
+                            "https://imprese.notifichedigitali.it/auth/login")
+                        }
                         endIcon={<ArrowForwardIcon />}
                       >
                         Accedi
@@ -576,14 +594,25 @@ const NavigationBar = ({
                         justifyContent="space-between"
                         sx={{ mb: 1 }}
                       >
-                        <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                        <Typography
+                          variant="subtitle1"
+                          sx={{ fontWeight: 600 }}
+                        >
                           Sei un ente?
                         </Typography>
                         <Button
                           variant="text"
                           color="primary"
-                          sx={{ textTransform: "none" }}
-                          onClick={() => handleMenuItemClick("/enti")}
+                          sx={{
+                            textTransform: "none",
+                            textAlign: "left",
+                            justifyContent: "flex-start",
+                            padding: 0,
+                          }}
+                          onClick={() =>
+                            (window.location.href =
+                              "https://selfcare.pagopa.it/auth/login")
+                          }
                           endIcon={<ArrowForwardIcon />}
                         >
                           Accedi
@@ -598,7 +627,7 @@ const NavigationBar = ({
                         <Typography variant="body2">
                           Il tuo ente non ha ancora aderito?{" "}
                           <a
-                            href="/scopri-come-aderire"
+                            href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
                             style={{
                               color: "#0066CC",
                               textDecoration: "underline",
@@ -816,6 +845,7 @@ const NavigationBar = ({
             boxShadow: "none",
             left: "0px!important",
             maxWidth: "none",
+            height: "100vh",
           },
         }}
       >
@@ -855,7 +885,7 @@ const NavigationBar = ({
                 border: "1px solid #E3E7EB",
                 borderRadius: 4,
                 padding: 2,
-                textAlign: "center",
+                textAlign: "left",
               }}
             >
               <PeopleIcon sx={{ color: "#0066CC", fontSize: "32px" }} />
@@ -866,14 +896,22 @@ const NavigationBar = ({
                 Cittadini
               </Typography>
               <Typography variant="body2" sx={{ mb: 1 }}>
-                Accedi come persona fisica, libero professionista o
-                ditta individuale
+                Accedi come persona fisica, libero professionista o ditta
+                individuale
               </Typography>
               <Button
                 variant="text"
                 color="primary"
-                sx={{ textTransform: "none" }}
-                onClick={() => handleMenuItemClick("/cittadini")}
+                sx={{
+                  textTransform: "none",
+                  textAlign: "left",
+                  justifyContent: "flex-start",
+                  padding: 0,
+                }}
+                onClick={() =>
+                  (window.location.href =
+                    "https://cittadini.notifichedigitali.it/auth/login")
+                }
                 endIcon={<ArrowForwardIcon />}
               >
                 Accedi
@@ -885,7 +923,7 @@ const NavigationBar = ({
                 border: "1px solid #E3E7EB",
                 borderRadius: 4,
                 padding: 2,
-                textAlign: "center",
+                textAlign: "left",
               }}
             >
               <BusinessIcon sx={{ color: "#0066CC", fontSize: "32px" }} />
@@ -901,8 +939,16 @@ const NavigationBar = ({
               <Button
                 variant="text"
                 color="primary"
-                sx={{ textTransform: "none" }}
-                onClick={() => handleMenuItemClick("/imprese")}
+                sx={{
+                  textTransform: "none",
+                  textAlign: "left",
+                  justifyContent: "flex-start",
+                  padding: 0,
+                }}
+                onClick={() =>
+                  (window.location.href =
+                    "https://imprese.notifichedigitali.it/auth/login")
+                }
                 endIcon={<ArrowForwardIcon />}
               >
                 Accedi
@@ -928,8 +974,16 @@ const NavigationBar = ({
                 <Button
                   variant="text"
                   color="primary"
-                  sx={{ textTransform: "none" }}
-                  onClick={() => handleMenuItemClick("/enti")}
+                  sx={{
+                    textTransform: "none",
+                    textAlign: "left",
+                    justifyContent: "flex-start",
+                    padding: 0,
+                  }}
+                  onClick={() =>
+                    (window.location.href =
+                      "https://selfcare.pagopa.it/auth/login")
+                  }
                   endIcon={<ArrowForwardIcon />}
                 >
                   Accedi
@@ -944,7 +998,7 @@ const NavigationBar = ({
                 <Typography variant="body2">
                   Il tuo ente non ha ancora aderito?{" "}
                   <a
-                    href="/scopri-come-aderire"
+                    href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
                     style={{
                       color: "#0066CC",
                       textDecoration: "underline",
