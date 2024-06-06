@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 
 import PageHead from "../../src/components/PageHead";
 import {
+  Alert,
   Box,
   IconButton,
   InputAdornment,
@@ -78,7 +79,8 @@ const RitiroPage: NextPage = () => {
     const operators = initialRaddOperators.filter((operator) =>
       operator.city
         ? operator.city.toLowerCase().replace(/[^a-zA-Z]/g, "") ===
-          searchValue.toLowerCase().replace(/[^a-zA-Z]/g, "")
+            searchValue.toLowerCase().replace(/[^a-zA-Z]/g, "") ||
+          operator.cap === searchValue
         : ""
     );
 
@@ -113,63 +115,68 @@ const RitiroPage: NextPage = () => {
         title="SEND - Servizio Notifiche digitali | Punti di ritiro SEND"
         description="Cerca il Punto di ritiro SEND più vicino a te per ritirare una copia degli atti notificati o scoprire se c'è un avviso di avvenuta ricezione a te destinato"
       />
-      <Box mt={10} mx={3}>
+      <Stack
+        mt={10}
+        mb={5}
+        mx={3}
+        direction="column"
+        alignItems="center"
+        spacing={0}
+        justifyContent="center"
+      >
         <Typography align="center" variant="h2">
           Trova un punto di ritiro SEND
         </Typography>
-        <Stack
-          direction="row"
-          alignItems="center"
-          spacing={0}
-          justifyContent="center"
+
+        <Typography
+          my={3}
+          color="textPrimary"
+          variant="body2"
+          sx={{ maxWidth: 554 }}
+          textAlign="center"
         >
-          <Typography
-            mt={3}
-            color="textPrimary"
-            variant="body2"
-            sx={{ maxWidth: 554 }}
-            textAlign="center"
-          >
-            Quando ricevi una comunicazione a valore legale tramite SEND puoi
-            ritirare una copia stampata dei documenti notificati presso gli{" "}
-            <strong>esercenti convenzionati</strong>. <br />
-            Cerca i punti di ritiro più vicini a te.
-          </Typography>
-        </Stack>
-        <Stack
-          mt={4}
-          mb={6}
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
+          Quando ricevi una comunicazione a valore legale tramite SEND puoi
+          ritirare una copia stampata dei documenti notificati presso gli{" "}
+          <strong>esercenti convenzionati</strong>. <br />
+          Cerca i punti di ritiro più vicini a te.
+        </Typography>
+
+        <Alert
+          severity="info"
+          variant="standard"
+          sx={{ marginBottom: 5, maxWidth: 606 }}
         >
-          <TextField
-            value={searchValue}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSearchClick();
-              }
-            }}
-            onChange={handleInputChange}
-            sx={{ maxWidth: 498, width: "100%" }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end" sx={{ paddingRight: 0 }}>
-                  {searchValue && (
-                    <IconButton onClick={handleCleanField}>
-                      <CloseIcon />
-                    </IconButton>
-                  )}
-                  <IconButton onClick={handleSearchClick}>
-                    <SearchIcon />
+          Al momento puoi cercare solo fra i punti di ritiro presenti nel Comune
+          di Bari: il servizio è in attivazione progressiva su tutto il
+          territorio nazionale.
+        </Alert>
+
+        <TextField
+          value={searchValue}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearchClick();
+            }
+          }}
+          onChange={handleInputChange}
+          sx={{ maxWidth: 498, width: "100%" }}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end" sx={{ paddingRight: 0 }}>
+                {searchValue && (
+                  <IconButton onClick={handleCleanField}>
+                    <CloseIcon />
                   </IconButton>
-                </InputAdornment>
-              ),
-            }}
-            label="Cerca per città"
-          />
-        </Stack>
-      </Box>
+                )}
+                <IconButton onClick={handleSearchClick}>
+                  <SearchIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+          label="Cerca per città o per CAP"
+        />
+      </Stack>
       {isMobile ? (
         <Box
           py={3}
@@ -185,7 +192,7 @@ const RitiroPage: NextPage = () => {
               rows={rowsToSet}
             />
           ) : (
-            <Stack sx={{ maxWidth: 1092, width: "100%" }}>
+            <Stack sx={{ maxWidth: 1092, minWidth: "100%" }}>
               <Box bgcolor="white" p={3} m={3} textAlign="center">
                 <Typography>
                   Non ci sono ancora punti di ritiro SEND attivi in questa
