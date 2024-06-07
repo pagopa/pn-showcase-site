@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-before-interactive-script-outside-document */
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "@mui/system";
-import Head from "next/head";
 
 import { theme } from "@pagopa/mui-italia";
 import LandingLayout from "../src/layout/LandingLayout";
@@ -15,11 +14,6 @@ function Main({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <LangProvider>
-        <Head>
-          <script
-            src="/node_modules/@iframe-resizer/child/index.umd.js"
-          ></script>
-        </Head>
         {noLayout ? (
           // Se noLayout è true, renderizza solo il componente
           <Component {...pageProps} />

@@ -467,11 +467,6 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/retry/-/retry-0.2.3.tgz"
   integrity sha512-X38nUbachlb01YMlvPFojKoiXq+LzZvuSce70KPMPdeM1Rj03k4dR7lDslhbqXn3Ang4EU3+EAmwEAsbrjHW3g==
 
-"@iframe-resizer/child@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/@iframe-resizer/child/-/child-5.0.1.tgz"
-  integrity sha512-wXlQnAtPzxwx8B40nefAv1LRfyX1llFTqOcq9Fc3N8h1CgLkMfUlk0m0w8grwvlyNkKqrpQItq1lK0zZxbFfnw==
-
 "@jridgewell/gen-mapping@^0.3.0", "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"
   resolved "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.3.tgz"
