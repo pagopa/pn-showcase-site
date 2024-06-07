@@ -126,7 +126,7 @@ const RitiroPage: NextPage = () => {
         justifyContent="center"
       >
         <Typography align="center" variant="h2">
-          Trova un punto di ritiro SEND
+          Trova un Punto di ritiro SEND
         </Typography>
 
         <Typography
