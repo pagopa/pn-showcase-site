@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { Box, Typography } from '@mui/material';
-import DashboardIntro from 'src/components/Numeri/components/DashboardIntro';
-import { DataSectionWrapper } from 'src/components/Numeri/components/DataSectionWrapper';
-import KpiAuthoritiesServices from 'src/components/Numeri/components/KpiAuthoritiesServices';
-import KpiNotifications from 'src/components/Numeri/components/KpiNotifications';
-import NotificationsTrend from 'src/components/Numeri/components/NotificationsTrend';
-import TopServices from 'src/components/Numeri/components/TopServices';
-import { curYear, firstYear } from 'src/components/Numeri/shared/constants';
-import Tabs from 'src/components/Tabs';
+import React, { useState } from "react";
+import type { NextPage } from "next";
+import { Box, Typography } from "@mui/material";
+import DashboardIntro from "src/components/Numeri/components/DashboardIntro";
+import { DataSectionWrapper } from "src/components/Numeri/components/DataSectionWrapper";
+import KpiAuthoritiesServices from "src/components/Numeri/components/KpiAuthoritiesServices";
+import KpiNotifications from "src/components/Numeri/components/KpiNotifications";
+import NotificationsTrend from "src/components/Numeri/components/NotificationsTrend";
+import TopServices from "src/components/Numeri/components/TopServices";
+import { curYear, firstYear } from "src/components/Numeri/shared/constants";
+import Tabs from "src/components/Tabs";
 import Script from 'next/script';
 
 type Tabs = {
@@ -21,7 +21,7 @@ const years = Array.from({ length: numYear }, (_, i) => curYear - i).map(
   (y) => ({ id: y, label: String(y) })
 );
 
-const tabs: Tabs[] = [{ id: null, label: 'Totale' }, ...years];
+const tabs: Tabs[] = [{ id: null, label: "Totale" }, ...years];
 
 const DashboardContent: NextPage = () => {
   const [selYear, setSelYear] = useState<number | null>(null);
@@ -41,7 +41,7 @@ const DashboardContent: NextPage = () => {
         id="iframe-resizer-child"
         strategy="beforeInteractive"
       />
-
+    
       <Box mt={10}>
         <Typography align="center" variant="h2">
           SEND in numeri
@@ -50,7 +50,7 @@ const DashboardContent: NextPage = () => {
       </Box>
 
       <Tabs tabs={tabs.map((tab) => tab.label)} onTabChange={handleTabChange} />
-      <Box sx={{ overflowX: 'hidden' }}>
+      <Box sx={{ overflowX: "hidden" }}>
         <DataSectionWrapper
           title="Notifiche inviate"
           description="I seguenti dati si riferiscono alle notifiche inviate dagli enti della pubblica amministrazione"
