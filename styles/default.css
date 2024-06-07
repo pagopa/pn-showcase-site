@@ -188,6 +188,10 @@ body {
 #ritiroPagination_page_mobile ul {
   justify-content: flex-end;
 }
+.MuiOutlinedInput-root:has(#textFilter) {
+  padding-right: 0;
+}
+
 @media screen and (min-width: 900px) {
   .documentiCustomCard .MuiPaper-root {
     margin-bottom: 8px;

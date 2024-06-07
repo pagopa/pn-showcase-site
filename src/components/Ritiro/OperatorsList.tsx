@@ -90,7 +90,7 @@ function OperatorsList({ rows }: Readonly<Props>) {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          rowsPerPageOptions={[10, 20, 30]}
+          rowsPerPageOptions={[10, 20, 50]}
         />
         <Pagination
           id="ritiroPagination_page_mobile"
