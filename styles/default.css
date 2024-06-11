@@ -56,8 +56,8 @@ body {
   .otnotice-menu-mobile
   .otnotice-menu-section-mobile
   a {
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 16px; 
+  font-weight: 600; 
   line-height: 1.5;
   color: #17324d !important;
 }
@@ -173,6 +173,39 @@ body {
 #ritiroPagination_page_mobile ul {
   justify-content: flex-end;
 }
+
+.menuItem {
+  margin: 4px 0; 
+  padding: 4px; 
+  font-size: 16px; 
+  font-weight: 600; 
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.menuItemIcon {
+  margin-left: auto;
+  color: inherit;
+}
+
+.menuItemIcon.iconActive {
+  color: var(--primary-color); 
+}
+
+.firstMenuItem {
+  margin-top: 40px; 
+}
+
+.subMenuItem {
+  margin: 4px 0;
+  padding-left: 24px; 
+}
+
+.MuiTypography-body1 {
+  font-size: 16px !important; 
+  font-weight: 600 !important;
+}
+
 @media screen and (min-width: 900px) {
   .documentiCustomCard .MuiPaper-root {
     margin-bottom: 8px;

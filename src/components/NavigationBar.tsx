@@ -217,6 +217,7 @@ const NavigationBar = ({
                   alignItems: "center",
                   width: "100%",
                   justifyContent: "space-between",
+                  borderTop: "1px solid #E3E7EB",
                 }}
               >
                 <Box
@@ -301,67 +302,42 @@ const NavigationBar = ({
                     <CloseIcon />
                   </IconButton>
                   <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      cursor: "pointer",
-                      marginTop: "48px",
-                      marginBottom: "16px",
-                      paddingLeft: "16px",
-                    }}
+                    className="menuItem firstMenuItem"
                     onClick={() => handleMenuItemClick(paths[0])}
                   >
                     <Typography
+                      className="MuiTypography-body1"
                       sx={{
                         flexGrow: 1,
                         color: getTabColor(paths[0]),
-                        fontSize: "1rem",
-                        paddingRight: "8px",
-                        fontWeight: 600,
                       }}
                     >
                       {pf}
                     </Typography>
                   </Box>
                   <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      cursor: "pointer",
-                      marginBottom: "16px",
-                      paddingLeft: "16px",
-                    }}
+                    className="menuItem"
                     onClick={() => handleMenuItemClick(paths[1])}
                   >
                     <Typography
+                      className="MuiTypography-body1"
                       sx={{
                         flexGrow: 1,
                         color: getTabColor(paths[1]),
-                        fontSize: "1rem",
-                        paddingRight: "8px",
-                        fontWeight: 600,
                       }}
                     >
                       {pi}
                     </Typography>
                   </Box>
                   <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      cursor: "pointer",
-                      marginBottom: "16px",
-                      paddingLeft: "16px",
-                    }}
+                    className="menuItem"
                     onClick={() => handleMenuItemClick(paths[2])}
                   >
                     <Typography
+                      className="MuiTypography-body1"
                       sx={{
                         flexGrow: 1,
                         color: getTabColor(paths[2]),
-                        fontSize: "1rem",
-                        paddingRight: "8px",
-                        fontWeight: 600,
                       }}
                     >
                       {pa}
@@ -386,11 +362,11 @@ const NavigationBar = ({
                         display: "flex",
                         flexDirection: "column",
                         bgcolor: "background.paper",
-                        marginBottom: "16px",
-                        paddingLeft: "32px",
+                        paddingLeft: "16px",
                       }}
                     >
                       <MenuItem
+                        className="subMenuItem"
                         onClick={() =>
                           handleMenuItemClick(
                             "/pubbliche-amministrazioni/documenti"
@@ -408,22 +384,14 @@ const NavigationBar = ({
                     </Box>
                   )}
                   <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      cursor: "pointer",
-                      marginBottom: "16px",
-                      paddingLeft: "16px",
-                    }}
+                    className="menuItem"
                     onClick={() => handleMenuItemClick(paths[3])}
                   >
                     <Typography
+                      className="MuiTypography-body1"
                       sx={{
                         flexGrow: 1,
                         color: getTabColor(paths[3]),
-                        fontSize: "1rem",
-                        paddingRight: "8px",
-                        fontWeight: 600,
                       }}
                     >
                       {ritiro}
@@ -448,11 +416,11 @@ const NavigationBar = ({
                         display: "flex",
                         flexDirection: "column",
                         bgcolor: "background.paper",
-                        marginBottom: "16px",
-                        paddingLeft: "32px",
+                        paddingLeft: "16px",
                       }}
                     >
                       <MenuItem
+                        className="subMenuItem"
                         onClick={() =>
                           handleMenuItemClick("/punti-di-ritiro/come-funziona")
                         }
@@ -465,7 +433,9 @@ const NavigationBar = ({
                       </MenuItem>
                     </Box>
                   )}
+
                   <MenuItem
+                    className="menuItem"
                     onClick={() => handleMenuItemClick(paths[4])}
                     sx={{
                       color: getTabColor(paths[4]),
@@ -476,6 +446,7 @@ const NavigationBar = ({
                     {numeri}
                   </MenuItem>
                   <MenuItem
+                    className="menuItem"
                     onClick={() => handleMenuItemClick(paths[5])}
                     sx={{
                       color: getTabColor(paths[5]),
