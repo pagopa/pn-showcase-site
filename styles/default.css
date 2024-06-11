@@ -182,6 +182,7 @@ body {
   display: flex;
   align-items: center;
   cursor: pointer;
+  height: 40px !important;
 }
 .menuItemIcon {
   margin-left: auto;
