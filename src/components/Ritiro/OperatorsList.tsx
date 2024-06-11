@@ -11,14 +11,18 @@ import {
   Pagination,
 } from "@mui/material";
 import { RaddOperator } from "model";
+import { useEffect, useRef, useState } from "react";
 
 type Props = {
   rows: RaddOperator[];
 };
 
 function OperatorsList({ rows }: Readonly<Props>) {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const listContainerRef = useRef<HTMLUListElement | null>(null);
+
   const handleChangePage = (_event: any, newPage: number | null) => {
     if (newPage !== null) {
       setPage(newPage - 1);
@@ -30,9 +34,15 @@ function OperatorsList({ rows }: Readonly<Props>) {
     setRowsPerPage(parseInt(event.target.value, 10));
   };
 
+  useEffect(() => {
+    if (listContainerRef.current) {
+      listContainerRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [page, rowsPerPage]);
+
   return (
     <Stack>
-      <List>
+      <List ref={listContainerRef}>
         {rows
           .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           .map((row, index: number) => (
