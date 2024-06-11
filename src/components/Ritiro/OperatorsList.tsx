@@ -19,15 +19,15 @@ type Props = {
 function OperatorsList({ rows }: Readonly<Props>) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const handleChangePage = (_event: any, page: number | null) => {
-    if (page !== null) {
-      setPage(page - 1);
+  const handleChangePage = (_event: any, newPage: number | null) => {
+    if (newPage !== null) {
+      setPage(newPage - 1);
     }
   };
 
   const handleChangeRowsPerPage = (event: { target: { value: string } }) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+    setRowsPerPage(parseInt(event.target.value, 10));
   };
 
   return (
@@ -96,12 +96,11 @@ function OperatorsList({ rows }: Readonly<Props>) {
           id="ritiroPagination_page_mobile"
           sx={{ width: 170 }}
           color="primary"
+          page={page + 1}
           count={Math.ceil(rows.length / rowsPerPage)}
           onChange={handleChangePage}
           boundaryCount={1}
-          siblingCount={1}
-          hidePrevButton
-          hideNextButton
+          siblingCount={0}
         />
       </Stack>
     </Stack>

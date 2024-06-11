@@ -11,7 +11,6 @@ import {
   TablePagination,
   Stack,
   TableSortLabel,
-  Typography,
 } from "@mui/material";
 import { RaddOperator } from "model";
 import { useState } from "react";
@@ -65,15 +64,15 @@ function OperatorsTable({ rows }: Readonly<Props>) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const handleChangePage = (_event: any, page: number | null) => {
-    if (page !== null) {
-      setPage(page - 1);
+  const handleChangePage = (_event: any, newPage: number | null) => {
+    if (newPage !== null) {
+      setPage(newPage - 1);
     }
   };
 
   const handleChangeRowsPerPage = (event: { target: { value: string } }) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+    setRowsPerPage(parseInt(event.target.value, 10));
   };
 
   const handleRequestSort = (property: string) => {
@@ -149,11 +148,10 @@ function OperatorsTable({ rows }: Readonly<Props>) {
           <Pagination
             color="primary"
             count={Math.ceil(rows.length / rowsPerPage)}
+            page={page + 1}
             onChange={handleChangePage}
+            siblingCount={0}
             boundaryCount={1}
-            siblingCount={1}
-            hidePrevButton
-            hideNextButton
           />
         </Stack>
       )}
