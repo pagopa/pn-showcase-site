@@ -11,10 +11,9 @@ import {
   TablePagination,
   Stack,
   TableSortLabel,
-  Typography,
 } from "@mui/material";
 import { RaddOperator } from "model";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Props = {
   rows: RaddOperator[];
@@ -65,9 +64,11 @@ function OperatorsTable({ rows }: Readonly<Props>) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const handleChangePage = (_event: any, page: number | null) => {
-    if (page !== null) {
-      setPage(page - 1);
+  const tableContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const handleChangePage = (_event: any, newPage: number | null) => {
+    if (newPage !== null) {
+      setPage(newPage - 1);
     }
   };
 
@@ -81,9 +82,15 @@ function OperatorsTable({ rows }: Readonly<Props>) {
     setOrder(isAsc ? "desc" : "asc");
   };
 
+  useEffect(() => {
+    if (tableContainerRef.current) {
+      tableContainerRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [page, rowsPerPage]);
+
   return (
     <>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} ref={tableContainerRef}>
         <Table
           sx={{ width: "100%", maxWidth: 1092 }}
           aria-label="operators table"
