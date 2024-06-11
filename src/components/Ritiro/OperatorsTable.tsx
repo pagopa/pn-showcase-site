@@ -73,8 +73,8 @@ function OperatorsTable({ rows }: Readonly<Props>) {
   };
 
   const handleChangeRowsPerPage = (event: { target: { value: string } }) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+    setRowsPerPage(parseInt(event.target.value, 10));
   };
 
   const handleRequestSort = (property: string) => {
@@ -156,11 +156,10 @@ function OperatorsTable({ rows }: Readonly<Props>) {
           <Pagination
             color="primary"
             count={Math.ceil(rows.length / rowsPerPage)}
+            page={page + 1}
             onChange={handleChangePage}
+            siblingCount={0}
             boundaryCount={1}
-            siblingCount={1}
-            hidePrevButton
-            hideNextButton
           />
         </Stack>
       )}

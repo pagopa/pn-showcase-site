@@ -30,8 +30,8 @@ function OperatorsList({ rows }: Readonly<Props>) {
   };
 
   const handleChangeRowsPerPage = (event: { target: { value: string } }) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+    setRowsPerPage(parseInt(event.target.value, 10));
   };
 
   useEffect(() => {
@@ -106,12 +106,11 @@ function OperatorsList({ rows }: Readonly<Props>) {
           id="ritiroPagination_page_mobile"
           sx={{ width: 170 }}
           color="primary"
+          page={page + 1}
           count={Math.ceil(rows.length / rowsPerPage)}
           onChange={handleChangePage}
           boundaryCount={1}
-          siblingCount={1}
-          hidePrevButton
-          hideNextButton
+          siblingCount={0}
         />
       </Stack>
     </Stack>
