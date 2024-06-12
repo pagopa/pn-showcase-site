@@ -270,6 +270,12 @@ const NavigationBar = ({
                   vertical: "top",
                   horizontal: "left",
                 }}
+                PaperProps={{
+                  className: isMobileMenuOpen ? 'menu-open' : '',
+                }}
+                BackdropProps={{
+                  className: isMobileMenuOpen ? 'custom-backdrop' : '',
+                }}
                 sx={{
                   "& .MuiPaper-root": {
                     width: "100%",
@@ -469,6 +475,12 @@ const NavigationBar = ({
                   vertical: "top",
                   horizontal: "left",
                 }}
+                PaperProps={{
+                  className: isSendMenuOpen ? 'menu-open' : '',
+                }}
+                BackdropProps={{
+                  className: isSendMenuOpen ? 'custom-backdrop' : '',
+                }}
                 sx={{
                   "& .MuiPaper-root": {
                     width: "100%",
@@ -527,8 +539,8 @@ const NavigationBar = ({
                         Cittadini
                       </Typography>
                       <Typography variant="body2" sx={{ mb: 1 }}>
-                        Accedi come persona fisica, libero professionista o
-                        ditta individuale
+                        Accedi come persona fisica, libero professionista o ditta
+                        individuale
                       </Typography>
                       <Button
                         variant="text"
@@ -845,6 +857,12 @@ const NavigationBar = ({
         transformOrigin={{
           vertical: "top",
           horizontal: "left",
+        }}
+        PaperProps={{
+          className: isSendMenuOpen ? 'menu-open' : '',
+        }}
+        BackdropProps={{
+          className: isSendMenuOpen ? 'custom-backdrop' : '',
         }}
         sx={{
           "& .MuiPaper-root": {

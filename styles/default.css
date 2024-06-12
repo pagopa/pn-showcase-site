@@ -207,6 +207,15 @@ body {
   font-weight: 600 !important;
 }
 
+.menu-open ~ .MuiBackdrop-root {
+  background-color: white !important;
+}
+
+.custom-backdrop {
+  background-color: white !important;
+  opacity: 1 !important;
+}
+
 @media screen and (min-width: 900px) {
   .documentiCustomCard .MuiPaper-root {
     margin-bottom: 8px;

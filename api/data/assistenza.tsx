@@ -62,7 +62,11 @@ const contentBlocks = [
               <Stack
                 direction={{ sm: "row", xs: "column" }}
                 spacing={2}
-                sx={{ width: "100%", justifyContent: "center" }}
+                sx={{
+                  width: "100%",
+                  justifyContent: "center",
+                  alignItems: { sm: "flex-start", xs: "center" },
+                }}
               >
                 <Card
                   sx={{
@@ -95,6 +99,7 @@ const contentBlocks = [
                     boxShadow: "0px 8px 38px 7px #002b551a",
                     borderRadius: "16px",
                     textAlign: "center",
+                    wordWrap: "break-word",
                   }}
                 >
                   <CardContent>
@@ -119,6 +124,7 @@ const contentBlocks = [
                     boxShadow: "0px 8px 38px 7px #002b551a",
                     borderRadius: "16px",
                     textAlign: "center",
+                    wordWrap: "break-word",
                   }}
                 >
                   <CardContent>
@@ -171,7 +177,11 @@ const contentBlocks = [
               <Stack
                 direction={{ sm: "row", xs: "column" }}
                 spacing={2}
-                sx={{ width: "100%", justifyContent: "center" }}
+                sx={{
+                  width: "100%",
+                  justifyContent: "center",
+                  alignItems: { sm: "flex-start", xs: "center" },
+                }}
               >
                 <Card
                   sx={{
@@ -180,6 +190,7 @@ const contentBlocks = [
                     boxShadow: "0px 8px 38px 7px #002b551a",
                     borderRadius: "16px",
                     textAlign: "center",
+                    wordWrap: "break-word",
                   }}
                 >
                   <CardContent>
@@ -204,6 +215,7 @@ const contentBlocks = [
                     boxShadow: "0px 8px 38px 7px #002b551a",
                     borderRadius: "16px",
                     textAlign: "center",
+                    wordWrap: "break-word",
                   }}
                 >
                   <CardContent>
@@ -228,6 +240,7 @@ const contentBlocks = [
                     boxShadow: "0px 8px 38px 7px #002b551a",
                     borderRadius: "16px",
                     textAlign: "center",
+                    wordWrap: "break-word",
                   }}
                 >
                   <CardContent>
@@ -304,43 +317,6 @@ const DarkInfoblockAssistenza = () => {
           Non hai trovato la risposta che cercavi? Scrivici inviando una
           richiesta di assistenza o chiama il contact center.
         </Typography>
-      </Stack>
-    </Box>
-  );
-};
-
-const LightStripeAssistenza = () => {
-  return (
-    <Box
-      sx={{
-        backgroundColor: "#F5F5F5",
-        paddingTop: 8,
-        paddingBottom: 8,
-        width: "100%",
-      }}
-    >
-      <Stack alignItems="center" justifyContent="center">
-        <MailIcon sx={{ fontSize: "40px", color: "#0062C3" }} />
-        <Typography
-          variant="h6"
-          component="h2"
-          sx={{ color: "#17324D" }}
-          gutterBottom
-        >
-          Siamo qui per te
-        </Typography>
-        <Typography
-          variant="body2"
-          sx={{ color: "#17324D" }}
-          textAlign="center"
-          marginBottom={2}
-        >
-          Non hai trovato la risposta che cercavi? Scrivici inviando una
-          richiesta di assistenza o chiama il contact center.
-        </Typography>
-        <Button variant="outlined" color="primary">
-          Scrivici
-        </Button>
       </Stack>
     </Box>
   );
@@ -451,8 +427,8 @@ const Assistenza: NextPage = () => {
         </Fade>
       </Box>
       {currentTab.index === 0 && <DarkInfoblockAssistenza />}
-      {currentTab.index === 1 && <LightStripeAssistenza />}
       {currentTab.index === 0 && <ContactInfoAssistenza />}
+      {currentTab.index === 1 && <ContactInfoAssistenza />}
     </Stack>
   );
 };
