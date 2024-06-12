@@ -11,28 +11,38 @@ import {
   Pagination,
 } from "@mui/material";
 import { RaddOperator } from "model";
+import { useEffect, useRef, useState } from "react";
 
 type Props = {
   rows: RaddOperator[];
 };
 
 function OperatorsList({ rows }: Readonly<Props>) {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const handleChangePage = (_event: any, page: number | null) => {
-    if (page !== null) {
-      setPage(page - 1);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const listContainerRef = useRef<HTMLUListElement | null>(null);
+
+  const handleChangePage = (_event: any, newPage: number | null) => {
+    if (newPage !== null) {
+      setPage(newPage - 1);
     }
   };
 
   const handleChangeRowsPerPage = (event: { target: { value: string } }) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+    setRowsPerPage(parseInt(event.target.value, 10));
   };
+
+  useEffect(() => {
+    if (listContainerRef.current) {
+      listContainerRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [page, rowsPerPage]);
 
   return (
     <Stack>
-      <List>
+      <List ref={listContainerRef}>
         {rows
           .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           .map((row, index: number) => (
@@ -90,18 +100,17 @@ function OperatorsList({ rows }: Readonly<Props>) {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          rowsPerPageOptions={[10, 20, 30]}
+          rowsPerPageOptions={[10, 20, 50]}
         />
         <Pagination
           id="ritiroPagination_page_mobile"
           sx={{ width: 170 }}
           color="primary"
+          page={page + 1}
           count={Math.ceil(rows.length / rowsPerPage)}
           onChange={handleChangePage}
           boundaryCount={1}
-          siblingCount={1}
-          hidePrevButton
-          hideNextButton
+          siblingCount={0}
         />
       </Stack>
     </Stack>
