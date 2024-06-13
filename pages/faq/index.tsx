@@ -2,7 +2,6 @@
 import { useState, useEffect, useCallback } from "react";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { Hero } from "@pagopa/mui-italia";
 import {
   Box,
   Typography,
@@ -10,6 +9,7 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Chip,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
@@ -126,6 +126,7 @@ const FaqPage: NextPage = () => {
   const faqData = getFaqData();
 
   const [currentItem, setCurrentItem] = useState<string | null>(null);
+  const [selectedSection, setSelectedSection] = useState<string | null>(null);
 
   // if the URL points to a specific item, that item is expanded (besides being shown at window top)
   useEffect(() => {
@@ -142,6 +143,30 @@ const FaqPage: NextPage = () => {
     []
   );
 
+  const handleChipClick = (section: string) => {
+    // If the section is already selected, deselect it (reset to initial state)
+    if (selectedSection === section) {
+      setSelectedSection(null);
+    } else {
+      setSelectedSection(section);
+    }
+  };
+
+  const sections = [
+    "Notifiche",
+    "SEND",
+    "Recapiti",
+    "Documenti e comunicazioni",
+    "Ricezione di una notifica",
+    "Perfezionamento",
+    "Annullamento",
+    "Accessibilità",
+  ];
+
+  const filteredSections = selectedSection
+    ? faqData.sections.filter((section) => section.title === selectedSection)
+    : faqData.sections;
+
   return (
     <>
       <PageHead
@@ -150,13 +175,54 @@ const FaqPage: NextPage = () => {
       />
 
       <main id="faqHero">
-        <div className="customFaqHero">
-          <Hero
-            title="FAQ"
-            type="text"
-            background={`${IMAGES_PATH}/hero-faq-background-2.png`}
-          />
-        </div>
+        <Box
+          sx={{
+            background: `url(${IMAGES_PATH}/hero-faq-background-2.png)`,
+            backgroundSize: "cover",
+            textAlign: "center",
+            color: "white",
+            pb: 5,
+            px: 2,
+          }}
+        >
+          <Box sx={{ pt: 5 }}>
+            <Typography variant="h2" sx={{ mb: 2, color: "white" }}>
+              Domande frequenti
+            </Typography>
+            <Typography variant="h6" sx={{ mb: 2, color: "white" }}>
+              Seleziona un argomento
+            </Typography>
+            <Stack
+              direction="row"
+              spacing={1}
+              justifyContent="center"
+              sx={{
+                flexWrap: "wrap",
+                "& > *": {
+                  height: "40px",
+                },
+                rowGap: "16px",
+              }}
+            >
+              {sections.map((section, index) => (
+                <Chip
+                  key={index}
+                  label={section}
+                  onClick={() => handleChipClick(section)}
+                  clickable
+                  color={selectedSection === section ? "primary" : "default"}
+                  sx={{
+                    color: "white",
+                    backgroundColor:
+                      selectedSection === section ? "#1976d2" : "#EBEBF52E",
+                    border:
+                      selectedSection === section ? "1px solid white" : "none",
+                  }}
+                />
+              ))}
+            </Stack>
+          </Box>
+        </Box>
         <Stack
           direction="column"
           sx={{
@@ -166,7 +232,7 @@ const FaqPage: NextPage = () => {
           }}
           className="faqItems"
         >
-          {faqData.sections.map((section, ix) => (
+          {filteredSections.map((section, ix) => (
             <FaqDataSectionBlock
               section={section}
               key={ix}

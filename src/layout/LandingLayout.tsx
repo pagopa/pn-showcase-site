@@ -12,7 +12,6 @@ import { SEND_PF_HELP_EMAIL, PAGOPA_HELP_EMAIL } from "@utils/constants";
 import NavigationBar from "../components/NavigationBar";
 import { LANGUAGES } from "./constants";
 
-
 interface Props {
   children?: ReactNode;
 }
@@ -21,12 +20,15 @@ const LandingLayout = ({ children }: Props) => {
   const lang = useContext(LangContext);
   const { pathname } = useRouter();
   const appData = getAppData();
-  const assistanceEmail = pathname !== "/pubbliche-amministrazioni" ? SEND_PF_HELP_EMAIL : PAGOPA_HELP_EMAIL;
+  const assistanceEmail =
+    pathname !== "/pubbliche-amministrazioni"
+      ? SEND_PF_HELP_EMAIL
+      : PAGOPA_HELP_EMAIL;
   const [windowURL, setWindowURL] = useState<string>();
 
-  // 
+  //
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       setWindowURL(window.location.origin);
     }
   }, []);
@@ -65,7 +67,7 @@ const LandingLayout = ({ children }: Props) => {
             >
               {appData.common.pagoPALink.label}
             </ButtonNaked>
-            <ButtonNaked
+            {/* <ButtonNaked
               size="small"
               aria-label={appData.common.assistance.ariaLabel}
               href={`mailto:${assistanceEmail}`}
@@ -77,7 +79,7 @@ const LandingLayout = ({ children }: Props) => {
               startIcon={<HelpOutlineOutlinedIcon fontSize="inherit" />}
             >
               {appData.common.assistance.label}
-            </ButtonNaked>
+            </ButtonNaked> */}
           </Stack>
         </Stack>
         <NavigationBar {...appData.common.navigation} />
@@ -88,7 +90,8 @@ const LandingLayout = ({ children }: Props) => {
           loggedUser={false}
           companyLink={{
             ...appData.common.pagoPALink,
-            onClick: () => window.open(appData.common.pagoPALink.href, "_blank"),
+            onClick: () =>
+              window.open(appData.common.pagoPALink.href, "_blank"),
           }}
           legalInfo={appData.common.companyLegalInfo}
           postLoginLinks={appData.common.postLoginLinks}

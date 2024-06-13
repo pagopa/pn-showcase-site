@@ -17,11 +17,15 @@ declare const OneTrust: {
 
 const PrivacyPage: NextPage = () => {
     useEffect(() => {
-        if (ONE_TRUST_RADD_TOS) {
-            OneTrust.NoticeApi.Initialized.then(() => {
-                OneTrust.NoticeApi.LoadNotices([ONE_TRUST_RADD_TOS], false);
-            });
+      const interval = setInterval(() => {
+        if (typeof OneTrust !== "undefined" && ONE_TRUST_RADD_TOS) {
+          clearInterval(interval);
+          OneTrust.NoticeApi.Initialized.then(() => {
+            OneTrust.NoticeApi.LoadNotices([ONE_TRUST_RADD_TOS], false);
+          });
         }
+      }, 100);
+      return () => clearInterval(interval);
     }, []);
 
     return (
