@@ -209,31 +209,40 @@ const Assistenza: NextPage = () => {
   );
 
   return (
-    <Stack alignItems="center">
+    <>
       <PageHead
         title="SEND - Servizio Notifiche Digitali | Assistenza"
         description="Domande frequenti e risorse dedicate all'assistenza per il servizio notifiche digitali SEND"
       />
-      <HeadingTitle {...headingTitleData} />
-      <Tabs {...tabsData} onTabChange={handleTabChange} />
-      <Box ref={containerRef} sx={{ width: "100%", maxWidth: "1200px", mt: 4 }}>
-        <Fade in={currentTab.visible} timeout={transitionDuration}>
-          <Box
-            sx={{
-              width: "100%",
-              maxWidth: "1200px",
-              margin: "0 auto",
-              padding: 2,
-            }}
-          >
-            {contentData.content}
-          </Box>
-        </Fade>
-      </Box>
+      <Stack mt={10}
+        mb={5}
+        mx={3}
+        direction="column"
+        alignItems="center"
+        spacing={0}
+        justifyContent="center">
+        <HeadingTitle {...headingTitleData} />
+        <Tabs {...tabsData} onTabChange={handleTabChange} />
+        <Box ref={containerRef} sx={{ width: "100%", maxWidth: "1200px", mt: 4 }}>
+          <Fade in={currentTab.visible} timeout={transitionDuration}>
+            <Box
+              sx={{
+                width: "100%",
+                maxWidth: "1200px",
+                margin: "0 auto",
+                padding: 2,
+              }}
+            >
+              {contentData.content}
+            </Box>
+          </Fade>
+        </Box>
+      </Stack>
+
       {currentTab.index === 0 && <DarkInfoblockAssistenza />}
       {currentTab.index === 0 && <ContactInfoAssistenza />}
       {currentTab.index === 1 && <ContactInfoAssistenzaMittenti />}
-    </Stack>
+    </>
   );
 };
 
