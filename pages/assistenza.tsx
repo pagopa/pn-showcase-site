@@ -20,6 +20,7 @@ import {
 import HeadingTitle from "src/components/HeadingTitle";
 import Tabs from "src/components/Tabs";
 import PageHead from "src/components/PageHead";
+import { PAGOPA_HELP_EMAIL } from "@utils/constants";
 
 const DarkInfoblockAssistenza = () => {
   return (
@@ -160,14 +161,14 @@ const ContactInfoAssistenzaMittenti = () => {
           >
             Richiedi assistenza come ente mittente via email scrivendo a{" "}
             <Link
-              href="mailto:mittenti-send@assistenza.pagopa.it"
+              href={"mailto:" + PAGOPA_HELP_EMAIL}
               sx={{
                 fontWeight: "bold",
                 textDecoration: "none",
                 color: "#17324D",
               }}
             >
-              mittenti-send@assistenza.pagopa.it
+              {PAGOPA_HELP_EMAIL}
             </Link>
             .
           </Typography>
@@ -175,7 +176,7 @@ const ContactInfoAssistenzaMittenti = () => {
             variant="outlined"
             color="primary"
             component="a"
-            href="mailto:mittenti-send@assistenza.pagopa.it"
+            href={"mailto:" + PAGOPA_HELP_EMAIL}
           >
             Scrivici
           </Button>
