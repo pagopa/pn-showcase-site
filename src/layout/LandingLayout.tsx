@@ -1,14 +1,11 @@
 import { ReactNode, useContext, useEffect, useState } from "react";
 
 import { Box, Stack } from "@mui/material";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 
 import { Footer, ButtonNaked } from "@pagopa/mui-italia";
 
 import LangContext from "provider/lang-context";
 import { getAppData } from "api";
-import { useRouter } from "next/router";
-import { SEND_PF_HELP_EMAIL, PAGOPA_HELP_EMAIL } from "@utils/constants";
 import NavigationBar from "../components/NavigationBar";
 import { LANGUAGES } from "./constants";
 
@@ -18,12 +15,8 @@ interface Props {
 
 const LandingLayout = ({ children }: Props) => {
   const lang = useContext(LangContext);
-  const { pathname } = useRouter();
   const appData = getAppData();
-  const assistanceEmail =
-    pathname !== "/pubbliche-amministrazioni"
-      ? SEND_PF_HELP_EMAIL
-      : PAGOPA_HELP_EMAIL;
+
   const [windowURL, setWindowURL] = useState<string>();
 
   //

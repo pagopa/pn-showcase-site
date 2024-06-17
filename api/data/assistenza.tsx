@@ -6,7 +6,6 @@ import {
   CardContent,
   CardActions,
   Container,
-  Grid,
   Stack,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";

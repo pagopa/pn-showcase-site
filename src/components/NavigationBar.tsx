@@ -552,8 +552,8 @@ const NavigationBar = ({
                           padding: 0,
                         }}
                         onClick={() =>
-                          (window.location.href =
-                            "https://cittadini.notifichedigitali.it/auth/login")
+                        (window.location.href =
+                          "https://cittadini.notifichedigitali.it/auth/login")
                         }
                         endIcon={<ArrowForwardIcon />}
                       >
@@ -591,8 +591,8 @@ const NavigationBar = ({
                           padding: 0,
                         }}
                         onClick={() =>
-                          (window.location.href =
-                            "https://imprese.notifichedigitali.it/auth/login")
+                        (window.location.href =
+                          "https://imprese.notifichedigitali.it/auth/login")
                         }
                         endIcon={<ArrowForwardIcon />}
                       >
@@ -629,8 +629,8 @@ const NavigationBar = ({
                             padding: 0,
                           }}
                           onClick={() =>
-                            (window.location.href =
-                              "https://selfcare.pagopa.it/auth/login")
+                          (window.location.href =
+                            "https://selfcare.pagopa.it/auth/login")
                           }
                           endIcon={<ArrowForwardIcon />}
                         >
@@ -646,7 +646,7 @@ const NavigationBar = ({
                         <Typography variant="body2">
                           Il tuo ente non ha ancora aderito?{" "}
                           <a
-                            href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
+                            href="https://docs.pagopa.it/area-riservata-enti-piattaforma-notifiche/area-riservata-enti-send-servizio-notifiche-digitali/processo-di-adesione-a-send"
                             style={{
                               color: "#0066CC",
                               textDecoration: "underline",
@@ -935,8 +935,8 @@ const NavigationBar = ({
                   padding: 0,
                 }}
                 onClick={() =>
-                  (window.location.href =
-                    "https://cittadini.notifichedigitali.it/auth/login")
+                (window.location.href =
+                  "https://cittadini.notifichedigitali.it/auth/login")
                 }
                 endIcon={<ArrowForwardIcon />}
               >
@@ -972,8 +972,8 @@ const NavigationBar = ({
                   padding: 0,
                 }}
                 onClick={() =>
-                  (window.location.href =
-                    "https://imprese.notifichedigitali.it/auth/login")
+                (window.location.href =
+                  "https://imprese.notifichedigitali.it/auth/login")
                 }
                 endIcon={<ArrowForwardIcon />}
               >
@@ -1007,8 +1007,8 @@ const NavigationBar = ({
                     padding: 0,
                   }}
                   onClick={() =>
-                    (window.location.href =
-                      "https://selfcare.pagopa.it/auth/login")
+                  (window.location.href =
+                    "https://selfcare.pagopa.it/auth/login")
                   }
                   endIcon={<ArrowForwardIcon />}
                 >
