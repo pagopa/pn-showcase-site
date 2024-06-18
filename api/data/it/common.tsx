@@ -85,6 +85,12 @@ export const preLoginLinks: (windowURL?: string) => PreLoginFooterLinksType = (
     title: "Risorse",
     links: [
       {
+        label: "Note legali",
+        href: "/note-legali",
+        ariaLabel: "Vai al link: Note legali",
+        linkType: "internal",
+      },
+      {
         label: "Informativa Privacy",
         href: `/informativa-privacy/`,
         ariaLabel: "Vai al link: Informativa Privacy",
