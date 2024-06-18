@@ -128,7 +128,6 @@ const FaqPage: NextPage = () => {
   const [currentItem, setCurrentItem] = useState<string | null>(null);
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
 
-  // if the URL points to a specific item, that item is expanded (besides being shown at window top)
   useEffect(() => {
     const hash = router.asPath.split("#")[1];
     if (hash) {
@@ -144,12 +143,7 @@ const FaqPage: NextPage = () => {
   );
 
   const handleChipClick = (section: string) => {
-    // If the section is already selected, deselect it (reset to initial state)
-    if (selectedSection === section) {
-      setSelectedSection(null);
-    } else {
-      setSelectedSection(section);
-    }
+    setSelectedSection(section === selectedSection ? null : section);
   };
 
   const sections = [
@@ -163,8 +157,12 @@ const FaqPage: NextPage = () => {
     "Accessibilità",
   ];
 
-  const filteredSections = selectedSection
-    ? faqData.sections.filter((section) => section.title === selectedSection)
+  // Separate the selected section
+  const sortedSections = selectedSection
+    ? [
+        ...faqData.sections.filter((section) => section.title === selectedSection),
+        ...faqData.sections.filter((section) => section.title !== selectedSection),
+      ]
     : faqData.sections;
 
   return (
@@ -183,19 +181,23 @@ const FaqPage: NextPage = () => {
             color: "white",
             pb: 5,
             px: 2,
+            display: "grid",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <Box sx={{ pt: 5 }}>
-            <Typography variant="h2" sx={{ mb: 2, color: "white" }}>
+            <Typography variant="h2" sx={{ mb: 4, color: "white" }}>
               Domande frequenti
             </Typography>
-            <Typography variant="h6" sx={{ mb: 2, color: "white" }}>
+            <Typography variant="h6" sx={{ mb: 3, color: "white" }}>
               Seleziona un argomento
             </Typography>
             <Stack
               direction="row"
               spacing={1}
               justifyContent="center"
+              maxWidth="sm"
               sx={{
                 flexWrap: "wrap",
                 "& > *": {
@@ -232,7 +234,7 @@ const FaqPage: NextPage = () => {
           }}
           className="faqItems"
         >
-          {filteredSections.map((section, ix) => (
+          {sortedSections.map((section, ix) => (
             <FaqDataSectionBlock
               section={section}
               key={ix}

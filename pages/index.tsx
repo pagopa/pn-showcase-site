@@ -17,9 +17,9 @@ const IndexPage: NextPage = () => (
 
     <main>
       <Hero {...getHeroData(USER_TYPE)} />
-      <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 1")} />
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 2")} />
       <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 3")} />
+      <Infoblock {...getInfoblockData(USER_TYPE, "infoblock 1")} />
     </main>
   </>
 );
