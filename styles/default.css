@@ -56,8 +56,8 @@ body {
   .otnotice-menu-mobile
   .otnotice-menu-section-mobile
   a {
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 16px; 
+  font-weight: 600; 
   line-height: 1.5;
   color: #17324d !important;
 }
@@ -74,11 +74,13 @@ body {
 .otnotice .otnotice-content .otnotice-section:first-child h2 {
   font-size: 2.375rem;
   color: #17324d;
+  line-height: 1;
 }
 
 .otnotice .otnotice-content .otnotice-section:not(:first-child) h2 {
   font-size: 1.75rem;
   color: #17324d;
+  line-height: 1;
 }
 /* END: ONETRUST STYLES */
 
@@ -89,11 +91,6 @@ body {
 .documenti .MuiPaper-root {
   box-shadow: 0px 8px 38px 7px #002b551a;
 }
-
-/* .entiMenuItems [class$="MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper"] {
-  margin-left: -2em;
-  margin-top: 1em;
-} */
 
 .documentiCustomCardContent .MuiTypography-body2 {
   margin-top: 0.6em;
@@ -134,19 +131,9 @@ body {
   flex-direction: row;
 }
 
-.customFaqHero
-  [class$="MuiStack-root"]
-  > [class$="MuiStack-root"]:nth-of-type(2) {
-  display: none;
-}
-
 .sendNavbar .MuiTabs-flexContainer .MuiTypography-root {
   font-weight: 600;
   font-size: 1rem;
-}
-
-.sendNavbar .MuiButtonBase-root.MuiTab-root.Mui-selected {
-  color: #5c6f82 !important;
 }
 
 .button-cittadini {
@@ -188,6 +175,49 @@ body {
 #ritiroPagination_page_mobile ul {
   justify-content: flex-end;
 }
+
+.menuItem {
+  margin: 4px 0; 
+  padding: 4px; 
+  font-size: 16px; 
+  font-weight: 600; 
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 40px !important;
+}
+.menuItemIcon {
+  margin-left: auto;
+  color: inherit;
+}
+
+.menuItemIcon.iconActive {
+  color: var(--primary-color); 
+}
+
+.firstMenuItem {
+  margin-top: 40px; 
+}
+
+.subMenuItem {
+  margin: 4px 0;
+  padding-left: 24px; 
+}
+
+.MuiTypography-body1 {
+  font-size: 16px !important; 
+  font-weight: 600 !important;
+}
+
+.menu-open ~ .MuiBackdrop-root {
+  background-color: white !important;
+}
+
+.custom-backdrop {
+  background-color: white !important;
+  opacity: 1 !important;
+}
+
 .MuiOutlinedInput-root:has(#textFilter) {
   padding-right: 0;
 }
@@ -196,12 +226,6 @@ body {
   .documentiCustomCard .MuiPaper-root {
     margin-bottom: 8px;
     margin-right: 8px;
-  }
-}
-
-@media (max-width: 640px) {
-  .tab-enti {
-    margin-left: 10px !important;
   }
 }
 
