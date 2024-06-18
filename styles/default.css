@@ -227,6 +227,23 @@ body {
     margin-bottom: 8px;
     margin-right: 8px;
   }
+  .menu-open {
+    left: unset !important;
+    right: 0px !important;
+    width: 25% !important;
+  }
+  .custom-backdrop {
+    background-color: rgba(23, 50, 77, 0.7) !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .custom-backdrop {
+    background-color: white !important;
+  }
+  .menu-open {
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 420px) {
@@ -237,5 +254,29 @@ body {
   .stack-responsive a {
     margin-left: 0px !important;
     margin-bottom: 1em !important;
+  }
+}
+
+.MuiModal-root .MuiPaper-root {
+  left: unset !important;
+  right: 0 !important;
+}
+
+.custom-backdrop {
+  background-color: rgba(23, 50, 77, 0.7) !important;
+}
+
+@media screen and (min-width: 900px) {
+  .MuiModal-root .MuiPaper-root {
+    width: 25% !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .MuiModal-root .MuiPaper-root {
+    width: 100% !important;
+  }
+  .custom-backdrop {
+    background-color: white !important;
   }
 }
