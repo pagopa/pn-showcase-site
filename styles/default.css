@@ -280,3 +280,14 @@ body {
     background-color: white !important;
   }
 }
+
+@media screen and (min-width: 900px) {
+  .MuiPopover-root .MuiPaper-root {
+    transform: scale(1, 1.1) !important;
+    top: 40px !important;
+  }
+
+  .MuiList-root.MuiMenu-list {
+    transform: scale(1, 0.9) !important;
+  }
+}
