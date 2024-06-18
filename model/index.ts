@@ -139,3 +139,10 @@ export interface Point {
   cap: string;
   telefono: string;
 }
+
+export type PaginationData = {
+  size: number;
+  totalElements: number;
+  numOfDisplayedPages: number;
+  currentPage: number;
+};

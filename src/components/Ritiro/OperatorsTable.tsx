@@ -6,15 +6,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import {
-  Pagination,
-  TablePagination,
-  Stack,
-  TableSortLabel,
-  Typography,
-} from "@mui/material";
+import { TablePagination, Stack, TableSortLabel } from "@mui/material";
 import { RaddOperator } from "model";
 import { useState } from "react";
+import CustomPagination from "../CustomPagination";
 
 type Props = {
   rows: RaddOperator[];
@@ -79,6 +74,13 @@ function OperatorsTable({ rows }: Readonly<Props>) {
   const handleRequestSort = (property: string) => {
     const isAsc = property === "city" && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
+  };
+
+  const pagination = {
+    size: rowsPerPage,
+    totalElements: rows.length,
+    numOfDisplayedPages: Math.min(Math.ceil(rows.length / rowsPerPage), 3),
+    currentPage: page,
   };
 
   return (
@@ -146,14 +148,9 @@ function OperatorsTable({ rows }: Readonly<Props>) {
             onRowsPerPageChange={handleChangeRowsPerPage}
             rowsPerPageOptions={[10, 20, 50]}
           />
-          <Pagination
-            color="primary"
-            count={Math.ceil(rows.length / rowsPerPage)}
+          <CustomPagination
+            pagination={pagination}
             onChange={handleChangePage}
-            boundaryCount={1}
-            siblingCount={1}
-            hidePrevButton
-            hideNextButton
           />
         </Stack>
       )}
