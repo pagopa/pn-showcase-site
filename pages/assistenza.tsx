@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -8,9 +8,14 @@ import {
   Typography,
   Grid,
   Link,
+  Card,
+  CardContent,
+  CardActions,
+  Container,
 } from "@mui/material";
 import MailIcon from "@mui/icons-material/Mail";
 import PhoneIcon from "@mui/icons-material/Phone";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 import {
   getAssistenzaHeadingTitleData,
@@ -30,10 +35,13 @@ const DarkInfoblockAssistenza = () => {
         paddingTop: 8,
         paddingBottom: 8,
         width: "100%",
+        display: "grid",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
-      <Stack alignItems="center" justifyContent="center">
-        <Typography variant="h6" component="h2" color="white" gutterBottom>
+      <Stack alignItems="center" justifyContent="center" maxWidth="sm" padding={4}>
+        <Typography variant="h6" component="h2" color="white" marginBottom={2} gutterBottom>
           Siamo qui per te
         </Typography>
         <Typography
@@ -53,8 +61,8 @@ const DarkInfoblockAssistenza = () => {
 const ContactInfoAssistenza = () => {
   return (
     <Grid container spacing={0} sx={{ width: "100%" }}>
-      <Grid item xs={12} md={6} sx={{ backgroundColor: "#F5F5F5", padding: 4 }}>
-        <Stack alignItems="center" justifyContent="center" spacing={2}>
+      <Grid item xs={12} md={6} sx={{ backgroundColor: "#F5F5F5", padding: 8 }} display="grid" justifyContent="center" alignItems="center">
+        <Stack alignItems="center" justifyContent="center" spacing={2} maxWidth="500px">
           <MailIcon sx={{ fontSize: "40px", color: "#0062C3" }} />
           <Typography
             variant="h6"
@@ -94,8 +102,8 @@ const ContactInfoAssistenza = () => {
           </Button>
         </Stack>
       </Grid>
-      <Grid item xs={12} md={6} sx={{ backgroundColor: "#FAFAFA", padding: 4 }}>
-        <Stack alignItems="center" justifyContent="center" spacing={2}>
+      <Grid item xs={12} md={6} sx={{ backgroundColor: "#FAFAFA", padding: 8 }} display="grid" justifyContent="center" alignItems="center">
+        <Stack alignItems="center" justifyContent="center" spacing={2} maxWidth="500px">
           <PhoneIcon sx={{ fontSize: "40px", color: "#0062C3" }} />
           <Typography
             variant="h6"
@@ -142,8 +150,8 @@ const ContactInfoAssistenza = () => {
 const ContactInfoAssistenzaMittenti = () => {
   return (
     <Grid container spacing={0} sx={{ width: "100%" }}>
-      <Grid item xs={12} sx={{ backgroundColor: "#F5F5F5", padding: 4 }}>
-        <Stack alignItems="center" justifyContent="center" spacing={2}>
+      <Grid item xs={12} sx={{ backgroundColor: "#F5F5F5", padding: 8 }} display="grid" justifyContent="center" alignItems="center">
+        <Stack alignItems="center" justifyContent="center" spacing={2} maxWidth="500px">
           <MailIcon sx={{ fontSize: "40px", color: "#0062C3" }} />
           <Typography
             variant="h6"
@@ -194,6 +202,36 @@ const Assistenza: NextPage = () => {
   const headingTitleData = getAssistenzaHeadingTitleData(
     "heading title assistenza 1"
   );
+
+  const handleResize = () => {
+    const cards = document.querySelectorAll<HTMLDivElement>('.MuiCard-root');
+    let maxHeight = 0;
+
+    cards.forEach((card) => {
+      card.style.height = 'auto';
+      if (card.clientHeight > maxHeight) {
+        maxHeight = card.clientHeight;
+      }
+    });
+
+    cards.forEach((card) => {
+      card.style.height = `${maxHeight}px`;
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    handleResize();
+  }, [currentTab]);
+
   const handleTabChange = (tab: number) => {
     if (tab === currentTab.index) {
       return;

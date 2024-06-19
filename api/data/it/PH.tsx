@@ -117,7 +117,7 @@ export const phInfoBlocks: Array<IInfoblockData> = [
         </>
       ),
       ctaPrimary: entiCta,
-      inverse: false,
+      inverse: true,
       image: `${IMAGES_PATH}/ph-infoblock-1.png`,
       altText:
         "Anteprima della pagina Notifiche della piattaforma SEND su un notebook",

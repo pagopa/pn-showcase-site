@@ -4,7 +4,6 @@ import {
   Button,
   Card,
   CardContent,
-  CardActions,
   Container,
   Stack,
 } from "@mui/material";
@@ -34,6 +33,29 @@ const tabs = [
     },
   },
 ];
+
+type CustomButtonProps = {
+  href: string;
+  text: string;
+};
+
+const CustomButton: React.FC<CustomButtonProps> = ({ href, text }) => (
+  <Button
+    size="small"
+    color="primary"
+    href={href}
+    sx={{
+      fontSize: "16px",
+      fontWeight: "600",
+      display: 'flex',
+      alignItems: 'center',
+      paddingTop: '8px'
+    }}
+  >
+    {text}
+    <ArrowForwardIcon sx={{ fontSize: "16px", ml: 0.5 }} />
+  </Button>
+);
 
 const contentBlocks = [
   {
@@ -72,23 +94,24 @@ const contentBlocks = [
                     boxShadow: "0px 8px 38px 7px #002b551a",
                     borderRadius: "16px",
                     textAlign: "center",
+                    display: "grid",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "24px 0px",
                   }}
                 >
                   <CardContent>
-                    <Typography variant="h5" sx={{ color: "#17324D" }}>
+                    <Typography
+                      variant="h6"
+                      sx={{ color: "#17324D", wordBreak: "break-word" }}
+                    >
                       Come posso accedere a SEND?
                     </Typography>
-                  </CardContent>
-                  <CardActions sx={{ justifyContent: "center" }}>
-                    <Button
-                      size="small"
-                      color="primary"
-                      endIcon={<ArrowForwardIcon />}
+                    <CustomButton
                       href="/faq#send-come-accedere"
-                    >
-                      Leggi la risposta
-                    </Button>
-                  </CardActions>
+                      text="Leggi la risposta"
+                    />
+                  </CardContent>
                 </Card>
                 <Card
                   sx={{
@@ -98,23 +121,24 @@ const contentBlocks = [
                     borderRadius: "16px",
                     textAlign: "center",
                     wordWrap: "break-word",
+                    display: "grid",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "24px 0px",
                   }}
                 >
                   <CardContent>
-                    <Typography variant="h5" sx={{ color: "#17324D" }}>
+                    <Typography
+                      variant="h6"
+                      sx={{ color: "#17324D", wordBreak: "break-word" }}
+                    >
                       Cos’è un avviso di avvenuta ricezione?
                     </Typography>
-                  </CardContent>
-                  <CardActions sx={{ justifyContent: "center" }}>
-                    <Button
-                      size="small"
-                      color="primary"
-                      endIcon={<ArrowForwardIcon />}
+                    <CustomButton
                       href="/faq#documenti-aar"
-                    >
-                      Leggi la risposta
-                    </Button>
-                  </CardActions>
+                      text="Leggi la risposta"
+                    />
+                  </CardContent>
                 </Card>
                 <Card
                   sx={{
@@ -124,23 +148,24 @@ const contentBlocks = [
                     borderRadius: "16px",
                     textAlign: "center",
                     wordWrap: "break-word",
+                    display: "grid",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "24px 0px",
                   }}
                 >
                   <CardContent>
-                    <Typography variant="h5" sx={{ color: "#17324D" }}>
+                    <Typography
+                      variant="h6"
+                      sx={{ color: "#17324D", wordBreak: "break-word" }}
+                    >
                       Cosa significa “perfezionamento”?
                     </Typography>
-                  </CardContent>
-                  <CardActions sx={{ justifyContent: "center" }}>
-                    <Button
-                      size="small"
-                      color="primary"
-                      endIcon={<ArrowForwardIcon />}
+                    <CustomButton
                       href="/faq#perfezionamento-cosa-significa"
-                    >
-                      Leggi la risposta
-                    </Button>
-                  </CardActions>
+                      text="Leggi la risposta"
+                    />
+                  </CardContent>
                 </Card>
               </Stack>
             </Stack>
@@ -191,25 +216,24 @@ const contentBlocks = [
                     borderRadius: "16px",
                     textAlign: "center",
                     wordWrap: "break-word",
+                    display: "grid",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "24px 0px",
                   }}
                 >
                   <CardContent>
-                    <Typography variant="h5" sx={{ color: "#17324D" }}>
+                    <Typography
+                      variant="h6"
+                      sx={{ color: "#17324D", wordBreak: "break-word" }}
+                    >
                       Chi può inviare notifiche tramite SEND?
                     </Typography>
+                    <CustomButton
+                      href="https://docs.pagopa.it/send-faq-enti/argomenti/adesione/chi-puo-aderire"
+                      text="Leggi le FAQ enti"
+                    />
                   </CardContent>
-                  <CardActions sx={{ justifyContent: "center" }}>
-                    <Button
-                      size="small"
-                      color="primary"
-                      endIcon={<ArrowForwardIcon />}
-                      component="a"
-                      href="https://docs.pagopa.it/faq-enti/#id-1.-ladesione"
-                      target="_self"
-                    >
-                      Leggi le FAQ enti
-                    </Button>
-                  </CardActions>
                 </Card>
                 <Card
                   sx={{
@@ -219,25 +243,24 @@ const contentBlocks = [
                     borderRadius: "16px",
                     textAlign: "center",
                     wordWrap: "break-word",
+                    display: "grid",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "24px 0px",
                   }}
                 >
                   <CardContent>
-                    <Typography variant="h5" sx={{ color: "#17324D" }}>
+                    <Typography
+                      variant="h6"
+                      sx={{ color: "#17324D", wordBreak: "break-word" }}
+                    >
                       Come posso aderire a SEND con il mio ente?
                     </Typography>
-                  </CardContent>
-                  <CardActions sx={{ justifyContent: "center" }}>
-                    <Button
-                      size="small"
-                      color="primary"
-                      endIcon={<ArrowForwardIcon />}
-                      component="a"
+                    <CustomButton
                       href="https://docs.pagopa.it/area-riservata-enti-piattaforma-notifiche/area-riservata-enti-send-servizio-notifiche-digitali/processo-di-adesione-a-send"
-                      target="_self"
-                    >
-                      Scopri come aderire
-                    </Button>
-                  </CardActions>
+                      text="Scopri come aderire"
+                    />
+                  </CardContent>
                 </Card>
                 <Card
                   sx={{
@@ -247,25 +270,24 @@ const contentBlocks = [
                     borderRadius: "16px",
                     textAlign: "center",
                     wordWrap: "break-word",
+                    display: "grid",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "24px 0px",
                   }}
                 >
                   <CardContent>
-                    <Typography variant="h5" sx={{ color: "#17324D" }}>
+                    <Typography
+                      variant="h6"
+                      sx={{ color: "#17324D", wordBreak: "break-word" }}
+                    >
                       Come funziona il processo di notificazione?
                     </Typography>
-                  </CardContent>
-                  <CardActions sx={{ justifyContent: "center" }}>
-                    <Button
-                      size="small"
-                      color="primary"
-                      endIcon={<ArrowForwardIcon />}
-                      component="a"
+                    <CustomButton
                       href="https://docs.pagopa.it/manuale-operativo/piattaforma-notifiche-digitali-manuale-operativo/il-processo-di-notificazione"
-                      target="_self"
-                    >
-                      Consulta il manuale
-                    </Button>
-                  </CardActions>
+                      text="Consulta il manuale"
+                    />
+                  </CardContent>
                 </Card>
               </Stack>
             </Stack>
@@ -274,7 +296,7 @@ const contentBlocks = [
             <Button
               variant="contained"
               color="primary"
-              href="/pubbliche-amministrazioni"
+              href="/pubbliche-amministrazioni/documenti/"
             >
               Esplora le risorse per gli enti
             </Button>
