@@ -209,15 +209,12 @@ body {
   font-weight: 600 !important;
 }
 
-.menu-open ~ .MuiBackdrop-root {
-  background-color: rgba(23, 50, 77, 0.7) !important;
-}
-
 .subMenu {
   width: auto; 
 }
 
-.custom-backdrop {
+.custom-backdrop,
+.MuiBackdrop-root {
   background-color: rgba(23, 50, 77, 0.7) !important;
   opacity: 1 !important;
 }
@@ -236,15 +233,21 @@ body {
     width: 25%;
   }
 
-  .custom-backdrop {
-    background-color: rgba(23, 50, 77, 0.7);
-    opacity: 1;
+  .custom-backdrop,
+  .MuiBackdrop-root {
+    background-color: rgba(23, 50, 77, 0.7) !important;
+    opacity: 1 !important;
   }
 }
 
 @media (max-width: 900px) {
   .menu-open {
     width: 100%;
+  }
+
+  .custom-backdrop,
+  .MuiBackdrop-root {
+    background-color: #ffffff !important;
   }
 }
 
