@@ -68,7 +68,7 @@ const CustomPagination: React.FC<PaginationProps> = ({
       page={pagination.currentPage + 1}
       count={Math.ceil(pagination.totalElements / pagination.size)}
       onChange={onChange}
-      siblingCount={1}
+      siblingCount={Math.ceil(pagination.numOfDisplayedPages / 2)}
       boundaryCount={0}
       renderItem={renderingPaginationItems}
     />
