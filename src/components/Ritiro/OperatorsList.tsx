@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { RaddOperator } from "model";
 import { useEffect, useRef, useState } from "react";
+import CustomPagination from "../CustomPagination";
 
 type Props = {
   rows: RaddOperator[];
@@ -33,7 +34,12 @@ function OperatorsList({ rows }: Readonly<Props>) {
     setPage(0);
     setRowsPerPage(parseInt(event.target.value, 10));
   };
-
+  const pagination = {
+    size: rowsPerPage,
+    totalElements: rows.length,
+    numOfDisplayedPages: Math.min(Math.ceil(rows.length / rowsPerPage), 3),
+    currentPage: page,
+  };
   useEffect(() => {
     if (listContainerRef.current) {
       listContainerRef.current.scrollIntoView({ behavior: "smooth" });
@@ -102,16 +108,7 @@ function OperatorsList({ rows }: Readonly<Props>) {
           onRowsPerPageChange={handleChangeRowsPerPage}
           rowsPerPageOptions={[10, 20, 50]}
         />
-        <Pagination
-          id="ritiroPagination_page_mobile"
-          sx={{ width: 170 }}
-          color="primary"
-          page={page + 1}
-          count={Math.ceil(rows.length / rowsPerPage)}
-          onChange={handleChangePage}
-          boundaryCount={1}
-          siblingCount={0}
-        />
+        <CustomPagination pagination={pagination} onChange={handleChangePage} />
       </Stack>
     </Stack>
   );
