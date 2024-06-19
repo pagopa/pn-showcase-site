@@ -94,7 +94,7 @@ function OperatorsList({ rows }: Readonly<Props>) {
       <Stack
         alignItems="center"
         justifyContent="space-between"
-        px={3}
+        px={1}
         mt={1}
         direction="row"
       >
