@@ -210,11 +210,15 @@ body {
 }
 
 .menu-open ~ .MuiBackdrop-root {
-  background-color: white !important;
+  background-color: rgba(23, 50, 77, 0.7) !important;
+}
+
+.subMenu {
+  width: auto; 
 }
 
 .custom-backdrop {
-  background-color: white !important;
+  background-color: rgba(23, 50, 77, 0.7) !important;
   opacity: 1 !important;
 }
 
@@ -226,6 +230,21 @@ body {
   .documentiCustomCard .MuiPaper-root {
     margin-bottom: 8px;
     margin-right: 8px;
+  }
+
+  .menu-open {
+    width: 25%;
+  }
+
+  .custom-backdrop {
+    background-color: rgba(23, 50, 77, 0.7);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .menu-open {
+    width: 100%;
   }
 }
 

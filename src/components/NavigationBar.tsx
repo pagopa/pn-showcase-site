@@ -271,10 +271,10 @@ const NavigationBar = ({
                   horizontal: "left",
                 }}
                 PaperProps={{
-                  className: isMobileMenuOpen ? 'menu-open' : '',
+                  className: isMobile ? 'menu-open' : '',
                 }}
                 BackdropProps={{
-                  className: isMobileMenuOpen ? 'custom-backdrop' : '',
+                  className: isMobile ? 'custom-backdrop' : '',
                 }}
                 sx={{
                   "& .MuiPaper-root": {
@@ -370,6 +370,7 @@ const NavigationBar = ({
                         bgcolor: "background.paper",
                         paddingLeft: "16px",
                       }}
+                      className="subMenu"
                     >
                       <MenuItem
                         className="subMenuItem"
@@ -424,6 +425,7 @@ const NavigationBar = ({
                         bgcolor: "background.paper",
                         paddingLeft: "16px",
                       }}
+                      className="subMenu"
                     >
                       <MenuItem
                         className="subMenuItem"
@@ -476,10 +478,10 @@ const NavigationBar = ({
                   horizontal: "left",
                 }}
                 PaperProps={{
-                  className: isSendMenuOpen ? 'menu-open' : '',
+                  className: isMobile ? 'menu-open' : '',
                 }}
                 BackdropProps={{
-                  className: isSendMenuOpen ? 'custom-backdrop' : '',
+                  className: isMobile ? 'custom-backdrop' : '',
                 }}
                 sx={{
                   "& .MuiPaper-root": {
@@ -613,10 +615,7 @@ const NavigationBar = ({
                         justifyContent="space-between"
                         sx={{ mb: 1 }}
                       >
-                        <Typography
-                          variant="subtitle1"
-                          sx={{ fontWeight: 600 }}
-                        >
+                        <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
                           Sei un ente?
                         </Typography>
                         <Button
@@ -859,14 +858,14 @@ const NavigationBar = ({
           horizontal: "left",
         }}
         PaperProps={{
-          className: isSendMenuOpen ? 'menu-open' : '',
+          className: isMobile ? '' : 'menu-open',
         }}
         BackdropProps={{
-          className: isSendMenuOpen ? 'custom-backdrop' : '',
+          className: isMobile ? '' : 'custom-backdrop',
         }}
         sx={{
           "& .MuiPaper-root": {
-            width: "100%",
+            width: isMobile ? "100%" : "25%",
             top: "0px!important",
             boxShadow: "none",
             left: "0px!important",
