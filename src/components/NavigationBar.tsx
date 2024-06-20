@@ -34,6 +34,7 @@ const styles = {
   menuItemText: { cursor: "pointer", color: "text.secondary", fontWeight: 600 },
   menuItemIcon: { color: "text.secondary" },
   subMenuBox: { paddingLeft: 3 },
+  subMenuBoxMobile: { paddingLeft: 3, paddingTop: "20px" },
   sendMenuBox: {
     display: "flex",
     flexDirection: "column",
@@ -136,6 +137,7 @@ const styles = {
     bgcolor: "background.paper",
     position: "relative",
     padding: "10px",
+    gap: "20px",
   },
   mobileMenuCloseButton: {
     position: "absolute",
@@ -166,6 +168,7 @@ const styles = {
     borderRadius: 4,
     zIndex: 1300,
   },
+  firstMenuItem: { marginTop: "50px" },
 };
 
 const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
@@ -230,11 +233,21 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
     { label: "FAQ", path: "/faq" },
   ];
 
-  const renderMenuItems = (items: MenuItem[], parentPath: string = "") =>
-    items.map((item) => {
+  const renderMenuItems = (
+    items: MenuItem[],
+    parentPath: string = "",
+    isFirstItem: boolean = false
+  ) =>
+    items.map((item, index) => {
       const isParentActive = isPathActive(item.path);
       return (
-        <Box key={item.path} sx={styles.menuItemBox}>
+        <Box
+          key={item.path}
+          sx={{
+            ...styles.menuItemBox,
+            ...(isFirstItem && index === 0 && styles.firstMenuItem),
+          }}
+        >
           <Box
             sx={{
               display: "flex",
@@ -270,7 +283,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
             )}
           </Box>
           {item.subMenu && isMobile && openSubMenu === item.path && (
-            <Box sx={styles.subMenuBox}>
+            <Box sx={styles.subMenuBoxMobile}>
               {renderMenuItems(item.subMenu, item.path)}
             </Box>
           )}
@@ -468,7 +481,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
           >
             <CloseIcon />
           </IconButton>
-          {isMobileMenuOpen && renderMenuItems(menuItems)}
+          {isMobileMenuOpen && renderMenuItems(menuItems, "", true)}
           {isSendMenuOpen && renderSendMenu()}
         </Box>
       </Menu>
