@@ -26,12 +26,6 @@ const CustomPagination: React.FC<PaginationProps> = ({
 
   const renderingPaginationItems = (itemParam: PaginationRenderItemParams) => {
     if (
-      itemParam.type === "start-ellipsis" ||
-      itemParam.type === "end-ellipsis"
-    ) {
-      return null;
-    }
-    if (
       itemParam.type === "page" &&
       itemParam.page !== null &&
       pagesToShow.indexOf(itemParam.page) === -1
