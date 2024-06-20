@@ -101,7 +101,7 @@ const styles = {
     },
   },
   menuIconText: { marginLeft: 1, color: "#5C6F82", fontWeight: 600 },
-  sendButton: { marginLeft: 2 },
+  sendButton: { marginLeft: 2, marginTop: 1, marginBottom: 1 },
   desktopMenu: {
     display: "flex",
     justifyContent: "space-between",
