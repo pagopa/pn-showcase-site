@@ -108,6 +108,9 @@ const styles = {
     width: "100%",
     margin: "0px 24px",
     borderTop: "1px solid #E3E7EB",
+    "&  .MuiTabs-flexContainer": {
+      alignItems: "center",
+    },
   },
   assistenzaLink: {
     textDecoration: "none",
