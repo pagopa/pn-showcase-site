@@ -139,7 +139,7 @@ const styles = {
   },
   assistenzaIcon: {
     color: "white",
-    fontSize: "16px",
+    fontSize: "18px",
   },
   mobileMenuContainer: {
     display: "flex",
@@ -188,7 +188,7 @@ const styles = {
     right: "0",
     bottom: 0,
     height: 3,
-    backgroundColor: "#1976d2",
+    backgroundColor: "primary.main",
     width: "calc(100% + 32px)",
     marginLeft: "-16px",
   },
