@@ -7,15 +7,8 @@ import {
   Button,
   IconButton,
   Menu,
-  Tabs,
   Popover,
   Drawer,
-  List,
-  Divider,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -24,8 +17,6 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PeopleIcon from "@mui/icons-material/People";
 import BusinessIcon from "@mui/icons-material/Business";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 
 interface INavigationBarProps {
   title: string;
@@ -39,8 +30,15 @@ interface MenuItem {
 }
 
 const styles = {
-  menuItemBox: { margin: "0 16px" },
-  menuItemText: { cursor: "pointer", color: "text.secondary", fontWeight: 600 },
+  menuItemBox: { margin: "0 16px", position: "relative" },
+  menuItemText: {
+    cursor: "pointer",
+    color: "text.secondary",
+    fontWeight: 600,
+    display: "flex",
+    alignItems: "center",
+    height: "100%",
+  },
   menuItemIcon: { color: "text.secondary" },
   subMenuBox: { paddingLeft: 3 },
   subMenuBoxMobile: { paddingLeft: 3, paddingTop: "20px" },
@@ -184,6 +182,16 @@ const styles = {
   drawerPaper: {
     width: "25vw",
   },
+  underline: {
+    position: "absolute",
+    left: "0",
+    right: "0",
+    bottom: 0,
+    height: 3,
+    backgroundColor: "#1976d2",
+    width: "calc(100% + 32px)",
+    marginLeft: "-16px",
+  },
 };
 
 const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
@@ -268,6 +276,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
+              height: "100%",
             }}
           >
             <Typography
@@ -275,9 +284,14 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
               sx={{
                 ...styles.menuItemText,
                 color: isParentActive ? "primary.main" : "text.secondary",
+                paddingBottom: 0,
+                display: "flex",
+                alignItems: "center",
+                ...(isMobile && { textDecoration: "none" }),
               }}
             >
               {item.label}
+              {!isMobile && isParentActive && <Box sx={styles.underline} />}
             </Typography>
             {item.subMenu && (
               <IconButton
@@ -317,7 +331,22 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
               }}
             >
               <Box sx={styles.popupSubMenuBox}>
-                {renderMenuItems(item.subMenu, item.path)}
+                {item.subMenu.map((subItem) => (
+                  <Typography
+                    key={subItem.path}
+                    onClick={() => handleMenuItemClick(subItem.path)}
+                    sx={{
+                      ...styles.menuItemText,
+                      color: isPathActive(subItem.path)
+                        ? "primary.main"
+                        : "text.secondary",
+                      paddingBottom: 0,
+                      textDecoration: isMobile ? "none" : undefined,
+                    }}
+                  >
+                    {subItem.label}
+                  </Typography>
+                ))}
               </Box>
             </Popover>
           )}
@@ -556,17 +585,15 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
 
   const renderDesktopMenu = () => (
     <Box sx={styles.desktopMenu}>
-      <Tabs
-        value={pathname}
-        onChange={(event, newPath) => handleMenuItemClick(newPath)}
-        aria-label="navigation tabs"
-        sx={{ display: "flex", alignItems: "center" }}
-      >
-        {renderMenuItems(menuItems.slice(0, 3))}
-      </Tabs>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        {renderMenuItems(menuItems.slice(3))}
-        {renderSendButton()}
+      <Box sx={{ display: "flex", width: "100%" }}>
+        <Box sx={{ display: "flex" }}>
+          {renderMenuItems(menuItems.slice(0, 3))}
+        </Box>
+        <Box sx={{ flex: 1 }} />
+        <Box sx={{ display: "flex" }}>
+          {renderMenuItems(menuItems.slice(3))}
+          {renderSendButton()}
+        </Box>
       </Box>
       {renderSendMenuDesktop()}
     </Box>
