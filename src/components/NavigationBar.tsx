@@ -9,6 +9,13 @@ import {
   Menu,
   Tabs,
   Popover,
+  Drawer,
+  List,
+  Divider,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -17,6 +24,8 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PeopleIcon from "@mui/icons-material/People";
 import BusinessIcon from "@mui/icons-material/Business";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
 
 interface INavigationBarProps {
   title: string;
@@ -172,6 +181,9 @@ const styles = {
     zIndex: 1300,
   },
   firstMenuItem: { marginTop: "50px" },
+  drawerPaper: {
+    width: "25vw",
+  },
 };
 
 const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
@@ -313,78 +325,129 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
       );
     });
 
-  const renderSendMenu = () => {
-    const sendMenuItems = [
-      {
-        icon: <PeopleIcon sx={styles.sendMenuIcon} />,
-        title: "Cittadini",
-        description:
-          "Accedi come persona fisica, libero professionista o ditta individuale",
-        link: "https://cittadini.notifichedigitali.it/auth/login",
-      },
-      {
-        icon: <BusinessIcon sx={styles.sendMenuIcon} />,
-        title: "Imprese",
-        description: "Accedi come persona giuridica",
-        link: "https://imprese.notifichedigitali.it/auth/login",
-      },
-      {
-        custom: true,
-        content: (
-          <Box sx={styles.sendMenuCustom}>
-            <Stack
-              direction="row"
-              alignItems="center"
-              justifyContent="space-between"
-              sx={styles.sendMenuCustomHeader}
+  const sendMenuItems = [
+    {
+      icon: <PeopleIcon sx={styles.sendMenuIcon} />,
+      title: "Cittadini",
+      description:
+        "Accedi come persona fisica, libero professionista o ditta individuale",
+      link: "https://cittadini.notifichedigitali.it/auth/login",
+    },
+    {
+      icon: <BusinessIcon sx={styles.sendMenuIcon} />,
+      title: "Imprese",
+      description: "Accedi come persona giuridica",
+      link: "https://imprese.notifichedigitali.it/auth/login",
+    },
+    {
+      custom: true,
+      content: (
+        <Box sx={styles.sendMenuCustom}>
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+            sx={styles.sendMenuCustomHeader}
+          >
+            <Typography variant="subtitle1" sx={styles.sendMenuCustomTitle}>
+              Sei un ente?
+            </Typography>
+            <Button
+              variant="text"
+              color="primary"
+              sx={styles.sendMenuButton}
+              onClick={() =>
+                (window.location.href = "https://selfcare.pagopa.it/auth/login")
+              }
+              endIcon={<ArrowForwardIcon />}
             >
-              <Typography variant="subtitle1" sx={styles.sendMenuCustomTitle}>
-                Sei un ente?
+              Accedi
+            </Button>
+          </Stack>
+          <Box sx={{ borderTop: "1px solid #E3E7EB", paddingTop: 1 }}>
+            <Typography variant="body2">
+              Il tuo ente non ha ancora aderito?{" "}
+              <a
+                href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
+                style={styles.sendMenuCustomLink}
+              >
+                Scopri come aderire
+              </a>
+            </Typography>
+          </Box>
+        </Box>
+      ),
+    },
+  ];
+
+  const renderSendMenuMobile = () => (
+    <Box sx={styles.sendMenuBox}>
+      <Box sx={styles.sendMenuHeader}>
+        <Typography variant="h6" sx={styles.sendMenuHeaderText}>
+          Accedi a SEND
+        </Typography>
+        {!isMobile && (
+          <IconButton
+            size="small"
+            onClick={() => setIsSendMenuOpen(false)}
+            sx={styles.sendMenuCloseButton}
+          >
+            <CloseIcon />
+          </IconButton>
+        )}
+      </Box>
+      <Box sx={styles.sendMenuContent}>
+        {sendMenuItems.map((item, index) =>
+          item.custom ? (
+            item.content
+          ) : (
+            <Box key={index} sx={styles.sendMenuItem}>
+              {item.icon}
+              <Typography variant="subtitle1" sx={styles.sendMenuTitle}>
+                {item.title}
+              </Typography>
+              <Typography variant="body2" sx={{ marginBottom: 1 }}>
+                {item.description}
               </Typography>
               <Button
                 variant="text"
                 color="primary"
                 sx={styles.sendMenuButton}
-                onClick={() =>
-                  (window.location.href =
-                    "https://selfcare.pagopa.it/auth/login")
-                }
+                onClick={() => {
+                  if (item.link) {
+                    window.location.href = item.link;
+                  }
+                }}
                 endIcon={<ArrowForwardIcon />}
               >
                 Accedi
               </Button>
-            </Stack>
-            <Box sx={{ borderTop: "1px solid #E3E7EB", paddingTop: 1 }}>
-              <Typography variant="body2">
-                Il tuo ente non ha ancora aderito?{" "}
-                <a
-                  href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
-                  style={styles.sendMenuCustomLink}
-                >
-                  Scopri come aderire
-                </a>
-              </Typography>
             </Box>
-          </Box>
-        ),
-      },
-    ];
+          )
+        )}
+      </Box>
+    </Box>
+  );
 
-    return (
+  const renderSendMenuDesktop = () => (
+    <Drawer
+      anchor="right"
+      open={isSendMenuOpen}
+      onClose={() => setIsSendMenuOpen(false)}
+      sx={{ "& .MuiDrawer-paper": styles.drawerPaper }}
+    >
       <Box sx={styles.sendMenuBox}>
         <Box sx={styles.sendMenuHeader}>
           <Typography variant="h6" sx={styles.sendMenuHeaderText}>
             Accedi a SEND
           </Typography>
-          {!isMobile && (
-            <IconButton
-              size="small"
-              onClick={() => setIsSendMenuOpen(false)}
-              sx={styles.sendMenuCloseButton}
-            >
-              <CloseIcon />
-            </IconButton>
-          )}
+          <IconButton
+            size="small"
+            onClick={() => setIsSendMenuOpen(false)}
+            sx={styles.sendMenuCloseButton}
+          >
+            <CloseIcon />
+          </IconButton>
         </Box>
         <Box sx={styles.sendMenuContent}>
           {sendMenuItems.map((item, index) =>
@@ -417,8 +480,8 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
           )}
         </Box>
       </Box>
-    );
-  };
+    </Drawer>
+  );
 
   const renderSendButton = () => (
     <Button
@@ -485,7 +548,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
             <CloseIcon />
           </IconButton>
           {isMobileMenuOpen && renderMenuItems(menuItems, "", true)}
-          {isSendMenuOpen && renderSendMenu()}
+          {isSendMenuOpen && renderSendMenuMobile()}
         </Box>
       </Menu>
     </>
@@ -505,26 +568,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
         {renderMenuItems(menuItems.slice(3))}
         {renderSendButton()}
       </Box>
-      <Menu
-        open={isSendMenuOpen}
-        onClose={() => setIsSendMenuOpen(false)}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        sx={{
-          "& .MuiPaper-root": styles.desktopMenuPaper,
-          "& .MuiBackdrop-root": {
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          },
-        }}
-      >
-        {renderSendMenu()}
-      </Menu>
+      {renderSendMenuDesktop()}
     </Box>
   );
 
