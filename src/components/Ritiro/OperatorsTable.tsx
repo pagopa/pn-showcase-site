@@ -6,14 +6,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import {
-  Pagination,
-  TablePagination,
-  Stack,
-  TableSortLabel,
-} from "@mui/material";
+import { TablePagination, Stack, TableSortLabel } from "@mui/material";
 import { RaddOperator } from "model";
 import { useEffect, useRef, useState } from "react";
+import CustomPagination from "../CustomPagination";
 
 type Props = {
   rows: RaddOperator[];
@@ -82,6 +78,12 @@ function OperatorsTable({ rows }: Readonly<Props>) {
     setOrder(isAsc ? "desc" : "asc");
   };
 
+  const pagination = {
+    size: rowsPerPage,
+    totalElements: rows.length,
+    numOfDisplayedPages: Math.min(Math.ceil(rows.length / rowsPerPage), 3),
+    currentPage: page,
+  };
   useEffect(() => {
     if (tableContainerRef.current) {
       tableContainerRef.current.scrollIntoView({ behavior: "smooth" });
@@ -153,13 +155,9 @@ function OperatorsTable({ rows }: Readonly<Props>) {
             onRowsPerPageChange={handleChangeRowsPerPage}
             rowsPerPageOptions={[10, 20, 50]}
           />
-          <Pagination
-            color="primary"
-            count={Math.ceil(rows.length / rowsPerPage)}
-            page={page + 1}
+          <CustomPagination
+            pagination={pagination}
             onChange={handleChangePage}
-            siblingCount={0}
-            boundaryCount={1}
           />
         </Stack>
       )}
