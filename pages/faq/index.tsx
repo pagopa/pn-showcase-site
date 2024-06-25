@@ -98,7 +98,7 @@ export function FaqDataSectionBlock(
   const { section, setActiveItem, activeItem } = props;
 
   return (
-    <Box sx={{ pb: "64px" }}>
+    <Box id={section.title.replace(/\s+/g, '-').toLowerCase()} sx={{ pb: "64px" }}>
       <Typography
         variant="h4"
         sx={{ pb: "48px" }}
@@ -126,7 +126,6 @@ const FaqPage: NextPage = () => {
   const faqData = getFaqData();
 
   const [currentItem, setCurrentItem] = useState<string | null>(null);
-  const [selectedSection, setSelectedSection] = useState<string | null>(null);
 
   useEffect(() => {
     const hash = router.asPath.split("#")[1];
@@ -143,7 +142,12 @@ const FaqPage: NextPage = () => {
   );
 
   const handleChipClick = (section: string) => {
-    setSelectedSection(section === selectedSection ? null : section);
+    // Scroll to the section using document.getElementById
+    const sectionId = section.replace(/\s+/g, '-').toLowerCase();
+    const sectionElement = document.getElementById(sectionId);
+    if (sectionElement) {
+      sectionElement.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const sections = [
@@ -158,12 +162,7 @@ const FaqPage: NextPage = () => {
   ];
 
   // Separate the selected section
-  const sortedSections = selectedSection
-    ? [
-        ...faqData.sections.filter((section) => section.title === selectedSection),
-        ...faqData.sections.filter((section) => section.title !== selectedSection),
-      ]
-    : faqData.sections;
+  const sortedSections = faqData.sections;
 
   return (
     <>
@@ -212,13 +211,13 @@ const FaqPage: NextPage = () => {
                   label={section}
                   onClick={() => handleChipClick(section)}
                   clickable
-                  color={selectedSection === section ? "primary" : "default"}
                   sx={{
                     color: "white",
-                    backgroundColor:
-                      selectedSection === section ? "#1976d2" : "#EBEBF52E",
-                    border:
-                      selectedSection === section ? "1px solid white" : "none",
+                    backgroundColor: "rgba(235, 235, 245, 0.18)",
+                    border: "1px solid transparent",
+                    "&:hover": {
+                      backgroundColor: "rgba(235, 235, 245, 0.30)",
+                    },
                   }}
                 />
               ))}
@@ -236,8 +235,8 @@ const FaqPage: NextPage = () => {
         >
           {sortedSections.map((section, ix) => (
             <FaqDataSectionBlock
-              section={section}
               key={ix}
+              section={section}
               setActiveItem={setActiveItem}
               activeItem={currentItem}
             />

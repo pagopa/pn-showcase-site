@@ -130,8 +130,8 @@ const ContactInfoAssistenza = () => {
             >
               06.4520.2323
             </Link>{" "}
-            per assistenza dedicata dal lunedì al venerdì dalle 08 alle 20 e il
-            sabato dalle 08.00 alle 14.00.
+            per assistenza dedicata dal lunedì al venerdì dalle 08:00 alle 20:00 e il
+            sabato dalle 08:00 alle 14:00.
           </Typography>
           <Button
             variant="outlined"
