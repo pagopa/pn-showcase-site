@@ -146,3 +146,9 @@ export type PaginationData = {
   numOfDisplayedPages: number;
   currentPage: number;
 };
+
+export interface MenuItem {
+  label: string;
+  path: string;
+  subMenu?: MenuItem[];
+}

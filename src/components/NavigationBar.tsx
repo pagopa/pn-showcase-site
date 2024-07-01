@@ -17,20 +17,14 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PeopleIcon from "@mui/icons-material/People";
 import BusinessIcon from "@mui/icons-material/Business";
+import { MenuItem } from "model";
 
 interface INavigationBarProps {
   title: string;
   image: string;
 }
 
-interface MenuItem {
-  label: string;
-  path: string;
-  subMenu?: MenuItem[];
-}
-
 const styles = {
-  menuItemBox: { margin: "0 16px", position: "relative" },
   menuItemText: {
     cursor: "pointer",
     color: "text.secondary",
@@ -39,9 +33,7 @@ const styles = {
     alignItems: "center",
     height: "100%",
   },
-  menuItemIcon: { color: "text.secondary" },
   subMenuBox: { paddingLeft: 3 },
-  subMenuBoxMobile: { paddingLeft: 3, paddingTop: "20px" },
   sendMenuBox: {
     display: "flex",
     flexDirection: "column",
@@ -80,25 +72,7 @@ const styles = {
     padding: 2,
     textAlign: "left",
   },
-  sendMenuCustomHeader: {
-    marginBottom: 1,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  sendMenuCustomTitle: { fontWeight: 600 },
-  sendMenuCustomLink: {
-    color: "#0066CC",
-    textDecoration: "underline",
-  },
   navbar: { borderBottom: "1px solid #E3E7EB" },
-  mobileMenuBox: {
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    justifyContent: "space-between",
-    borderTop: "1px solid #E3E7EB",
-  },
   menuIconButton: {
     color: "#5C6F82",
     display: "flex",
@@ -107,7 +81,6 @@ const styles = {
       backgroundColor: "transparent",
     },
   },
-  menuIconText: { marginLeft: 1, color: "#5C6F82", fontWeight: 600 },
   sendButton: { marginLeft: 2, marginTop: 1, marginBottom: 1 },
   desktopMenu: {
     display: "flex",
@@ -119,42 +92,6 @@ const styles = {
       alignItems: "center",
     },
   },
-  assistenzaLink: {
-    textDecoration: "none",
-    color: "primary.main",
-    display: "flex",
-    alignItems: "center",
-    fontSize: "14px",
-    fontWeight: 600,
-  },
-  assistenzaIconContainer: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: "50%",
-    width: 48,
-    height: 48,
-    backgroundColor: "primary.main",
-    marginLeft: 1,
-  },
-  assistenzaIcon: {
-    color: "white",
-    fontSize: "18px",
-  },
-  mobileMenuContainer: {
-    display: "flex",
-    flexDirection: "column",
-    bgcolor: "background.paper",
-    position: "relative",
-    padding: "10px",
-    gap: "20px",
-  },
-  mobileMenuCloseButton: {
-    position: "absolute",
-    top: 8,
-    right: 8,
-    color: "#5C6F82",
-  },
   menuPaper: {
     width: "100%",
     top: "0px!important",
@@ -162,25 +99,6 @@ const styles = {
     left: "0px!important",
     maxWidth: "none",
     height: "100vh",
-  },
-  desktopMenuPaper: {
-    width: "25vw",
-    height: "100vh",
-    boxShadow: "none",
-    position: "fixed",
-    right: 0,
-    top: 0,
-  },
-  popupSubMenuBox: {
-    padding: 2,
-    backgroundColor: "background.paper",
-    boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
-    borderRadius: 4,
-    zIndex: 1300,
-  },
-  firstMenuItem: { marginTop: "50px" },
-  drawerPaper: {
-    width: "25vw",
   },
   underline: {
     position: "absolute",
@@ -191,6 +109,10 @@ const styles = {
     backgroundColor: "primary.main",
     width: "calc(100% + 32px)",
     marginLeft: "-16px",
+  },
+  firstMenuItem: { marginTop: "50px" },
+  drawerPaper: {
+    width: "25vw",
   },
 };
 
@@ -258,7 +180,6 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
 
   const renderMenuItems = (
     items: MenuItem[],
-    parentPath: string = "",
     isFirstItem: boolean = false
   ) =>
     items.map((item, index) => {
@@ -267,7 +188,8 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
         <Box
           key={item.path}
           sx={{
-            ...styles.menuItemBox,
+            margin: "0 16px", 
+            position: "relative",
             ...(isFirstItem && index === 0 && styles.firstMenuItem),
           }}
         >
@@ -298,7 +220,6 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
                 size="small"
                 onClick={(e) => toggleMenu(item.path, e)}
                 sx={{
-                  ...styles.menuItemIcon,
                   transform:
                     openSubMenu === item.path
                       ? "rotate(180deg)"
@@ -312,8 +233,8 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
             )}
           </Box>
           {item.subMenu && isMobile && openSubMenu === item.path && (
-            <Box sx={styles.subMenuBoxMobile}>
-              {renderMenuItems(item.subMenu, item.path)}
+            <Box sx={{ paddingLeft: 3, paddingTop: "20px"}}>
+              {renderMenuItems(item.subMenu)}
             </Box>
           )}
           {item.subMenu && !isMobile && (
@@ -330,7 +251,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
                 horizontal: "left",
               }}
             >
-              <Box sx={styles.popupSubMenuBox}>
+              <Box sx={{ padding: 2, backgroundColor: "background.paper", boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", borderRadius: 4, zIndex: 1300 }}>
                 {item.subMenu.map((subItem) => (
                   <Typography
                     key={subItem.path}
@@ -376,9 +297,8 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
             direction="row"
             alignItems="center"
             justifyContent="space-between"
-            sx={styles.sendMenuCustomHeader}
-          >
-            <Typography variant="subtitle1" sx={styles.sendMenuCustomTitle}>
+            sx={{ marginBottom: 1, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
               Sei un ente?
             </Typography>
             <Button
@@ -398,8 +318,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
               Il tuo ente non ha ancora aderito?{" "}
               <a
                 href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
-                style={styles.sendMenuCustomLink}
-              >
+                style={{ color: "#0066CC", textDecoration: "underline" }}>
                 Scopri come aderire
               </a>
             </Typography>
@@ -528,7 +447,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
 
   const renderMobileMenu = () => (
     <>
-      <Box sx={styles.mobileMenuBox}>
+      <Box sx={{ display: "flex", alignItems: "center", width: "100%", justifyContent: "space-between", borderTop: "1px solid #E3E7EB",}}>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <IconButton
             onClick={() => {
@@ -538,7 +457,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
             sx={styles.menuIconButton}
           >
             {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
-            <Typography sx={styles.menuIconText}>Menu</Typography>
+            <Typography sx={{ marginLeft: 1, color: "#5C6F82", fontWeight: 600 }}>Menu</Typography>
           </IconButton>
         </Box>
         {renderSendButton()}
@@ -565,18 +484,17 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
           },
         }}
       >
-        <Box sx={styles.mobileMenuContainer}>
+        <Box sx={{ display: "flex", flexDirection: "column", bgcolor: "background.paper", position: "relative", padding: "10px", gap: "20px" }}>
           <IconButton
             onClick={() => {
               setIsMobileMenuOpen(false);
               setIsSendMenuOpen(false);
               setOpenSubMenu(null);
             }}
-            sx={styles.mobileMenuCloseButton}
-          >
+            sx={{ position: "absolute", top: 8, right: 8, color: "#5C6F82" }}>
             <CloseIcon />
           </IconButton>
-          {isMobileMenuOpen && renderMenuItems(menuItems, "", true)}
+          {isMobileMenuOpen && renderMenuItems(menuItems, true)}
           {isSendMenuOpen && renderSendMenuMobile()}
         </Box>
       </Menu>
@@ -619,13 +537,12 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
             <Typography
               component="a"
               href="/assistenza"
-              sx={styles.assistenzaLink}
-            >
+              sx={{ textDecoration: "none", color: "primary.main", display: "flex", alignItems: "center", fontSize: "14px", fontWeight: 600,}}>
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 Serve aiuto?
               </Box>
-              <Box sx={styles.assistenzaIconContainer}>
-                <ChatBubbleOutlineIcon sx={styles.assistenzaIcon} />
+              <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%", width: 48, height: 48, backgroundColor: "primary.main", marginLeft: 1,}}>
+                <ChatBubbleOutlineIcon sx={{ color: "white", fontSize: "18px" }} />
               </Box>
             </Typography>
           </Box>
