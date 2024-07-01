@@ -301,7 +301,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
     },
   ];
 
-  const renderSendMenuMobile = () => (
+  const renderSendMenu = () => (
     <Box sx={styles.sendMenuBox}>
       <Box sx={styles.sendMenuHeader}>
         <Typography variant="h6" sx={styles.sendMenuHeaderText}>
@@ -348,60 +348,6 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
         )}
       </Box>
     </Box>
-  );
-
-  const renderSendMenuDesktop = () => (
-    <Drawer
-      anchor="right"
-      open={isSendMenuOpen}
-      onClose={() => setIsSendMenuOpen(false)}
-      sx={{ "& .MuiDrawer-paper": { width: "25vw" } }}
-    >
-      <Box sx={styles.sendMenuBox}>
-        <Box sx={styles.sendMenuHeader}>
-          <Typography variant="h6" sx={styles.sendMenuHeaderText}>
-            Accedi a SEND
-          </Typography>
-          <IconButton
-            size="small"
-            onClick={() => setIsSendMenuOpen(false)}
-            sx={styles.sendMenuCloseButton}
-          >
-            <CloseIcon />
-          </IconButton>
-        </Box>
-        <Box sx={styles.sendMenuContent}>
-          {sendMenuItems.map((item, index) =>
-            item.custom ? (
-              item.content
-            ) : (
-              <Box key={index} sx={styles.sendMenuItem}>
-                {item.icon}
-                <Typography variant="subtitle1" sx={styles.sendMenuTitle}>
-                  {item.title}
-                </Typography>
-                <Typography variant="body2" sx={{ marginBottom: 1 }}>
-                  {item.description}
-                </Typography>
-                <Button
-                  variant="text"
-                  color="primary"
-                  sx={styles.sendMenuButton}
-                  onClick={() => {
-                    if (item.link) {
-                      window.location.href = item.link;
-                    }
-                  }}
-                  endIcon={<ArrowForwardIcon />}
-                >
-                  Accedi
-                </Button>
-              </Box>
-            )
-          )}
-        </Box>
-      </Box>
-    </Drawer>
   );
 
   const renderSendButton = () => (
@@ -474,7 +420,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
             <CloseIcon />
           </IconButton>
           {isMobileMenuOpen && renderMenuItems(menuItems, true)}
-          {isSendMenuOpen && renderSendMenuMobile()}
+          {isSendMenuOpen && renderSendMenu()}
         </Box>
       </Menu>
     </>
@@ -492,7 +438,13 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
           {renderSendButton()}
         </Box>
       </Box>
-      {renderSendMenuDesktop()}
+      <Drawer
+        anchor="right"
+        open={isSendMenuOpen}
+        onClose={() => setIsSendMenuOpen(false)}
+        sx={{ "& .MuiDrawer-paper": { width: "25vw" } }}>
+          {renderSendMenu()}
+      </Drawer>
     </Box>
   );
 
