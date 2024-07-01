@@ -161,9 +161,6 @@ const FaqPage: NextPage = () => {
     "Accessibilità",
   ];
 
-  // Separate the selected section
-  const sortedSections = faqData.sections;
-
   return (
     <>
       <PageHead
@@ -233,7 +230,7 @@ const FaqPage: NextPage = () => {
           }}
           className="faqItems"
         >
-          {sortedSections.map((section, ix) => (
+          {faqData.sections.map((section, ix) => (
             <FaqDataSectionBlock
               key={ix}
               section={section}
