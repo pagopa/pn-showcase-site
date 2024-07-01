@@ -33,7 +33,6 @@ const styles = {
     alignItems: "center",
     height: "100%",
   },
-  subMenuBox: { paddingLeft: 3 },
   sendMenuBox: {
     display: "flex",
     flexDirection: "column",
@@ -66,21 +65,7 @@ const styles = {
     justifyContent: "flex-start",
     padding: 0,
   },
-  sendMenuCustom: {
-    border: "1px solid #E3E7EB",
-    borderRadius: 4,
-    padding: 2,
-    textAlign: "left",
-  },
   navbar: { borderBottom: "1px solid #E3E7EB" },
-  menuIconButton: {
-    color: "#5C6F82",
-    display: "flex",
-    alignItems: "center",
-    "&:hover": {
-      backgroundColor: "transparent",
-    },
-  },
   sendButton: { marginLeft: 2, marginTop: 1, marginBottom: 1 },
   desktopMenu: {
     display: "flex",
@@ -92,14 +77,6 @@ const styles = {
       alignItems: "center",
     },
   },
-  menuPaper: {
-    width: "100%",
-    top: "0px!important",
-    boxShadow: "none",
-    left: "0px!important",
-    maxWidth: "none",
-    height: "100vh",
-  },
   underline: {
     position: "absolute",
     left: "0",
@@ -109,10 +86,6 @@ const styles = {
     backgroundColor: "primary.main",
     width: "calc(100% + 32px)",
     marginLeft: "-16px",
-  },
-  firstMenuItem: { marginTop: "50px" },
-  drawerPaper: {
-    width: "25vw",
   },
 };
 
@@ -190,7 +163,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
           sx={{
             margin: "0 16px", 
             position: "relative",
-            ...(isFirstItem && index === 0 && styles.firstMenuItem),
+            ...(isFirstItem && index === 0 && { marginTop: "50px" }),
           }}
         >
           <Box
@@ -292,7 +265,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
     {
       custom: true,
       content: (
-        <Box sx={styles.sendMenuCustom}>
+        <Box sx={{ border: "1px solid #E3E7EB", borderRadius: 4, padding: 2, textAlign: "left" }}>
           <Stack
             direction="row"
             alignItems="center"
@@ -382,7 +355,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
       anchor="right"
       open={isSendMenuOpen}
       onClose={() => setIsSendMenuOpen(false)}
-      sx={{ "& .MuiDrawer-paper": styles.drawerPaper }}
+      sx={{ "& .MuiDrawer-paper": { width: "25vw" } }}
     >
       <Box sx={styles.sendMenuBox}>
         <Box sx={styles.sendMenuHeader}>
@@ -454,8 +427,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
               setIsMobileMenuOpen((prev) => !prev);
               setIsSendMenuOpen(false);
             }}
-            sx={styles.menuIconButton}
-          >
+            sx={{ color: "#5C6F82", display: "flex", alignItems: "center", "&:hover": { backgroundColor: "transparent" } }}>
             {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
             <Typography sx={{ marginLeft: 1, color: "#5C6F82", fontWeight: 600 }}>Menu</Typography>
           </IconButton>
@@ -478,7 +450,14 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
           horizontal: "left",
         }}
         sx={{
-          "& .MuiPaper-root": styles.menuPaper,
+          "& .MuiPaper-root": {
+            width: "100%",
+            top: "0px!important",
+            boxShadow: "none",
+            left: "0px!important",
+            maxWidth: "none",
+            height: "100vh",
+          },
           "& .MuiBackdrop-root": {
             backgroundColor: "white",
           },
