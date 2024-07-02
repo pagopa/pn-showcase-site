@@ -36,7 +36,7 @@ const styles = {
   sendMenuBox: {
     display: "flex",
     flexDirection: "column",
-    bgcolor: "background.paper",
+    bgcolor: "#F2F2F2",
     height: "100%",
     width: "100%",
   },
@@ -46,10 +46,14 @@ const styles = {
     justifyContent: "space-between",
     padding: "16px",
     borderBottom: "1px solid #E3E7EB",
+    bgcolor: "white", 
   },
   sendMenuHeaderText: { fontWeight: 600 },
   sendMenuCloseButton: { color: "text.secondary" },
-  sendMenuContent: { padding: "16px" },
+  sendMenuContent: {
+    padding: "16px",
+    bgcolor: "white",
+  },
   sendMenuItem: {
     marginBottom: 2,
     border: "1px solid #E3E7EB",
@@ -262,44 +266,58 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
       description: "Accedi come persona giuridica",
       link: "https://imprese.notifichedigitali.it/auth/login",
     },
-    {
-      custom: true,
-      content: (
-        <Box sx={{ border: "1px solid #E3E7EB", borderRadius: 4, padding: 2, textAlign: "left" }}>
-          <Stack
-            direction="row"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ marginBottom: 1, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-              Sei un ente?
-            </Typography>
-            <Button
-              variant="text"
-              color="primary"
-              sx={styles.sendMenuButton}
-              onClick={() =>
-                (window.location.href = "https://selfcare.pagopa.it/auth/login")
-              }
-              endIcon={<ArrowForwardIcon />}
-            >
-              Accedi
-            </Button>
-          </Stack>
-          <Box sx={{ borderTop: "1px solid #E3E7EB", paddingTop: 1 }}>
-            <Typography variant="body2">
-              Il tuo ente non ha ancora aderito?{" "}
-              <a
-                href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
-                style={{ color: "#0066CC", textDecoration: "underline" }}>
-                Scopri come aderire
-              </a>
-            </Typography>
-          </Box>
-        </Box>
-      ),
-    },
   ];
+
+  const thirdElementContent = (
+    <Box
+      sx={{
+        border: "1px solid #E3E7EB",
+        borderRadius: 4,
+        padding: 2,
+        textAlign: "left",
+        bgcolor: "white",
+      }}
+    >
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+        sx={{
+          marginBottom: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+          Sei un ente?
+        </Typography>
+        <Button
+          variant="text"
+          color="primary"
+          sx={styles.sendMenuButton}
+          onClick={() =>
+            (window.location.href =
+              "https://selfcare.pagopa.it/auth/login")
+          }
+          endIcon={<ArrowForwardIcon />}
+        >
+          Accedi
+        </Button>
+      </Stack>
+      <Box sx={{ borderTop: "1px solid #E3E7EB", paddingTop: 1 }}>
+        <Typography variant="body2">
+          Il tuo ente non ha ancora aderito?{" "}
+          <a
+            href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
+            style={{ color: "#0066CC", textDecoration: "underline" }}
+          >
+            Scopri come aderire
+          </a>
+        </Typography>
+      </Box>
+    </Box>
+  );
 
   const renderSendMenu = () => (
     <Box sx={styles.sendMenuBox}>
@@ -307,45 +325,42 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
         <Typography variant="h6" sx={styles.sendMenuHeaderText}>
           Accedi a SEND
         </Typography>
-        {!isMobile && (
-          <IconButton
-            size="small"
-            onClick={() => setIsSendMenuOpen(false)}
-            sx={styles.sendMenuCloseButton}
-          >
-            <CloseIcon />
-          </IconButton>
-        )}
+        <IconButton
+          size="small"
+          onClick={() => setIsSendMenuOpen(false)}
+          sx={styles.sendMenuCloseButton}
+        >
+          <CloseIcon />
+        </IconButton>
       </Box>
       <Box sx={styles.sendMenuContent}>
-        {sendMenuItems.map((item, index) =>
-          item.custom ? (
-            item.content
-          ) : (
-            <Box key={index} sx={styles.sendMenuItem}>
-              {item.icon}
-              <Typography variant="subtitle1" sx={styles.sendMenuTitle}>
-                {item.title}
-              </Typography>
-              <Typography variant="body2" sx={{ marginBottom: 1 }}>
-                {item.description}
-              </Typography>
-              <Button
-                variant="text"
-                color="primary"
-                sx={styles.sendMenuButton}
-                onClick={() => {
-                  if (item.link) {
-                    window.location.href = item.link;
-                  }
-                }}
-                endIcon={<ArrowForwardIcon />}
-              >
-                Accedi
-              </Button>
-            </Box>
-          )
-        )}
+        {sendMenuItems.map((item, index) => (
+          <Box key={index} sx={styles.sendMenuItem}>
+            {item.icon}
+            <Typography variant="subtitle1" sx={styles.sendMenuTitle}>
+              {item.title}
+            </Typography>
+            <Typography variant="body2" sx={{ marginBottom: 1 }}>
+              {item.description}
+            </Typography>
+            <Button
+              variant="text"
+              color="primary"
+              sx={styles.sendMenuButton}
+              onClick={() => {
+                if (item.link) {
+                  window.location.href = item.link;
+                }
+              }}
+              endIcon={<ArrowForwardIcon />}
+            >
+              Accedi
+            </Button>
+          </Box>
+        ))}
+      </Box>
+      <Box sx={{ margin: 2 }}>
+        {thirdElementContent}
       </Box>
     </Box>
   );
@@ -365,73 +380,56 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
   );
 
   const renderMobileMenu = () => (
-    <>
-      <Box sx={{ display: "flex", alignItems: "center", width: "100%", justifyContent: "space-between", borderTop: "1px solid #E3E7EB",}}>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <IconButton
-            onClick={() => {
-              setIsMobileMenuOpen((prev) => !prev);
-              setIsSendMenuOpen(false);
-            }}
-            sx={{ color: "#5C6F82", display: "flex", alignItems: "center", "&:hover": { backgroundColor: "transparent" } }}>
-            {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
-            <Typography sx={{ marginLeft: 1, color: "#5C6F82", fontWeight: 600 }}>Menu</Typography>
-          </IconButton>
-        </Box>
-        {renderSendButton()}
-      </Box>
-      <Menu
-        open={isMobileMenuOpen || isSendMenuOpen}
-        onClose={() => {
-          setIsMobileMenuOpen(false);
-          setIsSendMenuOpen(false);
-          setOpenSubMenu(null);
-        }}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
+    <Menu
+      open={isMobileMenuOpen}
+      onClose={() => setIsMobileMenuOpen(false)}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "left",
+      }}
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "left",
+      }}
+      sx={{
+        "& .MuiPaper-root": {
+          width: "100%",
+          top: "0px!important",
+          boxShadow: "none",
+          left: "0px!important",
+          maxWidth: "none",
+          height: "100vh",
+        },
+        "& .MuiBackdrop-root": {
+          backgroundColor: "white",
+        },
+      }}
+    >
+      <Box
         sx={{
-          "& .MuiPaper-root": {
-            width: "100%",
-            top: "0px!important",
-            boxShadow: "none",
-            left: "0px!important",
-            maxWidth: "none",
-            height: "100vh",
-          },
-          "& .MuiBackdrop-root": {
-            backgroundColor: "white",
-          },
+          display: "flex",
+          flexDirection: "column",
+          bgcolor: "background.paper",
+          position: "relative",
+          padding: "10px",
+          gap: "20px",
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "column", bgcolor: "background.paper", position: "relative", padding: "10px", gap: "20px" }}>
-          <IconButton
-            onClick={() => {
-              setIsMobileMenuOpen(false);
-              setIsSendMenuOpen(false);
-              setOpenSubMenu(null);
-            }}
-            sx={{ position: "absolute", top: 8, right: 8, color: "#5C6F82" }}>
-            <CloseIcon />
-          </IconButton>
-          {isMobileMenuOpen && renderMenuItems(menuItems, true)}
-          {isSendMenuOpen && renderSendMenu()}
-        </Box>
-      </Menu>
-    </>
+        <IconButton
+          onClick={() => setIsMobileMenuOpen(false)}
+          sx={{ position: "absolute", top: 8, right: 8, color: "#5C6F82" }}
+        >
+          <CloseIcon />
+        </IconButton>
+        {isMobileMenuOpen && renderMenuItems(menuItems, true)}
+      </Box>
+    </Menu>
   );
 
   const renderDesktopMenu = () => (
     <Box sx={styles.desktopMenu}>
       <Box sx={{ display: "flex", width: "100%" }}>
-        <Box sx={{ display: "flex" }}>
-          {renderMenuItems(menuItems.slice(0, 3))}
-        </Box>
+        <Box sx={{ display: "flex" }}>{renderMenuItems(menuItems.slice(0, 3))}</Box>
         <Box sx={{ flex: 1 }} />
         <Box sx={{ display: "flex" }}>
           {renderMenuItems(menuItems.slice(3))}
@@ -442,8 +440,9 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
         anchor="right"
         open={isSendMenuOpen}
         onClose={() => setIsSendMenuOpen(false)}
-        sx={{ "& .MuiDrawer-paper": { width: "25vw" } }}>
-          {renderSendMenu()}
+        sx={{ "& .MuiDrawer-paper": { width: isMobile ? "80vw" : "25vw", bgcolor: "#F2F2F2" } }} 
+      >
+        {renderSendMenu()}
       </Drawer>
     </Box>
   );
@@ -468,12 +467,33 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
             <Typography
               component="a"
               href="/assistenza"
-              sx={{ textDecoration: "none", color: "primary.main", display: "flex", alignItems: "center", fontSize: "14px", fontWeight: 600,}}>
+              sx={{
+                textDecoration: "none",
+                color: "primary.main",
+                display: "flex",
+                alignItems: "center",
+                fontSize: "14px",
+                fontWeight: 600,
+              }}
+            >
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 Serve aiuto?
               </Box>
-              <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%", width: 48, height: 48, backgroundColor: "primary.main", marginLeft: 1,}}>
-                <ChatBubbleOutlineIcon sx={{ color: "white", fontSize: "18px" }} />
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "50%",
+                  width: 48,
+                  height: 48,
+                  backgroundColor: "primary.main",
+                  marginLeft: 1,
+                }}
+              >
+                <ChatBubbleOutlineIcon
+                  sx={{ color: "white", fontSize: "18px" }}
+                />
               </Box>
             </Typography>
           </Box>
@@ -484,7 +504,38 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
           justifyContent="space-between"
           sx={{ margin: "0px 12px" }}
         >
-          {isMobile ? renderMobileMenu() : renderDesktopMenu()}
+          {isMobile ? (
+            <>
+              <IconButton
+                onClick={() => setIsMobileMenuOpen(true)}
+                sx={{
+                  color: "#5C6F82",
+                  display: "flex",
+                  alignItems: "center",
+                  "&:hover": { backgroundColor: "transparent" },
+                }}
+              >
+                <MenuIcon />
+                <Typography
+                  sx={{ marginLeft: 1, color: "#5C6F82", fontWeight: 600 }}
+                >
+                  Menu
+                </Typography>
+              </IconButton>
+              {renderSendButton()}
+              {renderMobileMenu()}
+              <Drawer
+                anchor="right"
+                open={isSendMenuOpen}
+                onClose={() => setIsSendMenuOpen(false)}
+                sx={{ "& .MuiDrawer-paper": { width: "100vw", bgcolor: "#F2F2F2" } }}
+              >
+                {renderSendMenu()}
+              </Drawer>
+            </>
+          ) : (
+            renderDesktopMenu()
+          )}
         </Stack>
       </Stack>
     </Box>
