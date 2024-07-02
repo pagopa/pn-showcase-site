@@ -24,6 +24,30 @@ interface INavigationBarProps {
   image: string;
 }
 
+const menuItems: MenuItem[] = [
+  { label: "Cittadini", path: "/cittadini" },
+  { label: "Imprese", path: "/imprese" },
+  {
+    label: "Enti",
+    path: "/pubbliche-amministrazioni",
+    subMenu: [
+      {
+        label: "Documentazione",
+        path: "/pubbliche-amministrazioni/documenti",
+      },
+    ],
+  },
+  {
+    label: "Punti di ritiro",
+    path: "/punti-di-ritiro",
+    subMenu: [
+      { label: "Come funziona", path: "/punti-di-ritiro/come-funziona" },
+    ],
+  },
+  { label: "Send in numeri", path: "/numeri" },
+  { label: "FAQ", path: "/faq" },
+];
+
 const styles = {
   menuItemText: {
     cursor: "pointer",
@@ -32,6 +56,38 @@ const styles = {
     display: "flex",
     alignItems: "center",
     height: "100%",
+    position: "relative",
+    transition: "background-color 0.3s ease",
+    padding: "0 8px", // Add fixed padding for all menu items
+    borderRadius: "4px", // Optional: Add border-radius to make it look better
+    textDecoration: "none", // Remove the default underline
+  },
+  activeMenuItemText: {
+    backgroundColor: "rgba(0, 115, 230, 0.08)",
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      left: 0,
+      right: 0,
+      bottom: 0,
+      height: 3,
+      backgroundColor: "#0073E6",
+      transition: "transform 0.3s ease",
+      transform: "scaleX(1)",
+      transformOrigin: "left",
+    },
+  },
+  activeMenuItemTextMobile: {
+    backgroundColor: "transparent", // No background color for mobile view
+    "&::after": {
+      content: '""', // No underline for mobile view
+      position: "absolute",
+      left: 0,
+      right: 0,
+      bottom: 0,
+      height: 0,
+      backgroundColor: "transparent",
+    },
   },
   sendMenuBox: {
     display: "flex",
@@ -46,7 +102,7 @@ const styles = {
     justifyContent: "space-between",
     padding: "16px",
     borderBottom: "1px solid #E3E7EB",
-    bgcolor: "white", 
+    bgcolor: "white",
   },
   sendMenuHeaderText: { fontWeight: 600 },
   sendMenuCloseButton: { color: "text.secondary" },
@@ -80,16 +136,6 @@ const styles = {
     "&  .MuiTabs-flexContainer": {
       alignItems: "center",
     },
-  },
-  underline: {
-    position: "absolute",
-    left: "0",
-    right: "0",
-    bottom: 0,
-    height: 3,
-    backgroundColor: "primary.main",
-    width: "calc(100% + 32px)",
-    marginLeft: "-16px",
   },
 };
 
@@ -131,41 +177,14 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
 
   const isPathActive = (path: string) => pathname === path;
 
-  const menuItems: MenuItem[] = [
-    { label: "Cittadini", path: "/cittadini" },
-    { label: "Imprese", path: "/imprese" },
-    {
-      label: "Enti",
-      path: "/pubbliche-amministrazioni",
-      subMenu: [
-        {
-          label: "Documentazione",
-          path: "/pubbliche-amministrazioni/documenti",
-        },
-      ],
-    },
-    {
-      label: "Punti di ritiro",
-      path: "/punti-di-ritiro",
-      subMenu: [
-        { label: "Come funziona", path: "/punti-di-ritiro/come-funziona" },
-      ],
-    },
-    { label: "Send in numeri", path: "/numeri" },
-    { label: "FAQ", path: "/faq" },
-  ];
-
-  const renderMenuItems = (
-    items: MenuItem[],
-    isFirstItem: boolean = false
-  ) =>
+  const renderMenuItems = (items: MenuItem[], isFirstItem: boolean = false) =>
     items.map((item, index) => {
       const isParentActive = isPathActive(item.path);
       return (
         <Box
           key={item.path}
           sx={{
-            margin: "0 16px", 
+            margin: "0 16px",
             position: "relative",
             ...(isFirstItem && index === 0 && { marginTop: "50px" }),
           }}
@@ -176,31 +195,50 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
               alignItems: "center",
               justifyContent: "space-between",
               height: "100%",
+              cursor: "pointer",
+              paddingBottom: 0,
+              padding: isMobile ? "0 8px" : "0 16px", // Fixed padding for all menu items
+              backgroundColor: isParentActive && !isMobile ? "rgba(0, 115, 230, 0.08)" : "transparent", // Conditional background color
+              position: "relative",
+              "&::after": {
+                content: '""',
+                position: "absolute",
+                left: 0,
+                right: 0,
+                bottom: 0,
+                height: 3,
+                backgroundColor: isMobile ? "transparent" : "primary.main", // No underline for mobile
+                transition: "transform 0.3s ease",
+                transform: isParentActive && !isMobile ? "scaleX(1)" : "scaleX(0)",
+                transformOrigin: "left",
+              },
             }}
+            onClick={() => handleMenuItemClick(item.path)}
           >
             <Typography
-              onClick={() => handleMenuItemClick(item.path)}
               sx={{
-                ...styles.menuItemText,
                 color: isParentActive ? "primary.main" : "text.secondary",
-                paddingBottom: 0,
+                fontWeight: 600,
                 display: "flex",
                 alignItems: "center",
-                ...(isMobile && { textDecoration: "none" }),
+                height: "100%",
+                position: "relative",
+                transition: "background-color 0.3s ease",
+                paddingBottom: 0,
+                textDecoration: "none", // No text decoration
               }}
             >
               {item.label}
-              {!isMobile && isParentActive && <Box sx={styles.underline} />}
             </Typography>
             {item.subMenu && (
               <IconButton
                 size="small"
-                onClick={(e) => toggleMenu(item.path, e)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleMenu(item.path, e);
+                }}
                 sx={{
-                  transform:
-                    openSubMenu === item.path
-                      ? "rotate(180deg)"
-                      : "rotate(0deg)",
+                  transform: openSubMenu === item.path ? "rotate(180deg)" : "rotate(0deg)",
                   transition: "transform 0.3s ease",
                   color: isParentActive ? "primary.main" : "text.secondary",
                 }}
@@ -210,7 +248,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
             )}
           </Box>
           {item.subMenu && isMobile && openSubMenu === item.path && (
-            <Box sx={{ paddingLeft: 3, paddingTop: "20px"}}>
+            <Box sx={{ paddingLeft: 3, paddingTop: "20px" }}>
               {renderMenuItems(item.subMenu)}
             </Box>
           )}
@@ -234,12 +272,32 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
                     key={subItem.path}
                     onClick={() => handleMenuItemClick(subItem.path)}
                     sx={{
-                      ...styles.menuItemText,
+                      cursor: "pointer",
                       color: isPathActive(subItem.path)
                         ? "primary.main"
                         : "text.secondary",
-                      paddingBottom: 0,
-                      textDecoration: isMobile ? "none" : undefined,
+                      fontWeight: 600,
+                      display: "flex",
+                      alignItems: "center",
+                      height: "100%",
+                      position: "relative",
+                      ...(!isMobile && {
+                        "&::after": {
+                          content: '""',
+                          position: "absolute",
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          height: 3,
+                          backgroundColor: "primary.main",
+                          transition: "transform 0.3s ease",
+                          transform: "scaleX(0)",
+                          transformOrigin: "left",
+                        },
+                        "&.active::after": {
+                          transform: "scaleX(1)",
+                        },
+                      }),
                     }}
                   >
                     {subItem.label}
@@ -297,8 +355,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
           color="primary"
           sx={styles.sendMenuButton}
           onClick={() =>
-            (window.location.href =
-              "https://selfcare.pagopa.it/auth/login")
+            (window.location.href = "https://selfcare.pagopa.it/auth/login")
           }
           endIcon={<ArrowForwardIcon />}
         >
@@ -359,9 +416,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
           </Box>
         ))}
       </Box>
-      <Box sx={{ margin: 2 }}>
-        {thirdElementContent}
-      </Box>
+      <Box sx={{ margin: 2 }}>{thirdElementContent}</Box>
     </Box>
   );
 
@@ -429,7 +484,9 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
   const renderDesktopMenu = () => (
     <Box sx={styles.desktopMenu}>
       <Box sx={{ display: "flex", width: "100%" }}>
-        <Box sx={{ display: "flex" }}>{renderMenuItems(menuItems.slice(0, 3))}</Box>
+        <Box sx={{ display: "flex" }}>
+          {renderMenuItems(menuItems.slice(0, 3))}
+        </Box>
         <Box sx={{ flex: 1 }} />
         <Box sx={{ display: "flex" }}>
           {renderMenuItems(menuItems.slice(3))}
@@ -440,7 +497,12 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
         anchor="right"
         open={isSendMenuOpen}
         onClose={() => setIsSendMenuOpen(false)}
-        sx={{ "& .MuiDrawer-paper": { width: isMobile ? "80vw" : "25vw", bgcolor: "#F2F2F2" } }} 
+        sx={{
+          "& .MuiDrawer-paper": {
+            width: isMobile ? "80vw" : "25vw",
+            bgcolor: "#F2F2F2",
+          },
+        }}
       >
         {renderSendMenu()}
       </Drawer>
