@@ -58,9 +58,9 @@ const styles = {
     height: "100%",
     position: "relative",
     transition: "background-color 0.3s ease",
-    padding: "0 8px", // Add fixed padding for all menu items
-    borderRadius: "4px", // Optional: Add border-radius to make it look better
-    textDecoration: "none", // Remove the default underline
+    padding: "0 8px", 
+    borderRadius: "4px", 
+    textDecoration: "none", 
   },
   activeMenuItemText: {
     backgroundColor: "rgba(0, 115, 230, 0.08)",
@@ -78,9 +78,9 @@ const styles = {
     },
   },
   activeMenuItemTextMobile: {
-    backgroundColor: "transparent", // No background color for mobile view
+    backgroundColor: "transparent", 
     "&::after": {
-      content: '""', // No underline for mobile view
+      content: '""', 
       position: "absolute",
       left: 0,
       right: 0,
@@ -184,7 +184,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
         <Box
           key={item.path}
           sx={{
-            margin: "0 16px",
+            margin: "0 8px",
             position: "relative",
             ...(isFirstItem && index === 0 && { marginTop: "50px" }),
           }}
@@ -197,8 +197,8 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
               height: "100%",
               cursor: "pointer",
               paddingBottom: 0,
-              padding: isMobile ? "0 8px" : "0 16px", // Fixed padding for all menu items
-              backgroundColor: isParentActive && !isMobile ? "rgba(0, 115, 230, 0.08)" : "transparent", // Conditional background color
+              padding: isMobile ? "0 8px" : "0 16px", 
+              backgroundColor: isParentActive && !isMobile ? "rgba(0, 115, 230, 0.08)" : "transparent", 
               position: "relative",
               "&::after": {
                 content: '""',
@@ -207,7 +207,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
                 right: 0,
                 bottom: 0,
                 height: 3,
-                backgroundColor: isMobile ? "transparent" : "primary.main", // No underline for mobile
+                backgroundColor: isMobile ? "transparent" : "primary.main", 
                 transition: "transform 0.3s ease",
                 transform: isParentActive && !isMobile ? "scaleX(1)" : "scaleX(0)",
                 transformOrigin: "left",
@@ -225,7 +225,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
                 position: "relative",
                 transition: "background-color 0.3s ease",
                 paddingBottom: 0,
-                textDecoration: "none", // No text decoration
+                textDecoration: "none", 
               }}
             >
               {item.label}
