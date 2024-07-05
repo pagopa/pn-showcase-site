@@ -49,65 +49,16 @@ const menuItems: MenuItem[] = [
 ];
 
 const styles = {
-  menuItemText: {
-    cursor: "pointer",
-    color: "text.secondary",
-    fontWeight: 600,
-    display: "flex",
-    alignItems: "center",
-    height: "100%",
-    position: "relative",
-    transition: "background-color 0.3s ease",
-    padding: "0 8px", 
-    borderRadius: "4px", 
-    textDecoration: "none", 
-  },
-  activeMenuItemText: {
-    backgroundColor: "rgba(0, 115, 230, 0.08)",
-    "&::after": {
-      content: '""',
-      position: "absolute",
-      left: 0,
-      right: 0,
-      bottom: 0,
-      height: 3,
-      backgroundColor: "#0073E6",
-      transition: "transform 0.3s ease",
-      transform: "scaleX(1)",
-      transformOrigin: "left",
-    },
-  },
-  activeMenuItemTextMobile: {
-    backgroundColor: "transparent", 
-    "&::after": {
-      content: '""', 
-      position: "absolute",
-      left: 0,
-      right: 0,
-      bottom: 0,
-      height: 0,
-      backgroundColor: "transparent",
-    },
-  },
-  sendMenuBox: {
-    display: "flex",
-    flexDirection: "column",
-    bgcolor: "#F2F2F2",
-    height: "100%",
-    width: "100%",
-  },
   sendMenuHeader: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: "16px",
+    padding: 2,
     borderBottom: "1px solid #E3E7EB",
     bgcolor: "white",
   },
-  sendMenuHeaderText: { fontWeight: 600 },
-  sendMenuCloseButton: { color: "text.secondary" },
   sendMenuContent: {
-    padding: "16px",
+    padding: 2,
     bgcolor: "white",
   },
   sendMenuItem: {
@@ -117,7 +68,7 @@ const styles = {
     padding: 2,
     textAlign: "left",
   },
-  sendMenuIcon: { color: "#0066CC", fontSize: "32px" },
+  sendMenuIcon: { color: "pagoPA.main", fontSize: "32px" },
   sendMenuTitle: { fontWeight: 600, marginTop: 1 },
   sendMenuButton: {
     textTransform: "none",
@@ -125,13 +76,12 @@ const styles = {
     justifyContent: "flex-start",
     padding: 0,
   },
-  navbar: { borderBottom: "1px solid #E3E7EB" },
   sendButton: { marginLeft: 2, marginTop: 1, marginBottom: 1 },
   desktopMenu: {
     display: "flex",
     justifyContent: "space-between",
     width: "100%",
-    margin: "0px 24px",
+    mx: 3,
     borderTop: "1px solid #E3E7EB",
     "&  .MuiTabs-flexContainer": {
       alignItems: "center",
@@ -196,9 +146,8 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
               justifyContent: "space-between",
               height: "100%",
               cursor: "pointer",
-              paddingBottom: 0,
-              padding: isMobile ? "0 8px" : "0 16px", 
-              backgroundColor: isParentActive && !isMobile ? "rgba(0, 115, 230, 0.08)" : "transparent", 
+              px: isMobile ? 1 : 2, 
+              backgroundColor: isParentActive && !isMobile ? "primaryAction.selected" : "transparent", 
               position: "relative",
               "&::after": {
                 content: '""',
@@ -367,7 +316,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
           Il tuo ente non ha ancora aderito?{" "}
           <a
             href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
-            style={{ color: "#0066CC", textDecoration: "underline" }}
+            style={{ color: "pagoPA.main", textDecoration: "underline" }}
           >
             Scopri come aderire
           </a>
@@ -377,15 +326,15 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
   );
 
   const renderSendMenu = () => (
-    <Box sx={styles.sendMenuBox}>
+    <Box sx={{ bgcolor: "background.default" }}>
       <Box sx={styles.sendMenuHeader}>
-        <Typography variant="h6" sx={styles.sendMenuHeaderText}>
+        <Typography variant="h6" sx={{fontWeight: 600}}>
           Accedi a SEND
         </Typography>
         <IconButton
           size="small"
           onClick={() => setIsSendMenuOpen(false)}
-          sx={styles.sendMenuCloseButton}
+          sx={{color: "text.secondary"}}
         >
           <CloseIcon />
         </IconButton>
@@ -500,7 +449,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
         sx={{
           "& .MuiDrawer-paper": {
             width: isMobile ? "80vw" : "25vw",
-            bgcolor: "#F2F2F2",
+            bgcolor: "background.default",
           },
         }}
       >
@@ -510,7 +459,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
   );
 
   return (
-    <Box className="sendNavbar" sx={styles.navbar}>
+    <Box className="sendNavbar" sx={{borderBottom: "1px solid #E3E7EB"}}>
       <Stack direction="column">
         <Stack
           direction="row"
@@ -590,7 +539,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
                 anchor="right"
                 open={isSendMenuOpen}
                 onClose={() => setIsSendMenuOpen(false)}
-                sx={{ "& .MuiDrawer-paper": { width: "100vw", bgcolor: "#F2F2F2" } }}
+                sx={{ "& .MuiDrawer-paper": { width: "100vw", bgcolor: "background.default" } }}
               >
                 {renderSendMenu()}
               </Drawer>
