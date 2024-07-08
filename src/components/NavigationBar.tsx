@@ -315,7 +315,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
         <Typography variant="body2">
           Il tuo ente non ha ancora aderito?{" "}
           <a
-            href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
+            href="https://docs.pagopa.it/area-riservata-enti-piattaforma-notifiche/area-riservata-enti-send-servizio-notifiche-digitali/processo-di-adesione-a-send"
             style={{ color: "pagoPA.main", textDecoration: "underline" }}
           >
             Scopri come aderire
