@@ -37,13 +37,14 @@ const menuItems: MenuItem[] = [
       },
     ],
   },
-  {
-    label: "Punti di ritiro",
-    path: "/punti-di-ritiro",
-    subMenu: [
-      { label: "Come funziona", path: "/punti-di-ritiro/come-funziona" },
-    ],
-  },
+  
+  // {
+  //   label: "Punti di ritiro",
+  //   path: "/punti-di-ritiro",
+  //   subMenu: [
+  //     { label: "Come funziona", path: "/punti-di-ritiro/come-funziona" },
+  //   ],
+  // },
   { label: "Send in numeri", path: "/numeri" },
   { label: "FAQ", path: "/faq" },
 ];
