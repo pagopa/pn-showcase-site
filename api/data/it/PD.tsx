@@ -296,7 +296,7 @@ export const InDepthCard = () => {
                 {
                     label: "Vai ai costi",
                     color: "primary",
-                    link: "/static/documents/Prezzi Ente 2024.pdf",
+                    link: "/static/documents/Prezzi Ente v.2.pdf",
                     icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
             ],
