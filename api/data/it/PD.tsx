@@ -299,6 +299,12 @@ export const InDepthCard = () => {
                     link: "/static/documents/Prezzi Ente v.2.pdf",
                     icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
+                {
+                    label: "Vai al precedente documento dei costi",
+                    color: "primary",
+                    link: "/static/documents/Prezzi Ente 2024.pdf",
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
+                },
             ],
         },
         {
