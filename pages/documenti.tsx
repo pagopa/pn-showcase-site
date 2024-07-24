@@ -1,11 +1,19 @@
 // pages/documenti.js
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const Documenti = () => {
+    const router = useRouter();
+
+    useEffect(() => {
+        router.replace('pubbliche-amministrazioni/documenti');
+    }, [])
+
     return (
         <>
             <Head>
-                <meta http-equiv="refresh" content="0; url=/pubbliche-amministrazioni/documenti" />
+                <meta key="robots" name="robots" content="noindex, nofollow" />
             </Head>
         </>
     );
