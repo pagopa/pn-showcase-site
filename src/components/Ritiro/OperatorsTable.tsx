@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { TablePagination, Stack, TableSortLabel } from "@mui/material";
-import { RaddOperator } from "model";
+import { RaddOperator } from "../../model";
 import { useEffect, useRef, useState } from "react";
 import CustomPagination from "../CustomPagination";
 

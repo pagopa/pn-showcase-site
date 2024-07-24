@@ -2,24 +2,34 @@ import { ReactNode, useContext, useEffect, useState } from "react";
 
 import { Box, Stack } from "@mui/material";
 
-import { Footer, ButtonNaked } from "@pagopa/mui-italia";
+import { Footer, ButtonNaked, LangCode as MuiLangCode, Languages, LangLabels } from "@pagopa/mui-italia";
 
-import LangContext from "provider/lang-context";
-import { getAppData } from "api";
-import NavigationBar from "../components/NavigationBar";
-import { LANGUAGES } from "./constants";
+import { getAppData } from "../api";
+import NavigationBar from "./NavigationBar";
+import { langCodes } from "../utils/constants";
+import { LangCode } from "src/model";
+import { useTranslation } from "src/hook/useTranslation";
+import LangContext from "src/context/lang-context";
 
 interface Props {
   children?: ReactNode;
 }
 
-const LandingLayout = ({ children }: Props) => {
-  const lang = useContext(LangContext);
+const Layout: React.FC<Props> = ({ children }) => {
   const appData = getAppData();
+  const {t} = useTranslation(['common']);
+  const {lang, changeLanguage} = useContext(LangContext);
 
   const [windowURL, setWindowURL] = useState<string>();
 
-  //
+  const availableLanguages = langCodes.reduce((obj, code) => {
+    obj[code] = langCodes.reduce((innerObj, code) => {
+      innerObj[code] = t(`footer.${code}`);
+      return innerObj
+    }, {} as LangLabels);
+    return obj;
+  }, {} as Languages);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setWindowURL(window.location.origin);
@@ -89,9 +99,9 @@ const LandingLayout = ({ children }: Props) => {
           legalInfo={appData.common.companyLegalInfo}
           postLoginLinks={appData.common.postLoginLinks}
           preLoginLinks={appData.common.preLoginLinks(windowURL)}
-          currentLangCode={lang.selectedLanguage}
-          onLanguageChanged={lang.changeLanguage}
-          languages={LANGUAGES}
+          currentLangCode={lang}
+          onLanguageChanged={(lng) => changeLanguage(lng as LangCode)}
+          languages={availableLanguages}
           productsJsonUrl={appData.common.productJson}
         />
       </Stack>
@@ -99,4 +109,4 @@ const LandingLayout = ({ children }: Props) => {
   );
 };
 
-export default LandingLayout;
+export default Layout;

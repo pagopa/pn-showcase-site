@@ -1,3 +1,6 @@
+import { LangLabels, Languages } from '@pagopa/mui-italia';
+import {LangCode} from '../model';
+
 // export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 export const IMAGES_PATH = process.env.NEXT_PUBLIC_IMAGES_PATH;
 
@@ -45,3 +48,18 @@ export const ACCESSIBILITY_PARTICULAR_LINK = {
   PARTICULAR_ACCESSIBILITY_URL:
     process.env.NEXT_PUBLIC_ACCESSIBILITY_PARTICULAR_ACCESSIBILITY_URL,
 };
+
+// localization //
+export const langCodes = ["it", "en"] as const; // "fr", "de", "sl"
+export const LS_LANG_PROP_NAME = "lang";
+export const DEFAULT_LANG: LangCode = "it";
+/*
+export const LANGUAGES: Languages = {
+  it: { it: 'Italiano', en: 'Inglese', fr: 'Francese', de: 'Tedesco', sl: 'Sloveno' },
+  en: { it: 'Italian', en: 'English', fr: 'French', de: 'German', sl: 'Slovenian' },
+  fr: { it: 'Italien', en: 'Anglais', fr: 'Français', de: 'Allemand', sl: 'Slovène' },
+  de: { it: 'Italienisch', en: 'Englisch', fr: 'Französisch', de: 'Deutsch', sl: 'Slowenisch' },
+  sl: { it: 'Italijansko', en: 'Angleško', fr: 'Francosko', de: 'Nemško', sl: 'Slovensko' }
+};
+*/
+// ------------- //

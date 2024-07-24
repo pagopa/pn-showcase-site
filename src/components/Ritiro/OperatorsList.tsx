@@ -10,7 +10,7 @@ import {
   TablePagination,
   Pagination,
 } from "@mui/material";
-import { RaddOperator } from "model";
+import { RaddOperator } from "../../model";
 import { useEffect, useRef, useState } from "react";
 import CustomPagination from "../CustomPagination";
 
