@@ -115,7 +115,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
     setIsMobileMenuOpen(false);
     setIsSendMenuOpen(false);
     setOpenSubMenu(null);
-    push(`${lang}/path`);
+    push(`${lang}${path}`);
   };
 
   useEffect(() => {

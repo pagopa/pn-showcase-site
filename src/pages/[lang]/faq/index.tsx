@@ -184,7 +184,7 @@ const FaqPage: NextPage = () => {
         description="Consulta le domande frequenti sulla piattaforma SEND dedicata alla ricezione di notifiche digitali a valore legale"
       />
 
-      <main id="faqHero">
+      <Box id="faqHero">
         <Box
           sx={{
             background: `url(${IMAGES_PATH}/hero-faq-background-2.png)`,
@@ -255,7 +255,7 @@ const FaqPage: NextPage = () => {
             />
           ))}
         </Stack>
-      </main>
+      </Box>
     </>
   );
 };
