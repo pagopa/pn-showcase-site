@@ -1,7 +1,7 @@
-import type { NextPage } from "next";
+import type { GetStaticPaths, NextPage } from "next";
 import { Infoblock, Showcase, Walkthrough, Hero } from "@pagopa/mui-italia";
 
-import { UserType } from "../../../model";
+import { LangCode, UserType } from "../../../model";
 import PageHead from "../../../components/PageHead";
 import {
   getHeroData,
@@ -9,8 +9,25 @@ import {
   getShowcaseData,
   getWalkthroughData,
 } from "../../../api";
+import { langCodes } from "@utils/constants";
+import { getI18n } from "../../../api/i18n";
 
 const USER_TYPE = UserType.PI;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: langCodes.map((lang) => ({
+      params: { lang },
+    })),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({params}: {params: {lang: LangCode}}) {
+  const translations = getI18n(params.lang, ['common'])
+
+  return { props: {translations, lang: params.lang} }
+}
 
 const ImpresePage: NextPage = () => (
   <>

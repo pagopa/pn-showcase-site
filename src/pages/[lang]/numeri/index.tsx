@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetStaticPaths, NextPage } from "next";
 
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
@@ -11,6 +11,24 @@ import TopServices from "../../../components/Numeri/components/TopServices";
 import { curYear, firstYear } from "../../../components/Numeri/shared/constants";
 import Tabs from "../../../components/Tabs";
 import PageHead from "../../../components/PageHead";
+import { langCodes } from "@utils/constants";
+import { LangCode } from "../../../model";
+import { getI18n } from "../../../api/i18n";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: langCodes.map((lang) => ({
+      params: { lang },
+    })),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({params}: {params: {lang: LangCode}}) {
+  const translations = getI18n(params.lang, ['common'])
+
+  return { props: {translations, lang: params.lang} }
+}
 
 type Tabs = {
   id: number | null;

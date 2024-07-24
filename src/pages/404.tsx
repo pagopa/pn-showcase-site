@@ -15,7 +15,7 @@ const NotFound: NextPage = () => {
         return;
       }
       router.replace(`/${detectedLng}${router.asPath}`);
-  })
+  }, [])
 
   return (
       <Head>

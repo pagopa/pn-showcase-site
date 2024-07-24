@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { GetStaticPaths, NextPage } from "next";
 import { useEffect, useRef, useState } from "react";
 import {
   Box,
@@ -8,14 +8,9 @@ import {
   Typography,
   Grid,
   Link,
-  Card,
-  CardContent,
-  CardActions,
-  Container,
 } from "@mui/material";
 import MailIcon from "@mui/icons-material/Mail";
 import PhoneIcon from "@mui/icons-material/Phone";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 import {
   getAssistenzaHeadingTitleData,
@@ -25,7 +20,24 @@ import {
 import HeadingTitle from "../../components/HeadingTitle";
 import Tabs from "../../components/Tabs";
 import PageHead from "../../components/PageHead";
-import { PAGOPA_HELP_EMAIL } from "@utils/constants";
+import { langCodes, PAGOPA_HELP_EMAIL } from "@utils/constants";
+import { getI18n } from "../../api/i18n";
+import { LangCode } from "../../model";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: langCodes.map((lang) => ({
+      params: { lang },
+    })),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({params}: {params: {lang: LangCode}}) {
+  const translations = getI18n(params.lang, ['common'])
+
+  return { props: {translations, lang: params.lang} }
+}
 
 const DarkInfoblockAssistenza = () => {
   return (

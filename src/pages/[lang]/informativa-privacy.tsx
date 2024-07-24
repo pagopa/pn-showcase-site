@@ -1,10 +1,27 @@
 /* eslint-disable @next/next/no-before-interactive-script-outside-document */
 import { useEffect } from "react";
-import type { NextPage } from "next";
+import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 
-import { ONE_TRUST_PP_PAGE } from "@utils/constants";
+import { langCodes, ONE_TRUST_PP_PAGE } from "@utils/constants";
 import PageHead from "../../components/PageHead";
+import { LangCode } from "../../model";
+import { getI18n } from "../../api/i18n";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: langCodes.map((lang) => ({
+      params: { lang },
+    })),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({params}: {params: {lang: LangCode}}) {
+  const translations = getI18n(params.lang, ['common'])
+
+  return { props: {translations, lang: params.lang} }
+}
 
 declare const OneTrust: {
   NoticeApi: {

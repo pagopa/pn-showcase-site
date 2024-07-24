@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect, useCallback } from "react";
-import type { NextPage } from "next";
+import type { GetStaticPaths, NextPage } from "next";
 import { useRouter } from "next/router";
 import {
   Box,
@@ -13,10 +13,11 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import { IMAGES_PATH } from "@utils/constants";
+import { IMAGES_PATH, langCodes } from "@utils/constants";
 import { getFaqData } from "../../../api";
-import { FaqDescription, IFaqDataItem, IFaqDataSection } from "../../../model";
+import { FaqDescription, IFaqDataItem, IFaqDataSection, LangCode } from "../../../model";
 import PageHead from "../../../components/PageHead";
+import { getI18n } from "../../../api/i18n";
 
 type SetActiveItemFunction = (
   itemId: string
@@ -26,6 +27,21 @@ type ActiveItemProps = {
   setActiveItem: SetActiveItemFunction;
   activeItem: string | null;
 };
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: langCodes.map((lang) => ({
+      params: { lang },
+    })),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({params}: {params: {lang: LangCode}}) {
+  const translations = getI18n(params.lang, ['common'])
+
+  return { props: {translations, lang: params.lang} }
+}
 
 /**
  * A separate component to deal with the polymorphism allowed in the definition of a FAQ item description.
@@ -92,7 +108,7 @@ function FaqDataItemBlock(props: { item: IFaqDataItem } & ActiveItemProps) {
   );
 }
 
-export function FaqDataSectionBlock(
+function FaqDataSectionBlock(
   props: { section: IFaqDataSection } & ActiveItemProps
 ) {
   const { section, setActiveItem, activeItem } = props;

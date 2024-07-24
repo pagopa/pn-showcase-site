@@ -1,5 +1,5 @@
 import { Infoblock } from "@pagopa/mui-italia";
-import { NextPage } from "next";
+import { GetStaticPaths, NextPage } from "next";
 import { useRef, useState } from "react";
 import { Box, Fade, Stack } from "@mui/material";
 
@@ -11,6 +11,24 @@ import {
 import HeadingTitle from "../../components/HeadingTitle";
 import Tabs from "../../components/Tabs";
 import PageHead from "../../components/PageHead";
+import { langCodes } from "@utils/constants";
+import { getI18n } from "../../api/i18n";
+import { LangCode } from "../../model";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: langCodes.map((lang) => ({
+      params: { lang },
+    })),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({params}: {params: {lang: LangCode}}) {
+  const translations = getI18n(params.lang, ['common'])
+
+  return { props: {translations, lang: params.lang} }
+}
 
 const Perfezionamento: NextPage = () => {
   const [currentTab, setCurrentTab] = useState({ index: 0, visible: true });
