@@ -294,9 +294,15 @@ export const InDepthCard = () => {
             description: "",
             buttons: [
                 {
-                    label: "Vai ai costi",
+                    label: "Vai ai costi in vigore dal 01/08/2024",
                     color: "primary",
                     link: "/static/documents/Prezzi Ente v.2.pdf",
+                    icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
+                },
+                {
+                    label: "Vai ai costi in vigore fino al 31/07/2024",
+                    color: "primary",
+                    link: "/static/documents/Prezzi Ente 2024.pdf",
                     icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
                 },
             ],
