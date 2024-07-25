@@ -30,7 +30,11 @@ export const LangProvider: React.FC<Props> = ({ children, lang =  DEFAULT_LANG, 
     sessionStorage.setItem(LS_LANG_PROP_NAME, newLang);
     setSelectedLang(() => newLang);
     // redirect to page
-    router.replace({ pathname, query: {lang: newLang} });
+    // the reload is needed because the _document is rendered server side and
+    // it isn't re-rendered when changes occur on client side. This means that the lang
+    // attribute isn't changed on router navigation, but only on refresh
+    router.replace({ pathname, query: {lang: newLang} }, undefined, {shallow: true})
+      .then(() => router.reload());
   }, [pathname, query]);
 
   // Sync context with router
