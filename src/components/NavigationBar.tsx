@@ -473,7 +473,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
         >
           <Box
             sx={{ paddingRight: 2, cursor: "pointer" }}
-            onClick={() => window.open("/", "_self")}
+            onClick={() => push(`/${lang}`)}
           >
             <img src={image} alt={title} aria-label={title} />
           </Box>
