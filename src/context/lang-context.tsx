@@ -22,7 +22,7 @@ interface Props {
 }
 
 export const LangProvider: React.FC<Props> = ({ children, lang =  DEFAULT_LANG, translations}) => {
-  const [selectedLang, setSelectedLang] = useState<LangCode>(lang);
+  const [selectedLang, setSelectedLang] = useState<LangCode>(langCodes.find(l => l === lang) ?? DEFAULT_LANG);
   const router = useRouter();
   const { pathname, query } = router;
 
