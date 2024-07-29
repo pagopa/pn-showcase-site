@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import {
   Box,
@@ -17,7 +17,8 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PeopleIcon from "@mui/icons-material/People";
 import BusinessIcon from "@mui/icons-material/Business";
-import { MenuItem } from "model";
+import { MenuItem } from "../model";
+import LangContext from "src/context/lang-context";
 
 interface INavigationBarProps {
   title: string;
@@ -45,7 +46,7 @@ const menuItems: MenuItem[] = [
   //     { label: "Come funziona", path: "/punti-di-ritiro/come-funziona" },
   //   ],
   // },
-  { label: "Send in numeri", path: "/numeri" },
+  { label: "SEND in numeri", path: "/numeri" },
   { label: "FAQ", path: "/faq" },
 ];
 
@@ -98,6 +99,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
   const [mounted, setMounted] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const {lang} = useContext(LangContext);
 
   const toggleMenu = (menu: string, event?: React.MouseEvent<HTMLElement>) => {
     if (openSubMenu === menu) {
@@ -113,7 +115,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
     setIsMobileMenuOpen(false);
     setIsSendMenuOpen(false);
     setOpenSubMenu(null);
-    push(path);
+    push(`/${lang}${path}`);
   };
 
   useEffect(() => {
@@ -471,7 +473,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
         >
           <Box
             sx={{ paddingRight: 2, cursor: "pointer" }}
-            onClick={() => window.open("/", "_self")}
+            onClick={() => push(`/${lang}`)}
           >
             <img src={image} alt={title} aria-label={title} />
           </Box>
