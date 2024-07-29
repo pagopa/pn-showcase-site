@@ -46,7 +46,7 @@ const menuItems: MenuItem[] = [
   //     { label: "Come funziona", path: "/punti-di-ritiro/come-funziona" },
   //   ],
   // },
-  { label: "Send in numeri", path: "/numeri" },
+  { label: "SEND in numeri", path: "/numeri" },
   { label: "FAQ", path: "/faq" },
 ];
 
