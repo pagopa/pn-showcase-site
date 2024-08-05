@@ -4,19 +4,18 @@ import { Box, Stack } from "@mui/material";
 
 import { Footer, ButtonNaked, LangCode as MuiLangCode, Languages, LangLabels } from "@pagopa/mui-italia";
 
-import { getAppData } from "../api";
 import NavigationBar from "./NavigationBar";
-import { langCodes } from "../utils/constants";
+import { ACCESSIBILITY_PARTICULAR_LINK, IMAGES_PATH, langCodes, PAGOPA_HOME } from "../utils/constants";
 import { LangCode } from "src/model";
 import { useTranslation } from "src/hook/useTranslation";
 import LangContext from "src/context/lang-context";
+import { companyLegalInfo, pagoPALink, postLoginLinks, preLoginLinks, productJson } from "../utils/footer";
 
 interface Props {
   children?: ReactNode;
 }
 
 const Layout: React.FC<Props> = ({ children }) => {
-  const appData = getAppData();
   const {t} = useTranslation(['common']);
   const {lang, changeLanguage} = useContext(LangContext);
 
@@ -60,15 +59,15 @@ const Layout: React.FC<Props> = ({ children }) => {
                 fontWeight: "bold",
               }}
               size="small"
-              aria-label={appData.common.pagoPALink.ariaLabel}
-              href={appData.common.pagoPALink.href}
+              aria-label={t('pagopaLink.ariaLabel')}
+              href={PAGOPA_HOME}
               color="text"
               target="_blank"
               rel="noopener noreferrer"
               disableRipple
               disableTouchRipple
             >
-              {appData.common.pagoPALink.label}
+              {t('pagopaLink.label')}
             </ButtonNaked>
             {/* <ButtonNaked
               size="small"
@@ -85,24 +84,25 @@ const Layout: React.FC<Props> = ({ children }) => {
             </ButtonNaked> */}
           </Stack>
         </Stack>
-        <NavigationBar {...appData.common.navigation} />
+        <NavigationBar title={t('navigation.title')} image={`${IMAGES_PATH}/logo.svg`} />
         <Box sx={{ flexGrow: 1 }} component="main">
           {children}
         </Box>
         <Footer
           loggedUser={false}
           companyLink={{
-            ...appData.common.pagoPALink,
+            ...pagoPALink(t, lang),
             onClick: () =>
-              window.open(appData.common.pagoPALink.href, "_blank"),
+              window.open(PAGOPA_HOME, "_blank"),
           }}
-          legalInfo={appData.common.companyLegalInfo}
-          postLoginLinks={appData.common.postLoginLinks}
-          preLoginLinks={appData.common.preLoginLinks(windowURL)}
+          legalInfo={companyLegalInfo(t, lang)}
+          postLoginLinks={postLoginLinks(t, lang)}
+          // preLoginLinks={preLoginLinks(t, lang)}
+          preLoginLinks={preLoginLinks(t, lang, windowURL)}
           currentLangCode={lang}
           onLanguageChanged={(lng) => changeLanguage(lng as LangCode)}
           languages={availableLanguages}
-          productsJsonUrl={appData.common.productJson}
+          productsJsonUrl={productJson}
         />
       </Stack>
     </Box>
