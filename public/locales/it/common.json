@@ -136,5 +136,11 @@
             "link": "Scopri come aderire",
             "login": "Accedi"
         }
+    },
+    "infoblock_ritiro": {
+        "title": "Cosa portare",
+        "description": "Per ritirare i documenti notificati avrai sempre bisogno del tuo documento d’identità e del tuo codice fiscale.",
+        "details_text": "Per altri dettagli scopri",
+        "details_link_text": "come funzionano i punti di ritiro SEND"
     }
 }

@@ -89,16 +89,6 @@ export interface IFaqData {
 }
 
 export interface IAppData {
-  common: {
-    navigation: INavigationBarProps;
-    alert?: string;
-    assistance: ILinkData;
-    pagoPALink: ILinkData;
-    companyLegalInfo: JSX.Element;
-    preLoginLinks: (windowURL?: string) => PreLoginFooterLinksType;
-    postLoginLinks: Array<FooterLinksType>;
-    productJson: string;
-  };
   pa: ILandingComponents;
   pf: ILandingComponents;
   ph: ILandingComponents;

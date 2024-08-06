@@ -5,7 +5,7 @@ import { Box, Stack } from "@mui/material";
 import { Footer, ButtonNaked, LangCode as MuiLangCode, Languages, LangLabels } from "@pagopa/mui-italia";
 
 import NavigationBar from "./NavigationBar";
-import { ACCESSIBILITY_PARTICULAR_LINK, IMAGES_PATH, langCodes, PAGOPA_HOME } from "../utils/constants";
+import { IMAGES_PATH, langCodes, PAGOPA_HOME } from "../utils/constants";
 import { LangCode } from "src/model";
 import { useTranslation } from "src/hook/useTranslation";
 import LangContext from "src/context/lang-context";
