@@ -2,14 +2,7 @@ import { Box, Container, Grid, Link, Typography } from "@mui/material";
 import { LeggiIcon } from "../../api/data/icons";
 import { useTranslation } from "src/hook/useTranslation";
 
-type Props = {
-    title: string;
-    description: string;
-    detailText: string;
-    detailLink: string;
-};
-
-const DarkInfoblockRitiro: React.FC<Props> = ({title, description, detailText, detailLink}) => {
+const DarkInfoblockRitiro: React.FC = () => {
   const { t } = useTranslation(["common"]);
   return (
     <Box
@@ -36,7 +29,7 @@ const DarkInfoblockRitiro: React.FC<Props> = ({title, description, detailText, d
               color="white"
               gutterBottom
             >
-              {title}
+              {t("infoblock_ritiro.title")}
             </Typography>
             <Typography
               variant="body2"
@@ -44,7 +37,7 @@ const DarkInfoblockRitiro: React.FC<Props> = ({title, description, detailText, d
               textAlign="center"
               marginBottom={2}
             >
-              {description}
+              {t("infoblock_ritiro.description")}
             </Typography>
             <Typography
               variant="body2"
@@ -52,14 +45,14 @@ const DarkInfoblockRitiro: React.FC<Props> = ({title, description, detailText, d
               textAlign="center"
               marginBottom={2}
             >
-              {detailText}{" "}
+              {t("infoblock_ritiro.details_text")}{" "}
               <Link
                 variant="body2"
                 color="inherit"
                 href="/punti-di-ritiro/come-funziona"
               >
                 <strong>
-                  {detailLink}
+                  {t("infoblock_ritiro.details_link_text")}
                 </strong>
               </Link>
               .

@@ -13,15 +13,6 @@ import {
   pfShowcases,
   pfWalkthrough,
 } from "./it/PF";
-// import {
-//   assistanceLink,
-//   companyLegalInfo,
-//   navigation,
-//   pagoPALink,
-//   postLoginLinks,
-//   preLoginLinks,
-//   productJson,
-// } from "./it/common";
 import {
   phHero,
   phHorizontalNav,

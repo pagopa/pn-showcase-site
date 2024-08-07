@@ -5,7 +5,7 @@ import { Box, Stack } from "@mui/material";
 import { Footer, ButtonNaked, LangCode as MuiLangCode, Languages, LangLabels } from "@pagopa/mui-italia";
 
 import NavigationBar from "./NavigationBar";
-import { IMAGES_PATH, langCodes, PAGOPA_HOME } from "../utils/constants";
+import { langCodes, PAGOPA_HOME } from "../utils/constants";
 import { LangCode } from "src/model";
 import { useTranslation } from "src/hook/useTranslation";
 import LangContext from "src/context/lang-context";
@@ -84,7 +84,7 @@ const Layout: React.FC<Props> = ({ children }) => {
             </ButtonNaked> */}
           </Stack>
         </Stack>
-        <NavigationBar title={t('navigation.title')} image={`${IMAGES_PATH}/logo.svg`} />
+        <NavigationBar/>
         <Box sx={{ flexGrow: 1 }} component="main">
           {children}
         </Box>
@@ -97,7 +97,6 @@ const Layout: React.FC<Props> = ({ children }) => {
           }}
           legalInfo={companyLegalInfo(t, lang)}
           postLoginLinks={postLoginLinks(t, lang)}
-          // preLoginLinks={preLoginLinks(t, lang)}
           preLoginLinks={preLoginLinks(t, lang, windowURL)}
           currentLangCode={lang}
           onLanguageChanged={(lng) => changeLanguage(lng as LangCode)}

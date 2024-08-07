@@ -264,12 +264,7 @@ const RitiroPage: NextPage = () => {
         </Box>
       )}
 
-      <DarkInfoblockRitiro
-        title={t("infoblock_ritiro.title")}
-        description={t("infoblock_ritiro.description")}
-        detailText={t("infoblock_ritiro.details_text")}
-        detailLink={t("infoblock_ritiro.details_link_text")}
-      />
+      <DarkInfoblockRitiro />
     </>
   );
 };
