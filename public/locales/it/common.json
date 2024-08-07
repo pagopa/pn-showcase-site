@@ -137,6 +137,12 @@
             "login": "Accedi"
         }
     },
+    "pickup_points": {
+        "label": "Punti di ritiro",
+        "submenu": {
+            "how": "Come funziona"
+        }
+    },
     "infoblock_ritiro": {
         "title": "Cosa portare",
         "description": "Per ritirare i documenti notificati avrai sempre bisogno del tuo documento d’identità e del tuo codice fiscale.",

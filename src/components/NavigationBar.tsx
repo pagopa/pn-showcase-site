@@ -20,11 +20,7 @@ import BusinessIcon from "@mui/icons-material/Business";
 import { MenuItem } from "../model";
 import LangContext from "src/context/lang-context";
 import { useTranslation } from "src/hook/useTranslation";
-
-interface INavigationBarProps {
-  title: string;
-  image: string;
-}
+import { IMAGES_PATH } from "@utils/constants";
 
 const styles = {
   sendMenuHeader: {
@@ -67,7 +63,7 @@ const styles = {
   },
 };
 
-const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
+const NavigationBar: React.FC = () => {
   const { pathname, push } = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isSendMenuOpen, setIsSendMenuOpen] = useState<boolean>(false);
@@ -93,10 +89,10 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
     },
     
     // {
-    //   label: "Punti di ritiro",
+    //   label: t('pickup_points.label'),
     //   path: "/punti-di-ritiro",
     //   subMenu: [
-    //     { label: "Come funziona", path: "/punti-di-ritiro/come-funziona" },
+    //     { label: t('pickup_points.submenu.how'), path: "/punti-di-ritiro/come-funziona" },
     //   ],
     // },
     { label: t('navigation.send_numbers'), path: "/numeri" },
@@ -478,7 +474,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
             sx={{ paddingRight: 2, cursor: "pointer" }}
             onClick={() => push(`/${lang}`)}
           >
-            <img src={image} alt={title} aria-label={title} />
+            <img src={`${IMAGES_PATH}/logo.svg`} alt={t('navigation.title')} aria-label={t('navigation.title')} />
           </Box>
           <Box>
             <Typography
