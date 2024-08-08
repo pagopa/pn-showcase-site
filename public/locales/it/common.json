@@ -116,7 +116,9 @@
         "documentation": "Documentazione",
         "send_numbers": "SEND in numeri",
         "faq": "FAQ",
-        "login": "Accedi a SEND"
+        "login": "Accedi a SEND",
+        "pickup_points": "Punti di ritiro",
+        "pickup_points_how": "Come funziona"
     },
     "login_panel": {
         "login": "Accedi a SEND",
@@ -135,12 +137,6 @@
             "description": "Il tuo ente non ha ancora aderito?",
             "link": "Scopri come aderire",
             "login": "Accedi"
-        }
-    },
-    "pickup_points": {
-        "label": "Punti di ritiro",
-        "submenu": {
-            "how": "Come funziona"
         }
     },
     "infoblock_ritiro": {

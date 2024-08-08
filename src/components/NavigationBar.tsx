@@ -89,10 +89,10 @@ const NavigationBar: React.FC = () => {
     },
     
     // {
-    //   label: t('pickup_points.label'),
+    //   label: t('navigation.pickup_points'),
     //   path: "/punti-di-ritiro",
     //   subMenu: [
-    //     { label: t('pickup_points.submenu.how'), path: "/punti-di-ritiro/come-funziona" },
+    //     { label: t('navigation.pickup_points_how'), path: "/punti-di-ritiro/come-funziona" },
     //   ],
     // },
     { label: t('navigation.send_numbers'), path: "/numeri" },
