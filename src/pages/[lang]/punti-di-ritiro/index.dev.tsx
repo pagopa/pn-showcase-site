@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetStaticPaths, NextPage } from "next";
 
 import PageHead from "../../../components/PageHead";
 import {
@@ -16,12 +16,31 @@ import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import Papa from "papaparse";
 import OperatorsTable from "../../../components/Ritiro/OperatorsTable";
-import { DarkInfoblockRitiro } from "../../../api/data/it/common";
+import DarkInfoblockRitiro from "../../../components/Ritiro/DarkInfoblockRitiro";
 import OperatorsList from "../../../components/Ritiro/OperatorsList";
 import { useEffect, useState } from "react";
-import { Point, RaddOperator } from "../../../model";
+import { LangCode, Point, RaddOperator } from "../../../model";
+import { useTranslation } from "src/hook/useTranslation";
+import { langCodes } from "@utils/constants";
+import { getI18n } from "../../../api/i18n";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: langCodes.map((lang) => ({
+      params: { lang },
+    })),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({params}: {params: {lang: LangCode}}) {
+  const translations = getI18n(params.lang, ['common', 'pickup'])
+
+  return { props: {translations, lang: params.lang} }
+}
 
 const RitiroPage: NextPage = () => {
+  const {t} = useTranslation(['common', 'pickup']);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -245,7 +264,7 @@ const RitiroPage: NextPage = () => {
         </Box>
       )}
 
-      <DarkInfoblockRitiro></DarkInfoblockRitiro>
+      <DarkInfoblockRitiro />
     </>
   );
 };

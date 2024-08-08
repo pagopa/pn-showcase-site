@@ -19,36 +19,8 @@ import PeopleIcon from "@mui/icons-material/People";
 import BusinessIcon from "@mui/icons-material/Business";
 import { MenuItem } from "../model";
 import LangContext from "src/context/lang-context";
-
-interface INavigationBarProps {
-  title: string;
-  image: string;
-}
-
-const menuItems: MenuItem[] = [
-  { label: "Cittadini", path: "/cittadini" },
-  { label: "Imprese", path: "/imprese" },
-  {
-    label: "Enti",
-    path: "/pubbliche-amministrazioni",
-    subMenu: [
-      {
-        label: "Documentazione",
-        path: "/pubbliche-amministrazioni/documenti",
-      },
-    ],
-  },
-  
-  // {
-  //   label: "Punti di ritiro",
-  //   path: "/punti-di-ritiro",
-  //   subMenu: [
-  //     { label: "Come funziona", path: "/punti-di-ritiro/come-funziona" },
-  //   ],
-  // },
-  { label: "SEND in numeri", path: "/numeri" },
-  { label: "FAQ", path: "/faq" },
-];
+import { useTranslation } from "src/hook/useTranslation";
+import { IMAGES_PATH } from "@utils/constants";
 
 const styles = {
   sendMenuHeader: {
@@ -91,7 +63,7 @@ const styles = {
   },
 };
 
-const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
+const NavigationBar: React.FC = () => {
   const { pathname, push } = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isSendMenuOpen, setIsSendMenuOpen] = useState<boolean>(false);
@@ -100,7 +72,33 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
   const [mounted, setMounted] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const {lang} = useContext(LangContext);
+  const { t } = useTranslation(['common']);
 
+  const menuItems: MenuItem[] = [
+    { label: t('navigation.cittadini'), path: "/cittadini" },
+    { label: t('navigation.aziende'), path: "/imprese" },
+    {
+      label: t('navigation.enti'),
+      path: "/pubbliche-amministrazioni",
+      subMenu: [
+        {
+          label: t('navigation.documentation'),
+          path: "/pubbliche-amministrazioni/documenti",
+        },
+      ],
+    },
+    
+    // {
+    //   label: t('navigation.pickup_points'),
+    //   path: "/punti-di-ritiro",
+    //   subMenu: [
+    //     { label: t('navigation.pickup_points_how'), path: "/punti-di-ritiro/come-funziona" },
+    //   ],
+    // },
+    { label: t('navigation.send_numbers'), path: "/numeri" },
+    { label: t('navigation.faq'), path: "/faq" },
+  ];
+  
   const toggleMenu = (menu: string, event?: React.MouseEvent<HTMLElement>) => {
     if (openSubMenu === menu) {
       setOpenSubMenu(null);
@@ -265,15 +263,16 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
   const sendMenuItems = [
     {
       icon: <PeopleIcon sx={styles.sendMenuIcon} />,
-      title: "Cittadini",
-      description:
-        "Accedi come persona fisica, libero professionista o ditta individuale",
+      title: t('login_panel.cittadini.title'),
+      description: t('login_panel.cittadini.description'),
+      login: t('login_panel.cittadini.login'),
       link: "https://cittadini.notifichedigitali.it/auth/login",
     },
     {
       icon: <BusinessIcon sx={styles.sendMenuIcon} />,
-      title: "Imprese",
-      description: "Accedi come persona giuridica",
+      title: t('login_panel.imprese.title'),
+      description: t('login_panel.imprese.description'),
+      login: t('login_panel.imprese.login'),
       link: "https://imprese.notifichedigitali.it/auth/login",
     },
   ];
@@ -300,7 +299,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
         }}
       >
         <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-          Sei un ente?
+          {t('login_panel.enti.title')}
         </Typography>
         <Button
           variant="text"
@@ -311,17 +310,17 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
           }
           endIcon={<ArrowForwardIcon />}
         >
-          Accedi
+          {t('login_panel.enti.login')}
         </Button>
       </Stack>
       <Box sx={{ borderTop: "1px solid #E3E7EB", paddingTop: 1 }}>
         <Typography variant="body2">
-          Il tuo ente non ha ancora aderito?{" "}
+        {t('login_panel.enti.description')}{" "}
           <a
             href="https://docs.pagopa.it/area-riservata-enti-piattaforma-notifiche/area-riservata-enti-send-servizio-notifiche-digitali/processo-di-adesione-a-send"
             style={{ color: "pagoPA.main", textDecoration: "underline" }}
           >
-            Scopri come aderire
+            {t('login_panel.enti.link')}
           </a>
         </Typography>
       </Box>
@@ -332,7 +331,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
     <Box sx={{ bgcolor: "background.default" }}>
       <Box sx={styles.sendMenuHeader}>
         <Typography variant="h6" sx={{fontWeight: 600}}>
-          Accedi a SEND
+        {t('login_panel.login')}
         </Typography>
         <IconButton
           size="small"
@@ -363,7 +362,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
               }}
               endIcon={<ArrowForwardIcon />}
             >
-              Accedi
+              {item.login}
             </Button>
           </Box>
         ))}
@@ -382,7 +381,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
       }}
       sx={styles.sendButton}
     >
-      Accedi a SEND
+      {t('navigation.login')}
     </Button>
   );
 
@@ -475,7 +474,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
             sx={{ paddingRight: 2, cursor: "pointer" }}
             onClick={() => push(`/${lang}`)}
           >
-            <img src={image} alt={title} aria-label={title} />
+            <img src={`${IMAGES_PATH}/logo.svg`} alt={t('navigation.title')} aria-label={t('navigation.title')} />
           </Box>
           <Box>
             <Typography
@@ -491,7 +490,7 @@ const NavigationBar: React.FC<INavigationBarProps> = ({ title, image }) => {
               }}
             >
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                Serve aiuto?
+                {t('header.help')}
               </Box>
               <Box
                 sx={{
