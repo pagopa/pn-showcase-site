@@ -490,7 +490,7 @@ const NavigationBar: React.FC = () => {
               }}
             >
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                {t('help')}
+                {t('header.help')}
               </Box>
               <Box
                 sx={{
