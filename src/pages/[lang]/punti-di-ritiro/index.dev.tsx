@@ -34,13 +34,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export async function getStaticProps({params}: {params: {lang: LangCode}}) {
-  const translations = getI18n(params.lang, ['common'])
+  const translations = getI18n(params.lang, ['common', 'pickup'])
 
   return { props: {translations, lang: params.lang} }
 }
 
 const RitiroPage: NextPage = () => {
-  const {t} = useTranslation(['common']);
+  const {t} = useTranslation(['common', 'pickup']);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 

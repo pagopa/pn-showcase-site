@@ -3,7 +3,7 @@ import { LeggiIcon } from "../../api/data/icons";
 import { useTranslation } from "src/hook/useTranslation";
 
 const DarkInfoblockRitiro: React.FC = () => {
-  const { t } = useTranslation(["common"]);
+  const { t } = useTranslation(["common", "pickup"]);
   return (
     <Box
       sx={{
@@ -29,7 +29,7 @@ const DarkInfoblockRitiro: React.FC = () => {
               color="white"
               gutterBottom
             >
-              {t("infoblock_ritiro.title")}
+              {t('infoblock.title', { ns: 'pickup'})}
             </Typography>
             <Typography
               variant="body2"
@@ -37,7 +37,7 @@ const DarkInfoblockRitiro: React.FC = () => {
               textAlign="center"
               marginBottom={2}
             >
-              {t("infoblock_ritiro.description")}
+              {t('infoblock.description', { ns: 'pickup'})}
             </Typography>
             <Typography
               variant="body2"
@@ -45,14 +45,14 @@ const DarkInfoblockRitiro: React.FC = () => {
               textAlign="center"
               marginBottom={2}
             >
-              {t("infoblock_ritiro.details_text")}{" "}
+              {t('infoblock.details_text', { ns: 'pickup'})}{" "}
               <Link
                 variant="body2"
                 color="inherit"
                 href="/punti-di-ritiro/come-funziona"
               >
                 <strong>
-                  {t("infoblock_ritiro.details_link_text")}
+                  {t('infoblock.details_link_text', { ns: 'pickup'})}
                 </strong>
               </Link>
               .
