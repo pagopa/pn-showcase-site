@@ -1,12 +1,14 @@
 import type { GetStaticPaths, NextPage } from "next";
 
-import PageHead from "../../../../components/PageHead";
-
-import { DocsCards, InDepthCard, StripeLink } from "../../../../api/data/it/PD";
 import { Box } from "@mui/material";
 import { langCodes } from "@utils/constants";
+
+import PageHead from "../../../../components/PageHead";
 import { getI18n } from "../../../../api/i18n";
 import { LangCode } from "../../../../model";
+import DocsCards from "../../../../components/Enti/Documenti/DocsCards";
+import InDepthCard from "../../../../components/Enti/Documenti/InDepthCard";
+import StripeLink from "../../../../components/Enti/Documenti/StripeLink";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -14,13 +16,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { lang },
     })),
     fallback: false,
-  }
-}
+  };
+};
 
-export async function getStaticProps({params}: {params: {lang: LangCode}}) {
-  const translations = getI18n(params.lang, ['common'])
+export async function getStaticProps({
+  params,
+}: {
+  params: { lang: LangCode };
+}) {
+  const translations = getI18n(params.lang, ["common", "documenti"]);
 
-  return { props: {translations, lang: params.lang} }
+  return { props: { translations, lang: params.lang } };
 }
 
 const DocumentiPage: NextPage = () => (
@@ -31,9 +37,11 @@ const DocumentiPage: NextPage = () => (
     />
 
     <Box className="documenti">
-      <Box className="cardsContainerDark"><DocsCards></DocsCards></Box>
-      <InDepthCard></InDepthCard>
-      <StripeLink></StripeLink>
+      <Box className="cardsContainerDark">
+        <DocsCards />
+      </Box>
+      <InDepthCard />
+      <StripeLink />
     </Box>
   </>
 );
