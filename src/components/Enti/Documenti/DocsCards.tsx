@@ -10,14 +10,17 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { useTranslation } from "src/hook/useTranslation";
 
 const DocsCards = () => {
+  const { t } = useTranslation(["documenti"]);
+
   const cards1Data = [
     {
-      title: "1. Termini e Condizioni di adesione e uso",
+      title: t("docs_cards.card.1.title", { ns: "documenti" }),
       buttons: [
         {
-          label: "Leggi i Termini e Condizioni",
+          label: t("docs_cards.card.1.cta", { ns: "documenti" }),
           color: "primary",
           link: "https://docs.pagopa.it/documento-1-termini-condizioni-di-adesione-e-uso/",
           icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
@@ -25,10 +28,10 @@ const DocsCards = () => {
       ],
     },
     {
-      title: "2. Atto di Nomina a Responsabile Trattamento Dati Personali",
+      title: t("docs_cards.card.2.title", { ns: "documenti" }),
       buttons: [
         {
-          label: "Leggi l’Atto di Nomina",
+          label: t("docs_cards.card.2.cta", { ns: "documenti" }),
           color: "primary",
           link: "https://docs.pagopa.it/doc.2-atto-di-nomina-a-responsabile-trattamento-da/",
           icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
@@ -36,40 +39,27 @@ const DocsCards = () => {
       ],
     },
     {
-      title: "3. Documentazione tecnica",
+      title: t("docs_cards.card.3.title", { ns: "documenti" }),
       buttons: [
-        // {
-        //     label: "Vai al documento",
-        //     color: "primary",
-        //     link: "https://docs.pagopa.it/documento-3-documentazione-tecnica/",
-        //     icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
-        // },
         {
-          label: "Leggi il manuale operativo",
+          label: t("docs_cards.card.3.cta_1", { ns: "documenti" }),
           color: "primary",
           link: "https://developer.pagopa.it/send/guides/manuale-operativo",
           icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
         },
         {
-          label:
-            "API b2b per le pubbliche amministrazioni e per l'avanzamento delle notifiche",
+          label: t("docs_cards.card.3.cta_2", { ns: "documenti" }),
           color: "primary",
           link: "https://developer.pagopa.it/send/api#/",
           icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
         },
-        // {
-        //     label: "Vai alle API B2B per l’avanzamento delle notifiche",
-        //     color: "primary",
-        //     link: "#",
-        //     icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
-        // },
       ],
     },
     {
-      title: "4. Ciclo attivo",
+      title: t("docs_cards.card.4.title", { ns: "documenti" }),
       buttons: [
         {
-          label: "Vai al documento",
+          label: t("docs_cards.card.4.cta", { ns: "documenti" }),
           color: "primary",
           link: "https://docs.pagopa.it/documento-4-ciclo-attivo-pn",
           icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
@@ -77,11 +67,11 @@ const DocsCards = () => {
       ],
     },
     {
-      title: "5. Modulo di Profilazione",
-      description: "Necessario per l’avvio in esercizio",
+      title: t("docs_cards.card.5.title", { ns: "documenti" }),
+      description: t("docs_cards.card.5.description", { ns: "documenti" }),
       buttons: [
         {
-          label: "Apri il documento",
+          label: t("docs_cards.card.5.cta", { ns: "documenti" }),
           color: "primary",
           link: "/static/documents/Modulo preventivo di fornitura REV1.xlsx",
           icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
@@ -89,17 +79,16 @@ const DocsCards = () => {
       ],
     },
     {
-      title: "6. Modulo di Commessa",
+      title: t("docs_cards.card.6.title", { ns: "documenti" }),
       buttons: [
         {
-          label: "Prendi visione del modulo",
+          label: t("docs_cards.card.6.cta_1", { ns: "documenti" }),
           color: "primary",
           link: "/static/documents/Modulo Ordinativo Commessa per Anticipazione.xlsx",
           icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
         },
         {
-          label:
-            "Accedi all’Area Riservata e compila il modulo nella sezione Fatturazione",
+          label: t("docs_cards.card.6.cta_2", { ns: "documenti" }),
           color: "primary",
           link: "https://selfcare.pagopa.it/auth/login",
           icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
@@ -107,10 +96,10 @@ const DocsCards = () => {
       ],
     },
     {
-      title: "7. SLA di servizio",
+      title: t("docs_cards.card.7.title", { ns: "documenti" }),
       buttons: [
         {
-          label: "Vai al documento",
+          label: t("docs_cards.card.7.cta", { ns: "documenti" }),
           color: "primary",
           link: "https://docs.pagopa.it/sla-di-servizio/",
           icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
@@ -146,117 +135,97 @@ const DocsCards = () => {
           >
             <Typography
               variant="h4"
-              tabIndex={0}
-              aria-label="Come aderire a SEND"
               sx={{ color: "primary.contrastText" }}
               pb={2}
             >
-              Come aderire a SEND
+              {t("docs_cards.title", { ns: "documenti" })}
             </Typography>
             <Typography
               variant="h6"
-              tabIndex={0}
-              aria-label="Per gli enti"
               sx={{ color: "primary.contrastText" }}
               pb={2}
             >
-              Per gli enti
+              {t("docs_cards.subtitle", { ns: "documenti" })}
             </Typography>
             <Typography
               variant="body2"
-              tabIndex={0}
-              aria-label=""
               sx={{ color: "primary.contrastText" }}
               pb={2}
             >
-              Per aderire a SEND è necessario scegliere come integrarsi,
-              direttamente o avvalendosi di uno dei{" "}
+              {t("docs_cards.description.1.description_1", { ns: "documenti" })}
               <Link
                 href="https://docs.pagopa.it/lista-partner-tecnologici-pn_pagopa-s.p.a./"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label=""
                 sx={{
                   color: "primary.contrastText",
                   textDecoration: "underline",
                   fontWeight: "bold",
                 }}
               >
-                Partner e Intermediari tecnologici
+                {t("docs_cards.description.1.link", { ns: "documenti" })}
               </Link>
-              , e sottoscrivere l’accordo di adesione.
+              {t("docs_cards.description.1.description_2", { ns: "documenti" })}
             </Typography>
             <Typography
               variant="body2"
-              tabIndex={0}
-              aria-label=""
               sx={{ color: "primary.contrastText" }}
               pb={2}
             >
-              Per ricevere l'accordo di adesione, l'ente deve accedere all'
+              {t("docs_cards.description.2.description_1", { ns: "documenti" })}
               <Link
                 href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label=""
                 sx={{
                   color: "primary.contrastText",
                   textDecoration: "underline",
                   fontWeight: "bold",
                 }}
               >
-                Area Riservata
+                {t("docs_cards.description.2.link_1", { ns: "documenti" })}
               </Link>{" "}
-              e seguire i passaggi descritti in{" "}
+              {t("docs_cards.description.2.description_2", { ns: "documenti" })}
               <Link
                 href="https://docs.pagopa.it/area-riservata-enti-piattaforma-notifiche/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label=""
                 sx={{
                   color: "primary.contrastText",
                   textDecoration: "underline",
                   fontWeight: "bold",
                 }}
               >
-                questa guida
+                {t("docs_cards.description.2.link_2", { ns: "documenti" })}
               </Link>
-              .
+              {t("docs_cards.description.2.description_3", { ns: "documenti" })}
             </Typography>
             <Typography
               variant="body2"
-              tabIndex={0}
-              aria-label=""
               sx={{ color: "primary.contrastText" }}
               pb={2}
             >
-              Una volta sottoscritto l'accordo in digitale, l'ente dovrà
-              caricarlo e inviarlo a PagoPA S.p.A. sempre dall'Area Riservata
-              integrando i seguenti documenti e moduli debitamente compilati ove
-              richiesto.
+              {t("docs_cards.description.3.description", { ns: "documenti" })}
             </Typography>
             <Typography
               variant="body2"
-              tabIndex={0}
-              aria-label=""
               sx={{ color: "primary.contrastText" }}
               pb={4}
             >
-              Per ulteriori informazioni e chiarimenti, è possibile{" "}
+              {t("docs_cards.description.4.description_1", { ns: "documenti" })}
               <Link
                 href="https://docs.pagopa.it/faq-enti"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label=""
                 sx={{
                   color: "primary.contrastText",
                   textDecoration: "underline",
                   fontWeight: "bold",
                 }}
               >
-                consultare le FAQ
+                {t("docs_cards.description.4.link", { ns: "documenti" })}
               </Link>{" "}
-              dedicate agli enti.
+              {t("docs_cards.description.4.description_2", { ns: "documenti" })}
             </Typography>
             <Button
               variant="contained"
@@ -271,7 +240,7 @@ const DocsCards = () => {
               }}
               href="https://selfcare.pagopa.it/auth/login?onSuccess=%2Fonboarding%2Fprod-pn"
             >
-              Aderisci a SEND
+              {t("docs_cards.cta", { ns: "documenti" })}
             </Button>
           </Stack>
 
@@ -293,8 +262,8 @@ const DocsCards = () => {
             >
               {cards1Data
                 .slice(0, Math.ceil(cards1Data.length / 2))
-                .map((card, index) => (
-                  <Box key={index} sx={{ width: "100%" }}>
+                .map((card) => (
+                  <Box key={card.title} sx={{ width: "100%" }}>
                     <Card className="documentiCustomCardContent">
                       <CardContent sx={{ textAlign: "left" }}>
                         <Typography variant="h5" component="div">
@@ -308,9 +277,9 @@ const DocsCards = () => {
                       </CardContent>
                       <CardActions>
                         <Stack direction="column" spacing={1}>
-                          {card.buttons.map((button, buttonIndex) => (
+                          {card.buttons.map((button) => (
                             <Button
-                              key={buttonIndex}
+                              key={button.label}
                               size="small"
                               color="primary"
                               href={button.link}
@@ -336,8 +305,8 @@ const DocsCards = () => {
             >
               {cards1Data
                 .slice(Math.ceil(cards1Data.length / 2))
-                .map((card, index) => (
-                  <Box key={index} sx={{ width: "100%" }}>
+                .map((card) => (
+                  <Box key={card.title} sx={{ width: "100%" }}>
                     <Card className="documentiCustomCardContent">
                       <CardContent sx={{ textAlign: "left" }}>
                         <Typography variant="h5" component="div">
@@ -351,9 +320,9 @@ const DocsCards = () => {
                       </CardContent>
                       <CardActions>
                         <Stack direction="column" spacing={1}>
-                          {card.buttons.map((button, buttonIndex) => (
+                          {card.buttons.map((button) => (
                             <Button
-                              key={buttonIndex}
+                              key={button.label}
                               size="small"
                               color="primary"
                               href={button.link}

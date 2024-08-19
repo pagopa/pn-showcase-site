@@ -1,8 +1,11 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CodeIcon from "@mui/icons-material/Code";
+import { useTranslation } from "src/hook/useTranslation";
 
 const StripeLink = () => {
+  const { t } = useTranslation(["documenti"]);
+
   return (
     <Box sx={{ backgroundColor: "info.contrastText" }} padding={2}>
       <Container maxWidth="xl">
@@ -23,8 +26,7 @@ const StripeLink = () => {
               alignItems={"center"}
             >
               <CodeIcon sx={{ fontSize: "20px", marginRight: "10px" }} />
-              Il tuo ente ha già aderito e hai bisogno di approfondire le fasi
-              di integrazione alla Piattaforma?
+              {t("stripe_link.title", { ns: "documenti" })}
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -34,7 +36,7 @@ const StripeLink = () => {
               endIcon={<ArrowForwardIcon />}
               href="https://developer.pagopa.it/send/overview"
             >
-              Vai alla documentazione tecnica
+              {t("stripe_link.cta", { ns: "documenti" })}
             </Button>
           </Grid>
         </Grid>

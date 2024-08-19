@@ -8,10 +8,6 @@ import {
 
 import {langCodes} from '../utils/constants';
 
-export enum UserType {
-  PH = "ph",
-}
-
 export interface ILinkData {
   label: string;
   ariaLabel: string;
@@ -81,10 +77,6 @@ export interface IFaqDataSection {
 export interface IFaqData {
   title: string;
   sections: Array<IFaqDataSection>;
-}
-
-export interface IAppData {
-  ph: ILandingComponents;
 }
 
 export interface IHeadingTitlesData {

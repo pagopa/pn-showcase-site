@@ -19,12 +19,12 @@
                 "description_3": "."
             },
             "3": {
-                "description_1": "Una volta sottoscritto l'accordo in digitale, l'ente dovrà caricarlo e inviarlo a PagoPA S.p.A. sempre dall'Area Riservata integrando i seguenti documenti e moduli debitamente compilati ove richiesto."
+                "description": "Una volta sottoscritto l'accordo in digitale, l'ente dovrà caricarlo e inviarlo a PagoPA S.p.A. sempre dall'Area Riservata integrando i seguenti documenti e moduli debitamente compilati ove richiesto."
             },
             "4": {
                 "description_1": "Per ulteriori informazioni e chiarimenti, è possibile ",
                 "link": "consultare le FAQ",
-                "description_2": " dedicate agli enti"
+                "description_2": " dedicate agli enti."
             }
         },
         "card": {

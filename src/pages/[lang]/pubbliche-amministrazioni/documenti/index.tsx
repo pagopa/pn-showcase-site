@@ -9,6 +9,7 @@ import { LangCode } from "../../../../model";
 import DocsCards from "../../../../components/Enti/Documenti/DocsCards";
 import InDepthCard from "../../../../components/Enti/Documenti/InDepthCard";
 import StripeLink from "../../../../components/Enti/Documenti/StripeLink";
+import { useTranslation } from "src/hook/useTranslation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -29,21 +30,24 @@ export async function getStaticProps({
   return { props: { translations, lang: params.lang } };
 }
 
-const DocumentiPage: NextPage = () => (
-  <>
-    <PageHead
-      title="SEND - Servizio Notifiche Digitali | Documenti per gli enti"
-      description="Come aderire a SEND: la documentazione necessaria per aderire al Servizio Notifiche Digitali come ente mittente"
-    />
+const DocumentiPage: NextPage = () => {
+  const { t } = useTranslation(["common", "documenti"]);
+  return (
+    <>
+      <PageHead
+        title={t("title", { ns: "documenti" })}
+        description={t("description", { ns: "documenti" })}
+      />
 
-    <Box className="documenti">
-      <Box className="cardsContainerDark">
-        <DocsCards />
+      <Box className="documenti">
+        <Box className="cardsContainerDark">
+          <DocsCards />
+        </Box>
+        <InDepthCard />
+        <StripeLink />
       </Box>
-      <InDepthCard />
-      <StripeLink />
-    </Box>
-  </>
-);
+    </>
+  );
+};
 
 export default DocumentiPage;

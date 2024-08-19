@@ -9,15 +9,18 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { useTranslation } from "src/hook/useTranslation";
 
 const InDepthCard = () => {
+  const { t } = useTranslation(["documenti"]);
+
   const cards2Data = [
     {
-      title: "Manuale onboarding dell’ente",
+      title: t("in_depth_card.card.1.title", { ns: "documenti" }),
       description: "",
       buttons: [
         {
-          label: "Vai al manuale",
+          label: t("in_depth_card.card.1.cta", { ns: "documenti" }),
           color: "primary",
           link: "https://docs.pagopa.it/manuale-per-onboarding-degli-enti",
           icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
@@ -25,11 +28,11 @@ const InDepthCard = () => {
       ],
     },
     {
-      title: "Costi di notifica digitale e analogica",
+      title: t("in_depth_card.card.2.title", { ns: "documenti" }),
       description: "",
       buttons: [
         {
-          label: "Vai ai costi",
+          label: t("in_depth_card.card.2.cta", { ns: "documenti" }),
           color: "primary",
           link: "/static/documents/Prezzi Ente v.2.pdf",
           icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
@@ -37,11 +40,11 @@ const InDepthCard = () => {
       ],
     },
     {
-      title: "Kit di comunicazione",
+      title: t("in_depth_card.card.3.title", { ns: "documenti" }),
       description: "",
       buttons: [
         {
-          label: "Vai al kit",
+          label: t("in_depth_card.card.3.cta", { ns: "documenti" }),
           color: "primary",
           link: "https://docs.pagopa.it/send-kit-di-comunicazione-per-gli-enti-aderenti/",
           icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
@@ -75,13 +78,8 @@ const InDepthCard = () => {
               mr: { lg: "10%", xs: 0 },
             }}
           >
-            <Typography
-              variant="h4"
-              tabIndex={0}
-              aria-label="Vuoi approfondire?"
-              pb={2}
-            >
-              Vuoi approfondire?
+            <Typography variant="h4" pb={2}>
+              {t("in_depth_card.title", { ns: "documenti" })}
             </Typography>
           </Stack>
 
@@ -103,8 +101,8 @@ const InDepthCard = () => {
             >
               {cards2Data
                 .slice(0, Math.ceil(cards2Data.length / 2))
-                .map((card, index) => (
-                  <Box key={index} sx={{ width: "100%" }}>
+                .map((card) => (
+                  <Box key={card.title} sx={{ width: "100%" }}>
                     <Card className="documentiCustomCardContent">
                       <CardContent sx={{ textAlign: "left" }}>
                         <Typography variant="h5" component="div">
@@ -118,9 +116,9 @@ const InDepthCard = () => {
                       </CardContent>
                       <CardActions>
                         <Stack direction="column" spacing={1}>
-                          {card.buttons.map((button, buttonIndex) => (
+                          {card.buttons.map((button) => (
                             <Button
-                              key={buttonIndex}
+                              key={button.label}
                               size="small"
                               color="primary"
                               href={button.link}
@@ -146,8 +144,8 @@ const InDepthCard = () => {
             >
               {cards2Data
                 .slice(Math.ceil(cards2Data.length / 2))
-                .map((card, index) => (
-                  <Box key={index} sx={{ width: "100%" }}>
+                .map((card) => (
+                  <Box key={card.title} sx={{ width: "100%" }}>
                     <Card className="documentiCustomCardContent">
                       <CardContent sx={{ textAlign: "left" }}>
                         <Typography variant="h5" component="div">
@@ -161,9 +159,9 @@ const InDepthCard = () => {
                       </CardContent>
                       <CardActions>
                         <Stack direction="column" spacing={1}>
-                          {card.buttons.map((button, buttonIndex) => (
+                          {card.buttons.map((button) => (
                             <Button
-                              key={buttonIndex}
+                              key={button.label}
                               size="small"
                               color="primary"
                               href={button.link}
