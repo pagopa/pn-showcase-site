@@ -80,48 +80,43 @@ const IndexPage: NextPage = () => {
         background={`${IMAGES_PATH}/hero-home-background.png`}
       />
       <Infoblock
-        overline={t("infoblock.citizens.overline", { ns: "homepage" })}
-        title={t("infoblock.citizens.title", { ns: "homepage" })}
-        content={
-          <>
-            <Typography variant="body2">
-              {t("infoblock.citizens.description_1", { ns: "homepage" })}
-            </Typography>
-            <Typography variant="body2">
-              {t("infoblock.citizens.description_2", { ns: "homepage" })}
-            </Typography>
-          </>
-        }
+        overline={t('infoblock.cittadini.overline', {ns: 'homepage'})}
+        title={t('infoblock.cittadini.title', {ns: 'homepage'})}
+        content={<>
+          <Typography variant="body2">
+            {t('infoblock.cittadini.description_1', {ns: 'homepage'})}
+          </Typography>
+          <Typography variant="body2">
+            {t('infoblock.cittadini.description_2', {ns: 'homepage'})}
+          </Typography>
+        </>}
         ctaPrimary={
-          "/cittadini"
-            ? {
-                label: t("infoblock.citizens.cta", { ns: "homepage" }),
-                title: t("infoblock.citizens.cta", { ns: "homepage" }),
-                onClick: onReadClickCittadini,
-              }
-            : undefined
+          "/cittadini" ?
+          {
+            label: t('infoblock.cittadini.cta', {ns: 'homepage'}),
+            title: t('infoblock.cittadini.cta', {ns: 'homepage'}),
+            onClick: onReadClickCittadini,
+          }
+          : undefined
         }
         ctaSecondary={
-          PN_PF_URL
-            ? {
-                label: t("infoblock.citizens.cta_secondary", {
-                  ns: "homepage",
-                }),
-                title: t("infoblock.citizens.cta_secondary", {
-                  ns: "homepage",
-                }),
-                onClick: onReadClickCittadiniSecondary,
-              }
-            : undefined
+          PN_PF_URL ?
+          {
+            label: t('infoblock.cittadini.cta_secondary', {ns: 'homepage'}),
+            title: t('infoblock.cittadini.cta_secondary', {ns: 'homepage'}),
+            onClick: onReadClickCittadiniSecondary,
+          }
+          : undefined
         }
         inverse
         image={`${IMAGES_PATH}/ph-infoblock-2.png`}
-        altText={t("infoblock.citizens.altText", { ns: "homepage" })}
+        altText={t('infoblock.cittadini.altText', {ns: 'homepage'})}
         aspectRatio="9/16"
         imageShadow={false}
       />
 
       <Infoblock
+<<<<<<< HEAD
         overline={t("infoblock.companies.overline", { ns: "homepage" })}
         title={t("infoblock.companies.title", { ns: "homepage" })}
         content={
@@ -154,10 +149,41 @@ const IndexPage: NextPage = () => {
         inverse={false}
         image={`${IMAGES_PATH}/ph-infoblock-3.png`}
         altText={t("infoblock.companies.altText", { ns: "homepage" })}
+=======
+        overline={t('infoblock.aziende.overline', {ns: 'homepage'})}
+        title={t('infoblock.aziende.title', {ns: 'homepage'})}
+        content={
+          <Typography variant="body2">
+            {t('infoblock.aziende.description', {ns: 'homepage'})}
+          </Typography>
+        }
+        ctaPrimary={
+          "/imprese" ?
+          {
+            label: t('infoblock.aziende.cta', {ns: 'homepage'}),
+            title: t('infoblock.aziende.cta', {ns: 'homepage'}),
+            onClick: onReadClickImprese,
+          }
+          : undefined
+        }
+        ctaSecondary={
+          PN_PG_URL ?
+          {
+            label: t('infoblock.aziende.cta_secondary', {ns: 'homepage'}),
+            title: t('infoblock.aziende.cta_secondary', {ns: 'homepage'}),
+            onClick: onReadClickImpreseSecondary,
+          }
+          : undefined
+        }
+        inverse={false}
+        image={`${IMAGES_PATH}/ph-infoblock-3.png`}
+        altText={t('infoblock.aziende.altText', {ns: 'homepage'})}
+>>>>>>> 913aa02dc0402bc287226e15cfec710d2470690d
         imageShadow={false}
       />
 
       <Infoblock
+<<<<<<< HEAD
         overline={t("infoblock.entities.overline", { ns: "homepage" })}
         title={t("infoblock.entities.title", { ns: "homepage" })}
         content={
@@ -182,6 +208,30 @@ const IndexPage: NextPage = () => {
         inverse
         image={`${IMAGES_PATH}/ph-infoblock-1.png`}
         altText={t("infoblock.entities.altText", { ns: "homepage" })}
+=======
+        overline={t('infoblock.enti.overline', {ns: 'homepage'})}
+        title={t('infoblock.enti.title', {ns: 'homepage'})}
+        content={<>
+          <Typography variant="body2">
+            {t('infoblock.enti.description_1', {ns: 'homepage'})}
+          </Typography>
+          <Typography variant="body2">
+            {t('infoblock.enti.description_2', {ns: 'homepage'})}
+          </Typography>
+        </>}
+        ctaPrimary={
+          "/pubbliche-amministrazioni" ?
+          {
+            label: t('infoblock.enti.cta', {ns: 'homepage'}),
+            title: t('infoblock.enti.cta', {ns: 'homepage'}),
+            onClick: onReadClickEnti,
+          }
+          : undefined
+        }
+        inverse
+        image={`${IMAGES_PATH}/ph-infoblock-1.png`}
+        altText={t('infoblock.enti.altText', {ns: 'homepage'})}
+>>>>>>> 913aa02dc0402bc287226e15cfec710d2470690d
         imageShadow={false}
       />
     </>
