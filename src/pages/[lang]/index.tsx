@@ -8,26 +8,9 @@ import { LangCode } from "../../model";
 import PageHead from "../../components/PageHead";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "src/hook/useTranslation";
-
-const onReadClickEnti = () => {
-  window.open("/pubbliche-amministrazioni", "_self");
-};
-
-const onReadClickCittadini = () => {
-  window.open("/cittadini", "_self");
-};
-
-const onReadClickCittadiniSecondary = () => {
-  window.open(PN_PF_URL, "_self");
-};
-
-const onReadClickImprese = () => {
-  window.open("/imprese", "_self");
-};
-
-const onReadClickImpreseSecondary = () => {
-  window.open(PN_PG_URL, "_self");
-};
+import { useRouter } from "next/router";
+import { useContext } from "react";
+import LangContext from "src/context/lang-context";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -35,24 +18,53 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { lang },
     })),
     fallback: false,
-  }
-}
+  };
+};
 
-export async function getStaticProps({params}: {params: {lang: LangCode}}) {
-  const translations = getI18n(params.lang, ['common', 'homepage'])
+export async function getStaticProps({
+  params,
+}: {
+  params: { lang: LangCode };
+}) {
+  const translations = getI18n(params.lang, ["common", "homepage"]);
 
-  return { props: {translations, lang: params.lang} }
+  return { props: { translations, lang: params.lang } };
 }
 
 const IndexPage: NextPage = () => {
-    const { t } = useTranslation(['common', 'homepage']);
+  const { t } = useTranslation(["common", "homepage"]);
+  const { push } = useRouter();
+  const { lang } = useContext(LangContext);
 
-    return (
+  const onReadClickEnti = () => {
+    push(`/${lang}/pubbliche-amministrazioni`);
+  };
+
+  const onReadClickCittadini = () => {
+    push(`/${lang}/cittadini`);
+  };
+
+  const onReadClickCittadiniSecondary = () => {
+    window.open(PN_PF_URL, "_self");
+  };
+
+  const onReadClickImprese = () => {
+    push(`/${lang}/imprese`);
+  };
+
+  const onReadClickImpreseSecondary = () => {
+    window.open(PN_PG_URL, "_self");
+  };
+
+  return (
     <>
-      <PageHead title={t('title', {ns: 'homepage'})} description={t('description', {ns: 'homepage'})} />
+      <PageHead
+        title={t("title", { ns: "homepage" })}
+        description={t("description", { ns: "homepage" })}
+      />
       <Hero
         type="image"
-        title={t('hero.title', {ns: 'homepage'})}
+        title={t("hero.title", { ns: "homepage" })}
         subtitle={
           <Typography
             component="p"
@@ -60,104 +72,116 @@ const IndexPage: NextPage = () => {
               color: "primary.contrastText",
             }}
           >
-            {t('hero.subtitle', {ns: 'homepage'})}
+            {t("hero.subtitle", { ns: "homepage" })}
           </Typography>
         }
         image={`${IMAGES_PATH}/ph-hero-foreground.png`}
-        altText={t('hero.altText', {ns: 'homepage'})}
+        altText={t("hero.altText", { ns: "homepage" })}
         background={`${IMAGES_PATH}/hero-home-background.png`}
       />
       <Infoblock
-        overline={t('infoblock.citizens.overline', {ns: 'homepage'})}
-        title={t('infoblock.citizens.title', {ns: 'homepage'})}
-        content={<>
-          <Typography variant="body2">
-            {t('infoblock.citizens.description_1', {ns: 'homepage'})}
-          </Typography>
-          <Typography variant="body2">
-            {t('infoblock.citizens.description_2', {ns: 'homepage'})}
-          </Typography>
-        </>}
+        overline={t("infoblock.citizens.overline", { ns: "homepage" })}
+        title={t("infoblock.citizens.title", { ns: "homepage" })}
+        content={
+          <>
+            <Typography variant="body2">
+              {t("infoblock.citizens.description_1", { ns: "homepage" })}
+            </Typography>
+            <Typography variant="body2">
+              {t("infoblock.citizens.description_2", { ns: "homepage" })}
+            </Typography>
+          </>
+        }
         ctaPrimary={
-          "/cittadini" ?
-          {
-            label: t('infoblock.citizens.cta', {ns: 'homepage'}),
-            title: t('infoblock.citizens.cta', {ns: 'homepage'}),
-            onClick: onReadClickCittadini,
-          }
-          : undefined
+          "/cittadini"
+            ? {
+                label: t("infoblock.citizens.cta", { ns: "homepage" }),
+                title: t("infoblock.citizens.cta", { ns: "homepage" }),
+                onClick: onReadClickCittadini,
+              }
+            : undefined
         }
         ctaSecondary={
-          PN_PF_URL ?
-          {
-            label: t('infoblock.citizens.cta_secondary', {ns: 'homepage'}),
-            title: t('infoblock.citizens.cta_secondary', {ns: 'homepage'}),
-            onClick: onReadClickCittadiniSecondary,
-          }
-          : undefined
+          PN_PF_URL
+            ? {
+                label: t("infoblock.citizens.cta_secondary", {
+                  ns: "homepage",
+                }),
+                title: t("infoblock.citizens.cta_secondary", {
+                  ns: "homepage",
+                }),
+                onClick: onReadClickCittadiniSecondary,
+              }
+            : undefined
         }
         inverse
         image={`${IMAGES_PATH}/ph-infoblock-2.png`}
-        altText={t('infoblock.citizens.altText', {ns: 'homepage'})}
+        altText={t("infoblock.citizens.altText", { ns: "homepage" })}
         aspectRatio="9/16"
         imageShadow={false}
       />
 
       <Infoblock
-        overline={t('infoblock.companies.overline', {ns: 'homepage'})}
-        title={t('infoblock.companies.title', {ns: 'homepage'})}
+        overline={t("infoblock.companies.overline", { ns: "homepage" })}
+        title={t("infoblock.companies.title", { ns: "homepage" })}
         content={
           <Typography variant="body2">
-            {t('infoblock.companies.description', {ns: 'homepage'})}
+            {t("infoblock.companies.description", { ns: "homepage" })}
           </Typography>
         }
         ctaPrimary={
-          "/imprese" ?
-          {
-            label: t('infoblock.companies.cta', {ns: 'homepage'}),
-            title: t('infoblock.companies.cta', {ns: 'homepage'}),
-            onClick: onReadClickImprese,
-          }
-          : undefined
+          "/imprese"
+            ? {
+                label: t("infoblock.companies.cta", { ns: "homepage" }),
+                title: t("infoblock.companies.cta", { ns: "homepage" }),
+                onClick: onReadClickImprese,
+              }
+            : undefined
         }
         ctaSecondary={
-          PN_PG_URL ?
-          {
-            label: t('infoblock.companies.cta_secondary', {ns: 'homepage'}),
-            title: t('infoblock.companies.cta_secondary', {ns: 'homepage'}),
-            onClick: onReadClickImpreseSecondary,
-          }
-          : undefined
+          PN_PG_URL
+            ? {
+                label: t("infoblock.companies.cta_secondary", {
+                  ns: "homepage",
+                }),
+                title: t("infoblock.companies.cta_secondary", {
+                  ns: "homepage",
+                }),
+                onClick: onReadClickImpreseSecondary,
+              }
+            : undefined
         }
         inverse={false}
         image={`${IMAGES_PATH}/ph-infoblock-3.png`}
-        altText={t('infoblock.companies.altText', {ns: 'homepage'})}
+        altText={t("infoblock.companies.altText", { ns: "homepage" })}
         imageShadow={false}
       />
 
       <Infoblock
-        overline={t('infoblock.entities.overline', {ns: 'homepage'})}
-        title={t('infoblock.entities.title', {ns: 'homepage'})}
-        content={<>
-          <Typography variant="body2">
-            {t('infoblock.entities.description_1', {ns: 'homepage'})}
-          </Typography>
-          <Typography variant="body2">
-            {t('infoblock.entities.description_2', {ns: 'homepage'})}
-          </Typography>
-        </>}
+        overline={t("infoblock.entities.overline", { ns: "homepage" })}
+        title={t("infoblock.entities.title", { ns: "homepage" })}
+        content={
+          <>
+            <Typography variant="body2">
+              {t("infoblock.entities.description_1", { ns: "homepage" })}
+            </Typography>
+            <Typography variant="body2">
+              {t("infoblock.entities.description_2", { ns: "homepage" })}
+            </Typography>
+          </>
+        }
         ctaPrimary={
-          "/pubbliche-amministrazioni" ?
-          {
-            label: t('infoblock.entities.cta', {ns: 'homepage'}),
-            title: t('infoblock.entities.cta', {ns: 'homepage'}),
-            onClick: onReadClickEnti,
-          }
-          : undefined
+          "/pubbliche-amministrazioni"
+            ? {
+                label: t("infoblock.entities.cta", { ns: "homepage" }),
+                title: t("infoblock.entities.cta", { ns: "homepage" }),
+                onClick: onReadClickEnti,
+              }
+            : undefined
         }
         inverse
         image={`${IMAGES_PATH}/ph-infoblock-1.png`}
-        altText={t('infoblock.entities.altText', {ns: 'homepage'})}
+        altText={t("infoblock.entities.altText", { ns: "homepage" })}
         imageShadow={false}
       />
     </>
