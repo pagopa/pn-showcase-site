@@ -42,26 +42,6 @@ const IndexPage: NextPage = () => {
     }
   };
 
-  const onReadClickEnti = () => {
-    redirectToInternalPage("pubbliche-amministrazioni");
-  };
-
-  const onReadClickCittadini = () => {
-    redirectToInternalPage("cittadini");
-  };
-
-  const onReadClickImprese = () => {
-    redirectToInternalPage("imprese");
-  };
-
-  const onReadClickCittadiniSecondary = () => {
-    window.open(PN_PF_URL, "_self");
-  };
-
-  const onReadClickImpreseSecondary = () => {
-    window.open(PN_PG_URL, "_self");
-  };
-
   return (
     <>
       <PageHead
@@ -103,7 +83,7 @@ const IndexPage: NextPage = () => {
             ? {
                 label: t("infoblock.cittadini.cta", { ns: "homepage" }),
                 title: t("infoblock.cittadini.cta", { ns: "homepage" }),
-                onClick: onReadClickCittadini,
+                onClick: () => redirectToInternalPage("cittadini"),
               }
             : undefined
         }
@@ -116,7 +96,7 @@ const IndexPage: NextPage = () => {
                 title: t("infoblock.cittadini.cta_secondary", {
                   ns: "homepage",
                 }),
-                onClick: onReadClickCittadiniSecondary,
+                onClick: () => window.open(PN_PF_URL, "_self"),
               }
             : undefined
         }
@@ -140,7 +120,7 @@ const IndexPage: NextPage = () => {
             ? {
                 label: t("infoblock.aziende.cta", { ns: "homepage" }),
                 title: t("infoblock.aziende.cta", { ns: "homepage" }),
-                onClick: onReadClickImprese,
+                onClick: () => redirectToInternalPage("imprese"),
               }
             : undefined
         }
@@ -149,7 +129,7 @@ const IndexPage: NextPage = () => {
             ? {
                 label: t("infoblock.aziende.cta_secondary", { ns: "homepage" }),
                 title: t("infoblock.aziende.cta_secondary", { ns: "homepage" }),
-                onClick: onReadClickImpreseSecondary,
+                onClick: () => window.open(PN_PG_URL, "_self"),
               }
             : undefined
         }
@@ -177,7 +157,8 @@ const IndexPage: NextPage = () => {
             ? {
                 label: t("infoblock.enti.cta", { ns: "homepage" }),
                 title: t("infoblock.enti.cta", { ns: "homepage" }),
-                onClick: onReadClickEnti,
+                onClick: () =>
+                  redirectToInternalPage("pubbliche-amministrazioni"),
               }
             : undefined
         }
