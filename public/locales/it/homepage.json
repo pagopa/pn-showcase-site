@@ -1,4 +1,36 @@
 {
     "title": "SEND - Servizio Notifiche Digitali",
-    "description": "SEND è la piattaforma che rende più veloce, semplice e sicuro l'invio e la ricezione delle comunicazioni a valore legale"
+    "description": "SEND è la piattaforma che rende più veloce, semplice e sicuro l'invio e la ricezione delle comunicazioni a valore legale",
+    "hero": {
+        "title": "Le comunicazioni a valore legale diventano digitali",
+        "subtitle": "SEND è la piattaforma che rende più veloce, economico e sicuro l’invio e la ricezione delle notifiche a valore legale, semplificando il processo per tutti: gli enti che le inviano e i destinatari che le ricevono.",
+        "altText": "Immagine della piattaforma SEND per Desktop e Mobile"
+    },
+    "infoblock": {
+        "enti": {
+            "overline": "PER GLI ENTI",
+            "title": "Un modo più semplice di gestire le notifiche",
+            "description_1": "SEND - Servizio Notifiche Digitali solleva gli enti da tutti gli adempimenti legati alla gestione delle comunicazioni a valore legale.",
+            "description_2": "Gli enti non devono fare altro che depositare l’atto da notificare: sarà la piattaforma a occuparsi dell’invio, per via digitale o analogica, con conseguente risparmio di tempi e costi dell’intero processo.",
+            "altText": "Anteprima della pagina Notifiche della piattaforma SEND su un notebook",
+            "cta": "Scopri i vantaggi per gli enti"
+        },
+        "cittadini": {
+            "overline": "PER I CITTADINI",
+            "title": "Le notifiche delle pubbliche amministrazioni a portata di mano",
+            "description_1": "I cittadini che lo desiderano possono ricevere e consultare le notifiche in digitale, accedendo a SEND tramite SPID o CIE o direttamente dall’app IO.",
+            "description_2": "In ogni caso la piattaforma garantisce libertà di scelta: i destinatari possono sempre indicare come ricevere le comunicazioni secondo le proprie preferenze.",
+            "altText": "Una mano regge uno smartphone. Lo schermo mostra il dettaglio di una notifica.",
+            "cta": "Scopri i vantaggi per i cittadini",
+            "cta_secondary": "Leggi le tue notifiche"
+        },
+        "aziende": {
+            "overline": "PER LE IMPRESE",
+            "title": "Tutto in un unico luogo",
+            "description": "SEND mette a disposizione un unico spazio condiviso in cui diversi referenti di una stessa impresa possono visualizzare e gestire in modo totalmente digitale tutte le notifiche ricevute dai vari enti e pagare eventuali importi dovuti.",
+            "altText": "Un uomo ed una donna seduti al tavolo guardano un notebook",
+            "cta": "Scopri i vantaggi per le imprese",
+            "cta_secondary": "Vai alle notifiche"
+        }
+    }
 }
