@@ -36,22 +36,26 @@ const IndexPage: NextPage = () => {
   const { push } = useRouter();
   const { lang } = useContext(LangContext);
 
-  const onReadClickEnti = () => {
+  const redirectToInternalPage = (page: string) => {
     if (langCodes.includes(lang)) {
-      push(`/${lang}/pubbliche-amministrazioni`);
+      push(`/${lang}/${page}`);
     }
   };
 
+  const onReadClickEnti = () => {
+    redirectToInternalPage("pubbliche-amministrazioni");
+  };
+
   const onReadClickCittadini = () => {
-    push(`/${lang}/cittadini`);
+    redirectToInternalPage("cittadini");
+  };
+
+  const onReadClickImprese = () => {
+    redirectToInternalPage("imprese");
   };
 
   const onReadClickCittadiniSecondary = () => {
     window.open(PN_PF_URL, "_self");
-  };
-
-  const onReadClickImprese = () => {
-    push(`/${lang}/imprese`);
   };
 
   const onReadClickImpreseSecondary = () => {
