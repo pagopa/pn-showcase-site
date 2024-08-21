@@ -13,7 +13,6 @@ import {langCodes} from '../utils/constants';
 export enum UserType {
   PA = "pa",
   PF = "pf",
-  PH = "ph",
   PI = "pi",
 }
 
@@ -91,7 +90,6 @@ export interface IFaqData {
 export interface IAppData {
   pa: ILandingComponents;
   pf: ILandingComponents;
-  ph: ILandingComponents;
   pi: ILandingComponents;
 }
 

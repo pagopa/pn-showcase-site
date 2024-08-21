@@ -14,11 +14,6 @@ import {
   pfWalkthrough,
 } from "./it/PF";
 import {
-  phHero,
-  phHorizontalNav,
-  phInfoBlocks,
-} from "./it/PH";
-import {
   piHero,
   piInfoBlocks,
   piShowcases,
@@ -40,13 +35,6 @@ export const itAppData: IAppData = {
     showcases: pfShowcases,
     walkthrough: pfWalkthrough,
     horizontalNav: pfHorizontalNav,
-  },
-  ph: {
-    hero: phHero,
-    infoblocks: phInfoBlocks,
-    horizontalNav: phHorizontalNav,
-    showcases: [],
-    walkthrough: { title: '', items: [] }
   },
   pi: {
     hero: piHero,
