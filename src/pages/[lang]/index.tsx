@@ -37,7 +37,9 @@ const IndexPage: NextPage = () => {
   const { lang } = useContext(LangContext);
 
   const onReadClickEnti = () => {
-    push(`/${lang}/pubbliche-amministrazioni`);
+    if (langCodes.includes(lang)) {
+      push(`/${lang}/pubbliche-amministrazioni`);
+    }
   };
 
   const onReadClickCittadini = () => {
