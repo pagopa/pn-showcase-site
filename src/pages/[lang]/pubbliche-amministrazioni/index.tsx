@@ -19,6 +19,10 @@ import {
 } from "src/api/data/icons";
 import StripeLinkEnti from "src/components/Enti/StripeLinkEnti";
 import { DarkInfoblockEnti } from "src/components/Enti/DarkInfoblockEnti";
+import { useContext } from "react";
+import LangContext from "src/context/lang-context";
+import { useRouter } from "next/router";
+import { redirectToInternalPage } from "@utils/navigation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -41,12 +45,14 @@ export async function getStaticProps({
 
 const EntiPage: NextPage = () => {
   const { t } = useTranslation(["common", "enti"]);
+  const { push } = useRouter();
+  const { lang } = useContext(LangContext);
 
   const heroCta = {
-    label: "Scopri come aderire a SEND",
-    title: "Scopri come aderire a SEND",
+    label: t("hero.cta", { ns: "enti" }),
+    title: t("hero.cta", { ns: "enti" }),
     onClick: function onClick() {
-      window.open("/pubbliche-amministrazioni/documenti", "_self");
+      redirectToInternalPage(push, "pubbliche-amministrazioni/documenti", lang);
     },
   };
 
