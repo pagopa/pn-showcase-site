@@ -30,17 +30,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { lang },
     })),
     fallback: false,
-  }
-}
+  };
+};
 
-export async function getStaticProps({params}: {params: {lang: LangCode}}) {
-  const translations = getI18n(params.lang, ['common', 'pickup'])
+export async function getStaticProps({
+  params,
+}: {
+  params: { lang: LangCode };
+}) {
+  const translations = getI18n(params.lang, ["common", "pickup"]);
 
-  return { props: {translations, lang: params.lang} }
+  return { props: { translations, lang: params.lang } };
 }
 
 const RitiroPage: NextPage = () => {
-  const {t} = useTranslation(['common', 'pickup']);
+  const { t } = useTranslation(["common", "pickup"]);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -132,8 +136,8 @@ const RitiroPage: NextPage = () => {
   return (
     <>
       <PageHead
-        title="SEND - Servizio Notifiche digitali | Punti di ritiro SEND"
-        description="Cerca il Punto di ritiro SEND più vicino a te per ritirare una copia degli atti notificati o scoprire se c'è un avviso di avvenuta ricezione a te destinato"
+        title={t("title", { ns: "pickup" })}
+        description={t("description", { ns: "pickup" })}
       />
       <Stack
         mt={10}
@@ -145,7 +149,7 @@ const RitiroPage: NextPage = () => {
         justifyContent="center"
       >
         <Typography align="center" variant="h2">
-          Trova un Punto di ritiro SEND
+          {t("search.title", { ns: "pickup" })}
         </Typography>
 
         <Typography
@@ -155,10 +159,9 @@ const RitiroPage: NextPage = () => {
           sx={{ maxWidth: 554 }}
           textAlign="center"
         >
-          Quando ricevi una comunicazione a valore legale tramite SEND puoi
-          ritirare una copia stampata dei documenti notificati presso gli{" "}
-          <strong>esercenti convenzionati</strong>. <br />
-          Cerca i punti di ritiro più vicini a te.
+          {t("search.description_1", { ns: "pickup" })}
+          <strong>{t("search.description_2", { ns: "pickup" })}</strong>. <br />
+          {t("search.description_3", { ns: "pickup" })}
         </Typography>
 
         <Alert
@@ -166,9 +169,7 @@ const RitiroPage: NextPage = () => {
           variant="standard"
           sx={{ marginBottom: 5, maxWidth: 606 }}
         >
-          Al momento puoi cercare solo fra i punti di ritiro presenti nel Comune
-          di Bari: il servizio è in attivazione progressiva su tutto il
-          territorio nazionale.
+          {t("search.disclaimer", { ns: "pickup" })}
         </Alert>
 
         <TextField
@@ -194,7 +195,7 @@ const RitiroPage: NextPage = () => {
               </InputAdornment>
             ),
           }}
-          label="Cerca per città o per CAP"
+          label={t("search.placeholder", { ns: "pickup" })}
           id="textFilter"
         />
       </Stack>
@@ -216,8 +217,7 @@ const RitiroPage: NextPage = () => {
             <Stack sx={{ maxWidth: 1092, minWidth: "100%" }}>
               <Box bgcolor="white" p={3} m={3} textAlign="center">
                 <Typography>
-                  Non ci sono ancora punti di ritiro SEND attivi in questa
-                  città.
+                  {t("search.empty_state", { ns: "pickup" })}
                 </Typography>
               </Box>
             </Stack>
@@ -255,8 +255,7 @@ const RitiroPage: NextPage = () => {
                 }}
               >
                 <Typography>
-                  Non ci sono ancora punti di ritiro SEND attivi in questa
-                  città.
+                  {t("search.empty_state", { ns: "pickup" })}
                 </Typography>
               </Box>
             </Stack>
