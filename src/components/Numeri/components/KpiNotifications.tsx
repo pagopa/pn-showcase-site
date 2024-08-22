@@ -8,12 +8,15 @@ import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import KpiCard from "./KpiCard";
 import KpiSignal from "./KpiSignal";
 import PieChart from "./PieChart";
+import { useTranslation } from "src/hook/useTranslation";
 
 type Props = {
   selYear: number | null;
 };
 
 const KpiNotifications = ({ selYear }: Props): JSX.Element => {
+  const { t } = useTranslation(["numeri"]);
+
   return (
     <Stack
       direction={{ xs: "column", sm: "row" }}
@@ -22,8 +25,10 @@ const KpiNotifications = ({ selYear }: Props): JSX.Element => {
     >
       <Box style={{ flex: "1 0 0" }} mb={3}>
         <KpiCard
-          label="Totale notifiche"
-          subLabel="Notifiche inviate tramite SEND"
+          label={t("sent_notifications.total.title", { ns: "numeri" })}
+          subLabel={t("sent_notifications.total.description", {
+            ns: "numeri",
+          })}
         >
           <KpiSignal
             spec={toVegaLiteSpec(notificationsTotalSpec)}
@@ -53,10 +58,10 @@ const KpiNotifications = ({ selYear }: Props): JSX.Element => {
                 component="h3"
                 sx={{ fontWeight: "600", mb: 1 }}
               >
-                Totale notifiche digitali
+                {t("sent_notifications.digital.title", { ns: "numeri" })}
               </Typography>
               <Typography variant="caption" color="textSecondary">
-                Notifiche inviate ai destinatari tramite canali digitali
+                {t("sent_notifications.digital.description", { ns: "numeri" })}
               </Typography>
 
               <KpiSignal
@@ -95,10 +100,10 @@ const KpiNotifications = ({ selYear }: Props): JSX.Element => {
                 component="h3"
                 sx={{ fontWeight: "600", mb: 1 }}
               >
-                Totale notifiche analogiche
+                {t("sent_notifications.analog.title", { ns: "numeri" })}
               </Typography>
               <Typography variant="caption" color="textSecondary">
-                Notifiche inviate ai destinatari tramite raccomandata cartacea
+                {t("sent_notifications.analog.description", { ns: "numeri" })}
               </Typography>
 
               <KpiSignal
@@ -116,18 +121,6 @@ const KpiNotifications = ({ selYear }: Props): JSX.Element => {
         </Paper>
       </Box>
     </Stack>
-
-    // <Box style={{ flex: "1 0 0" }} mb={3}>
-    //   <KpiCard
-    //     label="Totale notifiche analogiche"
-    //     subLabel="Notifiche inviate ai destinatari tramite raccomandata cartacea"
-    //   >
-    //     <KpiSignal
-    //       spec={toVegaLiteSpec(notificationsAnalogSpec)}
-    //       yearSignal={selYear}
-    //     />
-    //   </KpiCard>
-    // </Box>
   );
 };
 

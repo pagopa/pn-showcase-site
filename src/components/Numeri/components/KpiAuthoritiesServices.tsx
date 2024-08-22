@@ -7,8 +7,10 @@ import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import ChartServices from "./ChartServices";
 import KpiAuthority from "./KpiAuthority";
 import KpiCard from "./KpiCard";
+import { useTranslation } from "src/hook/useTranslation";
 
 const KpiAuthoritiesServices = (): JSX.Element => {
+  const { t } = useTranslation(["numeri"]);
   return (
     <Stack
       direction={{ xs: "column", sm: "row" }}
@@ -16,16 +18,27 @@ const KpiAuthoritiesServices = (): JSX.Element => {
     >
       <Box mb={3} sx={{ flex: "0 0 25%" }}>
         <KpiCard
-          label="Totale enti attivi"
-          subLabel="Enti che hanno inviato almeno una notifica"
+          label={t("authorities_and_types.authorities.total.title", {
+            ns: "numeri",
+          })}
+          subLabel={t("authorities_and_types.authorities.total.description", {
+            ns: "numeri",
+          })}
         >
           <KpiAuthority spec={toVegaLiteSpec(servicesSpec)} />
         </KpiCard>
       </Box>
       <Box style={{ flex: "1 0 0" }} mb={3}>
         <KpiCard
-          label="Principali categorie di enti attivi"
-          subLabel="Categorie di enti ordinate per numero di enti attivi"
+          label={t("authorities_and_types.authorities.main_cat.title", {
+            ns: "numeri",
+          })}
+          subLabel={t(
+            "authorities_and_types.authorities.main_cat.description",
+            {
+              ns: "numeri",
+            }
+          )}
           borderLeft=""
         >
           <ChartServices spec={toVegaLiteSpec(topAuthoritiesSpec)} />

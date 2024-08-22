@@ -1,19 +1,23 @@
 import type { GetStaticPaths, NextPage } from "next";
 
 import { Box, Typography } from "@mui/material";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import DashboardIntro from "../../../components/Numeri/components/DashboardIntro";
 import { DataSectionWrapper } from "../../../components/Numeri/components/DataSectionWrapper";
 import KpiAuthoritiesServices from "../../../components/Numeri/components/KpiAuthoritiesServices";
 import KpiNotifications from "../../../components/Numeri/components/KpiNotifications";
 import NotificationsTrend from "../../../components/Numeri/components/NotificationsTrend";
 import TopServices from "../../../components/Numeri/components/TopServices";
-import { curYear, firstYear } from "../../../components/Numeri/shared/constants";
+import {
+  curYear,
+  firstYear,
+} from "../../../components/Numeri/shared/constants";
 import Tabs from "../../../components/Tabs";
 import PageHead from "../../../components/PageHead";
 import { langCodes } from "@utils/constants";
 import { LangCode } from "../../../model";
 import { getI18n } from "../../../api/i18n";
+import { useTranslation } from "src/hook/useTranslation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -21,13 +25,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { lang },
     })),
     fallback: false,
-  }
-}
+  };
+};
 
-export async function getStaticProps({params}: {params: {lang: LangCode}}) {
-  const translations = getI18n(params.lang, ['common'])
+export async function getStaticProps({
+  params,
+}: {
+  params: { lang: LangCode };
+}) {
+  const translations = getI18n(params.lang, ["common", "numeri"]);
 
-  return { props: {translations, lang: params.lang} }
+  return { props: { translations, lang: params.lang } };
 }
 
 type Tabs = {
@@ -40,10 +48,14 @@ const years = Array.from({ length: numYear }, (_, i) => curYear - i).map(
   (y) => ({ id: y, label: String(y) })
 );
 
-const tabs: Tabs[] = [{ id: null, label: "Totale" }, ...years];
-
 const NumeriPage: NextPage = () => {
   const [selYear, setSelYear] = useState<number | null>(null);
+  const { t } = useTranslation(["common", "numeri"]);
+
+  const tabs: Tabs[] = useMemo(
+    () => [{ id: null, label: t("total", { ns: "numeri" }) }, ...years],
+    [years]
+  );
 
   const handleTabChange = (tab: number) => {
     if (tab === tabs[tab].id) {
@@ -55,12 +67,12 @@ const NumeriPage: NextPage = () => {
   return (
     <>
       <PageHead
-        title="SEND - Servizio Notifiche Digitali | I numeri di SEND"
-        description="Scopri i dati relativi a notifiche inviate, enti che stanno usando SEND e tipologie di servizi dati"
+        title={t("title", { ns: "numeri" })}
+        description={t("description", { ns: "numeri" })}
       />
       <Box mt={10}>
         <Typography align="center" variant="h2">
-          SEND in numeri
+          {t("hero.title", { ns: "numeri" })}
         </Typography>
         <DashboardIntro />
       </Box>
@@ -68,8 +80,8 @@ const NumeriPage: NextPage = () => {
       <Tabs tabs={tabs.map((tab) => tab.label)} onTabChange={handleTabChange} />
       <Box sx={{ overflowX: "hidden" }}>
         <DataSectionWrapper
-          title="Notifiche inviate"
-          description="I seguenti dati si riferiscono alle notifiche inviate dagli enti della pubblica amministrazione"
+          title={t("sent_notifications.title", { ns: "numeri" })}
+          description={t("sent_notifications.description", { ns: "numeri" })}
         >
           <Box mb={2}>
             <KpiNotifications selYear={selYear} />
@@ -80,8 +92,8 @@ const NumeriPage: NextPage = () => {
         </DataSectionWrapper>
 
         <DataSectionWrapper
-          title="Enti e tipologie di notifica inviate"
-          description="I seguenti dati mostrano quanti Enti stanno utilizzando SEND e per quale tipologia di servizi"
+          title={t("authorities_and_types.title", { ns: "numeri" })}
+          description={t("authorities_and_types.description", { ns: "numeri" })}
           background="grey"
         >
           <Box mb={2}>

@@ -7,8 +7,10 @@ import topAreasSpec from "../assets/data/top-areas.vl.json";
 
 import KpiAuthority from "./KpiAuthority";
 import KpiCard from "./KpiCard";
+import { useTranslation } from "src/hook/useTranslation";
 
 const TopServices = (): JSX.Element => {
+  const { t } = useTranslation(["numeri"]);
   return (
     <Stack
       direction={{ xs: "column", sm: "row" }}
@@ -17,23 +19,41 @@ const TopServices = (): JSX.Element => {
     >
       <Box mb={3} sx={{ flex: "0 0 25%" }}>
         <KpiCard
-          label="Tipologie di notifiche inviate"
-          subLabel="La tipologia rappresenta la sfera di appartenenza della notifica (es. multe, tributi, anagrafe etc.)"
+          label={t("authorities_and_types.notification_types.total.title", {
+            ns: "numeri",
+          })}
+          subLabel={t(
+            "authorities_and_types.notification_types.total.description",
+            {
+              ns: "numeri",
+            }
+          )}
         >
           <KpiAuthority spec={toVegaLiteSpec(actsSpec)} />
         </KpiCard>
       </Box>
       <Box style={{ flex: "1 0 0" }} mb={3}>
         <KpiCard
-          label="Principali ambiti"
-          subLabel="Servizi ordinati per numero di notifiche depositate a partire dall'adozione di SEND"
+          label={t(
+            "authorities_and_types.notification_types.main_scopes.title",
+            {
+              ns: "numeri",
+            }
+          )}
+          subLabel={t(
+            "authorities_and_types.notification_types.main_scopes.description",
+            {
+              ns: "numeri",
+            }
+          )}
           borderLeft=""
         >
           <ChartServices spec={toVegaLiteSpec(topAreasSpec)} />
           <Box mt={2}>
             <Typography variant="caption" color="textSecondary">
-              * diversa/o da quelli la cui notificazione è esclusa tramite SEND
-              ai sensi dell’art.26, comma 17 D.L. 76/2020
+              {t("authorities_and_types.notification_types.main_scopes.notes", {
+                ns: "numeri",
+              })}
             </Typography>
           </Box>
         </KpiCard>

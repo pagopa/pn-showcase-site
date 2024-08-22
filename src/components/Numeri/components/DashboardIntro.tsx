@@ -2,8 +2,10 @@ import { Box, Stack, Typography } from "@mui/material";
 import lastUpdateSpec from "../assets/data/last-update.vl.json";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import KpiWrapper from "./KpiWrapper";
+import { useTranslation } from "src/hook/useTranslation";
 
 const DashboardIntro = () => {
+  const { t } = useTranslation(["numeri"]);
   return (
     <Box mb={10}>
       <Stack
@@ -13,7 +15,7 @@ const DashboardIntro = () => {
         justifyContent="center"
       >
         <Typography color="textSecondary" variant="caption">
-          Ultimo aggiornamento -&nbsp;
+          {t("hero.last_update", { ns: "numeri" })} -&nbsp;
         </Typography>
         <Typography color="textSecondary" variant="caption">
           <KpiWrapper spec={toVegaLiteSpec(lastUpdateSpec)} />
