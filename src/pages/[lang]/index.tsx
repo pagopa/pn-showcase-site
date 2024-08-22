@@ -11,6 +11,7 @@ import { useTranslation } from "src/hook/useTranslation";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import LangContext from "src/context/lang-context";
+import { redirectToInternalPage } from "@utils/navigation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -35,12 +36,6 @@ const IndexPage: NextPage = () => {
   const { t } = useTranslation(["common", "homepage"]);
   const { push } = useRouter();
   const { lang } = useContext(LangContext);
-
-  const redirectToInternalPage = (page: string) => {
-    if (langCodes.includes(lang)) {
-      push(`/${lang}/${page}`);
-    }
-  };
 
   return (
     <>
@@ -83,7 +78,7 @@ const IndexPage: NextPage = () => {
             ? {
                 label: t("infoblock.cittadini.cta", { ns: "homepage" }),
                 title: t("infoblock.cittadini.cta", { ns: "homepage" }),
-                onClick: () => redirectToInternalPage("cittadini"),
+                onClick: () => redirectToInternalPage(push, "cittadini", lang),
               }
             : undefined
         }
@@ -120,7 +115,7 @@ const IndexPage: NextPage = () => {
             ? {
                 label: t("infoblock.aziende.cta", { ns: "homepage" }),
                 title: t("infoblock.aziende.cta", { ns: "homepage" }),
-                onClick: () => redirectToInternalPage("imprese"),
+                onClick: () => redirectToInternalPage(push, "imprese", lang),
               }
             : undefined
         }
@@ -158,7 +153,11 @@ const IndexPage: NextPage = () => {
                 label: t("infoblock.enti.cta", { ns: "homepage" }),
                 title: t("infoblock.enti.cta", { ns: "homepage" }),
                 onClick: () =>
-                  redirectToInternalPage("pubbliche-amministrazioni"),
+                  redirectToInternalPage(
+                    push,
+                    "pubbliche-amministrazioni",
+                    lang
+                  ),
               }
             : undefined
         }

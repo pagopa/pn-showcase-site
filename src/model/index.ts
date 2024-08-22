@@ -1,20 +1,12 @@
 import {
-  FooterLinksType,
   HeroProps,
   HorizontalNavProps,
   InfoblockProps,
-  PreLoginFooterLinksType,
   ShowcaseProps,
   WalkthroughProps,
 } from "@pagopa/mui-italia";
 
 import {langCodes} from '../utils/constants';
-
-export enum UserType {
-  PA = "pa",
-  PF = "pf",
-  PI = "pi",
-}
 
 export interface ILinkData {
   label: string;
@@ -85,12 +77,6 @@ export interface IFaqDataSection {
 export interface IFaqData {
   title: string;
   sections: Array<IFaqDataSection>;
-}
-
-export interface IAppData {
-  pa: ILandingComponents;
-  pf: ILandingComponents;
-  pi: ILandingComponents;
 }
 
 export interface IHeadingTitlesData {

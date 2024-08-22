@@ -1,12 +1,15 @@
 import type { GetStaticPaths, NextPage } from "next";
 
-import PageHead from "../../../../components/PageHead";
-
-import { DocsCards, InDepthCard, StripeLink } from "../../../../api/data/it/PD";
 import { Box } from "@mui/material";
 import { langCodes } from "@utils/constants";
+
+import PageHead from "../../../../components/PageHead";
 import { getI18n } from "../../../../api/i18n";
 import { LangCode } from "../../../../model";
+import DocsCards from "../../../../components/Enti/Documenti/DocsCards";
+import InDepthCard from "../../../../components/Enti/Documenti/InDepthCard";
+import StripeLink from "../../../../components/Enti/Documenti/StripeLink";
+import { useTranslation } from "src/hook/useTranslation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -14,28 +17,37 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { lang },
     })),
     fallback: false,
-  }
+  };
+};
+
+export async function getStaticProps({
+  params,
+}: {
+  params: { lang: LangCode };
+}) {
+  const translations = getI18n(params.lang, ["common", "documenti"]);
+
+  return { props: { translations, lang: params.lang } };
 }
 
-export async function getStaticProps({params}: {params: {lang: LangCode}}) {
-  const translations = getI18n(params.lang, ['common'])
+const DocumentiPage: NextPage = () => {
+  const { t } = useTranslation(["common", "documenti"]);
+  return (
+    <>
+      <PageHead
+        title={t("title", { ns: "documenti" })}
+        description={t("description", { ns: "documenti" })}
+      />
 
-  return { props: {translations, lang: params.lang} }
-}
-
-const DocumentiPage: NextPage = () => (
-  <>
-    <PageHead
-      title="SEND - Servizio Notifiche Digitali | Documenti per gli enti"
-      description="Come aderire a SEND: la documentazione necessaria per aderire al Servizio Notifiche Digitali come ente mittente"
-    />
-
-    <Box className="documenti">
-      <Box className="cardsContainerDark"><DocsCards></DocsCards></Box>
-      <InDepthCard></InDepthCard>
-      <StripeLink></StripeLink>
-    </Box>
-  </>
-);
+      <Box className="documenti">
+        <Box className="cardsContainerDark">
+          <DocsCards />
+        </Box>
+        <InDepthCard />
+        <StripeLink />
+      </Box>
+    </>
+  );
+};
 
 export default DocumentiPage;
