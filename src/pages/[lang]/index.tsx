@@ -37,12 +37,6 @@ const IndexPage: NextPage = () => {
   const { push } = useRouter();
   const { lang } = useContext(LangContext);
 
-  // const redirectToInternalPage = (page: string) => {
-  //   if (langCodes.includes(lang)) {
-  //     push(`/${lang}/${page}`);
-  //   }
-  // };
-
   return (
     <>
       <PageHead
