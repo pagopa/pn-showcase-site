@@ -10,11 +10,12 @@ import {
   Typography,
 } from "@mui/material";
 import { useTranslation } from "src/hook/useTranslation";
+import DocCard from "./DocCard";
 
 const InDepthCard = () => {
   const { t } = useTranslation(["documenti"]);
 
-  const cards2Data = [
+  const cardsData = [
     {
       title: t("in_depth_card.card.1.title", { ns: "documenti" }),
       description: "",
@@ -99,40 +100,10 @@ const InDepthCard = () => {
               spacing={2}
               direction="column"
             >
-              {cards2Data
-                .slice(0, Math.ceil(cards2Data.length / 2))
+              {cardsData
+                .slice(0, Math.ceil(cardsData.length / 2))
                 .map((card) => (
-                  <Box key={card.title} sx={{ width: "100%" }}>
-                    <Card className="documentiCustomCardContent">
-                      <CardContent sx={{ textAlign: "left" }}>
-                        <Typography variant="h5" component="div">
-                          {card.title}
-                        </Typography>
-                        {card.description && (
-                          <Typography variant="body2">
-                            {card.description}
-                          </Typography>
-                        )}
-                      </CardContent>
-                      <CardActions>
-                        <Stack direction="column" spacing={1}>
-                          {card.buttons.map((button) => (
-                            <Button
-                              key={button.label}
-                              size="small"
-                              color="primary"
-                              href={button.link}
-                              endIcon={button.icon || <ArrowForwardIcon />}
-                              sx={{ justifyContent: "start" }}
-                              disableRipple={true}
-                            >
-                              {button.label}
-                            </Button>
-                          ))}
-                        </Stack>
-                      </CardActions>
-                    </Card>
-                  </Box>
+                  <DocCard key={card.title} {...card} />
                 ))}
             </Stack>
 
@@ -142,41 +113,9 @@ const InDepthCard = () => {
               spacing={2}
               direction="column"
             >
-              {cards2Data
-                .slice(Math.ceil(cards2Data.length / 2))
-                .map((card) => (
-                  <Box key={card.title} sx={{ width: "100%" }}>
-                    <Card className="documentiCustomCardContent">
-                      <CardContent sx={{ textAlign: "left" }}>
-                        <Typography variant="h5" component="div">
-                          {card.title}
-                        </Typography>
-                        {card.description && (
-                          <Typography variant="body2">
-                            {card.description}
-                          </Typography>
-                        )}
-                      </CardContent>
-                      <CardActions>
-                        <Stack direction="column" spacing={1}>
-                          {card.buttons.map((button) => (
-                            <Button
-                              key={button.label}
-                              size="small"
-                              color="primary"
-                              href={button.link}
-                              endIcon={button.icon || <ArrowForwardIcon />}
-                              sx={{ justifyContent: "start" }}
-                              disableRipple={true}
-                            >
-                              {button.label}
-                            </Button>
-                          ))}
-                        </Stack>
-                      </CardActions>
-                    </Card>
-                  </Box>
-                ))}
+              {cardsData.slice(Math.ceil(cardsData.length / 2)).map((card) => (
+                <DocCard key={card.title} {...card} />
+              ))}
             </Stack>
           </Stack>
         </Stack>

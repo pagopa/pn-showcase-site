@@ -19,6 +19,8 @@ import {
   WalletIcon,
 } from "src/api/data/icons";
 import InfoblockCustomCittadini from "src/components/InfoblockCustomCittadini";
+import { useContext } from "react";
+import LangContext from "src/context/lang-context";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -41,6 +43,7 @@ export async function getStaticProps({
 
 const CittadiniPage: NextPage = () => {
   const { t } = useTranslation(["common", "cittadini"]);
+  const { lang } = useContext(LangContext);
 
   const heroCta = !!PN_PF_URL
     ? {
@@ -147,7 +150,7 @@ const CittadiniPage: NextPage = () => {
             <Typography variant="body2">
               {t("infoblock_2.description_2", { ns: "cittadini" })}
               <Link
-                href="/perfezionamento"
+                href={`/${lang}/perfezionamento`}
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{ fontWeight: "bold", color: "primary.main" }}
@@ -214,7 +217,7 @@ const CittadiniPage: NextPage = () => {
               <Typography variant="body2">
                 {t("walkthrough.item_2.subtitle_1", { ns: "cittadini" })}
                 <Link
-                  href="/perfezionamento"
+                  href={`/${lang}/perfezionamento`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={t("walkthrough.item_2.subtitle_2", {
