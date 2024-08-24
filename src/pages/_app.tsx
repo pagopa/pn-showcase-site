@@ -6,7 +6,7 @@ import { theme } from "@pagopa/mui-italia";
 import Layout from "../components/Layout";
 
 import "../styles/default.css";
-import { LangProvider } from "src/context/lang-context";
+import { LangProvider } from "../context/lang-context";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const noLayout = pageProps.noLayout;

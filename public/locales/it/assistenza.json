@@ -1,0 +1,70 @@
+{
+    "title": "SEND - Servizio Notifiche Digitali | Assistenza",
+    "description": "Domande frequenti e risorse dedicate all'assistenza per il servizio notifiche digitali SEND",
+    "heading": {
+        "title": "Serve aiuto?",
+        "subtitle": "Consulta le risposte alle domande frequenti sul servizio notifiche digitali SEND o scopri le risorse dedicate ai cittadini e le imprese o agli enti mittenti."
+    },
+    "tab": {
+        "1": {
+            "title": "Per cittadini e imprese",
+            "card": {
+                "1": {
+                    "title": "Come posso accedere a SEND?",
+                    "cta": "Leggi la risposta"
+                },
+                "2": {
+                    "title": "Cos’è un avviso di avvenuta ricezione?",
+                    "cta": "Leggi la risposta"
+                },
+                "3": {
+                    "title": "Cosa significa “perfezionamento”?",
+                    "cta": "Leggi la risposta"
+                }
+            },
+            "cta": "Scopri tutte le FAQ",
+            "infoblock": {
+                "title": "Siamo qui per te",
+                "description": "Non hai trovato la risposta che cercavi? Scrivici inviando una richiesta di assistenza o chiama il contact center."
+            },
+            "email": {
+                "title": "Scrivici",
+                "description_1": "Richiedi assistenza via email scrivendo a ",
+                "description_2": "destinatari-send@assistenza.pagopa.it",
+                "description_3": ": includi informazioni utili come il codice univoco della notifica (IUN).",
+                "cta": "Scrivici"
+            },
+            "phone": {
+                "title": "Chiamaci",
+                "description_1": "Il contact center di PagoPA S.p.A. è a tua disposizione al numero ",
+                "description_2": "06.4520.2323",
+                "description_3": " per assistenza dedicata dal lunedì al venerdì dalle 08:00 alle 20:00 e il sabato dalle 08:00 alle 14:00.",
+                "cta": "Chiamaci"
+            }
+        },
+        "2": {
+            "title": "Per enti mittenti",
+            "card": {
+                "1": {
+                    "title": "Chi può inviare notifiche tramite SEND?",
+                    "cta": "Leggi le FAQ enti"
+                },
+                "2": {
+                    "title": "Come posso aderire a SEND con il mio ente?",
+                    "cta": "Scopri come aderire"
+                },
+                "3": {
+                    "title": "Come funziona il processo di notificazione?",
+                    "cta": "Consulta il manuale"
+                }
+            },
+            "cta": "Esplora le risorse per gli enti",
+            "email": {
+                "title": "Scrivici",
+                "description": "Richiedi assistenza come ente mittente via email scrivendo a ",
+                "cta": "Scrivici"
+            }
+        }
+    },
+    "cta_faq": "Scopri tutte le FAQ"
+}

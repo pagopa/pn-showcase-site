@@ -1,4 +1,4 @@
-import { LangCode } from "src/model";
+import { LangCode } from "../model";
 import { langCodes } from "./constants";
 import { Url } from "next/dist/shared/lib/router/router";
 

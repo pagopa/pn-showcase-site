@@ -20,7 +20,7 @@ import DarkInfoblockRitiro from "../../../components/Ritiro/DarkInfoblockRitiro"
 import OperatorsList from "../../../components/Ritiro/OperatorsList";
 import { useEffect, useState } from "react";
 import { LangCode, Point, RaddOperator } from "../../../model";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../../hook/useTranslation";
 import { langCodes } from "@utils/constants";
 import { getI18n } from "../../../api/i18n";
 
@@ -30,17 +30,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { lang },
     })),
     fallback: false,
-  }
-}
+  };
+};
 
-export async function getStaticProps({params}: {params: {lang: LangCode}}) {
-  const translations = getI18n(params.lang, ['common', 'pickup'])
+export async function getStaticProps({
+  params,
+}: {
+  params: { lang: LangCode };
+}) {
+  const translations = getI18n(params.lang, ["common", "pickup"]);
 
-  return { props: {translations, lang: params.lang} }
+  return { props: { translations, lang: params.lang } };
 }
 
 const RitiroPage: NextPage = () => {
-  const {t} = useTranslation(['common', 'pickup']);
+  const { t } = useTranslation(["common", "pickup"]);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 

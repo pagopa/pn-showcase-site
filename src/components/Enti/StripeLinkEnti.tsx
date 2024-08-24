@@ -2,7 +2,7 @@ import { Box, Button, Container, Grid, Typography } from "@mui/material";
 
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SpeakerNotesIcon from "@mui/icons-material/SpeakerNotes";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../hook/useTranslation";
 
 const StripeLinkEnti = () => {
   const { t } = useTranslation(["enti"]);

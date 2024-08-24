@@ -1,15 +1,6 @@
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Container,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { useTranslation } from "src/hook/useTranslation";
+import { Box, Container, Stack, Typography } from "@mui/material";
+import { useTranslation } from "../../../hook/useTranslation";
 import DocCard from "./DocCard";
 
 const InDepthCard = () => {

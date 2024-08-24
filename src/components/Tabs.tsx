@@ -42,10 +42,7 @@ const Tabs = ({
   };
 
   const handleCloseDropdown = (event: Event) => {
-    if (
-      anchorRef.current &&
-      anchorRef.current.contains(event.target as HTMLElement)
-    ) {
+    if (anchorRef.current?.contains(event.target as HTMLElement)) {
       return;
     }
 
@@ -90,11 +87,9 @@ const Tabs = ({
             anchorEl={anchorRef.current}
             transition
             sx={{ zIndex: 4 }}
-            disablePortal>
-            {({
-              TransitionProps,
-              placement,
-            }) => (
+            disablePortal
+          >
+            {({ TransitionProps, placement }) => (
               <Grow
                 {...TransitionProps}
                 style={{
