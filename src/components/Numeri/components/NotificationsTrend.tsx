@@ -4,7 +4,7 @@ import downloadSpec from "../assets/data/download.vl.json";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import CumulativeChart from "./CumulativeChart";
 import KpiCard from "./KpiCard";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../../hook/useTranslation";
 
 type Props = {
   selYear: number | null;

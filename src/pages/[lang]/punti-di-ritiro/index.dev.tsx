@@ -20,7 +20,7 @@ import DarkInfoblockRitiro from "../../../components/Ritiro/DarkInfoblockRitiro"
 import OperatorsList from "../../../components/Ritiro/OperatorsList";
 import { useEffect, useState } from "react";
 import { LangCode, Point, RaddOperator } from "../../../model";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../../hook/useTranslation";
 import { langCodes } from "@utils/constants";
 import { getI18n } from "../../../api/i18n";
 

@@ -1,5 +1,5 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../hook/useTranslation";
 
 export const DarkInfoblockEnti = () => {
   const { t } = useTranslation(["enti"]);

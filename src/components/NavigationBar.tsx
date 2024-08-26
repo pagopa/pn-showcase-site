@@ -18,8 +18,8 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PeopleIcon from "@mui/icons-material/People";
 import BusinessIcon from "@mui/icons-material/Business";
 import { MenuItem } from "../model";
-import LangContext from "src/context/lang-context";
-import { useTranslation } from "src/hook/useTranslation";
+import LangContext from "../context/lang-context";
+import { useTranslation } from "../hook/useTranslation";
 import { IMAGES_PATH } from "@utils/constants";
 
 const styles = {
@@ -71,23 +71,23 @@ const NavigationBar: React.FC = () => {
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
   const [mounted, setMounted] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const {lang} = useContext(LangContext);
-  const { t } = useTranslation(['common']);
+  const { lang } = useContext(LangContext);
+  const { t } = useTranslation(["common"]);
 
   const menuItems: MenuItem[] = [
-    { label: t('navigation.cittadini'), path: "/cittadini" },
-    { label: t('navigation.aziende'), path: "/imprese" },
+    { label: t("navigation.cittadini"), path: "/cittadini" },
+    { label: t("navigation.aziende"), path: "/imprese" },
     {
-      label: t('navigation.enti'),
+      label: t("navigation.enti"),
       path: "/pubbliche-amministrazioni",
       subMenu: [
         {
-          label: t('navigation.documentation'),
+          label: t("navigation.documentation"),
           path: "/pubbliche-amministrazioni/documenti",
         },
       ],
     },
-    
+
     // {
     //   label: t('navigation.pickup_points'),
     //   path: "/punti-di-ritiro",
@@ -95,10 +95,10 @@ const NavigationBar: React.FC = () => {
     //     { label: t('navigation.pickup_points_how'), path: "/punti-di-ritiro/come-funziona" },
     //   ],
     // },
-    { label: t('navigation.send_numbers'), path: "/numeri" },
-    { label: t('navigation.faq'), path: "/faq" },
+    { label: t("navigation.send_numbers"), path: "/numeri" },
+    { label: t("navigation.faq"), path: "/faq" },
   ];
-  
+
   const toggleMenu = (menu: string, event?: React.MouseEvent<HTMLElement>) => {
     if (openSubMenu === menu) {
       setOpenSubMenu(null);
@@ -147,8 +147,11 @@ const NavigationBar: React.FC = () => {
               justifyContent: "space-between",
               height: "100%",
               cursor: "pointer",
-              px: isMobile ? 1 : 2, 
-              backgroundColor: isParentActive && !isMobile ? "primaryAction.selected" : "transparent", 
+              px: isMobile ? 1 : 2,
+              backgroundColor:
+                isParentActive && !isMobile
+                  ? "primaryAction.selected"
+                  : "transparent",
               position: "relative",
               "&::after": {
                 content: '""',
@@ -157,9 +160,10 @@ const NavigationBar: React.FC = () => {
                 right: 0,
                 bottom: 0,
                 height: 3,
-                backgroundColor: isMobile ? "transparent" : "primary.main", 
+                backgroundColor: isMobile ? "transparent" : "primary.main",
                 transition: "transform 0.3s ease",
-                transform: isParentActive && !isMobile ? "scaleX(1)" : "scaleX(0)",
+                transform:
+                  isParentActive && !isMobile ? "scaleX(1)" : "scaleX(0)",
                 transformOrigin: "left",
               },
             }}
@@ -175,7 +179,7 @@ const NavigationBar: React.FC = () => {
                 position: "relative",
                 transition: "background-color 0.3s ease",
                 paddingBottom: 0,
-                textDecoration: "none", 
+                textDecoration: "none",
               }}
             >
               {item.label}
@@ -188,7 +192,10 @@ const NavigationBar: React.FC = () => {
                   toggleMenu(item.path, e);
                 }}
                 sx={{
-                  transform: openSubMenu === item.path ? "rotate(180deg)" : "rotate(0deg)",
+                  transform:
+                    openSubMenu === item.path
+                      ? "rotate(180deg)"
+                      : "rotate(0deg)",
                   transition: "transform 0.3s ease",
                   color: isParentActive ? "primary.main" : "text.secondary",
                 }}
@@ -216,7 +223,15 @@ const NavigationBar: React.FC = () => {
                 horizontal: "left",
               }}
             >
-              <Box sx={{ padding: 2, backgroundColor: "background.paper", boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", borderRadius: 4, zIndex: 1300 }}>
+              <Box
+                sx={{
+                  padding: 2,
+                  backgroundColor: "background.paper",
+                  boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+                  borderRadius: 4,
+                  zIndex: 1300,
+                }}
+              >
                 {item.subMenu.map((subItem) => (
                   <Typography
                     key={subItem.path}
@@ -263,16 +278,16 @@ const NavigationBar: React.FC = () => {
   const sendMenuItems = [
     {
       icon: <PeopleIcon sx={styles.sendMenuIcon} />,
-      title: t('login_panel.cittadini.title'),
-      description: t('login_panel.cittadini.description'),
-      login: t('login_panel.cittadini.login'),
+      title: t("login_panel.cittadini.title"),
+      description: t("login_panel.cittadini.description"),
+      login: t("login_panel.cittadini.login"),
       link: "https://cittadini.notifichedigitali.it/auth/login",
     },
     {
       icon: <BusinessIcon sx={styles.sendMenuIcon} />,
-      title: t('login_panel.imprese.title'),
-      description: t('login_panel.imprese.description'),
-      login: t('login_panel.imprese.login'),
+      title: t("login_panel.imprese.title"),
+      description: t("login_panel.imprese.description"),
+      login: t("login_panel.imprese.login"),
       link: "https://imprese.notifichedigitali.it/auth/login",
     },
   ];
@@ -299,7 +314,7 @@ const NavigationBar: React.FC = () => {
         }}
       >
         <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-          {t('login_panel.enti.title')}
+          {t("login_panel.enti.title")}
         </Typography>
         <Button
           variant="text"
@@ -310,17 +325,17 @@ const NavigationBar: React.FC = () => {
           }
           endIcon={<ArrowForwardIcon />}
         >
-          {t('login_panel.enti.login')}
+          {t("login_panel.enti.login")}
         </Button>
       </Stack>
       <Box sx={{ borderTop: "1px solid #E3E7EB", paddingTop: 1 }}>
         <Typography variant="body2">
-        {t('login_panel.enti.description')}{" "}
+          {t("login_panel.enti.description")}{" "}
           <a
             href="https://docs.pagopa.it/area-riservata-enti-piattaforma-notifiche/area-riservata-enti-send-servizio-notifiche-digitali/processo-di-adesione-a-send"
             style={{ color: "pagoPA.main", textDecoration: "underline" }}
           >
-            {t('login_panel.enti.link')}
+            {t("login_panel.enti.link")}
           </a>
         </Typography>
       </Box>
@@ -330,13 +345,13 @@ const NavigationBar: React.FC = () => {
   const renderSendMenu = () => (
     <Box sx={{ bgcolor: "background.default" }}>
       <Box sx={styles.sendMenuHeader}>
-        <Typography variant="h6" sx={{fontWeight: 600}}>
-        {t('login_panel.login')}
+        <Typography variant="h6" sx={{ fontWeight: 600 }}>
+          {t("login_panel.login")}
         </Typography>
         <IconButton
           size="small"
           onClick={() => setIsSendMenuOpen(false)}
-          sx={{color: "text.secondary"}}
+          sx={{ color: "text.secondary" }}
         >
           <CloseIcon />
         </IconButton>
@@ -381,7 +396,7 @@ const NavigationBar: React.FC = () => {
       }}
       sx={styles.sendButton}
     >
-      {t('navigation.login')}
+      {t("navigation.login")}
     </Button>
   );
 
@@ -461,7 +476,7 @@ const NavigationBar: React.FC = () => {
   );
 
   return (
-    <Box className="sendNavbar" sx={{borderBottom: "1px solid #E3E7EB"}}>
+    <Box className="sendNavbar" sx={{ borderBottom: "1px solid #E3E7EB" }}>
       <Stack direction="column">
         <Stack
           direction="row"
@@ -474,7 +489,11 @@ const NavigationBar: React.FC = () => {
             sx={{ paddingRight: 2, cursor: "pointer" }}
             onClick={() => push(`/${lang}`)}
           >
-            <img src={`${IMAGES_PATH}/logo.svg`} alt={t('navigation.title')} aria-label={t('navigation.title')} />
+            <img
+              src={`${IMAGES_PATH}/logo.svg`}
+              alt={t("navigation.title")}
+              aria-label={t("navigation.title")}
+            />
           </Box>
           <Box>
             <Typography
@@ -490,7 +509,7 @@ const NavigationBar: React.FC = () => {
               }}
             >
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                {t('header.help')}
+                {t("header.help")}
               </Box>
               <Box
                 sx={{
@@ -541,7 +560,12 @@ const NavigationBar: React.FC = () => {
                 anchor="right"
                 open={isSendMenuOpen}
                 onClose={() => setIsSendMenuOpen(false)}
-                sx={{ "& .MuiDrawer-paper": { width: "100vw", bgcolor: "background.default" } }}
+                sx={{
+                  "& .MuiDrawer-paper": {
+                    width: "100vw",
+                    bgcolor: "background.default",
+                  },
+                }}
               >
                 {renderSendMenu()}
               </Drawer>

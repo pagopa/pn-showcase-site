@@ -7,7 +7,7 @@ import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import ChartServices from "./ChartServices";
 import KpiAuthority from "./KpiAuthority";
 import KpiCard from "./KpiCard";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../../hook/useTranslation";
 
 const KpiAuthoritiesServices = (): JSX.Element => {
   const { t } = useTranslation(["numeri"]);

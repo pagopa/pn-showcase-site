@@ -2,29 +2,35 @@ import { ReactNode, useContext, useEffect, useState } from "react";
 
 import { Box, Stack } from "@mui/material";
 
-import { Footer, ButtonNaked, LangCode as MuiLangCode, Languages, LangLabels } from "@pagopa/mui-italia";
+import { Footer, ButtonNaked, Languages, LangLabels } from "@pagopa/mui-italia";
 
 import NavigationBar from "./NavigationBar";
 import { langCodes, PAGOPA_HOME } from "../utils/constants";
-import { LangCode } from "src/model";
-import { useTranslation } from "src/hook/useTranslation";
-import LangContext from "src/context/lang-context";
-import { companyLegalInfo, pagoPALink, postLoginLinks, preLoginLinks, productJson } from "../utils/footer";
+import { LangCode } from "../model";
+import { useTranslation } from "../hook/useTranslation";
+import LangContext from "../context/lang-context";
+import {
+  companyLegalInfo,
+  pagoPALink,
+  postLoginLinks,
+  preLoginLinks,
+  productJson,
+} from "../utils/footer";
 
 interface Props {
   children?: ReactNode;
 }
 
 const Layout: React.FC<Props> = ({ children }) => {
-  const {t} = useTranslation(['common']);
-  const {lang, changeLanguage} = useContext(LangContext);
+  const { t } = useTranslation(["common"]);
+  const { lang, changeLanguage } = useContext(LangContext);
 
   const [windowURL, setWindowURL] = useState<string>();
 
   const availableLanguages = langCodes.reduce((obj, code) => {
     obj[code] = langCodes.reduce((innerObj, code) => {
       innerObj[code] = t(`footer.${code}`);
-      return innerObj
+      return innerObj;
     }, {} as LangLabels);
     return obj;
   }, {} as Languages);
@@ -59,7 +65,7 @@ const Layout: React.FC<Props> = ({ children }) => {
                 fontWeight: "bold",
               }}
               size="small"
-              aria-label={t('pagopaLink.ariaLabel')}
+              aria-label={t("pagopaLink.ariaLabel")}
               href={PAGOPA_HOME}
               color="text"
               target="_blank"
@@ -67,7 +73,7 @@ const Layout: React.FC<Props> = ({ children }) => {
               disableRipple
               disableTouchRipple
             >
-              {t('pagopaLink.label')}
+              {t("pagopaLink.label")}
             </ButtonNaked>
             {/* <ButtonNaked
               size="small"
@@ -84,7 +90,7 @@ const Layout: React.FC<Props> = ({ children }) => {
             </ButtonNaked> */}
           </Stack>
         </Stack>
-        <NavigationBar/>
+        <NavigationBar />
         <Box sx={{ flexGrow: 1 }} component="main">
           {children}
         </Box>
@@ -92,8 +98,7 @@ const Layout: React.FC<Props> = ({ children }) => {
           loggedUser={false}
           companyLink={{
             ...pagoPALink(t, lang),
-            onClick: () =>
-              window.open(PAGOPA_HOME, "_blank"),
+            onClick: () => window.open(PAGOPA_HOME, "_blank"),
           }}
           legalInfo={companyLegalInfo(t, lang)}
           postLoginLinks={postLoginLinks(t, lang)}

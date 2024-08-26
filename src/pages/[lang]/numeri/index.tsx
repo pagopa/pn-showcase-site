@@ -17,7 +17,7 @@ import PageHead from "../../../components/PageHead";
 import { langCodes } from "@utils/constants";
 import { LangCode } from "../../../model";
 import { getI18n } from "../../../api/i18n";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../../hook/useTranslation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {

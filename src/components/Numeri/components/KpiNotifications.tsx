@@ -8,7 +8,7 @@ import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import KpiCard from "./KpiCard";
 import KpiSignal from "./KpiSignal";
 import PieChart from "./PieChart";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../../hook/useTranslation";
 
 type Props = {
   selYear: number | null;

@@ -2,7 +2,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import lastUpdateSpec from "../assets/data/last-update.vl.json";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import KpiWrapper from "./KpiWrapper";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../../hook/useTranslation";
 
 const DashboardIntro = () => {
   const { t } = useTranslation(["numeri"]);

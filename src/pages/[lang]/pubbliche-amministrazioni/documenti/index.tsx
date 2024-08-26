@@ -9,7 +9,7 @@ import { LangCode } from "../../../../model";
 import DocsCards from "../../../../components/Enti/Documenti/DocsCards";
 import InDepthCard from "../../../../components/Enti/Documenti/InDepthCard";
 import StripeLink from "../../../../components/Enti/Documenti/StripeLink";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../../../hook/useTranslation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {

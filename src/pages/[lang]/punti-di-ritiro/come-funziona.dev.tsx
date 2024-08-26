@@ -5,9 +5,9 @@ import Script from "next/script";
 
 import { langCodes, ONE_TRUST_RADD_TOS } from "@utils/constants";
 import PageHead from "../../../components/PageHead";
-import { useTranslation } from "src/hook/useTranslation";
-import { getI18n } from "src/api/i18n";
-import { LangCode } from "src/model";
+import { useTranslation } from "../../../hook/useTranslation";
+import { getI18n } from "../../../api/i18n";
+import { LangCode } from "../../../model";
 
 declare const OneTrust: {
   NoticeApi: {

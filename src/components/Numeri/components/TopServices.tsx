@@ -7,7 +7,7 @@ import topAreasSpec from "../assets/data/top-areas.vl.json";
 
 import KpiAuthority from "./KpiAuthority";
 import KpiCard from "./KpiCard";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../../hook/useTranslation";
 
 const TopServices = (): JSX.Element => {
   const { t } = useTranslation(["numeri"]);

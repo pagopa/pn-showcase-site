@@ -7,7 +7,7 @@ import { LangCode } from "../../../model";
 import PageHead from "../../../components/PageHead";
 import { getI18n } from "../../../api/i18n";
 import { Link, Typography } from "@mui/material";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../../hook/useTranslation";
 import {
   CloudIcon,
   DelegationIcon,
@@ -17,10 +17,10 @@ import {
   NotificationIcon,
   PiggyIcon,
   WalletIcon,
-} from "src/api/data/icons";
-import InfoblockCustomCittadini from "src/components/InfoblockCustomCittadini";
+} from "../../../api/data/icons";
+import InfoblockCustomCittadini from "../../../components/InfoblockCustomCittadini";
 import { useContext } from "react";
-import LangContext from "src/context/lang-context";
+import LangContext from "../../../context/lang-context";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
