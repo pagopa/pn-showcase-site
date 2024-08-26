@@ -7,6 +7,7 @@ import { langCodes, ONE_TRUST_LEGAL_NOTICES_PAGE } from "@utils/constants";
 import PageHead from "../../components/PageHead";
 import { getI18n } from "../../api/i18n";
 import { LangCode } from "../../model";
+import { useTranslation } from "../../hook/useTranslation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -14,13 +15,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { lang },
     })),
     fallback: false,
-  }
-}
+  };
+};
 
-export async function getStaticProps({params}: {params: {lang: LangCode}}) {
-  const translations = getI18n(params.lang, ['common'])
+export async function getStaticProps({
+  params,
+}: {
+  params: { lang: LangCode };
+}) {
+  const translations = getI18n(params.lang, ["common", "note-legali"]);
 
-  return { props: {translations, lang: params.lang} }
+  return { props: { translations, lang: params.lang } };
 }
 
 declare const OneTrust: {
@@ -33,19 +38,25 @@ declare const OneTrust: {
 };
 
 const LegalNoticesPage: NextPage = () => {
+  const { t } = useTranslation(["common", "note-legali"]);
+
   useEffect(() => {
-    if (ONE_TRUST_LEGAL_NOTICES_PAGE) {
-      OneTrust.NoticeApi.Initialized.then(() => {
-        OneTrust.NoticeApi.LoadNotices([ONE_TRUST_LEGAL_NOTICES_PAGE], false);
-      });
-    }
+    const interval = setInterval(() => {
+      if (typeof OneTrust !== "undefined" && ONE_TRUST_LEGAL_NOTICES_PAGE) {
+        clearInterval(interval);
+        OneTrust.NoticeApi.Initialized.then(() => {
+          OneTrust.NoticeApi.LoadNotices([ONE_TRUST_LEGAL_NOTICES_PAGE], false);
+        });
+      }
+    }, 100);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <>
       <PageHead
-        title="SEND - Servizio Notifiche Digitali | Note Legali"
-        description="Note legali - Servizio Notifiche digitali"
+        title={t("title", { ns: "note-legali" })}
+        description={t("description", { ns: "note-legali" })}
       />
       <Script
         src="/onetrust/privacy-notice-scripts/otnotice-1.0.min.js"
