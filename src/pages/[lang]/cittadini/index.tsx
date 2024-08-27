@@ -21,6 +21,7 @@ import {
 import InfoblockCustomCittadini from "../../../components/InfoblockCustomCittadini";
 import { useContext } from "react";
 import LangContext from "../../../context/lang-context";
+import { safeInternalPage } from "../../../utils/navigation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -150,7 +151,7 @@ const CittadiniPage: NextPage = () => {
             <Typography variant="body2">
               {t("infoblock_2.description_2", { ns: "cittadini" })}
               <Link
-                href={`/${lang}/perfezionamento`}
+                href={safeInternalPage(lang, "/perfezionamento")}
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{ fontWeight: "bold", color: "primary.main" }}
@@ -217,7 +218,7 @@ const CittadiniPage: NextPage = () => {
               <Typography variant="body2">
                 {t("walkthrough.item_2.subtitle_1", { ns: "cittadini" })}
                 <Link
-                  href={`/${lang}/perfezionamento`}
+                  href={safeInternalPage(lang, "/perfezionamento")}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={t("walkthrough.item_2.subtitle_2", {

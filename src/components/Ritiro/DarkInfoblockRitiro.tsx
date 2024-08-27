@@ -1,9 +1,13 @@
 import { Box, Container, Grid, Link, Typography } from "@mui/material";
 import { LeggiIcon } from "../../api/data/icons";
 import { useTranslation } from "../../hook/useTranslation";
+import { safeInternalPage } from "../../utils/navigation";
+import { useContext } from "react";
+import LangContext from "../../context/lang-context";
 
 const DarkInfoblockRitiro: React.FC = () => {
   const { t } = useTranslation(["common", "pickup"]);
+  const { lang } = useContext(LangContext);
   return (
     <Box
       sx={{
@@ -49,7 +53,7 @@ const DarkInfoblockRitiro: React.FC = () => {
               <Link
                 variant="body2"
                 color="inherit"
-                href="/punti-di-ritiro/come-funziona"
+                href={safeInternalPage(lang, "/punti-di-ritiro/come-funziona")}
               >
                 <strong>
                   {t("infoblock.details_link_text", { ns: "pickup" })}

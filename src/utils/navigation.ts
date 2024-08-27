@@ -14,7 +14,8 @@ export const redirectToInternalPage = (
     lang: LangCode
 ) => {
     if (langCodes.includes(lang)) {
-      push(`/${lang}/${page}`);
+      const separator = page.startsWith("/") ? "" : "/";
+      push(`/${lang}${separator}${page}`);
     }
   };
 

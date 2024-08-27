@@ -21,6 +21,7 @@ import { MenuItem } from "../model";
 import LangContext from "../context/lang-context";
 import { useTranslation } from "../hook/useTranslation";
 import { IMAGES_PATH } from "@utils/constants";
+import { redirectToInternalPage, safeInternalPage } from "../utils/navigation";
 
 const styles = {
   sendMenuHeader: {
@@ -113,7 +114,7 @@ const NavigationBar: React.FC = () => {
     setIsMobileMenuOpen(false);
     setIsSendMenuOpen(false);
     setOpenSubMenu(null);
-    push(`/${lang}${path}`);
+    redirectToInternalPage(push, path, lang);
   };
 
   useEffect(() => {
@@ -487,7 +488,7 @@ const NavigationBar: React.FC = () => {
         >
           <Box
             sx={{ paddingRight: 2, cursor: "pointer" }}
-            onClick={() => push(`/${lang}`)}
+            onClick={() => redirectToInternalPage(push, "/", lang)}
           >
             <img
               src={`${IMAGES_PATH}/logo.svg`}
@@ -498,7 +499,7 @@ const NavigationBar: React.FC = () => {
           <Box>
             <Typography
               component="a"
-              href="/assistenza"
+              href={safeInternalPage(lang, "/assistenza")}
               sx={{
                 textDecoration: "none",
                 color: "primary.main",
