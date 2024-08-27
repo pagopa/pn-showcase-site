@@ -28,9 +28,8 @@ function FaqDescriptionBlock(props: Readonly<{ description: FaqDescription }>) {
         })}
       </>
     );
-  } else {
-    return description;
   }
+  return description;
 }
 
 export default FaqDescriptionBlock;
