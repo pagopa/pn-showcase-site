@@ -1,4 +1,4 @@
-import { LangCode } from "src/model";
+import { LangCode } from "../model";
 import { langCodes } from "./constants";
 import { Url } from "next/dist/shared/lib/router/router";
 
@@ -17,3 +17,13 @@ export const redirectToInternalPage = (
       push(`/${lang}/${page}`);
     }
   };
+
+export const safeInternalPage = (lang: LangCode, page?: string): string => {
+  if (!page) {
+    return '';
+  }
+  if (langCodes.includes(lang)) {
+    return `/${lang}${page}`;
+  }
+  return '';
+};

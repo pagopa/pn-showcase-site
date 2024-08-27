@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { IMAGES_PATH } from "@utils/constants";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../hook/useTranslation";
 
 const InfoblockCustomCittadini: React.FC = () => {
   const theme = useTheme();

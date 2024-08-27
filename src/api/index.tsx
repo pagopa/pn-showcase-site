@@ -1,12 +1,9 @@
 import { InfoblockProps } from "@pagopa/mui-italia";
 
-import { ITabsProps, IFaqData, IHeadingTitleProps } from "../model";
+import { ITabsProps, IHeadingTitleProps } from "../model";
 
-import { itFaqData } from "./data/faq-it";
 import { perfezionamentoData } from "./data/perfezionamento";
 import { assistenzaData } from "./data/assistenza";
-
-export const getFaqData = (): IFaqData => itFaqData;
 
 export const getCommonHeadingTitleData = (name: string): IHeadingTitleProps => {
   const headingTitleData = perfezionamentoData.headingTitles.filter(

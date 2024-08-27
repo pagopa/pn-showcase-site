@@ -7,10 +7,10 @@ import { IMAGES_PATH, langCodes, PN_PF_URL, PN_PG_URL } from "@utils/constants";
 import { LangCode } from "../../model";
 import PageHead from "../../components/PageHead";
 import { getI18n } from "../../api/i18n";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../hook/useTranslation";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import LangContext from "src/context/lang-context";
+import LangContext from "../../context/lang-context";
 import { redirectToInternalPage } from "@utils/navigation";
 
 export const getStaticPaths: GetStaticPaths = async () => {

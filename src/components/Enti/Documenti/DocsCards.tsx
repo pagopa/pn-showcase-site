@@ -1,6 +1,6 @@
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Button, Container, Link, Stack, Typography } from "@mui/material";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../../hook/useTranslation";
 import DocCard from "./DocCard";
 
 const DocsCards = () => {

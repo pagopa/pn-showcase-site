@@ -5,7 +5,7 @@ import { LangCode } from "../../../model";
 import PageHead from "../../../components/PageHead";
 import { IMAGES_PATH, langCodes, PN_PG_URL } from "@utils/constants";
 import { getI18n } from "../../../api/i18n";
-import { useTranslation } from "src/hook/useTranslation";
+import { useTranslation } from "../../../hook/useTranslation";
 import { Typography } from "@mui/material";
 import {
   CloudIcon,
@@ -16,7 +16,7 @@ import {
   PeopleIcon,
   PiggyIcon,
   WalletIcon,
-} from "src/api/data/icons";
+} from "../../../api/data/icons";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
