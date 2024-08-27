@@ -9,6 +9,8 @@ import {
   SEND_PF_HELP_EMAIL,
 } from "@utils/constants";
 import { IFaqDataSection } from "../../model";
+import { useContext } from "react";
+import LangContext from "src/context/lang-context";
 
 interface DataSectionsProps {
   currentItem: string | null;
@@ -20,6 +22,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
   setActiveItem,
 }) => {
   const { t } = useTranslation(["faq"]);
+  const {lang} = useContext(LangContext)
 
   const sectionsData: Array<IFaqDataSection> = [
     {
@@ -314,7 +317,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
                 })}
               </Typography>
               <Typography variant="body2" component="span">
-                <a href={PERFEZIONAMENTO_PATH}>
+                <a href={`/${lang}${PERFEZIONAMENTO_PATH}`}>
                   {t("notification_reception.6.description_2", {
                     ns: "faq",
                   })}
@@ -367,7 +370,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
               >
                 {t("finalization.2.description_1", { ns: "faq" })}
               </FaqTextSection>
-              <FaqLink href={PERFEZIONAMENTO_PATH}>
+              <FaqLink href={`/${lang}${PERFEZIONAMENTO_PATH}`}>
                 {t("finalization.2.description_2", { ns: "faq" })}
               </FaqLink>
               <FaqTextSection
