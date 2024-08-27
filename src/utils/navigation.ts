@@ -17,3 +17,13 @@ export const redirectToInternalPage = (
       push(`/${lang}/${page}`);
     }
   };
+
+export const safeInternalPage = (lang: LangCode, page?: string): string => {
+  if (!page) {
+    return '';
+  }
+  if (langCodes.includes(lang)) {
+    return `/${lang}${page}`;
+  }
+  return '';
+};

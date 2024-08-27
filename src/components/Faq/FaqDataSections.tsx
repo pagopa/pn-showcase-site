@@ -11,6 +11,7 @@ import {
 import { IFaqDataSection } from "../../model";
 import { useContext } from "react";
 import LangContext from "src/context/lang-context";
+import { safeInternalPage } from "@utils/navigation";
 
 interface DataSectionsProps {
   currentItem: string | null;
@@ -317,7 +318,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
                 })}
               </Typography>
               <Typography variant="body2" component="span">
-                <a href={`/${lang}${PERFEZIONAMENTO_PATH}`}>
+                <a href={safeInternalPage(lang, PERFEZIONAMENTO_PATH)}>
                   {t("notification_reception.6.description_2", {
                     ns: "faq",
                   })}
@@ -370,7 +371,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
               >
                 {t("finalization.2.description_1", { ns: "faq" })}
               </FaqTextSection>
-              <FaqLink href={`/${lang}${PERFEZIONAMENTO_PATH}`}>
+              <FaqLink href={safeInternalPage(lang, PERFEZIONAMENTO_PATH)}>
                 {t("finalization.2.description_2", { ns: "faq" })}
               </FaqLink>
               <FaqTextSection
