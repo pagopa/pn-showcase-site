@@ -8,7 +8,7 @@
     "notifications": {
         "title": "Notifiche",
         "1": {
-            "title": "Cosa sono le notifiche",
+            "title": "Cosa sono le notifiche?",
             "description_1": "Le notifiche sono comunicazioni a valore legale emesse in via ufficiale da un'amministrazione come multe, avvisi di accertamento di tributi o rimborsi. Le \"notifiche\" sono quindi diverse dalle \"notifiche push\", cioè quei brevi messaggi che ricevi sullo schermo del tuo dispositivo.",
             "description_2": "Fino ad ora, queste comunicazioni venivano inviate quasi sempre tramite raccomandata cartacea. Adesso, invece, potrai riceverle in digitale."
         },
