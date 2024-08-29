@@ -1,5 +1,5 @@
 import { GetStaticPaths, NextPage } from "next";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Box, Fade, Stack } from "@mui/material";
 
 import HeadingTitle from "../../components/HeadingTitle";
@@ -15,6 +15,8 @@ import ContactInfoAssistenzaMittenti from "./assistenza/ContactInfoAssistenzaMit
 import AssistanceCards, {
   AssistanceCardsProps,
 } from "../../components/Assistenza/AssistanceCards";
+import { safeInternalPage } from "../../utils/navigation";
+import LangContext from "../../context/lang-context";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -37,6 +39,7 @@ export async function getStaticProps({
 
 const Assistenza: NextPage = () => {
   const { t } = useTranslation(["common", "assistenza"]);
+  const { lang } = useContext(LangContext);
   const [currentTab, setCurrentTab] = useState({ index: 0, visible: true });
   const transitionDuration = 500;
   const containerRef = useRef(null);
@@ -52,23 +55,23 @@ const Assistenza: NextPage = () => {
       cards: [
         {
           title: t("tab.1.card.1.title", { ns: "assistenza" }),
-          href: "/faq#send-come-accedere",
+          href: safeInternalPage(lang, "/faq#send-come-accedere"),
           text: t("tab.1.card.1.cta", { ns: "assistenza" }),
         },
         {
           title: t("tab.1.card.2.title", { ns: "assistenza" }),
-          href: "/faq#documenti-aar",
+          href: safeInternalPage(lang, "/faq#documenti-aar"),
           text: t("tab.1.card.2.cta", { ns: "assistenza" }),
         },
         {
           title: t("tab.1.card.3.title", { ns: "assistenza" }),
-          href: "/faq#perfezionamento-cosa-significa",
+          href: safeInternalPage(lang, "/faq#perfezionamento-cosa-significa"),
           text: t("tab.1.card.3.cta", { ns: "assistenza" }),
         },
       ],
       button: {
         text: t("tab.1.cta", { ns: "assistenza" }),
-        href: "/faq",
+        href: safeInternalPage(lang, "/faq"),
       },
     },
     {
@@ -96,35 +99,6 @@ const Assistenza: NextPage = () => {
       },
     },
   ];
-
-  const handleResize = () => {
-    const cards = document.querySelectorAll<HTMLDivElement>(".MuiCard-root");
-    let maxHeight = 0;
-
-    cards.forEach((card) => {
-      card.style.height = "auto";
-      if (card.clientHeight > maxHeight) {
-        maxHeight = card.clientHeight;
-      }
-    });
-
-    cards.forEach((card) => {
-      card.style.height = `${maxHeight}px`;
-    });
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    handleResize();
-  }, [currentTab]);
 
   const handleTabChange = (tab: number) => {
     if (tab === currentTab.index) {

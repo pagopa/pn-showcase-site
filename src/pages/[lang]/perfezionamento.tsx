@@ -1,6 +1,6 @@
 import { Infoblock, InfoblockProps } from "@pagopa/mui-italia";
 import { GetStaticPaths, NextPage } from "next";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Box, Fade, Link, Stack, Typography } from "@mui/material";
 
 import HeadingTitle from "../../components/HeadingTitle";
@@ -13,6 +13,8 @@ import { useTranslation } from "../../hook/useTranslation";
 import CustomInfoblockContent from "../../components/Perfezionamento/CustomInfoblockContent";
 import CustomInfoblockList from "../../components/Perfezionamento/CustomInfoblockList";
 import CustomInfoblockListItem from "../../components/Perfezionamento/CustomInfoblockListItem";
+import LangContext from "../../context/lang-context";
+import { safeInternalPage } from "../../utils/navigation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -35,6 +37,7 @@ export async function getStaticProps({
 
 const Perfezionamento: NextPage = () => {
   const { t } = useTranslation(["common", "perfezionamento"]);
+  const { lang } = useContext(LangContext);
   const [currentTab, setCurrentTab] = useState({ index: 0, visible: true });
   const transitionDuration = 500;
   const containerRef = useRef(null);
@@ -44,7 +47,7 @@ const Perfezionamento: NextPage = () => {
     subtitle: (
       <>
         {t("heading.subtitle_1", { ns: "perfezionamento" })}
-        <Link href="https://notifichedigitali.pagopa.it/faq#perfezionamento-cosa-significa">
+        <Link href={safeInternalPage(lang, "/faq#perfezionamento-cosa-significa")}>
           <strong>{t("heading.subtitle_2", { ns: "perfezionamento" })}</strong>
         </Link>
         {t("heading.subtitle_3", { ns: "perfezionamento" })}

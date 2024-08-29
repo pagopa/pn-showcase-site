@@ -1,6 +1,7 @@
 import { FooterLinksType, PreLoginFooterLinksType } from "@pagopa/mui-italia";
 import { ACCESSIBILITY_PARTICULAR_LINK, PAGOPA_HOME } from "@utils/constants";
 import { ILinkData, LangCode } from "../model";
+import { safeInternalPage } from "./navigation";
 
 type TranslationFunction = (key: string, options?: { ns: string }) => string;
 
@@ -57,13 +58,13 @@ export const preLoginLinks: (
     links: [
       {
         label: t("footer.pre_login.resources.legal_notes.label"),
-        href: `/${lang}/note-legali`,
+        href: safeInternalPage(lang, "/note-legali"),
         ariaLabel: t("footer.pre_login.resources.legal_notes.ariaLabel"),
         linkType: "internal",
       },
       {
         label: t("footer.pre_login.resources.privacy.label"),
-        href: `/${lang}/informativa-privacy/`,
+        href: safeInternalPage(lang, "/informativa-privacy"),
         ariaLabel: t("footer.pre_login.resources.privacy.ariaLabel"),
         linkType: "internal",
       },
@@ -166,13 +167,13 @@ export const postLoginLinks: (
 ) => Array<FooterLinksType> = (t, lang) => [
   {
     label: t("post_login.privacy.label"),
-    href: `${lang}/privacy-policy`,
+    href: safeInternalPage(lang, "/privacy-policy"),
     ariaLabel: t("post_login.privacy.ariaLabel"),
     linkType: "internal",
   },
   {
     label: t("post_login.accessibility.label"),
-    href: `${lang}accessibilita`,
+    href: safeInternalPage(lang, "/accessibilita"),
     ariaLabel: t("post_login.accessibility.ariaLabel"),
     linkType: "internal",
   },
