@@ -21,7 +21,6 @@ import { MenuItem } from "../model";
 import LangContext from "../context/lang-context";
 import { useTranslation } from "../hook/useTranslation";
 import { IMAGES_PATH } from "@utils/constants";
-import { useIsMobile } from "../hook/useIsMobile";
 
 const styles = {
   sendMenuHeader: {
@@ -68,13 +67,12 @@ const NavigationBar: React.FC = () => {
   const { pathname, push } = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isSendMenuOpen, setIsSendMenuOpen] = useState<boolean>(false);
-  // const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
   const [mounted, setMounted] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { lang } = useContext(LangContext);
   const { t } = useTranslation(["common"]);
-  const isMobile = useIsMobile();
 
   const menuItems: MenuItem[] = [
     { label: t("navigation.cittadini"), path: "/cittadini" },
@@ -119,11 +117,11 @@ const NavigationBar: React.FC = () => {
   };
 
   useEffect(() => {
-    // const handleResize = () => setIsMobile(window.innerWidth < 900);
-    // handleResize();
-    // window.addEventListener("resize", handleResize);
+    const handleResize = () => setIsMobile(window.innerWidth < 900);
+    handleResize();
+    window.addEventListener("resize", handleResize);
     setMounted(true);
-    // return () => window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   if (!mounted) return null;
