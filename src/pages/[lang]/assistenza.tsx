@@ -95,7 +95,7 @@ const Assistenza: NextPage = () => {
       ],
       button: {
         text: t("tab.2.cta", { ns: "assistenza" }),
-        href: "/pubbliche-amministrazioni/documenti/",
+        href: safeInternalPage(lang, "/pubbliche-amministrazioni/documenti/"),
       },
     },
   ];
