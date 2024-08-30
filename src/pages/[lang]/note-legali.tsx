@@ -18,7 +18,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export async function getStaticProps({ params }: { params: { lang: LangCode } }) {
+export async function getStaticProps({
+  params,
+}: {
+  params: { lang: LangCode };
+}) {
   const translations = getI18n(params.lang, ["common", "note-legali"]);
 
   return { props: { translations, lang: params.lang } };

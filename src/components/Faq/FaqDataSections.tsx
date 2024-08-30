@@ -31,7 +31,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
       title: t("notifications.title", { ns: "faq" }),
       items: [
         {
-          id: t("notifications.1.title", { ns: "faq" }),
+          id: "notifiche-cosa-sono",
           title: t("notifications.1.title", { ns: "faq" }),
           description: [
             t("notifications.1.description_1", { ns: "faq" }),
@@ -39,12 +39,12 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
           ],
         },
         {
-          id: t("notifications.2.title", { ns: "faq" }),
+          id: "notifiche-valore-legale",
           title: t("notifications.2.title", { ns: "faq" }),
           description: [t("notifications.2.description", { ns: "faq" })],
         },
         {
-          id: t("notifications.3.title", { ns: "faq" }),
+          id: "notifiche-composizione",
           title: t("notifications.3.title", { ns: "faq" }),
           description: [
             t("notifications.3.description_1", { ns: "faq" }),
@@ -58,12 +58,12 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
       title: t("send.title", { ns: "faq" }),
       items: [
         {
-          id: t("send.1.title", { ns: "faq" }),
+          id: "send-cosa-e",
           title: t("send.1.title", { ns: "faq" }),
           description: [t("send.1.description", { ns: "faq" })],
         },
         {
-          id: t("send.2.title", { ns: "faq" }),
+          id: "send-a-chi-invia",
           title: t("send.2.title", { ns: "faq" }),
           description: (
             <Box>
@@ -95,7 +95,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
           ),
         },
         {
-          id: t("send.3.title", { ns: "faq" }),
+          id: "send-come-funziona",
           title: t("send.3.title", { ns: "faq" }),
           description: [
             t("send.3.description_1", { ns: "faq" }),
@@ -105,12 +105,12 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
           ],
         },
         {
-          id: t("send.4.title", { ns: "faq" }),
+          id: "send-gia-operativa",
           title: t("send.4.title", { ns: "faq" }),
           description: [t("send.4.description", { ns: "faq" })],
         },
         {
-          id: t("send.5.title", { ns: "faq" }),
+          id: "send-come-accedere",
           title: t("send.5.title", { ns: "faq" }),
           description: (
             <Box>
@@ -139,12 +139,12 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
       title: t("contacts.title", { ns: "faq" }),
       items: [
         {
-          id: t("contacts.1.title", { ns: "faq" }),
+          id: "recapiti-dove-inserire",
           title: t("contacts.1.title", { ns: "faq" }),
           description: [t("contacts.1.description", { ns: "faq" })],
         },
         {
-          id: t("contacts.2.title", { ns: "faq" }),
+          id: "recapiti-se-non-inserisco",
           title: t("contacts.2.title", { ns: "faq" }),
           description: [
             t("contacts.2.description_1", { ns: "faq" }),
@@ -152,7 +152,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
           ],
         },
         {
-          id: t("contacts.3.title", { ns: "faq" }),
+          id: "recapiti-differenza-tra-tipi",
           title: t("contacts.3.title", { ns: "faq" }),
           description: [
             t("contacts.3.description_1", { ns: "faq" }),
@@ -163,7 +163,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
           ],
         },
         {
-          id: t("contacts.4.title", { ns: "faq" }),
+          id: "recapiti-pec-recapito-principale",
           title: t("contacts.4.title", { ns: "faq" }),
           description: [
             t("contacts.4.description_1", { ns: "faq" }),
@@ -177,7 +177,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
       title: t("documents.title", { ns: "faq" }),
       items: [
         {
-          id: t("documents.1.title", { ns: "faq" }),
+          id: "documenti-aar",
           title: t("documents.1.title", { ns: "faq" }),
           description: (
             <Box>
@@ -235,12 +235,12 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
           ),
         },
         {
-          id: t("documents.2.title", { ns: "faq" }),
+          id: "documenti-iun",
           title: t("documents.2.title", { ns: "faq" }),
           description: [t("documents.2.description", { ns: "faq" })],
         },
         {
-          id: t("documents.3.title", { ns: "faq" }),
+          id: "documenti-avviso-di-cortesia",
           title: t("documents.3.title", { ns: "faq" }),
           description: [
             t("documents.3.description_1", { ns: "faq" }),
@@ -248,17 +248,17 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
           ],
         },
         {
-          id: t("documents.4.title", { ns: "faq" }),
+          id: "documenti-amr",
           title: t("documents.4.title", { ns: "faq" }),
           description: [t("documents.4.description", { ns: "faq" })],
         },
         {
-          id: t("documents.5.title", { ns: "faq" }),
+          id: "documenti-attestazione",
           title: t("documents.5.title", { ns: "faq" }),
           description: [t("documents.5.description", { ns: "faq" })],
         },
         {
-          id: t("documents.6.title", { ns: "faq" }),
+          id: "documenti-stato-della-notifica",
           title: t("documents.6.title", { ns: "faq" }),
           description: [
             t("documents.6.description_1", { ns: "faq" }),
@@ -272,28 +272,28 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
       title: t("notification_reception.title", { ns: "faq" }),
       items: [
         {
-          id: t("notification_reception.1.title", { ns: "faq" }),
+          id: "ricezione-ricevuto-messaggio-appio",
           title: t("notification_reception.1.title", { ns: "faq" }),
           description: [
             t("notification_reception.1.description", { ns: "faq" }),
           ],
         },
         {
-          id: t("notification_reception.2.title", { ns: "faq" }),
+          id: "ricezione-ricevuto-sms",
           title: t("notification_reception.2.title", { ns: "faq" }),
           description: [
             t("notification_reception.2.description", { ns: "faq" }),
           ],
         },
         {
-          id: t("notification_reception.3.title", { ns: "faq" }),
+          id: "ricezione-ricevuto-email",
           title: t("notification_reception.3.title", { ns: "faq" }),
           description: [
             t("notification_reception.3.description", { ns: "faq" }),
           ],
         },
         {
-          id: t("notification_reception.4.title", { ns: "faq" }),
+          id: "ricezione-delegare",
           title: t("notification_reception.4.title", { ns: "faq" }),
           description: [
             t("notification_reception.4.description_1", { ns: "faq" }),
@@ -301,14 +301,14 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
           ],
         },
         {
-          id: t("notification_reception.5.title", { ns: "faq" }),
+          id: "ricezione-essere-delegato",
           title: t("notification_reception.5.title", { ns: "faq" }),
           description: [
             t("notification_reception.5.description", { ns: "faq" }),
           ],
         },
         {
-          id: t("notification_reception.6.title", { ns: "faq" }),
+          id: "ricezione-durata-disponibilita",
           title: t("notification_reception.6.title", { ns: "faq" }),
           description: (
             <Box>
@@ -333,7 +333,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
           ),
         },
         {
-          id: t("notification_reception.7.title", { ns: "faq" }),
+          id: "ricezione-se-ignoro",
           title: t("notification_reception.7.title", { ns: "faq" }),
           description: [
             t("notification_reception.7.description_1", { ns: "faq" }),
@@ -341,7 +341,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
           ],
         },
         {
-          id: t("notification_reception.8.title", { ns: "faq" }),
+          id: "costi-di-notifica",
           title: t("notification_reception.8.title", { ns: "faq" }),
           description: [
             t("notification_reception.8.description_1", { ns: "faq" }),
@@ -355,12 +355,12 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
       title: t("finalization.title", { ns: "faq" }),
       items: [
         {
-          id: t("finalization.1.title", { ns: "faq" }),
+          id: "perfezionamento-cosa-significa",
           title: t("finalization.1.title", { ns: "faq" }),
           description: [t("finalization.1.description", { ns: "faq" })],
         },
         {
-          id: t("finalization.2.title", { ns: "faq" }),
+          id: "perfezionamento-quando",
           title: t("finalization.2.title", { ns: "faq" }),
           description: (
             <Box>
@@ -386,7 +386,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
           ),
         },
         {
-          id: t("finalization.3.title", { ns: "faq" }),
+          id: "perfezionamento-come-posso-sapere",
           title: t("finalization.3.title", { ns: "faq" }),
           description: [t("finalization.3.description", { ns: "faq" })],
         },
@@ -397,7 +397,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
       title: t("cancellation.title", { ns: "faq" }),
       items: [
         {
-          id: t("cancellation.1.title", { ns: "faq" }),
+          id: "perche-notifica-annullata",
           title: t("cancellation.1.title", { ns: "faq" }),
           description: (
             <Box>
@@ -412,7 +412,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
           ),
         },
         {
-          id: t("cancellation.2.title", { ns: "faq" }),
+          id: "notifica-pagata-rimborso",
           title: t("cancellation.2.title", { ns: "faq" }),
           description: (
             <Box>
@@ -433,7 +433,7 @@ const FaqDataSections: React.FC<DataSectionsProps> = ({
       title: t("accessibility.title", { ns: "faq" }),
       items: [
         {
-          id: t("accessibility.1.title", { ns: "faq" }),
+          id: "accessibilita-segnalazioni",
           title: t("accessibility.1.title", { ns: "faq" }),
           description: (
             <Box>
