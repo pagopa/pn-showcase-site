@@ -7,6 +7,7 @@ import { langCodes, ONE_TRUST_LEGAL_NOTICES_PAGE } from "@utils/constants";
 import PageHead from "../../components/PageHead";
 import { getI18n } from "../../api/i18n";
 import { LangCode } from "../../model";
+import { useTranslation } from "../../hook/useTranslation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -14,13 +15,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { lang },
     })),
     fallback: false,
-  }
-}
+  };
+};
 
-export async function getStaticProps({params}: {params: {lang: LangCode}}) {
-  const translations = getI18n(params.lang, ['common'])
+export async function getStaticProps({ params }: { params: { lang: LangCode } }) {
+  const translations = getI18n(params.lang, ["common", "note-legali"]);
 
-  return { props: {translations, lang: params.lang} }
+  return { props: { translations, lang: params.lang } };
 }
 
 declare const OneTrust: {
@@ -32,32 +33,29 @@ declare const OneTrust: {
   };
 };
 
+const loadOneTrust = () => {
+  if (typeof OneTrust !== "undefined" && ONE_TRUST_LEGAL_NOTICES_PAGE) {
+    OneTrust.NoticeApi.Initialized.then(() => {
+      OneTrust.NoticeApi.LoadNotices([ONE_TRUST_LEGAL_NOTICES_PAGE], false);
+    });
+  }
+};
+
 const LegalNoticesPage: NextPage = () => {
-  useEffect(() => {
-    if (ONE_TRUST_LEGAL_NOTICES_PAGE) {
-      OneTrust.NoticeApi.Initialized.then(() => {
-        OneTrust.NoticeApi.LoadNotices([ONE_TRUST_LEGAL_NOTICES_PAGE], false);
-      });
-    }
-  }, []);
+  const { t } = useTranslation(["common", "note-legali"]);
 
   return (
     <>
-      <PageHead
-        title="SEND - Servizio Notifiche Digitali | Note Legali"
-        description="Note legali - Servizio Notifiche digitali"
-      />
+      <PageHead title={t("title", { ns: "note-legali" })} description={t("description", { ns: "note-legali" })} />
       <Script
         src="/onetrust/privacy-notice-scripts/otnotice-1.0.min.js"
         type="text/javascript"
         charSet="UTF-8"
         id="otprivacy-notice-script"
         strategy="beforeInteractive"
+        onReady={() => loadOneTrust()}
       />
-      <div
-        id="otnotice-eca0fddd-9d79-474d-90e4-aa30dd0c0313"
-        className="otnotice"
-      ></div>
+      <div id="otnotice-eca0fddd-9d79-474d-90e4-aa30dd0c0313" className="otnotice"></div>
     </>
   );
 };
