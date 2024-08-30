@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import type { GetStaticPaths, NextPage } from "next";
-import { Infoblock, Showcase, Walkthrough, Hero } from "@pagopa/mui-italia";
+import { useRouter } from "next/router";
+
 import { Typography } from "@mui/material";
+import { Infoblock, Showcase, Walkthrough, Hero } from "@pagopa/mui-italia";
 import { IMAGES_PATH, langCodes } from "@utils/constants";
+import { redirectToInternalPage } from "@utils/navigation";
 
 import { LangCode } from "../../../model";
 import PageHead from "../../../components/PageHead";
@@ -19,10 +23,7 @@ import {
 } from "../../../api/data/icons";
 import StripeLinkEnti from "../../../components/Enti/StripeLinkEnti";
 import { DarkInfoblockEnti } from "../../../components/Enti/DarkInfoblockEnti";
-import { useContext } from "react";
 import LangContext from "../../../context/lang-context";
-import { useRouter } from "next/router";
-import { redirectToInternalPage } from "@utils/navigation";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
