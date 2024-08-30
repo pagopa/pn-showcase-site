@@ -42,7 +42,6 @@ export const LangProvider: React.FC<Props> = ({ children, lang = DEFAULT_LANG, t
   // Sync context with router
   useEffect(() => {
     if (query.lang && langCodes.includes(query.lang as LangCode) && lang !== query.lang) {
-      document.documentElement.lang = query.lang.toString();
       setSelectedLang(query.lang as LangCode);
       sessionStorage.setItem(LS_LANG_PROP_NAME, query.lang as string);
     }
