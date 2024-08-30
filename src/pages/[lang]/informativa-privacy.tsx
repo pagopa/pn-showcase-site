@@ -37,38 +37,29 @@ declare const OneTrust: {
   };
 };
 
+const loadOneTrust = () => {
+  if (typeof OneTrust !== "undefined" && ONE_TRUST_PP_PAGE) {
+    OneTrust.NoticeApi.Initialized.then(() => {
+      OneTrust.NoticeApi.LoadNotices([ONE_TRUST_PP_PAGE], false);
+    });
+  }
+};
+
 const PrivacyPage: NextPage = () => {
   const { t } = useTranslation(["common", "privacy"]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (typeof OneTrust !== "undefined" && ONE_TRUST_PP_PAGE) {
-        clearInterval(interval);
-        OneTrust.NoticeApi.Initialized.then(() => {
-          OneTrust.NoticeApi.LoadNotices([ONE_TRUST_PP_PAGE], false);
-        });
-      }
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <>
-      <PageHead
-        title={t("title", { ns: "privacy" })}
-        description={t("description", { ns: "privacy" })}
-      />
+      <PageHead title={t("title", { ns: "privacy" })} description={t("description", { ns: "privacy" })} />
       <Script
         src="/onetrust/privacy-notice-scripts/otnotice-1.0.min.js"
         type="text/javascript"
         charSet="UTF-8"
         id="otprivacy-notice-script"
         strategy="beforeInteractive"
+        onReady={() => loadOneTrust()}
       />
-      <div
-        id="otnotice-b5c8e1dc-89df-4ec2-a02d-1c0f55fac052"
-        className={`otnotice`}
-      ></div>
+      <div id="otnotice-b5c8e1dc-89df-4ec2-a02d-1c0f55fac052" className={`otnotice`}></div>
     </>
   );
 };

@@ -37,38 +37,29 @@ declare const OneTrust: {
   };
 };
 
+const loadOneTrust = () => {
+  if (typeof OneTrust !== "undefined" && ONE_TRUST_LEGAL_NOTICES_PAGE) {
+    OneTrust.NoticeApi.Initialized.then(() => {
+      OneTrust.NoticeApi.LoadNotices([ONE_TRUST_LEGAL_NOTICES_PAGE], false);
+    });
+  }
+};
+
 const LegalNoticesPage: NextPage = () => {
   const { t } = useTranslation(["common", "note-legali"]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (typeof OneTrust !== "undefined" && ONE_TRUST_LEGAL_NOTICES_PAGE) {
-        clearInterval(interval);
-        OneTrust.NoticeApi.Initialized.then(() => {
-          OneTrust.NoticeApi.LoadNotices([ONE_TRUST_LEGAL_NOTICES_PAGE], false);
-        });
-      }
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <>
-      <PageHead
-        title={t("title", { ns: "note-legali" })}
-        description={t("description", { ns: "note-legali" })}
-      />
+      <PageHead title={t("title", { ns: "note-legali" })} description={t("description", { ns: "note-legali" })} />
       <Script
         src="/onetrust/privacy-notice-scripts/otnotice-1.0.min.js"
         type="text/javascript"
         charSet="UTF-8"
         id="otprivacy-notice-script"
         strategy="beforeInteractive"
+        onReady={() => loadOneTrust()}
       />
-      <div
-        id="otnotice-eca0fddd-9d79-474d-90e4-aa30dd0c0313"
-        className="otnotice"
-      ></div>
+      <div id="otnotice-eca0fddd-9d79-474d-90e4-aa30dd0c0313" className="otnotice"></div>
     </>
   );
 };

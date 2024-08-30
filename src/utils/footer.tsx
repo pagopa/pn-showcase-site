@@ -64,7 +64,7 @@ export const preLoginLinks: (
       },
       {
         label: t("footer.pre_login.resources.privacy.label"),
-        href: safeInternalPage(lang, "/informativa-privacy/"),
+        href: safeInternalPage(lang, "/informativa-privacy"),
         ariaLabel: t("footer.pre_login.resources.privacy.ariaLabel"),
         linkType: "internal",
       },

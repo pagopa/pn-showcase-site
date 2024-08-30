@@ -27,30 +27,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export async function getStaticProps({
-  params,
-}: {
-  params: { lang: LangCode };
-}) {
+export async function getStaticProps({ params }: { params: { lang: LangCode } }) {
   const translations = getI18n(params.lang, ["common", "pickup"]);
 
   return { props: { translations, lang: params.lang } };
 }
 
+const loadOneTrust = () => {
+  if (typeof OneTrust !== "undefined" && ONE_TRUST_RADD_TOS) {
+    OneTrust.NoticeApi.Initialized.then(() => {
+      OneTrust.NoticeApi.LoadNotices([ONE_TRUST_RADD_TOS], false);
+    });
+  }
+};
+
 const PrivacyPage: NextPage = () => {
   const { t } = useTranslation(["common", "pickup"]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (typeof OneTrust !== "undefined" && ONE_TRUST_RADD_TOS) {
-        clearInterval(interval);
-        OneTrust.NoticeApi.Initialized.then(() => {
-          OneTrust.NoticeApi.LoadNotices([ONE_TRUST_RADD_TOS], false);
-        });
-      }
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <>
@@ -64,11 +56,9 @@ const PrivacyPage: NextPage = () => {
         charSet="UTF-8"
         id="otprivacy-notice-script"
         strategy="beforeInteractive"
+        onReady={() => loadOneTrust()}
       />
-      <div
-        id="otnotice-0f437432-18d9-4f24-a0f5-b2c48c59eded"
-        className={`otnotice`}
-      ></div>
+      <div id="otnotice-0f437432-18d9-4f24-a0f5-b2c48c59eded" className={`otnotice`}></div>
     </>
   );
 };

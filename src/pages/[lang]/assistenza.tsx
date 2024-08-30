@@ -15,8 +15,8 @@ import ContactInfoAssistenzaMittenti from "./assistenza/ContactInfoAssistenzaMit
 import AssistanceCards, {
   AssistanceCardsProps,
 } from "../../components/Assistenza/AssistanceCards";
-import LangContext from "../../context/lang-context";
 import { safeInternalPage } from "../../utils/navigation";
+import LangContext from "../../context/lang-context";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -99,35 +99,6 @@ const Assistenza: NextPage = () => {
       },
     },
   ];
-
-  const handleResize = () => {
-    const cards = document.querySelectorAll<HTMLDivElement>(".MuiCard-root");
-    let maxHeight = 0;
-
-    cards.forEach((card) => {
-      card.style.height = "auto";
-      if (card.clientHeight > maxHeight) {
-        maxHeight = card.clientHeight;
-      }
-    });
-
-    cards.forEach((card) => {
-      card.style.height = `${maxHeight}px`;
-    });
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    handleResize();
-  }, [currentTab]);
 
   const handleTabChange = (tab: number) => {
     if (tab === currentTab.index) {

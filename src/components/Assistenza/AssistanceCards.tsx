@@ -35,7 +35,7 @@ const AssistanceCards: React.FC<AssistanceCardsProps> = ({ cards, button }) => {
             sx={{
               width: "100%",
               justifyContent: "center",
-              alignItems: { sm: "flex-start", xs: "center" },
+              alignItems: { sm: "stretch", xs: "center" },
             }}
           >
             {cards.map((card) => (
