@@ -7,7 +7,7 @@ import Layout from "../components/Layout";
 
 import "../styles/default.css";
 import { LangProvider } from "../context/lang-context";
-import { Skeleton } from "@mui/material";
+import Loading from "./loading";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const noLayout = pageProps.noLayout;
@@ -17,11 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <LangProvider lang={pageProps.lang} translations={pageProps.translations}>
         
-        {translationLoading && 
-        <Skeleton
-          sx={{ position: "absolute", backgroundColor: 'background.default', zIndex: 1000 }}
-          width="100%" height="100vh" animation="wave" variant="rounded"
-        />}
+        {translationLoading && <Loading />}
         
         {noLayout ? (
           // Se noLayout è true, renderizza solo il componente
