@@ -7,7 +7,7 @@ import Layout from "../components/Layout";
 
 import "../styles/default.css";
 import { LangProvider } from "../context/lang-context";
-import Loading from "./loading";
+import Loading from "../components/loading";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const noLayout = pageProps.noLayout;
