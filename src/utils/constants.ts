@@ -50,16 +50,7 @@ export const ACCESSIBILITY_PARTICULAR_LINK = {
 };
 
 // localization //
-export const langCodes = ["it", "en"] as const; // "fr", "de", "sl"
+export const langCodes = ["it"] as const; //  "en", "fr", "de", "sl"
 export const LS_LANG_PROP_NAME = "lang";
 export const DEFAULT_LANG: LangCode = "it";
-/*
-export const LANGUAGES: Languages = {
-  it: { it: 'Italiano', en: 'Inglese', fr: 'Francese', de: 'Tedesco', sl: 'Sloveno' },
-  en: { it: 'Italian', en: 'English', fr: 'French', de: 'German', sl: 'Slovenian' },
-  fr: { it: 'Italien', en: 'Anglais', fr: 'Français', de: 'Allemand', sl: 'Slovène' },
-  de: { it: 'Italienisch', en: 'Englisch', fr: 'Französisch', de: 'Deutsch', sl: 'Slowenisch' },
-  sl: { it: 'Italijansko', en: 'Angleško', fr: 'Francosko', de: 'Nemško', sl: 'Slovensko' }
-};
-*/
 // ------------- //
