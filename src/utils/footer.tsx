@@ -7,7 +7,7 @@ type TranslationFunction = (key: string, options?: { ns: string }) => string;
 
 export const companyLegalInfo: (
   t: TranslationFunction,
-  lang: "it" | "en"
+  lang: LangCode
 ) => JSX.Element = (t, lang) => (
   <>
     <strong>{t("footer.company_info.name")}</strong>
@@ -163,7 +163,7 @@ export const preLoginLinks: (
 
 export const postLoginLinks: (
   t: TranslationFunction,
-  lang: "it" | "en"
+  lang: LangCode
 ) => Array<FooterLinksType> = (t, lang) => [
   {
     label: t("post_login.privacy.label"),
@@ -183,7 +183,7 @@ export const productJson = "/static/product.json";
 
 export const pagoPALink: (
   t: TranslationFunction,
-  lang: "it" | "en"
+  lang: LangCode
 ) => ILinkData = (t, lang) => ({
   label: t("footer.pagopaLink.label"),
   href: PAGOPA_HOME ?? "",

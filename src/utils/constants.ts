@@ -1,4 +1,3 @@
-import { LangLabels, Languages } from '@pagopa/mui-italia';
 import {LangCode} from '../model';
 
 // export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
