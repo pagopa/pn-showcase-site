@@ -43,8 +43,6 @@ const PageHead = ({ title, description }: Props) => {
       sizes="16x16"
       href="/static/icons/favicon-16x16.png"
     />
-
-
   </Head>
 };
 

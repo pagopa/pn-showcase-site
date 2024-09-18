@@ -4,17 +4,14 @@ import downloadSpec from "../assets/data/download.vl.json";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import CumulativeChart from "./CumulativeChart";
 import KpiCard from "./KpiCard";
+import { useTranslation } from "../../../hook/useTranslation";
 
 type Props = {
   selYear: number | null;
 };
 
-type LabelsCumulativeDaily = "cumulato" | "mensile";
+type LabelsCumulativeDaily = "aggregate" | "monthly";
 type LabelsTotalDigitalAnalog = "total" | "digital" | "analog";
-type LabelsTotalDigitalAnalogItalian =
-  | "complessive"
-  | "digitali"
-  | "analogiche";
 
 type OptionsCumulativeDaily = {
   id: number;
@@ -26,8 +23,8 @@ type OptionsTotalDigitalAnalog = {
 };
 
 const optionsCumulativeDaily: OptionsCumulativeDaily[] = [
-  { id: 1, label: "cumulato" },
-  { id: 2, label: "mensile" },
+  { id: 1, label: "aggregate" },
+  { id: 2, label: "monthly" },
 ];
 
 const optionsTotalDigitalAnalog: OptionsTotalDigitalAnalog[] = [
@@ -35,25 +32,10 @@ const optionsTotalDigitalAnalog: OptionsTotalDigitalAnalog[] = [
   { id: 2, label: "digital" },
   { id: 3, label: "analog" },
 ];
-type OptionsTotalDigitalAnalogToItalian = (
-  label: LabelsTotalDigitalAnalog
-) => LabelsTotalDigitalAnalogItalian;
-const optionsTotalDigitalAnalogToItalian: OptionsTotalDigitalAnalogToItalian = (
-  label
-) => {
-  switch (label) {
-    case "total":
-      return "complessive";
-    case "digital":
-      return "digitali";
-    case "analog":
-      return "analogiche";
-    default:
-      return "complessive";
-  }
-};
 
 const NotificationsTrend = ({ selYear }: Props): JSX.Element => {
+  const { t } = useTranslation(["numeri"]);
+
   const [curOptionCumulativeDaily, setCurOptionCumulativeDaily] = useState(
     optionsCumulativeDaily[0].id
   );
@@ -72,10 +54,13 @@ const NotificationsTrend = ({ selYear }: Props): JSX.Element => {
     return result ? result.label : "total";
   };
   return (
-    <KpiCard label="Andamento delle notifiche" borderLeft="">
+    <KpiCard
+      label={t("sent_notifications.trend.title", { ns: "numeri" })}
+      borderLeft=""
+    >
       <Stack direction="row" spacing={2} alignItems="center">
         <Typography variant="caption" color="textSecondary">
-          Andamento
+          {t("sent_notifications.trend.description_1", { ns: "numeri" })}
         </Typography>
 
         <Select
@@ -86,13 +71,13 @@ const NotificationsTrend = ({ selYear }: Props): JSX.Element => {
         >
           {optionsCumulativeDaily.map((option) => (
             <MenuItem key={option.id} value={option.id}>
-              {option.label}
+              {t(`sent_notifications.trend.${option.label}`, { ns: "numeri" })}
             </MenuItem>
           ))}
         </Select>
         <Typography variant="caption" color="textSecondary">
           {" "}
-          delle notifiche
+          {t("sent_notifications.trend.description_2", { ns: "numeri" })}
         </Typography>
         <Select
           size={"small"}
@@ -104,7 +89,7 @@ const NotificationsTrend = ({ selYear }: Props): JSX.Element => {
         >
           {optionsTotalDigitalAnalog.map((option) => (
             <MenuItem key={option.id} value={option.id}>
-              {optionsTotalDigitalAnalogToItalian(option.label)}
+              {t(`sent_notifications.${option.label}.name`, { ns: "numeri" })}
             </MenuItem>
           ))}
         </Select>

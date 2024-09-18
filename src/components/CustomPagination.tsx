@@ -3,7 +3,7 @@ import {
   PaginationItem,
   PaginationRenderItemParams,
 } from "@mui/material";
-import { PaginationData } from "model";
+import { PaginationData } from "../model";
 import { calculatePages } from "@utils/pagination";
 
 interface PaginationProps {

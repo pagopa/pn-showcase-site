@@ -1,3 +1,5 @@
+import {LangCode} from '../model';
+
 // export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 export const IMAGES_PATH = process.env.NEXT_PUBLIC_IMAGES_PATH;
 
@@ -45,3 +47,9 @@ export const ACCESSIBILITY_PARTICULAR_LINK = {
   PARTICULAR_ACCESSIBILITY_URL:
     process.env.NEXT_PUBLIC_ACCESSIBILITY_PARTICULAR_ACCESSIBILITY_URL,
 };
+
+// localization //
+export const langCodes = ["it"] as const; //  "en", "fr", "de", "sl"
+export const LS_LANG_PROP_NAME = "lang";
+export const DEFAULT_LANG: LangCode = "it";
+// ------------- //
