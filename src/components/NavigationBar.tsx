@@ -77,7 +77,7 @@ const NavigationBar: React.FC = () => {
 
   const menuItems: MenuItem[] = [
     { label: t("navigation.cittadini"), path: "/cittadini" },
-    { label: t("navigation.aziende"), path: "/imprese" },
+    { label: t("navigation.imprese"), path: "/imprese" },
     {
       label: t("navigation.enti"),
       path: "/pubbliche-amministrazioni",
