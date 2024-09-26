@@ -103,18 +103,18 @@ const IndexPage: NextPage = () => {
       />
 
       <Infoblock
-        overline={t("infoblock.aziende.overline", { ns: "homepage" })}
-        title={t("infoblock.aziende.title", { ns: "homepage" })}
+        overline={t("infoblock.imprese.overline", { ns: "homepage" })}
+        title={t("infoblock.imprese.title", { ns: "homepage" })}
         content={
           <Typography variant="body2">
-            {t("infoblock.aziende.description", { ns: "homepage" })}
+            {t("infoblock.imprese.description", { ns: "homepage" })}
           </Typography>
         }
         ctaPrimary={
           "/imprese"
             ? {
-                label: t("infoblock.aziende.cta", { ns: "homepage" }),
-                title: t("infoblock.aziende.cta", { ns: "homepage" }),
+                label: t("infoblock.imprese.cta", { ns: "homepage" }),
+                title: t("infoblock.imprese.cta", { ns: "homepage" }),
                 onClick: () => redirectToInternalPage(push, "imprese", lang),
               }
             : undefined
@@ -122,15 +122,15 @@ const IndexPage: NextPage = () => {
         ctaSecondary={
           PN_PG_URL
             ? {
-                label: t("infoblock.aziende.cta_secondary", { ns: "homepage" }),
-                title: t("infoblock.aziende.cta_secondary", { ns: "homepage" }),
+                label: t("infoblock.imprese.cta_secondary", { ns: "homepage" }),
+                title: t("infoblock.imprese.cta_secondary", { ns: "homepage" }),
                 onClick: () => window.open(PN_PG_URL, "_self"),
               }
             : undefined
         }
         inverse={false}
         image={`${IMAGES_PATH}/ph-infoblock-3.png`}
-        altText={t("infoblock.aziende.altText", { ns: "homepage" })}
+        altText={t("infoblock.imprese.altText", { ns: "homepage" })}
         imageShadow={false}
       />
 
