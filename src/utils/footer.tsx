@@ -153,7 +153,7 @@ export const preLoginLinks: (
           ACCESSIBILITY_PARTICULAR_LINK.LANDING_URL_PATTERN &&
           windowURL.includes(ACCESSIBILITY_PARTICULAR_LINK.LANDING_URL_PATTERN)
             ? ACCESSIBILITY_PARTICULAR_LINK.PARTICULAR_ACCESSIBILITY_URL
-            : "https://form.agid.gov.it/view/eca3487c-f3cb-40be-a590-212eafc70058/",
+            : "https://form.agid.gov.it/view/320771b0-7737-11ef-be01-57e2dd1750a5",
         ariaLabel: t("footer.pre_login.accessibility.ariaLabel"),
         linkType: "internal",
       },
