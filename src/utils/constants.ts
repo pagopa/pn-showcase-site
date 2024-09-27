@@ -11,6 +11,8 @@ export const PAGOPA_HELP_EMAIL = process.env.NEXT_PUBLIC_PAGOPA_HELP_EMAIL;
 export const SEND_PF_HELP_EMAIL =
   process.env.NEXT_PUBLIC_SEND_PF_HELP_EMAIL || "";
 
+export const SEND_PF_HELP_PHONE = process.env.NEXT_PUBLIC_SEND_PHONE_HELPDESK || "";
+
 export const PN_PF_URL = process.env.NEXT_PUBLIC_PIATTAFORMA_NOTIFICHE_PF_URL;
 
 export const PN_PG_URL = process.env.NEXT_PUBLIC_PIATTAFORMA_NOTIFICHE_PG_URL;

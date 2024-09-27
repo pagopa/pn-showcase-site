@@ -30,14 +30,12 @@
             "email": {
                 "title": "Scrivici",
                 "description_1": "Richiedi assistenza via email scrivendo a ",
-                "description_2": "destinatari-send@assistenza.pagopa.it",
                 "description_3": ": includi informazioni utili come il codice univoco della notifica (IUN).",
                 "cta": "Scrivici"
             },
             "phone": {
                 "title": "Chiamaci",
                 "description_1": "Il contact center di PagoPA S.p.A. è a tua disposizione al numero ",
-                "description_2": "06.4520.2323",
                 "description_3": " per assistenza dedicata dal lunedì al venerdì dalle 08:00 alle 20:00 e il sabato dalle 08:00 alle 14:00.",
                 "cta": "Chiamaci"
             }
