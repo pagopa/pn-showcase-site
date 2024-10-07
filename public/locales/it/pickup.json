@@ -1,0 +1,23 @@
+{
+    "title": "SEND - Servizio Notifiche digitali | Punti di ritiro SEND",
+    "description": "Cerca il Punto di ritiro SEND più vicino a te per ritirare una copia degli atti notificati o scoprire se c'è un avviso di avvenuta ricezione a te destinato",
+    "search": {
+        "title": "Trova un Punto di ritiro SEND",
+        "description_1": "Quando ricevi una comunicazione a valore legale tramite SEND puoi ritirare una copia stampata dei documenti notificati presso gli ",
+        "description_2": "esercenti convenzionati",
+        "description_3": "Cerca i punti di ritiro più vicini a te.",
+        "disclaimer": "Al momento puoi cercare solo fra i punti di ritiro presenti nei Comuni di Bari e Taranto: il servizio è in attivazione progressiva su tutto il territorio nazionale.",
+        "placeholder": "Cerca per città o per CAP",
+        "empty_state": " Non ci sono ancora punti di ritiro SEND attivi in questa città."
+    },
+    "infoblock": {
+        "title": "Cosa portare",
+        "description": "Per ritirare i documenti notificati avrai sempre bisogno del tuo documento d'identità e del tuo codice fiscale.",
+        "details_text": "Per altri dettagli scopri",
+        "details_link_text": "come funzionano i punti di ritiro SEND"
+    },
+    "how_it_works": {
+        "title": "SEND - Servizio Notifiche Digitali | Come funzionano i punti di ritiro",
+        "description": "Scopri come funziona il servizio per ritirare sul territorio una copia delle comunicazioni a valore legale che ricevi tramite SEND"
+    }
+}

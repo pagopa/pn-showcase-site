@@ -6,15 +6,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import {
-  Pagination,
-  TablePagination,
-  Stack,
-  TableSortLabel,
-  Typography,
-} from "@mui/material";
-import { RaddOperator } from "model";
-import { useState } from "react";
+import { TablePagination, Stack, TableSortLabel } from "@mui/material";
+import { RaddOperator } from "../../model";
+import { useEffect, useRef, useState } from "react";
+import CustomPagination from "../CustomPagination";
 
 type Props = {
   rows: RaddOperator[];
@@ -65,15 +60,17 @@ function OperatorsTable({ rows }: Readonly<Props>) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const handleChangePage = (_event: any, page: number | null) => {
-    if (page !== null) {
-      setPage(page - 1);
+  const tableContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const handleChangePage = (_event: any, newPage: number | null) => {
+    if (newPage !== null) {
+      setPage(newPage - 1);
     }
   };
 
   const handleChangeRowsPerPage = (event: { target: { value: string } }) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+    setRowsPerPage(parseInt(event.target.value, 10));
   };
 
   const handleRequestSort = (property: string) => {
@@ -81,9 +78,21 @@ function OperatorsTable({ rows }: Readonly<Props>) {
     setOrder(isAsc ? "desc" : "asc");
   };
 
+  const pagination = {
+    size: rowsPerPage,
+    totalElements: rows.length,
+    numOfDisplayedPages: Math.min(Math.ceil(rows.length / rowsPerPage), 3),
+    currentPage: page,
+  };
+  useEffect(() => {
+    if (tableContainerRef.current) {
+      tableContainerRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [page, rowsPerPage]);
+
   return (
     <>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} ref={tableContainerRef}>
         <Table
           sx={{ width: "100%", maxWidth: 1092 }}
           aria-label="operators table"
@@ -144,16 +153,11 @@ function OperatorsTable({ rows }: Readonly<Props>) {
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
-            rowsPerPageOptions={[10, 20, 30]}
+            rowsPerPageOptions={[10, 20, 50]}
           />
-          <Pagination
-            color="primary"
-            count={Math.ceil(rows.length / rowsPerPage)}
+          <CustomPagination
+            pagination={pagination}
             onChange={handleChangePage}
-            boundaryCount={1}
-            siblingCount={1}
-            hidePrevButton
-            hideNextButton
           />
         </Stack>
       )}
