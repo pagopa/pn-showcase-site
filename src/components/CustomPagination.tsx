@@ -48,6 +48,13 @@ const CustomPagination: React.FC<PaginationProps> = ({
           />
         );
       }
+
+      return null;
+    }
+    if (
+      itemParam.type === "start-ellipsis" ||
+      itemParam.type === "end-ellipsis"
+    ) {
       return null;
     }
 

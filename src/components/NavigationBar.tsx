@@ -77,7 +77,7 @@ const NavigationBar: React.FC = () => {
 
   const menuItems: MenuItem[] = [
     { label: t("navigation.cittadini"), path: "/cittadini" },
-    { label: t("navigation.aziende"), path: "/imprese" },
+    { label: t("navigation.imprese"), path: "/imprese" },
     {
       label: t("navigation.enti"),
       path: "/pubbliche-amministrazioni",
@@ -88,14 +88,13 @@ const NavigationBar: React.FC = () => {
         },
       ],
     },
-
-    // {
-    //   label: t('navigation.pickup_points'),
-    //   path: "/punti-di-ritiro",
-    //   subMenu: [
-    //     { label: t('navigation.pickup_points_how'), path: "/punti-di-ritiro/come-funziona" },
-    //   ],
-    // },
+    {
+      label: t('navigation.pickup_points'),
+      path: "/punti-di-ritiro",
+      subMenu: [
+        { label: t('navigation.pickup_points_how'), path: "/punti-di-ritiro/come-funziona" },
+      ],
+    },
     { label: t("navigation.send_numbers"), path: "/numeri" },
     { label: t("navigation.faq"), path: "/faq" },
   ];

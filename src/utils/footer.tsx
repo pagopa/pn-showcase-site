@@ -7,7 +7,7 @@ type TranslationFunction = (key: string, options?: { ns: string }) => string;
 
 export const companyLegalInfo: (
   t: TranslationFunction,
-  lang: "it" | "en"
+  lang: LangCode
 ) => JSX.Element = (t, lang) => (
   <>
     <strong>{t("footer.company_info.name")}</strong>
@@ -153,7 +153,7 @@ export const preLoginLinks: (
           ACCESSIBILITY_PARTICULAR_LINK.LANDING_URL_PATTERN &&
           windowURL.includes(ACCESSIBILITY_PARTICULAR_LINK.LANDING_URL_PATTERN)
             ? ACCESSIBILITY_PARTICULAR_LINK.PARTICULAR_ACCESSIBILITY_URL
-            : "https://form.agid.gov.it/view/eca3487c-f3cb-40be-a590-212eafc70058/",
+            : "https://form.agid.gov.it/view/320771b0-7737-11ef-be01-57e2dd1750a5",
         ariaLabel: t("footer.pre_login.accessibility.ariaLabel"),
         linkType: "internal",
       },
@@ -163,7 +163,7 @@ export const preLoginLinks: (
 
 export const postLoginLinks: (
   t: TranslationFunction,
-  lang: "it" | "en"
+  lang: LangCode
 ) => Array<FooterLinksType> = (t, lang) => [
   {
     label: t("post_login.privacy.label"),
@@ -183,7 +183,7 @@ export const productJson = "/static/product.json";
 
 export const pagoPALink: (
   t: TranslationFunction,
-  lang: "it" | "en"
+  lang: LangCode
 ) => ILinkData = (t, lang) => ({
   label: t("footer.pagopaLink.label"),
   href: PAGOPA_HOME ?? "",

@@ -2,6 +2,7 @@ import { Button, Grid, Link, Stack, Typography } from "@mui/material";
 import MailIcon from "@mui/icons-material/Mail";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { useTranslation } from "../../../hook/useTranslation";
+import { SEND_PF_HELP_EMAIL, SEND_PF_HELP_PHONE } from "@utils/constants";
 
 const ContactInfoAssistenza = () => {
   const { t } = useTranslation(["assistenza"]);
@@ -39,14 +40,14 @@ const ContactInfoAssistenza = () => {
           >
             {t("tab.1.email.description_1", { ns: "assistenza" })}
             <Link
-              href="mailto:destinatari-send@assistenza.pagopa.it"
+              href={`mailto:${SEND_PF_HELP_EMAIL}`}
               sx={{
                 fontWeight: "bold",
                 textDecoration: "none",
                 color: "#17324D",
               }}
             >
-              {t("tab.1.email.description_2", { ns: "assistenza" })}
+              {SEND_PF_HELP_EMAIL}
             </Link>
             {t("tab.1.email.description_3", { ns: "assistenza" })}
           </Typography>
@@ -54,7 +55,7 @@ const ContactInfoAssistenza = () => {
             variant="outlined"
             color="primary"
             component="a"
-            href="mailto:destinatari-send@assistenza.pagopa.it"
+            href={`mailto:${SEND_PF_HELP_EMAIL}`}
           >
             {t("tab.1.email.cta", { ns: "assistenza" })}
           </Button>
@@ -92,14 +93,14 @@ const ContactInfoAssistenza = () => {
           >
             {t("tab.1.phone.description_1", { ns: "assistenza" })}
             <Link
-              href="tel:0645202323"
+              href={`tel:${SEND_PF_HELP_PHONE}`}
               sx={{
                 fontWeight: "bold",
                 textDecoration: "none",
                 color: "#17324D",
               }}
             >
-              {t("tab.1.phone.description_2", { ns: "assistenza" })}
+              {SEND_PF_HELP_PHONE}
             </Link>{" "}
             {t("tab.1.phone.description_3", { ns: "assistenza" })}
           </Typography>
@@ -107,7 +108,7 @@ const ContactInfoAssistenza = () => {
             variant="outlined"
             color="primary"
             component="a"
-            href="tel:0645202323"
+            href={`tel:${SEND_PF_HELP_PHONE}`}
           >
             {t("tab.1.phone.cta", { ns: "assistenza" })}
           </Button>
