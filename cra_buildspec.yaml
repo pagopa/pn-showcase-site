@@ -22,9 +22,9 @@ phases:
     commands:
       - echo saving commit id to file
       - export COMMIT_ID=$(git rev-parse --verify HEAD)
-      - echo $COMMIT_ID > .next/commit_id.txt
+      - echo $COMMIT_ID > build/commit_id.txt
       - echo gzipping and pushing artifact to s3
-      - cd .next
+      - cd build
       - tar c * | gzip | aws s3 cp - "s3://${CI_ARTIFACT_BUCKET}/${GITHUB_PRJ_NAME}/commits/${COMMIT_ID}/${PACKAGE_NAME}.tar.gz"
       - |
         BRANCH_NAME=$(echo $CODEBUILD_WEBHOOK_HEAD_REF | sed 's/refs\/heads\///'); export BRANCH_NAME=${BRANCH_NAME:=$GIT_DEFAULT_BRANCH}
@@ -33,6 +33,6 @@ phases:
         cat ci_event.json
         aws events put-events --entries file://ci_event.json
 artifacts:
-  base-directory: .next
+  base-directory: build
   files:
     - "**/*"
