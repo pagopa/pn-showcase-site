@@ -4,7 +4,7 @@ const nextConfig = {
   output: "export",
   reactStrictMode: true,
   trailingSlash: true,
-  distDir: ".next",
+  distDir: "build",
   transpilePackages: ["@pagopa/mui-italia"],
   modularizeImports: {
     "@mui/icons-material": {
