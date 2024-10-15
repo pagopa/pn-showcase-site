@@ -70,7 +70,8 @@
             },
             "2": {
                 "title": "Costi di notifica digitale e analogica",
-                "cta": "Vai ai costi"
+                "cta1": "Vai ai costi in vigore dal 01/11/2024",
+                "cta2": "Vai ai costi in vigore fino al 31/10/2024"
             },
             "3": {
                 "title": "Kit di comunicazione",

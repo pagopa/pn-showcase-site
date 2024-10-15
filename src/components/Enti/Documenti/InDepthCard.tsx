@@ -24,7 +24,13 @@ const InDepthCard = () => {
       description: "",
       buttons: [
         {
-          label: t("in_depth_card.card.2.cta", { ns: "documenti" }),
+          label: t("in_depth_card.card.2.cta1", { ns: "documenti" }),
+          color: "primary",
+          link: "/static/documents/20241015_Prezzi Ente Novembre v3 (aggiornamento).pdf",
+          icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
+        },
+        {
+          label: t("in_depth_card.card.2.cta2", { ns: "documenti" }),
           color: "primary",
           link: "/static/documents/Prezzi Ente v.2.pdf",
           icon: <ArrowForwardIcon sx={{ color: "primary.main" }} />,
