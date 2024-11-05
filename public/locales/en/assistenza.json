@@ -1,3 +1,68 @@
 {
-    
+  "title": "SEND - Digital Notification Service | Support",
+  "description": "Frequently asked questions and resources dedicated to support for the digital notification service SEND",
+  "heading": {
+    "title": "Do you need help?",
+    "subtitle": "Consult the answers to the frequently asked questions about the digital notification service SEND or discover the resources dedicated to citizens and companies or the sending institutions."
+  },
+  "tab": {
+    "1": {
+      "title": "For citizens and companies",
+      "card": {
+        "1": {
+          "title": "How can I log into SEND?",
+          "cta": "Read the answer"
+        },
+        "2": {
+          "title": "What is a notification of receipt?",
+          "cta": "Read the answer"
+        },
+        "3": {
+          "title": "Was does “finalization” mean?",
+          "cta": "Read the answer"
+        }
+      },
+      "cta": "Discover the FAQs",
+      "infoblock": {
+        "title": "We are here for you",
+        "description": "Did you not find the answer you were looking for? Write us, sending a request for support or call the contact center."
+      },
+      "email": {
+        "title": "Write us",
+        "description_1": "Request assistance via email writing to ",
+        "description_3": ": include useful information such as the univocal code of the notification (IUN).",
+        "cta": "Write us"
+      },
+      "phone": {
+        "title": "Call us",
+        "description_1": "The PagoPA S.p.A. contact center is available to you at the number ",
+        "description_3": " for dedicated service from Monday to Friday from 8:00 am to 8:00 pm and Saturday from 8:00 to 2:00 pm.",
+        "cta": "Call us"
+      }
+    },
+    "2": {
+      "title": "For sending institutions",
+      "card": {
+        "1": {
+          "title": "Who can send notifications via SEND?",
+          "cta": "Read the institution FAQs"
+        },
+        "2": {
+          "title": "How to register with SEND with my institution?",
+          "cta": "Discover how to register"
+        },
+        "3": {
+          "title": "How does the notification process function?",
+          "cta": "Consult the manual"
+        }
+      },
+      "cta": "Explore the resources for institutions",
+      "email": {
+        "title": "Write us",
+        "description": "Request assistance as a sending institution via email, writing to ",
+        "cta": "Write us"
+      }
+    }
+  },
+  "cta_faq": "Discover the FAQs"
 }

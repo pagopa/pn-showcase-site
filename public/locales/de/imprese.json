@@ -1,3 +1,67 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | Für Unternehmen",
+  "description": "Lies, bezahle und archiviere rechtsgültige Mitteilungen, die an dein Unternehmen gesendet werden, an einem Ort, der auch für deine Mitarbeiter zugänglich ist",
+  "hero": {
+    "title": "Die Zustellungen deines Unternehmens? Sind alle hier.",
+    "subtitle": "SEND - Servizio Notifiche Digitali ist die Plattform, die den Empfang der rechtsgültigen Zustellungen vereinfacht. Lies, bezahle und archiviere die Zustellungen, die an dein Unternehmen gesendet werden, an einem Ort, der auch für deine Mitarbeiter zugänglich ist",
+    "altText": "Der Bildschirm eines Laptops zeigt die Homepage der Plattform SEND.",
+    "cta": "Lies deine Zustellungen"
+  },
+  "infoblock_1": {
+    "title": "Eine neue Art, die Zustellungen deines Unternehmens zu verwalten",
+    "description_1": "Mit SEND kannst du die an dein Unternehmen gesendeten Zustellungen einfach, schnell und vollständig digital anzeigen, bezahlen und verwalten.",
+    "description_2": "Zusätzlich zum Zugriff auf die zugestellten Unterlagen kannst du dank der Integration mit pagoPA auch eventuelle Gebühren bezahlen und den Verlauf der erhaltenen Zustellungen einsehen.",
+    "altText": "Ein Mann arbeitet an einem Computer und sitzt an einem Schreibtisch in einem Büro."
+  },
+  "infoblock_2": {
+    "title": "Teamarbeit",
+    "description_1": "Du kannst mehrere Benutzer zur Nutzung der Plattform berechtigen. So können die Mitteilungen von mehreren Personen verwaltet werden, die in Echtzeit über die Arbeit der anderen informiert sind.",
+    "description_2": "Ein effizienter Ansatz, um die Verwaltung der Zustellungen innerhalb des Unternehmens zu verbessern und mehr Kontrolle über Fristen und Zahlungen zu haben.",
+    "altText": "Ein Beispiel des Abschnitts „Zustellungsstatus“ der Plattform SEND.",
+    "cta": "Lies die Zustellungen deines Unternehmens"
+  },
+  "infoblock_3": {
+    "title": "Du kannst bevollmächtigen oder bevollmächtigt werden",
+    "description": "Falls du möchtest, kannst du andere natürliche oder juristische Personen damit bevollmächtigen, deine Online-Zustellungen einzusehen. Melde dich dazu mit SPID oder CIE auf SEND an und gib die Daten der bevollmächtigten Person im Abschnitt Vollmachten ein.",
+    "altText": "Ein Beispiel des Abschnitts „Zustellungsstatus“ der Plattform SEND."
+  },
+  "showcase": {
+    "title": "Ein neuer Dienst für ein innovationsorientiertes Unternehmen",
+    "item_1": {
+      "title": "Einzigartig",
+      "subtitle": "Verwalte alle an das Unternehmen gesendeten Zustellungen an einem Ort"
+    },
+    "item_2": {
+      "title": "Schnell",
+      "subtitle": "Dank der Integration mit pagoPA ist das Zahlen schnell und einfach"
+    },
+    "item_3": {
+      "title": "Geteilt",
+      "subtitle": "Mehrere Personen gleichzeitig können die Zustellungen verwalten und in Echtzeit auf dem Laufenden bleiben"
+    },
+    "item_4": {
+      "title": "Kostengünstig",
+      "subtitle": "Du sparst Zustellungsgebühren und Verwaltungskosten"
+    }
+  },
+  "walkthrough": {
+    "title": "Wie funktioniert das?",
+    "item_1": {
+      "title": "Du erhältst die Zustellung",
+      "subtitle": "Bei jeder Zustellung prüft SEND, ob es eine PEC gibt, die mit deinem Unternehmen für den Versand der Empfangsbestätigung verbunden ist. Es wird auch eine informelle Benachrichtigung an deine anderen digitalen Adressen (E-Mail und Handynummer) gesendet, falls du diese angegeben hast. Wenn du keine digitale Adresse angegeben hast und die Zustellung nicht online über SEND aufrufst, erhältst du ein Einschreiben in Papierform."
+    },
+    "item_2": {
+      "title": "Du liest den Inhalt",
+      "subtitle_1": "Von der erhaltenen Nachricht aus kannst du online auf die Plattform zugreifen, um die Zustellung zu lesen und die zugestellten Dokumente herunterzuladen.",
+      "subtitle_2": "Die erste Anmeldung auf SEND hat durch den gesetzlichen Vertreter zu erfolgen, der das Unternehmen auf der Plattform registrieren muss."
+    },
+    "item_3": {
+      "title": "Du zahlst die Gebühren",
+      "subtitle": "Falls du einen Betrag zahlen musst, kannst du dank der Integration mit pagoPA gleichzeitig online bezahlen. Wenn du es vorziehst, zu einem Schalter zu gehen, musst du das der Zustellung beigefügte Zahlungsformular bei dir haben."
+    },
+    "item_4": {
+      "title": "Du siehst den Verlauf ein",
+      "subtitle": "Für jede Zustellung kannst du den Verlauf der Zustellungsstatus und die Dritten gegenüber anfechtbaren Bescheinigungen einsehen."
+    }
+  }
 }
