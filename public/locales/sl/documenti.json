@@ -1,3 +1,86 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | Dokumentacija za organizacije",
+  "description": "Kako se pridružiti SEND: dokumentacija, ki je potrebna za pridružitev Servizio Notifiche Digitali v vlogi organizacije pošiljateljice",
+  "docs_cards": {
+    "title": "Kako se pridružiti SEND",
+    "subtitle": "Za organizacije",
+    "cta": "Pridružite se SEND",
+    "description": {
+      "1": {
+        "description_1": "Če se želite pridružiti SEND, morate izbrati način integracije, neposredno ali z uporabo enega od ",
+        "link": "Tehnološki partnerji in posredniki",
+        "description_2": "in podpisati pogodbo o članstvu."
+      },
+      "2": {
+        "description_1": "Za prejem pogodbe o članstvu mora organizacija dostopati do",
+        "link_1": "rezerviranega območja",
+        "description_2": " in slediti korakom, opisanim v ",
+        "link_2": "tem vodniku",
+        "description_3": "."
+      },
+      "3": {
+        "description": "Ko bo pogodba digitalno podpisana, jo bo morala organizacija naložiti in poslati PagoPA S.p.A. iz rezerviranega območja z vključitvijo naslednjih dokumentov in pravilno izpolnjenih obrazcev, kjer je to zahtevano."
+      },
+      "4": {
+        "description_1": "Za dodatne informacije in pojasnila ",
+        "link": "glejte pogosta vprašanja,",
+        "description_2": " namenjena organizacijam."
+      }
+    },
+    "card": {
+      "1": {
+        "title": "1. Pogoji članstva in uporabe",
+        "cta": "Preberite določila in pogoje"
+      },
+      "2": {
+        "title": "2. Pogodba o imenovanju za vodjo obdelave osebnih podatkov",
+        "cta": "Preberite listino o imenovanju"
+      },
+      "3": {
+        "title": "3. Tehnična dokumentacija",
+        "cta_1": "Preberite navodila za uporabo",
+        "cta_2": "B2B API za javno upravo in za napredovanje obveščanja"
+      },
+      "4": {
+        "title": "4. Aktivni cikel",
+        "cta": "Pojdite na dokument"
+      },
+      "5": {
+        "title": "5. Modul za profiliranje",
+        "description": "Potrebno za zagon",
+        "cta": "Odprite dokument"
+      },
+      "6": {
+        "title": "6. Naročilnica",
+        "cta_1": "Oglejte si obrazec",
+        "cta_2": "Dostopite do rezerviranega območja in izpolnite obrazec v razdelku Obračun"
+      },
+      "7": {
+        "title": "7. SLA storitve",
+        "cta": "Pojdite na dokument"
+      }
+    }
+  },
+  "in_depth_card": {
+    "title": "Želite izvedeti več?",
+    "card": {
+      "1": {
+        "title": "Priročnik za vključitev organizacije",
+        "cta": "Pojdite na priročnik"
+      },
+      "2": {
+        "title": "Stroški digitalnega in analognega obveščanja",
+        "cta1": "Pojdite na stroške z začetkom veljavnosti dne 1.11.2024",
+        "cta2": "Pojdite na stroške z začetkom veljavnosti dne 31.10.2024"
+      },
+      "3": {
+        "title": "Komunikacijski komplet",
+        "cta": "Na komplet"
+      }
+    }
+  },
+  "stripe_link": {
+    "title": "Se je vaša organizacija že pridružila in ali želite izvedeti več o fazah integracije platforme?",
+    "cta": "Pojdite na tehnično dokumentacijo"
+  }
 }

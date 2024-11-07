@@ -1,3 +1,53 @@
 {
-    
+  "title": "SEND - Digital Notification Service | Finalization of the notification",
+  "description": "What does finalization of a notification mean and how does it function, depending on the channel on which it was received",
+  "heading": {
+    "title": "When is a notification finalized?",
+    "subtitle_1": "A notification of finalization ",
+    "subtitle_2": "has legal value for all the various purposes",
+    "subtitle_3": ", the day and time in which the notified documents were viewed online, or if you do not do it within a certain date, depending on the channel on which it was received.",
+    "subtitle_4": "Select the channels here below to see the finalization times."
+  },
+  "tab": {
+    "1": {
+      "name": "PEC",
+      "overline": "THE NOTIFICATION IS FINALIZED",
+      "title": "after 7 or 15 days",
+      "description_1": "If you received the PEC",
+      "description_2": ", it is finalized 7 days after the delivery date. If you received it after 9 pm, it is counted starting the day after.",
+      "description_3": "If the PEC is full",
+      "description_4": ", not valid or inactive, it is finalized 15 days after the date of issue of the notification of failed delivery. You will find it on SEND, in the details of the notification.",
+      "description_5": "If you view the notified documents on SEND or the IO app before the times indicated above, finalization takes place at the moment they are viewed."
+    },
+    "2": {
+      "name": "Registered mail",
+      "overline": "THE NOTIFICATION IS FINALIZED",
+      "title": "after 10 or 20 days",
+      "description_1": "If you received registered mail",
+      "description_2": ", it is finalized 10 days after the date of receipt;",
+      "description_3": "If you received a notification of held mail and you collect the registered mail",
+      "description_4": " within 10 days, it is finalized 10 days after the date of collection;",
+      "description_5": "If you received a notification of held mail and you do not collect the registered mail",
+      "description_6": " within 10 days, it is finalized 20 days after the date of receipt of the notification of held mail.",
+      "description_7": "If you view the notified documents on SEND or the IO app before the times indicated above, finalization takes place at the moment they are viewed."
+    },
+    "3": {
+      "name": "IO app",
+      "overline": "THE NOTIFICATION IS FINALIZED",
+      "title": "the day on which you open the message",
+      "description": "that you received it on IO from the “SEND - Digital notifications” service, unless it was already finalized by viewing it on SEND or upon expiration of the terms after the receipt of the PEC or registered mail."
+    },
+    "4": {
+      "name": "SEND",
+      "overline": "THE NOTIFICATION IS FINALIZED",
+      "title": "the day on which it is viewed",
+      "description": "after logging into SEND with SPID or CIE and after pressing the notification, unless it was already finalized by viewing it on the IO app or upon expiration of the terms after the receipt of the PEC or registered mail."
+    },
+    "5": {
+      "name": "Email or SMS",
+      "overline": "THE NOTIFICATION IS FINALIZED",
+      "title": "the day on which it is viewed",
+      "description": "after logging into SEND with SPID or CIE and after pressing the notification, unless it was already finalized by viewing it on the IO app or upon expiration of the terms after the receipt of the PEC or registered mail."
+    }
+  }
 }

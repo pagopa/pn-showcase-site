@@ -1,3 +1,23 @@
 {
-    
+  "title": "SEND - Storitev digitalnih obvestil | Mesta prevzema SEND",
+  "description": "Poiščite mesto prevzema SEND, ki vam je najbližja, da prevzamete kopijo predloženih dokumentov ali ugotovite, ali je obvestilo o prejemu namenjeno vam",
+  "search": {
+    "title": "Poiščite mesto prevzema SEND",
+    "description_1": "Ko prejmete pravno obvestilo prek SEND, lahko prevzamete natisnjeno kopijo dokumentov, poslanih s strani ",
+    "description_2": "povezanih izvajalcev",
+    "description_3": "Poiščite mesta prevzema, ki so vam najbližja.",
+    "disclaimer": "Trenutno lahko iščete samo med mesti prevzema, ki so prisotni v občinah Bari in Taranto: storitev se postopoma aktivira na celotnem nacionalnem ozemlju.",
+    "placeholder": "Iskanje po mestu ali poštni številki",
+    "empty_state": " V tem mestu še ni aktivnih mest prevzema SEND."
+  },
+  "infoblock": {
+    "title": "Kaj morate imeti s seboj",
+    "description": "Za prevzem priglašenih dokumentov boste vedno potrebovali osebni dokument in davčno številko.",
+    "details_text": "Za nadaljnje podrobnosti odkrijte",
+    "details_link_text": "kako delujejo mesta prevzema SEND"
+  },
+  "how_it_works": {
+    "title": "SEND - Servizio Notifiche Digitali | Kako delujejo mesta prevzema",
+    "description": "Ugotovite, kako deluje storitev prevzema kopij pravnih sporočil, ki jih prejmete prek storitve SEND na vašem območju"
+  }
 }

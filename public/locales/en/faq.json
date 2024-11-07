@@ -1,3 +1,189 @@
 {
-    
+  "title": "SEND - Digital Notification Service | FAQ",
+  "description": "Consult the frequently asked questions on the SEND platform dedicated to receiving legal digital notifications",
+  "hero": {
+    "title": "Frequently asked questions",
+    "subtitle": "Select a topic"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "1": {
+      "title": "What are notifications",
+      "description_1": "The notifications are legal communications issued officially by a Public administration, such as, tickets, tax assessments or reimbursements. “Notifications” are different than “push notifications”, that is those brief messages you receive on the screen of your device.",
+      "description_2": "Until now, these communications have been sent almost always by registered mail. Now instead you can receive them digitally."
+    },
+    "2": {
+      "title": "What is a “legal” communication?",
+      "description": "It means that the sending and receipt of these communications product legal effects, both for those who send them as well as those who receive them. For example, if you receive a ticket because you broke a traffic law, the date on which you receive it has an impact on the amount you have to pay and your ability to contest it."
+    },
+    "3": {
+      "title": "What is a notification comprised of?",
+      "description_1": "Each notification is comprised of one or more notified documents, as well as other documents. For example, a ticket can be comprised of a violation report (the notified document), a photograph from the autovelox and a payment slip (the other documents).",
+      "description_2": "A notification send digitally via SEND consists of a notification with the instructions for viewing the documents online. A notification sent by registered mail contains, instead, both the notification and the documents."
+    }
+  },
+  "send": {
+    "title": "SEND",
+    "1": {
+      "title": "What is SEND?",
+      "description": "SEND - Digital Notification Service (also known as the Digital Notification Platform specified in art. 26 of Decree Law 76/2020 and as amended), is a platform that digitalizes and simplifies the management of notifications, makes it possible to receive them, download the notified documents and pay any fees directly online on SEND or in the IO app."
+    },
+    "2": {
+      "title": "To whom are notifications sent?",
+      "description_1": "SEND can send notifications on behalf of institutions to citizens, that is “physical persons”, as well as to companies, that is “legal persons”.",
+      "description_2": "To log into SEND and read the notifications that you receive as a citizen, go to",
+      "description_3": ". If you are the legal representative of a company or have are authorized to read its notifications, go to",
+      "description_4": "."
+    },
+    "3": {
+      "title": "How does it work?",
+      "description_1": "To send a notification, SEND gives priority to your legal digital addresses (a PEC address) and courtesy addresses (IO app, e-mail, phone number).",
+      "description_2": "First of all, SEND verifies if you entered the courtesy addresses in the “Your addresses” section or if you activated the “Digital notification” service on IO. If they are found, it sends a message to those channels to inform you that there is a notification for you.",
+      "description_3": "It then checks if you entered a PEC in the “Your addresses” section. If you did not enter one, it searches for a PEC in you name in the public registers. If you did enter one or if there is one in the public registers, it sends the notification of receipt.",
+      "description_4": "If it is not able to reach you via the indicated digital addresses, it sends you the notification, together with the documents, via registered letter."
+    },
+    "4": {
+      "title": "Is it already operational?",
+      "description": "Yes, SEND is operational and used by some institutions to send notifications. Registering with SEND is a choice of the institution: you can therefore continue to receive registered letters traditionally, as was done up until now."
+    },
+    "5": {
+      "title": "How can I log into SEND?",
+      "description_1": "To log into SEND and read the notifications that you receive as a citizen, go to",
+      "description_2": ". If you are the legal representative of a company or have are authorized to read its notifications, go to",
+      "description_3": ". In both cases, you must enter your SPID or CIE credentials."
+    }
+  },
+  "contacts": {
+    "title": "Addresses",
+    "1": {
+      "title": "Where can I enter or change my digital addresses?",
+      "description": "Log into SEND and select “My addresses” from the side menu. There you can enter or change the PEC, email or telephone number, as well as activate the IO “Digital notification” service to receive a message in app every time there is a notification for you. If you do not yet have IO, download the app from the store of your device, go to the service tab “Digital notifications” of SEND and make sure the “Contact you in app” option is active."
+    },
+    "2": {
+      "title": "What happens if I do not enter a digital address or if I cannot access SEND?",
+      "description_1": "If a PEC attributable to you is in the public records, you will receive the notification of receipt at that address. To obtain the notified documents, you must log into SEND.",
+      "description_2": "If a PEC attributable to you cannot be found in the public records, you will receive the notification, together with the documents, via registered mail."
+    },
+    "3": {
+      "title": "What is the difference between PEC, IO app, e-mail, mobile number and registered mail?",
+      "description_1": "If there is a PEC attributed to you in the “Your addresses” section of SEND or in the public registers, you will receive the notification of receipt to that address. To view the notified documents and pay any fees, you must log into SEND with SPID or CIE, following the information provided in the notification.",
+      "description_2": "If you have activated the IO \"Digital notifications\" service, you will receive a message in app when there is a notification for you. You can view the notified documents and pay any fees direction in IO without logging into SEND with SPID or CIE.",
+      "description_3": "If you have entered and email or mobile number, you will receive a message on these channels when there is a notification for you. To view the notified documents and pay any fees, you must log into SEND with SPID or CIE, following the information.",
+      "description_4": "If you want to enter or change your addresses, log into SEND and go to the “Your addresses” section.",
+      "description_5": "If you did not enter a digital address, you will receive the notification, together with the documents, via registered letter."
+    },
+    "4": {
+      "title": "What does it mean that PEC is used as the “main address\"?",
+      "description_1": "If you do not have a PEC in the public registers and you entered one in the “Your addresses” section, it will be used as the main address for sending you the notifications of receipt. By entering it, you will no longer receive registered mail, unless the transmission failed.",
+      "description_2": "If you have a PEC in the public registers and you enter a different one in the “Your addresses” section, the one entered in SEND will be used as the main address. If you do not enter it in SEND, the PEC in the public registers will still be used, regardless of the subject of the notification."
+    }
+  },
+  "documents": {
+    "title": "Documents and communications",
+    "1": {
+      "title": "What is a notification of receipt?",
+      "description_1": "It is the document you receive via PEC or registered mail when there is a notification for you. Sending this document has legal value for you because it contains the essential information of the notification:",
+      "description_2": "the institution that sent it to you;",
+      "description_3": "the identification code (IUN);",
+      "description_4": "the subject;",
+      "description_5": "the information for obtaining the notified documents and any attachments."
+    },
+    "2": {
+      "title": "What is the IUN code?",
+      "description": "The IUN (Univocal Notification ID) is a code composed of letters and numbers. It is used to identify each notification in a univocal manner."
+    },
+    "3": {
+      "title": "What is the courtesy notification?",
+      "description_1": "If you activated the SEND “Digital notifications” service in the IO app and you entered an e-mail address or a telephone number in the “Your addresses” section of SEND, when there is a notification you will receive a courtesy notification, that is a message that informs you of this.",
+      "description_2": "If you receive the message on IO, you can view the notified documents and pay any fees directly in app. If you receive an email or SMS, access SEND to view the notified documents and pay any fees."
+    },
+    "4": {
+      "title": "What is the failed delivery notification?",
+      "description": "It is a document that certifies that SEND tried to send you the notification via PEC two times, but was not able to reach you. Also in this case, the legal effects of the notification still apply."
+    },
+    "5": {
+      "title": "What is the certificate enforceable against third parties?",
+      "description": "It is a document that certifies a notification status change, for example “finalized, read-only” or “sending in progress”, and as such it cannot be presented to third parties."
+    },
+    "6": {
+      "title": "What is the \"Status of the notification\" section?",
+      "description_1": "It is a section in SEND located in the details of the notification, to the right. Here you can see the various steps of the life cycle of the notification, such as when the institution deposited it in SEND, when and how SEND sent it, when you received it, etc.",
+      "description_2": "Below each status that can have one, you will find the relative certificate enforceable against third parties. You can view and download these documents at any time."
+    }
+  },
+  "notification_reception": {
+    "title": "Reception of a notification",
+    "1": {
+      "title": "I received a message on the IO app from the SEND “Digital notifications” service. What do I have to do?",
+      "description": "Open the message, read the notified documents and pay any fees. If you do not have a PEC in the public registers and you did not provide one on SEND and if you open a message on IO within 5 days (120 hours) from when it was sent, you will not receive the notification via registered mail."
+    },
+    "2": {
+      "title": "I received an SMS from SEND that says there is a notification for me. What do I have to do?",
+      "description": "Log into SEND with SPID or CIE, read the notified documents and pay any fees. If you do not have a PEC in the public registers and you did not provide one on SEND and log into SEND within 5 days (120 hours) from when the SMS was sent, you will not receive the notification via registered mail."
+    },
+    "3": {
+      "title": "I received an email from SEND that says there is a notification for me. What do I have to do?",
+      "description": "Log into SEND with SPID or CIE, read the notified documents and pay any fees. If you do not have a PEC in the public registers and you did not provide one on SEND and log into SEND within 5 days (120 hours) from when the email was sent, you will not receive the notification via registered mail."
+    },
+    "4": {
+      "title": "I want to delegate a person to receive my notifications. Can I do that?",
+      "description_1": "YES: to do so, log into SEND with SPID or CIE and go to the “Delegates” section. Then press “Add a delegate”, enter the data and send the request. You will see a verification code: share it with the delegated person. This person must log into SEND with their SPID or CIE, go to the “Delegates” section and accept the delegation, entering the code. From this moment, the delegated person will receive your notifications.",
+      "description_2": "If you want to revoke a delegation, you can do so at any moment, always in the “Delegates” section."
+    },
+    "5": {
+      "title": "I want to be delegated by a person to receive their notifications. Can I do that?",
+      "description": "YES: to do so, ask the person to log into SEND with SPID or CIE and go to the “Delegates” section. Tell them to press “Add a delegate”, enter the data and send the request. They must then share the verification code with you. At this point, you must log into SEND with your SPID or CIE, go to the “Delegates” section and accept the delegation, entering the code. From this moment, you will receive any notifications for that person."
+    },
+    "6": {
+      "title": "How long are the notification documents available?",
+      "description_1": "For 120 days starting from the",
+      "description_2": "finalization date",
+      "description_3": ". Beyond that term, you cannot see them in the IO app or on SEND. You must contact the institution that sent it to you. The notification of receipt remains available however for 10 years from the date of finalization."
+    },
+    "7": {
+      "title": "What happens if I ignore the notification?",
+      "description_1": "Whether if you received the notification of receipt digitally or on paper, or if you viewed it on IO or directly on the platform, the legal effects of the notification apply even if you decide to ignore it.",
+      "description_2": "The notification produces legal effects if it the relative notification of failed delivery was deposited on the platform."
+    },
+    "8": {
+      "title": "In a notification with multiple notifications, some may include notification costs and others may not. Why is that?",
+      "description_1": "Some notifications include a cost for sending it, which must be paid only once for the notification. In the case of notifications with multiple payment notifications, the cost for sending it will be included in only one, not in all.",
+      "description_2": "For example, there are cases in which you can decide whether to pay for the notification with a single payment or in installments. If you decide to make a single payment, the cost for sending it is included in the relative payment notification. If instead you decide to pay in installments, the sending cost will be included in only one of the various notifications, generally in the one for the first installment."
+    }
+  },
+  "finalization": {
+    "title": "Finalization",
+    "1": {
+      "title": "Was does “finalization” mean?",
+      "description": "When a notification is finalized, this means that it has legal value for all the various purposes. For example, the terms for exercising various rights, contesting documents, paying fines start from the finalization date."
+    },
+    "2": {
+      "title": "When is a notification finalized?",
+      "description_1": "A notification is finalized in different moments for the institution that sent it and for the recipient who received it. For the sender, it is finalized on the date in which the document to be notified is made available on the platform. For the recipient, finalization depends on how the notification is received or read. ",
+      "description_2": "Click here",
+      "description_3": " to view the finalization times of a notification depending on the channel with which it was received or viewed."
+    },
+    "3": {
+      "title": "How can I know when a notification is finalized?",
+      "description": "Log into SEND with SPID or CIE and press on notification. You will find this information on the right, in the “Notification status” section."
+    }
+  },
+  "cancellation": {
+    "title": "Cancellation",
+    "1": {
+      "title": "The notification that I received was canceled. Why is that?",
+      "description": "The institution that sent it may have canceled it for various reasons. For example, there might have been an error, or circumstances arose for which the notification is no longer applicable. If you received a notification and it was canceled, ignore its content. If you have doubts or questions, contact the institution that sent it to you; that sent it to you."
+    },
+    "2": {
+      "title": "The notification that I received was canceled, but I already paid it. What do I have to do?",
+      "description": "To receive information regarding a possible refund, contact the institution that sent it to you."
+    }
+  },
+  "accessibility": {
+    "title": "Accessibility",
+    "1": {
+      "title": "Where can I send reports related to accessibility?",
+      "description": "Write to use at the email address"
+    }
+  }
 }

@@ -1,3 +1,60 @@
 {
-    
+  "title": "SEND - Digital Notification Service | SEND in numbers",
+  "description": "Learn about the data related to send notifications, institutions that are using SEND and the type of data services",
+  "hero": {
+    "title": "SEND in numbers",
+    "last_update": "Last update"
+  },
+  "total": "Total",
+  "sent_notifications": {
+    "title": "Sent notifications",
+    "description": "The following data refer to the notifications sent by the institutions of the public administration",
+    "total": {
+      "name": "total",
+      "title": "Total notifications",
+      "description": "Notifications sent via SEND"
+    },
+    "digital": {
+      "name": "digital",
+      "title": "Total digital notifications",
+      "description": "Notifications sent to recipients via digital channels"
+    },
+    "analog": {
+      "name": "analog",
+      "title": "Total analog notifications",
+      "description": "Notifications sent to recipients via registered mail"
+    },
+    "trend": {
+      "title": "Progress of the notifications",
+      "description_1": "Progress",
+      "description_2": "of the notifications",
+      "monthly": "monthly",
+      "aggregate": "cumulative"
+    }
+  },
+  "authorities_and_types": {
+    "title": "Institutions and types of notifications sent",
+    "description": "The following data shows how many institutions are using SEND, and for what type of service",
+    "authorities": {
+      "total": {
+        "title": "Total active institutions",
+        "description": "Institutions that have sent at least one notification"
+      },
+      "main_cat": {
+        "title": "Main categories of active institutions",
+        "description": "Category of institutions, ordered by number of active institutions"
+      }
+    },
+    "notification_types": {
+      "total": {
+        "title": "Type of sent notifications",
+        "description": "The type represents the scope of application of the notification (e.g. ticket, taxes, registry office, etc.)"
+      },
+      "main_scopes": {
+        "title": "Main areas",
+        "description": "Services ordered by number of deposited notifications, starting from the adoption of SEND",
+        "notes": "* other than those whose notification is excluded via SEND pursuant to art.26, para. 17 of D.L. 76/2020"
+      }
+    }
+  }
 }
