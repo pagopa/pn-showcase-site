@@ -1,5 +1,5 @@
 {
-  "title": "SEND - Digital Notification Service | SEND collection points",
+  "title": "SEND - Servizio Notifiche digitali | SEND collection points",
   "description": "Search for the SEND collection point closest to you to collect a copy of the notified documents or discover if there is a notification of receipt intended for you",
   "search": {
     "title": "Find a SEND collection point",
@@ -17,7 +17,7 @@
     "details_link_text": "how the SEND collection points function"
   },
   "how_it_works": {
-    "title": "SEND - Digital Notification Service | How the collection points function",
+    "title": "SEND - Servizio Notifiche digitali | How the collection points function",
     "description": "Learn about how the service functions for collecting a copy of the legal communication that you receive via SEND in the territory"
   }
 }

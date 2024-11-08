@@ -1,15 +1,15 @@
 {
-  "title": "SEND - Digital Notification Service | For citizens",
+  "title": "SEND - Servizio Notifiche Digitali | For citizens",
   "description": "Receive in real time the legal communications by institutions. Read, manage or pay online on the SEND platform or the IO app",
   "hero": {
     "title": "The notifications? At your fingertips",
-    "subtitle": "With SEND - Digital Notification Service (also known as the Digital Notification Platform specified in art. 26 of Decree law 76/2020 as amended) you can instantaneously receive legal communications from an institution. You can see, manage and pay them directly online on the platform or on the IO app.",
+    "subtitle": "With SEND - Servizio Notifiche Digitali (also known as the Piattaforma Notifiche Digitali specified in art. 26 of Decree law 76/2020 as amended) you can instantaneously receive legal communications from an institution. You can see, manage and pay them directly online on the platform or on the IO app.",
     "altText": "One hand holds a smartphone. The screen shows the details of a notification.",
     "cta": "Read your notifications"
   },
   "infoblock_1": {
     "title": "Do not lose any other notifications",
-    "description_1": "The notifications are legal communications issued officially by a Public administration, as outcomes of administrative procedures or reimbursements, tickets and tax assessment notifications. Starting today, you can receive and read them digitally, signing in online to SEND - Digital Notification Service via SPID or CIE or directly from the IO app.",
+    "description_1": "The notifications are legal communications issued officially by a Public administration, as outcomes of administrative procedures or reimbursements, tickets and tax assessment notifications. Starting today, you can receive and read them digitally, signing in online to SEND - Servizio Notifiche Digitali via SPID or CIE or directly from the IO app.",
     "description_2": "You can also pay any costs thanks to integration with pagoPA, view the history of the notifications received and manage them directly online. Furthermore, simply accept a delegation to also access the notifications of your family members.",
     "altText": "Image of your notifications"
   },
@@ -40,7 +40,7 @@
   },
   "infoblock_custom": {
     "title": "IO app",
-    "description_1": "If you activate the “SEND - Digital Notifications” service, you will receive a message on IO for each notification. You can view the notified documents and pay any fees directly in app. If you do not have a PEC address but access the notification from the app and read the notification within 5 days (120 hours) from receiving it, it will be considered legally delivered and you will not receive a registered letter.",
+    "description_1": "If you activate the “SEND - Notifiche digitali” service, you will receive a message on IO for each notification. You can view the notified documents and pay any fees directly in app. If you do not have a PEC address but access the notification from the app and read the notification within 5 days (120 hours) from receiving it, it will be considered legally delivered and you will not receive a registered letter.",
     "description_2": "Download the app:",
     "googleAltText": "Available on Google Play",
     "appleAltText": "Available on the App store"

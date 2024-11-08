@@ -1,16 +1,16 @@
 {
-  "title": "SEND - Digital Notification Service | For institutions",
+  "title": "SEND - Servizio Notifiche Digitali | For institutions",
   "description": "Discover how to register with SEND and make the notification process for your institution simpler and more secure and efficient",
   "hero": {
     "title": "Sending notifications? That is easy to say.",
-    "subtitle_1": "SEND, Digital Notification Service (also known as the Digital Notification Platform specified in art. 26 of Decree Law 76/2020 and as amended)  digitalizes the management of legal communications, simplifying the process for everyone: those who send them and those who receive them.",
+    "subtitle_1": "SEND, Digital Notification Service (also known as the Piattaforma Notifiche Digitali specified in art. 26 of Decree Law 76/2020 and as amended)  digitalizes the management of legal communications, simplifying the process for everyone: those who send them and those who receive them.",
     "subtitle_2": "And starting today, also easy to do. ",
     "altText": "Images of some forms for sending digital notifications",
     "cta": "Discover how to register with SEND"
   },
   "infoblock_1": {
     "title": "The notification process becomes simpler",
-    "description_1": "SEND - Digital Notification Service relieves institutions from all the legal fulfillments related to the management of legal communications and reduces the uncertainty of the reachability of the recipient.",
+    "description_1": "SEND - Servizio Notifiche Digitali relieves institutions from all the legal fulfillments related to the management of legal communications and reduces the uncertainty of the reachability of the recipient.",
     "description_2": "All institutions have to do is file the document to be notified: the platform will then send it, digitally or analogically, which saves both time and costs for the entire process.",
     "altText": "An example of the “notification status” section of the Send platform."
   },

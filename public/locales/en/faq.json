@@ -1,5 +1,5 @@
 {
-  "title": "SEND - Digital Notification Service | FAQ",
+  "title": "SEND - Servizio Notifiche Digitali | FAQ",
   "description": "Consult the frequently asked questions on the SEND platform dedicated to receiving legal digital notifications",
   "hero": {
     "title": "Frequently asked questions",
@@ -26,7 +26,7 @@
     "title": "SEND",
     "1": {
       "title": "What is SEND?",
-      "description": "SEND - Digital Notification Service (also known as the Digital Notification Platform specified in art. 26 of Decree Law 76/2020 and as amended), is a platform that digitalizes and simplifies the management of notifications, makes it possible to receive them, download the notified documents and pay any fees directly online on SEND or in the IO app."
+      "description": "SEND - Servizio Notifiche Digitali (also known as the Piattaforma Notifiche Digitali specified in art. 26 of Decree Law 76/2020 and as amended), is a platform that digitalizes and simplifies the management of notifications, makes it possible to receive them, download the notified documents and pay any fees directly online on SEND or in the IO app."
     },
     "2": {
       "title": "To whom are notifications sent?",
@@ -67,13 +67,13 @@
     "3": {
       "title": "What is the difference between PEC, IO app, e-mail, mobile number and registered mail?",
       "description_1": "If there is a PEC attributed to you in the “Your addresses” section of SEND or in the public registers, you will receive the notification of receipt to that address. To view the notified documents and pay any fees, you must log into SEND with SPID or CIE, following the information provided in the notification.",
-      "description_2": "If you have activated the IO \"Digital notifications\" service, you will receive a message in app when there is a notification for you. You can view the notified documents and pay any fees direction in IO without logging into SEND with SPID or CIE.",
+      "description_2": "If you have activated the IO “Digital notifications” service, you will receive a message in app when there is a notification for you. You can view the notified documents and pay any fees direction in IO without logging into SEND with SPID or CIE.",
       "description_3": "If you have entered and email or mobile number, you will receive a message on these channels when there is a notification for you. To view the notified documents and pay any fees, you must log into SEND with SPID or CIE, following the information.",
       "description_4": "If you want to enter or change your addresses, log into SEND and go to the “Your addresses” section.",
       "description_5": "If you did not enter a digital address, you will receive the notification, together with the documents, via registered letter."
     },
     "4": {
-      "title": "What does it mean that PEC is used as the “main address\"?",
+      "title": "What does it mean that PEC is used as the “main address”?",
       "description_1": "If you do not have a PEC in the public registers and you entered one in the “Your addresses” section, it will be used as the main address for sending you the notifications of receipt. By entering it, you will no longer receive registered mail, unless the transmission failed.",
       "description_2": "If you have a PEC in the public registers and you enter a different one in the “Your addresses” section, the one entered in SEND will be used as the main address. If you do not enter it in SEND, the PEC in the public registers will still be used, regardless of the subject of the notification."
     }
@@ -106,7 +106,7 @@
       "description": "It is a document that certifies a notification status change, for example “finalized, read-only” or “sending in progress”, and as such it cannot be presented to third parties."
     },
     "6": {
-      "title": "What is the \"Status of the notification\" section?",
+      "title": "What is the “Status of the notification” section?",
       "description_1": "It is a section in SEND located in the details of the notification, to the right. Here you can see the various steps of the life cycle of the notification, such as when the institution deposited it in SEND, when and how SEND sent it, when you received it, etc.",
       "description_2": "Below each status that can have one, you will find the relative certificate enforceable against third parties. You can view and download these documents at any time."
     }

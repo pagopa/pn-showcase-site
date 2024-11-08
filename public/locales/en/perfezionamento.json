@@ -1,5 +1,5 @@
 {
-  "title": "SEND - Digital Notification Service | Finalization of the notification",
+  "title": "SEND - Servizio Notifiche Digitali | Finalization of the notification",
   "description": "What does finalization of a notification mean and how does it function, depending on the channel on which it was received",
   "heading": {
     "title": "When is a notification finalized?",
@@ -35,7 +35,7 @@
       "name": "IO app",
       "overline": "THE NOTIFICATION IS FINALIZED",
       "title": "the day on which you open the message",
-      "description": "that you received it on IO from the “SEND - Digital notifications” service, unless it was already finalized by viewing it on SEND or upon expiration of the terms after the receipt of the PEC or registered mail."
+      "description": "that you received it on IO from the “SEND - Notifiche digitali” service, unless it was already finalized by viewing it on SEND or upon expiration of the terms after the receipt of the PEC or registered mail."
     },
     "4": {
       "name": "SEND",
