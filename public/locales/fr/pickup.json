@@ -1,3 +1,23 @@
 {
-    
+  "title": "SEND - Servizio Notifiche digitali | Points de retrait SEND",
+  "description": "Trouvez le Point de retrait SEND le plus proche pour retirer une copie des actes notifiés ou pour savoir s’il existe un accusé de réception pour vous",
+  "search": {
+    "title": "Trouver un Point de retrait SEND",
+    "description_1": "Lorsque vous recevez un avis juridique par l’intermédiaire de SEND, vous pouvez retirer une copie imprimée des documents notifiés auprès des ",
+    "description_2": "structures affiliées",
+    "description_3": "Trouvez les points de retrait les plus proches de chez vous.",
+    "disclaimer": "Pour l’instant, vous ne pouvez rechercher des points de retrait que dans les Communes de Bari et de Tarente : le service est progressivement mis en place sur tout le territoire italien.",
+    "placeholder": "Recherche par ville ou CP",
+    "empty_state": " Il n’y a pas encore de points de retrait SEND activés dans cette ville."
+  },
+  "infoblock": {
+    "title": "Ce qu’il faut apporter",
+    "description": "Vous aurez toujours besoin de votre carte d’identité et de votre code fiscal pour retirer les documents notifiés.",
+    "details_text": "Pour plus de détails, découvrez",
+    "details_link_text": "le fonctionnement des points de retrait SEND"
+  },
+  "how_it_works": {
+    "title": "SEND - Servizio Notifiche Digitali | Comment fonctionnent les points de retrait",
+    "description": "Découvrez comment fonctionne le service de retrait d’une copie des communications à valeur légale que vous recevez par l’intermédiaire de SEND"
+  }
 }
