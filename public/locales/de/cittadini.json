@@ -1,3 +1,88 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | Für Bürger:innen",
+  "description": "Erhalte rechtsgültige Mitteilung von Körperschaften in Echtzeit. Lies, verwalte oder bezahle online auf der SEND-Plattform oder über die IO-App",
+  "hero": {
+    "title": "Die Zustellungen? Sind griffbereit",
+    "subtitle": "Mit SEND - Servizio Notifiche Digitali (auch bekannt als Piattaforma Notifiche Digitali gemäß Art. 26 des Gesetzesdekrets 76/2020 in seiner geänderten Fassung) kannst du sofort rechtsgültige Mitteilungen von einer Körperschaft erhalten. Du kannst sie direkt online auf der Plattform oder in der IO-App anzeigen, verwalten und bezahlen.",
+    "altText": "Eine Hand hält ein Smartphone. Die Bildschirmseite zeigt das Detail einer Zustellung.",
+    "cta": "Lies deine Zustellungen"
+  },
+  "infoblock_1": {
+    "title": "Versäume keine Zustellung mehr",
+    "description_1": "Zustellungen sind rechtsgültige Mitteilungen, die offiziell von einer öffentlichen Verwaltung herausgegeben werden, z. B. Ergebnisse von Verwaltungsvorgängen oder Erstattungen, Geldbußen und Steuerbescheide. Ab heute kannst du sie digital empfangen und einsehen, indem du online über SPID oder CIE oder direkt über die IO-App auf SEND - Servizio Notifiche Digitali zugreifst.",
+    "description_2": "Du kannst dank der Integration mit pagoPA auch eventuelle Gebühren bezahlen, den Verlauf der erhaltenen Zustellungen einsehen und sie direkt online verwalten. Außerdem brauchst nur eine Vollmacht zu akzeptieren, um die Zustellungen deiner Familienmitglieder abzurufen.",
+    "altText": "Bild mit zwei Zustellungen"
+  },
+  "infoblock_2": {
+    "title": "Wähle, wie du die Zustellungen erhalten möchtest",
+    "description_1": "Um dir rechtsgültige Mitteilungen zu senden, gibt SEND deinen digitalen Adressen den Vorrang. Du kannst jederzeit online auf den Servizio Notifiche Digitali mit SPID und CIE zugreifen, um deine rechtsgültige Adresse (PEC) oder deine informellen Adressen (IO-App, E-Mail und/oder Handynummer) anzugeben oder zu aktualisieren.",
+    "description_2": "Wenn du keine Adresse angibst oder die Zustellung nicht über SEND von anderen Kanälen als PEC ",
+    "description_3": "innerhalb der angegebenen Frist abrufst",
+    "description_4": ", erhältst du weiterhin Zustellungen per Einschreiben in Papierform.",
+    "altText": "Ein Mann mit einem Smartphone in der Hand schaut ins Zimmer."
+  },
+  "infoblock_3": {
+    "title": "",
+    "description_1": "Die öffentlichen Verwaltungen führen den Servizio Notifiche Digitali nach und nach ein, so dass dir möglicherweise nicht alle Unterlagen bereits auf diesem Weg zugestellt werden.",
+    "description_2": "Die Zukunft der rechtsgültigen Mitteilungen",
+    "description_3": "SEND steht Körperschaften zur Verfügung, die hiermit Zustellungen an die Empfänger ihrer rechtsgültigen Mitteilungen senden können.",
+    "altText": "Eine Frau betrachtet den Bildschirm des Notebooks."
+  },
+  "infoblock_4": {
+    "title": "PEC",
+    "description": "Wenn du eine PEC-Adresse angegeben hast, werden die Zustellungen rechtsgültig ohne weitere Einschreiben in Papierform zugestellt. Die Empfangsbestätigung, die du erhältst, enthält den Link, über den du die Dokumente auf SEND abrufen kannst.",
+    "altText": "Bild einer Zustellung auf SEND"
+  },
+  "infoblock_5": {
+    "title": "E-Mail und SMS",
+    "description": "Du kannst außerdem wählen, ob du eine informelle Benachrichtigung an deine E-Mail-Adresse oder per SMS erhalten möchtest. Solltest du keine PEC-Adresse haben und die Zustellung innerhalb 5 Tagen (120 Stunden) nach Erhalt der Benachrichtigung mit dem entsprechenden Link über SEND aufrufen, gilt diese als rechtmäßig zugestellt und du erhältst kein Einschreiben in Papierform.",
+    "altText": "Bild einer Zustellung auf SEND"
+  },
+  "infoblock_custom": {
+    "title": "IO-App",
+    "description_1": "Wenn du den Dienst „SEND - Notifiche Digitali“ aktivierst, erhältst du mit jeder Zustellung eine Nachricht auf IO. Du kannst die zugestellten Dokumente einsehen und eventuelle Gebühren direkt in der App bezahlen. Solltest du keine PEC-Adresse haben und die Zustellung innerhalb 5 Tagen (120 Stunden) nach Erhalt der Benachrichtigung über die App aufrufen, gilt diese als rechtmäßig zugestellt und du erhältst kein Einschreiben in Papierform.",
+    "description_2": "App downloaden:",
+    "googleAltText": "Verfügbar auf Google Play",
+    "appleAltText": "Verfügbar im App Store"
+  },
+  "showcase": {
+    "title": "Eine Möglichkeit, auf viele Arten zu sparen",
+    "item_1": {
+      "title": "Ersparnis",
+      "subtitle": "Die digitale Zustellung ist mit geringeren Zustellungs- und Versandkosten verbunden"
+    },
+    "item_2": {
+      "title": "Zeit",
+      "subtitle": "Kein Warten oder Schlangestehen mehr, um Benachrichtigungen in Papierform abzuholen"
+    },
+    "item_3": {
+      "title": "Nachhaltigkeit",
+      "subtitle": "Trag dazu bei, den Papierverbrauch und die Transportemissionen zu reduzieren"
+    },
+    "item_4": {
+      "title": "Platz",
+      "subtitle": "Du brauchst keine gedruckten Dokumente mehr aufzubewahren, da du sie digital herunterladen und archivieren kannst"
+    }
+  },
+  "walkthrough": {
+    "title": "Wie funktioniert das?",
+    "item_1": {
+      "title": "Du erhältst die Zustellung",
+      "subtitle": "Bei jeder Zustellung prüft SEND, ob es eine PEC gibt, die mit dir verbunden ist oder von dir für den Versand der Empfangsbestätigung angegeben wurde. Es wird auch eine informelle Benachrichtigung an deine anderen digitalen Adressen (IO-App, E-Mail und Handynummer) gesendet, falls du diese angegeben hast. Wenn du keine digitale Adresse angegeben hast und die Zustellung nicht online über SEND aufrufst, erhältst du ein Einschreiben in Papierform."
+    },
+    "item_2": {
+      "title": "Du liest den Inhalt",
+      "subtitle_1": "Von der erhaltenen Nachricht aus kannst du online auf die Plattform zugreifen, um die Zustellung zu lesen und die angehängten Dokumente herunterzuladen. Wenn du den Dienst auf IO aktivierst, kannst du den Inhalt direkt in der App einsehen: Das entspricht der Unterschrift auf dem Rückschein eines herkömmlichen Einschreibens und ",
+      "subtitle_2": "der sofortigen Vervollständigung",
+      "subtitle_3": " der Zustellung."
+    },
+    "item_3": {
+      "title": "Du zahlst die Gebühren",
+      "subtitle": "Falls du einen Betrag zahlen musst, kannst du dank der Integration mit pagoPA gleichzeitig online über SEND oder direkt über IO vorgehen. Wenn du es vorziehst, zu einem Schalter zu gehen, musst du das der Zustellung beigefügte Zahlungsformular bei dir haben."
+    },
+    "item_4": {
+      "title": "Du kannst bevollmächtigen oder bevollmächtigt werden",
+      "subtitle": "Falls du möchtest, kannst du andere natürliche oder juristische Personen damit bevollmächtigen, deine Online-Zustellungen einzusehen. Melde dich dazu mit SPID oder CIE auf SEND an und gib die Daten der bevollmächtigten Person im Abschnitt Vollmachten ein."
+    }
+  }
 }

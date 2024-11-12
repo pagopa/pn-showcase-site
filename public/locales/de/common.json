@@ -1,3 +1,142 @@
 {
-    
+  "pagopaLink": {
+    "label": "PagoPA S.p.A.",
+    "ariaLabel": "Link: Gehe auf die Website von PagoPA S.p.A."
+  },
+  "footer": {
+    "it": "Italienisch",
+    "en": "Englisch",
+    "fr": "Französisch",
+    "de": "Deutsch",
+    "sl": "Slowenisch",
+    "company_info": {
+      "name": "PagoPA S.p.A.",
+      "detail_info": " — Aktiengesellschaft mit einem einzigen Gesellschafter - voll eingezahltes Grundkapital von 1.000.000 Euro - eingetragener Sitz in Rom, Piazza Colonna 370",
+      "detail_info_2": "PLZ 00187 – Eintragungsnummer im Handelsregister von Rom, Steuernummer und USt-IdNr. 15376371009"
+    },
+    "pre_login": {
+      "about_us": {
+        "label": "Über uns",
+        "ariaLabel": "Zum Link: Über uns"
+      },
+      "pnrr": {
+        "label": "PNRR",
+        "ariaLabel": "Zum Link: PNRR"
+      },
+      "media": {
+        "label": "Medien",
+        "ariaLabel": "Zum Link: Medien"
+      },
+      "work_with_us": {
+        "label": "Karriere",
+        "ariaLabel": "Zum Link: Karriere"
+      },
+      "resources": {
+        "label": "Ressourcen",
+        "legal_notes": {
+          "label": "Impressum",
+          "ariaLabel": "Zum Link: Impressum"
+        },
+        "privacy": {
+          "label": "Datenschutzerklärung",
+          "ariaLabel": "Zum Link: Datenschutzerklärung"
+        },
+        "certifications": {
+          "label": "Zertifizierungen",
+          "ariaLabel": "Zum Link: Zertifizierungen"
+        },
+        "information_security": {
+          "label": "Informationssicherheit",
+          "ariaLabel": "Zum Link: Informationssicherheit"
+        },
+        "data_protection": {
+          "label": "Recht auf Schutz personenbezogener Daten",
+          "ariaLabel": "Zum Link: Recht auf Schutz personenbezogener Daten"
+        },
+        "transparent_company": {
+          "label": "Transparente Gesellschaft",
+          "ariaLabel": "Zum Link: Transparente Gesellschaft"
+        },
+        "disclosure": {
+          "label": "Responsible Disclosure Policy",
+          "ariaLabel": "Zum Link: Responsible Disclosure Policy"
+        },
+        "model231": {
+          "label": "Vordruck 231",
+          "ariaLabel": "Zum Link: Vordruck 231"
+        }
+      },
+      "followUs": {
+        "title": "Folgen Sie uns auf",
+        "linkedin": {
+          "title": "LinkedIn",
+          "ariaLabel": "Link: Gehe auf die Website LinkedIn von PagoPA S.p.A."
+        },
+        "twitter": {
+          "title": "Twitter",
+          "ariaLabel": "Link: Gehe auf die Website Twitter von PagoPA S.p.A."
+        },
+        "instagram": {
+          "title": "Instagram",
+          "ariaLabel": "Link: Gehe auf die Website Instagram von PagoPA S.p.A."
+        },
+        "medium": {
+          "title": "Medium",
+          "ariaLabel": "Link: Gehe auf die Website Medium von PagoPA S.p.A."
+        }
+      },
+      "accessibility": {
+        "label": "Barrierefreiheit",
+        "ariaLabel": "Zum Link: Barrierefreiheit"
+      }
+    },
+    "post_login": {
+      "privacy": {
+        "label": "Datenschutzerklärung",
+        "ariaLabel": "Zum Link: Datenschutzerklärung"
+      },
+      "accessibility": {
+        "label": "Barrierefreiheit",
+        "ariaLabel": "Zum Link: Über uns"
+      }
+    }
+  },
+  "header": {
+    "pagopaLink": {
+      "label": "PagoPA S.p.A.",
+      "ariaLabel": "Link: Gehe auf die Website von PagoPA S.p.A."
+    },
+    "help": "Brauchst du Hilfe?"
+  },
+  "navigation": {
+    "title": "SEND Servizio Notifiche Digitali",
+    "cittadini": "Bürger",
+    "imprese": "Unternehmen",
+    "enti": "Körperschaften",
+    "documentation": "Dokumentation",
+    "send_numbers": "SEND in Zahlen",
+    "faq": "FAQs",
+    "login": "Login auf SEND",
+    "pickup_points": "Abholstellen",
+    "pickup_points_how": "Wie es funktioniert"
+  },
+  "login_panel": {
+    "login": "Login auf SEND",
+    "cittadini": {
+      "title": "Bürger",
+      "description": "Melde dich als natürliche Person, Freiberufler oder Einzelunternehmen an",
+      "login": "Anmelden"
+    },
+    "imprese": {
+      "title": "Unternehmen",
+      "description": "Melde dich als juristische Person an",
+      "login": "Anmelden"
+    },
+    "enti": {
+      "title": "Bist du eine Körperschaft?",
+      "description": "Ist deine Körperschaft noch nicht beigetreten?",
+      "link": "Entdecken Sie, wie Sie beitreten können",
+      "login": "Anmelden"
+    }
+  }
 }

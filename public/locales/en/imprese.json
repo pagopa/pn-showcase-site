@@ -1,3 +1,67 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | For companies",
+  "description": "Read, pay and archive legal communications sent to your company in a single space that can also be accessed by your collaborators",
+  "hero": {
+    "title": "The notifications for your company? There are all here.",
+    "subtitle": "SEND - Servizio Notifiche Digitali is the platform that simplifies the reception of legal notifications. View, pay and archive notifications sent to your company in a single space that can also be accessed by your collaborators.",
+    "altText": "The screen of a laptop computer shows the home page of the SEND platform.",
+    "cta": "Read your notifications"
+  },
+  "infoblock_1": {
+    "title": "A new way for managing your company’s notifications",
+    "description_1": "With SEND, you can view, pay and manage the notifications sent to your company in a simple, fast and completely digital manner.",
+    "description_2": "In addition to accessing notified documents, on SEND you can also pay for any costs thanks to the integration with pagoPA and view the history of received notifications.",
+    "altText": "A man is working at a computer, sitting at a desk in an office."
+  },
+  "infoblock_2": {
+    "title": "Teamwork",
+    "description_1": "You can enable multiple users to use the platform. This makes it possible for multiple persons to manage the communications and stay updated on the work performed by others in real-time.",
+    "description_2": "An effective way for improving the management of notifications within the company and have more control of deadlines and what was paid.",
+    "altText": "An example of the “notification status” section of the Send platform.",
+    "cta": "Read the notifications for your company"
+  },
+  "infoblock_3": {
+    "title": "You can delegate or be delegated",
+    "description": "If you want, you can delegate other physical or legal persons to view your notifications online. To do to, access SEND with SPID or CIE and enter the data of the person you want to delegate in the Delegations section.",
+    "altText": "An example of the “notification status” section of the Send platform."
+  },
+  "showcase": {
+    "title": "A new service that helps companies become more innovative",
+    "item_1": {
+      "title": "Univocal",
+      "subtitle": "Manage all the notifications send to the company in a single point"
+    },
+    "item_2": {
+      "title": "Fast",
+      "subtitle": "Thanks to the integration with pagoPA, paying is simple and fast"
+    },
+    "item_3": {
+      "title": "Shared",
+      "subtitle": "Multiple persons can manage the notifications at the same time and remain updated in real time"
+    },
+    "item_4": {
+      "title": "Affordable",
+      "subtitle": "Save money on notifications fees and management costs"
+    }
+  },
+  "walkthrough": {
+    "title": "How does it work?",
+    "item_1": {
+      "title": "Receive the notification",
+      "subtitle": "For each notification, SEND verifies that there is a PEC associated with your company for sending the notification of receipt. It also sends a courtesy notification to your other digital addresses (e-mail and mobile number), if you entered them. If you did not indicate a digital address and do not access online to the notification via SEND, you will receive a paper notification."
+    },
+    "item_2": {
+      "title": "Read the content",
+      "subtitle_1": "From the received message, you can access the platform online to read the notification and download the relative notified documents.",
+      "subtitle_2": "The first login to SEND must be performed by the legal representative, which must register the company on the platform."
+    },
+    "item_3": {
+      "title": "Pay the fees",
+      "subtitle": "If there is an amount to paid, thanks to integration with pagoPA you can make the payment online. If you prefer to make the payment in person, you must have the payment form attached to the notification."
+    },
+    "item_4": {
+      "title": "View the history",
+      "subtitle": "For each notification, you can see the history of the statuses and the relative certificate enforceable against third parties."
+    }
+  }
 }

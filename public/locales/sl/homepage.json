@@ -1,3 +1,36 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali",
+  "description": "SEND je platforma, ki omogoča hitrejše, preprostejše in varnejše pošiljanje in prejemanje pravnih sporočil",
+  "hero": {
+    "title": "Pravna komunikacija postane digitalna",
+    "subtitle": "SEND je platforma, ki omogoča hitrejše, cenejše in varnejše pošiljanje in prejemanje pravnih obvestil ter poenostavlja postopek za vse: organizacije, ki jih pošiljajo, in prejemnike, ki jih prejemajo.",
+    "altText": "Slika platforme SEND za namizne in mobilne naprave"
+  },
+  "infoblock": {
+    "enti": {
+      "overline": "ZA ORGANIZACIJE",
+      "title": "Enostavnejši način za upravljanje obvestil",
+      "description_1": "SEND - Servizio Notifiche Digitali razbremenjuje organizacije vseh obveznosti v zvezi z upravljanjem pravnih komunikacij.",
+      "description_2": "Organizacije morajo le vložiti dokument za obveščanje: platforma bo poskrbela za pošiljanje, digitalno ali analogno, s posledičnim prihrankom časa in stroškov celotnega postopka.",
+      "altText": "Predogled strani obvestil SEND na prenosnem računalniku",
+      "cta": "Odkrijte prednosti za organizacije"
+    },
+    "cittadini": {
+      "overline": "ZA DRŽAVLJANE",
+      "title": "Obvestila javno upravo na dosegu roke",
+      "description_1": "Državljani, ki to želijo, lahko digitalno prejemajo in pregledujejo obvestila z dostopom do SEND prek SPID ali CIE ali neposredno iz aplikacije IO.",
+      "description_2": "Vsekakor pa platforma zagotavlja možnost izbire: prejemniki lahko vedno navedejo, kako naj prejemajo sporočila glede na svoje želje.",
+      "altText": "Pametni telefon v roki. Na zaslonu so prikazane podrobnosti obvestila.",
+      "cta": "Odkrijte prednosti za državljane",
+      "cta_secondary": "Preberite svoja obvestila"
+    },
+    "imprese": {
+      "overline": "ZA PODJETJA",
+      "title": "Vse na enem mestu",
+      "description": "SEND zagotavlja enoten skupni prostor, v katerem lahko različni predstavniki istega podjetja na popolnoma digitalen način pregledujejo in upravljajo vsa obvestila, prejeta od različnih organov, ter plačujejo morebitne dolgovane zneske.",
+      "altText": "Moški in ženska, ki sedita za mizo, gledata v zvezek",
+      "cta": "Odkrijte prednosti za podjetja",
+      "cta_secondary": "Pojdite na obvestila"
+    }
+  }
 }

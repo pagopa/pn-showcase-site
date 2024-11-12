@@ -1,3 +1,53 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | Zaključek obvestila",
+  "description": "Kaj pomeni zaključek obvestila in kako deluje, odvisno od kanala, po katerem ste ga prejeli",
+  "heading": {
+    "title": "Kdaj se obvestilo zaključi?",
+    "subtitle_1": "Obvestilo se zaključi, tj. ",
+    "subtitle_2": "prevzame zakonsko moč za vse različne namene",
+    "subtitle_3": ", dan in ura, ogleda dokumentov na spletu ali, če tega ne storite v določenem roku, odvisno od kanala, po katerem ste jih prejeli.",
+    "subtitle_4": "Izberite spodnje kanale, da ugotovite čas zaključka."
+  },
+  "tab": {
+    "1": {
+      "name": "PEC",
+      "overline": "OBVESTILO JE ZAKLJUČENO",
+      "title": "po 7 ali 15 dneh",
+      "description_1": "Če ste prejeli PEC",
+      "description_2": ", se zaključi 7 dni po datumu dostave. Če ste ga prejeli po 21.00 uri, se šteje od naslednjega dne.",
+      "description_3": "Če je PEC nasičen",
+      "description_4": ", neveljaven ali neaktiven, se izpolni 15 dni po datumu izdaje obvestila o neprejemu. Najdete ga na SEND, v podrobnostih o obvestilu.",
+      "description_5": "Če si dokumente, o katerih ste prejeli obvestilo, ogledate pred zgoraj navedenimi časi na SEND ali aplikaciji IO, se zaključek izvede v času ogleda."
+    },
+    "2": {
+      "name": "Priporočeno pismo",
+      "overline": "OBVESTILO JE ZAKLJUČENO",
+      "title": "po 10 ali 20 dneh",
+      "description_1": "Če ste prejeli priporočeno pismo",
+      "description_2": ", se zaključi 10 dni po datumu prejema;",
+      "description_3": "Če ste prejeli obvestilo o hrambi in prevzamete priporočeno pismo",
+      "description_4": " v 10 dneh, dokončano 10 dni po datumu prevzema;",
+      "description_5": "Če ste prejeli obvestilo o hrambi in ne prevzamete priporočenega pisma",
+      "description_6": " v 10 dneh, se zaključi 20 dni po datumu prejema obvestila o zalogi.",
+      "description_7": "Če si dokumente, o katerih ste prejeli obvestilo, ogledate pred zgoraj navedenimi časi na SEND ali aplikaciji IO, se zaključek izvede v času ogleda."
+    },
+    "3": {
+      "name": "Aplikacija IO",
+      "overline": "OBVESTILO JE ZAKLJUČENO",
+      "title": "na dan, ko odprete sporočilo,",
+      "description": "ki ste ga prejeli na IO od storitve »SEND – Notifiche digitali«, razen če je že zaključen z ogledom na SEND ali zaradi roka, ki začne teči po prejemu overjene e-pošte ali priporočenega pisma."
+    },
+    "4": {
+      "name": "SEND",
+      "overline": "OBVESTILO JE ZAKLJUČENO",
+      "title": "na dan, ko si ga ogledate",
+      "description": "po dostopu do SEND s SPID ali CIE in po pritisku na obvestilo, razen če je bilo že dokončano z ogledom v aplikaciji IO ali zaradi roka, ki se začne po prejemu overjene e-pošte ali priporočenega pisma."
+    },
+    "5": {
+      "name": "E-pošta ali SMS",
+      "overline": "OBVESTILO JE ZAKLJUČENO",
+      "title": "na dan, ko si ga ogledate",
+      "description": "po dostopu do SEND s SPID ali CIE in po pritisku na obvestilo, razen če je bilo že dokončano z ogledom v aplikaciji IO ali zaradi roka, ki se začne po prejemu overjene e-pošte ali priporočenega pisma."
+    }
+  }
 }

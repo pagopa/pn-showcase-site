@@ -1,3 +1,68 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | Podpora",
+  "description": "Pogosto zastavljena vprašanja in podporni viri za storitev digitalnega obveščanja SEND",
+  "heading": {
+    "title": "Potrebujete pomoč?",
+    "subtitle": "Preberite odgovore na pogosto zastavljena vprašanja o storitvi digitalnega obveščanja SEND ali odkrijte vire, namenjene državljanom, podjetjem ali organizacijam pošiljateljicam."
+  },
+  "tab": {
+    "1": {
+      "title": "Za državljane in podjetja",
+      "card": {
+        "1": {
+          "title": "Kako lahko dostopam do SEND?",
+          "cta": "Preberite odgovor"
+        },
+        "2": {
+          "title": "Kaj je potrdilo o prejemu?",
+          "cta": "Preberite odgovor"
+        },
+        "3": {
+          "title": "Kaj pomeni »zaključek«?",
+          "cta": "Preberite odgovor"
+        }
+      },
+      "cta": "Odkrijte vsa pogosta vprašanja",
+      "infoblock": {
+        "title": "Tukaj smo za vas",
+        "description": "Niste našli odgovora, ki ste ga iskali? Pošljete nam zahtevo za pomoč ali pokličite kontaktni center."
+      },
+      "email": {
+        "title": "Pišite nam",
+        "description_1": "Zahtevajte pomoč po e-pošti tako, da pišete na ",
+        "description_3": ": vključite uporabne informacije, kot je edinstvena koda obvestila (IUN).",
+        "cta": "Pišite nam"
+      },
+      "phone": {
+        "title": "Pokličite nas",
+        "description_1": "Kontaktni center PagoPA S.p.A vam je za podporo na voljo na številki ",
+        "description_3": " za pomoč od ponedeljka do petka od 8.00 do 20.00 ure in ob sobotah od 8.00 do 14.00 ure.",
+        "cta": "Pokličite nas"
+      }
+    },
+    "2": {
+      "title": "Za organizacije pošiljateljice",
+      "card": {
+        "1": {
+          "title": "Kdo lahko pošilja obvestila prek SEND?",
+          "cta": "Preberite pogosta vprašanja organizacij"
+        },
+        "2": {
+          "title": "Kako se lahko pridružim SEND s svojo organizacijo?",
+          "cta": "Ugotovite, kako se pridružiti"
+        },
+        "3": {
+          "title": "Kako poteka postopek obveščanja?",
+          "cta": "Oglejte si priročnik"
+        }
+      },
+      "cta": "Raziščite vire za organizacije",
+      "email": {
+        "title": "Pišite nam",
+        "description": "Zahtevajte pomoč kot pošiljatelj po e-pošti tako, da pišete na ",
+        "cta": "Pišite nam"
+      }
+    }
+  },
+  "cta_faq": "Odkrijte vsa pogosta vprašanja"
 }

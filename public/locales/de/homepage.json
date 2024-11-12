@@ -1,3 +1,36 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali",
+  "description": "SEND ist die Plattform, die das Senden und Empfangen von rechtsgültigen Mitteilungen schneller, einfacher und sicherer macht",
+  "hero": {
+    "title": "Die rechtsgültigen Mitteilungen werden digital",
+    "subtitle": "SEND ist die Plattform, die das Senden und Empfangen von rechtsgültigen Zustellungen schneller, kostengünstiger sowie sicherer macht und den Vorgang für alle vereinfacht: für die Körperschaften, die sie senden, und die Empfänger, die sie erhalten.",
+    "altText": "Bild der Plattform SEND für Desktop-PC und Mobilgeräte"
+  },
+  "infoblock": {
+    "enti": {
+      "overline": "FÜR DIE KÖRPERSCHAFTEN",
+      "title": "Eine einfachere Art, Zustellungen zu verwalten",
+      "description_1": "SEND - Servizio Notifiche Digitali entbindet Körperschaften von allen Tätigkeiten im Zusammenhang mit der Verwaltung rechtsgültiger Mitteilungen.",
+      "description_2": "Die Körperschaften müssen lediglich den zuzustellenden Akt hinterlegen: Die Plattform kümmert sich um den Versand, entweder digital oder analog, und spart so Zeit- sowie Kostenaufwand für das gesamte Verfahren.",
+      "altText": "Vorschau der Seite Zustellungen der Plattform SEND auf einem Notebook",
+      "cta": "Entdecke die Vorteile für die Körperschaften"
+    },
+    "cittadini": {
+      "overline": "FÜR BÜRGER:INNEN",
+      "title": "Die Zustellungen der öffentlichen Verwaltung griffbereit zur Hand",
+      "description_1": "Bürger:innen, die dies wünschen, können Zustellungen digital empfangen und aufrufen, indem sie über SPID oder CIE oder direkt über die IO-App auf SEND zugreifen.",
+      "description_2": "In jedem Fall garantiert die Plattform Entscheidungsfreiheit: Die Empfänger:innen können jederzeit nach ihrer Vorliebe angeben, wie sie die Mitteilungen erhalten möchten.",
+      "altText": "Eine Hand hält ein Smartphone. Die Bildschirmseite zeigt das Detail einer Zustellung.",
+      "cta": "Entdecke die Vorteile für die Bürger:innen",
+      "cta_secondary": "Lies deine Zustellungen"
+    },
+    "imprese": {
+      "overline": "FÜR DIE UNTERNEHMEN",
+      "title": "Alles an einem Ort",
+      "description": "SEND stellt einen einzigen geteilten Bereich bereit, in dem verschiedene Sachbearbeiter des gleichen Unternehmens alle von den verschiedenen Körperschaften erhaltenen Zustellungen anzeigen und vollständig digital verwalten sowie fällige Beträge bezahlen können.",
+      "altText": "Ein Mann und eine Frau sitzen an einem Tisch und betrachten ein Notebook",
+      "cta": "Entdecke die Vorteile für die Unternehmen",
+      "cta_secondary": "Zu den Zustellungen"
+    }
+  }
 }

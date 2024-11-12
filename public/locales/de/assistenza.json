@@ -1,3 +1,68 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | Support",
+  "description": "Häufig gestellte Fragen und Support-Ressourcen für den Servizio Notifiche Digitali SEND",
+  "heading": {
+    "title": "Brauchst du Hilfe?",
+    "subtitle": "Lies die Antworten auf häufig gestellte Fragen zum Servizio Notifiche Digitali SEND oder entdecke die Ressourcen für Bürger:innen, Unternehmen oder ausgebende Körperschaften."
+  },
+  "tab": {
+    "1": {
+      "title": "Für Bürger:innen und Unternehmen",
+      "card": {
+        "1": {
+          "title": "Wie kann ich auf SEND zugreifen?",
+          "cta": "Lies die Antwort"
+        },
+        "2": {
+          "title": "Was ist eine Empfangsbestätigung?",
+          "cta": "Lies die Antwort"
+        },
+        "3": {
+          "title": "Was bedeutet „Vervollständigung“?",
+          "cta": "Lies die Antwort"
+        }
+      },
+      "cta": "Entdecke alle FAQs",
+      "infoblock": {
+        "title": "Wir sind für dich da",
+        "description": "Du hast die gesuchte Antwort nicht gefunden? Schreib uns eine Support-Anfrage oder ruf das Kontaktcenter an."
+      },
+      "email": {
+        "title": "Schreib uns",
+        "description_1": "Schreib zwecks Support-Anfrage eine E-Mail an ",
+        "description_3": ": füge nützliche Informationen wie die einheitliche Benachrichtigungsnummer (IUN) hinzu.",
+        "cta": "Schreib uns"
+      },
+      "phone": {
+        "title": "Ruf uns an",
+        "description_1": "Das Kontaktcenter von PagoPA S.p.A. steht dir unter der Nummer ",
+        "description_3": " für Support von Montag bis Freitag ab 8.00 bis 20:00 und am Samstag ab 8.00 bis 14:00 zur Verfügung.",
+        "cta": "Ruf uns an"
+      }
+    },
+    "2": {
+      "title": "Für ausgebende Körperschaften",
+      "card": {
+        "1": {
+          "title": "Wer kann Zustellungen über SEND versenden?",
+          "cta": "Lies die FAQs für Körperschaften"
+        },
+        "2": {
+          "title": "Wie kann ich mit meiner Körperschaft SEND beitreten?",
+          "cta": "Entdecken Sie, wie Sie beitreten können"
+        },
+        "3": {
+          "title": "Wie funktioniert das Zustellungsverfahren?",
+          "cta": "Siehe die Anleitung"
+        }
+      },
+      "cta": "Entdecke die Ressourcen für die Körperschaften",
+      "email": {
+        "title": "Schreib uns",
+        "description": "Schreib zwecks Support-Anfrage als ausgebende Körperschaft eine E-Mail an ",
+        "cta": "Schreib uns"
+      }
+    }
+  },
+  "cta_faq": "Entdecke alle FAQs"
 }

@@ -1,9 +1,142 @@
 {
-    "footer": {
-        "it": "Italian",
-        "en": "English",
-        "fr": "French",
-        "de": "German",
-        "sl": "Slovenian"
+  "pagopaLink": {
+    "label": "PagoPA S.p.A.",
+    "ariaLabel": "Link: go to the website of PagoPA S.p.A."
+  },
+  "footer": {
+    "it": "Italian",
+    "en": "English",
+    "fr": "French",
+    "de": "German",
+    "sl": "Slovenian",
+    "company_info": {
+      "name": "PagoPA S.p.A.",
+      "detail_info": " - joint stock company with sole shareholder – share capital of € 1,000,000 fully paid up – registered office in Rome, Piazza Colonna 370,",
+      "detail_info_2": "ZIP CODE 00187 – Reg. no. in the Rome Business Register, Fiscal code and VAT number 15376371009"
+    },
+    "pre_login": {
+      "about_us": {
+        "label": "About us",
+        "ariaLabel": "Go to link: About us"
+      },
+      "pnrr": {
+        "label": "NRP",
+        "ariaLabel": "Go to link: NRP"
+      },
+      "media": {
+        "label": "Media",
+        "ariaLabel": "Go to link: Media"
+      },
+      "work_with_us": {
+        "label": "Work with us",
+        "ariaLabel": "Go to link: Work with us"
+      },
+      "resources": {
+        "label": "Resources",
+        "legal_notes": {
+          "label": "Legal notes",
+          "ariaLabel": "Go to link: Legal notes"
+        },
+        "privacy": {
+          "label": "Privacy Policy",
+          "ariaLabel": "Go to link: Privacy Policy"
+        },
+        "certifications": {
+          "label": "Certifications",
+          "ariaLabel": "Go to link: Certifications"
+        },
+        "information_security": {
+          "label": "Information security",
+          "ariaLabel": "Go to link: Information security"
+        },
+        "data_protection": {
+          "label": "Right to the protection of personal data",
+          "ariaLabel": "Go to link: Right to the protection of personal data"
+        },
+        "transparent_company": {
+          "label": "Transparent company",
+          "ariaLabel": "Go to link: Transparent company"
+        },
+        "disclosure": {
+          "label": "Responsible Disclosure Policy",
+          "ariaLabel": "Go to link: Responsible Disclosure Policy"
+        },
+        "model231": {
+          "label": "Model 231",
+          "ariaLabel": "Go to link: Model 231"
+        }
+      },
+      "followUs": {
+        "title": "Follow us on",
+        "linkedin": {
+          "title": "LinkedIn",
+          "ariaLabel": "Link: go to the LinkedIn website of PagoPA S.p.A."
+        },
+        "twitter": {
+          "title": "Twitter",
+          "ariaLabel": "Link: go to the Twitter website of PagoPA S.p.A."
+        },
+        "instagram": {
+          "title": "Instagram",
+          "ariaLabel": "Link: go to the Instagram website of PagoPA S.p.A."
+        },
+        "medium": {
+          "title": "Medium",
+          "ariaLabel": "Link: go to the Medium website of PagoPA S.p.A."
+        }
+      },
+      "accessibility": {
+        "label": "Accessibility",
+        "ariaLabel": "Go to link: Accessibility"
+      }
+    },
+    "post_login": {
+      "privacy": {
+        "label": "Privacy policy",
+        "ariaLabel": "Go to link: Privacy policy"
+      },
+      "accessibility": {
+        "label": "Accessibility",
+        "ariaLabel": "Go to link: About us"
+      }
     }
+  },
+  "header": {
+    "pagopaLink": {
+      "label": "PagoPA S.p.A.",
+      "ariaLabel": "Link: go to the website of PagoPA S.p.A."
+    },
+    "help": "Do you need help?"
+  },
+  "navigation": {
+    "title": "SEND Servizio Notifiche Digitali",
+    "cittadini": "Citizens",
+    "imprese": "Companies",
+    "enti": "Institutions",
+    "documentation": "Documentation",
+    "send_numbers": "SEND in numbers",
+    "faq": "FAQ",
+    "login": "Log in to SEND",
+    "pickup_points": "Collection points",
+    "pickup_points_how": "How it works"
+  },
+  "login_panel": {
+    "login": "Log in to SEND",
+    "cittadini": {
+      "title": "Citizens",
+      "description": "Log in as a physical person, independent professional or individual company",
+      "login": "Login"
+    },
+    "imprese": {
+      "title": "Companies",
+      "description": "Log in as a legal person",
+      "login": "Login"
+    },
+    "enti": {
+      "title": "Are you an institution?",
+      "description": "Has your institution not yet registered?",
+      "link": "Discover how to register",
+      "login": "Login"
+    }
+  }
 }

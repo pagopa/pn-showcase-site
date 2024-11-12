@@ -1,3 +1,86 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | Documents for institutions",
+  "description": "How to register with SEND: the documentation necessary for registering with the Digital Notification Service as the sending institution",
+  "docs_cards": {
+    "title": "How to register with SEND",
+    "subtitle": "For institutions",
+    "cta": "Register with SEND",
+    "description": {
+      "1": {
+        "description_1": "To register with SEND, it is necessary to select how to be integrated, directly or using one of the ",
+        "link": "partners or technological intermediaries",
+        "description_2": ", and sign the standard contract."
+      },
+      "2": {
+        "description_1": "To receive the standard contract, the institution must log into the",
+        "link_1": "Reserved Area",
+        "description_2": " and follow the steps described in ",
+        "link_2": "this guide",
+        "description_3": "."
+      },
+      "3": {
+        "description": "Once the contract is signed digitally, the institution must upload it and sent it to PagoPA S.p.A. from the Reserved Area, together with the following documents and forms filled out properly as required."
+      },
+      "4": {
+        "description_1": "For more information and clarifications, it is possible to ",
+        "link": "consult the FAQs",
+        "description_2": " dedicated to the institutions."
+      }
+    },
+    "card": {
+      "1": {
+        "title": "1. Terms and Conditions of registration and use",
+        "cta": "Read the Terms and Conditions"
+      },
+      "2": {
+        "title": "2. Document for appointing the Data Processor",
+        "cta": "Read the document of appointment"
+      },
+      "3": {
+        "title": "3. Technical documentation",
+        "cta_1": "Read the operating manual",
+        "cta_2": "The b2b API for public administrations and for forwarding notifications"
+      },
+      "4": {
+        "title": "4. Active cycle",
+        "cta": "Go to the document"
+      },
+      "5": {
+        "title": "5. Profiling form",
+        "description": "Required for start-up",
+        "cta": "Open the document"
+      },
+      "6": {
+        "title": "6. Order form",
+        "cta_1": "View the form",
+        "cta_2": "Access the Reserved Area and fill in the form in the invoicing section"
+      },
+      "7": {
+        "title": "7. Service SLA",
+        "cta": "Go to the document"
+      }
+    }
+  },
+  "in_depth_card": {
+    "title": "Do you want more information?",
+    "card": {
+      "1": {
+        "title": "Institution onboarding manual",
+        "cta": "Go to the manual"
+      },
+      "2": {
+        "title": "Digital and analog notification costs",
+        "cta1": "Go to the costs in force since 11/01/2024",
+        "cta2": "Go to the costs in force until 10/31/2024"
+      },
+      "3": {
+        "title": "Communication kit",
+        "cta": "Go to the kit"
+      }
+    }
+  },
+  "stripe_link": {
+    "title": "Has your institution registered and need more information about the platform integration phases?",
+    "cta": "Go to the technical documentation"
+  }
 }

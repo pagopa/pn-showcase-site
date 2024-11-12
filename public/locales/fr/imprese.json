@@ -1,3 +1,67 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | Pour les entreprises",
+  "description": "Lisez, payez et archivez les communications à valeur juridique envoyées à votre entreprise en un seul endroit qui est également accessible à vos collaborateurs",
+  "hero": {
+    "title": "Les notifications de votre entreprise ? Toutes ici.",
+    "subtitle": "SEND - Servizio Notifiche Digitali est la plateforme qui simplifie la réception des notifications à valeur juridique. Visualisez, payez et archivez les notifications envoyées à votre entreprise en un seul endroit qui est également accessible à vos collaborateurs",
+    "altText": "L’écran d’un ordinateur portable affiche la page principale de la plateforme SEND.",
+    "cta": "Lisez vos notifications"
+  },
+  "infoblock_1": {
+    "title": "Une nouvelle façon de gérer les notifications de votre entreprise",
+    "description_1": "Avec SEND, vous pouvez consulter, payer et gérer les notifications envoyées à votre entreprise de manière simple, rapide et entièrement numérique.",
+    "description_2": "Outre l’accès aux actes notifiés, vous pouvez également, sur SEND, payer les frais éventuels grâce à l’intégration avec pagoPA et consulter l'historique des notifications reçues.",
+    "altText": "Un homme travaille sur un ordinateur, assis à un bureau."
+  },
+  "infoblock_2": {
+    "title": "Un travail d’équipe",
+    "description_1": "Vous pouvez permettre à plusieurs utilisateurs d’utiliser la plateforme. Les communications pourront être ainsi gérées par plusieurs personnes, qui resteront informées en temps réel du travail des autres.",
+    "description_2": "Un moyen efficace d’améliorer la gestion des notifications au sein de l’entreprise et de mieux contrôler les délais des paiements et les versements effectués.",
+    "altText": "Un exemple de la section « statut de la notification » de la plateforme SEND.",
+    "cta": "Lisez les notifications de votre entreprise"
+  },
+  "infoblock_3": {
+    "title": "Vous pouvez déléguer ou être délégué",
+    "description": "Si vous le souhaitez, vous pouvez déléguer d’autres personnes, physiques ou morales, pour consulter vos notifications en ligne. Pour ce faire, connectez-vous à SEND avec votre SPID ou votre CIE et indiquez les coordonnées de la personne que vous souhaitez déléguer à la section Délégations.",
+    "altText": "Un exemple de la section « statut de la notification » de la plateforme SEND."
+  },
+  "showcase": {
+    "title": "Un nouveau service pour devenir une entreprise innovante",
+    "item_1": {
+      "title": "Unique",
+      "subtitle": "Gérez toutes les notifications envoyées à l’entreprise en un seul endroit"
+    },
+    "item_2": {
+      "title": "Rapide",
+      "subtitle": "Grâce à l’intégration avec pagoPA, payer est simple et rapide"
+    },
+    "item_3": {
+      "title": "Partagé",
+      "subtitle": "Plusieurs personnes peuvent gérer les notifications en même temps et rester informées en temps réel."
+    },
+    "item_4": {
+      "title": "Avantageux",
+      "subtitle": "Vous économisez sur les coûts de notification et de gestion"
+    }
+  },
+  "walkthrough": {
+    "title": "Comment ça marche ?",
+    "item_1": {
+      "title": "Vous recevez la notification",
+      "subtitle": "Pour chaque notification, SEND vérifie l’existence d’une PEC associée à votre entreprise pour l’envoi de l’avis de réception. SEND envoie également un avis de courtoisie à vos autres adresses numériques (email et numéro de téléphone mobile), si vous les avez indiquées. Si vous n’avez pas indiqué d’adresses numériques et que vous n’accédez pas à la notification en ligne via SEND, vous recevrez une lettre recommandée papier."
+    },
+    "item_2": {
+      "title": "Lisez le contenu",
+      "subtitle_1": "À partir du message reçu, vous pouvez accéder à la plateforme en ligne pour lire la notification et télécharger les actes notifiés.",
+      "subtitle_2": "Le premier accès à SEND doit être effectué par le représentant légal, qui doit enregistrer l’entreprise sur la plateforme."
+    },
+    "item_3": {
+      "title": "Payez les frais",
+      "subtitle": "S’il y a un montant à payer, grâce à l’intégration avec pagoPA, vous pouvez effectuer le paiement en ligne. Si vous préférez vous rendre à un guichet, vous devrez vous munir du formulaire de paiement joint à la notification."
+    },
+    "item_4": {
+      "title": "Voir l’historique",
+      "subtitle": "Pour chaque notification, vous pouvez consulter l’historique des statuts et les attestations correspondantes opposables aux tiers."
+    }
+  }
 }

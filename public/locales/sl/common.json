@@ -1,3 +1,142 @@
 {
-    
+  "pagopaLink": {
+    "label": "PagoPA S.p.A.",
+    "ariaLabel": "Povezava: pojdi na spletno mesto družbe PagoPA S.p.A."
+  },
+  "footer": {
+    "it": "Italijanščina",
+    "en": "Angleščina",
+    "fr": "Francoščina",
+    "de": "Nemščina",
+    "sl": "Slovenščina",
+    "company_info": {
+      "name": "PagoPA S.p.A.",
+      "detail_info": " – delniška družba z enim družbenikom – v celoti vplačan osnovni kapital 1.000.000 EUR – sedež v Rimu, Piazza Colonna 370",
+      "detail_info_2": "Poštna številka 00187 – št. vpisa v Poslovni register v Rimu, davčna številka in identifikacijska številka za DDV 15376371009"
+    },
+    "pre_login": {
+      "about_us": {
+        "label": "Kdo smo",
+        "ariaLabel": "Pojdi na povezavo: Kdo smo"
+      },
+      "pnrr": {
+        "label": "PNRR",
+        "ariaLabel": "Pojdi na povezavo: PNRR"
+      },
+      "media": {
+        "label": "Mediji",
+        "ariaLabel": "Pojdi na povezavo: Mediji"
+      },
+      "work_with_us": {
+        "label": "Sodeluj z nami",
+        "ariaLabel": "Pojdi na povezavo: Sodeluj z nami"
+      },
+      "resources": {
+        "label": "Viri",
+        "legal_notes": {
+          "label": "Pravna obvestila",
+          "ariaLabel": "Pojdi na povezavo: Pravna obvestila"
+        },
+        "privacy": {
+          "label": "Obvestilo o varovanju zasebnosti",
+          "ariaLabel": "Pojdi na povezavo: Obvestilo o varovanju zasebnosti"
+        },
+        "certifications": {
+          "label": "Certifikati",
+          "ariaLabel": "Pojdi na povezavo: Certifikati"
+        },
+        "information_security": {
+          "label": "Varnost podatkov",
+          "ariaLabel": "Pojdi na povezavo: Varnost podatkov"
+        },
+        "data_protection": {
+          "label": "Pravica do varstva osebnih podatkov",
+          "ariaLabel": "Pojdi na povezavo: Pravica do varstva osebnih podatkov"
+        },
+        "transparent_company": {
+          "label": "Pregledna družba",
+          "ariaLabel": "Pojdi na povezavo: Pregledna družba"
+        },
+        "disclosure": {
+          "label": "Politika odgovornega razkritja",
+          "ariaLabel": "Pojdi na povezavo: Politika odgovornega razkritja"
+        },
+        "model231": {
+          "label": "Obrazec 231",
+          "ariaLabel": "Pojdi na povezavo: Obrazec 231"
+        }
+      },
+      "followUs": {
+        "title": "Spremljajte nas na",
+        "linkedin": {
+          "title": "LinkedIn",
+          "ariaLabel": "Povezava: pojdi na LinkedIn družbe PagoPA S.p.A."
+        },
+        "twitter": {
+          "title": "Twitter",
+          "ariaLabel": "Povezava: pojdi na Twitter družbe PagoPA S.p.A."
+        },
+        "instagram": {
+          "title": "Instagram",
+          "ariaLabel": "Povezava: pojdi na Instagram družbe PagoPA S.p.A."
+        },
+        "medium": {
+          "title": "Medij",
+          "ariaLabel": "Povezava: pojdi na Medij družbe PagoPA S.p.A."
+        }
+      },
+      "accessibility": {
+        "label": "Dostopnost",
+        "ariaLabel": "Pojdi na povezavo: Dostopnost"
+      }
+    },
+    "post_login": {
+      "privacy": {
+        "label": "Politika varovanja zasebnosti",
+        "ariaLabel": "Pojdi na povezavo: Politika varovanja zasebnosti"
+      },
+      "accessibility": {
+        "label": "Dostopnost",
+        "ariaLabel": "Pojdi na povezavo: Kdo smo"
+      }
+    }
+  },
+  "header": {
+    "pagopaLink": {
+      "label": "PagoPA S.p.A.",
+      "ariaLabel": "Povezava: pojdi na spletno mesto družbe PagoPA S.p.A."
+    },
+    "help": "Potrebujete pomoč?"
+  },
+  "navigation": {
+    "title": "SEND Servizio Notifiche Digitali",
+    "cittadini": "Državljani",
+    "imprese": "Podjetja",
+    "enti": "Organizacije",
+    "documentation": "Dokumentacija",
+    "send_numbers": "SEND v številkah",
+    "faq": "Pogosta vprašanja",
+    "login": "Prijavite se v SEND",
+    "pickup_points": "Mesta prevzema",
+    "pickup_points_how": "Kako deluje"
+  },
+  "login_panel": {
+    "login": "Prijavite se v SEND",
+    "cittadini": {
+      "title": "Državljani",
+      "description": "Prijavite se kot fizična oseba, samostojni podjetnik ali samostojni",
+      "login": "Prijava"
+    },
+    "imprese": {
+      "title": "Podjetja",
+      "description": "Prijavite se kot pravna oseba",
+      "login": "Prijava"
+    },
+    "enti": {
+      "title": "Ste organizacija?",
+      "description": "Se vaša organizacija še ni pridružila?",
+      "link": "Ugotovite, kako se pridružiti",
+      "login": "Prijava"
+    }
+  }
 }

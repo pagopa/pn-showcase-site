@@ -1,3 +1,189 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | FAQ",
+  "description": "Lies die häufig gestellten Fragen im Zusammenhang mit der Plattform SEND für den Empfang von rechtsgültigen Zustellungen",
+  "hero": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Thema auswählen"
+  },
+  "notifications": {
+    "title": "Zustellungen",
+    "1": {
+      "title": "Was sind Zustellungen",
+      "description_1": "Zustellungen sind rechtsgültige Mitteilungen, die offiziell von einer Verwaltung herausgegeben werden, z.B. Geldbußen Steuerbescheide oder Erstattungen. „Zustellungen“ unterscheiden sich also von den „Push-Benachrichtigungen“, d.h. von den Kurznachrichten, die du auf dem Bildschirm deines Geräts erhältst.",
+      "description_2": "Bisher wurden diese Mitteilungen fast ausschließlich per Einschreiben verschickt. Jetzt kannst du sie digital empfangen."
+    },
+    "2": {
+      "title": "Was bedeutet es, dass eine Mitteilung „rechtsgültig“ ist?",
+      "description": "Das bedeutet, dass das Senden und Empfangen dieser Mitteilungen sowohl für den Absender als auch für den Empfänger rechtliche Auswirkungen hat. Wenn du zum Beispiel einen Bußgeldbescheid für einen Verkehrsverstoß erhältst, hat das Datum, an dem du ihn erhältst, Auswirkungen auf den Betrag, den du zahlen musst, oder auf dein Recht, den Bescheid anzufechten."
+    },
+    "3": {
+      "title": "Woraus besteht eine Zustelluing?",
+      "description_1": "Jede Zustellung besteht aus einer oder mehreren „Akten“, d.h. aus den zugestellten Unterlagen und anderen Dokumenten. Ein Bußgeldbescheid kann zum Beispiel aus einem Bericht zum Verkehrsverstoß (dem zugestellten Dokument), einem Foto der Radarkamera und einem Zahlschein (den anderen Dokumenten) bestehen.",
+      "description_2": "Eine digital mit SEND verschickte Zustellung hat die Form einer Benachrichtigung mit den Anweisungen zur online-Anzeige der Dokumente. Eine per Einschreiben gesendete Zustellung hingegen enthält die Benachrichtigung sowie die Dokumente."
+    }
+  },
+  "send": {
+    "title": "SEND",
+    "1": {
+      "title": "Was ist SEND?",
+      "description": "SEND - Servizio Notifiche Digitali (auch bekannt als Piattaforma Notifiche Digitali gemäß Art. 26 des Gesetzesdekrets 76/2020 in seiner neuesten Fassung) ist eine Plattform, die die Verwaltung von Zustellungen digitalisiert und vereinfacht: Sie ermöglicht es, die Zustellungen zu empfangen, die zugestellten Dokumente herunterzuladen und eventuelle Gebühren direkt online auf SEND oder über die IO-App zu bezahlen."
+    },
+    "2": {
+      "title": "An wen werden die Zustellungen gesendet?",
+      "description_1": "SEND kann Zustellungen im Auftrag der Körperschaften sowohl an Bürger:innen, d.h. „natürliche Personen“, als auch an Unternehmen, d.h. „juristische Personen“, senden.",
+      "description_2": "Um auf SEND zuzugreifen und die Zustellungen zu lesen, die du als Bürger:in erhältst, gehe zu",
+      "description_3": ". Wenn du der gesetzliche Vertreter eines Unternehmens bist oder die Erlaubnis hast, dessen Zustellungen zu lesen, gehe zu",
+      "description_4": "."
+    },
+    "3": {
+      "title": "Wie funktioniert das?",
+      "description_1": "Zum Senden einer Zustellung berücksichtigt SEND vorrangig deine digitalen Adressen: die rechtsgültige (eine PEC-Adresse) und die informelle Adresse (IO-App, E-Mail, Telefonnummer).",
+      "description_2": "Zunächst prüft SEND, ob du im Bereich „Deine Adressen“ informelle Adressen eingetragen oder ob du den Dienst „Notifiche Digitali“ auf IO aktiviert hast. Wenn ja, wird eine Nachricht an diese Kanäle gesendet, um dich darauf aufmerksam zu machen, dass eine Zustellung für dich vorliegt.",
+      "description_3": "Als Nächstes wird geprüft, ob du im Abschnitt „Deine Adressen“ eine PEC eingegeben hast. Hast du sie nicht eingegeben, so wird in den öffentlichen Registern nach einer PEC auf deinen Namen gesucht. Hast du sie eingegeben oder ist sie in öffentlichen Registern vorhanden, wird die Empfangsbestätigung gesendet.",
+      "description_4": "Wenn SEND dich nicht über die angegebenen digitalen Adressen erreichen kann, schickt sie dir die Zustellung mit den Unterlagen per Einschreiben in Papierform zu."
+    },
+    "4": {
+      "title": "Ist SEND bereits in Betrieb?",
+      "description": "Ja, SEND ist in Betrieb und wird von einigen Körperschaften zum Versand von Zustellungen genutzt. Der Beitritt zu SEND liegt im Ermessen der Körperschaften: Du kannst also weiterhin Einschreiben auf herkömmliche Weise erhalten, wie dies bisher der Fall war."
+    },
+    "5": {
+      "title": "Wie kann ich auf SEND zugreifen?",
+      "description_1": "Um auf SEND zuzugreifen und die Zustellungen zu lesen, die du als Bürger:in erhältst, gehe zu",
+      "description_2": ". Wenn du der gesetzliche Vertreter eines Unternehmens bist oder die Erlaubnis hast, dessen Zustellungen zu lesen, gehe zu",
+      "description_3": ". In beiden Fällen musst du deine SPID- oder CIE-Anmeldeinformationen eingeben."
+    }
+  },
+  "contacts": {
+    "title": "Adressen",
+    "1": {
+      "title": "Wo kann ich meine digitalen Adressen eingeben oder ändern?",
+      "description": "Melde dich bei SEND an und wähle „Deine Adressen“ aus dem Seitenmenü. Dort kannst du deine PEC, E-Mail und Telefonnummer eingeben oder ändern, aber auch den Dienst „Notifiche Digitali“ in IO aktivieren, um eine Nachricht in der App zu erhalten, wenn eine Zustellung für dich vorliegt. Wenn du IO noch nicht hast, lade die App aus dem Store deines Geräts herunter, gehe zum Tab „Notifiche Digitali“ von SEND und stelle sicher, dass die Option „Kontakt in der App“ aktiviert ist."
+    },
+    "2": {
+      "title": "Was passiert, wenn ich keine digitale Adresse eingebe oder ich nicht auf SEND zugreifen kann?",
+      "description_1": "Wenn es in den öffentlichen Registern eine auf dich zurückzuführende PEC gibt, erhältst du eine Empfangsbestätigung an diese Adresse. Zum Erhalt der zugestellten Dokumente musst du auf SEND zugreifen.",
+      "description_2": "Wenn es in den öffentlichen Registern keine auf dich zurückzuführende PEC gibt, erhältst du die Zustellung mit den Unterlagen per Einschreiben in Papierform."
+    },
+    "3": {
+      "title": "Was ist der Unterschied zwischen PEC, IO-App, E-Mail, Handynummer und Einschreiben in Papierform?",
+      "description_1": "Wenn es im Abschnitt „Deine Adressen“ oder in einem der öffentlichen Register eine auf dich zurückzuführende PEC gibt, erhältst du eine Empfangsbestätigung an diese Adresse. Um die zugestellten Dokumente anzuzeigen und eventuelle Gebühren zu bezahlen, musst du dich mit SPID oder CIE bei SEND anmelden und den Anweisungen in der Benachrichtigung folgen.",
+      "description_2": "Wenn du den Dienst „Notifiche Digitali“ von IO aktiviert hast, erhältst du bei Vorliegen einer Zustellung eine App-Nachricht. Du kannst direkt in IO die zugestellten Dokumente einsehen und eventuelle Gebühren bezahlen, ohne dich mit SPID oder CIE auf SEND anzumelden.",
+      "description_3": "Wenn du eine E-Mail oder eine Handynummer eingegeben hast, erhältst du bei Vorliegen einer Zustellung eine Nachricht auf diesen Kanälen. Um die zugestellten Dokumente anzuzeigen und eventuelle Gebühren zu bezahlen, musst du dich mit SPID oder CIE bei SEND anmelden und den Anweisungen folgen.",
+      "description_4": "Wenn du deine Adressen eingeben oder ändern möchtest, melde dich bei SEND an und gehe zum Abschnitt „Deine Adressen“.",
+      "description_5": "Wenn du keine digitale Adresse eingegeben hast, erhältst du die Zustellung mit den Unterlagen per Einschreiben in Papierform."
+    },
+    "4": {
+      "title": "Was bedeutet es, dass die PEC als „Hauptadresse“ verwendet wird?",
+      "description_1": "Wenn du keine PEC in den öffentlichen Registern hast und im Abschnitt „Deine Adressen“ eine eingibst, wird diese als Hauptadresse für die Zusendung der Empfangsbestätigungen verwendet. Wenn du sie eingibst, erhältst du keine Einschreiben mehr in Papierform, es sei denn der Versand schlägt fehl.",
+      "description_2": "Wenn du eine PEC in den öffentlichen Registern hast und im Abschnitt „Deine Adressen“ eine weitere eingibst, wird die in SEND eingetragene als Hauptadresse verwendet. Wenn du sie nicht in SEND eingibst, wird die PEC in den öffentlichen Registern in jedem Fall verwendet, unabhängig vom Gegenstand der Zustellung."
+    }
+  },
+  "documents": {
+    "title": "Dokumente und Mitteilungen",
+    "1": {
+      "title": "Was ist eine Empfangsbestätigung?",
+      "description_1": "Es ist das Dokument, das du per PEC oder Einschreiben erhältst, wenn eine Zustellung für dich vorliegt. Der Versand dieses Dokuments ist an sich schon rechtsgültig, da es die wesentlichen Informationen der Zustellung enthält, u.z.:",
+      "description_2": "die Körperschaft, die sie dir gesendet hat;",
+      "description_3": "die einheitliche Benachrichtigungsnummer (IUN);",
+      "description_4": "den Gegenstand;",
+      "description_5": "die Angaben zum Erhalt der zugestellten Dokumente und der etwaigen Anhänge."
+    },
+    "2": {
+      "title": "Was ist IUN?",
+      "description": "IUN (einheitliche Benachrichtigungsnummer) ist ein Code aus Buchstaben und Zahlen. Hiermit wird jede Zustellung eindeutig identifiziert."
+    },
+    "3": {
+      "title": "Was ist die informelle Benachrichtigung?",
+      "description_1": "Wenn du den Dienst „Notifiche Digitali“ von SEND in der IO-App aktiviert hast oder wenn du eine E-Mail-Adresse oder Telefonnummer im Abschnitt „Deine Adressen“ von SEND eingegeben hast, erhältst du eine informelle Benachrichtigung bei Vorliegen einer Zustellung für dich.",
+      "description_2": "Wenn du die Nachricht auf IO erhältst, kannst du direkt in der App die zugestellten Dokumente einsehen und eventuelle Gebühren. Wenn du eine E-Mail oder SMS erhältst, melde dich bei SEND an, um die zugestellten Dokumente aufzurufen und eventuelle Gebühren zu bezahlen."
+    },
+    "4": {
+      "title": "Was ist eine Nichtzustellungsmitteilung?",
+      "description": "Dieses Dokument bescheinigt, dass SEND zweimal versucht hat, dir die Zustellung per PEC zu senden, dich aber nicht erreichen konnte. Auch in diesem Fall treten die rechtlichen Auswirkungen der Zustellung dennoch ein."
+    },
+    "5": {
+      "title": "Was ist die Bescheinigung, die von Dritten angefochten werden?",
+      "description": "Es ist ein Dokument, das eine Änderung des Zustellungsstatus bescheinigt, z.B. „zur Einsichtnahme vervollständigt“ oder „Wird gesendet“, und kann als solches gegenüber Dritten geltend gemacht werden."
+    },
+    "6": {
+      "title": "Was ist der Abschnitt „Zustellungsstatus“?",
+      "description_1": "Dieser Abschnitt findet sich rechts in SEND unter Einzelheiten zur Zustellung. Hier kannst du die verschiedenen Phasen im Lebenszyklus der Zustellung sehen, z.B. wann die Körperschaft sie in SEND hinterlegt hat, wann und wie SEND sie versendet hat, wann du sie erhalten hast und so weiter.",
+      "description_2": "Unter den Status, die dies vorsehen, findest du die entsprechende Bescheinigung, die von Dritten angefochten werden kann oder die Bestätigung. Du kannst diese Dokumente jederzeit anzeigen und herunterladen."
+    }
+  },
+  "notification_reception": {
+    "title": "Empfang einer Zustellung",
+    "1": {
+      "title": "Ich habe auf der IO-App eine Nachricht vom Dienst „Notifiche Digitali“ von SEND erhalten. Was soll ich tun?",
+      "description": "Öffne die Nachricht, lies die zugestellten Dokumente und bezahle eventuelle Gebühren. Wenn du keine PEC in den öffentlichen Registern oder diese nicht auf SEND bereitgestellt hast und eine Nachricht auf IO innerhalb von 5 Tagen (120 Stunden) nach Versand der Nachricht öffnest, erhältst du keine Zustellung per Einschreiben in Papierform."
+    },
+    "2": {
+      "title": "Ich habe eine SMS von SEND erhalten, die besagt, dass eine Zustellung für mich vorliegt. Was soll ich tun?",
+      "description": "Melde dich mit SPID oder CIE bei SEND an, lies die zugestellten Dokumente und bezahle eventuelle Gebühren. Wenn du keine PEC in den öffentlichen Registern oder diese nicht auf SEND bereitgestellt hast und innerhalb von 5 Tagen (120 Stunden) nach Versand der SMS auf SEND zugreifst, erhältst du keine Zustellung per Einschreiben in Papierform."
+    },
+    "3": {
+      "title": "Ich habe eine E-Mail von SEND erhalten, die besagt, dass eine Zustellung für mich vorliegt. Was soll ich tun?",
+      "description": "Melde dich mit SPID oder CIE bei SEND an, lies die zugestellten Dokumente und bezahle eventuelle Gebühren. Wenn du keine PEC in den öffentlichen Registern oder diese nicht auf SEND bereitgestellt hast und innerhalb von 5 Tagen (120 Stunden) nach Versand der E-Mail auf SEND zugreifst, erhältst du keine Zustellung per Einschreiben in Papierform."
+    },
+    "4": {
+      "title": "Ich möchte eine Person zum Erhalt meiner Zustellungen bevollmächtigen. Kann ich das tun?",
+      "description_1": "Ja: melde dich dazu mit SPID oder CIE auf SEND an und gehe zum Abschnitt „Vollmachten“. Klicke dann auf „Eine Vollmacht hinzufügen“, gib die Daten ein und sende den Antrag. Du wirst einen Bestätigungscode sehen: teile ihn mit der bevollmächtigten Person. Diese muss sich mit ihrer SPID oder CIE bei SEND anmelden, den Abschnitt „Vollmachten“ öffnen und durch Eingeben des Codes die Vollmacht akzeptieren. Von dem Zeitpunkt an erhält die bevollmächtigte Person deine eventuellen Zustellungen.",
+      "description_2": "Du kannst eine Vollmacht jederzeit im Abschnitt „Vollmachten“ widerrufen."
+    },
+    "5": {
+      "title": "Ich möchte von einer Person zum Erhalt ihrer Zustellungen bevollmächtigt werden. Kann ich das tun?",
+      "description": "Ja: bitte die Person, sich mit SPID oder CIE auf SEND anzumelden und zum Abschnitt „Vollmachten“ zu gehen. Bitte sie dann, auf „Eine Vollmacht hinzufügen“ zu klicken, die Daten einzugeben und den Antrag zu senden. Sie muss daraufhin mit dir einen Bestätigungscode teilen. Melde dich nun mit SPID oder CIE bei SEND an, gehe zum Abschnitt „Vollmachten“ und akzeptiere die Vollmacht durch Eingeben des Codes. Von dem Zeitpunkt an erhältst du die eventuellen Zustellungen dieser Person."
+    },
+    "6": {
+      "title": "Wie lange sind die Dokumente der Zustellung verfügbar?",
+      "description_1": "120 Tage ab dem",
+      "description_2": "Vervollständigungsdatum",
+      "description_3": ". Nach dieser Frist kannst du sie nicht mehr in der IO-App oder über SEND aufrufen. Du musst die Körperschaft verständigen, die sie dir gesendet hat. Die Empfangsbestätigung ist dagegen 10 Jahre ab dem Vervollständigungsdatum verfügbar."
+    },
+    "7": {
+      "title": "Was passiert, wenn ich die Zustellung ignoriere?",
+      "description_1": "Unabhängig davon, ob du die Empfangsbestätigungen digital oder auf Papier erhalten hast, oder ob du sie auf IO oder direkt auf der Plattform angezeigt hast, treten die rechtlichen Auswirkungen der Zustellung auch dann ein, wenn du dich entscheidest, sie zu ignorieren.",
+      "description_2": "Die Zustellung zeitigt auch dann rechtliche Auswirkungen, wenn die entsprechende Nichtzustellungsmitteilung auf der Plattform hinterlegt wurde."
+    },
+    "8": {
+      "title": "Bei einer Zustellung mit mehreren Bescheiden beinhalten einige die Zustellungsgebühren und andere nicht. Wieso?",
+      "description_1": "Einige Zustellungen beinhalten Versandgebühren, die einmalig pro Zustellung gezahlt werden müssen. Bei Zustellungen mit mehreren Zahlungsbescheiden werden die Gebühren für den Versand nur in einem und nicht in allen Bescheiden berücksichtigt.",
+      "description_2": "Es gibt zum Beispiel Fälle, in denen man sich entscheiden kann, ob man die Zustellung auf einmal oder in Raten bezahlen möchte. Wenn du dich für die einmalige Zahlung entscheidest, werden die Versandgebühren im entsprechenden Zahlungsbescheid aufgeführt. Im Fall einer Ratenzahlung werden die Versandgebühren nur in einem der verschiedenen Bescheide aufgeführt, normalerweise in dem der ersten Rate."
+    }
+  },
+  "finalization": {
+    "title": "Vervollständigung",
+    "1": {
+      "title": "Was bedeutet „Vervollständigung“?",
+      "description": "Die Vervollständigung einer Zustellung bedeutet, dass diese für die verschiedenen Zwecke rechtsgültig wird. Zum Beispiel beginnen ab dem Vervollständigungsdatum einer Zustellung die Fristen für die Ausübung der entsprechenden Rechte, die Anfechtung von Akten und die Zahlung von Strafen."
+    },
+    "2": {
+      "title": "Wann ist die Bearbeitung einer Zustellung vervollständigt?",
+      "description_1": "Eine Zustellung wird zu unterschiedlichen Zeitpunkten hinsichtlich der sendenden Körperschaft und des Empfängers vervollständigt. Für diejenigen, die sie senden, ist sie an dem Tag vervollständigt, an dem das zuzustellende Dokument auf der Plattform zur Verfügung gestellt wird. Für den Empfänger hängt die Vervollständigung davon ab, wie er die Zustellung erhält oder aufruft. ",
+      "description_2": "Hier",
+      "description_3": " findest du die Vervollständigungszeit einer Zustellung heraus, je nachdem, über welchen Kanal sie erhalten oder aufgerufen wurde."
+    },
+    "3": {
+      "title": "Wie kann ich wissen, wann eine Zustellung vervollständigt ist?",
+      "description": "Melde dich dazu mit SPID oder CIE auf SEND an und klicke auf die Zustellung. Du findest diese Informationen auf der rechten Seite im Abschnitt „Zustellungsstatus“."
+    }
+  },
+  "cancellation": {
+    "title": "Stornierung",
+    "1": {
+      "title": "Die Zustellung, die ich erhalten habe, wurde storniert. Wieso?",
+      "description": "Die Körperschaft, die sie gesendet hat, kann sie aus verschiedenen Gründen storniert haben. Es kann beispielsweise ein Fehler unterlaufen sein oder es können Umstände eingetreten sein, infolgedessen die Zustellung nicht mehr wirksam ist. Wenn du eine Zustellung erhalten hast, diese dann storniert wurde, kannst du ihren Inhalt ignorieren. Kontaktiere bei Zweifeln oder Fragen die Körperschaft, die sie dir gesendet hat."
+    },
+    "2": {
+      "title": "Die Zustellung, die ich erhalten habe, wurde storniert, ich habe sie allerdings schon bezahlt. Was soll ich tun?",
+      "description": "Für Informationen über eine eventuelle Vergütung kontaktiere die Körperschaft, die sie dir gesendet hat."
+    }
+  },
+  "accessibility": {
+    "title": "Barrierefreiheit",
+    "1": {
+      "title": "Wo kann ich Meldungen zur Barrierefreiheit einreichen?",
+      "description": "Schreib uns an die E-Mail-Adresse"
+    }
+  }
 }

@@ -1,3 +1,77 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | Für Körperschaften",
+  "description": "Entdecke, wie du SEND beitreten kannst, um das Zustellungsverfahren deines Unternehmens einfacher, sicherer und effizienter zu gestalten",
+  "hero": {
+    "title": "Zustellungen senden? Leicht gesagt.",
+    "subtitle_1": "SEND - Servizio Notifiche Digitali (auch bekannt als Piattaforma Notifiche Digitali gemäß Art. 26 des Gesetzesdekrets 76/2020 in seiner geänderten Fassung)  digitalisiert die Verwaltung der rechtsgültigen Mitteilungen und vereinfacht so den Vorgang für diejenigen, die sie versenden, und für diejenigen, die sie empfangen.",
+    "subtitle_2": "Und nun auch leicht getan. ",
+    "altText": "Bilder einiger Vordrucke zum Versand digitaler Zustellungen",
+    "cta": "Entdecke, wie du SEND beitreten kannst"
+  },
+  "infoblock_1": {
+    "title": "Das Zustellungsverfahren wird einfacher",
+    "description_1": "SEND - Servizio Notifiche Digitali entbindet Körperschaften von allen Tätigkeiten im Zusammenhang mit der Verwaltung rechtsgültiger Mitteilungen und verringert die Unsicherheit der Auffindbarkeit des Empfängers.",
+    "description_2": "Die Körperschaften müssen lediglich den zuzustellenden Akt hinterlegen: Die Plattform kümmert sich um den Versand, entweder digital oder analog, und spart so Zeit- sowie Kostenaufwand für das gesamte Verfahren.",
+    "altText": "Ein Beispiel des Abschnitts „Zustellungsstatus“ der Plattform SEND."
+  },
+  "infoblock_2": {
+    "title": "Lade den Akt. Alles weitere kannst du dann vergessen.",
+    "description_1": "SEND integriert sich in das Protokoll der Körperschaften und bietet APIs für den automatischen Versand der Zustellungen sowie die Möglichkeit des manuellen Versands. Sobald die Unterlagen und Zahlungsformulare geladen wurden, generiert die Plattform die einheitliche Benachrichtigungsnummer IUN zur Identifizierung der Zustellung.",
+    "description_2": "Sie sucht dann in ihren Archiven und öffentlichen Registern nach einer PEC, die auf den Empfänger zurückgeführt werden kann, und sendet die Zustellung. Gleichzeitig wird eine informelle Benachrichtigung an die anderen digitalen Adressen (IO-App, E-Mail und Handynummer) des Empfängers gesendet.",
+    "description_3": "Wenn der Empfänger keine digitale Adresse angegeben und keinen Zugang zur Plattform hat, fährt die Plattform mit der Suche nach einer physischen Adresse und dem Versand per Einschreiben fort.",
+    "altText": "Ein Beispiel des Abschnitts „Eine neue Zustellung senden“ der Plattform SEND."
+  },
+  "infoblock_3": {
+    "title": "Und der Empfänger?",
+    "description_1": "Der Empfänger greift über SPID oder CIE auf die Plattform zu, wo er das zugestellte Dokument abrufen und herunterladen kann. Dank der Integration mit pagoPA kann er, falls geschuldet, ebenfalls fällige Beträge zahlen. Wenn er den Dienst auf IO aktiviert hat, kann er alles direkt in der App erledigen.",
+    "description_2": "Wie die Körperschaft hat auch der Empfänger Zugriff auf den Verlauf der Zustellungsstatus und auf die Dritten gegenüber anfechtbaren Bescheinigungen.",
+    "altText": "Die Hände einer Person tippen auf einer Laptop-Tastatur. Der Bildschirm zeigt eine Seite der Plattform SEND."
+  },
+  "showcase": {
+    "title": "Eine neue Art, Zustellungen zu verwalten",
+    "item_1": {
+      "title": "Einzigartig",
+      "subtitle": "Die Zustellungen werden über einen einzigen Kanal versendet, verwaltet und überwacht, der von mehreren Sachbearbeitern der Körperschaft zugänglich ist"
+    },
+    "item_2": {
+      "title": "Einfach",
+      "subtitle": "Zustellungen können mittels API oder manuell geladen werden: Sobald der Akt hinterlegt ist, kümmert sich die Plattform um den Versand und verfolgt dabei die Statusänderungen"
+    },
+    "item_3": {
+      "title": "Unmittelbar",
+      "subtitle": "Wenn der Empfänger über eine digitale Adresse verfügt, verkürzen sich die Versandzeiten erheblich"
+    },
+    "item_4": {
+      "title": "Sicher",
+      "subtitle": "Das Zustellungsverfahren ist standardisiert und es besteht eine größere Sicherheit, dass die Zustellung an den Empfänger erfolgt"
+    }
+  },
+  "walkthrough": {
+    "title": "Wie funktioniert das?",
+    "item_1": {
+      "title": "Die Körperschaft erstellt den Zustellungsantrag",
+      "subtitle": "Mithilfe des API-Schlüssels oder manuell erstellt die Körperschaft den Zustellungsantrag und lädt die Anhänge hoch."
+    },
+    "item_2": {
+      "title": "Die Plattform übernimmt den Antrag",
+      "subtitle": "SEND prüft die Vollständigkeit der Informationen. Bei jedem Statuswechsel wird die Dritten gegenüber anfechtbare Bescheinigung erstellt."
+    },
+    "item_3": {
+      "title": "Die Zustellung wird versendet",
+      "subtitle": "SEND teilt dem Empfänger das Vorliegen einer Zustellung über verschiedene mögliche Kanäle mit: PEC, IO-App, E-Mmail, SMS. Alternativ sendet sie ein Einschreiben in Papierform an die von der Körperschaft angegebene physische Adresse."
+    },
+    "item_4": {
+      "title": "Der Empfänger erhält sie",
+      "subtitle": "Der Empfänger greift auf die Plattform zu. Dort kann er die zugestellten Dokumente herunterladen und dank der Integration mit pagoPA gleichzeitig die fälligen Beträge bezahlen. Wenn er sie über IO erhälthat, kann er alles direkt in der App erledigen."
+    }
+  },
+  "stripe_link": {
+    "title": "Möchtest du den Bürger:innen mitteilen, dass du SEND beigetreten bist?",
+    "cta": "Gehe zum Kommunikations-Set"
+  },
+  "dark_infoblock": {
+    "title": "Ist deine Körperschaft SEND bereits beigetreten?",
+    "subtitle": "Wenn deine Körperschaft SEND beigetreten ist und du ein autorisierter Benutzer bist, melde dich über den reservierten Bereich an.",
+    "cta": "Login auf SEND"
+  }
 }

@@ -1,3 +1,88 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | For citizens",
+  "description": "Receive in real time the legal communications by institutions. Read, manage or pay online on the SEND platform or the IO app",
+  "hero": {
+    "title": "The notifications? At your fingertips",
+    "subtitle": "With SEND - Servizio Notifiche Digitali (also known as the Piattaforma Notifiche Digitali specified in art. 26 of Decree law 76/2020 as amended) you can instantaneously receive legal communications from an institution. You can see, manage and pay them directly online on the platform or on the IO app.",
+    "altText": "One hand holds a smartphone. The screen shows the details of a notification.",
+    "cta": "Read your notifications"
+  },
+  "infoblock_1": {
+    "title": "Do not lose any other notifications",
+    "description_1": "The notifications are legal communications issued officially by a Public administration, as outcomes of administrative procedures or reimbursements, tickets and tax assessment notifications. Starting today, you can receive and read them digitally, signing in online to SEND - Servizio Notifiche Digitali via SPID or CIE or directly from the IO app.",
+    "description_2": "You can also pay any costs thanks to integration with pagoPA, view the history of the notifications received and manage them directly online. Furthermore, simply accept a delegation to also access the notifications of your family members.",
+    "altText": "Image of your notifications"
+  },
+  "infoblock_2": {
+    "title": "Decide how to receive the notifications",
+    "description_1": "To send legal communications, SEND gives priority to your digital addresses. You can access the Digital Notification Service online at any moment with SPID or CIE to indicate or update your legal address (PEC) or your courtesy address (IO app, email and/or mobile number).",
+    "description_2": "If you do not indicate an address or if you do not access the notification via SEND from channels other than PEC ",
+    "description_3": "by the indicated times",
+    "description_4": ", you will continue receiving the notifications by registered mail.",
+    "altText": "A man holding a smartphone looks at the camera."
+  },
+  "infoblock_3": {
+    "title": "",
+    "description_1": "Public Administrations are gradually adopting the new Digital Notification Service, for this reason it is possible that not all documents will already be notified to you in this way.",
+    "description_2": "The future of legal communications",
+    "description_3": "SEND is available to institutions that can use it to send notifications to recipients of their legal communications.",
+    "altText": "A woman is looking at the monitor of a notebook."
+  },
+  "infoblock_4": {
+    "title": "PEC",
+    "description": "If you indicated a PEC address, the notifications will be considered legally delivered, without registered mail. The notification of registration that will be sent to you contains the link for accessing the documents on SEND.",
+    "altText": "Image of a notification on SEND"
+  },
+  "infoblock_5": {
+    "title": "Email and SMS",
+    "description": "You can also select to receive a courtesy notification to your e-mail address or via SMS. If you do not have a PEC but access the notification via SEND from the provided link within 5 days (120 hours) from receiving the notification, it will be considered legally delivered and you will not receive a registered letter.",
+    "altText": "Image of a notification on SEND"
+  },
+  "infoblock_custom": {
+    "title": "IO app",
+    "description_1": "If you activate the “SEND - Notifiche digitali” service, you will receive a message on IO for each notification. You can view the notified documents and pay any fees directly in app. If you do not have a PEC address but access the notification from the app and read the notification within 5 days (120 hours) from receiving it, it will be considered legally delivered and you will not receive a registered letter.",
+    "description_2": "Download the app:",
+    "googleAltText": "Available on Google Play",
+    "appleAltText": "Available on the App store"
+  },
+  "showcase": {
+    "title": "A single way for saving in many ways",
+    "item_1": {
+      "title": "Convenience",
+      "subtitle": "Delivering notifications digitally involves reduced costs for notification and sending"
+    },
+    "item_2": {
+      "title": "Time",
+      "subtitle": "No more waits or lines to collect the paper communications"
+    },
+    "item_3": {
+      "title": "Sustainability",
+      "subtitle": "Contribute toward reducing the use of paper and emissions for transport"
+    },
+    "item_4": {
+      "title": "Space",
+      "subtitle": "You do not have to store the printed documents anymore, as they can be downloaded and filed digitally"
+    }
+  },
+  "walkthrough": {
+    "title": "How does it work?",
+    "item_1": {
+      "title": "Receive the notification",
+      "subtitle": "For each notification, SEND verifies that there is a PEC associated with you and indicated by you for sending the notification of receipt. It also sends a courtesy notification to your other digital addresses (IO app, e-mail and mobile number), if you entered them. If you did not indicate a digital address and do not access online to the notification via SEND, you will receive a paper notification."
+    },
+    "item_2": {
+      "title": "Read the content",
+      "subtitle_1": "From the received message, you can access the platform online to read the notification and download the relative attached documents. If you activate the service on IO, you can view the content directly in app: this is equivalent to signing the return receipt for traditional registered mail and ",
+      "subtitle_2": "its immediate finalization",
+      "subtitle_3": " of the notification."
+    },
+    "item_3": {
+      "title": "Pay the fees",
+      "subtitle": "If there is an amount to paid, thanks to integration with pagoPA you can proceed at the same time online from SEND or directly from IO. If you prefer to make the payment in person, you must have the payment form attached to the notification."
+    },
+    "item_4": {
+      "title": "You can delegate or be delegated",
+      "subtitle": "If you want, you can delegate other physical or legal persons to view your notifications online. To do to, access SEND with SPID or CIE and enter the data of the person you want to delegate in the Delegations section."
+    }
+  }
 }

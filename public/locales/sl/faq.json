@@ -1,3 +1,189 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | Pogosta vprašanja",
+  "description": "Oglejte si pogosto zastavljena vprašanja na platformi SEND, ki je namenjena prejemanju uradnih digitalnih obvestil",
+  "hero": {
+    "title": "Pogosta vprašanja",
+    "subtitle": "Izberite temo"
+  },
+  "notifications": {
+    "title": "Obvestila",
+    "1": {
+      "title": "Kaj so obvestila",
+      "description_1": "Obvestila so pravna sporočila, ki jih uradno izda uprava, kot so globe, obvestila o odmeri dajatev ali povračila. »Obvestila« se torej razlikujejo od »potisnih obvestil«, torej tistih kratkih sporočil, ki jih prejmete na zaslon svoje naprave.",
+      "description_2": "Do zdaj so se ta sporočila skoraj vedno pošiljala s priporočenim pismom v papirni obliki. Sedaj pa jih lahko prejmete digitalno."
+    },
+    "2": {
+      "title": "Kaj pomeni, da je komunikacija »uradna«?",
+      "description": "To pomeni, da imata pošiljanje in prejemanje teh sporočil pravne učinke tako za tiste, ki jih pošiljajo, kot za tiste, ki jih prejemajo. Na primer, če prejmete globo za prometni prekršek, datum prejema vpliva na znesek, ki ga plačate, ali na možnost do njenega izpodbijanja."
+    },
+    "3": {
+      "title": "Kaj vsebuje obvestilo?",
+      "description_1": "Vsako obvestilo je sestavljeno iz ene ali več »listin«, tj. priglašenih dokumentov in vseh drugih dokumentov. Na primer, globa je lahko sestavljena iz poročila o prekršku (priglašeni dokument), fotografije prometne kamere in položnice (ostali dokumenti).",
+      "description_2": "Obvestilo, poslano digitalno s SEND, je v obliki obvestila z navodili za ogled dokumentov na spletu. Obvestilo, poslano s pismom v papirni obliki, pa vsebuje obvestilo in dokumente."
+    }
+  },
+  "send": {
+    "title": "SEND",
+    "1": {
+      "title": "Kaj je SEND?",
+      "description": "SEND - Servizio Notifiche Digitali (znana tudi kot Piattaforma Notifiche Digitali v skladu s členom 26 zakonodajnega odloka 76/2020 s spremembami) je platforma, ki digitalizira in poenostavlja upravljanje obvestil: omogoča vam, da jih prejmete, prenesete priglašene dokumente in plačate vse stroške neposredno na spletu v SEND ali v aplikaciji IO."
+    },
+    "2": {
+      "title": "Komu pošilja obvestila?",
+      "description_1": "SEND lahko pošilja obvestila v imenu organizacij tako državljanom, tj. »fizičnim osebam«, kot podjetjem, tj. »pravnim osebam«.",
+      "description_2": "Za dostop do SEND in branje obvestil, ki jih prejmete kot državljan, pojdite na",
+      "description_3": ". Če ste pravni zastopnik podjetja ali imate dovoljenje za branje njegovih obvestil, pojdite na",
+      "description_4": "."
+    },
+    "3": {
+      "title": "Kako deluje?",
+      "description_1": "Pri pošiljanju obvestila, bo SEND da prednost vašim digitalnim kontaktnim podatkom: pravnim (naslov PEC) in vljudnostnim (IO aplikacija, e-pošta, telefonska številka).",
+      "description_2": "SEND najprej preveri, ali ste v razdelek »Vaši kontaktni podatki« vnesli kakršne koli vljudnostne kontaktne podatke ali ste na IO aktivirali storitev »Digitalna obvestila«. Če obstajajo, pošljite sporočilo na te kanale, da vas obvestimo, če vas čaka obvestilo.",
+      "description_3": "Nato preverite, ali ste v razdelku »Vaši kontaktni podatki« vnesli PEC. Če ga niste vnesli, v javnih registrih poiščite potrjeno e-pošto na svoje ime. Če ste ga vnesli ali če je v javnih evidencah, pošljite potrdilo tja.",
+      "description_4": "Če ne more stopiti v stik z vami prek navedenih digitalnih kontaktnih podatkov, vam bo poslal obvestilo, vključno z dokumenti, s priporočenim pismom v papirnati obliki."
+    },
+    "4": {
+      "title": "Ali že deluje?",
+      "description": "Da, SEND deluje in ga nekatere organizacije uporabljajo za pošiljanje obvestil. Vstop v SEND je odločitev organizacije: tako boste lahko še naprej prejemali priporočena pisma na tradicionalen način, kot je veljalo do sedaj."
+    },
+    "5": {
+      "title": "Kako lahko dostopam do SEND?",
+      "description_1": "Za dostop do SEND in branje obvestil, ki jih prejmete kot državljan, pojdite na",
+      "description_2": ". Če ste pravni zastopnik podjetja ali imate dovoljenje za branje njegovih obvestil, pojdite na",
+      "description_3": ". V obeh primerih boste morali vnesti svoje poverilnice SPID ali CIE."
+    }
+  },
+  "contacts": {
+    "title": "Kontaktni podatki",
+    "1": {
+      "title": "Kje lahko vnesem ali spremenim svoje digitalne kontaktne podatke?",
+      "description": "Prijavite se v POŠLJI in v stranskem meniju izberite »Vaši kontaktni podatki«. Tam lahko vnesete ali spremenite PEC, e-pošto in telefonsko številko, pa tudi aktivirate storitev IO »Digitalna obvestila«, da prejmete sporočilo v aplikaciji vsakič, ko je za vas obvestilo. Če še nimate IO, prenesite aplikacijo iz trgovine vaše naprave, pojdite na servisni zavihek POŠLJI »Digitalna obvestila« in se prepričajte, da je možnost »Stik z vami v aplikaciji« aktivna."
+    },
+    "2": {
+      "title": "Kaj se zgodi, če ne vnesem digitalnih kontaktnih podatkov ali če ne morem dostopati do SEND?",
+      "description_1": "Če je v javnih registrih PEC, ki ga je mogoče pripisati vam, boste na ta naslov prejeli obvestilo o prejemu. Za vročitev dokumentov se morate prijaviti v SEND.",
+      "description_2": "Če v javnih registrih ni PEC, ki bi ga lahko pripisali vam, boste obvestilo, vključno z dokumenti, prejeli s priporočeno pošto."
+    },
+    "3": {
+      "title": "Kakšna je razlika med PEC, aplikacijo IO, e-pošto, mobilno številko in priporočenim pismom v papirnati obliki?",
+      "description_1": "Če je PEC, ki ga je mogoče pripisati vam, v razdelku »Vaši kontaktni podatki« v SEND ali v enem od javnih registrov, boste na ta naslov prejeli obvestilo o prejemu. Če si želite ogledati priglašene dokumente in plačati morebitne pristojbine, boste morali dostopati do SEND s SPID ali CIE in slediti navodilom v obvestilu.",
+      "description_2": "Če ste aktivirali storitev IO »Digitalna obvestila«, boste v aplikaciji prejeli sporočilo, ko boste prejeli obvestilo. Ogledali si boste lahko priglašene dokumente in plačali vse stroške neposredno v IO, ne da bi morali dostopati do SEND s SPID ali CIE.",
+      "description_3": "Če ste vnesli e-pošto ali mobilno številko, ko je za vas obvestilo, boste prejeli sporočilo na teh kanalih. Če si želite ogledati priglašene dokumente in plačati kakršne koli pristojbine, boste morali dostopati do SEND s SPID ali CIE po navodilih.",
+      "description_4": "Če želite vnesti ali spremeniti svoje kontaktne podatke, se prijavite v POŠLJI in pojdite na razdelek »Vaši kontaktni podatki«.",
+      "description_5": "Če niste vnesli nobenega digitalnega naslova, boste prejeli obvestilo, vključno z dokumenti, s priporočenim pismom v papirnati obliki."
+    },
+    "4": {
+      "title": "Kaj pomeni, da bo PEC uporabljen kot »glavni naslov«?",
+      "description_1": "Če PEC nimate v javnih registrih in ga vnesete v razdelek »Vaši kontaktni podatki«, bo uporabljen kot glavni naslov za pošiljanje obvestil o prejemu. Z vpisom ne boste več prejemali priporočenih pisem v papirnati obliki, razen če pošiljanje ne uspe.",
+      "description_2": "Če imate PEC v javnih registrih in v rubriko »Vaši kontaktni podatki« vnesete drugega, bo kot glavni naslov uporabljen tisti, ki je vpisan v SEND. Če ga ne vnesete v SEND, se še vedno uporablja PEC v javnih registrih, ne glede na predmet priglasitve."
+    }
+  },
+  "documents": {
+    "title": "Dokumenti in sporočila",
+    "1": {
+      "title": "Kaj je potrdilo o prejemu?",
+      "description_1": "To je dokument, ki ga prejmete prek PEC ali priporočenega pisma, ko je za vas obvestilo. Pošiljanje tega dokumenta ima samo po sebi pravno vrednost, saj vsebuje bistvene podatke obvestila, in sicer:",
+      "description_2": "organizacijo, ki vam ga je poslala;",
+      "description_3": "identifikacijsko kodo (IUN);",
+      "description_4": "zadevo;",
+      "description_5": "navodila za pridobitev priglašenih dokumentov in morebitnih prilog."
+    },
+    "2": {
+      "title": "Kaj je koda IUN?",
+      "description": "IUN (Enotni identifikator sporočil) ​​je koda, sestavljena iz črk in številk. Služi za edinstveno identifikacijo vsakega obvestila."
+    },
+    "3": {
+      "title": "Kaj je vljudnostno obvestilo?",
+      "description_1": "Če ste v aplikaciji IO aktivirali storitev SEND »Digitalna obvestila« ali če ste vnesli e-poštni naslov ali telefonsko številko v razdelek »Vaši kontaktni podatki« v SEND, boste prejeli opozorilo, ko bo za vas prišlo vljudnostno obvestilo, tj. sporočilo, da ste prejeli obvestilo.",
+      "description_2": "Če prejmete sporočilo na IO, si lahko ogledate priglašene dokumente in plačate morebitne stroške neposredno v aplikaciji. Če prejmete e-pošto ali besedilno sporočilo, se prijavite v SEND, da si ogledate vročene dokumente in plačate morebitne stroške."
+    },
+    "4": {
+      "title": "Kaj je obvestilo o neprejemu?",
+      "description": "Gre za dokument, ki potrjuje, da vam je SEND dvakrat poskušal poslati obvestilo preko PEC, vendar vas ni mogel doseči. Tudi v tem primeru še vedno nastanejo pravni učinki priglasitve."
+    },
+    "5": {
+      "title": "Kaj je potrdilo, izvršljivo proti tretjim osebam?",
+      "description": "Je dokument, ki potrjuje spremembo stanja obvestila, na primer »zaključeno na ogled« ali »pošiljanje v teku«, in se kot tako lahko uveljavlja zoper tretje osebe."
+    },
+    "6": {
+      "title": "Kaj je razdelek »Stanje obvestila«?",
+      "description_1": "To je razdelek, ki ga najdete v SEND v podrobnostih obvestila na desni. Tukaj si lahko ogledate različne korake v življenjskem ciklu obvestila, na primer, kdaj ga je organizacija vložila v SEND, kdaj in kako ga je SEND poslal, kdaj ste ga prejeli itd.",
+      "description_2": "V državah, ki to zahtevajo, boste ugotovili, da je ustrezno potrdilo izvršljivo proti tretjim osebam ali potrdilo o prejemu. Te dokumente si lahko kadar koli ogledate in prenesete."
+    }
+  },
+  "notification_reception": {
+    "title": "Prejetje obvestila",
+    "1": {
+      "title": "Prejel sem sporočilo v aplikaciji IO od storitve SEND »Digitalna obvestila«. Kaj naj storim?",
+      "description": "Odprite sporočilo, preberite vročene dokumente in plačajte morebitne stroške. Če nimate PEC v javnih registrih ali v SEND in odprite sporočilo na IO v roku 5 dni (120 ur) od njegovega pošiljanja, obvestila ne boste prejeli preko priporočene pošte."
+    },
+    "2": {
+      "title": "Prejel sem besedilno sporočilo od SEND, ki pravi, da imam obvestilo. Kaj naj storim?",
+      "description": "Prijavite se v SEND s SPID ali CIE, preberite priglašene dokumente in plačajte morebitne stroške. Če nimate PEC v javnih registrih ali ga niste posredovali na SEND in dostopu SEND v 5 dneh (120 urah) od poslanega SMS sporočila, obvestila ne boste prejeli preko priporočenega pisma v papirnati obliki."
+    },
+    "3": {
+      "title": "Prejel sem e-poštno sporočilo od SEND, ki pravi, da imam obvestilo. Kaj naj storim?",
+      "description": "Prijavite se v SEND s SPID ali CIE, preberite priglašene dokumente in plačajte morebitne stroške. Če nimate PEC v javnih registrih ali ga niste posredovali na SEND in dostopu SEND v 5 dneh (120 urah) od poslanega e-poštnega sporočila, obvestila ne boste prejeli preko priporočenega pisma v papirnati obliki."
+    },
+    "4": {
+      "title": "Želim dodeliti osebo za prejemanje mojih obvestil. Lahko to storim?",
+      "description_1": "Da: za to odprite SEND s SPID ali CIE in pojdite na razdelek »Pooblastila«. Nato pritisnite »Dodaj pooblastilo«, vnesite podatke in pošljite zahtevo. Videli boste kodo za preverjanje: delite jo s pooblaščeno osebo. To mora dostopati do SEND s svojim SPID ali CIE, pojdite v razdelek »Pooblastila« in sprejmete pooblastilo z vnosom kode. Od tega trenutka bo pooblaščena oseba prejemala vsa vaša obvestila.",
+      "description_2": "Če želite preklicati pooblastilo, lahko to storite kadar koli v razdelku »Pooblastila«."
+    },
+    "5": {
+      "title": "Želim, da me oseba pooblasti za prejemanje njegovih obvestil. Lahko to storim?",
+      "description": "Da: za to prosite osebo, naj se prijavi v SEND s SPID ali CIE in odpre razdelek »Pooblastila«. Povejte ji, naj pritisne »Dodaj pooblastilo«, vnese podatke in pošlje zahtevo. Nato bodo morali z vami deliti kodo za preverjanje. Na tej točki odprite SEND s svojim SPID ali CIE, pojdite na razdelek »Pooblastila« in sprejmite pooblastilo z vnosom kode. Od tega trenutka boste prejemali vsa obvestila te osebe."
+    },
+    "6": {
+      "title": "Kako dolgo so na voljo priglasitveni dokumenti?",
+      "description_1": "Za 120 dni od",
+      "description_2": "datum zaključitve",
+      "description_3": ". Po tem roku si jih ne boste mogli več ogledati niti v aplikaciji IO niti v SEND. Obrniti se boste morali na organizacijo, ki vam jih je poslala. Potrdilo o prejemu pa ostane na voljo 10 let od datuma zaključka."
+    },
+    "7": {
+      "title": "Kaj se zgodi, če prezrem obvestilo?",
+      "description_1": "Ne glede na to, ali ste obvestilo o prejemu prejeli digitalno ali v papirnati obliki ali ste si ga ogledali na IO ali neposredno na platformi, bodo pravni učinki obvestila nastali tudi, če se odločite, da ga prezrete.",
+      "description_2": "Obvestilo ima pravne učinke tudi, če je bilo ustrezno obvestilo o neprejemu vloženo na platformi."
+    },
+    "8": {
+      "title": "V obvestilu z več opozorili nekatera vključujejo stroške obveščanja, druga pa ne. Kako to?",
+      "description_1": "Nekatera obvestila imajo strošek pošiljanja, ki ga je treba plačati samo enkrat na obvestilo. V primeru obvestil z več obvestili o plačilu bo strošek pošiljanja vključen le v enega in ne v vseh.",
+      "description_2": "Na primer, obstajajo primeri, ko se lahko odločite, ali boste obvestilo plačali v enkratnem plačilu ali na obroke. Če se odločite za enkratno plačilo, bo strošek pošiljanja vključen v ustrezno obvestilo o plačilu. Če se odločite za plačilo na obroke, bodo stroški pošiljanja vključeni samo v enem od različnih obvestil, običajno v tistem, ki se nanaša na prvi obrok."
+    }
+  },
+  "finalization": {
+    "title": "Zaključek",
+    "1": {
+      "title": "Kaj pomeni »zaključek«?",
+      "description": "Ko je obvestilo zaključeno, to pomeni, da prevzame veljavo zakona za vse različne namene. Na primer, od datuma izpolnitve obvestila začnejo teči roki za uveljavljanje sorodnih pravic, izpodbijanje dejanj in plačilo glob."
+    },
+    "2": {
+      "title": "Kdaj se obvestilo zaključi?",
+      "description_1": "Obvestilo je zaključeno ob različnih časih za subjekt, ki ga pošlje, in za prejemnika, ki ga prejme. Za tiste, ki ga pošljejo, je zaključeno na datum, ko je dokument, o katerem je treba obvestiti, na voljo na platformi. Za tiste, ki ga prejmejo, je izboljšanje odvisno od tega, kako prejmejo ali preberejo obvestilo. ",
+      "description_2": "Pojdi sem",
+      "description_3": " če želite izvedeti čas obdelave obvestila glede na kanal, prek katerega je bilo prejeto ali ogledano."
+    },
+    "3": {
+      "title": "Kako vem, kdaj je obvestilo zaključeno?",
+      "description": "Dostopite do SEND s SPID ali CIE in pritisnite na obvestilo. Te informacije boste našli na desni v razdelku »Stanje obvestila«."
+    }
+  },
+  "cancellation": {
+    "title": "Preklic",
+    "1": {
+      "title": "Prejeto obvestilo je bilo preklicano. Kako to?",
+      "description": "Organizacija, ki ga je poslala, ga je morda preklicala iz različnih razlogov. Na primer, morda ste naredili napako ali pa so se pojavile okoliščine, zaradi katerih obvestilo ni več učinkovito. Če ste prejeli obvestilo in je bilo preklicano, prezrite njegovo vsebino. Če imate kakršne koli dvome ali vprašanja, se obrnite na organizacijo, ki vam ga je poslala."
+    },
+    "2": {
+      "title": "Prejeto obvestilo je bilo preklicano, vendar sem ga že plačal/-a. Kaj naj storim?",
+      "description": "Za informacije o morebitnem vračilu se obrnite na organizacijo, ki vam je poslala."
+    }
+  },
+  "accessibility": {
+    "title": "Dostopnost",
+    "1": {
+      "title": "Kje lahko prijavim težave z dostopnostjo?",
+      "description": "Pišite nam na e-naslov"
+    }
+  }
 }

@@ -1,3 +1,88 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | Za državljane",
+  "description": "Prejemajte pravna sporočila organizacij v realnem času. Berite, upravljajte ali plačujte prek spleta na platformi SEND ali v aplikaciji IO",
+  "hero": {
+    "title": "Obvestila? So na dosegu roke",
+    "subtitle": "S storitvijo SEND - Servizio Notifiche Digitali (znana tudi kot Piattaforma Notifiche Digitali v skladu s členom 26 zakonslega odloka 76/2020 s spremembami) lahko takoj prejmete uradna sporočila s strani organizacije. Lahko si jih ogledate, upravljate in plačate neposredno na spletu na platformi ali v aplikaciji IO.",
+    "altText": "Pametni telefon v roki. Na zaslonu so prikazane podrobnosti obvestila.",
+    "cta": "Preberite svoja obvestila"
+  },
+  "infoblock_1": {
+    "title": "Nikoli več ne zamudite nobenega obvestila",
+    "description_1": "Obvestila so sporočila s pravno vrednostjo, ki jih uradno izda javna uprava, kot so rezultati upravnih postopkov ali vračila, globe in obvestila o odmeri davka. Od danes jih lahko prejmete in si ogledate digitalno tako, da dostopate do storitve SEND - Servizio Notifiche Digitali na spletu prek SPID ali CIE ali neposredno iz aplikacije IO.",
+    "description_2": "Prav tako lahko plačate morebitne stroške zahvaljujoč integraciji s pagoPA, si ogledate zgodovino prejetih obvestil in jih upravljate neposredno na spletu. Poleg tega morate le sprejeti pooblastilo, če želite dostopati tudi do obvestil družinskih članov.",
+    "altText": "Slika dveh obvestil"
+  },
+  "infoblock_2": {
+    "title": "Sami izberete način prejemanja obvestil",
+    "description_1": "Za pošiljanje pravnih sporočil daje SEND prednost vašim digitalnim kontaktnim podatkom. Kadar koli lahko prek spleta dostopate do storitve digitalnega obveščanja s SPID in CIE, da navedete ali posodobite svoj uradni naslov (PEC) ali svoje kontaktne podatke (aplikacija IO, e-pošta in/ali mobilna številka).",
+    "description_2": "Če ne navedete nobenih kontaktnih podatkov ali ne dostopate do obvestila prek SEND prek kanalov, ki niso PEC ",
+    "description_3": "v predvidenih rokih",
+    "description_4": ", boste obvestila še naprej prejemali s priporočenim pismom v papirnati obliki.",
+    "altText": "Moški s pametnim telefonom v roki gleda v kamero."
+  },
+  "infoblock_3": {
+    "title": "",
+    "description_1": "Javna uprava postopoma prevzema novo storitev digitalnega obveščanja, zato je možno, da ne boste o vseh dokumentih obveščeni na ta način.",
+    "description_2": "Prihodnost uradnega komuniciranja",
+    "description_3": "SEND je na voljo organizacijam, ki ga lahko uporabljajo za pošiljanje obvestil prejemnikom njihovih pravnih sporočil.",
+    "altText": "Ženska gleda v zaslon prenosnega računalnika."
+  },
+  "infoblock_4": {
+    "title": "PEC",
+    "description": "Če ste navedli naslov PEC, bodo obvestila dostavljena zakonito, brez priporočenih pisem v papirnati obliki. Potrdilo o prejemu, ki vam bo poslano, vsebuje povezavo za dostop do dokumentov na SEND.",
+    "altText": "Slika obvestila na SEND"
+  },
+  "infoblock_5": {
+    "title": "E-pošta in SMS",
+    "description": "Poleg tega lahko izberete tudi prejemanje vljudnostnega opozorila na vaš e-poštni naslov ali prek SMS-a. Če nimate PEC, vendar dostopate do obvestila prek SEND z ustrezne povezave v 5 dneh (120 urah) po prejemu obvestila, bo dostavljeno zakonito in ne boste prejeli priporočenega pisma v papirnati obliki.",
+    "altText": "Slika obvestila na SEND"
+  },
+  "infoblock_custom": {
+    "title": "Aplikacija IO",
+    "description_1": "Če aktivirate storitev »SEND - Notifiche digitali«, boste ob vsakem obvestilu prejeli sporočilo na IO. Ogledali si boste lahko priglašene dokumente in plačali morebitne stroške neposredno v aplikaciji. Če nimate naslova PEC, vendar dostopate do obvestila iz aplikacije in preberete obvestilo v 5 dneh (120 urah) od prejema, bo zakonito dostavljeno in ne boste prejeli priporočenega pisma v papirnati obliki.",
+    "description_2": "Prenesite aplikacijo:",
+    "googleAltText": "Na voljo v Google Play",
+    "appleAltText": "Na voljo v App store"
+  },
+  "showcase": {
+    "title": "Samo en način za varčevanje na več načinov",
+    "item_1": {
+      "title": "Udobje",
+      "subtitle": "Digitalna dostava obvestil vključuje nižje stroške obveščanja in pošiljanja"
+    },
+    "item_2": {
+      "title": "Čas",
+      "subtitle": "Nič več čakanja ali čakalne vrste za prevzem papirnate dokumentacije"
+    },
+    "item_3": {
+      "title": "Trajnost",
+      "subtitle": "Pomagajte zmanjšati porabo papirja in emisij zaradi transporta"
+    },
+    "item_4": {
+      "title": "Prostor",
+      "subtitle": "Tiskanih dokumentov vam ni treba več hraniti, zahvaljujoč možnosti digitalnega prenosa in arhiviranja dokumentov"
+    }
+  },
+  "walkthrough": {
+    "title": "Kako deluje?",
+    "item_1": {
+      "title": "Prejmite obvestilo",
+      "subtitle": "Za vsako obvestilo SEND preveri, ali je PEC povezan z vami ali ste ga vi navedli za pošiljanje obvestila o prejemu. Vljudnostno obvestilo pošljite tudi na svoje druge digitalne kontaktne podatke (aplikacija IO, e-pošta in mobilna številka), če ste jih vnesli. Če niste navedli nobenega digitalnega naslova in ne dostopate do obvestila prek spleta prek SEND, boste prejeli priporočeno pismo v papirnati obliki."
+    },
+    "item_2": {
+      "title": "Preberite vsebino",
+      "subtitle_1": "Iz prejetega sporočila lahko dostopate do platforme na spletu, da preberete obvestilo in prenesete ustrezne priložene dokumente. Če aktivirate storitev na IO, si lahko ogledate vsebino neposredno v aplikaciji: to je enakovredno podpisu povratnice tradicionalnega priporočenega pisma in ",
+      "subtitle_2": "in takojšnjemu",
+      "subtitle_3": " zaključku obvestila."
+    },
+    "item_3": {
+      "title": "Plačajte stroške",
+      "subtitle": "Če obstaja znesek za plačilo, lahko zahvaljujoč integraciji s pagoPA istočasno nadaljujete prek spleta iz SEND ali neposredno iz IO. Če bi plačilo raje opravili na bagajni, morate imeti s seboj plačilni obrazec, priložen obvestilu."
+    },
+    "item_4": {
+      "title": "Lahko pooblastite osebo ali ste pooblaščeni",
+      "subtitle": "Če želite, lahko za vpogled v vaša obvestila na spletu pooblastite druge osebe, fizične ali pravne. Če želite to narediti, odprite SEND s SPID ali CIE in v razdelek Pooblastila vnesite podatke osebe, ki jo želite pooblastiti."
+    }
+  }
 }

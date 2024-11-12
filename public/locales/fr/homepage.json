@@ -1,3 +1,36 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali",
+  "description": "SEND est la plateforme qui rend l’envoi et la réception des communications à valeur juridique plus rapides, plus faciles et plus sûrs.",
+  "hero": {
+    "title": "Les communications à valeur juridique se font numériques",
+    "subtitle": "SEND est la plateforme qui rend l’envoi et la réception des notifications à valeur juridique plus rapides, plus avantageux et plus sûrs, simplifiant ainsi le processus pour tout le monde : pour les entités qui les envoient et pour les destinataires qui les reçoivent.",
+    "altText": "Image de la plateforme SEND pour Desktops et Téléphones portables"
+  },
+  "infoblock": {
+    "enti": {
+      "overline": "POUR LES ORGANISMES",
+      "title": "Une façon plus simple de gérer les notifications",
+      "description_1": "SEND - Servizio Notifiche Digitali libère les organismes de toutes les obligations liées à la gestion des communications à valeur juridique.",
+      "description_2": "Les entités doivent tout simplement déposer l’acte à notifier : la plateforme se chargera de l’envoyer, soit par voie numérique, soit par voie analogique, en réduisant les temps et les coûts de l’ensemble du processus.",
+      "altText": "Aperçu de la page Notifications de la plateforme SEND sur un notebook",
+      "cta": "Découvrez les avantages pour les organismes"
+    },
+    "cittadini": {
+      "overline": "POUR LES CITOYENS",
+      "title": "Les notifications des administrations publiques au bout des doigts",
+      "description_1": "Les citoyens qui le souhaitent peuvent recevoir et consulter les notifications par voie numérique, en accédant à SEND avec le SPID ou la CIE ou bien directement via l’app IO.",
+      "description_2": "Dans tous les cas, la plateforme garantit la liberté de choix : les destinataires peuvent toujours indiquer comment recevoir les communications selon leurs préférences.",
+      "altText": "Une main tient un smartphone. L’écran affiche le détail d’une notification.",
+      "cta": "Découvrez les avantages pour les citoyens",
+      "cta_secondary": "Lisez vos notifications"
+    },
+    "imprese": {
+      "overline": "POUR LES ENTREPRISES",
+      "title": "Tout en un seul lieu",
+      "description": "SEND fournit un espace unique partagé où les différentes personnes de contact d’une même entreprise peuvent consulter et gérer de manière entièrement numérique toutes les notifications reçues des organismes et payer les éventuels montants dus.",
+      "altText": "Un homme et une femme assis à une table consultent un notebook",
+      "cta": "Découvrez les avantages pour les entreprises",
+      "cta_secondary": "Aller aux notifications"
+    }
+  }
 }

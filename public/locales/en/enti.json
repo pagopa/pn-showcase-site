@@ -1,3 +1,77 @@
 {
-    
+  "title": "SEND - Servizio Notifiche Digitali | For institutions",
+  "description": "Discover how to register with SEND and make the notification process for your institution simpler and more secure and efficient",
+  "hero": {
+    "title": "Sending notifications? That is easy to say.",
+    "subtitle_1": "SEND, Servizio Notifiche Digitali (also known as the Piattaforma Notifiche Digitali specified in art. 26 of Decree Law 76/2020 and as amended)  digitalizes the management of legal communications, simplifying the process for everyone: those who send them and those who receive them.",
+    "subtitle_2": "And starting today, also easy to do. ",
+    "altText": "Images of some forms for sending digital notifications",
+    "cta": "Discover how to register with SEND"
+  },
+  "infoblock_1": {
+    "title": "The notification process becomes simpler",
+    "description_1": "SEND - Servizio Notifiche Digitali relieves institutions from all the legal fulfillments related to the management of legal communications and reduces the uncertainty of the reachability of the recipient.",
+    "description_2": "All institutions have to do is file the document to be notified: the platform will then send it, digitally or analogically, which saves both time and costs for the entire process.",
+    "altText": "An example of the “notification status” section of the Send platform."
+  },
+  "infoblock_2": {
+    "title": "Upload the document. Then, forget about it",
+    "description_1": "SEND integrates with the protocol of the institutions and offers both APIs for automatically sending notifications, as well as to send them manually. Once the documents and payment forms have been uploaded, the platform generates the IUN, a univocal code that identifies the notification.",
+    "description_2": "Then it searches its archives and public registers for a PEC attributable to the recipient and sends the notification. At the same time, it sends a courtesy notification to the other digital addresses (IO app, email and mobile number) of the recipient.",
+    "description_3": "If the recipient does not have a digital address and does not have access to the platform, it will search for a physical address and then sent the notification with registered mail.",
+    "altText": "An example of the “Send a new notification” section of the Send platform."
+  },
+  "infoblock_3": {
+    "title": "And the recipient?",
+    "description_1": "The recipient accesses the platform via SPID (Public Digital Identity System) or CIE (Electronic Identity Card), where they can view or download the notified document. Thanks to integration with pagoPA, they can at the same time also pay what is due, if required. If they activated the service on IO, they can do everything directly in app.",
+    "description_2": "Like the institution, also the recipient can access the chronology of the notification statuses and the certificate enforceable against third parties, which provide proof.",
+    "altText": "The hands of a person type on the keyboard of a laptop computer. The screen displays a page of the SEND platform."
+  },
+  "showcase": {
+    "title": "A new way for managing notifications",
+    "item_1": {
+      "title": "Univocal",
+      "subtitle": "The notifications are sent, managed and monitored via a single channel, which can be accessed by multiple representatives of the same institution"
+    },
+    "item_2": {
+      "title": "Simple",
+      "subtitle": "Notifications can be uploaded via API or by manually filing the document, the platform will send it and keep track of the status changes"
+    },
+    "item_3": {
+      "title": "Immediate",
+      "subtitle": "If the recipient has a digital address, the sending times decrease significantly"
+    },
+    "item_4": {
+      "title": "Certain",
+      "subtitle": "The notification process is standardized and there is greater certainty of delivery to the recipient"
+    }
+  },
+  "walkthrough": {
+    "title": "How does it work?",
+    "item_1": {
+      "title": "The institution creates the notification request",
+      "subtitle": "With the use of an API Key or manually, the institution creates the notification request and uploads the attachments."
+    },
+    "item_2": {
+      "title": "The platform takes charge of it",
+      "subtitle": "SEND verifies the completeness of the information. Each time the status changes, the relative certification that is enforceable against third parties is generated."
+    },
+    "item_3": {
+      "title": "The notification is sent",
+      "subtitle": "SEND uses the various channels available to inform the recipient of the presence of a notification: PEC (certified email), IO app, email, SMS. Alternatively, it sends a registered letter by mail to the physical address provided by the institution."
+    },
+    "item_4": {
+      "title": "The recipient receives it",
+      "subtitle": "The recipient accesses the platform. There they can download the notified documents and at the same time pay what is due thanks to integration with pagoPA. If the recipient receives it via IO, they can do everything directly in the app."
+    }
+  },
+  "stripe_link": {
+    "title": "Do you want to communicate registration with SEND to citizens?",
+    "cta": "Go to the communication kit"
+  },
+  "dark_infoblock": {
+    "title": "Has your institution already registered with SEND?",
+    "subtitle": "If your institution has registered with SEND and you are an authorized user, log in via the Reserved Area.",
+    "cta": "Log in to SEND"
+  }
 }
