@@ -6,7 +6,7 @@
     "description_1": "When you receive a legal communication via SEND, you can collect a printed copy of the notified documents at ",
     "description_2": "participating merchants",
     "description_3": "Search for the collection point closest to you.",
-    "disclaimer": "Currently you can only search for collection points located in the Municipalities of Bari and Taranto: the service is being activated progressively in the rest of the country.",
+    "disclaimer": "Currently you can only search for collection points located in the Municipalities of Bari, Taranto and Parma: the service is being activated progressively in the rest of the country.",
     "placeholder": "Search by city or ZIP CODE",
     "empty_state": " There are no SEND collection points active in this city."
   },
