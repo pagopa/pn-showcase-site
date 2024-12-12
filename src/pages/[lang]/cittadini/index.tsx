@@ -48,12 +48,12 @@ const CittadiniPage: NextPage = () => {
 
   const heroCta = !!PN_PF_URL
     ? {
-        label: t("hero.cta", { ns: "cittadini" }),
-        title: t("hero.cta", { ns: "cittadini" }),
-        onClick: function onClick() {
-          window.open(PN_PF_URL, "_self");
-        },
-      }
+      label: t("hero.cta", { ns: "cittadini" }),
+      title: t("hero.cta", { ns: "cittadini" }),
+      onClick: function onClick() {
+        window.open(PN_PF_URL, "_self");
+      },
+    }
     : undefined;
 
   return (
@@ -168,8 +168,42 @@ const CittadiniPage: NextPage = () => {
         altText={t("infoblock_2.altText", { ns: "cittadini" })}
         imageShadow={false}
       />
+      <div className="showcasePadding">
+        <Showcase
+          title={""}
+          items={[
+            {
+              icon: <PiggyIcon />,
+              title: t("showcase_pec.title", { ns: "cittadini" }),
+              subtitle: (
+                <Typography variant="body2">
+                  {t("showcase_pec.description", { ns: "cittadini" })}
+                </Typography>
+              ),
+            },
+            {
+              icon: <HourglassIcon />,
+              title: t("showcase_appio.title", { ns: "cittadini" }),
+              subtitle: (
+                <Typography variant="body2">
+                  {t("showcase_appio.description_1", { ns: "cittadini" })}
+                </Typography>
+              ),
+            },
+            {
+              icon: <EcologyIcon />,
+              title: t("showcase_email.title", { ns: "cittadini" }),
+              subtitle: (
+                <Typography variant="body2">
+                  {t("showcase_email.description", { ns: "cittadini" })}
+                </Typography>
+              ),
+            }
+          ]}
+        />
+      </div>
 
-      <Infoblock
+      {/* <Infoblock
         title={t("infoblock_4.title", { ns: "cittadini" })}
         content={
           <Typography variant="body2">
@@ -198,7 +232,36 @@ const CittadiniPage: NextPage = () => {
         aspectRatio="4/3"
         altText={t("infoblock_5.altText", { ns: "cittadini" })}
         imageShadow={false}
-      />
+      /> */}
+      <div className="dark">
+        <Infoblock
+          title={t("infoblock_3.title", { ns: "cittadini" })}
+          content={
+            <>
+              <Typography variant="h4" sx={{ color: "primary.contrastText" }}>
+                {t("infoblock_3.description_2", { ns: "cittadini" })}
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ color: "primary.contrastText" }}
+              >
+                {t("infoblock_3.description_3", { ns: "cittadini" })}
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ color: "primary.contrastText" }}
+              >
+                {t("infoblock_3.description_1", { ns: "cittadini" })}
+              </Typography>
+            </>
+          }
+          inverse={false}
+          image={`${IMAGES_PATH}/pa-infoblock-4.png`}
+          aspectRatio="9/16"
+          altText={t("infoblock_3.altText", { ns: "cittadini" })}
+          imageShadow={false}
+        />
+      </div>
       <Walkthrough
         title={t("walkthrough.title", { ns: "cittadini" })}
         items={[
@@ -252,35 +315,7 @@ const CittadiniPage: NextPage = () => {
           },
         ]}
       />
-      <div className="dark">
-        <Infoblock
-          title={t("infoblock_3.title", { ns: "cittadini" })}
-          content={
-            <>
-              <Typography variant="h4" sx={{ color: "primary.contrastText" }}>
-                {t("infoblock_3.description_2", { ns: "cittadini" })}
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: "primary.contrastText" }}
-              >
-                {t("infoblock_3.description_3", { ns: "cittadini" })}
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: "primary.contrastText" }}
-              >
-                {t("infoblock_3.description_1", { ns: "cittadini" })}
-              </Typography>
-            </>
-          }
-          inverse={false}
-          image={`${IMAGES_PATH}/pa-infoblock-4.png`}
-          aspectRatio="9/16"
-          altText={t("infoblock_3.altText", { ns: "cittadini" })}
-          imageShadow={false}
-        />
-      </div>
+
     </>
   );
 };
