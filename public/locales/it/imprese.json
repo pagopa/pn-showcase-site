@@ -3,14 +3,14 @@
     "description": "Leggi, paga e archivia le comunicazioni a valore legale inviate alla tua impresa in un unico spazio accessibile anche dai tuoi collaboratori",
     "hero": {
         "title": "Le notifiche della tua impresa? Tutte qui.",
-        "subtitle": "SEND - Servizio Notifiche Digitali è la piattaforma che semplifica la ricezione delle notifiche a valore legale. Visualizza, paga e archivia le notifiche inviate alla tua impresa in un unico spazio accessibile anche dai tuoi collaboratori.",
+        "subtitle": "Con SEND - Servizio Notifiche Digitali semplifichi la ricezione delle notifiche a valore legale. Leggi, paghi e archivi le notifiche inviate alla tua impresa in un unico spazio, accessibile anche dai tuoi collaboratori.",
         "altText": "Lo schermo di un computer portatile mostra la pagina principale della piattaforma SEND.",
         "cta": "Leggi le tue notifiche"
     },
     "infoblock_1": {
         "title": "Un nuovo modo per gestire le notifiche della tua impresa",
-        "description_1": "Con SEND puoi visualizzare, pagare e gestire le notifiche inviate alla tua impresa in modo semplice, veloce e totalmente digitale.",
-        "description_2": "Oltre ad accedere agli atti notificati, su SEND puoi anche pagare eventuali costi grazie all’integrazione con pagoPA e visualizzare lo storico delle notifiche ricevute.",
+        "description_1": "Con SEND leggi, paghi e gestisci le notifiche inviate alla tua impresa in modo semplice, veloce e totalmente digitale.",
+        "description_2": "Oltre ad accedere agli atti notificati, con SEND puoi anche pagare eventuali costi grazie all’integrazione con pagoPA e conservare lo storico delle notifiche ricevute.",
         "altText": "Un uomo lavora al computer, seduto alla scrivania di un ufficio."
     },
     "infoblock_2": {
@@ -26,14 +26,14 @@
         "altText": "Un esempio della sezione “stato della notifica” della piattaforma SEND."
     },
     "showcase": {
-        "title": "Un nuovo servizio per essere un’impresa innovativa",
+        "title": "Per essere un’impresa innovativa",
         "item_1": {
             "title": "Unico",
-            "subtitle": "Gestisci tutte le notifiche inviate all’azienda in un solo posto"
+            "subtitle": "Gestisci tutte le notifiche inviate alla tua azienda in un solo posto"
         },
         "item_2": {
             "title": "Veloce",
-            "subtitle": "Grazie all’integrazione con pagoPA, pagare è semplice e veloce"
+            "subtitle": "Grazie all’integrazione con pagoPA, pagare eventuali costi è semplice e veloce"
         },
         "item_3": {
             "title": "Condiviso",
@@ -60,7 +60,7 @@
             "subtitle": "Se c'è un importo da pagare, grazie all'integrazione con pagoPA, puoi procedere al pagamento online. Se preferisci recarti presso uno sportello, dovrai avere con te il modulo di pagamento allegato alla notifica."
         },
         "item_4": {
-            "title": "Visualizza lo storico",
+            "title": "Consulta lo storico",
             "subtitle": "Per ogni notifica, puoi vedere lo storico degli stati e le relative attestazioni opponibili a terzi."
         }
     }
