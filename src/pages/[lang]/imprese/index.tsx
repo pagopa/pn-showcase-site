@@ -8,13 +8,9 @@ import { getI18n } from "../../../api/i18n";
 import { useTranslation } from "../../../hook/useTranslation";
 import { Typography } from "@mui/material";
 import {
-  CloudIcon,
   DocCheckIcon,
   HistoryIcon,
-  HourglassIcon,
   NotificationIcon,
-  PeopleIcon,
-  PiggyIcon,
   WalletIcon,
 } from "../../../api/data/icons";
 import { AutoAwesome, EuroSymbol, SupervisorAccount, Timer } from "@mui/icons-material";
@@ -62,6 +58,7 @@ const ImpresePage: NextPage = () => {
       <PageHead
         title={t("title", { ns: "imprese" })}
         description={t("description", { ns: "imprese" })}
+        route="imprese"
       />
       <Hero
         type="image"

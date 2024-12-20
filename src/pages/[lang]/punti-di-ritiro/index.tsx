@@ -138,6 +138,7 @@ const RitiroPage: NextPage = () => {
       <PageHead
         title={t("title", { ns: "pickup" })}
         description={t("description", { ns: "pickup" })}
+        route="punti-di-ritiro"
       />
       <Stack
         mt={10}

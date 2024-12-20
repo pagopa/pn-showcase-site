@@ -63,6 +63,7 @@ const EntiPage: NextPage = () => {
       <PageHead
         title={t("title", { ns: "enti" })}
         description={t("description", { ns: "enti" })}
+        route="pubbliche-amministrazioni"
       />
 
       <Hero

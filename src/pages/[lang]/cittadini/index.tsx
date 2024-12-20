@@ -9,15 +9,11 @@ import { getI18n } from "../../../api/i18n";
 import { Link, Typography } from "@mui/material";
 import { useTranslation } from "../../../hook/useTranslation";
 import {
-  CloudIcon,
   DelegationIcon,
   DocCheckIcon,
-  EcologyIcon,
   HeartHand,
-  HourglassIcon,
   IOIcon,
   NotificationIcon,
-  PiggyIcon,
   WalletIcon,
 } from "../../../api/data/icons";
 import { useContext } from "react";
@@ -63,6 +59,7 @@ const CittadiniPage: NextPage = () => {
       <PageHead
         title={t("title", { ns: "cittadini" })}
         description={t("description", { ns: "cittadini" })}
+        route="cittadini"
       />
 
       <Hero

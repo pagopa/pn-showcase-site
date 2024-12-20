@@ -4,9 +4,10 @@ import React, { useEffect, useState } from "react";
 interface Props {
   title: string;
   description: string;
+  route: string;
 }
 
-const PageHead = ({ title, description }: Props) => {
+const PageHead = ({ title, description, route }: Props) => {
 
   const [windowOrigin, setWindowOrigin] = useState<string>();
   const regex = /https:\/\/www.((dev|test|uat|hotfix)?.?)notifichedigitali.it/;
@@ -43,6 +44,11 @@ const PageHead = ({ title, description }: Props) => {
       sizes="16x16"
       href="/static/icons/favicon-16x16.png"
     />
+    <link rel="alternate" href={`https://notifichedigitali.pagopa.it/it/${route}`} hrefLang="it" />
+    <link rel="alternate" href={`https://notifichedigitali.pagopa.it/en/${route}`} hrefLang="en" />
+    <link rel="alternate" href={`https://notifichedigitali.pagopa.it/de/${route}`} hrefLang="de" />
+    <link rel="alternate" href={`https://notifichedigitali.pagopa.it/fr/${route}`} hrefLang="fr" />
+    <link rel="alternate" href={`https://notifichedigitali.pagopa.it/sl/${route}`} hrefLang="sl" />
   </Head>
 };
 

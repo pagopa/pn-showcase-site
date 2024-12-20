@@ -42,6 +42,7 @@ const IndexPage: NextPage = () => {
       <PageHead
         title={t("title", { ns: "homepage" })}
         description={t("description", { ns: "homepage" })}
+        route=""
       />
       <Hero
         type="image"
