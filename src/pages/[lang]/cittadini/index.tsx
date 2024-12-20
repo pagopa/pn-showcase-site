@@ -13,15 +13,17 @@ import {
   DelegationIcon,
   DocCheckIcon,
   EcologyIcon,
+  HeartHand,
   HourglassIcon,
+  IOIcon,
   NotificationIcon,
   PiggyIcon,
   WalletIcon,
 } from "../../../api/data/icons";
-import InfoblockCustomCittadini from "../../../components/InfoblockCustomCittadini";
 import { useContext } from "react";
 import LangContext from "../../../context/lang-context";
 import { safeInternalPage } from "../../../utils/navigation";
+import { Email, EuroSymbol, HourglassTop, Inventory, Verified } from "@mui/icons-material";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -103,7 +105,7 @@ const CittadiniPage: NextPage = () => {
           title={t("showcase.title", { ns: "cittadini" })}
           items={[
             {
-              icon: <PiggyIcon />,
+              icon: <EuroSymbol />,
               title: t("showcase.item_1.title", { ns: "cittadini" }),
               subtitle: (
                 <Typography variant="body2">
@@ -112,7 +114,7 @@ const CittadiniPage: NextPage = () => {
               ),
             },
             {
-              icon: <HourglassIcon />,
+              icon: <HourglassTop />,
               title: t("showcase.item_2.title", { ns: "cittadini" }),
               subtitle: (
                 <Typography variant="body2">
@@ -121,7 +123,7 @@ const CittadiniPage: NextPage = () => {
               ),
             },
             {
-              icon: <EcologyIcon />,
+              icon: <HeartHand />,
               title: t("showcase.item_3.title", { ns: "cittadini" }),
               subtitle: (
                 <Typography variant="body2">
@@ -130,7 +132,7 @@ const CittadiniPage: NextPage = () => {
               ),
             },
             {
-              icon: <CloudIcon />,
+              icon: <Inventory />,
               title: t("showcase.item_4.title", { ns: "cittadini" }),
               subtitle: (
                 <Typography variant="body2">
@@ -173,7 +175,7 @@ const CittadiniPage: NextPage = () => {
           title={""}
           items={[
             {
-              icon: <PiggyIcon />,
+              icon: <Verified />,
               title: t("showcase_pec.title", { ns: "cittadini" }),
               subtitle: (
                 <Typography variant="body2">
@@ -182,7 +184,7 @@ const CittadiniPage: NextPage = () => {
               ),
             },
             {
-              icon: <HourglassIcon />,
+              icon: <IOIcon />,
               title: t("showcase_appio.title", { ns: "cittadini" }),
               subtitle: (
                 <Typography variant="body2">
@@ -191,7 +193,7 @@ const CittadiniPage: NextPage = () => {
               ),
             },
             {
-              icon: <EcologyIcon />,
+              icon: <Email />,
               title: t("showcase_email.title", { ns: "cittadini" }),
               subtitle: (
                 <Typography variant="body2">

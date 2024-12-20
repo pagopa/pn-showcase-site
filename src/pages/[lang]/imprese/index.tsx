@@ -17,6 +17,7 @@ import {
   PiggyIcon,
   WalletIcon,
 } from "../../../api/data/icons";
+import { AutoAwesome, EuroSymbol, SupervisorAccount, Timer } from "@mui/icons-material";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -134,7 +135,7 @@ const ImpresePage: NextPage = () => {
           title={t("showcase.title", { ns: "imprese" })}
           items={[
             {
-              icon: <PeopleIcon />,
+              icon: <AutoAwesome />,
               title: t("showcase.item_1.title", { ns: "imprese" }),
               subtitle: (
                 <Typography variant="body2">
@@ -143,7 +144,7 @@ const ImpresePage: NextPage = () => {
               ),
             },
             {
-              icon: <HourglassIcon />,
+              icon: <Timer />,
               title: t("showcase.item_2.title", { ns: "imprese" }),
               subtitle: (
                 <Typography variant="body2">
@@ -152,7 +153,7 @@ const ImpresePage: NextPage = () => {
               ),
             },
             {
-              icon: <CloudIcon />,
+              icon: <SupervisorAccount />,
               title: t("showcase.item_3.title", { ns: "imprese" }),
               subtitle: (
                 <Typography variant="body2">
@@ -161,7 +162,7 @@ const ImpresePage: NextPage = () => {
               ),
             },
             {
-              icon: <PiggyIcon />,
+              icon: <EuroSymbol />,
               title: t("showcase.item_4.title", { ns: "imprese" }),
               subtitle: (
                 <Typography variant="body2">
