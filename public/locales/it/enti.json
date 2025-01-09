@@ -2,7 +2,7 @@
     "title": "Per gli enti | SEND - Servizio Notifiche Digitali",
     "description": "Scopri come aderire a SEND per rendere il processo di notificazione del tuo ente più semplice, sicuro ed efficiente",
     "hero": {
-        "title": "Inviare notifiche? Facile a dirsi.",
+        "title": "Inviare notifiche? Facile a dirsi",
         "subtitle_1": "SEND, Servizio Notifiche Digitali (anche nota come Piattaforma Notifiche Digitali di cui all'art. 26 del decreto-legge 76/2020 s.m.i.) rende digitale la gestione delle comunicazioni a valore legale, semplificando il processo per chi invia e per chi riceve.",
         "subtitle_2": "E da oggi anche a farsi. ",
         "altText": "Immagini di alcuni form per l'invio di nofiche digitali",
@@ -23,7 +23,7 @@
     },
     "infoblock_3": {
         "title": "E il destinatario?",
-        "description_1": "Se il destinatario accede alla piattaforma tramite SPID o CIE, o ha attivato il servizio su IO, può leggere e scaricare l'atto notificato. Grazie a pagoPA, può anche pagare contestualmente ,se previsto, quanto dovuto.",
+        "description_1": "Se il destinatario accede alla piattaforma tramite SPID o CIE, o ha attivato il servizio su IO, può leggere e scaricare l'atto notificato. Grazie a pagoPA, può anche pagare contestualmente, se previsto, quanto dovuto.",
         "description_2": "Il destinatario ha, come l’ente mittente, accesso alla cronologia degli stati della notifica e alle attestazioni opponibili a terzi.",
         "altText": "Le mani di una persona digitano sulla tastiera di un computer portatile. Lo schermo mostra una pagina della piattaforma SEND."
     },
