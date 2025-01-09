@@ -69,6 +69,7 @@ const NumeriPage: NextPage = () => {
       <PageHead
         title={t("title", { ns: "numeri" })}
         description={t("description", { ns: "numeri" })}
+        route="numeri"
       />
       <Box mt={10}>
         <Typography align="center" variant="h2">

@@ -1,51 +1,51 @@
 {
-    "title": "SEND - Servizio Notifiche Digitali | Perfezionamento della notifica",
+    "title": "Perfezionamento della notifica | SEND - Servizio Notifiche Digitali",
     "description": "Cos'è e come funziona il perfezionamento di una notifica, a seconda del canale con cui l’hai ricevuta",
     "heading": {
-        "title": "Quando si perfeziona una notifica?",
+        "title": "Valore giuridico delle notifiche SEND",
         "subtitle_1": "Una notifica si perfeziona, cioè ",
         "subtitle_2": "assume valore di legge per tutte le diverse finalità",
-        "subtitle_3": ", il giorno e l’ora in cui visualizzi online i documenti notificati o, se non lo fai entro un certo termine, a seconda del canale con cui l’hai ricevuta.",
-        "subtitle_4": "Seleziona i canali qui sotto per conoscere le tempistiche del perfezionamento."
+        "subtitle_3": ", il giorno e l’ora in cui visualizzi online i documenti notificati. In alternativa si perfeziona automaticamente se non vi accedi entro un certo termine, a seconda del canale con cui l’hai ricevuta. Dal momento in cui la notifica SEND risulta ufficialmente ricevuta, può produrre effetti legali, come l’avvio di scadenze o obblighi per il destinatario.",
+        "subtitle_4": "Scopri le tempistiche in base ai canali di consegna."
     },
     "tab": {
         "1": {
             "name": "PEC",
-            "overline": "LA NOTIFICA SI PERFEZIONA",
+            "overline": "LA NOTIFICA SEND ASSUME VALORE DI LEGGE",
             "title": "dopo 7 o 15 giorni",
             "description_1": "Se hai ricevuto la PEC",
             "description_2": ", si perfeziona 7 giorni dopo la data di consegna. Se l'hai ricevuta dalle 21:00 in poi, conta a partire dal giorno dopo.",
             "description_3": "Se la PEC è satura",
             "description_4": ", non valida o inattiva, si perfeziona 15 giorni dopo la data di emissione dell'avviso di mancato recapito. Lo troverai su SEND, nel dettaglio della notifica.",
-            "description_5": "Se visualizzi su SEND o app IO i documenti notificati prima delle tempistiche indicate qui sopra, il perfezionamento avviene al momento della visualizzazione."
+            "description_5": "Se accedi via SEND o app IO ai documenti notificati prima delle tempistiche indicate qui sopra, il perfezionamento avviene al momento della visualizzazione."
         },
         "2": {
             "name": "Raccomandata",
-            "overline": "LA NOTIFICA SI PERFEZIONA",
+            "overline": "LA NOTIFICA SEND ASSUME VALORE DI LEGGE",
             "title": "dopo 10 o 20 giorni",
-            "description_1": "Se hai ricevuto la raccomandata",
+            "description_1": "Se hai ricevuto una raccomandata",
             "description_2": ", si perfeziona 10 giorni dopo la data di ricezione;",
             "description_3": "Se hai ricevuto un avviso di giacenza e ritiri la raccomandata",
             "description_4": " entro 10 giorni, si perfeziona 10 giorni dopo la data di ritiro;",
             "description_5": "Se hai ricevuto un avviso di giacenza e non ritiri la raccomandata",
             "description_6": " entro 10 giorni, si perfeziona 20 giorni dopo la data di ricezione dell'avviso di giacenza.",
-            "description_7": "Se visualizzi su SEND o app IO i documenti notificati prima delle tempistiche indicate qui sopra, il perfezionamento avviene al momento della visualizzazione."
+            "description_7": "Se accedi via SEND o app IO ai documenti notificati prima delle tempistiche indicate qui sopra, il perfezionamento avviene al momento della visualizzazione."
         },
         "3": {
             "name": "App IO",
-            "overline": "LA NOTIFICA SI PERFEZIONA",
+            "overline": "LA NOTIFICA SEND ASSUME VALORE DI LEGGE",
             "title": "il giorno in cui apri il messaggio",
             "description": "che hai ricevuto su IO dal servizio “SEND - Notifiche digitali”, a meno che non si sia già perfezionata tramite visualizzazione su SEND o per decorrenza termini dopo la ricezione della PEC o della raccomandata."
         },
         "4": {
             "name": "SEND",
-            "overline": "LA NOTIFICA SI PERFEZIONA",
+            "overline": "LA NOTIFICA SEND ASSUME VALORE DI LEGGE",
             "title": "il giorno in cui la visualizzi",
             "description": "dopo avere effettuato l’accesso a SEND con SPID o CIE e avere premuto sulla notifica, a meno che non si sia già perfezionata tramite visualizzazione su app IO o per decorrenza termini dopo la ricezione della PEC o della raccomandata."
         },
         "5": {
             "name": "Email o SMS",
-            "overline": "LA NOTIFICA SI PERFEZIONA",
+            "overline": "LA NOTIFICA SEND ASSUME VALORE DI LEGGE",
             "title": "il giorno in cui la visualizzi",
             "description": "dopo avere effettuato l’accesso a SEND con SPID o CIE e avere premuto sulla notifica, a meno che non si sia già perfezionata tramite visualizzazione su app IO o per decorrenza termini dopo la ricezione della PEC o della raccomandata."
         }

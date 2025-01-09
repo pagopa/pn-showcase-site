@@ -24,6 +24,7 @@ import {
 import StripeLinkEnti from "../../../components/Enti/StripeLinkEnti";
 import { DarkInfoblockEnti } from "../../../components/Enti/DarkInfoblockEnti";
 import LangContext from "../../../context/lang-context";
+import { AutoAwesome, AutoFixHigh, DoneAll, Timer } from "@mui/icons-material";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -62,6 +63,7 @@ const EntiPage: NextPage = () => {
       <PageHead
         title={t("title", { ns: "enti" })}
         description={t("description", { ns: "enti" })}
+        route="pubbliche-amministrazioni"
       />
 
       <Hero
@@ -151,7 +153,7 @@ const EntiPage: NextPage = () => {
           title={t("showcase.title", { ns: "enti" })}
           items={[
             {
-              icon: <PeopleIcon />,
+              icon: <AutoAwesome />,
               title: t("showcase.item_1.title", { ns: "enti" }),
               subtitle: (
                 <Typography variant="body2">
@@ -160,7 +162,7 @@ const EntiPage: NextPage = () => {
               ),
             },
             {
-              icon: <FireworksIcon />,
+              icon: <AutoFixHigh />,
               title: t("showcase.item_2.title", { ns: "enti" }),
               subtitle: (
                 <Typography variant="body2">
@@ -169,7 +171,7 @@ const EntiPage: NextPage = () => {
               ),
             },
             {
-              icon: <EasyIcon />,
+              icon: <Timer />,
               title: t("showcase.item_3.title", { ns: "enti" }),
               subtitle: (
                 <Typography variant="body2">
@@ -178,7 +180,7 @@ const EntiPage: NextPage = () => {
               ),
             },
             {
-              icon: <CheckmarkIcon />,
+              icon: <DoneAll />,
               title: t("showcase.item_4.title", { ns: "enti" }),
               subtitle: (
                 <Typography variant="body2">

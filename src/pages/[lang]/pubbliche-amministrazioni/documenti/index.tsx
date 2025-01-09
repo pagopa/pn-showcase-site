@@ -37,6 +37,7 @@ const DocumentiPage: NextPage = () => {
       <PageHead
         title={t("title", { ns: "documenti" })}
         description={t("description", { ns: "documenti" })}
+        route="pubbliche-amministrazioni/documenti"
       />
 
       <Box className="documenti">

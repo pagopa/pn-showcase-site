@@ -28,17 +28,17 @@
     "description_3": "SEND is available to institutions that can use it to send notifications to recipients of their legal communications.",
     "altText": "A woman is looking at the monitor of a notebook."
   },
-  "infoblock_4": {
+  "showcase_pec": {
     "title": "PEC",
     "description": "If you indicated a PEC address, the notifications will be considered legally delivered, without registered mail. The notification of registration that will be sent to you contains the link for accessing the documents on SEND.",
     "altText": "Image of a notification on SEND"
   },
-  "infoblock_5": {
+  "showcase_email": {
     "title": "Email and SMS",
     "description": "You can also select to receive a courtesy notification to your e-mail address or via SMS. If you do not have a PEC but access the notification via SEND from the provided link within 5 days (120 hours) from receiving the notification, it will be considered legally delivered and you will not receive a registered letter.",
     "altText": "Image of a notification on SEND"
   },
-  "infoblock_custom": {
+  "showcase_appio": {
     "title": "IO app",
     "description_1": "If you activate the “SEND - Notifiche digitali” service, you will receive a message on IO for each notification. You can view the notified documents and pay any fees directly in app. If you do not have a PEC address but access the notification from the app and read the notification within 5 days (120 hours) from receiving it, it will be considered legally delivered and you will not receive a registered letter.",
     "description_2": "Download the app:",

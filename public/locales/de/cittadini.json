@@ -28,17 +28,17 @@
     "description_3": "SEND steht Körperschaften zur Verfügung, die hiermit Zustellungen an die Empfänger ihrer rechtsgültigen Mitteilungen senden können.",
     "altText": "Eine Frau betrachtet den Bildschirm des Notebooks."
   },
-  "infoblock_4": {
+  "showcase_pec": {
     "title": "PEC",
     "description": "Wenn du eine PEC-Adresse angegeben hast, werden die Zustellungen rechtsgültig ohne weitere Einschreiben in Papierform zugestellt. Die Empfangsbestätigung, die du erhältst, enthält den Link, über den du die Dokumente auf SEND abrufen kannst.",
     "altText": "Bild einer Zustellung auf SEND"
   },
-  "infoblock_5": {
+  "showcase_email": {
     "title": "E-Mail und SMS",
     "description": "Du kannst außerdem wählen, ob du eine informelle Benachrichtigung an deine E-Mail-Adresse oder per SMS erhalten möchtest. Solltest du keine PEC-Adresse haben und die Zustellung innerhalb 5 Tagen (120 Stunden) nach Erhalt der Benachrichtigung mit dem entsprechenden Link über SEND aufrufen, gilt diese als rechtmäßig zugestellt und du erhältst kein Einschreiben in Papierform.",
     "altText": "Bild einer Zustellung auf SEND"
   },
-  "infoblock_custom": {
+  "showcase_appio": {
     "title": "IO-App",
     "description_1": "Wenn du den Dienst „SEND - Notifiche Digitali“ aktivierst, erhältst du mit jeder Zustellung eine Nachricht auf IO. Du kannst die zugestellten Dokumente einsehen und eventuelle Gebühren direkt in der App bezahlen. Solltest du keine PEC-Adresse haben und die Zustellung innerhalb 5 Tagen (120 Stunden) nach Erhalt der Benachrichtigung über die App aufrufen, gilt diese als rechtmäßig zugestellt und du erhältst kein Einschreiben in Papierform.",
     "description_2": "App downloaden:",

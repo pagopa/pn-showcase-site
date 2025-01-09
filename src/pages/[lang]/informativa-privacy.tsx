@@ -50,7 +50,7 @@ const PrivacyPage: NextPage = () => {
 
   return (
     <>
-      <PageHead title={t("title", { ns: "privacy" })} description={t("description", { ns: "privacy" })} />
+      <PageHead title={t("title", { ns: "privacy" })} description={t("description", { ns: "privacy" })} route="informativa-privacy" />
       <Script
         src="/onetrust/privacy-notice-scripts/otnotice-1.0.min.js"
         type="text/javascript"

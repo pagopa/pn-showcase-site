@@ -3,34 +3,31 @@
     "description": "SEND è la piattaforma che rende più veloce, semplice e sicuro l'invio e la ricezione delle comunicazioni a valore legale",
     "hero": {
         "title": "Le comunicazioni a valore legale diventano digitali",
-        "subtitle": "SEND è la piattaforma che rende più veloce, economico e sicuro l’invio e la ricezione delle notifiche a valore legale, semplificando il processo per tutti: gli enti che le inviano e i destinatari che le ricevono.",
+        "subtitle": "SEND è la piattaforma che rende veloce, economico e sicuro ricevere in digitale le comunicazioni a valore legale che ti inviano gli enti aderenti.",
         "altText": "Immagine della piattaforma SEND per Desktop e Mobile"
     },
     "infoblock": {
         "enti": {
             "overline": "PER GLI ENTI",
-            "title": "Un modo più semplice di gestire le notifiche",
-            "description_1": "SEND - Servizio Notifiche Digitali solleva gli enti da tutti gli adempimenti legati alla gestione delle comunicazioni a valore legale.",
-            "description_2": "Gli enti non devono fare altro che depositare l’atto da notificare: sarà la piattaforma a occuparsi dell’invio, per via digitale o analogica, con conseguente risparmio di tempi e costi dell’intero processo.",
+            "title": "Aderire a SEND come ente è semplice",
+            "description_1": "Se aderisci a SEND come ente, la piattaforma semplifica l’intero processo di invio delle comunicazioni a valore legale, con un risparmio di tempi e costi.",
             "altText": "Anteprima della pagina Notifiche della piattaforma SEND su un notebook",
             "cta": "Scopri i vantaggi per gli enti"
         },
         "cittadini": {
             "overline": "PER I CITTADINI",
-            "title": "Le notifiche delle pubbliche amministrazioni a portata di mano",
-            "description_1": "I cittadini che lo desiderano possono ricevere e consultare le notifiche in digitale, accedendo a SEND tramite SPID o CIE o direttamente dall’app IO.",
-            "description_2": "In ogni caso la piattaforma garantisce libertà di scelta: i destinatari possono sempre indicare come ricevere le comunicazioni secondo le proprie preferenze.",
+            "title": "Le tue notifiche a portata di mano",
+            "description_1": "Ricevi, leggi e gestisci le tue notifiche SEND, cioè le comunicazioni a valore legale che ti inviano gli enti aderenti, dove e quando vuoi. Accedi a SEND tramite SPID o CIE, anche dall’app IO. ",
             "altText": "Una mano regge uno smartphone. Lo schermo mostra il dettaglio di una notifica.",
-            "cta": "Scopri i vantaggi per i cittadini",
-            "cta_secondary": "Leggi le tue notifiche"
+            "cta": "Accedi a SEND",
+            "cta_secondary": "Come funziona"
         },
         "imprese": {
             "overline": "PER LE IMPRESE",
-            "title": "Tutto in un unico luogo",
-            "description": "SEND mette a disposizione un unico spazio condiviso in cui diversi referenti di una stessa impresa possono visualizzare e gestire in modo totalmente digitale tutte le notifiche ricevute dai vari enti e pagare eventuali importi dovuti.",
+            "title": "Tutto in un unico spazio",
+            "description": "Accedi a SEND come impresa: uno spazio condiviso dove i referenti possono consultare e gestire in modo totalmente digitale le notifiche inviate dagli enti aderenti e pagare eventuali importi dovuti.",
             "altText": "Un uomo ed una donna seduti al tavolo guardano un notebook",
-            "cta": "Scopri i vantaggi per le imprese",
-            "cta_secondary": "Vai alle notifiche"
+            "cta": "Scopri i vantaggi per le imprese"
         }
     }
 }

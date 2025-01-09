@@ -190,6 +190,7 @@ const Perfezionamento: NextPage = () => {
       <PageHead
         title={t("title", { ns: "perfezionamento" })}
         description={t("description", { ns: "perfezionamento" })}
+        route="perfezionamento"
       />
       <HeadingTitle {...heading} />
       <Tabs {...tabs} onTabChange={handleTabChange} />

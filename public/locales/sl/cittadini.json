@@ -28,17 +28,17 @@
     "description_3": "SEND je na voljo organizacijam, ki ga lahko uporabljajo za pošiljanje obvestil prejemnikom njihovih pravnih sporočil.",
     "altText": "Ženska gleda v zaslon prenosnega računalnika."
   },
-  "infoblock_4": {
+  "showcase_pec": {
     "title": "PEC",
     "description": "Če ste navedli naslov PEC, bodo obvestila dostavljena zakonito, brez priporočenih pisem v papirnati obliki. Potrdilo o prejemu, ki vam bo poslano, vsebuje povezavo za dostop do dokumentov na SEND.",
     "altText": "Slika obvestila na SEND"
   },
-  "infoblock_5": {
+  "showcase_email": {
     "title": "E-pošta in SMS",
     "description": "Poleg tega lahko izberete tudi prejemanje vljudnostnega opozorila na vaš e-poštni naslov ali prek SMS-a. Če nimate PEC, vendar dostopate do obvestila prek SEND z ustrezne povezave v 5 dneh (120 urah) po prejemu obvestila, bo dostavljeno zakonito in ne boste prejeli priporočenega pisma v papirnati obliki.",
     "altText": "Slika obvestila na SEND"
   },
-  "infoblock_custom": {
+  "showcase_appio": {
     "title": "Aplikacija IO",
     "description_1": "Če aktivirate storitev »SEND - Notifiche digitali«, boste ob vsakem obvestilu prejeli sporočilo na IO. Ogledali si boste lahko priglašene dokumente in plačali morebitne stroške neposredno v aplikaciji. Če nimate naslova PEC, vendar dostopate do obvestila iz aplikacije in preberete obvestilo v 5 dneh (120 urah) od prejema, bo zakonito dostavljeno in ne boste prejeli priporočenega pisma v papirnati obliki.",
     "description_2": "Prenesite aplikacijo:",
