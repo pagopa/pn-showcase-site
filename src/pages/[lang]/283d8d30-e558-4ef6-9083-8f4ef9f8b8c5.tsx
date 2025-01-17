@@ -1,6 +1,9 @@
-import React, { useState } from "react";
-import type { NextPage } from "next";
 import { Box, Typography } from "@mui/material";
+import { langCodes } from "@utils/constants";
+import type { GetStaticPaths, NextPage } from "next";
+import Script from "next/script";
+import { useState } from "react";
+import { getI18n } from "../../api/i18n";
 import DashboardIntro from "../../components/Numeri/components/DashboardIntro";
 import { DataSectionWrapper } from "../../components/Numeri/components/DataSectionWrapper";
 import KpiAuthoritiesServices from "../../components/Numeri/components/KpiAuthoritiesServices";
@@ -9,12 +12,37 @@ import NotificationsTrend from "../../components/Numeri/components/Notifications
 import TopServices from "../../components/Numeri/components/TopServices";
 import { curYear, firstYear } from "../../components/Numeri/shared/constants";
 import Tabs from "../../components/Tabs";
-import Script from 'next/script';
+import { LangCode } from "../../model";
 
 type Tabs = {
   id: number | null;
   label: string;
 };
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: langCodes.map((lang) => ({
+      params: { lang },
+    })),
+    fallback: false,
+  };
+};
+
+export async function getStaticProps({
+  params,
+}: {
+  params: { lang: LangCode };
+}) {
+  const translations = getI18n(params.lang, ["common", "numeri"]);
+
+  return {
+    props: {
+      translations,
+      lang: params.lang,
+      noLayout: true,
+    },
+  };
+}
 
 const numYear = curYear - firstYear + 1;
 const years = Array.from({ length: numYear }, (_, i) => curYear - i).map(
@@ -41,7 +69,7 @@ const DashboardContent: NextPage = () => {
         id="iframe-resizer-child"
         strategy="beforeInteractive"
       />
-    
+
       <Box mt={10}>
         <Typography align="center" variant="h2">
           SEND in numeri
@@ -76,13 +104,6 @@ const DashboardContent: NextPage = () => {
       </Box>
     </>
   );
-};
-
-// Questo fornirà le proprie proprietà iniziali specificando che non vogliamo il layout
-DashboardContent.getInitialProps = async () => {
-  return {
-    noLayout: true,
-  };
 };
 
 export default DashboardContent;
