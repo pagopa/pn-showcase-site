@@ -75,7 +75,6 @@ const FaqPage: NextPage = () => {
       <PageHead
         title={t("title", { ns: "faq" })}
         description={t("description", { ns: "faq" })}
-        route="faq"
       />
 
       <Box id="faqHero">

@@ -9,17 +9,19 @@ import { getI18n } from "../../../api/i18n";
 import { Link, Typography } from "@mui/material";
 import { useTranslation } from "../../../hook/useTranslation";
 import {
+  CloudIcon,
   DelegationIcon,
   DocCheckIcon,
-  HeartHand,
-  IOIcon,
+  EcologyIcon,
+  HourglassIcon,
   NotificationIcon,
+  PiggyIcon,
   WalletIcon,
 } from "../../../api/data/icons";
+import InfoblockCustomCittadini from "../../../components/InfoblockCustomCittadini";
 import { useContext } from "react";
 import LangContext from "../../../context/lang-context";
 import { safeInternalPage } from "../../../utils/navigation";
-import { Email, EuroSymbol, HourglassTop, Inventory, Verified } from "@mui/icons-material";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -46,12 +48,12 @@ const CittadiniPage: NextPage = () => {
 
   const heroCta = !!PN_PF_URL
     ? {
-      label: t("hero.cta", { ns: "cittadini" }),
-      title: t("hero.cta", { ns: "cittadini" }),
-      onClick: function onClick() {
-        window.open(PN_PF_URL, "_self");
-      },
-    }
+        label: t("hero.cta", { ns: "cittadini" }),
+        title: t("hero.cta", { ns: "cittadini" }),
+        onClick: function onClick() {
+          window.open(PN_PF_URL, "_self");
+        },
+      }
     : undefined;
 
   return (
@@ -59,7 +61,6 @@ const CittadiniPage: NextPage = () => {
       <PageHead
         title={t("title", { ns: "cittadini" })}
         description={t("description", { ns: "cittadini" })}
-        route="cittadini"
       />
 
       <Hero
@@ -102,7 +103,7 @@ const CittadiniPage: NextPage = () => {
           title={t("showcase.title", { ns: "cittadini" })}
           items={[
             {
-              icon: <EuroSymbol />,
+              icon: <PiggyIcon />,
               title: t("showcase.item_1.title", { ns: "cittadini" }),
               subtitle: (
                 <Typography variant="body2">
@@ -111,7 +112,7 @@ const CittadiniPage: NextPage = () => {
               ),
             },
             {
-              icon: <HourglassTop />,
+              icon: <HourglassIcon />,
               title: t("showcase.item_2.title", { ns: "cittadini" }),
               subtitle: (
                 <Typography variant="body2">
@@ -120,7 +121,7 @@ const CittadiniPage: NextPage = () => {
               ),
             },
             {
-              icon: <HeartHand />,
+              icon: <EcologyIcon />,
               title: t("showcase.item_3.title", { ns: "cittadini" }),
               subtitle: (
                 <Typography variant="body2">
@@ -129,7 +130,7 @@ const CittadiniPage: NextPage = () => {
               ),
             },
             {
-              icon: <Inventory />,
+              icon: <CloudIcon />,
               title: t("showcase.item_4.title", { ns: "cittadini" }),
               subtitle: (
                 <Typography variant="body2">
@@ -167,42 +168,8 @@ const CittadiniPage: NextPage = () => {
         altText={t("infoblock_2.altText", { ns: "cittadini" })}
         imageShadow={false}
       />
-      <div className="showcasePadding">
-        <Showcase
-          title={""}
-          items={[
-            {
-              icon: <Verified />,
-              title: t("showcase_pec.title", { ns: "cittadini" }),
-              subtitle: (
-                <Typography variant="body2">
-                  {t("showcase_pec.description", { ns: "cittadini" })}
-                </Typography>
-              ),
-            },
-            {
-              icon: <IOIcon />,
-              title: t("showcase_appio.title", { ns: "cittadini" }),
-              subtitle: (
-                <Typography variant="body2">
-                  {t("showcase_appio.description_1", { ns: "cittadini" })}
-                </Typography>
-              ),
-            },
-            {
-              icon: <Email />,
-              title: t("showcase_email.title", { ns: "cittadini" }),
-              subtitle: (
-                <Typography variant="body2">
-                  {t("showcase_email.description", { ns: "cittadini" })}
-                </Typography>
-              ),
-            }
-          ]}
-        />
-      </div>
 
-      {/* <Infoblock
+      <Infoblock
         title={t("infoblock_4.title", { ns: "cittadini" })}
         content={
           <Typography variant="body2">
@@ -231,36 +198,7 @@ const CittadiniPage: NextPage = () => {
         aspectRatio="4/3"
         altText={t("infoblock_5.altText", { ns: "cittadini" })}
         imageShadow={false}
-      /> */}
-      <div className="dark">
-        <Infoblock
-          title={t("infoblock_3.title", { ns: "cittadini" })}
-          content={
-            <>
-              <Typography variant="h4" sx={{ color: "primary.contrastText" }}>
-                {t("infoblock_3.description_2", { ns: "cittadini" })}
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: "primary.contrastText" }}
-              >
-                {t("infoblock_3.description_3", { ns: "cittadini" })}
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: "primary.contrastText" }}
-              >
-                {t("infoblock_3.description_1", { ns: "cittadini" })}
-              </Typography>
-            </>
-          }
-          inverse={false}
-          image={`${IMAGES_PATH}/pa-infoblock-4.png`}
-          aspectRatio="9/16"
-          altText={t("infoblock_3.altText", { ns: "cittadini" })}
-          imageShadow={false}
-        />
-      </div>
+      />
       <Walkthrough
         title={t("walkthrough.title", { ns: "cittadini" })}
         items={[
@@ -314,7 +252,35 @@ const CittadiniPage: NextPage = () => {
           },
         ]}
       />
-
+      <div className="dark">
+        <Infoblock
+          title={t("infoblock_3.title", { ns: "cittadini" })}
+          content={
+            <>
+              <Typography variant="h4" sx={{ color: "primary.contrastText" }}>
+                {t("infoblock_3.description_2", { ns: "cittadini" })}
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ color: "primary.contrastText" }}
+              >
+                {t("infoblock_3.description_3", { ns: "cittadini" })}
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ color: "primary.contrastText" }}
+              >
+                {t("infoblock_3.description_1", { ns: "cittadini" })}
+              </Typography>
+            </>
+          }
+          inverse={false}
+          image={`${IMAGES_PATH}/pa-infoblock-4.png`}
+          aspectRatio="9/16"
+          altText={t("infoblock_3.altText", { ns: "cittadini" })}
+          imageShadow={false}
+        />
+      </div>
     </>
   );
 };

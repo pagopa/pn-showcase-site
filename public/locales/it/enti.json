@@ -1,49 +1,49 @@
 {
-    "title": "Per gli enti | SEND - Servizio Notifiche Digitali",
+    "title": "SEND - Servizio Notifiche Digitali | Per gli enti",
     "description": "Scopri come aderire a SEND per rendere il processo di notificazione del tuo ente più semplice, sicuro ed efficiente",
     "hero": {
-        "title": "Inviare notifiche? Facile a dirsi",
-        "subtitle_1": "SEND, Servizio Notifiche Digitali (anche nota come Piattaforma Notifiche Digitali di cui all'art. 26 del decreto-legge 76/2020 s.m.i.) rende digitale la gestione delle comunicazioni a valore legale, semplificando il processo per chi invia e per chi riceve.",
+        "title": "Inviare notifiche? Facile a dirsi.",
+        "subtitle_1": "SEND, Servizio Notifiche Digitali (anche nota come Piattaforma Notifiche Digitali di cui all'art. 26 del decreto-legge 76/2020 s.m.i.)  digitalizza la gestione delle comunicazioni a valore legale, semplificando il processo per tutti: chi le invia, e chi le riceve.",
         "subtitle_2": "E da oggi anche a farsi. ",
         "altText": "Immagini di alcuni form per l'invio di nofiche digitali",
         "cta": "Scopri come aderire a SEND"
     },
     "infoblock_1": {
-        "title": "Un processo di notificazione più semplice",
+        "title": "Il processo di notificazione diventa più semplice",
         "description_1": "SEND - Servizio Notifiche Digitali solleva gli enti da tutti gli adempimenti legati alla gestione delle comunicazioni a valore legale e riduce l’incertezza della reperibilità del destinatario.",
-        "description_2": "Se come ente depositi su SEND l'atto da notificare non devi fare altro: sarà la piattaforma a occuparsi dell’invio, per via digitale o analogica.",
+        "description_2": "Gli enti non devono fare altro che depositare l’atto da notificare: sarà la piattaforma a occuparsi dell’invio, per via digitale o analogica, con conseguente risparmio di tempi e costi dell’intero processo.",
         "altText": "Un esempio della sezione “stato della notifica” della piattaforma SEND."
     },
     "infoblock_2": {
         "title": "Carica l'atto. Poi, dimenticatene",
-        "description_1": "SEND è integrata con il protocollo degli enti e offre sia API per l'invio automatico delle notifiche, sia la possibilità di invii manuali. Una volta caricato un atto ed eventuali moduli di pagamento, la piattaforma genera un codice univoco identificativo della notifica (IUN).",
-        "description_2": "SEND cerca nei suoi archivi e nei registri pubblici una PEC associata al destinatario e invia la notifica, insieme a un avviso di cortesia ad altri recapiti digitali (app IO, email e numero di cellulare) del destinatario, se presenti.",
-        "description_3": "Se il destinatario risulta irreperibile in via digitale, SEND cerca un indirizzo fisico per l’invio di una raccomandata cartacea.",
+        "description_1": "SEND si integra con il protocollo degli enti e offre sia API per l'invio automatico delle notifiche, sia la possibilità di fare invii manuali. Una volta effettuato il caricamento degli atti e dei moduli di pagamento, la piattaforma genera lo IUN, un codice univoco identificativo della notifica.",
+        "description_2": "Successivamente, cerca nei suoi archivi e nei registri pubblici una PEC riconducibile al destinatario e invia la notifica. Al contempo, invia un avviso di cortesia agli altri recapiti digitali (app IO, email e numero di cellulare) del destinatario.",
+        "description_3": "Se il destinatario non ha indicato alcun recapito digitale e non ha accesso alla piattaforma, questa procede con la ricerca di un indirizzo fisico, e quindi con l'invio tramite raccomandata cartacea.",
         "altText": "Un esempio della sezione “Invia una nuova notifica” della piattaforma SEND."
     },
     "infoblock_3": {
         "title": "E il destinatario?",
-        "description_1": "Se il destinatario accede alla piattaforma tramite SPID o CIE, o ha attivato il servizio su IO, può leggere e scaricare l'atto notificato. Grazie a pagoPA, può anche pagare contestualmente, se previsto, quanto dovuto.",
-        "description_2": "Il destinatario ha, come l’ente mittente, accesso alla cronologia degli stati della notifica e alle attestazioni opponibili a terzi.",
+        "description_1": "Il destinatario accede alla piattaforma tramite SPID o CIE, dove può visualizzare e scaricare l'atto notificato. Grazie all'integrazione con pagoPA, può anche pagare contestualmente, se previsto, quanto dovuto. Se ha attivato il servizio su IO, potrà fare tutto direttamente in app.",
+        "description_2": "Come l'ente, anche il destinatario ha accesso alla cronologia degli stati della notifica e alle attestazioni opponibili a terzi che ne danno prova.",
         "altText": "Le mani di una persona digitano sulla tastiera di un computer portatile. Lo schermo mostra una pagina della piattaforma SEND."
     },
     "showcase": {
         "title": "Un nuovo modo per gestire le notifiche",
         "item_1": {
             "title": "Unico",
-            "subtitle": "Come ente, invii, gestisci e monitori le notifiche in un unico spazio accessibile a più referenti. "
+            "subtitle": "Le notifiche sono inviate, gestite e monitorate tramite un solo canale, accessibile da più referenti dello stesso ente"
         },
         "item_2": {
             "title": "Semplice",
-            "subtitle": "Come ente, carichi le notifiche tramite API o manualmente: depositato l’atto, la piattaforma si occupa dell'invio e tiene traccia dei cambi di stato."
+            "subtitle": "Si possono caricare notifiche tramite API o manualmente: depositato l’atto, la piattaforma si occupa dell'invio e tiene traccia dei cambi di stato"
         },
         "item_3": {
             "title": "Immediato",
-            "subtitle": "Se il destinatario ha un recapito digitale, i tempi di invio diminuiscono"
+            "subtitle": "Se il destinatario ha un recapito digitale, i tempi di invio diminuiscono notevolmente"
         },
         "item_4": {
             "title": "Certo",
-            "subtitle": "Con il processo di notificazione SEND la certezza di consegna al destinatario è maggiore."
+            "subtitle": "Il processo di notificazione è normato e c'è maggiore certezza di consegna al destinatario"
         }
     },
     "walkthrough": {
@@ -54,15 +54,15 @@
         },
         "item_2": {
             "title": "La piattaforma la prende in carico",
-            "subtitle": "SEND verifica la completezza delle informazioni. Ad ogni cambio di stato, viene generata la relativa attestazione opponibile a terzi."
+            "subtitle": "SEND verifica la completezza delle informazioni. Ad ogni cambio di stato, viene sempre generata la relativa attestazione opponibile a terzi."
         },
         "item_3": {
             "title": "La notifica viene inviata",
-            "subtitle": "SEND comunica al destinatario la presenza di una notifica tramite diversi canali: PEC, App IO, email, SMS. In alternativa, invia una raccomandata cartacea all'indirizzo fisico fornito dall'ente."
+            "subtitle": "SEND comunica al destinatario la presenza di una notifica tramite diversi possibili canali: PEC, App IO, email, SMS. In alternativa, invia una raccomandata cartacea all'indirizzo fisico fornito dall'ente."
         },
         "item_4": {
             "title": "Il destinatario la riceve",
-            "subtitle": "Il destinatario accede alla piattaforma SEND o all’app IO per scaricare i documenti notificati e pagare contestualmente quanto dovuto, grazie all'integrazione con pagoPA."
+            "subtitle": "Il destinatario accede alla piattaforma. Lì, può scaricare i documenti notificati e pagare  contestualmente quanto dovuto, grazie all'integrazione con pagoPA. Se la riceve tramite IO, può fare  tutto direttamente in app."
         }
     },
     "stripe_link": {

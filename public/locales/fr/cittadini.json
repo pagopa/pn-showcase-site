@@ -28,17 +28,17 @@
     "description_3": "SEND est à la disposition des organismes qui pourront l’utiliser pour envoyer des notifications aux destinataires de leurs communications à valeur juridique.",
     "altText": "Une femme regarde l’écran du notebook."
   },
-  "showcase_pec": {
+  "infoblock_4": {
     "title": "PEC",
     "description": "Si vous avez indiqué une adresse PEC, les notifications seront considérées comme légalement délivrées, sans plus aucune lettre recommandée papier. L’avis de réception qui vous sera envoyé contient le lien pour accéder aux documents sur SEND.",
     "altText": "Image d’une notification sur SEND"
   },
-  "showcase_email": {
+  "infoblock_5": {
     "title": "Email ou SMS",
     "description": "Vous pouvez également choisir de recevoir un avis de courtoisie à votre adresse électronique ou par SMS. Si vous n’avez pas de PEC mais que vous accédez à la notification via SEND à partir du lien approprié dans les 5 jours (120 heures) à compter de la réception de la notification, celle-ci sera comme légalement envoyée et vous ne recevrez aucune lettre recommandée papier.",
     "altText": "Image d’une notification sur SEND"
   },
-  "showcase_appio": {
+  "infoblock_custom": {
     "title": "App IO",
     "description_1": "Si vous activez le service « SEND - Notifiche digitali », vous recevrez un message sur IO à chaque notification. Vous pourrez consulter les documents notifiés et payer les frais éventuels directement dans l’app. Si vous n’avez pas d’adresse PEC mais que vous accédez à la notification depuis l’app et que vous lisez la notification dans les 5 jours (120 heures) à compter de sa réception, celle-ci sera considérée comme légalement envoyée et vous ne recevrez aucune lettre recommandée papier.",
     "description_2": "Téléchargez l’app :",

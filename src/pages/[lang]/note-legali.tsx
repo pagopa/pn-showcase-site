@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-before-interactive-script-outside-document */
+import { useEffect } from "react";
 import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 
@@ -49,7 +50,7 @@ const LegalNoticesPage: NextPage = () => {
 
   return (
     <>
-      <PageHead title={t("title", { ns: "note-legali" })} description={t("description", { ns: "note-legali" })} route="note-legali"/>
+      <PageHead title={t("title", { ns: "note-legali" })} description={t("description", { ns: "note-legali" })} />
       <Script
         src="/onetrust/privacy-notice-scripts/otnotice-1.0.min.js"
         type="text/javascript"
