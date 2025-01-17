@@ -116,7 +116,6 @@ const Assistenza: NextPage = () => {
       <PageHead
         title={t("title", { ns: "assistenza" })}
         description={t("description", { ns: "assistenza" })}
-        route="assistenza"
       />
       <Stack
         mt={10}

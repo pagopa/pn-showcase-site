@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-before-interactive-script-outside-document */
+import { useEffect } from "react";
 import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 
@@ -48,7 +49,6 @@ const PrivacyPage: NextPage = () => {
       <PageHead
         title={t("how_it_works.title", { ns: "pickup" })}
         description={t("how_it_works.description", { ns: "pickup" })}
-        route="punti-di-ritiro/come-funziona"
       />
       <Script
         src="/onetrust/privacy-notice-scripts/otnotice-1.0.min.js"

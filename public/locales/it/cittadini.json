@@ -1,46 +1,46 @@
 {
-    "title": "Per i cittadini | SEND - Servizio Notifiche Digitali",
+    "title": "SEND - Servizio Notifiche Digitali | Per i cittadini",
     "description": "Ricevi in tempo reale le comunicazioni a valore legale da parte degli enti. Leggi, gestisci o paga online sulla piattaforma SEND o dall'app IO",
     "hero": {
-        "title": "Le tue notifiche SEND",
-        "subtitle": "Ricevi e leggi le comunicazioni a valore legale che ti inviano gli enti aderenti, tutto in digitale. Puoi gestire le notifiche e pagare eventuali costi su SEND o dall’app IO. ",
+        "title": "Le notifiche? Sono a portata di mano",
+        "subtitle": "Con SEND - Servizio Notifiche Digitali (anche nota come Piattaforma Notifiche Digitali di cui all'art. 26 del decreto-legge 76/2020 s.m.i.) puoi ricevere istantaneamente le comunicazioni a valore legale da parte di un ente. Potrai visualizzarle, gestirle e pagarle direttamente online sulla piattaforma o dall'app IO.",
         "altText": "Una mano regge uno smartphone. Lo schermo mostra il dettaglio di una notifica.",
-        "cta": "Accedi a SEND"
+        "cta": "Leggi le tue notifiche"
     },
     "infoblock_1": {
-        "title": "Sempre a portata di mano",
-        "description_1": "Le notifiche SEND sono comunicazioni a valore legale, come esiti di pratiche o rimborsi, multe o avvisi di accertamento tributi che provengono dalle amministrazioni.",
-        "description_2": "Accedi a SEND - Servizio Notifiche Digitali tramite SPID o CIE o direttamente dall’app IO: ricevi e consulti le notifiche online dove e quando vuoi, paghi eventuali costi grazie all’integrazione con pagoPA o scegli se accettare una delega per accedere anche alle notifiche dei tuoi familiari.",
+        "title": "Non perderti più nessuna notifica",
+        "description_1": "Le notifiche sono comunicazioni a valore legale emesse in via ufficiale da un'amministrazione pubblica, come esiti di pratiche amministrative o rimborsi, multe e avvisi di accertamento di tributi. Da oggi puoi riceverle e consultarle in digitale, accedendo online a SEND - Servizio Notifiche Digitali tramite SPID o CIE o direttamente dall’app IO.",
+        "description_2": "Puoi anche pagare eventuali costi grazie all'integrazione con pagoPA, visualizzare lo storico delle notifiche ricevute e gestirle direttamente online. Inoltre, ti basta accettare una delega per accedere anche alle notifiche dei tuoi familiari.",
         "altText": "Immagine di due notifiche"
     },
     "infoblock_2": {
         "title": "Scegli tu come ricevere le notifiche",
-        "description_1": "SEND dà la priorità ai tuoi recapiti digitali per inviarti comunicazioni a valore legale. Inserisci o aggiorna il tuo recapito legale (PEC) o i recapiti di cortesia (l’app IO, email, cellulare) accedendo alla piattaforma con SPID O CIE.",
-        "description_2": "Se non fornisci alcun recapito o non visualizzi la notifica su SEND ",
-        "description_3": "nei tempi previsti",
-        "description_4": ", riceverai le comunicazioni tramite raccomandata cartacea.",
+        "description_1": "Per inviarti le comunicazioni a valore legale, SEND dà la priorità ai tuoi recapiti digitali. In ogni momento, puoi accedere online al Servizio Notifiche Digitali con SPID e CIE per indicare o aggiornare o il tuo recapito legale (PEC) oppure i tuoi recapiti di cortesia (app IO, email e/o numero di cellulare).",
+        "description_2": "Se non indichi alcun recapito o non accedi alla notifica attraverso SEND da canali diversi dalla PEC ",
+        "description_3": "entro i tempi indicati",
+        "description_4": ", continuerai a ricevere le notifiche tramite raccomandata cartacea.",
         "altText": "Un uomo, con uno smartphone in mano, guarda in camera."
     },
     "infoblock_3": {
         "title": "",
-        "description_1": "Il servizio sarà adottato dagli enti progressivamente e, per favorire la sua graduale diffusione, in una prima fase assicurerà l'invio anche della copia analogica conforme degli atti notificati tramite raccomandata cartacea ai destinatari non dotati di recapito legale (PEC).",
+        "description_1": "Le Pubbliche Amministrazioni stanno gradualmente adottando il nuovo Servizio Notifiche Digitali, per questo è possibile che non tutti gli atti ti saranno già notificati con questa modalità.",
         "description_2": "Il futuro delle comunicazioni a valore legale",
-        "description_3": "SEND è a disposizione di tutti gli enti che vorranno utilizzarlo per inviare notifiche ai destinatari delle loro comunicazioni a valore legale.",
+        "description_3": "SEND è a disposizione degli enti che potranno utilizzarlo per inviare notifiche ai destinatari delle loro comunicazioni a valore legale.",
         "altText": "Una donna guarda il monitor del notebook."
     },
-    "showcase_pec": {
+    "infoblock_4": {
         "title": "PEC",
-        "description": "Se hai fornito un indirizzo PEC, le notifiche saranno considerate consegnate legalmente e non riceverai più raccomandate cartacee.",
+        "description": "Se hai indicato un indirizzo PEC, le notifiche risulteranno legalmente consegnate, senza più raccomandate cartacee. L'avviso di avvenuta ricezione che ti sarà inviato contiene il link per accedere ai documenti su SEND.",
         "altText": "Immagine di una notifica su SEND"
     },
-    "showcase_email": {
+    "infoblock_5": {
         "title": "Email e SMS",
-        "description": "Puoi scegliere di ricevere avvisi di cortesia tramite email o SMS con un link per gestire le tue notifiche SEND. Se accedi alla notifica su SEND entro 5 giorni, sarà considerata legalmente consegnata e non riceverai alcuna raccomandata cartacea.",
+        "description": "In più, puoi anche scegliere di ricevere un avviso di cortesia al tuo indirizzo e-mail o tramite SMS. Se non hai la PEC ma accedi alla notifica attraverso SEND dall'apposito link entro 5 giorni (120 ore) dalla ricezione della notifica, questa risulterà legalmente recapitata e non riceverai alcuna raccomandata cartacea.",
         "altText": "Immagine di una notifica su SEND"
     },
-    "showcase_appio": {
+    "infoblock_custom": {
         "title": "App IO",
-        "description_1": "Con il servizio “SEND - Notifiche digitali” sull’app IO ricevi avvisi e gestisci in app le tue comunicazioni a valore legale. Se leggi la notifica nell'app entro 5 giorni, sarà considerata legalmente consegnata (anche se non hai una PEC) e non riceverai una raccomandata cartacea.",
+        "description_1": "Se attivi il servizio “SEND - Notifiche digitali”, a ogni notifica riceverai un messaggio su IO. Potrai visualizzare i documenti notificati e pagare eventuali spese direttamente in app. Se non hai un indirizzo PEC ma accedi alla notifica dall'app e leggi la notifica entro 5 giorni (120 ore) dalla sua ricezione, questa risulterà legalmente recapitata e non riceverai alcuna raccomandata cartacea.",
         "description_2": "Scarica l’app:",
         "googleAltText": "Disponibile su Google Play",
         "appleAltText": "Disponibile su App store"
@@ -49,11 +49,11 @@
         "title": "Un solo modo per risparmiare in tanti modi",
         "item_1": {
             "title": "Convenienza",
-            "subtitle": "Le notifiche digitali hanno minori costi di notificazione e spedizione"
+            "subtitle": "Il recapito delle notifiche in digitale comporta minori costi di notificazione e spedizione"
         },
         "item_2": {
             "title": "Tempo",
-            "subtitle": "Niente più attese o code per il ritiro dei documenti cartacei"
+            "subtitle": "Niente più attese o code per il ritiro delle comunicazioni cartacee"
         },
         "item_3": {
             "title": "Sostenibilità",
@@ -61,7 +61,7 @@
         },
         "item_4": {
             "title": "Spazio",
-            "subtitle": "Puoi scaricare e archiviare gli atti in digitale senza conservare carta"
+            "subtitle": "Non devi più conservare i documenti stampati, grazie alla possibilità di scaricare e archiviare gli atti in digitale"
         }
     },
     "walkthrough": {
@@ -72,16 +72,16 @@
         },
         "item_2": {
             "title": "Leggi il contenuto",
-            "subtitle_1": "Dal messaggio ricevuto, puoi accedere online alla piattaforma per leggere la notifica e scaricare i relativi documenti allegati. Se attivi il servizio su IO, puoi visualizzare il contenuto direttamente in app: questo equivale alla firma della ricevuta di ritorno di una raccomandata tradizionale e può ",
-            "subtitle_2": "perfezionare",
-            "subtitle_3": " immediatamente la notifica."
+            "subtitle_1": "Dal messaggio ricevuto, puoi accedere online alla piattaforma per leggere la notifica e scaricare i relativi documenti allegati. Se attivi il servizio su IO, puoi visualizzare il contenuto direttamente in app: questo equivale alla firma della ricevuta di ritorno di una raccomandata tradizionale e al ",
+            "subtitle_2": "perfezionamento",
+            "subtitle_3": " immediato della notifica."
         },
         "item_3": {
             "title": "Paga le spese",
             "subtitle": "Se c'è un importo da pagare, grazie all'integrazione con pagoPA, puoi procedere contestualmente online da SEND oppure direttamente da IO. Se preferisci recarti presso uno sportello, dovrai avere con te il modulo di pagamento allegato alla notifica."
         },
         "item_4": {
-            "title": "Delega o diventa delegato",
+            "title": "Puoi delegare o essere delegato",
             "subtitle": "Se lo desideri, puoi delegare altre persone, fisiche o giuridiche, a visualizzare le tue notifiche online. Per farlo, accedi a SEND con SPID o CIE e inserisci nella sezione Deleghe i dati della persona che vuoi delegare."
         }
     }

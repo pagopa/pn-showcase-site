@@ -8,27 +8,27 @@
 
 <url>
   <loc>https://notifichedigitali.pagopa.it/</loc>
-  <lastmod>2024-12-20T12:41:57+00:00</lastmod>
-  <priority>0.75</priority>
-</url>
-<url>
-  <loc>https://notifichedigitali.pagopa.it/cittadini</loc>
-  <lastmod>2024-12-20T12:41:57+00:00</lastmod>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
+  <loc>https://notifichedigitali.pagopa.it/cittadini</loc>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
   <loc>https://notifichedigitali.pagopa.it/imprese</loc>
-  <lastmod>2024-12-20T12:41:57+00:00</lastmod>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
   <priority>0.85</priority>
 </url>
 <url>
   <loc>https://notifichedigitali.pagopa.it/pubbliche-amministrazioni</loc>
-  <lastmod>2024-12-20T12:41:57+00:00</lastmod>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://notifichedigitali.pagopa.it/pubbliche-amministrazioni/documenti</loc>
-  <lastmod>2024-12-16T12:41:57+00:00</lastmod>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
   <priority>0.70</priority>
 </url>
 <url>
@@ -38,12 +38,12 @@
 </url>
 <url>
   <loc>https://notifichedigitali.pagopa.it/punti-di-ritiro</loc>
-  <lastmod>2024-12-20T12:41:57+00:00</lastmod>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
   <priority>0.82</priority>
 </url>
 <url>
   <loc>https://notifichedigitali.pagopa.it/punti-di-ritiro/come-funziona</loc>
-  <lastmod>2024-11-03T12:41:57+00:00</lastmod>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -55,5 +55,10 @@
   <loc>https://notifichedigitali.pagopa.it/numeri</loc>
   <lastmod>2024-04-15T12:41:57+00:00</lastmod>
   <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://notifichedigitali.pagopa.it/informativa-privacy/</loc>
+  <lastmod>2024-04-15T12:41:57+00:00</lastmod>
+  <priority>0.60</priority>
 </url>
 </urlset>

@@ -25,7 +25,6 @@ const NotFound = () => (
     <PageHead
       title="SEND - Pagina non trovata"
       description="Pagina non trovata"
-      route="404"
     />
     <Typography variant="h4">Error 404</Typography>
   </>

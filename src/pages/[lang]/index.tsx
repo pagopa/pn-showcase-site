@@ -42,7 +42,6 @@ const IndexPage: NextPage = () => {
       <PageHead
         title={t("title", { ns: "homepage" })}
         description={t("description", { ns: "homepage" })}
-        route=""
       />
       <Hero
         type="image"
@@ -65,30 +64,35 @@ const IndexPage: NextPage = () => {
         overline={t("infoblock.cittadini.overline", { ns: "homepage" })}
         title={t("infoblock.cittadini.title", { ns: "homepage" })}
         content={
-          <Typography variant="body2">
-            {t("infoblock.cittadini.description_1", { ns: "homepage" })}
-          </Typography>
+          <>
+            <Typography variant="body2">
+              {t("infoblock.cittadini.description_1", { ns: "homepage" })}
+            </Typography>
+            <Typography variant="body2">
+              {t("infoblock.cittadini.description_2", { ns: "homepage" })}
+            </Typography>
+          </>
         }
         ctaPrimary={
-          PN_PF_URL
+          "/cittadini"
             ? {
-              label: t("infoblock.cittadini.cta_secondary", {
-                ns: "homepage",
-              }),
-              title: t("infoblock.cittadini.cta_secondary", {
-                ns: "homepage",
-              }),
-              onClick: () => window.open(PN_PF_URL, "_self"),
-            }
+                label: t("infoblock.cittadini.cta", { ns: "homepage" }),
+                title: t("infoblock.cittadini.cta", { ns: "homepage" }),
+                onClick: () => redirectToInternalPage(push, "cittadini", lang),
+              }
             : undefined
         }
         ctaSecondary={
-          "/cittadini"
+          PN_PF_URL
             ? {
-              label: t("infoblock.cittadini.cta", { ns: "homepage" }),
-              title: t("infoblock.cittadini.cta", { ns: "homepage" }),
-              onClick: () => redirectToInternalPage(push, "cittadini", lang),
-            }
+                label: t("infoblock.cittadini.cta_secondary", {
+                  ns: "homepage",
+                }),
+                title: t("infoblock.cittadini.cta_secondary", {
+                  ns: "homepage",
+                }),
+                onClick: () => window.open(PN_PF_URL, "_self"),
+              }
             : undefined
         }
         inverse
@@ -109,21 +113,21 @@ const IndexPage: NextPage = () => {
         ctaPrimary={
           "/imprese"
             ? {
-              label: t("infoblock.imprese.cta", { ns: "homepage" }),
-              title: t("infoblock.imprese.cta", { ns: "homepage" }),
-              onClick: () => redirectToInternalPage(push, "imprese", lang),
-            }
+                label: t("infoblock.imprese.cta", { ns: "homepage" }),
+                title: t("infoblock.imprese.cta", { ns: "homepage" }),
+                onClick: () => redirectToInternalPage(push, "imprese", lang),
+              }
             : undefined
         }
-        // ctaSecondary={
-        //   PN_PG_URL
-        //     ? {
-        //       label: t("infoblock.imprese.cta_secondary", { ns: "homepage" }),
-        //       title: t("infoblock.imprese.cta_secondary", { ns: "homepage" }),
-        //       onClick: () => window.open(PN_PG_URL, "_self"),
-        //     }
-        //     : undefined
-        // }
+        ctaSecondary={
+          PN_PG_URL
+            ? {
+                label: t("infoblock.imprese.cta_secondary", { ns: "homepage" }),
+                title: t("infoblock.imprese.cta_secondary", { ns: "homepage" }),
+                onClick: () => window.open(PN_PG_URL, "_self"),
+              }
+            : undefined
+        }
         inverse={false}
         image={`${IMAGES_PATH}/ph-infoblock-3.png`}
         altText={t("infoblock.imprese.altText", { ns: "homepage" })}
@@ -134,22 +138,27 @@ const IndexPage: NextPage = () => {
         overline={t("infoblock.enti.overline", { ns: "homepage" })}
         title={t("infoblock.enti.title", { ns: "homepage" })}
         content={
-          <Typography variant="body2">
-            {t("infoblock.enti.description_1", { ns: "homepage" })}
-          </Typography>
+          <>
+            <Typography variant="body2">
+              {t("infoblock.enti.description_1", { ns: "homepage" })}
+            </Typography>
+            <Typography variant="body2">
+              {t("infoblock.enti.description_2", { ns: "homepage" })}
+            </Typography>
+          </>
         }
         ctaPrimary={
           "/pubbliche-amministrazioni"
             ? {
-              label: t("infoblock.enti.cta", { ns: "homepage" }),
-              title: t("infoblock.enti.cta", { ns: "homepage" }),
-              onClick: () =>
-                redirectToInternalPage(
-                  push,
-                  "pubbliche-amministrazioni",
-                  lang
-                ),
-            }
+                label: t("infoblock.enti.cta", { ns: "homepage" }),
+                title: t("infoblock.enti.cta", { ns: "homepage" }),
+                onClick: () =>
+                  redirectToInternalPage(
+                    push,
+                    "pubbliche-amministrazioni",
+                    lang
+                  ),
+              }
             : undefined
         }
         inverse
