@@ -1,7 +1,10 @@
 import type { GetStaticPaths, NextPage } from "next";
 
 import { Box, Typography } from "@mui/material";
-import { useMemo, useState } from "react";
+import { langCodes } from "@utils/constants";
+import Script from "next/script";
+import { useState } from "react";
+import { getI18n } from "../../../api/i18n";
 import DashboardIntro from "../../../components/Numeri/components/DashboardIntro";
 import { DataSectionWrapper } from "../../../components/Numeri/components/DataSectionWrapper";
 import KpiAuthoritiesServices from "../../../components/Numeri/components/KpiAuthoritiesServices";
@@ -13,11 +16,13 @@ import {
   firstYear,
 } from "../../../components/Numeri/shared/constants";
 import Tabs from "../../../components/Tabs";
-import PageHead from "../../../components/PageHead";
-import { langCodes } from "@utils/constants";
-import { LangCode } from "../../../model";
-import { getI18n } from "../../../api/i18n";
 import { useTranslation } from "../../../hook/useTranslation";
+import { LangCode } from "../../../model";
+
+type Tabs = {
+  id: number | null;
+  label: string;
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -35,27 +40,25 @@ export async function getStaticProps({
 }) {
   const translations = getI18n(params.lang, ["common", "numeri"]);
 
-  return { props: { translations, lang: params.lang } };
+  return {
+    props: {
+      translations,
+      lang: params.lang,
+      noLayout: true,
+    },
+  };
 }
-
-type Tabs = {
-  id: number | null;
-  label: string;
-};
 
 const numYear = curYear - firstYear + 1;
 const years = Array.from({ length: numYear }, (_, i) => curYear - i).map(
   (y) => ({ id: y, label: String(y) })
 );
 
-const NumeriPage: NextPage = () => {
-  const [selYear, setSelYear] = useState<number | null>(null);
-  const { t } = useTranslation(["common", "numeri"]);
+const tabs: Tabs[] = [{ id: null, label: "Totale" }, ...years];
 
-  const tabs: Tabs[] = useMemo(
-    () => [{ id: null, label: t("total", { ns: "numeri" }) }, ...years],
-    [years]
-  );
+const DashboardContent: NextPage = () => {
+  const { t } = useTranslation(["numeri"]);
+  const [selYear, setSelYear] = useState<number | null>(null);
 
   const handleTabChange = (tab: number) => {
     if (tab === tabs[tab].id) {
@@ -66,13 +69,27 @@ const NumeriPage: NextPage = () => {
 
   return (
     <>
-      <PageHead
-        title={t("title", { ns: "numeri" })}
-        description={t("description", { ns: "numeri" })}
+      <Script
+        src="/iframe-resizer/child/index.umd.js"
+        type="text/javascript"
+        id="iframe-resizer-child"
+        strategy="beforeInteractive"
       />
-      <Box mt={10}>
+
+      <Box mt={8}>
+        <Typography
+          align="center"
+          fontWeight={700}
+          fontSize="14px"
+          color="textSecondary"
+          mb={3}
+          sx={{ textTransform: "uppercase" }}
+        >
+          {t("hero.eyelet")}
+        </Typography>
+
         <Typography align="center" variant="h2">
-          {t("hero.title", { ns: "numeri" })}
+          {t("hero.title")}
         </Typography>
         <DashboardIntro />
       </Box>
@@ -80,8 +97,8 @@ const NumeriPage: NextPage = () => {
       <Tabs tabs={tabs.map((tab) => tab.label)} onTabChange={handleTabChange} />
       <Box sx={{ overflowX: "hidden" }}>
         <DataSectionWrapper
-          title={t("sent_notifications.title", { ns: "numeri" })}
-          description={t("sent_notifications.description", { ns: "numeri" })}
+          title={t("sent_notifications.title")}
+          description={t("sent_notifications.description")}
         >
           <Box mb={2}>
             <KpiNotifications selYear={selYear} />
@@ -92,8 +109,8 @@ const NumeriPage: NextPage = () => {
         </DataSectionWrapper>
 
         <DataSectionWrapper
-          title={t("authorities_and_types.title", { ns: "numeri" })}
-          description={t("authorities_and_types.description", { ns: "numeri" })}
+          title={t("authorities_and_types.title")}
+          description={t("authorities_and_types.description")}
           background="grey"
         >
           <Box mb={2}>
@@ -106,4 +123,4 @@ const NumeriPage: NextPage = () => {
   );
 };
 
-export default NumeriPage;
+export default DashboardContent;
