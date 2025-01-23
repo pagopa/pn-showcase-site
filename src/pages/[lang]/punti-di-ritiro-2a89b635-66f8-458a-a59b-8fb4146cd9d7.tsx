@@ -1,6 +1,7 @@
 import type { GetStaticPaths, NextPage } from "next";
 
-import PageHead from "../../../components/PageHead";
+import CloseIcon from "@mui/icons-material/Close";
+import SearchIcon from "@mui/icons-material/Search";
 import {
   Alert,
   Box,
@@ -12,17 +13,16 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import SearchIcon from "@mui/icons-material/Search";
-import CloseIcon from "@mui/icons-material/Close";
-import Papa from "papaparse";
-import OperatorsTable from "../../../components/Ritiro/OperatorsTable";
-import DarkInfoblockRitiro from "../../../components/Ritiro/DarkInfoblockRitiro";
-import OperatorsList from "../../../components/Ritiro/OperatorsList";
-import { useEffect, useState } from "react";
-import { LangCode, Point, RaddOperator } from "../../../model";
-import { useTranslation } from "../../../hook/useTranslation";
 import { langCodes } from "@utils/constants";
-import { getI18n } from "../../../api/i18n";
+import Script from "next/script";
+import Papa from "papaparse";
+import { useEffect, useState } from "react";
+import { getI18n } from "../../api/i18n";
+import DarkInfoblockRitiro from "../../components/Ritiro/DarkInfoblockRitiro";
+import OperatorsList from "../../components/Ritiro/OperatorsList";
+import OperatorsTable from "../../components/Ritiro/OperatorsTable";
+import { useTranslation } from "../../hook/useTranslation";
+import { LangCode, Point, RaddOperator } from "../../model";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -40,7 +40,7 @@ export async function getStaticProps({
 }) {
   const translations = getI18n(params.lang, ["common", "pickup"]);
 
-  return { props: { translations, lang: params.lang } };
+  return { props: { translations, lang: params.lang, noLayout: true } };
 }
 
 const RitiroPage: NextPage = () => {
@@ -135,12 +135,15 @@ const RitiroPage: NextPage = () => {
 
   return (
     <>
-      <PageHead
-        title={t("title", { ns: "pickup" })}
-        description={t("description", { ns: "pickup" })}
+      <Script
+        src="/iframe-resizer/child/index.umd.js"
+        type="text/javascript"
+        id="iframe-resizer-child"
+        strategy="beforeInteractive"
       />
+
       <Stack
-        mt={10}
+        mt={8}
         mb={5}
         mx={3}
         direction="column"
@@ -148,6 +151,17 @@ const RitiroPage: NextPage = () => {
         spacing={0}
         justifyContent="center"
       >
+        <Typography
+          align="center"
+          fontWeight={700}
+          fontSize="14px"
+          color="textSecondary"
+          mb={3}
+          sx={{ textTransform: "uppercase" }}
+        >
+          {t("search.eyelet", { ns: "pickup" })}
+        </Typography>
+
         <Typography align="center" variant="h2">
           {t("search.title", { ns: "pickup" })}
         </Typography>
