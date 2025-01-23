@@ -1,60 +1,61 @@
 {
-    "title": "SEND - Servizio Notifiche Digitali | I numeri di SEND",
-    "description": "Scopri i dati relativi a notifiche inviate, enti che stanno usando SEND e tipologie di servizi dati",
-    "hero": {
-        "title": "SEND in numeri",
-        "last_update": "Ultimo aggiornamento"
+  "title": "SEND - Servizio Notifiche Digitali | I numeri di SEND",
+  "description": "Scopri i dati relativi a notifiche inviate, enti che stanno usando SEND e tipologie di servizi dati",
+  "hero": {
+    "eyelet": "Dati e performance",
+    "title": "Scopri i numeri di SEND",
+    "last_update": "Ultimo aggiornamento"
+  },
+  "total": "Totale",
+  "sent_notifications": {
+    "title": "Notifiche inviate",
+    "description": "I seguenti dati si riferiscono alle notifiche inviate dagli enti della pubblica amministrazione",
+    "total": {
+      "name": "complessive",
+      "title": "Totale notifiche",
+      "description": "Notifiche inviate tramite SEND"
     },
-    "total": "Totale",
-    "sent_notifications": {
-        "title": "Notifiche inviate",
-        "description": "I seguenti dati si riferiscono alle notifiche inviate dagli enti della pubblica amministrazione",
-        "total": {
-            "name": "complessive",
-            "title": "Totale notifiche",
-            "description": "Notifiche inviate tramite SEND"
-        },
-        "digital": {
-            "name": "digitali",
-            "title": "Totale notifiche digitali",
-            "description": "Notifiche inviate ai destinatari tramite canali digitali"
-        },
-        "analog": {
-            "name": "analogiche",
-            "title": "Totale notifiche analogiche",
-            "description": "Notifiche inviate ai destinatari tramite raccomandata cartacea"
-        },
-        "trend": {
-            "title": "Andamento delle notifiche",
-            "description_1": "Andamento",
-            "description_2": "delle notifiche",
-            "monthly": "mensile",
-            "aggregate": "cumulato"
-        }
+    "digital": {
+      "name": "digitali",
+      "title": "Totale notifiche digitali",
+      "description": "Notifiche inviate ai destinatari tramite canali digitali"
     },
-    "authorities_and_types": {
-        "title": "Enti e tipologie di notifica inviate",
-        "description": "I seguenti dati mostrano quanti Enti stanno utilizzando SEND e per quale tipologia di servizi",
-        "authorities": {
-            "total": {
-                "title": "Totale enti attivi",
-                "description": "Enti che hanno inviato almeno una notifica"
-            },
-            "main_cat": {
-                "title": "Principali categorie di enti attivi",
-                "description": "Categorie di enti ordinate per numero di enti attivi"
-            }
-        },
-        "notification_types": {
-            "total": {
-                "title": "Tipologie di notifiche inviate",
-                "description": "La tipologia rappresenta la sfera di appartenenza della notifica (es. multe, tributi, anagrafe etc.)"
-            },
-            "main_scopes": {
-                "title": "Principali ambiti",
-                "description": "Servizi ordinati per numero di notifiche depositate a partire dall'adozione di SEND",
-                "notes": "* diversa/o da quelli la cui notificazione è esclusa tramite SEND ai sensi dell’art.26, comma 17 D.L. 76/2020"
-            }
-        }
+    "analog": {
+      "name": "analogiche",
+      "title": "Totale notifiche analogiche",
+      "description": "Notifiche inviate ai destinatari tramite raccomandata cartacea"
+    },
+    "trend": {
+      "title": "Andamento delle notifiche",
+      "description_1": "Andamento",
+      "description_2": "delle notifiche",
+      "monthly": "mensile",
+      "aggregate": "cumulato"
     }
+  },
+  "authorities_and_types": {
+    "title": "Enti e tipologie di notifica inviate",
+    "description": "I seguenti dati mostrano quanti Enti stanno utilizzando SEND e per quale tipologia di servizi",
+    "authorities": {
+      "total": {
+        "title": "Totale enti attivi",
+        "description": "Enti che hanno inviato almeno una notifica"
+      },
+      "main_cat": {
+        "title": "Principali categorie di enti attivi",
+        "description": "Categorie di enti ordinate per numero di enti attivi"
+      }
+    },
+    "notification_types": {
+      "total": {
+        "title": "Tipologie di notifiche inviate",
+        "description": "La tipologia rappresenta la sfera di appartenenza della notifica (es. multe, tributi, anagrafe etc.)"
+      },
+      "main_scopes": {
+        "title": "Principali ambiti",
+        "description": "Servizi ordinati per numero di notifiche depositate a partire dall'adozione di SEND",
+        "notes": "* diversa/o da quelli la cui notificazione è esclusa tramite SEND ai sensi dell’art.26, comma 17 D.L. 76/2020"
+      }
+    }
+  }
 }
