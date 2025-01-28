@@ -8,17 +8,18 @@ import {
   Paper,
   Box,
   TablePagination,
-  Pagination,
+  CircularProgress,
 } from "@mui/material";
 import { RaddOperator } from "../../model";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import CustomPagination from "../CustomPagination";
 
 type Props = {
   rows: RaddOperator[];
+  loading?: boolean;
 };
 
-function OperatorsList({ rows }: Readonly<Props>) {
+function OperatorsList({ rows, loading = false }: Readonly<Props>) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -26,6 +27,9 @@ function OperatorsList({ rows }: Readonly<Props>) {
 
   const handleChangePage = (_event: any, newPage: number | null) => {
     if (newPage !== null) {
+      if (listContainerRef.current) {
+        listContainerRef.current.scrollIntoView({ behavior: "smooth" });
+      }
       setPage(newPage - 1);
     }
   };
@@ -40,11 +44,16 @@ function OperatorsList({ rows }: Readonly<Props>) {
     numOfDisplayedPages: Math.min(Math.ceil(rows.length / rowsPerPage), 3),
     currentPage: page,
   };
-  useEffect(() => {
-    if (listContainerRef.current) {
-      listContainerRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [page, rowsPerPage]);
+
+  if (loading) {
+    return (
+      <CircularProgress
+        id="spinner-loading"
+        role="loadingSpinner"
+        sx={{ color: "primary" }}
+      />
+    );
+  }
 
   return (
     <Stack>

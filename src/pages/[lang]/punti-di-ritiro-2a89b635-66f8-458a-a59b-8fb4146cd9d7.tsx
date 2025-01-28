@@ -48,6 +48,7 @@ const RitiroPage: NextPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  const [loading, setLoading] = useState(true);
   const [points, setPoints] = useState<Point[]>([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredOperators, setFilteredOperators] = useState<RaddOperator[]>(
@@ -77,10 +78,12 @@ const RitiroPage: NextPage = () => {
         complete: (result) => {
           if (result.data && result.data.length > 0) {
             setPoints(result.data as Point[]);
+            setLoading(false);
           }
         },
         error: (error) => {
           console.error("Error parsing CSV:", error);
+          setLoading(false);
         },
       });
     }
@@ -226,6 +229,7 @@ const RitiroPage: NextPage = () => {
             <OperatorsList
               key={JSON.stringify(initialRaddOperators)}
               rows={rowsToSet}
+              loading={loading}
             />
           ) : (
             <Stack sx={{ maxWidth: 1092, minWidth: "100%" }}>
@@ -239,7 +243,6 @@ const RitiroPage: NextPage = () => {
         </Box>
       ) : (
         <Box
-          minHeight={823}
           sx={{
             backgroundColor: "#FAFAFA",
             display: "flex",
@@ -253,6 +256,7 @@ const RitiroPage: NextPage = () => {
               <OperatorsTable
                 key={JSON.stringify(filteredOperators)}
                 rows={rowsToSet}
+                loading={loading}
               />
             </Stack>
           ) : (
