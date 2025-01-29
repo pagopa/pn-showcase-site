@@ -13,6 +13,7 @@ import {
 import { RaddOperator } from "../../model";
 import { useRef, useState } from "react";
 import CustomPagination from "../CustomPagination";
+import { useTranslation } from "../../hook/useTranslation";
 
 type Props = {
   rows: RaddOperator[];
@@ -22,6 +23,7 @@ type Props = {
 function OperatorsList({ rows, loading = false }: Readonly<Props>) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const { t } = useTranslation(["pickup"]);
 
   const listContainerRef = useRef<HTMLUListElement | null>(null);
 
@@ -48,8 +50,10 @@ function OperatorsList({ rows, loading = false }: Readonly<Props>) {
   if (loading) {
     return (
       <CircularProgress
-        id="spinner-loading"
-        role="loadingSpinner"
+        id="loading"
+        role="status"
+        aria-live="polite"
+        aria-label={t("loading-aria-label")}
         sx={{ color: "primary" }}
       />
     );

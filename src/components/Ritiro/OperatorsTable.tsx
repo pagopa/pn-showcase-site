@@ -16,6 +16,7 @@ import {
 import { RaddOperator } from "../../model";
 import { useRef, useState } from "react";
 import CustomPagination from "../CustomPagination";
+import { useTranslation } from "../../hook/useTranslation";
 
 type Props = {
   rows: RaddOperator[];
@@ -51,6 +52,7 @@ function descendingComparator(a: any, b: any, orderBy: string) {
 function OperatorsTable({ rows, loading = false }: Readonly<Props>) {
   const [orderBy, setOrderBy] = useState("city");
   const [order, setOrder] = useState<"asc" | "desc">("asc");
+  const { t } = useTranslation(["pickup"]);
 
   const sortedRows: RaddOperator[] = stableSort(
     rows,
@@ -100,8 +102,10 @@ function OperatorsTable({ rows, loading = false }: Readonly<Props>) {
     return (
       <Box display="flex" justifyContent="center" mt={3}>
         <CircularProgress
-          id="spinner-loading"
-          role="loadingSpinner"
+          id="loading"
+          role="status"
+          aria-live="polite"
+          aria-label={t("loading-aria-label")}
           sx={{ color: "primary" }}
         />
       </Box>

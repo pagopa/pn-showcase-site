@@ -20,5 +20,6 @@
   "how_it_works": {
     "title": "SEND - Servizio Notifiche Digitali | Come funzionano i punti di ritiro",
     "description": "Scopri come funziona il servizio per ritirare sul territorio una copia delle comunicazioni a valore legale che ricevi tramite SEND"
-  }
+  },
+  "loading-aria-label": "Caricamento dei Punti di ritiro in corso"
 }
