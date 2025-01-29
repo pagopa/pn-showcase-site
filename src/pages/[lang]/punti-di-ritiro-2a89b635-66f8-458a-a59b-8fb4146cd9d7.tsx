@@ -137,6 +137,8 @@ const RitiroPage: NextPage = () => {
   }
 
   const getContent = () => {
+    if (!rowsToSet) return null;
+
     if (isMobile) {
       return (
         <OperatorsList
