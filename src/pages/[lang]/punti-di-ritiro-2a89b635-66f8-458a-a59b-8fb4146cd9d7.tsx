@@ -48,6 +48,7 @@ const RitiroPage: NextPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  const [loading, setLoading] = useState(true);
   const [points, setPoints] = useState<Point[]>([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredOperators, setFilteredOperators] = useState<RaddOperator[]>(
@@ -77,10 +78,12 @@ const RitiroPage: NextPage = () => {
         complete: (result) => {
           if (result.data && result.data.length > 0) {
             setPoints(result.data as Point[]);
+            setLoading(false);
           }
         },
         error: (error) => {
           console.error("Error parsing CSV:", error);
+          setLoading(false);
         },
       });
     }
@@ -132,6 +135,26 @@ const RitiroPage: NextPage = () => {
   } else {
     rowsToSet = initialRaddOperators;
   }
+
+  const getContent = () => {
+    if (isMobile) {
+      return (
+        <OperatorsList
+          key={JSON.stringify(initialRaddOperators)}
+          rows={rowsToSet}
+          loading={loading}
+        />
+      );
+    } else {
+      return (
+        <OperatorsTable
+          key={JSON.stringify(filteredOperators)}
+          rows={rowsToSet}
+          loading={loading}
+        />
+      );
+    }
+  };
 
   return (
     <>
@@ -213,69 +236,34 @@ const RitiroPage: NextPage = () => {
           id="textFilter"
         />
       </Stack>
-      {isMobile ? (
-        <Box
-          py={3}
+
+      <Box
+        py={{ xs: 3, sm: 5 }}
+        px={{ xs: 0, sm: 5 }}
+        sx={{
+          backgroundColor: { xs: "#EEEEEE", sm: "#FAFAFA" },
+          display: "flex",
+          justifyContent: "center",
+          alignItems: { xs: "center", sm: "flex-start" },
+        }}
+      >
+        <Stack
           sx={{
-            backgroundColor: "#EEEEEE",
-            display: "flex",
-            justifyContent: "center",
+            maxWidth: { xs: "100%", sm: 1092 },
+            width: { xs: "auto", sm: "100%" },
           }}
         >
           {rowsToSet.length > 0 ? (
-            <OperatorsList
-              key={JSON.stringify(initialRaddOperators)}
-              rows={rowsToSet}
-            />
+            getContent()
           ) : (
-            <Stack sx={{ maxWidth: 1092, minWidth: "100%" }}>
-              <Box bgcolor="white" p={3} m={3} textAlign="center">
-                <Typography>
-                  {t("search.empty_state", { ns: "pickup" })}
-                </Typography>
-              </Box>
-            </Stack>
+            <Box bgcolor="white" p={3} m={3} textAlign="center">
+              <Typography>
+                {t("search.empty_state", { ns: "pickup" })}
+              </Typography>
+            </Box>
           )}
-        </Box>
-      ) : (
-        <Box
-          minHeight={823}
-          sx={{
-            backgroundColor: "#FAFAFA",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-start",
-          }}
-          padding={5}
-        >
-          {rowsToSet.length > 0 ? (
-            <Stack sx={{ maxWidth: 1092, width: "100%" }}>
-              <OperatorsTable
-                key={JSON.stringify(filteredOperators)}
-                rows={rowsToSet}
-              />
-            </Stack>
-          ) : (
-            <Stack my={5} sx={{ maxWidth: 1092, width: "100%" }}>
-              <Box
-                bgcolor="white"
-                height={56}
-                width={1092}
-                sx={{
-                  margin: "auto",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  display: "flex",
-                }}
-              >
-                <Typography>
-                  {t("search.empty_state", { ns: "pickup" })}
-                </Typography>
-              </Box>
-            </Stack>
-          )}
-        </Box>
-      )}
+        </Stack>
+      </Box>
 
       <DarkInfoblockRitiro />
     </>
