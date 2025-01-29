@@ -5,6 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import {
   Alert,
   Box,
+  CircularProgress,
   IconButton,
   InputAdornment,
   Stack,
@@ -137,14 +138,33 @@ const RitiroPage: NextPage = () => {
   }
 
   const getContent = () => {
-    if (!rowsToSet) return null;
+    if (loading) {
+      return (
+        <Box display="flex" justifyContent="center" mt={3}>
+          <CircularProgress
+            id="loading"
+            role="status"
+            aria-live="polite"
+            aria-label={t("loading-aria-label")}
+            sx={{ color: "primary" }}
+          />
+        </Box>
+      );
+    }
+
+    if (!rowsToSet || rowsToSet.length === 0) {
+      return (
+        <Box bgcolor="white" p={3} m={3} textAlign="center">
+          <Typography>{t("search.empty_state", { ns: "pickup" })}</Typography>
+        </Box>
+      );
+    }
 
     if (isMobile) {
       return (
         <OperatorsList
           key={JSON.stringify(initialRaddOperators)}
           rows={rowsToSet}
-          loading={loading}
         />
       );
     } else {
@@ -152,7 +172,6 @@ const RitiroPage: NextPage = () => {
         <OperatorsTable
           key={JSON.stringify(filteredOperators)}
           rows={rowsToSet}
-          loading={loading}
         />
       );
     }
@@ -255,15 +274,7 @@ const RitiroPage: NextPage = () => {
             width: { xs: "auto", sm: "100%" },
           }}
         >
-          {rowsToSet.length > 0 ? (
-            getContent()
-          ) : (
-            <Box bgcolor="white" p={3} m={3} textAlign="center">
-              <Typography>
-                {t("search.empty_state", { ns: "pickup" })}
-              </Typography>
-            </Box>
-          )}
+          {getContent()}
         </Stack>
       </Box>
 

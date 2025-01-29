@@ -6,13 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import {
-  TablePagination,
-  Stack,
-  TableSortLabel,
-  CircularProgress,
-  Box,
-} from "@mui/material";
+import { TablePagination, Stack, TableSortLabel } from "@mui/material";
 import { RaddOperator } from "../../model";
 import { useRef, useState } from "react";
 import CustomPagination from "../CustomPagination";
@@ -20,7 +14,6 @@ import { useTranslation } from "../../hook/useTranslation";
 
 type Props = {
   rows: RaddOperator[];
-  loading?: boolean;
 };
 
 function stableSort(array: any[], comparator: (a: any, b: any) => number) {
@@ -49,7 +42,7 @@ function descendingComparator(a: any, b: any, orderBy: string) {
   return 0;
 }
 
-function OperatorsTable({ rows, loading = false }: Readonly<Props>) {
+function OperatorsTable({ rows }: Readonly<Props>) {
   const [orderBy, setOrderBy] = useState("city");
   const [order, setOrder] = useState<"asc" | "desc">("asc");
   const { t } = useTranslation(["pickup"]);
@@ -97,20 +90,6 @@ function OperatorsTable({ rows, loading = false }: Readonly<Props>) {
     numOfDisplayedPages: Math.min(Math.ceil(rows.length / rowsPerPage), 3),
     currentPage: page,
   };
-
-  if (loading) {
-    return (
-      <Box display="flex" justifyContent="center" mt={3}>
-        <CircularProgress
-          id="loading"
-          role="status"
-          aria-live="polite"
-          aria-label={t("loading-aria-label")}
-          sx={{ color: "primary" }}
-        />
-      </Box>
-    );
-  }
 
   return (
     <>
