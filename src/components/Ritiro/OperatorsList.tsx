@@ -8,7 +8,6 @@ import {
   Paper,
   Box,
   TablePagination,
-  CircularProgress,
 } from "@mui/material";
 import { RaddOperator } from "../../model";
 import { useRef, useState } from "react";
@@ -17,10 +16,9 @@ import { useTranslation } from "../../hook/useTranslation";
 
 type Props = {
   rows: RaddOperator[];
-  loading?: boolean;
 };
 
-function OperatorsList({ rows, loading = false }: Readonly<Props>) {
+function OperatorsList({ rows }: Readonly<Props>) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const { t } = useTranslation(["pickup"]);
@@ -46,18 +44,6 @@ function OperatorsList({ rows, loading = false }: Readonly<Props>) {
     numOfDisplayedPages: Math.min(Math.ceil(rows.length / rowsPerPage), 3),
     currentPage: page,
   };
-
-  if (loading) {
-    return (
-      <CircularProgress
-        id="loading"
-        role="status"
-        aria-live="polite"
-        aria-label={t("loading-aria-label")}
-        sx={{ color: "primary" }}
-      />
-    );
-  }
 
   return (
     <Stack>
