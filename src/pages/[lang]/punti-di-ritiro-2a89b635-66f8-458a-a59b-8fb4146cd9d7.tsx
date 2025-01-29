@@ -145,7 +145,7 @@ const RitiroPage: NextPage = () => {
             id="loading"
             role="status"
             aria-live="polite"
-            aria-label={t("loading-aria-label")}
+            aria-label={t("loading-aria-label", { ns: "pickup" })}
             sx={{ color: "primary" }}
           />
         </Box>
