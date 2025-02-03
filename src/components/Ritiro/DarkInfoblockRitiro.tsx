@@ -5,11 +5,7 @@ import { safeInternalPage } from "../../utils/navigation";
 import { useContext } from "react";
 import LangContext from "../../context/lang-context";
 
-type Props = {
-  href?: string;
-};
-
-const DarkInfoblockRitiro: React.FC<Props> = ({ href }) => {
+const DarkInfoblockRitiro: React.FC = () => {
   const { t } = useTranslation(["common", "pickup"]);
   const { lang } = useContext(LangContext);
   return (
@@ -57,10 +53,7 @@ const DarkInfoblockRitiro: React.FC<Props> = ({ href }) => {
               <Link
                 variant="body2"
                 color="inherit"
-                href={safeInternalPage(
-                  lang,
-                  href || "/punti-di-ritiro/come-funziona"
-                )}
+                href={safeInternalPage(lang, "/punti-di-ritiro/come-funziona")}
               >
                 <strong>
                   {t("infoblock.details_link_text", { ns: "pickup" })}
