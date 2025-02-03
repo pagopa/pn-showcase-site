@@ -19,7 +19,6 @@ import Script from "next/script";
 import Papa from "papaparse";
 import { useEffect, useState } from "react";
 import { getI18n } from "../../api/i18n";
-import DarkInfoblockRitiro from "../../components/Ritiro/DarkInfoblockRitiro";
 import OperatorsList from "../../components/Ritiro/OperatorsList";
 import OperatorsTable from "../../components/Ritiro/OperatorsTable";
 import { useTranslation } from "../../hook/useTranslation";
@@ -277,8 +276,6 @@ const RitiroPage: NextPage = () => {
           {getContent()}
         </Stack>
       </Box>
-
-      <DarkInfoblockRitiro />
     </>
   );
 };
