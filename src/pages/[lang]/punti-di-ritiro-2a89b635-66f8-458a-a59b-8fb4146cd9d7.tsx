@@ -278,7 +278,7 @@ const RitiroPage: NextPage = () => {
         </Stack>
       </Box>
 
-      <DarkInfoblockRitiro />
+      <DarkInfoblockRitiro href="/punti-di-ritiro-come-funzionano-b19287cc-c6a1-4f20-8994-b73a1422cb53" />
     </>
   );
 };
