@@ -5,6 +5,7 @@ import React, { Fragment } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { RaddOperator } from "../model";
+import MarkerCluster from "./Map/ClusterMarker";
 
 type Props = {
   points: Array<RaddOperator>;
@@ -33,12 +34,20 @@ const PickupPointsMap: React.FC<Props> = ({ points }) => {
         if (point.latitude && point.longitude) {
           return (
             <Fragment key={`${point.denomination}-${point.address}`}>
-              <Marker
+              {/* <Marker
                 position={[point.latitude, point.longitude]}
                 icon={getIcon("/static/images/pointer.svg")}
               >
                 <Popup closeButton={true}>{point.address}</Popup>
-              </Marker>
+              </Marker> */}
+              <MarkerCluster
+                markers={points.map((p) => {
+                  return {
+                    position: { lat: p.latitude || 0, lng: p.longitude || 0 },
+                    text: p.address,
+                  };
+                })}
+              />
             </Fragment>
           );
         }

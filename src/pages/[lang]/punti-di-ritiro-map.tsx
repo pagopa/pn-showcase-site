@@ -216,7 +216,7 @@ const RitiroMappaPage: NextPage = () => {
           height: "650px",
         }}
       >
-        <MapWithNoSSR points={initialRaddOperators} />
+        <MapWithNoSSR points={rowsToSet} />
       </Stack>
     </>
   );

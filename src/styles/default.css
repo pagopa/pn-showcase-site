@@ -213,3 +213,13 @@ body {
 .leaflet-popup {
   padding-bottom: 41px;
 }
+
+/* Change cluster background color */
+.marker-cluster-small {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.marker-cluster-small div {
+  background-color: #0d3ee3 !important;
+  color: #fff !important;
+}
