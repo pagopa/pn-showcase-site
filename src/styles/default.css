@@ -4,7 +4,7 @@ body {
   font-family: "Titillium Web", sans-serif;
   color: #17324d;
 }
- 
+
 .showcasePadding .MuiContainer-root {
   padding-left: 32px;
   padding-right: 32px;
@@ -93,8 +93,8 @@ body {
   .otnotice-menu-mobile
   .otnotice-menu-section-mobile
   a {
-  font-size: 16px; 
-  font-weight: 600; 
+  font-size: 16px;
+  font-weight: 600;
   line-height: 1.5;
   color: #17324d !important;
 }
@@ -208,3 +208,8 @@ body {
   margin: 21px 0px;
 }
 /* FINE PAGINA FAQ - pages\faq\index.tsx */
+
+/* LEAFLET custom styles */
+.leaflet-popup {
+  padding-bottom: 41px;
+}
