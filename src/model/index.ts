@@ -6,7 +6,7 @@ import {
   WalkthroughProps,
 } from "@pagopa/mui-italia";
 
-import { langCodes } from "../utils/constants";
+import {langCodes} from '../utils/constants';
 
 export interface ILinkData {
   label: string;
@@ -105,8 +105,6 @@ export interface RaddOperator {
   province: string;
   cap: string;
   contacts: string;
-  latitude?: number;
-  longitude?: number;
 }
 
 export interface Point {
@@ -116,8 +114,6 @@ export interface Point {
   provincia: string;
   cap: string;
   telefono: string;
-  latitudine?: string;
-  longitudine?: string;
 }
 
 export type PaginationData = {
@@ -134,7 +130,7 @@ export interface MenuItem {
 }
 
 // localization //
-export type LangCode = (typeof langCodes)[number];
+export type LangCode = typeof langCodes[number];
 export interface I18n {
   [key: string]: I18n | string;
 }
