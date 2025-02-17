@@ -105,6 +105,7 @@ Conditions:
   CreateDNSname: !Equals [ !Ref WebDomainReferenceToSite, "true" ]
 
   HasLogsBucket: !Not [ !Equals [ !Ref S3LogsBucket, "-" ] ]
+  
   CreateAlternateDNSname:
     Fn::And:
       - Fn::Not:
