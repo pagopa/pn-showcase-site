@@ -1,4 +1,6 @@
-AWSTemplateFormatVersion: 2010-09-09
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::LanguageExtensions
+Description: Template CloudFormation per creare un bucket S3 e una distribuzione CloudFront con OAI
 
 Parameters:
   Name:
@@ -37,6 +39,35 @@ Parameters:
     Description: "ACM Web Certificate ARN"
     Type: String
 
+  MultiDomainCertificateArn:
+    Description: "ACM Multi-Domain Certificate ARN"
+    Type: String
+    Default: ""
+
+  MultiDomainAliases:
+    Description: "List of alternate names to use with the multi-domain certificate"
+    Type: CommaDelimitedList
+    Default: ""
+
+  Environment:
+    Type: String
+    Description: "Current environment (e.g. dev, test, uat, hotfix, prod) "
+    AllowedValues:
+      - dev
+      - test
+      - uat
+      - hotfix
+      - prod
+
+  MultiDomainCertInternalAliasesWithZones:
+    Type: CommaDelimitedList
+    Description: 'List of internal domains included in the certificate with relative zone ID (format: domain|zoneid)'
+    
+  MultiDomainCertExternalAliasesWithZones:
+    Type: CommaDelimitedList
+    Description: 'List of external domains included in the certificate with relative zone ID (format: domain|zoneid)'
+    Default: ""
+
   WebApiUrl:
     Description: "The Url of web API: useful for content-security-policy"
     Type: String
@@ -67,42 +98,32 @@ Parameters:
     Description: Access Log bucket name
 
 Conditions:
-  # If domain is used in certificate, add this domain to CloudFront
-  CreateDNSname: !Equals
-    - !Ref WebDomainReferenceToSite
-    - "true"
+  UseMultiDomainCertificate: !Not [ !Equals [ !Ref MultiDomainCertificateArn, "" ] ]
 
-  # If domain is used in certificate, add this domain to CloudFront
-  HasLogsBucket: !Not [!Equals [!Ref S3LogsBucket, "-" ]]
+  NotUseMultiDomainCertificate: !Equals [ !Ref MultiDomainCertificateArn, "" ]
 
-  # If alternate domain is provided and is used in certificate, add this domain to CloudFront
+  CreateDNSname: !Equals [ !Ref WebDomainReferenceToSite, "true" ]
+
+  HasLogsBucket: !Not [ !Equals [ !Ref S3LogsBucket, "-" ] ]
   CreateAlternateDNSname:
     Fn::And:
       - Fn::Not:
-          - Fn::Equals:
-              - !Ref AlternateWebDomain
-              - ""
-      - !Equals
-        - !Ref AlternateWebDomainReferenceToSite
-        - "true"
+          - Fn::Equals: [ !Ref AlternateWebDomain, "" ]
+      - !Equals [ !Ref AlternateWebDomainReferenceToSite, "true" ]
 
-  # Condition combination to handle CDN alias array without NoValue
-  BothDNSNames:
-    !And [!Condition CreateDNSname, !Condition CreateAlternateDNSname]
-  OnlyPrimaryDNSName:
-    !And [!Condition CreateDNSname, !Not [!Condition CreateAlternateDNSname]]
-  OnlyAlternateDNSName:
-    !And [!Not [!Condition CreateDNSname], !Condition CreateAlternateDNSname]
+  # BothDNSNames: !And [ !Condition CreateDNSname, !Condition CreateAlternateDNSname ]
 
-  CreatePrimaryAliasRecord: !Not
-    - !Equals
-      - !Ref HostedZoneId
-      - ""
+  # OnlyPrimaryDNSName: !And [ !Condition CreateDNSname, !Not [ !Condition CreateAlternateDNSname ] ]
 
-  CreateAlternateAliasRecord: !Not
-    - !Equals
-      - !Ref AlternateHostedZoneId
-      - ""
+  # OnlyAlternateDNSName: !And [ !Not [ !Condition CreateDNSname ], !Condition CreateAlternateDNSname ]
+
+  # CreatePrimaryAliasRecord: !Not [ !Equals [ !Ref HostedZoneId, "" ] ]
+
+  # CreateAlternateAliasRecord: !Not [ !Equals [ !Ref AlternateHostedZoneId, "" ] ]
+
+  CreateExternalRecordsOutput: !And
+    - !Not [ !Equals [ !Ref MultiDomainCertificateArn, "" ] ]
+    - !Not [ !Equals [ !Join [ "", !Ref MultiDomainCertExternalAliasesWithZones ], "" ] ]
 
 Resources:
   # - CloudFront User used for WebApp S3 Bucket access
@@ -206,16 +227,9 @@ Resources:
       DistributionConfig:
         Comment: CDN for S3-backed website
         Aliases: !If
-          - BothDNSNames
+          - NotUseMultiDomainCertificate
           - - !Ref WebDomain
-            - !Ref AlternateWebDomain
-          - !If
-            - OnlyPrimaryDNSName
-            - - !Ref WebDomain
-            - !If
-              - OnlyAlternateDNSName
-              - - !Ref AlternateWebDomain
-              - !Ref AWS::NoValue
+          - !Ref MultiDomainAliases
         Enabled: "true"
         CacheBehaviors:
           - AllowedMethods:
@@ -310,11 +324,14 @@ Resources:
             - Bucket: !Sub ${S3LogsBucket}.s3.eu-central-1.amazonaws.com
               IncludeCookies: false
             - !Ref AWS::NoValue
-        ViewerCertificate:
-          AcmCertificateArn: !Ref WebCertificateArn
-          MinimumProtocolVersion: TLSv1.2_2021
-          SslSupportMethod: sni-only
-  #        WebACLId: !GetAtt ApiWafWebAcl.Arn
+        ViewerCertificate: !If
+          - UseMultiDomainCertificate
+          - AcmCertificateArn: !Ref MultiDomainCertificateArn
+            MinimumProtocolVersion: TLSv1.2_2021
+            SslSupportMethod: sni-only
+          - AcmCertificateArn: !Ref WebCertificateArn
+            MinimumProtocolVersion: TLSv1.2_2021
+            SslSupportMethod: sni-only
 
   DefaultHeaderPolicy:
     Type: AWS::CloudFront::ResponseHeadersPolicy
@@ -322,7 +339,6 @@ Resources:
       ResponseHeadersPolicyConfig:
         Name: !Sub "${Name}-headerPolicy"
         SecurityHeadersConfig:
-          # add_header Content-Security-Policy
           ContentSecurityPolicy:
             ContentSecurityPolicy:
               Fn::Join:
@@ -360,8 +376,32 @@ Resources:
             Preload: false
             Override: true
 
+  #Fn::ForEach to create internal dns records dynamically
+  Fn::ForEach::DnsRecords:
+    - DomainIndex
+    - !Ref MultiDomainCertInternalAliasesWithZones
+    - DNSRecord&{DomainIndex}:
+        Type: AWS::Route53::RecordSet
+        Condition: UseMultiDomainCertificate
+        Properties:
+          Name: !Select
+            - 0
+            - !Split
+              - '|'
+              - !Ref DomainIndex
+          Type: A
+          HostedZoneId: !Select
+            - 1
+            - !Split
+              - '|'
+              - !Ref DomainIndex
+          AliasTarget:
+            DNSName: !GetAtt WebsiteCDN.DomainName
+            EvaluateTargetHealth: false
+            HostedZoneId: Z2FDTNDATAQYW2
+
   Route53RecordSetGroup:
-    Condition: CreatePrimaryAliasRecord
+    Condition: NotUseMultiDomainCertificate
     Type: AWS::Route53::RecordSet
     Properties:
       Name: !Ref WebDomain
@@ -372,18 +412,18 @@ Resources:
         EvaluateTargetHealth: false
         HostedZoneId: Z2FDTNDATAQYW2
 
-  #Alternate domain Route53 record
-  AlternateRoute53RecordSetGroup:
-    Condition: CreateAlternateAliasRecord
-    Type: AWS::Route53::RecordSet
-    Properties:
-      Name: !Ref AlternateWebDomain
-      Type: A
-      HostedZoneId: !Ref AlternateHostedZoneId
-      AliasTarget:
-        DNSName: !GetAtt WebsiteCDN.DomainName
-        EvaluateTargetHealth: false
-        HostedZoneId: Z2FDTNDATAQYW2
+  # commented out as not anymore in use
+  # AlternateRoute53RecordSetGroup:
+  #   Condition: CreateAlternateAliasRecord
+  #   Type: AWS::Route53::RecordSet
+  #   Properties:
+  #     Name: !Ref AlternateWebDomain
+  #     Type: A
+  #     HostedZoneId: !Ref AlternateHostedZoneId
+  #     AliasTarget:
+  #       DNSName: !GetAtt WebsiteCDN.DomainName
+  #       EvaluateTargetHealth: false
+  #       HostedZoneId: Z2FDTNDATAQYW2
 
   ##
   ## Rewrite rule based on example provided by aws at https://github.com/aws-samples/amazon-cloudfront-functions/blob/main/url-rewrite-single-page-apps/index.js
@@ -543,3 +583,22 @@ Outputs:
   TooManyRequestsAlarmArn:
     Value: !GetAtt TooManyRequestsAlarm.Arn
     Description: ARN of distribution too many requests alarm
+
+  #Fn::ForEach to print output with instructions related to the creation of dns records (for external zones)
+  Fn::ForEach::ManualRecords:
+    - ExternalDomain
+    - !If
+        - CreateExternalRecordsOutput
+        - !Ref MultiDomainCertExternalAliasesWithZones
+        - []
+    - ExternalDNSRecord&{ExternalDomain}:
+        Value: !Sub |
+          Create DNS record in the external zone -->
+          Domain: ${WebDomain}
+          Zone: ${ZoneName}
+          Type: A (Alias)
+          Value: ${DistributionName}
+        DomainName: !Select [ 0, !Split [ "|", !Ref ExternalDomain ] ]
+        ZoneName: !Select [ 1, !Split [ "|", !Ref ExternalDomain ] ]
+        DistributionName: !GetAtt WebsiteCDN.DomainName
+      Condition: CreateExternalRecordsOutput
