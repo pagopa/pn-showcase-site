@@ -59,14 +59,25 @@ Parameters:
       - hotfix
       - prod
 
+  WebBaseDnsZoneName:
+    Description: 'Base domain name used as main endpoint for pn-showcase site, used as alias on for the cloudfront distribution on CMS team''s account'
+    Type: String
+    Default: ''
+
+  CmsCloudfrontDistName:
+    Description: 'Cloufront distibution used for hosting CMS version of showcase site, unique for all envs, located on CMS team's AWS account'
+    Type: String
+    Default: 'd3g8ypiee9w1jl.cloudfront.net'
+
   MultiDomainCertInternalAliasesWithZones:
     Type: CommaDelimitedList
     Description: 'List of internal domains included in the certificate with relative zone ID (format: domain|zoneid)'
-    
+    Default: ''
+
   MultiDomainCertExternalAliasesWithZones:
     Type: CommaDelimitedList
-    Description: 'List of external domains included in the certificate with relative zone ID (format: domain|zoneid)'
-    Default: ""
+    Description: 'List of external domains included in the certificate with relative zone ID (format: domain|zonename)'
+    Default: ''
 
   WebApiUrl:
     Description: "The Url of web API: useful for content-security-policy"
@@ -98,19 +109,24 @@ Parameters:
     Description: Access Log bucket name
 
 Conditions:
-  UseMultiDomainCertificate: !Not [ !Equals [ !Ref MultiDomainCertificateArn, "" ] ]
+  UseMultiDomainCertificate: !Not
+    - !Equals
+      - !Ref MultiDomainCertificateArn
+      - ''
 
-  NotUseMultiDomainCertificate: !Equals [ !Ref MultiDomainCertificateArn, "" ]
+  NotUseMultiDomainCertificate: !Equals
+    - !Ref MultiDomainCertificateArn
+    - ''
 
   CreateDNSname: !Equals [ !Ref WebDomainReferenceToSite, "true" ]
 
   HasLogsBucket: !Not [ !Equals [ !Ref S3LogsBucket, "-" ] ]
-  
-  CreateAlternateDNSname:
-    Fn::And:
-      - Fn::Not:
-          - Fn::Equals: [ !Ref AlternateWebDomain, "" ]
-      - !Equals [ !Ref AlternateWebDomainReferenceToSite, "true" ]
+
+  # CreateAlternateDNSname:
+  #   Fn::And:
+  #     - Fn::Not:
+  #         - Fn::Equals: [ !Ref AlternateWebDomain, "" ]
+  #     - !Equals [ !Ref AlternateWebDomainReferenceToSite, "true" ]
 
   # BothDNSNames: !And [ !Condition CreateDNSname, !Condition CreateAlternateDNSname ]
 
@@ -123,8 +139,28 @@ Conditions:
   # CreateAlternateAliasRecord: !Not [ !Equals [ !Ref AlternateHostedZoneId, "" ] ]
 
   CreateExternalRecordsOutput: !And
-    - !Not [ !Equals [ !Ref MultiDomainCertificateArn, "" ] ]
-    - !Not [ !Equals [ !Join [ "", !Ref MultiDomainCertExternalAliasesWithZones ], "" ] ]
+    - !Not
+      - !Equals
+        - !Ref MultiDomainCertificateArn
+        - ''
+    - !Not
+      - !Equals
+        - !Join
+          - ''
+          - !Ref MultiDomainCertExternalAliasesWithZones
+        - ''
+
+  CreateInternalRecords: !And
+    - !Not
+      - !Equals
+        - !Ref MultiDomainCertificateArn
+        - ''
+    - !Not
+      - !Equals
+        - !Join
+          - ''
+          - !Ref MultiDomainCertInternalAliasesWithZones
+        - ''
 
 Resources:
   # - CloudFront User used for WebApp S3 Bucket access
@@ -355,7 +391,7 @@ Resources:
                     style-src 'self' 'unsafe-inline' https://privacyportalde-cdn.onetrust.com/; \
                     worker-src 'none'; \
                     font-src 'self'; \
-                    frame-ancestors 'self' ; \
+                    frame-ancestors 'self' https://${WebBaseDnsZoneName}/ https://${CmsCloudfrontDistName}/ ; \
                     img-src 'self' https://assets.cdn.io.italia.it/ data:"
             Override: true
           # add_header X-Content-Type-Options "nosniff";
@@ -380,10 +416,13 @@ Resources:
   #Fn::ForEach to create internal dns records dynamically
   Fn::ForEach::DnsRecords:
     - DomainIndex
-    - !Ref MultiDomainCertInternalAliasesWithZones
+    - !If
+      - CreateInternalRecords
+      - !Ref MultiDomainCertInternalAliasesWithZones
+      - []
     - DNSRecord&{DomainIndex}:
         Type: AWS::Route53::RecordSet
-        Condition: UseMultiDomainCertificate
+        Condition: CreateInternalRecords
         Properties:
           Name: !Select
             - 0
@@ -402,7 +441,6 @@ Resources:
             HostedZoneId: Z2FDTNDATAQYW2
 
   Route53RecordSetGroup:
-    Condition: NotUseMultiDomainCertificate
     Type: AWS::Route53::RecordSet
     Properties:
       Name: !Ref WebDomain
@@ -567,10 +605,10 @@ Outputs:
   WebDomainUrl:
     Value: !Sub "https://${WebDomain}"
     Description: Site access URL
-  AlternateWebDomainUrl:
-    Condition: CreateAlternateDNSname
-    Value: !Sub "http://${AlternateWebDomain}"
-    Description: Alternate site access URL
+  # AlternateWebDomainUrl:
+  #   Condition: CreateAlternateDNSname
+  #   Value: !Sub "http://${AlternateWebDomain}"
+  #   Description: Alternate site access URL
 
   # Distribution ID
   DistributionId:
@@ -589,17 +627,26 @@ Outputs:
   Fn::ForEach::ManualRecords:
     - ExternalDomain
     - !If
-        - CreateExternalRecordsOutput
-        - !Ref MultiDomainCertExternalAliasesWithZones
-        - []
+      - CreateExternalRecordsOutput
+      - !Ref MultiDomainCertExternalAliasesWithZones
+      - []
     - ExternalDNSRecord&{ExternalDomain}:
-        Value: !Sub |
-          Create DNS record in the external zone -->
-          Domain: ${WebDomain}
-          Zone: ${ZoneName}
-          Type: A (Alias)
-          Value: ${DistributionName}
-        DomainName: !Select [ 0, !Split [ "|", !Ref ExternalDomain ] ]
-        ZoneName: !Select [ 1, !Split [ "|", !Ref ExternalDomain ] ]
-        DistributionName: !GetAtt WebsiteCDN.DomainName
-      Condition: CreateExternalRecordsOutput
+        Value: !Sub
+          - |
+            Create DNS record in the external zone -->
+            Domain: ${DomainName}
+            Zone: ${ZoneName}
+            Type: A (Alias)
+            Value: ${DistributionName}
+          - DomainName: !Select
+              - 0
+              - !Split
+                - '|'
+                - !Ref ExternalDomain
+            ZoneName: !Select
+              - 1
+              - !Split
+                - '|'
+                - !Ref ExternalDomain
+            DistributionName: !GetAtt WebsiteCDN.DomainName
+        Condition: CreateExternalRecordsOutput
