@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::LanguageExtensions
-Description: Template CloudFormation per creare un bucket S3 e una distribuzione CloudFront con OAI
+Description: Template CloudFormation for pn-showcase site.
 
 Parameters:
   Name:
@@ -19,21 +19,6 @@ Parameters:
   HostedZoneId:
     Description: "Hosted Zone Id in which you want to add record"
     Type: String
-
-  AlternateWebDomain:
-    Description: "Alternate Domain name for the webapp"
-    Type: String
-    Default: ""
-
-  AlternateWebDomainReferenceToSite:
-    Description: true if the website must be reachable using the AlternateWebDomain
-    Type: String
-    Default: "true"
-
-  AlternateHostedZoneId:
-    Description: Hosted Zone Id in which you want to add alternate DNS
-    Type: String
-    Default: ""
 
   WebCertificateArn:
     Description: "ACM Web Certificate ARN"
@@ -65,7 +50,7 @@ Parameters:
     Default: ''
 
   CmsCloudfrontDistName:
-    Description: 'Cloufront distibution used for hosting CMS version of showcase site, unique for all envs, located on CMS team's AWS account'
+    Description: 'Cloufront distibution used for hosting CMS version of showcase site, unique for all envs, located on CMS aws account '
     Type: String
     Default: 'd3g8ypiee9w1jl.cloudfront.net'
 
@@ -118,25 +103,7 @@ Conditions:
     - !Ref MultiDomainCertificateArn
     - ''
 
-  CreateDNSname: !Equals [ !Ref WebDomainReferenceToSite, "true" ]
-
   HasLogsBucket: !Not [ !Equals [ !Ref S3LogsBucket, "-" ] ]
-
-  # CreateAlternateDNSname:
-  #   Fn::And:
-  #     - Fn::Not:
-  #         - Fn::Equals: [ !Ref AlternateWebDomain, "" ]
-  #     - !Equals [ !Ref AlternateWebDomainReferenceToSite, "true" ]
-
-  # BothDNSNames: !And [ !Condition CreateDNSname, !Condition CreateAlternateDNSname ]
-
-  # OnlyPrimaryDNSName: !And [ !Condition CreateDNSname, !Not [ !Condition CreateAlternateDNSname ] ]
-
-  # OnlyAlternateDNSName: !And [ !Not [ !Condition CreateDNSname ], !Condition CreateAlternateDNSname ]
-
-  # CreatePrimaryAliasRecord: !Not [ !Equals [ !Ref HostedZoneId, "" ] ]
-
-  # CreateAlternateAliasRecord: !Not [ !Equals [ !Ref AlternateHostedZoneId, "" ] ]
 
   CreateExternalRecordsOutput: !And
     - !Not
@@ -422,7 +389,7 @@ Resources:
       - []
     - DNSRecord&{DomainIndex}:
         Type: AWS::Route53::RecordSet
-        Condition: CreateInternalRecords
+        Condition: UseMultiDomainCertificate
         Properties:
           Name: !Select
             - 0
@@ -450,19 +417,6 @@ Resources:
         DNSName: !GetAtt WebsiteCDN.DomainName
         EvaluateTargetHealth: false
         HostedZoneId: Z2FDTNDATAQYW2
-
-  # commented out as not anymore in use
-  # AlternateRoute53RecordSetGroup:
-  #   Condition: CreateAlternateAliasRecord
-  #   Type: AWS::Route53::RecordSet
-  #   Properties:
-  #     Name: !Ref AlternateWebDomain
-  #     Type: A
-  #     HostedZoneId: !Ref AlternateHostedZoneId
-  #     AliasTarget:
-  #       DNSName: !GetAtt WebsiteCDN.DomainName
-  #       EvaluateTargetHealth: false
-  #       HostedZoneId: Z2FDTNDATAQYW2
 
   ##
   ## Rewrite rule based on example provided by aws at https://github.com/aws-samples/amazon-cloudfront-functions/blob/main/url-rewrite-single-page-apps/index.js
