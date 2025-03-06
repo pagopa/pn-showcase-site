@@ -45,7 +45,7 @@ Parameters:
       - prod
 
   WebBaseDnsZoneName:
-    Description: 'Base domain name used as main endpoint for pn-showcase site, used as alias on for the cloudfront distribution on CMS team''s account'
+    Description: 'Base domain name used as main endpoint for pn-showcase site, used as alias on for the cloudfront distribution on CMS account'
     Type: String
     Default: ''
 
@@ -92,6 +92,14 @@ Parameters:
     Type: String
     Default: '-'
     Description: Access Log bucket name
+  
+  EnableCdnRedirectFunction:
+    Type: String
+    Description: "If true, enble the creation and use of the cloudfront function used in the multidomain setup"
+    Default: false
+    AllowedValues:
+      - false
+      - true
 
 Conditions:
   UseMultiDomainCertificate: !Not
@@ -128,6 +136,18 @@ Conditions:
           - ''
           - !Ref MultiDomainCertInternalAliasesWithZones
         - ''
+
+  CreateDnsRecordToCmsCloudfrontDist: !And
+    - !Condition UseMultiDomainCertificate
+    - !Equals
+      - !Ref Environment
+      - dev
+  
+  UseMultiDomainRedirectFunction: !And
+    - !Condition UseMultiDomainCertificate
+    - !Equals
+      - !Ref EnableCdnRedirectFunction
+      - true
 
 Resources:
   # - CloudFront User used for WebApp S3 Bucket access
@@ -246,6 +266,13 @@ Resources:
             ViewerProtocolPolicy: redirect-to-https
             CachePolicyId: !Ref WebsiteCDNCachingPolicyFiveMinutes
             ResponseHeadersPolicyId: !Ref DefaultHeaderPolicy
+            FunctionAssociations:
+              - !If
+                - UseMultiDomainRedirectFunction
+                - EventType: viewer-request
+                  FunctionARN: !GetAtt MultiDomainRedirectFunction.FunctionMetadata.FunctionARN
+                - EventType: viewer-request
+                  FunctionARN: !GetAtt RewriteFunction.FunctionMetadata.FunctionARN
             PathPattern: /index.html
           - AllowedMethods:
               - GET
@@ -303,9 +330,13 @@ Resources:
           CachePolicyId: !Ref WebsiteCDNCachingPolicy
           ResponseHeadersPolicyId: !Ref DefaultHeaderPolicy
           FunctionAssociations:
-            - EventType: viewer-request
-              FunctionARN: !GetAtt RewriteFunction.FunctionMetadata.FunctionARN
-        DefaultRootObject: "index.html"
+            - !If
+              - UseMultiDomainRedirectFunction
+              - EventType: viewer-request
+                FunctionARN: !GetAtt MultiDomainRedirectFunction.FunctionMetadata.FunctionARN
+              - EventType: viewer-request
+                FunctionARN: !GetAtt RewriteFunction.FunctionMetadata.FunctionARN
+        DefaultRootObject: index.html
         CustomErrorResponses:
           - ErrorCode: 404
             ResponseCode: 200
@@ -417,6 +448,18 @@ Resources:
         DNSName: !GetAtt WebsiteCDN.DomainName
         EvaluateTargetHealth: false
         HostedZoneId: Z2FDTNDATAQYW2
+  
+  Route53CmsWebsiteRecordSet:
+    Type: AWS::Route53::RecordSet
+    Condition: CreateDnsRecordToCmsCloudfrontDist
+    Properties:
+      Name: !Ref WebBaseDnsZoneName
+      Type: A
+      HostedZoneId: !Ref HostedZoneId
+      AliasTarget:
+        DNSName: !Ref CmsCloudfrontDistName
+        EvaluateTargetHealth: false
+        HostedZoneId: Z2FDTNDATAQYW2
 
   ##
   ## Rewrite rule based on example provided by aws at https://github.com/aws-samples/amazon-cloudfront-functions/blob/main/url-rewrite-single-page-apps/index.js
@@ -447,6 +490,90 @@ Resources:
         Comment: "Rewriting the request between a CloudFront Distribution and an origin"
         Runtime: cloudfront-js-1.0
       Name: !Sub "${AWS::StackName}-RewriteDefaultIndexRequest"
+
+  MultiDomainRedirectFunction:
+    Type: AWS::CloudFront::Function
+    Condition: UseMultiDomainRedirectFunction
+    DependsOn: Route53CmsWebsiteRecordSet
+    Properties:
+      AutoPublish: true
+      FunctionCode: !Sub
+        - |
+          function handler(event) {
+              var request = event.request;
+              var host = request.headers.host ? request.headers.host.value.toLowerCase() : '';
+
+              // Showcase handling
+              if (host === 'showcase.${WebBaseDnsZoneName}') {
+                  if (request.uri !== '/' && request.uri !== '') {
+                      if (request.uri.endsWith('/')) {
+                          request.uri += 'index.html';
+                      } else if (!request.uri.includes('.')) {
+                          request.uri += '/index.html';
+                      }
+                  }
+                  return request;
+              }
+
+              //target domain
+              var targetDomain = '${WebBaseDnsZoneName}';
+
+              //split the string containing the joined array from parameter multiDomainAliases, needed as cloudformtaion resolve the parameter as array in yaml format not recognized by js
+              var multiDomainAliasesString = '${multiDomainAliasesString}';
+              var domainsToRedirect = multiDomainAliasesString.split('|');
+
+              //remove showcase from domains array to redirect
+              domainsToRedirect = domainsToRedirect.filter(function(domain) {
+                  return domain !== 'showcase.' + targetDomain;
+              });
+
+              if (domainsToRedirect.includes(host)) {
+                  // Remove '/it/' from path
+                  var path = request.uri;
+                  if (path.startsWith('/it/')) {
+                      path = path.replace('/it/', '/');
+                  }
+
+                  // Mapping slugs old -> new
+                  var slugMapping = {
+                      '/pubbliche-amministrazioni': '/enti',
+                      '/pubbliche-amministrazioni/documenti': '/enti-come-aderire',
+                      '/assistenza': '/', // Redirect to home
+                  };
+
+                  for (var oldSlug in slugMapping) {
+                      if (path === oldSlug || path === oldSlug + '/') {
+                          path = slugMapping[oldSlug];
+                          break;
+                      }
+                  }
+
+                  var response = {
+                      statusCode: 301,
+                      statusDescription: 'Moved Permanently',
+                      headers: {
+                          'location': {
+                              value: 'https://' + targetDomain + path
+                          },
+                          'cache-control': {
+                              value: 'no-store, no-cache, must-revalidate'
+                          }
+                      }
+                  };
+                  return response;
+              }
+
+              return request;
+          }
+        #join with | and split again for create an array inside the function, as the domains associated with the cert are in commadelimitedlist parameter:
+        #cloudformation resolve it as yaml formatted array not recognized by js
+        - multiDomainAliasesString: !Join
+            - '|'
+            - !Ref MultiDomainAliases
+      FunctionConfig:
+        Comment: URL redirects to CMS uri and slug mapping for legacy paths
+        Runtime: cloudfront-js-1.0
+      Name: !Sub ${AWS::StackName}-MultiDomainRedirectFunction
 
   # Alarms
   TooManyRequestsAlarm:
