@@ -92,6 +92,14 @@ Parameters:
     Type: String
     Default: '-'
     Description: Access Log bucket name
+  
+  EnableCdnRedirectFunction:
+    Type: String
+    Description: "If true, enble the creation and use of the cloudfront function used in the multidomain setup"
+    Default: false
+    AllowedValues:
+      - false
+      - true
 
 Conditions:
   UseMultiDomainCertificate: !Not
@@ -129,11 +137,17 @@ Conditions:
           - !Ref MultiDomainCertInternalAliasesWithZones
         - ''
 
-  UseMultiDomainRedirectFunction: !And
+  CreateDnsRecordToCmsCloudfrontDist: !And
     - !Condition UseMultiDomainCertificate
     - !Equals
       - !Ref Environment
       - prod
+  
+  UseMultiDomainRedirectFunction: !And
+    - !Condition UseMultiDomainCertificate
+    - !Equals
+      - !Ref EnableCdnRedirectFunction
+      - true
 
 Resources:
   # - CloudFront User used for WebApp S3 Bucket access
@@ -437,7 +451,7 @@ Resources:
   
   Route53CmsWebsiteRecordSet:
     Type: AWS::Route53::RecordSet
-    Condition: UseMultiDomainRedirectFunction
+    Condition: CreateDnsRecordToCmsCloudfrontDist
     Properties:
       Name: !Ref WebBaseDnsZoneName
       Type: A
@@ -681,7 +695,7 @@ Outputs:
   DistributionId:
     Description: Cloudfront distribution ID
     Value: !Ref WebsiteCDN
-
+    
   TooManyErrorsAlarmArn:
     Value: !GetAtt TooManyErrorsAlarm.Arn
     Description: ARN of distribution too many errors alarm
