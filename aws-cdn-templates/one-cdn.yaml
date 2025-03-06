@@ -141,7 +141,7 @@ Conditions:
     - !Condition UseMultiDomainCertificate
     - !Equals
       - !Ref Environment
-      - dev
+      - prod
   
   UseMultiDomainRedirectFunction: !And
     - !Condition UseMultiDomainCertificate
