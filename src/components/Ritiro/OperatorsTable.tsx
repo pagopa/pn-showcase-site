@@ -10,7 +10,6 @@ import { TablePagination, Stack, TableSortLabel } from "@mui/material";
 import { RaddOperator } from "../../model";
 import { useRef, useState } from "react";
 import CustomPagination from "../CustomPagination";
-import { useTranslation } from "../../hook/useTranslation";
 
 type Props = {
   rows: RaddOperator[];
@@ -45,7 +44,6 @@ function descendingComparator(a: any, b: any, orderBy: string) {
 function OperatorsTable({ rows }: Readonly<Props>) {
   const [orderBy, setOrderBy] = useState("city");
   const [order, setOrder] = useState<"asc" | "desc">("asc");
-  const { t } = useTranslation(["pickup"]);
 
   const sortedRows: RaddOperator[] = stableSort(
     rows,
@@ -154,7 +152,7 @@ function OperatorsTable({ rows }: Readonly<Props>) {
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
-            rowsPerPageOptions={[10, 20, 50]}
+            rowsPerPageOptions={[10]}
           />
           <CustomPagination
             pagination={pagination}
