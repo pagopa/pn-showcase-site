@@ -12,7 +12,6 @@ import {
 import { RaddOperator } from "../../model";
 import { useRef, useState } from "react";
 import CustomPagination from "../CustomPagination";
-import { useTranslation } from "../../hook/useTranslation";
 
 type Props = {
   rows: RaddOperator[];
@@ -21,7 +20,6 @@ type Props = {
 function OperatorsList({ rows }: Readonly<Props>) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const { t } = useTranslation(["pickup"]);
 
   const listContainerRef = useRef<HTMLUListElement | null>(null);
 
@@ -105,7 +103,7 @@ function OperatorsList({ rows }: Readonly<Props>) {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          rowsPerPageOptions={[10, 20, 50]}
+          rowsPerPageOptions={[10]}
         />
         <CustomPagination pagination={pagination} onChange={handleChangePage} />
       </Stack>
