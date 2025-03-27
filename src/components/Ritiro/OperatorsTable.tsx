@@ -18,7 +18,6 @@ declare global {
         type: "resize";
         newChildHeight: number;
       }) => void;
-      scrollToOffset: (x: number, y: number) => void;
     };
   }
 }
