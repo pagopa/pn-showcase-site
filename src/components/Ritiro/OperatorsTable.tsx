@@ -1,15 +1,27 @@
-import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { TablePagination, Stack, TableSortLabel } from "@mui/material";
-import { RaddOperator } from "../../model";
-import { useRef, useState } from "react";
-import CustomPagination from "../CustomPagination";
+import * as React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { TablePagination, Stack, TableSortLabel } from '@mui/material';
+import { RaddOperator } from '../../model';
+import { useRef, useState, useEffect } from 'react';
+import CustomPagination from '../CustomPagination';
+
+declare global {
+  interface Window {
+    parentIframe?: {
+      sendMessage: (message: {
+        type: 'resize';
+        newChildHeight: number;
+      }) => void;
+      scrollToOffset: (x: number, y: number) => void;
+    };
+  }
+}
 
 type Props = {
   rows: RaddOperator[];
@@ -25,8 +37,8 @@ function stableSort(array: any[], comparator: (a: any, b: any) => number) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-function getComparator(order: "asc" | "desc", orderBy: string) {
-  return order === "desc"
+function getComparator(order: 'asc' | 'desc', orderBy: string) {
+  return order === 'desc'
     ? (a: any, b: any) => descendingComparator(a, b, orderBy)
     : (a: any, b: any) => -descendingComparator(a, b, orderBy);
 }
@@ -42,20 +54,20 @@ function descendingComparator(a: any, b: any, orderBy: string) {
 }
 
 function OperatorsTable({ rows }: Readonly<Props>) {
-  const [orderBy, setOrderBy] = useState("city");
-  const [order, setOrder] = useState<"asc" | "desc">("asc");
+  const [orderBy, setOrderBy] = useState('city');
+  const [order, setOrder] = useState<'asc' | 'desc'>('asc');
 
   const sortedRows: RaddOperator[] = stableSort(
     rows,
-    getComparator(order, orderBy)
+    getComparator(order, orderBy),
   );
 
-  const keys = ["denomination", "city", "address", "contacts"];
+  const keys = ['denomination', 'city', 'address', 'contacts'];
   const columnNames: { [key: string]: string } = {
-    denomination: "Denominazione",
-    city: "Città",
-    address: "Indirizzo",
-    contacts: "Contatti",
+    denomination: 'Denominazione',
+    city: 'Città',
+    address: 'Indirizzo',
+    contacts: 'Contatti',
   };
 
   const [page, setPage] = useState(0);
@@ -63,10 +75,23 @@ function OperatorsTable({ rows }: Readonly<Props>) {
 
   const tableContainerRef = useRef<HTMLDivElement | null>(null);
 
+  const resizeParentIframe = () => {
+    // This function is to be called if parentIframe.resize() does not work
+    // Current use cases: when changing pagination size, when changing to page with less/more elements
+    if (window.parentIframe) {
+      window.parentIframe.sendMessage({
+        type: 'resize',
+        newChildHeight: document.body.scrollHeight,
+      });
+    }
+  };
+
+  useEffect(resizeParentIframe, [rowsPerPage, page]);
+
   const handleChangePage = (_event: any, newPage: number | null) => {
     if (newPage !== null) {
       if (tableContainerRef.current) {
-        tableContainerRef.current.scrollIntoView({ behavior: "smooth" });
+        tableContainerRef.current.scrollIntoView({ behavior: 'smooth' });
       }
       setPage(newPage - 1);
     }
@@ -78,8 +103,8 @@ function OperatorsTable({ rows }: Readonly<Props>) {
   };
 
   const handleRequestSort = (property: string) => {
-    const isAsc = property === "city" && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
+    const isAsc = property === 'city' && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
   };
 
   const pagination = {
@@ -93,17 +118,17 @@ function OperatorsTable({ rows }: Readonly<Props>) {
     <>
       <TableContainer component={Paper} ref={tableContainerRef}>
         <Table
-          sx={{ width: "100%", maxWidth: 1092 }}
-          aria-label="operators table"
+          sx={{ width: '100%', maxWidth: 1092 }}
+          aria-label='operators table'
         >
           <TableHead>
-            <TableRow sx={{ backgroundColor: "#FAFAFA" }}>
+            <TableRow sx={{ backgroundColor: '#FAFAFA' }}>
               {keys.map((key) => (
                 <TableCell key={key}>
                   <TableSortLabel
-                    disabled={key !== "city"}
-                    active={key === "city"}
-                    direction={key === "city" ? order : "asc"}
+                    disabled={key !== 'city'}
+                    active={key === 'city'}
+                    direction={key === 'city' ? order : 'asc'}
                     onClick={() => handleRequestSort(key)}
                   >
                     {columnNames[key]}
@@ -119,10 +144,10 @@ function OperatorsTable({ rows }: Readonly<Props>) {
                 <TableRow
                   key={`${row.denomination}-${index}`}
                   sx={{
-                    "&:last-child td, &:last-child th": { border: 0 },
+                    '&:last-child td, &:last-child th': { border: 0 },
                   }}
                 >
-                  <TableCell component="th" scope="row">
+                  <TableCell component='th' scope='row'>
                     {row.denomination}
                   </TableCell>
                   <TableCell>
@@ -140,19 +165,19 @@ function OperatorsTable({ rows }: Readonly<Props>) {
       {rows.length > 10 && (
         <Stack
           mt={3}
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
+          direction='row'
+          alignItems='center'
+          justifyContent='space-between'
         >
           <TablePagination
-            id="ritiroPagination"
-            component="div"
+            id='ritiroPagination'
+            component='div'
             count={rows.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
-            rowsPerPageOptions={[10]}
+            rowsPerPageOptions={[10, 30, 50]}
           />
           <CustomPagination
             pagination={pagination}
