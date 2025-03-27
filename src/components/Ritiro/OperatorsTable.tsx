@@ -58,7 +58,7 @@ function OperatorsTable({ rows }: Readonly<Props>) {
 
   const sortedRows: RaddOperator[] = stableSort(
     rows,
-    getComparator(order, orderBy),
+    getComparator(order, orderBy)
   );
 
   const keys = ["denomination", "city", "address", "contacts"];
