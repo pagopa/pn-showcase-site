@@ -1,4 +1,3 @@
-import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -10,17 +9,6 @@ import { TablePagination, Stack, TableSortLabel } from "@mui/material";
 import { RaddOperator } from "../../model";
 import { useRef, useState, useEffect } from "react";
 import CustomPagination from "../CustomPagination";
-
-declare global {
-  interface Window {
-    parentIframe?: {
-      sendMessage: (message: {
-        type: "resize";
-        newChildHeight: number;
-      }) => void;
-    };
-  }
-}
 
 type Props = {
   rows: RaddOperator[];
