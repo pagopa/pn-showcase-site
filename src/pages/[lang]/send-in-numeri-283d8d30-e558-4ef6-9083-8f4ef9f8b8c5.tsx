@@ -41,7 +41,6 @@ export async function getStaticProps({
     props: {
       translations,
       lang: params.lang,
-      noLayout: true,
     },
   };
 }

@@ -40,7 +40,7 @@ export async function getStaticProps({
 }) {
   const translations = getI18n(params.lang, ["common", "pickup"]);
 
-  return { props: { translations, lang: params.lang, noLayout: true } };
+  return { props: { translations, lang: params.lang } };
 }
 
 const RitiroPage: NextPage = () => {
