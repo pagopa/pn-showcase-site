@@ -154,7 +154,8 @@ const RitiroPage: NextPage = () => {
     if (!rowsToSet || rowsToSet.length === 0) {
       return (
         <Box bgcolor="white" p={3} m={3} textAlign="center">
-          <Typography>{t("search.empty_state", { ns: "pickup" })}</Typography>
+          <Typography>{t("search.empty_state_1", { ns: "pickup" })}</Typography>
+          <Typography>{t("search.empty_state_2", { ns: "pickup" })}</Typography>
         </Box>
       );
     }
