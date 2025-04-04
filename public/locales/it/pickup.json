@@ -8,7 +8,7 @@
     "description_2": "esercenti convenzionati",
     "description_3": "Cerca i punti di ritiro più vicini a te.",
     "disclaimer": "Al momento puoi cercare solo fra i punti di ritiro presenti in alcuni Comuni italiani: il servizio è in attivazione progressiva su tutto il territorio nazionale.",
-    "placeholder": "Cerca per città o per CAP",
+    "placeholder": "Cerca per città, per CAP o per provincia",
     "empty_state_1": "Non sembrano essere disponibili punti di ritiro SEND in questa località.",
     "empty_state_2": "Riprova scrivendo il nome della località per esteso oppure cerca tra i CAP o i Comuni limitrofi."
   },
