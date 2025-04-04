@@ -1,3 +1,4 @@
+import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { TablePagination, Stack, TableSortLabel } from "@mui/material";
 import { RaddOperator } from "../../model";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import CustomPagination from "../CustomPagination";
 
 type Props = {
@@ -61,19 +62,6 @@ function OperatorsTable({ rows }: Readonly<Props>) {
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const tableContainerRef = useRef<HTMLDivElement | null>(null);
-
-  const resizeParentIframe = () => {
-    // This function is to be called if parentIframe.resize() does not work
-    // Current use cases: when changing pagination size, when changing to page with less/more elements
-    if (window.parentIframe) {
-      window.parentIframe.sendMessage({
-        type: "resize",
-        newChildHeight: document.body.scrollHeight,
-      });
-    }
-  };
-
-  useEffect(resizeParentIframe, [rowsPerPage, page]);
 
   const handleChangePage = (_event: any, newPage: number | null) => {
     if (newPage !== null) {
@@ -164,7 +152,7 @@ function OperatorsTable({ rows }: Readonly<Props>) {
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
-            rowsPerPageOptions={[10, 30, 50]}
+            rowsPerPageOptions={[10]}
           />
           <CustomPagination
             pagination={pagination}
