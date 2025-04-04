@@ -1,3 +1,5 @@
+import * as React from "react";
+
 import {
   ListItem,
   Typography,
@@ -8,7 +10,7 @@ import {
   TablePagination,
 } from "@mui/material";
 import { RaddOperator } from "../../model";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import CustomPagination from "../CustomPagination";
 
 type Props = {
@@ -20,17 +22,6 @@ function OperatorsList({ rows }: Readonly<Props>) {
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const listContainerRef = useRef<HTMLUListElement | null>(null);
-
-  const resizeParentIframe = () => {
-    // This function is to be called if parentIframe.resize() does not work
-    // Current use cases: when changing pagination size, when changing to page with less/more elements
-    if (window.parentIframe) {
-      window.parentIframe.sendMessage({
-        type: "resize",
-        newChildHeight: document.body.scrollHeight,
-      });
-    }
-  };
 
   const handleChangePage = (_event: any, newPage: number | null) => {
     if (newPage !== null) {
@@ -45,15 +36,12 @@ function OperatorsList({ rows }: Readonly<Props>) {
     setPage(0);
     setRowsPerPage(parseInt(event.target.value, 10));
   };
-
   const pagination = {
     size: rowsPerPage,
     totalElements: rows.length,
     numOfDisplayedPages: Math.min(Math.ceil(rows.length / rowsPerPage), 3),
     currentPage: page,
   };
-
-  useEffect(resizeParentIframe, [rowsPerPage, page]);
 
   return (
     <Stack>
@@ -115,7 +103,7 @@ function OperatorsList({ rows }: Readonly<Props>) {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          rowsPerPageOptions={[10, 30, 50]}
+          rowsPerPageOptions={[10]}
         />
         <CustomPagination pagination={pagination} onChange={handleChangePage} />
       </Stack>
