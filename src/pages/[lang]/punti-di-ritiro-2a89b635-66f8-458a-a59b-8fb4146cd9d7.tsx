@@ -108,16 +108,12 @@ const RitiroPage: NextPage = () => {
       .replace(/[^a-zA-Z]/g, "");
 
     const operators = initialRaddOperators.filter((operator) => {
-      if (!operator.city) {
-        return operator.cap === searchValue;
-      }
-
       const normalizedCity = operator.city
-        .toLowerCase()
-        .replace(/[^a-zA-Z]/g, "");
+        ? operator.city.toLowerCase().replace(/[^a-zA-Z]/g, "")
+        : "";
       const normalizedProvince = operator.province
-        .toLowerCase()
-        .replace(/[^a-zA-Z]/g, "");
+        ? operator.province.toLowerCase().replace(/[^a-zA-Z]/g, "")
+        : "";
 
       return (
         normalizedCity === normalizedSearchValue ||
