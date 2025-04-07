@@ -103,13 +103,24 @@ const RitiroPage: NextPage = () => {
   };
 
   const handleSearchClick = () => {
-    const operators = initialRaddOperators.filter((operator) =>
-      operator.city
-        ? operator.city.toLowerCase().replace(/[^a-zA-Z]/g, "") ===
-            searchValue.toLowerCase().replace(/[^a-zA-Z]/g, "") ||
-          operator.cap === searchValue
-        : ""
-    );
+    const normalizedSearchValue = searchValue
+      .toLowerCase()
+      .replace(/[^a-zA-Z]/g, "");
+
+    const operators = initialRaddOperators.filter((operator) => {
+      const normalizedCity = operator.city
+        ? operator.city.toLowerCase().replace(/[^a-zA-Z]/g, "")
+        : "";
+      const normalizedProvince = operator.province
+        ? operator.province.toLowerCase().replace(/[^a-zA-Z]/g, "")
+        : "";
+
+      return (
+        normalizedCity === normalizedSearchValue ||
+        normalizedProvince === normalizedSearchValue ||
+        operator.cap === searchValue
+      );
+    });
 
     if (searchValue && operators.length > 0) {
       setFilteredOperators(operators);
