@@ -32,14 +32,10 @@ const Homepage = () => {
   return (
     <Stack spacing={1} sx={{ padding: 2 }}>
       <Typography>Homepage pn-showcase-site</Typography>
-      <Link
-        href={`${lang}/punti-di-ritiro-2a89b635-66f8-458a-a59b-8fb4146cd9d7`}
-      >
+      <Link href="/punti-di-ritiro-2a89b635-66f8-458a-a59b-8fb4146cd9d7">
         Punti di ritiro
       </Link>
-      <Link
-        href={`${lang}/send-in-numeri-283d8d30-e558-4ef6-9083-8f4ef9f8b8c5`}
-      >
+      <Link href="/send-in-numeri-283d8d30-e558-4ef6-9083-8f4ef9f8b8c5">
         SEND in numeri
       </Link>
     </Stack>
