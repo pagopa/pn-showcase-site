@@ -1,17 +1,11 @@
-import type { GetStaticPaths, NextPage } from "next";
-
-import { Infoblock, Hero } from "@pagopa/mui-italia";
-import { Typography } from "@mui/material";
-import { IMAGES_PATH, langCodes, PN_PF_URL, PN_PG_URL } from "@utils/constants";
-
-import { LangCode } from "../../model";
-import PageHead from "../../components/PageHead";
-import { getI18n } from "../../api/i18n";
-import { useTranslation } from "../../hook/useTranslation";
-import { useRouter } from "next/router";
+import { Stack, Typography } from "@mui/material";
+import { langCodes } from "@utils/constants";
+import { GetStaticPaths } from "next";
+import Link from "next/link";
 import { useContext } from "react";
-import LangContext from "../../context/lang-context";
-import { redirectToInternalPage } from "@utils/navigation";
+import { getI18n } from "src/api/i18n";
+import LangContext from "src/context/lang-context";
+import { LangCode } from "src/model";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -27,147 +21,25 @@ export async function getStaticProps({
 }: {
   params: { lang: LangCode };
 }) {
-  const translations = getI18n(params.lang, ["common", "homepage"]);
+  const translations = getI18n(params.lang, ["common"]);
 
   return { props: { translations, lang: params.lang } };
 }
 
-const IndexPage: NextPage = () => {
-  const { t } = useTranslation(["common", "homepage"]);
-  const { push } = useRouter();
+const Homepage = () => {
   const { lang } = useContext(LangContext);
 
   return (
-    <>
-      <PageHead
-        title={t("title", { ns: "homepage" })}
-        description={t("description", { ns: "homepage" })}
-      />
-      <Hero
-        type="image"
-        title={t("hero.title", { ns: "homepage" })}
-        subtitle={
-          <Typography
-            component="p"
-            sx={{
-              color: "primary.contrastText",
-            }}
-          >
-            {t("hero.subtitle", { ns: "homepage" })}
-          </Typography>
-        }
-        image={`${IMAGES_PATH}/ph-hero-foreground.png`}
-        altText={t("hero.altText", { ns: "homepage" })}
-        background={`${IMAGES_PATH}/hero-home-background.png`}
-      />
-      <Infoblock
-        overline={t("infoblock.cittadini.overline", { ns: "homepage" })}
-        title={t("infoblock.cittadini.title", { ns: "homepage" })}
-        content={
-          <>
-            <Typography variant="body2">
-              {t("infoblock.cittadini.description_1", { ns: "homepage" })}
-            </Typography>
-            <Typography variant="body2">
-              {t("infoblock.cittadini.description_2", { ns: "homepage" })}
-            </Typography>
-          </>
-        }
-        ctaPrimary={
-          "/cittadini"
-            ? {
-                label: t("infoblock.cittadini.cta", { ns: "homepage" }),
-                title: t("infoblock.cittadini.cta", { ns: "homepage" }),
-                onClick: () => redirectToInternalPage(push, "cittadini", lang),
-              }
-            : undefined
-        }
-        ctaSecondary={
-          PN_PF_URL
-            ? {
-                label: t("infoblock.cittadini.cta_secondary", {
-                  ns: "homepage",
-                }),
-                title: t("infoblock.cittadini.cta_secondary", {
-                  ns: "homepage",
-                }),
-                onClick: () => window.open(PN_PF_URL, "_self"),
-              }
-            : undefined
-        }
-        inverse
-        image={`${IMAGES_PATH}/ph-infoblock-2.png`}
-        altText={t("infoblock.cittadini.altText", { ns: "homepage" })}
-        aspectRatio="9/16"
-        imageShadow={false}
-      />
-
-      <Infoblock
-        overline={t("infoblock.imprese.overline", { ns: "homepage" })}
-        title={t("infoblock.imprese.title", { ns: "homepage" })}
-        content={
-          <Typography variant="body2">
-            {t("infoblock.imprese.description", { ns: "homepage" })}
-          </Typography>
-        }
-        ctaPrimary={
-          "/imprese"
-            ? {
-                label: t("infoblock.imprese.cta", { ns: "homepage" }),
-                title: t("infoblock.imprese.cta", { ns: "homepage" }),
-                onClick: () => redirectToInternalPage(push, "imprese", lang),
-              }
-            : undefined
-        }
-        ctaSecondary={
-          PN_PG_URL
-            ? {
-                label: t("infoblock.imprese.cta_secondary", { ns: "homepage" }),
-                title: t("infoblock.imprese.cta_secondary", { ns: "homepage" }),
-                onClick: () => window.open(PN_PG_URL, "_self"),
-              }
-            : undefined
-        }
-        inverse={false}
-        image={`${IMAGES_PATH}/ph-infoblock-3.png`}
-        altText={t("infoblock.imprese.altText", { ns: "homepage" })}
-        imageShadow={false}
-      />
-
-      <Infoblock
-        overline={t("infoblock.enti.overline", { ns: "homepage" })}
-        title={t("infoblock.enti.title", { ns: "homepage" })}
-        content={
-          <>
-            <Typography variant="body2">
-              {t("infoblock.enti.description_1", { ns: "homepage" })}
-            </Typography>
-            <Typography variant="body2">
-              {t("infoblock.enti.description_2", { ns: "homepage" })}
-            </Typography>
-          </>
-        }
-        ctaPrimary={
-          "/pubbliche-amministrazioni"
-            ? {
-                label: t("infoblock.enti.cta", { ns: "homepage" }),
-                title: t("infoblock.enti.cta", { ns: "homepage" }),
-                onClick: () =>
-                  redirectToInternalPage(
-                    push,
-                    "pubbliche-amministrazioni",
-                    lang
-                  ),
-              }
-            : undefined
-        }
-        inverse
-        image={`${IMAGES_PATH}/ph-infoblock-1.png`}
-        altText={t("infoblock.enti.altText", { ns: "homepage" })}
-        imageShadow={false}
-      />
-    </>
+    <Stack spacing={1} sx={{ padding: 2 }}>
+      <Typography>Homepage pn-showcase-site</Typography>
+      <Link href="/punti-di-ritiro-2a89b635-66f8-458a-a59b-8fb4146cd9d7">
+        Punti di ritiro
+      </Link>
+      <Link href="/send-in-numeri-283d8d30-e558-4ef6-9083-8f4ef9f8b8c5">
+        SEND in numeri
+      </Link>
+    </Stack>
   );
 };
 
-export default IndexPage;
+export default Homepage;
