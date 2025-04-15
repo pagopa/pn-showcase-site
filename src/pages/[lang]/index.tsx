@@ -1,7 +1,7 @@
-import { Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
 import { GetStaticPaths } from "next";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import { getI18n } from "src/api/i18n";
 import LangContext from "src/context/lang-context";
@@ -28,16 +28,38 @@ export async function getStaticProps({
 
 const Homepage = () => {
   const { lang } = useContext(LangContext);
+  const { push } = useRouter();
+
+  const redirectToInternalPage = (page: string) => {
+    if (langCodes.includes(lang)) {
+      const separator = page.startsWith("/") ? "" : "/";
+      push(`/${lang}${separator}${page}`);
+    }
+  };
 
   return (
     <Stack spacing={1} sx={{ padding: 2 }}>
       <Typography>Homepage pn-showcase-site</Typography>
-      <Link href="/punti-di-ritiro-2a89b635-66f8-458a-a59b-8fb4146cd9d7">
+      <Button
+        onClick={() =>
+          redirectToInternalPage(
+            "/punti-di-ritiro-2a89b635-66f8-458a-a59b-8fb4146cd9d7"
+          )
+        }
+        sx={{ width: "200px" }}
+      >
         Punti di ritiro
-      </Link>
-      <Link href="/send-in-numeri-283d8d30-e558-4ef6-9083-8f4ef9f8b8c5">
+      </Button>
+      <Button
+        onClick={() =>
+          redirectToInternalPage(
+            "/send-in-numeri-283d8d30-e558-4ef6-9083-8f4ef9f8b8c5"
+          )
+        }
+        sx={{ width: "200px" }}
+      >
         SEND in numeri
-      </Link>
+      </Button>
     </Stack>
   );
 };
