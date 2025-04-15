@@ -73,12 +73,8 @@ const PickupPointsMap: React.FC<Props> = ({ points }) => {
 
   return (
     <MapContainer
-      center={
-        userLocation
-          ? [userLocation.latitude, userLocation.longitude]
-          : [41.8719, 12.5674]
-      }
-      zoom={userLocation ? 10 : 6}
+      center={[41.8719, 12.5674]}
+      zoom={6}
       style={{ height: "100%", width: "100%" }}
     >
       <MapController userLocation={userLocation} />
