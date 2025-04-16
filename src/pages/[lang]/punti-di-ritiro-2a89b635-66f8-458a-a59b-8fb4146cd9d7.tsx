@@ -40,7 +40,7 @@ export async function getStaticProps({
 }) {
   const translations = getI18n(params.lang, ["common", "pickup"]);
 
-  return { props: { translations, lang: params.lang, noLayout: true } };
+  return { props: { translations, lang: params.lang } };
 }
 
 const RitiroPage: NextPage = () => {
@@ -103,13 +103,24 @@ const RitiroPage: NextPage = () => {
   };
 
   const handleSearchClick = () => {
-    const operators = initialRaddOperators.filter((operator) =>
-      operator.city
-        ? operator.city.toLowerCase().replace(/[^a-zA-Z]/g, "") ===
-            searchValue.toLowerCase().replace(/[^a-zA-Z]/g, "") ||
-          operator.cap === searchValue
-        : ""
-    );
+    const normalizedSearchValue = searchValue
+      .toLowerCase()
+      .replace(/[^a-zA-Z]/g, "");
+
+    const operators = initialRaddOperators.filter((operator) => {
+      const normalizedCity = operator.city
+        ? operator.city.toLowerCase().replace(/[^a-zA-Z]/g, "")
+        : "";
+      const normalizedProvince = operator.province
+        ? operator.province.toLowerCase().replace(/[^a-zA-Z]/g, "")
+        : "";
+
+      return (
+        normalizedCity === normalizedSearchValue ||
+        normalizedProvince === normalizedSearchValue ||
+        operator.cap === searchValue
+      );
+    });
 
     if (searchValue && operators.length > 0) {
       setFilteredOperators(operators);
@@ -154,7 +165,8 @@ const RitiroPage: NextPage = () => {
     if (!rowsToSet || rowsToSet.length === 0) {
       return (
         <Box bgcolor="white" p={3} m={3} textAlign="center">
-          <Typography>{t("search.empty_state", { ns: "pickup" })}</Typography>
+          <Typography>{t("search.empty_state_1", { ns: "pickup" })}</Typography>
+          <Typography>{t("search.empty_state_2", { ns: "pickup" })}</Typography>
         </Box>
       );
     }

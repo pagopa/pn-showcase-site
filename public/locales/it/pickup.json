@@ -7,9 +7,10 @@
     "description_1": "Quando ricevi una comunicazione a valore legale tramite SEND puoi ritirare una copia stampata dei documenti notificati presso gli ",
     "description_2": "esercenti convenzionati",
     "description_3": "Cerca i punti di ritiro più vicini a te.",
-    "disclaimer": "Al momento puoi cercare solo fra i punti di ritiro presenti nei Comuni di Bari, Taranto e Parma: il servizio è in attivazione progressiva su tutto il territorio nazionale.",
-    "placeholder": "Cerca per città o per CAP",
-    "empty_state": " Non ci sono ancora punti di ritiro SEND attivi in questa città."
+    "disclaimer": "Al momento puoi cercare solo fra i punti di ritiro presenti in alcuni Comuni italiani: il servizio è in attivazione progressiva su tutto il territorio nazionale.",
+    "placeholder": "Cerca città, CAP o sigla provincia (es. RM per Roma)",
+    "empty_state_1": "Non sembrano essere disponibili punti di ritiro SEND in questa località.",
+    "empty_state_2": "Riprova scrivendo il nome della località per esteso oppure cerca tra i CAP o i Comuni limitrofi."
   },
   "infoblock": {
     "title": "Cosa portare",
