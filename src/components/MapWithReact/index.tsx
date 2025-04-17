@@ -1,11 +1,10 @@
 "use client";
 
-import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
-import { RaddOperator } from "../model";
-import MarkerCluster from "./Map/ClusterMarker";
+import { RaddOperator } from "../../model";
+import MarkerCluster from "./ClusterMarker";
 
 type Props = {
   points: Array<RaddOperator>;
@@ -20,20 +19,12 @@ function MapController({
 
   useEffect(() => {
     if (userLocation) {
-      map.flyTo([userLocation.latitude, userLocation.longitude], 10);
+      map.flyTo([userLocation.latitude, userLocation.longitude], 13);
     }
   }, [userLocation, map]);
 
   return null;
 }
-
-const getIcon = (iconUrl: string) => {
-  return L.icon({
-    iconUrl,
-    iconSize: [56, 74],
-    iconAnchor: [28, 74], // Il primo elemento deve essere la metà dell'iconSize
-  });
-};
 
 const PickupPointsMap: React.FC<Props> = ({ points }) => {
   const [userLocation, setUserLocation] = useState<{

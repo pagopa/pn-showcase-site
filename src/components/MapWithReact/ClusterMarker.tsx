@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { useMap } from "react-leaflet";
 import * as L from "leaflet";
 import "leaflet.markercluster";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import "leaflet/dist/leaflet.css";
+import { useEffect } from "react";
+import { useMap } from "react-leaflet";
 
 interface Marker {
   position: {
@@ -25,12 +25,10 @@ const MarkerCluster: React.FC<MarkerClusterProps> = ({ markers }) => {
 
     const mcg = L.markerClusterGroup({ showCoverageOnHover: false });
 
-    // Add markers to the cluster group
     markers.forEach(({ position, text }) =>
       L.marker([position.lat, position.lng], {
         icon: L.icon({
           iconUrl: "/static/images/pointer.svg",
-
           iconSize: [56, 74],
           iconAnchor: [28, 74], // Il primo elemento deve essere la metà dell'iconSize
         }),
@@ -39,10 +37,8 @@ const MarkerCluster: React.FC<MarkerClusterProps> = ({ markers }) => {
         .bindPopup(text)
     );
 
-    // Add the cluster group to the map
     map.addLayer(mcg);
 
-    // Cleanup function to remove the cluster group when the component unmounts
     return () => {
       map.removeLayer(mcg);
     };
