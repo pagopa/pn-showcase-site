@@ -5,7 +5,7 @@ import "leaflet/dist/leaflet.css";
 import { useEffect } from "react";
 import { useMap } from "react-leaflet";
 
-interface Marker {
+export interface CustomMarker {
   position: {
     lat: number;
     lng: number;
@@ -14,7 +14,7 @@ interface Marker {
 }
 
 interface MarkerClusterProps {
-  markers: Marker[];
+  markers: CustomMarker[];
 }
 
 const MarkerCluster: React.FC<MarkerClusterProps> = ({ markers }) => {
@@ -23,7 +23,9 @@ const MarkerCluster: React.FC<MarkerClusterProps> = ({ markers }) => {
   useEffect(() => {
     if (!map) return;
 
-    const mcg = L.markerClusterGroup({ showCoverageOnHover: false });
+    const mcg = L.markerClusterGroup({
+      showCoverageOnHover: false,
+    });
 
     markers.forEach(({ position, text }) =>
       L.marker([position.lat, position.lng], {

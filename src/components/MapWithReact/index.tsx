@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css";
 import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import { RaddOperator } from "../../model";
-import MarkerCluster from "./ClusterMarker";
+import ProvinceCluster from "./ProvinceCluster";
 
 type Props = {
   points: Array<RaddOperator>;
@@ -22,6 +22,8 @@ function MapController({
       map.flyTo([userLocation.latitude, userLocation.longitude], 13);
     }
   }, [userLocation, map]);
+
+  map.setMinZoom(5);
 
   return null;
 }
@@ -57,10 +59,10 @@ const PickupPointsMap: React.FC<Props> = ({ points }) => {
     (point) => point.latitude && point.longitude
   );
 
-  const markers = validPoints.map((p) => ({
-    position: { lat: p.latitude || 0, lng: p.longitude || 0 },
-    text: p.address,
-  }));
+  // const markers = validPoints.map((p) => ({
+  //   position: { lat: p.latitude || 0, lng: p.longitude || 0 },
+  //   text: p.address,
+  // }));
 
   return (
     <MapContainer
@@ -75,7 +77,8 @@ const PickupPointsMap: React.FC<Props> = ({ points }) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {markers.length > 0 && <MarkerCluster markers={markers} />}
+      {/* {markers.length > 0 && <MarkerCluster markers={markers} />} */}
+      <ProvinceCluster points={validPoints} />
     </MapContainer>
   );
 };

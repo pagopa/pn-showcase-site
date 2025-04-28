@@ -38,13 +38,10 @@ export async function getStaticProps({
 }
 
 const RitiroMappaPage: NextPage = () => {
-  const MapWithNoSSR = dynamic(
-    () => import("../../components/MapWithoutReact"),
-    {
-      ssr: false,
-      loading: () => <p>Loading...</p>,
-    }
-  );
+  const MapWithNoSSR = dynamic(() => import("../../components/MapWithReact"), {
+    ssr: false,
+    loading: () => <p>Loading...</p>,
+  });
 
   const { t } = useTranslation(["common", "pickup"]);
 
