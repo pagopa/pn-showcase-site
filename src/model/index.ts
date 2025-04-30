@@ -5,6 +5,7 @@ export interface RaddOperator {
   city: string;
   address: string;
   province: string;
+  region: string;
   cap: string;
   contacts: string;
   latitude?: number;

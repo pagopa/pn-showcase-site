@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
+import { provinceToRegione } from "../../utils/mapperRegioni";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -68,7 +69,7 @@ const RitiroMappaPage: NextPage = () => {
         Sarah Donvito, 31/05/2024
         ---------------------------------------------------
       */
-      const csvFilePath = "/static/documents/radd-stores-registry-map.csv";
+      const csvFilePath = "/static/documents/radd-stores-registry.csv";
       Papa.parse(csvFilePath, {
         download: true,
         header: true,
@@ -91,6 +92,7 @@ const RitiroMappaPage: NextPage = () => {
     city: e.città,
     address: e.via,
     province: e.provincia,
+    region: provinceToRegione[e.provincia] ?? "",
     cap: e.cap,
     contacts: e.telefono,
     latitude: e.latitudine ? Number(e.latitudine) : undefined,

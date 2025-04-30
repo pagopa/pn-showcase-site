@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import { RaddOperator } from "../../model";
 import ProvinceCluster from "./ProvinceCluster";
+import RegionCluster from "./RegionsCluster";
+import Clusters from "./RegionsCluster";
 
 type Props = {
   points: Array<RaddOperator>;
@@ -77,8 +79,7 @@ const PickupPointsMap: React.FC<Props> = ({ points }) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {/* {markers.length > 0 && <MarkerCluster markers={markers} />} */}
-      <ProvinceCluster points={validPoints} />
+      <Clusters points={validPoints} />
     </MapContainer>
   );
 };
