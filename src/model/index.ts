@@ -7,6 +7,13 @@ export interface RaddOperator {
   province: string;
   cap: string;
   contacts: string;
+  monday: string;
+  tuesday: string;
+  wednesday: string;
+  thursday: string;
+  friday: string;
+  saturday: string;
+  sunday: string;
 }
 
 export interface Point {
@@ -16,6 +23,13 @@ export interface Point {
   provincia: string;
   cap: string;
   telefono: string;
+  lunedi: string;
+  martedi: string;
+  mercoledi: string;
+  giovedi: string;
+  venerdi: string;
+  sabato: string;
+  domenica: string;
 }
 
 export type PaginationData = {

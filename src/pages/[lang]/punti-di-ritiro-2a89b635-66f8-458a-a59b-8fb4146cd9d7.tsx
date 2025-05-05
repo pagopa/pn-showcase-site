@@ -96,7 +96,16 @@ const RitiroPage: NextPage = () => {
     province: e.provincia,
     cap: e.cap,
     contacts: e.telefono,
+    monday: e.lunedi,
+    tuesday: e.martedi,
+    wednesday: e.mercoledi,
+    thursday: e.giovedi,
+    friday: e.venerdi,
+    saturday: e.sabato,
+    sunday: e.domenica,
   }));
+
+  console.log("initialRaddOperators", initialRaddOperators.slice(0, 5));
 
   const handleInputChange = (event: any) => {
     setSearchValue(event.target.value);
