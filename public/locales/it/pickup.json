@@ -22,5 +22,17 @@
     "title": "SEND - Servizio Notifiche Digitali | Come funzionano i punti di ritiro",
     "description": "Scopri come funziona il servizio per ritirare sul territorio una copia delle comunicazioni a valore legale che ricevi tramite SEND"
   },
-  "loading-aria-label": "Caricamento dei Punti di ritiro in corso"
+  "loading-aria-label": "Caricamento dei Punti di ritiro in corso",
+  "view_details": "Vedi dettagli",
+  "days": {
+    "monday": "Lunedì",
+    "tuesday": "Martedì",
+    "wednesday": "Mercoledì",
+    "thursday": "Giovedì",
+    "friday": "Venerdì",
+    "saturday": "Sabato",
+    "sunday": "Domenica"
+  },
+  "get-directions": "Ottieni indicazioni",
+  "share": "Condividi"
 }

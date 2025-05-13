@@ -21,6 +21,7 @@ import { useEffect, useState } from "react";
 import { getI18n } from "../../api/i18n";
 import OperatorsList from "../../components/Ritiro/OperatorsList";
 import OperatorsTable from "../../components/Ritiro/OperatorsTable";
+import PointInfoDrawer from "../../components/Ritiro/PointInfoDrawer";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
 
@@ -55,6 +56,8 @@ const RitiroPage: NextPage = () => {
     []
   );
   const [isSearchFailed, setIsSearchFailed] = useState<boolean>(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
 
   let hasData = false;
   useEffect(() => {
@@ -90,6 +93,7 @@ const RitiroPage: NextPage = () => {
   }, []);
 
   const initialRaddOperators: RaddOperator[] = points.map((e) => ({
+    type: e.tipologia,
     denomination: e.descrizione,
     city: e.città,
     address: e.via,
@@ -104,8 +108,6 @@ const RitiroPage: NextPage = () => {
     saturday: e.sabato,
     sunday: e.domenica,
   }));
-
-  console.log("initialRaddOperators", initialRaddOperators.slice(0, 5));
 
   const handleInputChange = (event: any) => {
     setSearchValue(event.target.value);
@@ -144,6 +146,11 @@ const RitiroPage: NextPage = () => {
   const handleCleanField = () => {
     setSearchValue("");
     setFilteredOperators(initialRaddOperators);
+  };
+
+  const toggleDrawer = (open: boolean, pickupPoint: RaddOperator | null) => {
+    setIsDrawerOpen(open);
+    setSelectedPoint(pickupPoint);
   };
 
   let rowsToSet: RaddOperator[] | null = null;
@@ -185,6 +192,7 @@ const RitiroPage: NextPage = () => {
         <OperatorsList
           key={JSON.stringify(initialRaddOperators)}
           rows={rowsToSet}
+          toggleDrawer={toggleDrawer}
         />
       );
     } else {
@@ -192,6 +200,7 @@ const RitiroPage: NextPage = () => {
         <OperatorsTable
           key={JSON.stringify(filteredOperators)}
           rows={rowsToSet}
+          toggleDrawer={toggleDrawer}
         />
       );
     }
@@ -296,6 +305,11 @@ const RitiroPage: NextPage = () => {
         >
           {getContent()}
         </Stack>
+        <PointInfoDrawer
+          isOpen={isDrawerOpen}
+          toggleDrawer={toggleDrawer}
+          point={selectedPoint}
+        />
       </Box>
     </>
   );
