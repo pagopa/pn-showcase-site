@@ -51,6 +51,12 @@ const Homepage = () => {
         Punti di ritiro
       </Button>
       <Button
+        onClick={() => redirectToInternalPage("/punti-di-ritiro-map")}
+        sx={{ width: "200px" }}
+      >
+        Mappa Punti di ritiro
+      </Button>
+      <Button
         onClick={() =>
           redirectToInternalPage(
             "/send-in-numeri-283d8d30-e558-4ef6-9083-8f4ef9f8b8c5"

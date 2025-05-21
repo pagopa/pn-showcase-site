@@ -34,7 +34,7 @@ const MarkerCluster: React.FC<MarkerClusterProps> = ({ markers }) => {
       spiderfyOnMaxZoom: false,
       showCoverageOnHover: false,
       zoomToBoundsOnClick: true,
-      maxClusterRadius: 120,
+      maxClusterRadius: 180,
     });
 
     // Add markers to the cluster group

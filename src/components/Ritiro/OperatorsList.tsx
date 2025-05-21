@@ -1,112 +1,75 @@
-import * as React from "react";
-
-import {
-  ListItem,
-  Typography,
-  List,
-  Stack,
-  Paper,
-  Box,
-  TablePagination,
-} from "@mui/material";
+import { ArrowForward, Call, Place } from "@mui/icons-material";
+import { Box, List, ListItem, Paper, Stack, Typography } from "@mui/material";
+import { ButtonNaked } from "@pagopa/mui-italia";
+import { useRef } from "react";
 import { RaddOperator } from "../../model";
-import { useRef, useState } from "react";
-import CustomPagination from "../CustomPagination";
 
 type Props = {
   rows: RaddOperator[];
+  handleNavigate: (latitude: number, longitude: number) => void;
 };
 
-function OperatorsList({ rows }: Readonly<Props>) {
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-
+function OperatorsList({ rows, handleNavigate }: Readonly<Props>) {
   const listContainerRef = useRef<HTMLUListElement | null>(null);
 
-  const handleChangePage = (_event: any, newPage: number | null) => {
-    if (newPage !== null) {
-      if (listContainerRef.current) {
-        listContainerRef.current.scrollIntoView({ behavior: "smooth" });
-      }
-      setPage(newPage - 1);
-    }
-  };
+  const onShowDetailsClick = (latitude?: number, longitude?: number) => {
+    if (!latitude || !longitude) return;
 
-  const handleChangeRowsPerPage = (event: { target: { value: string } }) => {
-    setPage(0);
-    setRowsPerPage(parseInt(event.target.value, 10));
-  };
-  const pagination = {
-    size: rowsPerPage,
-    totalElements: rows.length,
-    numOfDisplayedPages: Math.min(Math.ceil(rows.length / rowsPerPage), 3),
-    currentPage: page,
+    handleNavigate(latitude, longitude);
   };
 
   return (
     <Stack>
-      <List ref={listContainerRef}>
-        {rows
-          .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-          .map((row, index: number) => (
-            <ListItem
-              key={`${row.denomination}-${index}`}
-              sx={{
-                paddingBottom: 0,
-                paddingTop: 0,
-              }}
+      <List ref={listContainerRef} sx={{ boxShadow: 2 }}>
+        {rows.slice(0, 10).map((row, index: number) => (
+          <ListItem key={`${row.denomination}-${index}`}>
+            <Stack
+              component={Paper}
+              width="100%"
+              sx={{ borderBottom: "solid 1px #E3E7EB", py: 2 }}
             >
-              <Stack
-                component={Paper}
-                p={3}
-                width="100%"
-                sx={{ borderBottom: "solid 1px #E3E7EB" }}
-              >
-                <Box mb={1}>
-                  <Typography variant="body2">Denominazione</Typography>
-                  <Typography variant="subtitle1">
-                    {row.denomination}
+              {row.distance && (
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  alignItems="center"
+                  justifyContent="flex-end"
+                >
+                  <Place />
+                  <Typography variant="body2">
+                    km {row.distance?.toFixed(1) || "-"}
                   </Typography>
-                </Box>
-                <Box mb={1}>
-                  <Typography variant="body2">Città</Typography>
-                  <Typography variant="subtitle1">
-                    {row.city} ({row.province})
-                  </Typography>
-                </Box>
-                <Box mb={1}>
-                  <Typography variant="body2">Indirizzo</Typography>
-                  <Typography variant="subtitle1">
-                    {row.address} - {row.cap}
-                  </Typography>
-                </Box>
-                <Box mb={1}>
-                  <Typography variant="body2">Telefono</Typography>
-                  <Typography variant="subtitle1">{row.contacts}</Typography>
-                </Box>
+                </Stack>
+              )}
+
+              <Box mb={1}>
+                <Typography variant="body1" fontWeight={600}>
+                  {row.denomination}
+                </Typography>
+                <Typography variant="body2" fontSize="14px">
+                  {row.address}, {row.city} ({row.province})
+                </Typography>
+              </Box>
+
+              <Stack direction="row" spacing={2} alignItems="center">
+                <Call color="primary" />
+                <Typography variant="body2" fontSize="14px">
+                  {row.contacts}
+                </Typography>
               </Stack>
-            </ListItem>
-          ))}
+
+              <ButtonNaked
+                endIcon={<ArrowForward />}
+                color="primary"
+                sx={{ justifyContent: "flex-end" }}
+                onClick={() => onShowDetailsClick(row.latitude, row.longitude)}
+              >
+                Mostra dettagli
+              </ButtonNaked>
+            </Stack>
+          </ListItem>
+        ))}
       </List>
-      <Stack
-        alignItems="center"
-        justifyContent="space-between"
-        px={1}
-        mt={1}
-        direction="row"
-      >
-        <TablePagination
-          id="ritiroPagination"
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-          rowsPerPageOptions={[10]}
-        />
-        <CustomPagination pagination={pagination} onChange={handleChangePage} />
-      </Stack>
     </Stack>
   );
 }

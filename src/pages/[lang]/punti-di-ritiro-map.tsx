@@ -1,23 +1,18 @@
 import type { GetStaticPaths, NextPage } from "next";
 
-import CloseIcon from "@mui/icons-material/Close";
-import SearchIcon from "@mui/icons-material/Search";
-import {
-  IconButton,
-  InputAdornment,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Alert, Box, Stack, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
+import { sortPointsByDistance } from "@utils/map";
 import dynamic from "next/dynamic";
 import Script from "next/script";
 import Papa from "papaparse";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import OperatorsList from "src/components/Ritiro/OperatorsList";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
 import { provinceToRegione } from "../../utils/mapperRegioni";
+import AccessibleAutocomplete from "src/components/Autocomplete";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -53,22 +48,40 @@ const RitiroMappaPage: NextPage = () => {
     []
   );
   const [isSearchFailed, setIsSearchFailed] = useState<boolean>(false);
+  const [userLocation, setUserLocation] = useState<{
+    latitude: number;
+    longitude: number;
+  } | null>(null);
+
+  const mapRef = useRef<any>(null);
+
+  const handleNavigate = (latitude: number, longitude: number) => {
+    if (mapRef.current && mapRef.current.flyTo) {
+      mapRef.current.flyTo([latitude, longitude], 18);
+    }
+  };
+
+  const getUserLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          console.log("Got coordinates", latitude, longitude);
+          setUserLocation({ latitude, longitude });
+        },
+        (error) => {
+          console.error("Error getting user location:", error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  };
 
   let hasData = false;
   useEffect(() => {
     if (!hasData) {
       hasData = true;
-
-      /* 
-        Storelocator file is saved on showcase-site bucket s3 at /public/static/documents/radd-stores-registry.csv,
-        however this file is not accessible by localhost.
-        To test in local environment you need to download file http://www.dev.notifichedigitali.it/public/static/documents/radd-stores-registry.csv 
-        and save at the same path but use csvFilePath = "/static/documents/radd-stores-registry.csv".
-        The file is already referred in .gitignore.
-        ---------------------------------------------------
-        Sarah Donvito, 31/05/2024
-        ---------------------------------------------------
-      */
       const csvFilePath = "/static/documents/radd-stores-registry.csv";
       Papa.parse(csvFilePath, {
         download: true,
@@ -85,6 +98,8 @@ const RitiroMappaPage: NextPage = () => {
         },
       });
     }
+
+    getUserLocation();
   }, []);
 
   const initialRaddOperators: RaddOperator[] = points.map((e) => ({
@@ -99,36 +114,6 @@ const RitiroMappaPage: NextPage = () => {
     longitude: e.longitudine ? Number(e.longitudine) : undefined,
   }));
 
-  console.log(initialRaddOperators);
-
-  const handleInputChange = (event: any) => {
-    setSearchValue(event.target.value);
-  };
-
-  const handleSearchClick = () => {
-    const operators = initialRaddOperators.filter((operator) =>
-      operator.city
-        ? operator.city.toLowerCase().replace(/[^a-zA-Z]/g, "") ===
-            searchValue.toLowerCase().replace(/[^a-zA-Z]/g, "") ||
-          operator.cap === searchValue
-        : ""
-    );
-
-    if (searchValue && operators.length > 0) {
-      setFilteredOperators(operators);
-    } else if (searchValue && operators.length === 0) {
-      setIsSearchFailed(true);
-      setFilteredOperators([]);
-    } else {
-      setFilteredOperators(initialRaddOperators);
-    }
-  };
-
-  const handleCleanField = () => {
-    setSearchValue("");
-    setFilteredOperators(initialRaddOperators);
-  };
-
   let rowsToSet: RaddOperator[] | null = null;
 
   if (filteredOperators.length > 0) {
@@ -137,6 +122,10 @@ const RitiroMappaPage: NextPage = () => {
     rowsToSet = [];
   } else {
     rowsToSet = initialRaddOperators;
+  }
+
+  if (userLocation?.latitude && userLocation?.longitude) {
+    rowsToSet = sortPointsByDistance(rowsToSet, userLocation) ?? [];
   }
 
   return (
@@ -150,7 +139,7 @@ const RitiroMappaPage: NextPage = () => {
 
       <Stack
         mt={8}
-        mb={5}
+        mb={2}
         mx={3}
         direction="column"
         alignItems="center"
@@ -184,41 +173,43 @@ const RitiroMappaPage: NextPage = () => {
           {t("search.description_3", { ns: "pickup" })}
         </Typography>
 
-        <TextField
-          value={searchValue}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              handleSearchClick();
-            }
-          }}
-          onChange={handleInputChange}
-          sx={{ maxWidth: 498, width: "100%" }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end" sx={{ paddingRight: 0 }}>
-                {searchValue && (
-                  <IconButton onClick={handleCleanField}>
-                    <CloseIcon />
-                  </IconButton>
-                )}
-                <IconButton onClick={handleSearchClick}>
-                  <SearchIcon />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-          label={t("search.placeholder", { ns: "pickup" })}
-          id="textFilter"
-        />
+        <Alert severity="info" variant="standard">
+          {t("search.disclaimer", { ns: "pickup" })}
+        </Alert>
       </Stack>
 
       <Stack
+        direction="row"
+        display="flex"
         sx={{
           width: "100%",
           height: "650px",
         }}
       >
-        <MapWithNoSSR points={rowsToSet} />
+        <Box display="flex" flexDirection="column">
+          {/* <Box sx={{ px: 2, py: 1 }}>
+            <AccessibleAutocomplete
+              options={[
+                "Milano",
+                "Milazzo",
+                "Roma",
+                "Romagna",
+                "Via Roma",
+                "Via Milano",
+              ]}
+            />
+          </Box> */}
+          <Box sx={{ overflowY: "auto", px: 2 }}>
+            <OperatorsList rows={rowsToSet} handleNavigate={handleNavigate} />
+          </Box>
+        </Box>
+        <Box sx={{ width: "100%" }}>
+          <MapWithNoSSR
+            mapRef={mapRef}
+            points={rowsToSet}
+            userLocation={userLocation}
+          />
+        </Box>
       </Stack>
     </>
   );

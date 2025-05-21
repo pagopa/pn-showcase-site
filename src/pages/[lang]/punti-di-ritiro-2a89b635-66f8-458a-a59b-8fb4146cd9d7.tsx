@@ -23,6 +23,7 @@ import OperatorsList from "../../components/Ritiro/OperatorsList";
 import OperatorsTable from "../../components/Ritiro/OperatorsTable";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
+import { provinceToRegione } from "@utils/mapperRegioni";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -96,6 +97,7 @@ const RitiroPage: NextPage = () => {
     province: e.provincia,
     cap: e.cap,
     contacts: e.telefono,
+    region: provinceToRegione[e.provincia] ?? "",
   }));
 
   const handleInputChange = (event: any) => {

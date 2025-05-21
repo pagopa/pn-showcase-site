@@ -10,6 +10,7 @@ export interface RaddOperator {
   contacts: string;
   latitude?: number;
   longitude?: number;
+  distance?: number;
 }
 
 export interface Point {

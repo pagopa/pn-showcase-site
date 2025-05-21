@@ -1,23 +1,35 @@
 "use client";
 
 import "leaflet/dist/leaflet.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import { RaddOperator } from "../../model";
-import ProvinceCluster from "./ProvinceCluster";
-import RegionCluster from "./RegionsCluster";
 import Clusters from "./RegionsCluster";
 
 type Props = {
   points: Array<RaddOperator>;
+  userLocation: {
+    latitude: number;
+    longitude: number;
+  } | null;
+  mapRef?: React.MutableRefObject<any>;
 };
 
 function MapController({
   userLocation,
+  mapRef,
 }: {
   userLocation: { latitude: number; longitude: number } | null;
+  mapRef?: React.MutableRefObject<any>;
 }) {
   const map = useMap();
+
+  map.setMinZoom(5);
+  map.zoomControl.setPosition("topright");
+
+  if (mapRef) {
+    mapRef.current = map;
+  }
 
   useEffect(() => {
     if (userLocation) {
@@ -25,46 +37,13 @@ function MapController({
     }
   }, [userLocation, map]);
 
-  map.setMinZoom(5);
-
   return null;
 }
 
-const PickupPointsMap: React.FC<Props> = ({ points }) => {
-  const [userLocation, setUserLocation] = useState<{
-    latitude: number;
-    longitude: number;
-  } | null>(null);
-
-  const getUserLocation = async () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          console.log("Got coordinates", latitude, longitude);
-          setUserLocation({ latitude, longitude });
-        },
-        (error) => {
-          console.error("Error getting user location:", error);
-        }
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
-  };
-
-  useEffect(() => {
-    getUserLocation();
-  }, []);
-
+const PickupPointsMap: React.FC<Props> = ({ points, userLocation, mapRef }) => {
   const validPoints = points.filter(
     (point) => point.latitude && point.longitude
   );
-
-  // const markers = validPoints.map((p) => ({
-  //   position: { lat: p.latitude || 0, lng: p.longitude || 0 },
-  //   text: p.address,
-  // }));
 
   return (
     <MapContainer
@@ -72,7 +51,7 @@ const PickupPointsMap: React.FC<Props> = ({ points }) => {
       zoom={6}
       style={{ height: "100%", width: "100%" }}
     >
-      <MapController userLocation={userLocation} />
+      <MapController userLocation={userLocation} mapRef={mapRef} />
 
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
