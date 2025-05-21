@@ -178,7 +178,6 @@ const RitiroPage: NextPage = () => {
         <OperatorsList
           key={JSON.stringify(initialRaddOperators)}
           rows={rowsToSet}
-          handleNavigate={() => {}}
         />
       );
     } else {

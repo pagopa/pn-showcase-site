@@ -1,4 +1,4 @@
-import { ArrowForward, Call, Place } from "@mui/icons-material";
+import { Place } from "@mui/icons-material";
 import { Box, List, ListItem, Paper, Stack, Typography } from "@mui/material";
 import { ButtonNaked } from "@pagopa/mui-italia";
 import { useRef } from "react";
@@ -19,29 +19,24 @@ function PickupPointsList({ rows, handleNavigate }: Readonly<Props>) {
   };
 
   return (
-    <Stack>
-      <List ref={listContainerRef} sx={{ boxShadow: 2 }}>
-        {rows.slice(0, 10).map((row, index: number) => (
-          <ListItem key={`${row.denomination}-${index}`}>
-            <Stack
-              component={Paper}
-              width="100%"
-              sx={{ borderBottom: "solid 1px #E3E7EB", py: 2 }}
+    <List ref={listContainerRef} sx={{ boxShadow: 2 }}>
+      {rows.slice(0, 5).map((row, index: number) => (
+        <ListItem
+          key={`${row.denomination}-${index}`}
+          sx={{
+            border: "1px solid",
+            borderColor: "divider",
+            borderRadius: "8px",
+            my: 2,
+            p: 3,
+          }}
+        >
+          <Stack component={Paper} width="100%">
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="flex-start"
             >
-              {row.distance && (
-                <Stack
-                  direction="row"
-                  spacing={1}
-                  alignItems="center"
-                  justifyContent="flex-end"
-                >
-                  <Place />
-                  <Typography variant="body2">
-                    km {row.distance?.toFixed(1) || "-"}
-                  </Typography>
-                </Stack>
-              )}
-
               <Box mb={1}>
                 <Typography variant="body1" fontWeight={600}>
                   {row.denomination}
@@ -51,26 +46,36 @@ function PickupPointsList({ rows, handleNavigate }: Readonly<Props>) {
                 </Typography>
               </Box>
 
-              <Stack direction="row" spacing={2} alignItems="center">
-                <Call color="primary" />
-                <Typography variant="body2" fontSize="14px">
-                  {row.contacts}
-                </Typography>
-              </Stack>
+              {row.distance && (
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  alignItems="center"
+                  justifyContent="flex-end"
+                >
+                  <Place fontSize="small" sx={{ color: "text.secondary" }} />
+                  <Typography variant="body2" color="text.secondary">
+                    km {row.distance?.toFixed(1) || "-"}
+                  </Typography>
+                </Stack>
+              )}
+            </Box>
 
-              <ButtonNaked
-                endIcon={<ArrowForward />}
-                color="primary"
-                sx={{ justifyContent: "flex-end" }}
-                onClick={() => onShowDetailsClick(row.latitude, row.longitude)}
-              >
-                Mostra dettagli
-              </ButtonNaked>
-            </Stack>
-          </ListItem>
-        ))}
-      </List>
-    </Stack>
+            <ButtonNaked
+              color="primary"
+              sx={{
+                justifyContent: "flex-start",
+                width: "fit-content",
+                alignItems: "center",
+              }}
+              onClick={() => onShowDetailsClick(row.latitude, row.longitude)}
+            >
+              Mostra dettagli
+            </ButtonNaked>
+          </Stack>
+        </ListItem>
+      ))}
+    </List>
   );
 }
 

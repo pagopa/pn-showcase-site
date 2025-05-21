@@ -1,12 +1,13 @@
 import type { GetStaticPaths, NextPage } from "next";
 
-import { Alert, Box, Stack, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
 import { sortPointsByDistance } from "@utils/map";
 import dynamic from "next/dynamic";
 import Script from "next/script";
 import Papa from "papaparse";
 import { useEffect, useRef, useState } from "react";
+import AccessibleAutocomplete from "src/components/Autocomplete";
 import { getI18n } from "../../api/i18n";
 import PickupPointsList from "../../components/PickupPointsList";
 import { useTranslation } from "../../hook/useTranslation";
@@ -139,57 +140,37 @@ const RitiroMappaPage: NextPage = () => {
         strategy="beforeInteractive"
       />
 
-      <Stack
-        mt={8}
-        mb={2}
-        mx={3}
-        direction="column"
-        alignItems="center"
-        spacing={0}
-        justifyContent="center"
-      >
-        <Typography
-          align="center"
-          fontWeight={700}
-          fontSize="14px"
-          color="textSecondary"
-          mb={3}
-          sx={{ textTransform: "uppercase" }}
-        >
-          {t("search.eyelet", { ns: "pickup" })}
-        </Typography>
+      <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>
+        <Grid item xs={12} md={4} direction="column" spacing={0}>
+          <Typography
+            fontWeight={700}
+            fontSize="14px"
+            color="textSecondary"
+            mb={3}
+            sx={{ textTransform: "uppercase" }}
+          >
+            {t("search.eyelet", { ns: "pickup" })}
+          </Typography>
 
-        <Typography align="center" variant="h2">
-          {t("search.title", { ns: "pickup" })}
-        </Typography>
+          <Typography variant="h4">
+            {t("search.title", { ns: "pickup" })}
+          </Typography>
 
-        <Typography
-          my={3}
-          color="textPrimary"
-          variant="body2"
-          sx={{ maxWidth: 554 }}
-          textAlign="center"
-        >
-          {t("search.description_1", { ns: "pickup" })}
-          <strong>{t("search.description_2", { ns: "pickup" })}</strong>. <br />
-          {t("search.description_3", { ns: "pickup" })}
-        </Typography>
+          <Typography
+            my={3}
+            color="textPrimary"
+            variant="body2"
+            sx={{ maxWidth: 554 }}
+          >
+            {t("search.description_1", { ns: "pickup" })}
+            <strong>{t("search.description_2", { ns: "pickup" })}</strong>.{" "}
+          </Typography>
+          {/* 
+          <Alert severity="info" variant="standard">
+            {t("search.disclaimer", { ns: "pickup" })}
+          </Alert> */}
 
-        <Alert severity="info" variant="standard">
-          {t("search.disclaimer", { ns: "pickup" })}
-        </Alert>
-      </Stack>
-
-      <Stack
-        direction="row"
-        display="flex"
-        sx={{
-          width: "100%",
-          height: "650px",
-        }}
-      >
-        <Box display="flex" flexDirection="column">
-          {/* <Box sx={{ px: 2, py: 1 }}>
+          <Box sx={{ mt: 2 }}>
             <AccessibleAutocomplete
               options={[
                 "Milano",
@@ -200,22 +181,21 @@ const RitiroMappaPage: NextPage = () => {
                 "Via Milano",
               ]}
             />
-          </Box> */}
-          <Box sx={{ overflowY: "auto", px: 2 }}>
-            <PickupPointsList
-              rows={rowsToSet}
-              handleNavigate={handleNavigate}
+          </Box>
+
+          <PickupPointsList rows={rowsToSet} handleNavigate={handleNavigate} />
+        </Grid>
+
+        <Grid item xs={12} md={8} sx={{ width: "100%" }}>
+          <Box sx={{ width: "100%", height: "100%" }}>
+            <MapWithNoSSR
+              mapRef={mapRef}
+              points={rowsToSet}
+              userLocation={userLocation}
             />
           </Box>
-        </Box>
-        <Box sx={{ width: "100%" }}>
-          <MapWithNoSSR
-            mapRef={mapRef}
-            points={rowsToSet}
-            userLocation={userLocation}
-          />
-        </Box>
-      </Stack>
+        </Grid>
+      </Grid>
     </>
   );
 };
