@@ -7,12 +7,11 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 import Papa from "papaparse";
 import { useEffect, useRef, useState } from "react";
-import OperatorsList from "src/components/Ritiro/OperatorsList";
 import { getI18n } from "../../api/i18n";
+import PickupPointsList from "../../components/PickupPointsList";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
 import { provinceToRegione } from "../../utils/mapperRegioni";
-import AccessibleAutocomplete from "src/components/Autocomplete";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -34,10 +33,13 @@ export async function getStaticProps({
 }
 
 const RitiroMappaPage: NextPage = () => {
-  const MapWithNoSSR = dynamic(() => import("../../components/MapWithReact"), {
-    ssr: false,
-    loading: () => <p>Loading...</p>,
-  });
+  const MapWithNoSSR = dynamic(
+    () => import("../../components/PickupPointsMap"),
+    {
+      ssr: false,
+      loading: () => <p>Loading...</p>,
+    }
+  );
 
   const { t } = useTranslation(["common", "pickup"]);
 
@@ -200,7 +202,10 @@ const RitiroMappaPage: NextPage = () => {
             />
           </Box> */}
           <Box sx={{ overflowY: "auto", px: 2 }}>
-            <OperatorsList rows={rowsToSet} handleNavigate={handleNavigate} />
+            <PickupPointsList
+              rows={rowsToSet}
+              handleNavigate={handleNavigate}
+            />
           </Box>
         </Box>
         <Box sx={{ width: "100%" }}>
