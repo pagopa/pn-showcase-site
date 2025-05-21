@@ -21,6 +21,7 @@ import { useEffect, useState } from "react";
 import { getI18n } from "../../api/i18n";
 import OperatorsList from "../../components/Ritiro/OperatorsList";
 import OperatorsTable from "../../components/Ritiro/OperatorsTable";
+import PointInfoDrawer from "../../components/Ritiro/PointInfoDrawer";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
 import { provinceToRegione } from "@utils/mapperRegioni";
@@ -56,6 +57,8 @@ const RitiroPage: NextPage = () => {
     []
   );
   const [isSearchFailed, setIsSearchFailed] = useState<boolean>(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
 
   let hasData = false;
   useEffect(() => {
@@ -91,6 +94,7 @@ const RitiroPage: NextPage = () => {
   }, []);
 
   const initialRaddOperators: RaddOperator[] = points.map((e) => ({
+    type: e.tipologia,
     denomination: e.descrizione,
     city: e.città,
     address: e.via,
@@ -98,6 +102,13 @@ const RitiroPage: NextPage = () => {
     cap: e.cap,
     contacts: e.telefono,
     region: provinceToRegione[e.provincia] ?? "",
+    monday: e.lunedi,
+    tuesday: e.martedi,
+    wednesday: e.mercoledi,
+    thursday: e.giovedi,
+    friday: e.venerdi,
+    saturday: e.sabato,
+    sunday: e.domenica,
   }));
 
   const handleInputChange = (event: any) => {
@@ -139,6 +150,11 @@ const RitiroPage: NextPage = () => {
     setFilteredOperators(initialRaddOperators);
   };
 
+  const toggleDrawer = (open: boolean, pickupPoint: RaddOperator | null) => {
+    setIsDrawerOpen(open);
+    setSelectedPoint(pickupPoint);
+  };
+
   let rowsToSet: RaddOperator[] | null = null;
 
   if (filteredOperators.length > 0) {
@@ -178,6 +194,7 @@ const RitiroPage: NextPage = () => {
         <OperatorsList
           key={JSON.stringify(initialRaddOperators)}
           rows={rowsToSet}
+          toggleDrawer={toggleDrawer}
         />
       );
     } else {
@@ -185,6 +202,7 @@ const RitiroPage: NextPage = () => {
         <OperatorsTable
           key={JSON.stringify(filteredOperators)}
           rows={rowsToSet}
+          toggleDrawer={toggleDrawer}
         />
       );
     }
@@ -289,6 +307,11 @@ const RitiroPage: NextPage = () => {
         >
           {getContent()}
         </Stack>
+        <PointInfoDrawer
+          isOpen={isDrawerOpen}
+          toggleDrawer={toggleDrawer}
+          point={selectedPoint}
+        />
       </Box>
     </>
   );

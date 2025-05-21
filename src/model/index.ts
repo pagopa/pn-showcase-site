@@ -1,7 +1,18 @@
 import { langCodes } from "../utils/constants";
 
-export interface RaddOperator {
+export interface OpeningDays {
+  monday: string;
+  tuesday: string;
+  wednesday: string;
+  thursday: string;
+  friday: string;
+  saturday: string;
+  sunday: string;
+}
+
+export interface RaddOperator extends OpeningDays {
   denomination: string;
+  type: string;
   city: string;
   address: string;
   province: string;
@@ -15,6 +26,7 @@ export interface RaddOperator {
 
 export interface Point {
   descrizione: string;
+  tipologia: string;
   città: string;
   via: string;
   provincia: string;
@@ -22,6 +34,13 @@ export interface Point {
   telefono: string;
   latitudine?: string;
   longitudine?: string;
+  lunedi: string;
+  martedi: string;
+  mercoledi: string;
+  giovedi: string;
+  venerdi: string;
+  sabato: string;
+  domenica: string;
 }
 
 export type PaginationData = {
