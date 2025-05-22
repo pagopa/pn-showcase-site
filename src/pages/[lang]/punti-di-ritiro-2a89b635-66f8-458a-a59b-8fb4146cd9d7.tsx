@@ -21,7 +21,7 @@ import { useEffect, useState } from "react";
 import { getI18n } from "../../api/i18n";
 import OperatorsList from "../../components/Ritiro/OperatorsList";
 import OperatorsTable from "../../components/Ritiro/OperatorsTable";
-import PointInfoDrawer from "../../components/Ritiro/PointInfoDrawer";
+import PointInfoDrawer from "../../components/Ritiro/PickupPointsInfoDrawer";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
 
