@@ -1,6 +1,7 @@
 import type { GetStaticPaths, NextPage } from "next";
 
-import { Box, Grid, Typography } from "@mui/material";
+import { Place } from "@mui/icons-material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
 import { sortPointsByDistance } from "@utils/map";
 import dynamic from "next/dynamic";
@@ -10,6 +11,7 @@ import { useEffect, useRef, useState } from "react";
 import AccessibleAutocomplete from "src/components/Autocomplete";
 import { getI18n } from "../../api/i18n";
 import PickupPointsList from "../../components/PickupPointsList";
+import PointInfoDrawer from "../../components/Ritiro/PointInfoDrawer";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
 import { provinceToRegione } from "../../utils/mapperRegioni";
@@ -44,9 +46,7 @@ const RitiroMappaPage: NextPage = () => {
 
   const { t } = useTranslation(["common", "pickup"]);
 
-  const [loading, setLoading] = useState(true);
   const [points, setPoints] = useState<Point[]>([]);
-  const [searchValue, setSearchValue] = useState("");
   const [filteredOperators, setFilteredOperators] = useState<RaddOperator[]>(
     []
   );
@@ -55,8 +55,12 @@ const RitiroMappaPage: NextPage = () => {
     latitude: number;
     longitude: number;
   } | null>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
 
   const mapRef = useRef<any>(null);
+
+  let hasData = false;
 
   const handleNavigate = (latitude: number, longitude: number) => {
     if (mapRef.current && mapRef.current.flyTo) {
@@ -69,7 +73,6 @@ const RitiroMappaPage: NextPage = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          console.log("Got coordinates", latitude, longitude);
           setUserLocation({ latitude, longitude });
         },
         (error) => {
@@ -81,7 +84,11 @@ const RitiroMappaPage: NextPage = () => {
     }
   };
 
-  let hasData = false;
+  const toggleDrawer = (open: boolean, pickupPoint: RaddOperator | null) => {
+    setIsDrawerOpen(open);
+    setSelectedPoint(pickupPoint);
+  };
+
   useEffect(() => {
     if (!hasData) {
       hasData = true;
@@ -92,12 +99,10 @@ const RitiroMappaPage: NextPage = () => {
         complete: (result) => {
           if (result.data && result.data.length > 0) {
             setPoints(result.data as Point[]);
-            setLoading(false);
           }
         },
         error: (error) => {
           console.error("Error parsing CSV:", error);
-          setLoading(false);
         },
       });
     }
@@ -105,17 +110,27 @@ const RitiroMappaPage: NextPage = () => {
     getUserLocation();
   }, []);
 
-  const initialRaddOperators: RaddOperator[] = points.map((e) => ({
-    denomination: e.descrizione,
-    city: e.città,
-    address: e.via,
-    province: e.provincia,
-    region: provinceToRegione[e.provincia] ?? "",
-    cap: e.cap,
-    contacts: e.telefono,
-    latitude: e.latitudine ? Number(e.latitudine) : undefined,
-    longitude: e.longitudine ? Number(e.longitudine) : undefined,
-  }));
+  const initialRaddOperators: RaddOperator[] = points
+    .filter((point) => point.latitudine && point.longitudine)
+    .map((e) => ({
+      denomination: e.descrizione,
+      city: e.città,
+      address: e.via,
+      province: e.provincia,
+      region: provinceToRegione[e.provincia] ?? "",
+      cap: e.cap,
+      contacts: e.telefono,
+      latitude: Number(e.latitudine),
+      longitude: Number(e.longitudine),
+      monday: e.lunedi,
+      tuesday: e.martedi,
+      wednesday: e.mercoledi,
+      thursday: e.giovedi,
+      friday: e.venerdi,
+      saturday: e.sabato,
+      sunday: e.domenica,
+      type: e.tipologia,
+    }));
 
   let rowsToSet: RaddOperator[] | null = null;
 
@@ -141,7 +156,7 @@ const RitiroMappaPage: NextPage = () => {
       />
 
       <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>
-        <Grid item xs={12} md={4} direction="column" spacing={0}>
+        <Grid item xs={12} md={4}>
           <Typography
             fontWeight={700}
             fontSize="14px"
@@ -180,14 +195,24 @@ const RitiroMappaPage: NextPage = () => {
                 "Via Roma",
                 "Via Milano",
               ]}
+              renderInput={(value) => (
+                <Stack spacing={2} direction="row" alignItems="flex-start">
+                  <Place fontSize="small" sx={{ color: "text.secondary" }} />
+                  <Typography variant="body2">{value}</Typography>
+                </Stack>
+              )}
             />
           </Box>
 
-          <PickupPointsList rows={rowsToSet} handleNavigate={handleNavigate} />
+          <PickupPointsList
+            rows={rowsToSet}
+            handleNavigate={handleNavigate}
+            toggleDrawer={toggleDrawer}
+          />
         </Grid>
 
         <Grid item xs={12} md={8} sx={{ width: "100%" }}>
-          <Box sx={{ width: "100%", height: "100%" }}>
+          <Box sx={{ width: "100%", height: "1000px" }}>
             <MapWithNoSSR
               mapRef={mapRef}
               points={rowsToSet}
@@ -195,6 +220,11 @@ const RitiroMappaPage: NextPage = () => {
             />
           </Box>
         </Grid>
+        <PointInfoDrawer
+          isOpen={isDrawerOpen}
+          toggleDrawer={toggleDrawer}
+          point={selectedPoint}
+        />
       </Grid>
     </>
   );

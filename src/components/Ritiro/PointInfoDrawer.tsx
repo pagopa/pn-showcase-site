@@ -1,9 +1,12 @@
-import { Close, Storefront, AccessTime } from "@mui/icons-material";
-import { PhoneOutlined } from "@mui/icons-material";
+import {
+  AccessTime,
+  Close,
+  PhoneOutlined,
+  Storefront,
+} from "@mui/icons-material";
 import {
   Box,
   Button,
-  Chip,
   Divider,
   Drawer,
   Grid,
@@ -14,11 +17,10 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
+import { theme } from "@pagopa/mui-italia";
 import React from "react";
 import { OpeningDays, RaddOperator } from "src/model";
 import { useTranslation } from "../../hook/useTranslation";
-import ShareButton from "./ShareButton";
-import { theme } from "@pagopa/mui-italia";
 
 type Props = {
   isOpen: boolean;
@@ -57,11 +59,9 @@ const PointInfoDrawer: React.FC<Props> = ({ isOpen, point, toggleDrawer }) => {
     return openingHours.replace("_", " / ");
   };
 
-  if (!point) return <></>;
-
   return (
     <Drawer
-      anchor={isMobile ? "bottom" : "right"}
+      anchor={isMobile ? "bottom" : "left"}
       open={isOpen}
       onClose={handleCloseDrawer}
       sx={{
@@ -79,23 +79,15 @@ const PointInfoDrawer: React.FC<Props> = ({ isOpen, point, toggleDrawer }) => {
         </IconButton>
       </Box>
 
-      <Box>
-        <Chip
-          label={point.type}
-          color="info"
-          size="small"
-          sx={{ display: "inline-flex" }}
-        />
-        <Typography variant="h6" fontWeight={700} sx={{ mt: 1 }}>
-          {point.denomination}
-        </Typography>
-      </Box>
+      <Typography variant="h6" fontWeight={700} sx={{ mt: 1 }}>
+        {point?.denomination}
+      </Typography>
 
       <List sx={{ mt: 2 }}>
         <ListItem alignItems="flex-start" sx={{ px: 0, py: 2 }}>
           <Storefront color="primary" sx={{ mr: 2 }} />
           <Typography>
-            {point.address}, {point.city}
+            {point?.address}, {point?.city}
           </Typography>
         </ListItem>
 
@@ -103,16 +95,16 @@ const PointInfoDrawer: React.FC<Props> = ({ isOpen, point, toggleDrawer }) => {
 
         <ListItem alignItems="flex-start" sx={{ px: 0, py: 2 }}>
           <PhoneOutlined color="primary" sx={{ mr: 2 }} />
-          <Typography color="textSecondary">{point.contacts}</Typography>
+          <Typography color="textSecondary">{point?.contacts}</Typography>
         </ListItem>
 
         <Divider component="li" />
 
         <ListItem alignItems="center" sx={{ px: 0, py: 2 }}>
           <AccessTime color="primary" sx={{ mr: 2 }} />
-          <Grid container>
+          <Grid container display="flex" flexDirection="column" width="100%">
             {OPENING_DAYS.map((day) => (
-              <>
+              <Box key={day} display="flex" width="100%">
                 <Grid item xs={4}>
                   <Typography color="textSecondary">
                     {t(`days.${day}`)}
@@ -120,17 +112,17 @@ const PointInfoDrawer: React.FC<Props> = ({ isOpen, point, toggleDrawer }) => {
                 </Grid>
                 <Grid item xs={8}>
                   <Typography color="textSecondary">
-                    {formatHours(point[day]) || "-"}
+                    {formatHours(point?.[day]) || "-"}
                   </Typography>
                 </Grid>
-              </>
+              </Box>
             ))}
           </Grid>
         </ListItem>
       </List>
 
       <Stack direction={isMobile ? "column" : "row"} spacing={1}>
-        <ShareButton point={point} fullAddress={fullAddress} />
+        {/* <ShareButton point={point} fullAddress={fullAddress} /> */}
         <Button variant="outlined" fullWidth onClick={handleOpenGoogleMaps}>
           {t("get-directions")}
         </Button>

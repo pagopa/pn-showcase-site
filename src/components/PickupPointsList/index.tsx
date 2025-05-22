@@ -1,25 +1,36 @@
-import { Place } from "@mui/icons-material";
+import { Autorenew, Place } from "@mui/icons-material";
 import { Box, List, ListItem, Paper, Stack, Typography } from "@mui/material";
 import { ButtonNaked } from "@pagopa/mui-italia";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { RaddOperator } from "../../model";
 
 type Props = {
   rows: RaddOperator[];
   handleNavigate: (latitude: number, longitude: number) => void;
+  toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
 
-function PickupPointsList({ rows, handleNavigate }: Readonly<Props>) {
+function PickupPointsList({
+  rows,
+  handleNavigate,
+  toggleDrawer,
+}: Readonly<Props>) {
   const listContainerRef = useRef<HTMLUListElement | null>(null);
 
-  const onShowDetailsClick = (latitude?: number, longitude?: number) => {
+  const onShowDetailsClick = (point: RaddOperator) => {
+    const { latitude, longitude } = point;
     if (!latitude || !longitude) return;
 
     handleNavigate(latitude, longitude);
+    toggleDrawer(true, point);
   };
 
   return (
-    <List ref={listContainerRef} sx={{ boxShadow: 2 }}>
+    <List
+      ref={listContainerRef}
+      sx={{ maxHeight: "800px", overflowY: "auto" }}
+      aria-live="polite"
+    >
       {rows.slice(0, 5).map((row, index: number) => (
         <ListItem
           key={`${row.denomination}-${index}`}
@@ -68,7 +79,7 @@ function PickupPointsList({ rows, handleNavigate }: Readonly<Props>) {
                 width: "fit-content",
                 alignItems: "center",
               }}
-              onClick={() => onShowDetailsClick(row.latitude, row.longitude)}
+              onClick={() => onShowDetailsClick(row)}
             >
               Mostra dettagli
             </ButtonNaked>

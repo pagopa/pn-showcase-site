@@ -3,7 +3,6 @@ import {
   Box,
   List,
   ListItem,
-  ListItemText,
   Paper,
   TextField,
   Typography,
@@ -15,7 +14,7 @@ interface Props {
   label?: string;
   placeholder?: string;
   noResultsText?: string;
-  ariaLabel?: string;
+  renderInput?: (value: string) => React.ReactNode;
 }
 
 const AccessibleAutocomplete = ({
@@ -23,7 +22,7 @@ const AccessibleAutocomplete = ({
   label = "Cerca Indirizzo",
   placeholder = "Cerca un indirizzo",
   noResultsText = "Nessun risultato",
-  ariaLabel = "Cerca un indirizzo",
+  renderInput,
 }: Props) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
@@ -106,13 +105,7 @@ const AccessibleAutocomplete = ({
   }, [activeIndex, isOpen]);
 
   return (
-    <Box
-      position="relative"
-      width="100%"
-      // aria-haspopup="listbox"
-      // aria-owns={listboxId}
-      // aria-controls={listboxId}
-    >
+    <Box position="relative" width="100%">
       <TextField
         fullWidth
         inputRef={inputRef}
@@ -125,15 +118,12 @@ const AccessibleAutocomplete = ({
         placeholder={placeholder}
         variant="outlined"
         autoComplete="off"
-        // aria-autocomplete="list"
-        // aria-controls={listboxId}
-        // aria-activedescendant={
-        //   activeIndex >= 0 ? `option-${activeIndex}` : undefined
-        // }
         inputProps={{
           role: "combobox",
           id: "autocomplete-input",
           "aria-expanded": isOpen ? "true" : "false",
+          "aria-controls": listboxId,
+          "aria-autocomplete": "list",
         }}
         InputProps={{
           startAdornment: <Search />,
@@ -159,7 +149,7 @@ const AccessibleAutocomplete = ({
             id={listboxId}
             ref={listboxRef}
             role="listbox"
-            // aria-labelledby="autocomplete-input"
+            aria-labelledby="autocomplete-input"
           >
             {filteredOptions.length > 0 ? (
               filteredOptions.map((option, index) => (
@@ -180,11 +170,14 @@ const AccessibleAutocomplete = ({
                       backgroundColor: "rgba(0, 0, 0, 0.08)",
                     },
                   }}
-                  // aria-label={option}
-                  // tabIndex={0}
+                  aria-posinset={index + 1}
+                  aria-setsize={filteredOptions.length}
                 >
-                  {/* <ListItemText primary={option} /> */}
-                  {option}
+                  {renderInput ? (
+                    renderInput(option)
+                  ) : (
+                    <Typography variant="body2">{option}</Typography>
+                  )}
                 </ListItem>
               ))
             ) : (
