@@ -1,3 +1,4 @@
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import {
   Box,
   Button,
@@ -12,7 +13,14 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/system";
 import { useRef, useState } from "react";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+
+type Props = {
+  tabs: Array<string>;
+  fullWidth?: boolean;
+  buttonSize?: "small" | "medium" | "large";
+  breakOnMobile?: boolean;
+  onTabChange: (v: number) => void;
+};
 
 const useIsMobile = () => {
   const theme = useTheme();
@@ -21,11 +29,11 @@ const useIsMobile = () => {
 
 const Tabs = ({
   tabs,
+  fullWidth = false,
+  buttonSize = "large",
+  breakOnMobile = true,
   onTabChange,
-}: {
-  tabs: Array<string>;
-  onTabChange: (v: number) => void;
-}) => {
+}: Props) => {
   const isMobile = useIsMobile();
   const [currentTab, setCurrentTab] = useState(0);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -50,9 +58,9 @@ const Tabs = ({
   };
 
   return (
-    <Box sx={{ textAlign: "center" }}>
-      {!isMobile && (
-        <ButtonGroup color="primary">
+    <Box sx={{ textAlign: "center", width: fullWidth ? "100%" : "auto" }}>
+      {(!isMobile || !breakOnMobile) && (
+        <ButtonGroup color="primary" fullWidth={fullWidth}>
           {tabs.map((tab, index) => (
             <Button
               sx={{
@@ -60,7 +68,7 @@ const Tabs = ({
                   currentTab === index ? "rgba(0, 115, 230, 0.08)" : undefined,
               }}
               onClick={() => handleChangeTab(index)}
-              size="large"
+              size={buttonSize}
               value={index}
               key={tab}
             >
@@ -69,7 +77,7 @@ const Tabs = ({
           ))}
         </ButtonGroup>
       )}
-      {isMobile && (
+      {isMobile && breakOnMobile && (
         <>
           <ButtonGroup ref={anchorRef}>
             <Button onClick={handleToggleDropdown}>{tabs[currentTab]}</Button>
