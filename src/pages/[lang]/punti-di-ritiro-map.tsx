@@ -4,11 +4,11 @@ import { Place } from "@mui/icons-material";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
 import { sortPointsByDistance } from "@utils/map";
-import dynamic from "next/dynamic";
 import Script from "next/script";
 import Papa from "papaparse";
 import { useEffect, useRef, useState } from "react";
 import AccessibleAutocomplete from "src/components/Autocomplete";
+import PickupPointsMapLibre from "src/components/PickupPointsMapLibre";
 import { getI18n } from "../../api/i18n";
 import PickupPointsList from "../../components/PickupPointsList";
 import PointInfoDrawer from "../../components/Ritiro/PointInfoDrawer";
@@ -36,13 +36,13 @@ export async function getStaticProps({
 }
 
 const RitiroMappaPage: NextPage = () => {
-  const MapWithNoSSR = dynamic(
-    () => import("../../components/PickupPointsMap"),
-    {
-      ssr: false,
-      loading: () => <p>Loading...</p>,
-    }
-  );
+  // const MapWithNoSSR = dynamic(
+  //   () => import("../../components/PickupPointsMap"),
+  //   {
+  //     ssr: false,
+  //     loading: () => <p>Loading...</p>,
+  //   }
+  // );
 
   const { t } = useTranslation(["common", "pickup"]);
 
@@ -213,7 +213,7 @@ const RitiroMappaPage: NextPage = () => {
 
         <Grid item xs={12} md={8} sx={{ width: "100%" }}>
           <Box sx={{ width: "100%", height: "1000px" }}>
-            <MapWithNoSSR
+            <PickupPointsMapLibre
               mapRef={mapRef}
               points={rowsToSet}
               userLocation={userLocation}

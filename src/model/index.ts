@@ -19,8 +19,8 @@ export interface RaddOperator extends OpeningDays {
   region: string;
   cap: string;
   contacts: string;
-  latitude?: number;
-  longitude?: number;
+  latitude: number;
+  longitude: number;
   distance?: number;
 }
 
