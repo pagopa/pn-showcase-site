@@ -950,6 +950,13 @@
     "@types/mapbox__point-geometry" "*"
     "@types/pbf" "*"
 
+"@types/maplibre-gl@^1.14.0":
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/@types/maplibre-gl/-/maplibre-gl-1.14.0.tgz#244f1763f0a1e29e7124e5b7c665793e8256920e"
+  integrity sha512-I6ibscT7UdL1oOqqCz9s1gjcolLaUPkHIIfMLusczTvlsMhjORyS6sE1g4V/NESAOL5KhNQX3/31LJH+OCGjkg==
+  dependencies:
+    maplibre-gl "*"
+
 "@types/node@*":
   version "22.5.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-22.5.4.tgz#83f7d1f65bc2ed223bdbf57c7884f1d5a4fa84e8"
@@ -3662,7 +3669,7 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-maplibre-gl@^5.5.0:
+maplibre-gl@*, maplibre-gl@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/maplibre-gl/-/maplibre-gl-5.5.0.tgz#0a295a634e745a5c31848ac7198893da417d09ae"
   integrity sha512-p8AOPuzzqn1ZA9gcXxKw0IED715we/2Owa/YUr6PANmgMvNMe/JG+V/C1hRra43Wm62Biz+Aa8AgbOLJimA8tA==
