@@ -1,5 +1,4 @@
-// Clusters.tsx
-import React from "react";
+import React, { useEffect } from "react";
 import { Layer, Source, useMap } from "react-map-gl/maplibre";
 import { RaddOperator } from "src/model";
 import {
@@ -13,8 +12,8 @@ interface RegionClusterProps {
 }
 
 const Clusters: React.FC<RegionClusterProps> = ({ points }) => {
-  const map = useMap();
-  const zoom = map.current?.getZoom() || 10;
+  const { current: map } = useMap();
+  const zoom = map?.getZoom() || 10;
 
   const geojsonData: GeoJSON.GeoJSON = {
     type: "FeatureCollection",
@@ -38,6 +37,18 @@ const Clusters: React.FC<RegionClusterProps> = ({ points }) => {
     if (zoom < 10) return 30;
     return 50;
   };
+
+  useEffect(() => {
+    if (!map) return;
+
+    const loadMarkers = async () => {
+      const response = await map.loadImage("/static/images/base-marker.png");
+
+      map.addImage("base-marker", response.data);
+    };
+
+    loadMarkers();
+  }, [map]);
 
   return (
     <Source

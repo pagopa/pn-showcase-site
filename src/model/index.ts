@@ -30,10 +30,11 @@ export interface Point {
   città: string;
   via: string;
   provincia: string;
+  regione: string;
   cap: string;
   telefono: string;
-  latitudine?: string;
-  longitudine?: string;
+  latitudine: string;
+  longitudine: string;
   lunedi: string;
   martedi: string;
   mercoledi: string;

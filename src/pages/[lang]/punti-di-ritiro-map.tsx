@@ -1,9 +1,8 @@
-import type { GetStaticPaths, NextPage } from "next";
-
 import { Place } from "@mui/icons-material";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
 import { sortPointsByDistance } from "@utils/map";
+import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 import Papa from "papaparse";
 import { useEffect, useRef, useState } from "react";
@@ -14,7 +13,6 @@ import PickupPointsList from "../../components/PickupPointsList";
 import PointInfoDrawer from "../../components/Ritiro/PointInfoDrawer";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
-import { provinceToRegione } from "../../utils/mapperRegioni";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -36,14 +34,6 @@ export async function getStaticProps({
 }
 
 const RitiroMappaPage: NextPage = () => {
-  // const MapWithNoSSR = dynamic(
-  //   () => import("../../components/PickupPointsMap"),
-  //   {
-  //     ssr: false,
-  //     loading: () => <p>Loading...</p>,
-  //   }
-  // );
-
   const { t } = useTranslation(["common", "pickup"]);
 
   const [points, setPoints] = useState<Point[]>([]);
@@ -117,7 +107,7 @@ const RitiroMappaPage: NextPage = () => {
       city: e.città,
       address: e.via,
       province: e.provincia,
-      region: provinceToRegione[e.provincia] ?? "",
+      region: e.regione,
       cap: e.cap,
       contacts: e.telefono,
       latitude: Number(e.latitudine),
@@ -157,16 +147,6 @@ const RitiroMappaPage: NextPage = () => {
 
       <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>
         <Grid item xs={12} md={4}>
-          <Typography
-            fontWeight={700}
-            fontSize="14px"
-            color="textSecondary"
-            mb={3}
-            sx={{ textTransform: "uppercase" }}
-          >
-            {t("search.eyelet", { ns: "pickup" })}
-          </Typography>
-
           <Typography variant="h4">
             {t("search.title", { ns: "pickup" })}
           </Typography>
