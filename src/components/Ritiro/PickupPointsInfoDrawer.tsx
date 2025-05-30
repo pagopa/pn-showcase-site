@@ -52,9 +52,26 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
     window.open(url, "_blank");
   };
 
+  const hasAlmostOneOpeningDay = OPENING_DAYS.some(
+    (day) => point && point[day]
+  );
+
   const handleCopyInformations = () => {
-    const pointInformation = `${point?.denomination} - ${fullAddress}`;
-    navigator.clipboard.writeText(pointInformation);
+    const parts = [point?.denomination, `${point?.address}, ${point?.city}`];
+
+    if (hasAlmostOneOpeningDay) {
+      parts.push("Orari di apertura:");
+      parts.push(
+        OPENING_DAYS.map(
+          (day) => `${t(`days.${day}`)}: ${formatHours(point?.[day]) || "-"}`
+        ).join("\n")
+      );
+    }
+
+    parts.push(`Per prenotare chiama il ${point?.contacts}`);
+
+    const formattedText = parts.filter(Boolean).join("\n");
+    navigator.clipboard.writeText(formattedText);
   };
 
   const formatHours = (openingHours?: string) => {
@@ -121,25 +138,27 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
           </Stack>
         </Stack>
 
-        <Stack spacing={1}>
-          <Typography variant="body2" fontWeight={600} color="textSecondary">
-            {t("opening-hours")}
-          </Typography>
-          <Grid container>
-            {OPENING_DAYS.map((day) => (
-              <>
-                <Grid item xs={4}>
-                  <Typography variant="body2">{t(`days.${day}`)}</Typography>
-                </Grid>
-                <Grid item xs={8}>
-                  <Typography variant="body2">
-                    {formatHours(point[day]) || "-"}
-                  </Typography>
-                </Grid>
-              </>
-            ))}
-          </Grid>
-        </Stack>
+        {hasAlmostOneOpeningDay && (
+          <Stack spacing={1}>
+            <Typography variant="body2" fontWeight={600} color="textSecondary">
+              {t("opening-hours")}
+            </Typography>
+            <Grid container>
+              {OPENING_DAYS.map((day) => (
+                <>
+                  <Grid item xs={4}>
+                    <Typography variant="body2">{t(`days.${day}`)}</Typography>
+                  </Grid>
+                  <Grid item xs={8}>
+                    <Typography variant="body2">
+                      {formatHours(point[day]) || "-"}
+                    </Typography>
+                  </Grid>
+                </>
+              ))}
+            </Grid>
+          </Stack>
+        )}
 
         <Stack spacing={1}>
           <Typography variant="body2" fontWeight={600} color="textSecondary">

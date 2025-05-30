@@ -1,6 +1,7 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import * as React from "react";
 
+import { useEffect } from "react";
 import {
   GeolocateControl,
   Map,
@@ -66,12 +67,24 @@ const PickupPointsMapLibre: React.FC<Props> = ({
     map.getCanvas().style.cursor = "";
   };
 
+  useEffect(() => {
+    if (userLocation) {
+      const map = mapRef?.current;
+      if (map && map.flyTo) {
+        map.flyTo({
+          center: [userLocation.longitude, userLocation.latitude],
+          zoom: 12,
+        });
+      }
+    }
+  }, [userLocation, mapRef]);
+
   return (
     <Map
       ref={mapRef}
       initialViewState={{
-        longitude: userLocation ? userLocation.longitude : 12.482802,
-        latitude: userLocation ? userLocation.latitude : 41.895679,
+        longitude: userLocation?.longitude || 12.482802,
+        latitude: userLocation?.latitude || 41.895679,
         zoom: userLocation ? 12 : 10,
       }}
       minZoom={5.5}

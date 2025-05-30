@@ -6,6 +6,7 @@ import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 import Papa from "papaparse";
 import { useEffect, useRef, useState } from "react";
+import { MapRef } from "react-map-gl/maplibre";
 import AccessibleAutocomplete from "src/components/Autocomplete";
 import PickupPointsMapLibre from "src/components/PickupPointsMapLibre";
 import { getI18n } from "../../api/i18n";
@@ -48,13 +49,16 @@ const RitiroMappaPage: NextPage = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
 
-  const mapRef = useRef<any>(null);
+  const mapRef = useRef<MapRef | null>(null);
 
   let hasData = false;
 
   const handleNavigate = (latitude: number, longitude: number) => {
     if (mapRef.current && mapRef.current.flyTo) {
-      mapRef.current.flyTo([latitude, longitude], 18);
+      mapRef.current.flyTo({
+        center: [longitude, latitude],
+        zoom: 15,
+      });
     }
   };
 
