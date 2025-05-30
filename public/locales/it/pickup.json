@@ -23,6 +23,10 @@
   },
   "loading-aria-label": "Caricamento dei Punti di ritiro in corso",
   "view_details": "Vedi dettagli",
+  "book-alert-title": "Prenota il tuo appuntamento al CAF",
+  "book-alert-description": "Evita le attese, prenota e ricevi assistenza senza fare la fila.",
+  "address": "Indirizzo",
+  "opening-hours": "Orari di apertura",
   "days": {
     "monday": "Lunedì",
     "tuesday": "Martedì",
@@ -32,6 +36,7 @@
     "saturday": "Sabato",
     "sunday": "Domenica"
   },
+  "phone-number": "Numero di telefono",
   "get-directions": "Ottieni indicazioni",
-  "share": "Condividi"
+  "copy-informations": "Copia informazioni"
 }

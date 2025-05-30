@@ -21,10 +21,9 @@ import { useEffect, useState } from "react";
 import { getI18n } from "../../api/i18n";
 import OperatorsList from "../../components/Ritiro/OperatorsList";
 import OperatorsTable from "../../components/Ritiro/OperatorsTable";
-import PointInfoDrawer from "../../components/Ritiro/PointInfoDrawer";
+import PickupPointsInfoDrawer from "../../components/Ritiro/PickupPointsInfoDrawer";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
-import { provinceToRegione } from "@utils/mapperRegioni";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -307,7 +306,7 @@ const RitiroPage: NextPage = () => {
         >
           {getContent()}
         </Stack>
-        <PointInfoDrawer
+        <PickupPointsInfoDrawer
           isOpen={isDrawerOpen}
           toggleDrawer={toggleDrawer}
           point={selectedPoint}

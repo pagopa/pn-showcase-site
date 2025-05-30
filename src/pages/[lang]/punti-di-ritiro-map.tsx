@@ -10,7 +10,7 @@ import AccessibleAutocomplete from "src/components/Autocomplete";
 import PickupPointsMapLibre from "src/components/PickupPointsMapLibre";
 import { getI18n } from "../../api/i18n";
 import PickupPointsList from "../../components/PickupPointsList";
-import PointInfoDrawer from "../../components/Ritiro/PointInfoDrawer";
+import PickupPointsInfoDrawer from "../../components/Ritiro/PickupPointsInfoDrawer";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
 
@@ -201,7 +201,7 @@ const RitiroMappaPage: NextPage = () => {
             />
           </Box>
         </Grid>
-        <PointInfoDrawer
+        <PickupPointsInfoDrawer
           isOpen={isDrawerOpen}
           toggleDrawer={toggleDrawer}
           point={selectedPoint}

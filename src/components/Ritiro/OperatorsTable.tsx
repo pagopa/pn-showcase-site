@@ -54,9 +54,8 @@ function OperatorsTable({ rows, toggleDrawer }: Readonly<Props>) {
     getComparator(order, orderBy)
   );
 
-  const keys = ["type", "denomination", "city", "address", "contacts", ""];
+  const keys = ["denomination", "city", "address", "contacts", ""];
   const columnNames: { [key: string]: string } = {
-    type: "Tipologia",
     denomination: "Denominazione",
     city: "Città",
     address: "Indirizzo",
@@ -127,9 +126,6 @@ function OperatorsTable({ rows, toggleDrawer }: Readonly<Props>) {
                     "&:last-child td, &:last-child th": { border: 0 },
                   }}
                 >
-                  <TableCell component="th" scope="row">
-                    <Chip color="info" label={row.type} />
-                  </TableCell>
                   <TableCell component="th" scope="row">
                     {row.denomination}
                   </TableCell>
