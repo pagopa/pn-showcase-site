@@ -1,14 +1,12 @@
 import { RaddOperator } from "src/model";
 
 export function sortPointsByDistance(
-  rows: RaddOperator[] | null,
+  rows: RaddOperator[],
   userCoordinates: {
     latitude: number;
     longitude: number;
   }
 ) {
-  if (!rows) return;
-
   return rows
     .map((row) => {
       if (!row.latitude || !row.longitude) return undefined;

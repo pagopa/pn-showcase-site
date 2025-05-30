@@ -130,7 +130,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
   let rowsToSet: RaddOperator[] | null = initialRaddOperators;
 
   if (userLocation?.latitude && userLocation?.longitude) {
-    rowsToSet = sortPointsByDistance(rowsToSet, userLocation) ?? [];
+    rowsToSet = sortPointsByDistance(rowsToSet, userLocation);
   }
 
   return (

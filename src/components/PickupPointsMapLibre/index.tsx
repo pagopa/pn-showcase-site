@@ -82,7 +82,7 @@ const PickupPointsMapLibre: React.FC<Props> = ({
       onMouseLeave={handleMouseLeave}
       mapStyle={`https://maps.geo.eu-central-1.amazonaws.com/v2/styles/Standard/descriptor?key=${API_KEY}`}
     >
-      <UserPositionControl userLocation={userLocation} />
+      <UserPositionControl userLocation={userLocation} points={points} />
       <NavigationControl showCompass={false} />
       <GeolocateControl />
 
