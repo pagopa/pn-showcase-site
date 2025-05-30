@@ -2,7 +2,6 @@
   "title": "SEND - Servizio Notifiche Digitali | SEND-Abholstellen",
   "description": "Such die nächstgelegene SEND-Abholstelle, um eine Kopie der zugestellten Dokumente abzuholen oder zu erfahren, ob es eine Empfangsbestätigung für dich gibt",
   "search": {
-    "eyelet": "Kopie der zugestellten Unterlagen erhalten",
     "title": "Finde eine SEND-Abholstelle",
     "description_1": "Wenn Sie eine SEND-Zustellung erhalten, können Sie bei teilnehmenden Geschäften eine gedruckte Kopie ",
     "description_2": "der zugestellten Dokumente abholen",

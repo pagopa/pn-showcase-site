@@ -1,5 +1,5 @@
-import "leaflet/dist/leaflet.css";
-import { MapContainer, TileLayer } from "react-leaflet";
+import "maplibre-gl/dist/maplibre-gl.css";
+import { Map } from "react-map-gl/maplibre";
 import { RaddOperator } from "src/model";
 
 type Props = {
@@ -7,17 +7,18 @@ type Props = {
 };
 
 const PickupPointsMap: React.FC<Props> = ({ points }) => {
+  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+
   return (
-    <MapContainer
-      center={[41.895679, 12.482802]}
-      zoom={10}
+    <Map
+      mapStyle={`https://maps.geo.eu-central-1.amazonaws.com/v2/styles/Standard/descriptor?key=${API_KEY}`}
+      initialViewState={{
+        longitude: 12.482802,
+        latitude: 41.895679,
+        zoom: 10,
+      }}
       style={{ height: "100%", width: "100%" }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-    </MapContainer>
+    />
   );
 };
 

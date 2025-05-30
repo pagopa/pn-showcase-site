@@ -1,16 +1,15 @@
-import type { GetStaticPaths, NextPage } from "next";
-
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
-import dynamic from "next/dynamic";
+import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 import Papa from "papaparse";
 import { useEffect, useState } from "react";
 import PickupPointsList from "src/components/PickupPointsList";
+import PickupPointsMap from "src/components/PickupPointsMap";
+import Tabs from "src/components/Tabs";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
-import Tabs from "src/components/Tabs";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -34,11 +33,6 @@ export async function getStaticProps({
 type MOBILE_TABS = "list" | "map";
 
 const MappaPuntiDiRitiroPage: NextPage = () => {
-  const Map = dynamic(() => import("../../components/PickupPointsMap"), {
-    ssr: false,
-    loading: () => <p>Loading...</p>,
-  });
-
   const { t } = useTranslation(["pickup", "common"]);
 
   const [selectedTab, setSelectedTab] = useState<MOBILE_TABS>("list");
@@ -103,16 +97,6 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
 
       <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>
         <Grid item xs={12} md={4}>
-          <Typography
-            fontWeight={700}
-            fontSize="14px"
-            color="textSecondary"
-            mb={3}
-            sx={{ textTransform: "uppercase" }}
-          >
-            {t("search.eyelet")}
-          </Typography>
-
           <Typography variant="h4">{t("search.title")}</Typography>
 
           <Typography mt={2} mb={1} color="textPrimary" variant="body2">
@@ -155,7 +139,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
           }}
         >
           <Box sx={{ width: "100%", height: "1000px" }}>
-            <Map points={rowsToSet} />
+            <PickupPointsMap points={rowsToSet} />
           </Box>
         </Grid>
       </Grid>
