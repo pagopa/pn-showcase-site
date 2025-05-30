@@ -1,7 +1,5 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import * as React from "react";
-
-import { useEffect } from "react";
 import {
   GeolocateControl,
   Map,
@@ -9,6 +7,7 @@ import {
 } from "react-map-gl/maplibre";
 import { RaddOperator } from "src/model";
 import Clusters from "./Clusters";
+import UserPositionControl from "./UserPositionControl";
 
 type Props = {
   points: Array<RaddOperator>;
@@ -67,25 +66,13 @@ const PickupPointsMapLibre: React.FC<Props> = ({
     map.getCanvas().style.cursor = "";
   };
 
-  useEffect(() => {
-    if (userLocation) {
-      const map = mapRef?.current;
-      if (map && map.flyTo) {
-        map.flyTo({
-          center: [userLocation.longitude, userLocation.latitude],
-          zoom: 12,
-        });
-      }
-    }
-  }, [userLocation, mapRef]);
-
   return (
     <Map
       ref={mapRef}
       initialViewState={{
-        longitude: userLocation?.longitude || 12.482802,
-        latitude: userLocation?.latitude || 41.895679,
-        zoom: userLocation ? 12 : 10,
+        longitude: 12.482802,
+        latitude: 41.895679,
+        zoom: 10,
       }}
       minZoom={5.5}
       style={{ height: "100%", width: "100%" }}
@@ -95,6 +82,7 @@ const PickupPointsMapLibre: React.FC<Props> = ({
       onMouseLeave={handleMouseLeave}
       mapStyle={`https://maps.geo.eu-central-1.amazonaws.com/v2/styles/Standard/descriptor?key=${API_KEY}`}
     >
+      <UserPositionControl userLocation={userLocation} />
       <NavigationControl showCompass={false} />
       <GeolocateControl />
 
