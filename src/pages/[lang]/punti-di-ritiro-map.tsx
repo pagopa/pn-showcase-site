@@ -197,6 +197,7 @@ const RitiroMappaPage: NextPage = () => {
               mapRef={mapRef}
               points={rowsToSet}
               userLocation={userLocation}
+              toggleDrawer={toggleDrawer}
             />
           </Box>
         </Grid>
