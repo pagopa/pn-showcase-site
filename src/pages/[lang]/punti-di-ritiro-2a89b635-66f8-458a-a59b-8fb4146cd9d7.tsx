@@ -93,14 +93,14 @@ const RitiroPage: NextPage = () => {
   }, []);
 
   const initialRaddOperators: RaddOperator[] = points.map((e) => ({
-    type: e.tipologia,
     denomination: e.descrizione,
     city: e.città,
     address: e.via,
+    normalizedAddress: e["indirizzo AWS"],
     province: e.provincia,
     cap: e.cap,
     contacts: e.telefono,
-    region: provinceToRegione[e.provincia] ?? "",
+    region: e.regione,
     monday: e.lunedi,
     tuesday: e.martedi,
     wednesday: e.mercoledi,
@@ -108,6 +108,8 @@ const RitiroPage: NextPage = () => {
     friday: e.venerdi,
     saturday: e.sabato,
     sunday: e.domenica,
+    latitude: Number(e.latitudine),
+    longitude: Number(e.longitudine),
   }));
 
   const handleInputChange = (event: any) => {

@@ -1,5 +1,4 @@
-import { Place } from "@mui/icons-material";
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import { Box, Grid, Link, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
 import { sortPointsByDistance } from "@utils/map";
 import type { GetStaticPaths, NextPage } from "next";
@@ -7,11 +6,11 @@ import Script from "next/script";
 import Papa from "papaparse";
 import { useEffect, useRef, useState } from "react";
 import { MapRef } from "react-map-gl/maplibre";
-import AccessibleAutocomplete from "src/components/Autocomplete";
+import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMapLibre from "src/components/PickupPointsMapLibre";
+import PickupPointsInfoDrawer from "src/components/Ritiro/PickupPointsInfoDrawer";
+import Tabs from "src/components/Tabs";
 import { getI18n } from "../../api/i18n";
-import PickupPointsList from "../../components/PickupPointsList";
-import PickupPointsInfoDrawer from "../../components/Ritiro/PickupPointsInfoDrawer";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
 
@@ -29,19 +28,19 @@ export async function getStaticProps({
 }: {
   params: { lang: LangCode };
 }) {
-  const translations = getI18n(params.lang, ["common", "pickup"]);
+  const translations = getI18n(params.lang, ["pickup", "common"]);
 
   return { props: { translations, lang: params.lang, noLayout: true } };
 }
 
-const RitiroMappaPage: NextPage = () => {
-  const { t } = useTranslation(["common", "pickup"]);
+type MOBILE_TABS = "list" | "map";
 
+const MappaPuntiDiRitiroPage: NextPage = () => {
+  const { t } = useTranslation(["pickup", "common"]);
+  const mapRef = useRef<MapRef | null>(null);
+
+  const [selectedTab, setSelectedTab] = useState<MOBILE_TABS>("list");
   const [points, setPoints] = useState<Point[]>([]);
-  const [filteredOperators, setFilteredOperators] = useState<RaddOperator[]>(
-    []
-  );
-  const [isSearchFailed, setIsSearchFailed] = useState<boolean>(false);
   const [userLocation, setUserLocation] = useState<{
     latitude: number;
     longitude: number;
@@ -49,9 +48,16 @@ const RitiroMappaPage: NextPage = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
 
-  const mapRef = useRef<MapRef | null>(null);
-
   let hasData = false;
+
+  const handleChangeTab = (tabIndex: number) => {
+    setSelectedTab(tabIndex === 1 ? "map" : "list");
+  };
+
+  const toggleDrawer = (open: boolean, pickupPoint: RaddOperator | null) => {
+    setIsDrawerOpen(open);
+    setSelectedPoint(pickupPoint);
+  };
 
   const handleNavigate = (latitude: number, longitude: number) => {
     if (mapRef.current && mapRef.current.flyTo) {
@@ -76,11 +82,6 @@ const RitiroMappaPage: NextPage = () => {
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
-  };
-
-  const toggleDrawer = (open: boolean, pickupPoint: RaddOperator | null) => {
-    setIsDrawerOpen(open);
-    setSelectedPoint(pickupPoint);
   };
 
   useEffect(() => {
@@ -110,6 +111,7 @@ const RitiroMappaPage: NextPage = () => {
       denomination: e.descrizione,
       city: e.città,
       address: e.via,
+      normalizedAddress: e["indirizzo AWS"].replace(", Italia", ""),
       province: e.provincia,
       region: e.regione,
       cap: e.cap,
@@ -123,18 +125,9 @@ const RitiroMappaPage: NextPage = () => {
       friday: e.venerdi,
       saturday: e.sabato,
       sunday: e.domenica,
-      type: e.tipologia,
     }));
 
-  let rowsToSet: RaddOperator[] | null = null;
-
-  if (filteredOperators.length > 0) {
-    rowsToSet = filteredOperators;
-  } else if (filteredOperators.length === 0 && isSearchFailed) {
-    rowsToSet = [];
-  } else {
-    rowsToSet = initialRaddOperators;
-  }
+  let rowsToSet: RaddOperator[] | null = initialRaddOperators;
 
   if (userLocation?.latitude && userLocation?.longitude) {
     rowsToSet = sortPointsByDistance(rowsToSet, userLocation) ?? [];
@@ -151,51 +144,70 @@ const RitiroMappaPage: NextPage = () => {
 
       <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>
         <Grid item xs={12} md={4}>
-          <Typography variant="h4">
-            {t("search.title", { ns: "pickup" })}
-          </Typography>
-
           <Typography
-            my={3}
-            color="textPrimary"
-            variant="body2"
-            sx={{ maxWidth: 554 }}
+            fontWeight={700}
+            fontSize="14px"
+            color="textSecondary"
+            mb={3}
+            sx={{ textTransform: "uppercase" }}
           >
-            {t("search.description_1", { ns: "pickup" })}
-            <strong>{t("search.description_2", { ns: "pickup" })}</strong>.{" "}
+            {t("search.eyelet")}
           </Typography>
-          {/* 
-          <Alert severity="info" variant="standard">
-            {t("search.disclaimer", { ns: "pickup" })}
-          </Alert> */}
 
-          <Box sx={{ mt: 2 }}>
-            <AccessibleAutocomplete
-              options={[
-                "Milano",
-                "Milazzo",
-                "Roma",
-                "Romagna",
-                "Via Roma",
-                "Via Milano",
-              ]}
-              renderInput={(value) => (
-                <Stack spacing={2} direction="row" alignItems="flex-start">
-                  <Place fontSize="small" sx={{ color: "text.secondary" }} />
-                  <Typography variant="body2">{value}</Typography>
-                </Stack>
-              )}
+          <Typography variant="h4">{t("search.title")}</Typography>
+
+          <Typography mt={2} mb={1} color="textPrimary" variant="body2">
+            {t("search.description_1")}
+            <strong>{t("search.description_2")}</strong>.{" "}
+          </Typography>
+
+          <Link
+            href="#come-funzionano-punti-di-ritiro"
+            color="primary"
+            fontWeight={700}
+            sx={{ textDecoration: "none" }}
+          >
+            {t("how-it-works")}
+          </Link>
+
+          <Box sx={{ display: { xs: "flex", md: "none" }, my: 3 }}>
+            <Tabs
+              tabs={[t("tabs.list"), t("tabs.map")]}
+              onTabChange={handleChangeTab}
+              breakOnMobile={false}
+              buttonSize="small"
+              fullWidth
             />
           </Box>
 
-          <PickupPointsList
-            rows={rowsToSet}
-            handleNavigate={handleNavigate}
-            toggleDrawer={toggleDrawer}
-          />
+          <Box
+            sx={{
+              display: {
+                xs: selectedTab === "list" ? "block" : "none",
+                md: "block",
+              },
+            }}
+          >
+            <PickupPointsList
+              rows={rowsToSet}
+              handleNavigate={handleNavigate}
+              toggleDrawer={toggleDrawer}
+            />
+          </Box>
         </Grid>
 
-        <Grid item xs={12} md={8} sx={{ width: "100%" }}>
+        <Grid
+          item
+          xs={12}
+          md={8}
+          sx={{
+            width: "100%",
+            display: {
+              xs: selectedTab === "map" ? "block" : "none",
+              md: "block",
+            },
+          }}
+        >
           <Box sx={{ width: "100%", height: "1000px" }}>
             <PickupPointsMapLibre
               mapRef={mapRef}
@@ -215,4 +227,4 @@ const RitiroMappaPage: NextPage = () => {
   );
 };
 
-export default RitiroMappaPage;
+export default MappaPuntiDiRitiroPage;

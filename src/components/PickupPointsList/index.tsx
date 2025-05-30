@@ -3,6 +3,7 @@ import { Box, List, ListItem, Paper, Stack, Typography } from "@mui/material";
 import { ButtonNaked } from "@pagopa/mui-italia";
 import { useRef } from "react";
 import { RaddOperator } from "../../model";
+import { useTranslation } from "src/hook/useTranslation";
 
 type Props = {
   rows: RaddOperator[];
@@ -15,6 +16,7 @@ function PickupPointsList({
   handleNavigate,
   toggleDrawer,
 }: Readonly<Props>) {
+  const { t } = useTranslation(["pickup", "common"]);
   const listContainerRef = useRef<HTMLUListElement | null>(null);
 
   const onShowDetailsClick = (point: RaddOperator) => {
@@ -65,7 +67,7 @@ function PickupPointsList({
                   {row.denomination}
                 </Typography>
                 <Typography variant="body2" fontSize="14px">
-                  {row.address}, {row.city} ({row.province})
+                  {row.normalizedAddress}
                 </Typography>
               </Box>
 
@@ -93,7 +95,7 @@ function PickupPointsList({
               }}
               onClick={() => onShowDetailsClick(row)}
             >
-              Mostra dettagli
+              {t("show-details")}
             </ButtonNaked>
           </Stack>
         </ListItem>

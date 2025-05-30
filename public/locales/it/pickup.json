@@ -38,5 +38,11 @@
   },
   "phone-number": "Numero di telefono",
   "get-directions": "Ottieni indicazioni",
-  "copy-informations": "Copia informazioni"
+  "copy-informations": "Copia informazioni",
+  "how-it-works": "Scopri come funziona",
+  "tabs": {
+    "list": "Elenco",
+    "map": "Mappa"
+  },
+  "show-details": "Mostra dettagli"
 }

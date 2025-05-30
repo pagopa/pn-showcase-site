@@ -1,4 +1,4 @@
-import { Close, ContentCopy, OpenInNew, Phone } from "@mui/icons-material";
+import { Close, OpenInNew, Phone } from "@mui/icons-material";
 import {
   Alert,
   Box,
@@ -12,10 +12,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { CopyToClipboardButton, theme } from "@pagopa/mui-italia";
+import Link from "next/link";
 import React from "react";
 import { OpeningDays, RaddOperator } from "src/model";
 import { useTranslation } from "../../hook/useTranslation";
-import Link from "next/link";
 
 type Props = {
   isOpen: boolean;
@@ -41,13 +41,13 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
   const { t } = useTranslation(["pickup", "common"]);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const drawerWidth = isMobile ? "auto" : "400px";
-  const fullAddress = `${point?.address}, ${point?.cap} ${point?.city} ${point?.province}`;
 
   const handleCloseDrawer = () => toggleDrawer(false, null);
 
   const handleOpenGoogleMaps = () => {
+    if (!point?.normalizedAddress) return;
     const url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-      fullAddress
+      point?.normalizedAddress
     )}`;
     window.open(url, "_blank");
   };
@@ -131,10 +131,9 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
               color="primary"
               textOverflow="ellipsis"
             >
-              {point.address}, {point.city}, {point.cap} - {point.city} (
-              {point.province})
+              {point.normalizedAddress}
             </Typography>
-            <CopyToClipboardButton value={fullAddress} />
+            <CopyToClipboardButton value={point.normalizedAddress} />
           </Stack>
         </Stack>
 

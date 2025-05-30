@@ -12,9 +12,9 @@ export interface OpeningDays {
 
 export interface RaddOperator extends OpeningDays {
   denomination: string;
-  type: string;
   city: string;
   address: string;
+  normalizedAddress: string;
   province: string;
   region: string;
   cap: string;
@@ -26,9 +26,9 @@ export interface RaddOperator extends OpeningDays {
 
 export interface Point {
   descrizione: string;
-  tipologia: string;
   città: string;
   via: string;
+  "indirizzo AWS": string;
   provincia: string;
   regione: string;
   cap: string;
