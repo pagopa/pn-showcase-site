@@ -1,12 +1,14 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Map } from "react-map-gl/maplibre";
-import { RaddOperator } from "src/model";
+import { Coordinates, RaddOperator } from "src/model";
+import UserPositionController from "./UserPositionController";
 
 type Props = {
   points: Array<RaddOperator>;
+  userPosition: Coordinates | null;
 };
 
-const PickupPointsMap: React.FC<Props> = ({ points }) => {
+const PickupPointsMap: React.FC<Props> = ({ points, userPosition }) => {
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
   return (
@@ -18,7 +20,9 @@ const PickupPointsMap: React.FC<Props> = ({ points }) => {
         zoom: 10,
       }}
       style={{ height: "100%", width: "100%" }}
-    />
+    >
+      <UserPositionController points={points} userPosition={userPosition} />
+    </Map>
   );
 };
 

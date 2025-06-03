@@ -1,12 +1,15 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
+import { sortPointsByDistance } from "@utils/map";
 import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 import Papa from "papaparse";
 import { useEffect, useState } from "react";
 import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMap from "src/components/PickupPointsMap";
+import SnackBar from "src/components/SnackBar/SnackBar";
 import Tabs from "src/components/Tabs";
+import useCurrentPosition from "src/hook/useCurrentPosition";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
@@ -37,6 +40,8 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
 
   const [selectedTab, setSelectedTab] = useState<MOBILE_TABS>("list");
   const [points, setPoints] = useState<Point[]>([]);
+
+  const { userPosition, geocodingError, clearError } = useCurrentPosition();
 
   let hasData = false;
 
@@ -84,7 +89,9 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
       type: e.tipologia,
     }));
 
-  let rowsToSet: RaddOperator[] | null = initialRaddOperators;
+  let rowsToSet: RaddOperator[] | null = userPosition
+    ? sortPointsByDistance(initialRaddOperators, userPosition)
+    : initialRaddOperators;
 
   return (
     <>
@@ -93,6 +100,13 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
         type="text/javascript"
         id="iframe-resizer-child"
         strategy="beforeInteractive"
+      />
+
+      <SnackBar
+        open={!!geocodingError}
+        message={t(`${geocodingError}`)}
+        alertSeverity="error"
+        onClose={clearError}
       />
 
       <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>
@@ -139,7 +153,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
           }}
         >
           <Box sx={{ width: "100%", height: "1000px" }}>
-            <PickupPointsMap points={rowsToSet} />
+            <PickupPointsMap points={rowsToSet} userPosition={userPosition} />
           </Box>
         </Grid>
       </Grid>
