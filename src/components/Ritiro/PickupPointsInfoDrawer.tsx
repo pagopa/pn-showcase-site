@@ -1,4 +1,4 @@
-import { Close, ContentCopy, OpenInNew, Phone } from "@mui/icons-material";
+import { Close, OpenInNew, Phone } from "@mui/icons-material";
 import {
   Alert,
   Box,
@@ -12,10 +12,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { CopyToClipboardButton, theme } from "@pagopa/mui-italia";
+import Link from "next/link";
 import React from "react";
 import { OpeningDays, RaddOperator } from "src/model";
 import { useTranslation } from "../../hook/useTranslation";
-import Link from "next/link";
 
 type Props = {
   isOpen: boolean;
@@ -41,20 +41,39 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
   const { t } = useTranslation(["pickup", "common"]);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const drawerWidth = isMobile ? "auto" : "400px";
-  const fullAddress = `${point?.address}, ${point?.cap} ${point?.city} ${point?.province}`;
+  const address = point?.normalizedAddress.replace(", Italia", "");
+
+  const hasAlmostOneOpeningDay = OPENING_DAYS.some(
+    (day) => point && point[day]
+  );
 
   const handleCloseDrawer = () => toggleDrawer(false, null);
 
   const handleOpenGoogleMaps = () => {
+    if (!point) return;
+
     const url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-      fullAddress
+      point?.normalizedAddress
     )}`;
     window.open(url, "_blank");
   };
 
   const handleCopyInformations = () => {
-    const pointInformation = `${point?.denomination} - ${fullAddress}`;
-    navigator.clipboard.writeText(pointInformation);
+    const parts = [point?.denomination, address];
+
+    if (hasAlmostOneOpeningDay) {
+      parts.push(`${t("opening-hours")} :`);
+      parts.push(
+        OPENING_DAYS.map(
+          (day) => `${t(`days.${day}`)}: ${formatHours(point?.[day]) || "-"}`
+        ).join("\n")
+      );
+    }
+
+    parts.push(`${t("reservation-call")} ${point?.contacts}`);
+
+    const formattedText = parts.filter(Boolean).join("\n");
+    navigator.clipboard.writeText(formattedText);
   };
 
   const formatHours = (openingHours?: string) => {
@@ -64,7 +83,6 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
   };
 
   if (!point) return <></>;
-
   return (
     <Drawer
       anchor={isMobile ? "bottom" : "left"}
@@ -114,32 +132,33 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
               color="primary"
               textOverflow="ellipsis"
             >
-              {point.address}, {point.city}, {point.cap} - {point.city} (
-              {point.province})
+              {address}
             </Typography>
-            <CopyToClipboardButton value={fullAddress} />
+            <CopyToClipboardButton value={address || ""} />
           </Stack>
         </Stack>
 
-        <Stack spacing={1}>
-          <Typography variant="body2" fontWeight={600} color="textSecondary">
-            {t("opening-hours")}
-          </Typography>
-          <Grid container>
-            {OPENING_DAYS.map((day) => (
-              <>
-                <Grid item xs={4}>
-                  <Typography variant="body2">{t(`days.${day}`)}</Typography>
-                </Grid>
-                <Grid item xs={8}>
-                  <Typography variant="body2">
-                    {formatHours(point[day]) || "-"}
-                  </Typography>
-                </Grid>
-              </>
-            ))}
-          </Grid>
-        </Stack>
+        {hasAlmostOneOpeningDay && (
+          <Stack spacing={1}>
+            <Typography variant="body2" fontWeight={600} color="textSecondary">
+              {t("opening-hours")}
+            </Typography>
+            <Grid container>
+              {OPENING_DAYS.map((day) => (
+                <>
+                  <Grid item xs={4}>
+                    <Typography variant="body2">{t(`days.${day}`)}</Typography>
+                  </Grid>
+                  <Grid item xs={8}>
+                    <Typography variant="body2">
+                      {formatHours(point[day]) || "-"}
+                    </Typography>
+                  </Grid>
+                </>
+              ))}
+            </Grid>
+          </Stack>
+        )}
 
         <Stack spacing={1}>
           <Typography variant="body2" fontWeight={600} color="textSecondary">
