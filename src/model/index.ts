@@ -28,7 +28,7 @@ export interface Point {
   descrizione: string;
   città: string;
   via: string;
-  "indirizzo AWS": string;
+  indirizzo_AWS: string;
   provincia: string;
   regione: string;
   cap: string;

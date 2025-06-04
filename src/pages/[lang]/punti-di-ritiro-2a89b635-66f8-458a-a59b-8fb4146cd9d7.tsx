@@ -96,7 +96,7 @@ const RitiroPage: NextPage = () => {
     denomination: e.descrizione,
     city: e.città,
     address: e.via,
-    normalizedAddress: e["indirizzo AWS"],
+    normalizedAddress: e.indirizzo_AWS,
     province: e.provincia,
     cap: e.cap,
     contacts: e.telefono,

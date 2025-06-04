@@ -111,7 +111,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
       denomination: e.descrizione,
       city: e.città,
       address: e.via,
-      normalizedAddress: e["indirizzo AWS"].replace(", Italia", ""),
+      normalizedAddress: e.indirizzo_AWS.replace(", Italia", ""),
       province: e.provincia,
       region: e.regione,
       cap: e.cap,
