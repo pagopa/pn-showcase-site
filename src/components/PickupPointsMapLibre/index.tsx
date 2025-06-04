@@ -39,7 +39,7 @@ const PickupPointsMapLibre: React.FC<Props> = ({
       const feature = event.features[0];
       const map = event.target;
 
-      if (feature.layer.id === "unclustered-point") {
+      if (feature.layer.id === "unclustered-points") {
         const geometry = feature.geometry as GeoJSON.Geometry & {
           coordinates: [number, number];
         };
@@ -100,7 +100,7 @@ const PickupPointsMapLibre: React.FC<Props> = ({
       }}
       minZoom={5}
       style={{ height: "100%", width: "100%" }}
-      interactiveLayerIds={["unclustered-point"]}
+      interactiveLayerIds={["unclustered-points"]}
       onClick={handleMapClick}
       onLoad={handleLoad}
       onMouseEnter={handleMouseEnter}
