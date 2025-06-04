@@ -2,6 +2,7 @@
   "title": "SEND - Servizio Notifiche digitali | Points de retrait SEND",
   "description": "Trouvez le Point de retrait SEND le plus proche pour retirer une copie des actes notifiés ou pour savoir s’il existe un accusé de réception pour vous",
   "search": {
+    "eyelet": "Obtenir une copie des actes notifiés",
     "title": "Trouver un Point de retrait SEND",
     "description_1": "Lorsque vous recevez une notification SEND, vous pouvez retirer une copie imprimée des documents notifiés auprès des ",
     "description_2": "commerçants participants",

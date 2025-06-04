@@ -46,5 +46,6 @@
   },
   "show-details": "Mostra dettagli",
   "geolocation-not-supported": "Il browser non supporta la geolocalizzazione",
-  "geolocation-error": "Il sistema ha riscontrato un errore nella geolocalizzazione"
+  "geolocation-error": "Il sistema ha riscontrato un errore nella geolocalizzazione",
+  "reservation-call": "Per prenotare chiama il"
 }
