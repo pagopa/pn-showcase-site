@@ -4,6 +4,7 @@ import { Coordinates } from "src/model";
 type Return = {
   userPosition: Coordinates | null;
   geocodingError: string | null;
+  deniedAccess: boolean;
   clearError: () => void;
   askGeolocationPermission: () => void;
 };
@@ -11,6 +12,7 @@ type Return = {
 const useCurrentPosition = (): Return => {
   const [userPosition, setUserPosition] = useState<Coordinates | null>(null);
   const [geocodingError, setGeocodingError] = useState<string | null>(null);
+  const [deniedAccess, setDeniedAccess] = useState(false);
 
   const clearError = () => setGeocodingError(null);
 
@@ -23,6 +25,8 @@ const useCurrentPosition = (): Return => {
       (error) => {
         if (error.code !== error.PERMISSION_DENIED) {
           setGeocodingError("geolocation-error");
+        } else {
+          setDeniedAccess(true);
         }
       },
       {
@@ -40,7 +44,13 @@ const useCurrentPosition = (): Return => {
     askGeolocationPermission();
   }, []);
 
-  return { userPosition, geocodingError, clearError, askGeolocationPermission };
+  return {
+    userPosition,
+    geocodingError,
+    clearError,
+    askGeolocationPermission,
+    deniedAccess,
+  };
 };
 
 export default useCurrentPosition;

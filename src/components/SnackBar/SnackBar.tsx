@@ -34,40 +34,33 @@ const SnackBar: React.FC<Props> = ({
   variant = "outlined",
   snackBarPosition = { vertical: "bottom", horizontal: "right" },
 }) => {
-  const [openStatus, setOpenStatus] = useState(open);
-
   const closeSnackBar = () => {
-    setOpenStatus(false);
     if (onClose) {
       onClose();
     }
   };
 
   return (
-    <>
-      {openStatus && (
-        <Snackbar
-          open={open}
-          anchorOrigin={snackBarPosition}
-          onClose={closeSnackBar}
-          autoHideDuration={5000}
-        >
-          <Alert
-            severity={alertSeverity}
-            sx={{
-              width: { xs: "calc(100vw - 10%)", md: "376px" },
-              "& .MuiAlert-message": {
-                width: "100%",
-              },
-            }}
-            variant={variant}
-          >
-            {title && <AlertTitle id="alert-api-status">{title}</AlertTitle>}
-            {message}
-          </Alert>
-        </Snackbar>
-      )}
-    </>
+    <Snackbar
+      open={open}
+      anchorOrigin={snackBarPosition}
+      onClose={closeSnackBar}
+      autoHideDuration={5000}
+    >
+      <Alert
+        severity={alertSeverity}
+        sx={{
+          width: { xs: "calc(100vw - 10%)", md: "376px" },
+          "& .MuiAlert-message": {
+            width: "100%",
+          },
+        }}
+        variant={variant}
+      >
+        {title && <AlertTitle id="alert-api-status">{title}</AlertTitle>}
+        {message}
+      </Alert>
+    </Snackbar>
   );
 };
 

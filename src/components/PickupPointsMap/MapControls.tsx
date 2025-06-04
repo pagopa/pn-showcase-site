@@ -1,8 +1,10 @@
-import { Add, GpsFixed, Remove } from "@mui/icons-material";
+import { Add, GpsFixed, GpsOff, Remove } from "@mui/icons-material";
 import { Button, ButtonGroup, Paper, Stack } from "@mui/material";
+import { useState } from "react";
 import { useMap } from "react-map-gl/maplibre";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { Coordinates } from "src/model";
+import SnackBar from "../SnackBar/SnackBar";
 
 type Props = {
   userPosition: Coordinates | null;
@@ -10,7 +12,8 @@ type Props = {
 
 const MapControls: React.FC<Props> = ({ userPosition }) => {
   const map = useMap();
-  const { askGeolocationPermission } = useCurrentPosition();
+  const { deniedAccess } = useCurrentPosition();
+  const [showDeniedSnackBar, setShowDeniedSnackBar] = useState(false);
 
   const onClickZoomIn = () => {
     map.current?.zoomIn();
@@ -30,49 +33,61 @@ const MapControls: React.FC<Props> = ({ userPosition }) => {
       return;
     }
 
-    try {
-      const result = await navigator.permissions.query({ name: "geolocation" });
-
-      if (result.state === "denied") {
-        // todo
-      }
-    } catch (e) {
-      console.error(e);
+    if (deniedAccess) {
+      setShowDeniedSnackBar(true);
+      return;
     }
   };
 
-  return (
-    <Stack
-      direction="column"
-      spacing={4}
-      sx={{ position: "absolute", top: 24, right: 24 }}
-    >
-      <Paper elevation={4}>
-        <Button onClick={onGeolocateUser} sx={{ width: "48px" }}>
-          <GpsFixed color="primary" fontSize="small" />
-        </Button>
-      </Paper>
+  const getGpsIcon = () => {
+    return deniedAccess ? (
+      <GpsOff color="disabled" fontSize="small" />
+    ) : (
+      <GpsFixed color="primary" fontSize="small" />
+    );
+  };
 
-      <Paper elevation={4}>
-        <ButtonGroup
-          orientation="vertical"
-          variant="text"
-          sx={{
-            backgroundColor: "white",
-            borderColor: "white",
-            width: "48px",
-            borderRadius: 4,
-          }}
-        >
-          <Button onClick={onClickZoomIn}>
-            <Add color="primary" fontSize="small" />
+  return (
+    <>
+      <Stack
+        direction="column"
+        spacing={4}
+        sx={{ position: "absolute", top: 24, right: 24 }}
+      >
+        <Paper elevation={4}>
+          <Button onClick={onGeolocateUser} sx={{ width: "48px" }}>
+            {getGpsIcon()}
           </Button>
-          <Button onClick={onClickZoomOut}>
-            <Remove color="primary" fontSize="small" />
-          </Button>
-        </ButtonGroup>
-      </Paper>
-    </Stack>
+        </Paper>
+
+        <Paper elevation={4}>
+          <ButtonGroup
+            orientation="vertical"
+            variant="text"
+            sx={{
+              backgroundColor: "white",
+              borderColor: "white",
+              width: "48px",
+              borderRadius: 4,
+            }}
+          >
+            <Button onClick={onClickZoomIn}>
+              <Add color="primary" fontSize="small" />
+            </Button>
+            <Button onClick={onClickZoomOut}>
+              <Remove color="primary" fontSize="small" />
+            </Button>
+          </ButtonGroup>
+        </Paper>
+      </Stack>
+
+      <SnackBar
+        open={showDeniedSnackBar}
+        alertSeverity="error"
+        message="Non hai il permesso"
+        onClose={() => setShowDeniedSnackBar(false)}
+      />
+    </>
   );
 };
 
