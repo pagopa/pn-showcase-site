@@ -21,6 +21,7 @@ import { useEffect, useState } from "react";
 import { getI18n } from "../../api/i18n";
 import OperatorsList from "../../components/Ritiro/OperatorsList";
 import OperatorsTable from "../../components/Ritiro/OperatorsTable";
+import PointInfoDrawer from "../../components/Ritiro/PickupPointsInfoDrawer";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
 
@@ -55,22 +56,14 @@ const RitiroPage: NextPage = () => {
     []
   );
   const [isSearchFailed, setIsSearchFailed] = useState<boolean>(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
 
   let hasData = false;
   useEffect(() => {
     if (!hasData) {
       hasData = true;
 
-      /* 
-        Storelocator file is saved on showcase-site bucket s3 at /public/static/documents/radd-stores-registry.csv,
-        however this file is not accessible by localhost.
-        To test in local environment you need to download file http://www.dev.notifichedigitali.it/public/static/documents/radd-stores-registry.csv 
-        and save at the same path but use csvFilePath = "/static/documents/radd-stores-registry.csv".
-        The file is already referred in .gitignore.
-        ---------------------------------------------------
-        Sarah Donvito, 31/05/2024
-        ---------------------------------------------------
-      */
       const csvFilePath = "/static/documents/radd-stores-registry.csv";
       Papa.parse(csvFilePath, {
         download: true,
@@ -90,12 +83,22 @@ const RitiroPage: NextPage = () => {
   }, []);
 
   const initialRaddOperators: RaddOperator[] = points.map((e) => ({
+    type: e.tipologia,
     denomination: e.descrizione,
     city: e.città,
     address: e.via,
+    normalizedAddress: e.indirizzo_AWS,
     province: e.provincia,
+    region: e.regione,
     cap: e.cap,
     contacts: e.telefono,
+    monday: e.lunedi,
+    tuesday: e.martedi,
+    wednesday: e.mercoledi,
+    thursday: e.giovedi,
+    friday: e.venerdi,
+    saturday: e.sabato,
+    sunday: e.domenica,
   }));
 
   const handleInputChange = (event: any) => {
@@ -137,6 +140,11 @@ const RitiroPage: NextPage = () => {
     setFilteredOperators(initialRaddOperators);
   };
 
+  const toggleDrawer = (open: boolean, pickupPoint: RaddOperator | null) => {
+    setIsDrawerOpen(open);
+    setSelectedPoint(pickupPoint);
+  };
+
   let rowsToSet: RaddOperator[] | null = null;
 
   if (filteredOperators.length > 0) {
@@ -176,6 +184,7 @@ const RitiroPage: NextPage = () => {
         <OperatorsList
           key={JSON.stringify(initialRaddOperators)}
           rows={rowsToSet}
+          toggleDrawer={toggleDrawer}
         />
       );
     } else {
@@ -183,6 +192,7 @@ const RitiroPage: NextPage = () => {
         <OperatorsTable
           key={JSON.stringify(filteredOperators)}
           rows={rowsToSet}
+          toggleDrawer={toggleDrawer}
         />
       );
     }
@@ -288,6 +298,12 @@ const RitiroPage: NextPage = () => {
           {getContent()}
         </Stack>
       </Box>
+
+      <PointInfoDrawer
+        isOpen={isDrawerOpen}
+        toggleDrawer={toggleDrawer}
+        point={selectedPoint}
+      />
     </>
   );
 };

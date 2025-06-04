@@ -1,23 +1,26 @@
-import * as React from "react";
-
+import { ArrowForwardIos } from "@mui/icons-material";
 import {
-  ListItem,
-  Typography,
-  List,
-  Stack,
-  Paper,
   Box,
+  List,
+  ListItem,
+  Paper,
+  Stack,
   TablePagination,
+  Typography,
 } from "@mui/material";
-import { RaddOperator } from "../../model";
+import { ButtonNaked } from "@pagopa/mui-italia";
 import { useRef, useState } from "react";
+import { useTranslation } from "../../hook/useTranslation";
+import { RaddOperator } from "../../model";
 import CustomPagination from "../CustomPagination";
 
 type Props = {
   rows: RaddOperator[];
+  toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
 
-function OperatorsList({ rows }: Readonly<Props>) {
+function OperatorsList({ rows, toggleDrawer }: Readonly<Props>) {
+  const { t } = useTranslation(["pickup"]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -83,6 +86,15 @@ function OperatorsList({ rows }: Readonly<Props>) {
                 <Box mb={1}>
                   <Typography variant="body2">Telefono</Typography>
                   <Typography variant="subtitle1">{row.contacts}</Typography>
+                </Box>
+                <Box mb={1}>
+                  <ButtonNaked
+                    color="primary"
+                    onClick={() => toggleDrawer(true, row)}
+                    endIcon={<ArrowForwardIos />}
+                  >
+                    {t("view_details")}
+                  </ButtonNaked>
                 </Box>
               </Stack>
             </ListItem>

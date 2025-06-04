@@ -16,7 +16,7 @@
     "@mui/icons-material": "5.11.0",
     "@mui/lab": "5.0.0-alpha.119",
     "@mui/material": "5.11.8",
-    "@pagopa/mui-italia": "^1.3.0",
+    "@pagopa/mui-italia": "^1.6.1",
     "next": "^14.2.14",
     "papaparse": "^5.4.1",
     "react": "^18.3.1",

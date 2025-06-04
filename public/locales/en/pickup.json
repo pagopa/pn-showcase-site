@@ -19,5 +19,14 @@
   "how_it_works": {
     "title": "SEND - Servizio Notifiche digitali | How the collection points function",
     "description": "Learn about how the service functions for collecting a copy of the legal communication that you receive via SEND in the territory"
+  },
+  "days": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday"
   }
 }

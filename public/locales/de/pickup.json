@@ -2,12 +2,13 @@
   "title": "SEND - Servizio Notifiche Digitali | SEND-Abholstellen",
   "description": "Such die nächstgelegene SEND-Abholstelle, um eine Kopie der zugestellten Dokumente abzuholen oder zu erfahren, ob es eine Empfangsbestätigung für dich gibt",
   "search": {
+    "eyelet": "Kopie der zugestellten Unterlagen erhalten",
     "title": "Finde eine SEND-Abholstelle",
-    "description_1": "Wenn du eine rechtsgültige Mitteilung mittels SEND erhältst, kannst du dir ein gedrucktes Exemplar der zugestellten Dokumente bei ",
-    "description_2": "den vertragsgebundenen Händlern abholen",
-    "description_3": "Suche die nächstgelegenen Abholstellen.",
-    "disclaimer": "Derzeit kannst du nur nach Abholstellen in den Städten Bari und Taranto suchen: Der Dienst wird nach und nach in ganz Italien aktiviert.",
-    "placeholder": "Nach Stadt oder PLZ suchen",
+    "description_1": "Wenn Sie eine SEND-Zustellung erhalten, können Sie bei teilnehmenden Geschäften eine gedruckte Kopie ",
+    "description_2": "der zugestellten Dokumente abholen",
+    "description_3": "Finden Sie die nächstgelegenen Abholstellen.",
+    "disclaimer": "Derzeit können Abholstellen nur in bestimmten italienischen Gemeinden gesucht werden: Der Dienst wird schrittweise im ganzen Land eingeführt.",
+    "placeholder": "Stadt, Postleitzahl oder Regionskürzel (z. B. RM für Rom)",
     "empty_state": " In dieser Stadt sind noch keine aktiven SEND-Abholstellen vorhanden."
   },
   "infoblock": {
@@ -19,5 +20,14 @@
   "how_it_works": {
     "title": "SEND - Servizio Notifiche Digitali | Wie funktionieren die Abholstellen",
     "description": "Entdecke, wie der Dienst funktioniert, um eine Kopie der rechtsgültigen Mitteilungen abzuholen, die du über SEND erhältst"
+  },
+  "days": {
+    "monday": "Montag",
+    "tuesday": "Dienstag",
+    "wednesday": "Mittwoch",
+    "thursday": "Donnerstag",
+    "friday": "Freitag",
+    "saturday": "Samstag",
+    "sunday": "Sonntag"
   }
 }
