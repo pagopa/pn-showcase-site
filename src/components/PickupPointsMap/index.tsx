@@ -1,6 +1,7 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Map } from "react-map-gl/maplibre";
 import { Coordinates, RaddOperator } from "src/model";
+import MapControls from "./MapControls";
 import UserPositionController from "./UserPositionController";
 
 type Props = {
@@ -19,9 +20,11 @@ const PickupPointsMap: React.FC<Props> = ({ points, userPosition }) => {
         latitude: 41.895679,
         zoom: 10,
       }}
-      style={{ height: "100%", width: "100%" }}
+      style={{ height: "100%", width: "100%", position: "relative" }}
     >
       <UserPositionController points={points} userPosition={userPosition} />
+
+      <MapControls userPosition={userPosition} />
     </Map>
   );
 };

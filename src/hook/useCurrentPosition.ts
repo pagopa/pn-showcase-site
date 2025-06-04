@@ -5,6 +5,7 @@ type Return = {
   userPosition: Coordinates | null;
   geocodingError: string | null;
   clearError: () => void;
+  askGeolocationPermission: () => void;
 };
 
 const useCurrentPosition = (): Return => {
@@ -13,12 +14,7 @@ const useCurrentPosition = (): Return => {
 
   const clearError = () => setGeocodingError(null);
 
-  useEffect(() => {
-    if (!navigator.geolocation) {
-      setGeocodingError("geolocation-not-supported");
-      return;
-    }
-
+  const askGeolocationPermission = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
@@ -33,9 +29,18 @@ const useCurrentPosition = (): Return => {
         timeout: 10000,
       }
     );
+  };
+
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      setGeocodingError("geolocation-not-supported");
+      return;
+    }
+
+    askGeolocationPermission();
   }, []);
 
-  return { userPosition, geocodingError, clearError };
+  return { userPosition, geocodingError, clearError, askGeolocationPermission };
 };
 
 export default useCurrentPosition;
