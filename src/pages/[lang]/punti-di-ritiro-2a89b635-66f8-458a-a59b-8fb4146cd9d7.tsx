@@ -64,16 +64,6 @@ const RitiroPage: NextPage = () => {
     if (!hasData) {
       hasData = true;
 
-      /* 
-        Storelocator file is saved on showcase-site bucket s3 at /public/static/documents/radd-stores-registry.csv,
-        however this file is not accessible by localhost.
-        To test in local environment you need to download file http://www.dev.notifichedigitali.it/public/static/documents/radd-stores-registry.csv 
-        and save at the same path but use csvFilePath = "/static/documents/radd-stores-registry.csv".
-        The file is already referred in .gitignore.
-        ---------------------------------------------------
-        Sarah Donvito, 31/05/2024
-        ---------------------------------------------------
-      */
       const csvFilePath = "/static/documents/radd-stores-registry.csv";
       Papa.parse(csvFilePath, {
         download: true,
