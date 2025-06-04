@@ -1,31 +1,23 @@
 import type { LayerProps } from "react-map-gl/maplibre";
 
 export const clusterLayer: LayerProps = {
-  id: "clusters",
+  id: "points",
   type: "circle",
-  source: "points",
-  filter: ["has", "point_count"],
+  source: "stores",
+  filter: ["==", "cluster", true],
   paint: {
-    "circle-color": [
-      "step",
-      ["get", "point_count"],
-      "#0d3ee3",
-      100,
-      "#0d3ee3",
-      750,
-      "#0d3ee3",
-    ],
-    "circle-radius": ["step", ["get", "point_count"], 20, 100, 20, 750, 20],
+    "circle-color": "#0d3ee3",
+    "circle-radius": 20,
   },
 };
 
 export const clusterCountLayer: LayerProps = {
-  id: "cluster-count",
+  id: "count",
   type: "symbol",
-  source: "points",
-  filter: ["has", "point_count"],
+  source: "stores",
+  filter: ["==", "cluster", true],
   layout: {
-    "text-field": "{point_count_abbreviated}",
+    "text-field": "{point_count}",
     "text-size": 12,
   },
   paint: {
@@ -34,10 +26,10 @@ export const clusterCountLayer: LayerProps = {
 };
 
 export const unclusteredPointLayer: LayerProps = {
-  id: "unclustered-point",
+  id: "unclustered-points",
   type: "symbol",
-  source: "points",
-  filter: ["!", ["has", "point_count"]],
+  source: "stores",
+  filter: ["!=", "cluster", true],
   layout: {
     "icon-image": "base-marker",
     "icon-size": 1,

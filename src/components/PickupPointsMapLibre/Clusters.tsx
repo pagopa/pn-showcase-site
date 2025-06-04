@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Layer, Source, useMap } from "react-map-gl/maplibre";
+import React from "react";
+import { Layer, Source } from "react-map-gl/maplibre";
 import { RaddOperator } from "src/model";
 import {
   clusterLayer,
@@ -12,9 +12,6 @@ interface RegionClusterProps {
 }
 
 const Clusters: React.FC<RegionClusterProps> = ({ points }) => {
-  const { current: map } = useMap();
-  const zoom = map?.getZoom() || 10;
-
   const geojsonData: GeoJSON.GeoJSON = {
     type: "FeatureCollection",
     features: points.map((point) => ({
@@ -32,32 +29,14 @@ const Clusters: React.FC<RegionClusterProps> = ({ points }) => {
     })),
   };
 
-  const getCluserRadius = (zoom: number): number => {
-    if (zoom < 8) return 20;
-    if (zoom < 10) return 30;
-    return 50;
-  };
-
-  useEffect(() => {
-    if (!map) return;
-
-    const loadMarkers = async () => {
-      const response = await map.loadImage("/static/images/base-marker.png");
-
-      map.addImage("base-marker", response.data);
-    };
-
-    loadMarkers();
-  }, [map]);
-
   return (
     <Source
-      id="points"
+      id="stores"
       type="geojson"
       data={geojsonData}
-      cluster={true}
+      cluster
       clusterMaxZoom={12}
-      clusterRadius={getCluserRadius(zoom)}
+      clusterRadius={70}
     >
       <Layer {...clusterLayer} />
       <Layer {...clusterCountLayer} />

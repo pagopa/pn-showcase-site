@@ -57,3 +57,14 @@ export interface I18n {
   [key: string]: I18n | string;
 }
 // ------------ //
+
+export enum ClusterType {
+  PROVINCE = "province",
+  REGION = "region",
+}
+
+export type Cluster = {
+  id: string;
+  type: ClusterType;
+  value: Array<RaddOperator>;
+};
