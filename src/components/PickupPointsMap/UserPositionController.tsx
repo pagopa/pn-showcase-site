@@ -1,5 +1,4 @@
 import { fitMapToPoints } from "@utils/map";
-import Image from "next/image";
 import React, { useEffect } from "react";
 import { Marker, useMap } from "react-map-gl/maplibre";
 import { Coordinates, RaddOperator } from "src/model";
@@ -28,7 +27,7 @@ const UserPositionControl: React.FC<Props> = ({
         latitude={userPosition.latitude}
         anchor="bottom"
       >
-        <Image
+        <img
           src="/static/images/map/userLocationMarker.svg"
           alt="User position marker"
           width={24}
