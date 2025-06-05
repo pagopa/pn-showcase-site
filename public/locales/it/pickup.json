@@ -45,7 +45,9 @@
     "map": "Mappa"
   },
   "show-details": "Mostra dettagli",
+  "reservation-call": "Per prenotare chiama il",
   "geolocation-not-supported": "Il browser non supporta la geolocalizzazione",
   "geolocation-error": "Il sistema ha riscontrato un errore nella geolocalizzazione",
-  "reservation-call": "Per prenotare chiama il"
+  "geolocation-denied": "La tua posizione può essere mostrata solo quando i servizi di localizzazione sono abilitati",
+  "geolocation-denied-cta": "Scopri come"
 }

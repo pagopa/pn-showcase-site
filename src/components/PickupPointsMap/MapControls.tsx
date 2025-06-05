@@ -1,8 +1,10 @@
-import { Add, GpsFixed, GpsOff, Remove } from "@mui/icons-material";
-import { Button, ButtonGroup, Paper, Stack } from "@mui/material";
+import { Add, CopyAll, GpsFixed, GpsOff, Remove } from "@mui/icons-material";
+import { Box, Button, ButtonGroup, Paper, Stack } from "@mui/material";
+import { ButtonNaked } from "@pagopa/mui-italia";
 import { useState } from "react";
 import { useMap } from "react-map-gl/maplibre";
 import useCurrentPosition from "src/hook/useCurrentPosition";
+import { useTranslation } from "src/hook/useTranslation";
 import { Coordinates } from "src/model";
 import SnackBar from "../SnackBar/SnackBar";
 
@@ -12,6 +14,7 @@ type Props = {
 
 const MapControls: React.FC<Props> = ({ userPosition }) => {
   const map = useMap();
+  const { t } = useTranslation(["pickup"]);
   const { deniedAccess } = useCurrentPosition();
   const [showDeniedSnackBar, setShowDeniedSnackBar] = useState(false);
 
@@ -83,9 +86,21 @@ const MapControls: React.FC<Props> = ({ userPosition }) => {
 
       <SnackBar
         open={showDeniedSnackBar}
-        alertSeverity="error"
-        message="Non hai il permesso"
+        alertSeverity="warning"
+        message={
+          <Box display="flex" alignItems="center" gap={2}>
+            {t("geolocation-denied")}
+            <ButtonNaked
+              color="primary"
+              startIcon={<CopyAll />}
+              sx={{ fontSize: "16px" }}
+            >
+              {t("geolocation-denied-cta")}
+            </ButtonNaked>
+          </Box>
+        }
         onClose={() => setShowDeniedSnackBar(false)}
+        snackBarPosition={{ vertical: "top", horizontal: "center" }}
       />
     </>
   );

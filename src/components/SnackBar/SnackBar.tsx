@@ -50,7 +50,7 @@ const SnackBar: React.FC<Props> = ({
       <Alert
         severity={alertSeverity}
         sx={{
-          width: { xs: "calc(100vw - 10%)", md: "376px" },
+          width: { xs: "calc(100vw - 10%)", md: "100%" },
           "& .MuiAlert-message": {
             width: "100%",
           },
