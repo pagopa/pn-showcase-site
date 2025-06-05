@@ -41,7 +41,6 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
   const { t } = useTranslation(["pickup", "common"]);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const drawerWidth = isMobile ? "auto" : "400px";
-  const address = point?.normalizedAddress.replace(", Italia", "");
 
   const hasAlmostOneOpeningDay = OPENING_DAYS.some(
     (day) => point && point[day]
@@ -59,7 +58,7 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
   };
 
   const handleCopyInformations = () => {
-    const parts = [point?.denomination, address];
+    const parts = [point?.denomination, point?.normalizedAddress];
 
     if (hasAlmostOneOpeningDay) {
       parts.push(`${t("opening-hours")} :`);
@@ -147,9 +146,9 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
                     color="primary"
                     textOverflow="ellipsis"
                   >
-                    {address}
+                    {point.normalizedAddress}
                   </Typography>
-                  <CopyToClipboardButton value={address || ""} />
+                  <CopyToClipboardButton value={point.normalizedAddress} />
                 </Stack>
               </Stack>
 
