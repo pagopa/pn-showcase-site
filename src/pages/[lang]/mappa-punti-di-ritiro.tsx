@@ -118,6 +118,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
           <Typography mt={2} mb={1} color="textPrimary" variant="body2">
             {t("search.description_1")}
             <strong>{t("search.description_2")}</strong>.{" "}
+            {t("search.description_3")}
           </Typography>
 
           <Link
