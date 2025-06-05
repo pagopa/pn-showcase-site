@@ -74,7 +74,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
       denomination: e.descrizione,
       city: e.città,
       address: e.via,
-      normalizedAddress: e.indirizzo_AWS,
+      normalizedAddress: e.indirizzo_AWS.replace(", Italia", ""),
       province: e.provincia,
       region: e.regione,
       cap: e.cap,
@@ -140,7 +140,16 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
             />
           </Box>
 
-          {selectedTab === "list" && <PickupPointsList rows={rowsToSet} />}
+          <Box
+            sx={{
+              display: {
+                xs: selectedTab === "list" ? "block" : "none",
+                md: "block",
+              },
+            }}
+          >
+            <PickupPointsList rows={rowsToSet} />
+          </Box>
         </Grid>
 
         <Grid
