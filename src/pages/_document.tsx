@@ -27,7 +27,10 @@ export default class MyDocument extends Document<{ lang: LangCode }> {
   render(): ReactElement {
     return (
       <Html lang={this.props.lang}>
-        <Head />
+        <Head>
+          <title>SEND - Notifiche digitali - Punti di ritiro</title>
+          <link rel="icon" href="/static/icons/favicon.ico" />
+        </Head>
         <body>
           <Main />
           <NextScript />
