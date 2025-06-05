@@ -60,7 +60,7 @@ function PickupPointsList({ rows }: Readonly<Props>) {
                     variant="body2"
                     fontSize="14px"
                   >
-                    {row.address}, {row.city} ({row.province})
+                    {row.normalizedAddress}
                   </Typography>
                 </Box>
 
