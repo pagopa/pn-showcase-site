@@ -26,7 +26,7 @@ function PickupPointsList({ rows }: Readonly<Props>) {
     <>
       <List
         ref={listContainerRef}
-        sx={{ maxHeight: "800px", overflowY: "auto" }}
+        sx={{ maxHeight: "800px", overflowY: "auto", p: 0, mt: 2, pr: 1 }}
         aria-live="polite"
       >
         {rows.slice(0, numberOfRows).map((row, index: number) => (
@@ -36,7 +36,7 @@ function PickupPointsList({ rows }: Readonly<Props>) {
               border: "1px solid",
               borderColor: "divider",
               borderRadius: "8px",
-              my: 2,
+              mb: 2,
               p: 3,
             }}
           >
