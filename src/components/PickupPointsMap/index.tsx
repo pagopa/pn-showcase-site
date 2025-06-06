@@ -1,17 +1,16 @@
 import { MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Map } from "react-map-gl/maplibre";
-import { Coordinates, RaddOperator } from "src/model";
+import { RaddOperator } from "src/model";
 import MapControls from "./MapControls";
 import UserPositionController from "./UserPositionController";
 import Clusters from "./Clusters";
 
 type Props = {
   points: Array<RaddOperator>;
-  userPosition: Coordinates | null;
 };
 
-const PickupPointsMap: React.FC<Props> = ({ points, userPosition }) => {
+const PickupPointsMap: React.FC<Props> = ({ points }) => {
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
   const handleLoad = async (event: MapLibreEvent) => {
@@ -33,8 +32,8 @@ const PickupPointsMap: React.FC<Props> = ({ points, userPosition }) => {
       reuseMaps
       style={{ height: "100%", width: "100%", position: "relative" }}
     >
-      <UserPositionController points={points} userPosition={userPosition} />
-      <MapControls userPosition={userPosition} />
+      <UserPositionController points={points} />
+      <MapControls />
       <Clusters points={points} />
     </Map>
   );

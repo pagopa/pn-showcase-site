@@ -165,7 +165,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
           }}
         >
           <Box sx={{ width: "100%", height: "1000px" }}>
-            <PickupPointsMap points={rowsToSet} userPosition={userPosition} />
+            <PickupPointsMap points={rowsToSet} />
           </Box>
         </Grid>
       </Grid>
