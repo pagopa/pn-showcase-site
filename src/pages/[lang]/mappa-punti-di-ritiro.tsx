@@ -7,6 +7,7 @@ import Papa from "papaparse";
 import { useEffect, useState } from "react";
 import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMap from "src/components/PickupPointsMap";
+import PickupPointsInfoDrawer from "src/components/Ritiro/PickupPointsInfoDrawer";
 import SnackBar from "src/components/SnackBar/SnackBar";
 import Tabs from "src/components/Tabs";
 import useCurrentPosition from "src/hook/useCurrentPosition";
@@ -40,6 +41,8 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
 
   const [selectedTab, setSelectedTab] = useState<MOBILE_TABS>("list");
   const [points, setPoints] = useState<Point[]>([]);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
 
   const { userPosition, geocodingError, clearError } = useCurrentPosition();
 
@@ -47,6 +50,13 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
 
   const handleChangeTab = (tabIndex: number) => {
     setSelectedTab(tabIndex === 1 ? "map" : "list");
+  };
+
+  const toggleDrawer = (open: boolean, pickupPoint?: RaddOperator | null) => {
+    setIsDrawerOpen(open);
+    if (pickupPoint) {
+      setSelectedPoint(pickupPoint);
+    }
   };
 
   useEffect(() => {
@@ -148,7 +158,12 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
               },
             }}
           >
-            <PickupPointsList rows={rowsToSet} />
+            <PickupPointsList
+              rows={rowsToSet}
+              toggleDrawer={toggleDrawer}
+              setSelectedPoint={setSelectedPoint}
+              selectedPoint={selectedPoint}
+            />
           </Box>
         </Grid>
 
@@ -165,10 +180,20 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
           }}
         >
           <Box sx={{ width: "100%", height: "1000px" }}>
-            <PickupPointsMap points={rowsToSet} userPosition={userPosition} />
+            <PickupPointsMap
+              points={rowsToSet}
+              userPosition={userPosition}
+              selectedPoint={selectedPoint}
+            />
           </Box>
         </Grid>
       </Grid>
+
+      <PickupPointsInfoDrawer
+        isOpen={isDrawerOpen}
+        point={selectedPoint}
+        toggleDrawer={toggleDrawer}
+      />
     </>
   );
 };

@@ -9,9 +9,10 @@ import {
 
 interface RegionClusterProps {
   points: RaddOperator[];
+  selectedPoint: RaddOperator | null;
 }
 
-const Clusters: React.FC<RegionClusterProps> = ({ points }) => {
+const Clusters: React.FC<RegionClusterProps> = ({ points, selectedPoint }) => {
   const geojsonData: GeoJSON.GeoJSON = {
     type: "FeatureCollection",
     features: points.map((point) => ({
@@ -21,6 +22,7 @@ const Clusters: React.FC<RegionClusterProps> = ({ points }) => {
         address: point.address,
         region: point.region,
         province: point.province,
+        isSelected: selectedPoint?.address === point.address,
       },
       geometry: {
         type: "Point",
