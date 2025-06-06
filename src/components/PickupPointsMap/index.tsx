@@ -4,7 +4,7 @@ import { Map, MapRef } from "react-map-gl/maplibre";
 import { RaddOperator } from "src/model";
 import MapControls from "./MapControls";
 import UserPositionController from "./UserPositionController";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Clusters from "./Clusters";
 
 type Props = {
@@ -26,15 +26,15 @@ const PickupPointsMap: React.FC<Props> = ({ points, selectedPoint }) => {
     map.addImage("selected-marker", selectedMarker.data);
   };
 
-  // useEffect(() => {
-  //   if (selectedPoint && mapRef.current) {
-  //     mapRef.current.flyTo({
-  //       center: [selectedPoint.longitude, selectedPoint.latitude],
-  //       zoom: 17,
-  //       essential: true,
-  //     });
-  //   }
-  // }, [selectedPoint, mapRef]);
+  useEffect(() => {
+    if (selectedPoint && mapRef.current) {
+      mapRef.current.flyTo({
+        center: [selectedPoint.longitude, selectedPoint.latitude],
+        zoom: 17,
+        essential: true,
+      });
+    }
+  }, [selectedPoint, mapRef]);
 
   return (
     <Map
