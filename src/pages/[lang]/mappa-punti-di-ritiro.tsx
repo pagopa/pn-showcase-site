@@ -180,11 +180,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
           }}
         >
           <Box sx={{ width: "100%", height: "1000px" }}>
-            <PickupPointsMap
-              points={rowsToSet}
-              userPosition={userPosition}
-              selectedPoint={selectedPoint}
-            />
+            <PickupPointsMap points={rowsToSet} selectedPoint={selectedPoint} />
           </Box>
         </Grid>
       </Grid>

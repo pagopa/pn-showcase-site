@@ -5,17 +5,12 @@ import { useState } from "react";
 import { useMap } from "react-map-gl/maplibre";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
-import { Coordinates } from "src/model";
 import SnackBar from "../SnackBar/SnackBar";
 
-type Props = {
-  userPosition: Coordinates | null;
-};
-
-const MapControls: React.FC<Props> = ({ userPosition }) => {
+const MapControls: React.FC = () => {
   const map = useMap();
   const { t } = useTranslation(["pickup"]);
-  const { deniedAccess } = useCurrentPosition();
+  const { deniedAccess, userPosition } = useCurrentPosition();
   const [showDeniedSnackBar, setShowDeniedSnackBar] = useState(false);
 
   const onClickZoomIn = () => {
