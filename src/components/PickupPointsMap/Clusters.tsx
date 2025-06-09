@@ -18,11 +18,8 @@ const Clusters: React.FC<RegionClusterProps> = ({ points, selectedPoint }) => {
     features: points.map((point) => ({
       type: "Feature",
       properties: {
-        name: point.denomination,
-        address: point.address,
-        region: point.region,
-        province: point.province,
-        isSelected: selectedPoint?.address === point.address,
+        point,
+        isSelected: selectedPoint?.id === point.id,
       },
       geometry: {
         type: "Point",

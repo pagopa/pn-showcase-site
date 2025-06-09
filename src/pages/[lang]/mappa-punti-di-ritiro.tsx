@@ -1,6 +1,6 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
-import { sortPointsByDistance } from "@utils/map";
+import { mapPoint, sortPointsByDistance } from "@utils/map";
 import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 import Papa from "papaparse";
@@ -40,7 +40,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
   const { t } = useTranslation(["pickup", "common"]);
 
   const [selectedTab, setSelectedTab] = useState<MOBILE_TABS>("list");
-  const [points, setPoints] = useState<Point[]>([]);
+  const [points, setPoints] = useState<RaddOperator[]>([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
 
@@ -68,7 +68,11 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
         header: true,
         complete: (result) => {
           if (result.data && result.data.length > 0) {
-            setPoints(result.data as Point[]);
+            setPoints(
+              (result.data as Point[])
+                .filter((point) => point.latitudine && point.longitudine)
+                .map((e, index) => mapPoint(e, index))
+            );
           }
         },
         error: (error) => {
@@ -78,32 +82,11 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
     }
   }, []);
 
-  const initialRaddOperators: RaddOperator[] = points
-    .filter((point) => point.latitudine && point.longitudine)
-    .map((e) => ({
-      denomination: e.descrizione,
-      city: e.città,
-      address: e.via,
-      normalizedAddress: e.indirizzo_AWS.replace(", Italia", ""),
-      province: e.provincia,
-      region: e.regione,
-      cap: e.cap,
-      contacts: e.telefono,
-      latitude: Number(e.latitudine),
-      longitude: Number(e.longitudine),
-      monday: e.lunedi,
-      tuesday: e.martedi,
-      wednesday: e.mercoledi,
-      thursday: e.giovedi,
-      friday: e.venerdi,
-      saturday: e.sabato,
-      sunday: e.domenica,
-      type: e.tipologia,
-    }));
-
-  let rowsToSet: RaddOperator[] | null = userPosition
-    ? sortPointsByDistance(initialRaddOperators, userPosition)
-    : initialRaddOperators;
+  useEffect(() => {
+    if (userPosition) {
+      setPoints(sortPointsByDistance(points, userPosition));
+    }
+  }, [userPosition]);
 
   return (
     <>
@@ -159,10 +142,12 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
             }}
           >
             <PickupPointsList
-              rows={rowsToSet}
+              points={points}
               toggleDrawer={toggleDrawer}
               setSelectedPoint={setSelectedPoint}
               selectedPoint={selectedPoint}
+              setPoints={setPoints}
+              userPosition={userPosition}
             />
           </Box>
         </Grid>
@@ -180,7 +165,12 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
           }}
         >
           <Box sx={{ width: "100%", height: "1000px" }}>
-            <PickupPointsMap points={rowsToSet} selectedPoint={selectedPoint} />
+            <PickupPointsMap
+              points={points}
+              selectedPoint={selectedPoint}
+              setSelectedPoint={setSelectedPoint}
+              toggleDrawer={toggleDrawer}
+            />
           </Box>
         </Grid>
       </Grid>

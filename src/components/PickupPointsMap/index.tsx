@@ -1,19 +1,28 @@
-import { MapLibreEvent } from "maplibre-gl";
+import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { useEffect, useRef } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
 import { RaddOperator } from "src/model";
+import Clusters from "./Clusters";
 import MapControls from "./MapControls";
 import UserPositionController from "./UserPositionController";
-import { useEffect, useRef } from "react";
-import Clusters from "./Clusters";
+import { useIsMobile } from "src/hook/useIsMobile";
 
 type Props = {
   points: Array<RaddOperator>;
   selectedPoint: RaddOperator | null;
+  setSelectedPoint: (point: RaddOperator | null) => void;
+  toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
 
-const PickupPointsMap: React.FC<Props> = ({ points, selectedPoint }) => {
+const PickupPointsMap: React.FC<Props> = ({
+  points,
+  selectedPoint,
+  setSelectedPoint,
+  toggleDrawer,
+}) => {
   const mapRef = useRef<MapRef>(null);
+  const isMobile = useIsMobile();
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
   const handleLoad = async (event: MapLibreEvent) => {
@@ -24,6 +33,41 @@ const PickupPointsMap: React.FC<Props> = ({ points, selectedPoint }) => {
     );
     map.addImage("base-marker", baseMaker.data);
     map.addImage("selected-marker", selectedMarker.data);
+  };
+
+  const handleMapClick = (event: MapLayerMouseEvent) => {
+    if (event.features && event.features.length > 0) {
+      const feature = event.features[0];
+      const map = event.target;
+
+      if (feature.layer.id === "unclustered-points") {
+        const selectedPoint = JSON.parse(feature.properties.point);
+        const geometry = feature.geometry as GeoJSON.Geometry & {
+          coordinates: [number, number];
+        };
+        map.flyTo({
+          center: geometry.coordinates,
+          zoom: 15,
+          duration: 1000,
+        });
+        setSelectedPoint(selectedPoint);
+        if (isMobile) {
+          toggleDrawer(true, selectedPoint);
+        }
+      }
+    }
+  };
+
+  const handleMouseEnter = (event: MapLayerMouseEvent) => {
+    if (event.features && event.features.length > 0) {
+      const map = event.target;
+      map.getCanvas().style.cursor = "pointer";
+    }
+  };
+
+  const handleMouseLeave = (event: MapLayerMouseEvent) => {
+    const map = event.target;
+    map.getCanvas().style.cursor = "";
   };
 
   useEffect(() => {
@@ -46,7 +90,11 @@ const PickupPointsMap: React.FC<Props> = ({ points, selectedPoint }) => {
         zoom: 10,
       }}
       minZoom={5}
+      interactiveLayerIds={["unclustered-points"]}
+      onClick={handleMapClick}
       onLoad={handleLoad}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       reuseMaps
       style={{ height: "100%", width: "100%", position: "relative" }}
     >
