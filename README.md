@@ -1,6 +1,13 @@
 ## Setup Env variables (development)
 
-Copy the content of the file located in `public/conf/config-dev.json` in a file `public/conf/config.json`
+Create file `public/conf/config.json` with this json format:
+
+```json
+  {
+    "MAP_API_KEY": "api-key-dev"
+  }
+```
+
 
 ## Run app in local
 
