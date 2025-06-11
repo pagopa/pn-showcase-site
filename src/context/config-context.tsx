@@ -14,8 +14,8 @@ const isConfigValid = (
 ): config is ShowcaseConfig => {
   return (
     !!config &&
-    typeof config.API_BASE_URL === "string" &&
-    urlPattern.test(config.API_BASE_URL)
+    urlPattern.test(config.API_BASE_URL) &&
+    urlPattern.test(config.CLOUDFRONT_MAP_URL)
   );
 };
 
