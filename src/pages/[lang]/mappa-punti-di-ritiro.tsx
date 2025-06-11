@@ -13,7 +13,8 @@ import Tabs from "src/components/Tabs";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
-import { LangCode, Point, RaddOperator } from "../../model";
+import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
+import PickupPointsAutocomplete from "src/components/PickupPointsAutocomplete";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -43,6 +44,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
   const [points, setPoints] = useState<RaddOperator[]>([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
+  const [targetPoint, setTargetPoint] = useState<Coordinates | null>(null);
 
   const { userPosition, geocodingError, clearError } = useCurrentPosition();
 
@@ -83,10 +85,10 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
   }, []);
 
   useEffect(() => {
-    if (userPosition) {
-      setPoints(sortPointsByDistance(points, userPosition));
+    if (userPosition || targetPoint) {
+      setPoints(sortPointsByDistance(points, userPosition, targetPoint));
     }
-  }, [userPosition]);
+  }, [userPosition, targetPoint]);
 
   return (
     <>
@@ -122,6 +124,8 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
           >
             {t("how-it-works")}
           </Link>
+
+          <PickupPointsAutocomplete setTargetPoint={setTargetPoint} />
 
           <Box sx={{ display: { xs: "flex", md: "none" }, my: 3 }}>
             <Tabs
@@ -170,6 +174,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
               selectedPoint={selectedPoint}
               setSelectedPoint={setSelectedPoint}
               toggleDrawer={toggleDrawer}
+              targetPoint={targetPoint}
             />
           </Box>
         </Grid>

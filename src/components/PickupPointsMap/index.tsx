@@ -2,15 +2,17 @@ import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
-import { RaddOperator } from "src/model";
+import { Coordinates, RaddOperator } from "src/model";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
 import UserPositionController from "./UserPositionController";
 import { useIsMobile } from "src/hook/useIsMobile";
+import { fitMapToPoints } from "@utils/map";
 
 type Props = {
   points: Array<RaddOperator>;
   selectedPoint: RaddOperator | null;
+  targetPoint: Coordinates | null;
   setSelectedPoint: (point: RaddOperator | null) => void;
   toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
@@ -18,6 +20,7 @@ type Props = {
 const PickupPointsMap: React.FC<Props> = ({
   points,
   selectedPoint,
+  targetPoint,
   setSelectedPoint,
   toggleDrawer,
 }) => {
@@ -80,9 +83,16 @@ const PickupPointsMap: React.FC<Props> = ({
     }
   }, [selectedPoint, mapRef]);
 
+  useEffect(() => {
+    if (targetPoint && mapRef.current) {
+      fitMapToPoints(targetPoint, points, mapRef.current);
+    }
+  }, [targetPoint]);
+
   return (
     <Map
       ref={mapRef}
+      // mapStyle="https://dv249nb28g8ie.cloudfront.net/v2/styles/Standard/descriptor"
       mapStyle={`https://maps.geo.eu-central-1.amazonaws.com/v2/styles/Standard/descriptor?key=${API_KEY}`}
       initialViewState={{
         longitude: 12.482802,
