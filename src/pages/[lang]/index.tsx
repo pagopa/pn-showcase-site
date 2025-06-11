@@ -64,7 +64,7 @@ const Homepage = () => {
       </Button>
 
       {/* TODO remove */}
-      <p>Map API Key: {config.MAP_API_KEY}</p>
+      <p>API BASE URL: {config.API_BASE_URL}</p>
     </Stack>
   );
 };

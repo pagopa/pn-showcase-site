@@ -2,13 +2,14 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Loading from "src/components/loading";
+const urlPattern = /^(https?:\/\/)[a-z0-9._?=\-/]+$/i;
 
 export type ShowcaseConfig = {
-  MAP_API_KEY: string;
+  API_BASE_URL: string;
 };
 
 const isConfigValid = (config: ShowcaseConfig | null): config is ShowcaseConfig => {
-  return config !== null && typeof config.MAP_API_KEY === "string" && config.MAP_API_KEY.trim() !== "";
+  return !!config && typeof config.API_BASE_URL === "string" && urlPattern.test(config.API_BASE_URL);
 };
 
 const ConfigContext = createContext<ShowcaseConfig | null>(null);
