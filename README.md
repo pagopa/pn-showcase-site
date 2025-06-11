@@ -1,3 +1,7 @@
+## Setup Env variables (development)
+
+Copy `public/conf/config-dev.json` in file `public/conf/config.json`
+
 ## Run app in local
 
 The store locator file is hosted in the `web-landing-cdn` S3 bucket at:  

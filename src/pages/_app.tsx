@@ -7,18 +7,24 @@ import { theme } from "@pagopa/mui-italia";
 import Loading from "../components/loading";
 import { LangProvider } from "../context/lang-context";
 import "../styles/default.css";
+import { ConfigProvider } from "src/context/config-context";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const translationLoading = !pageProps.lang && !pageProps.translations;
 
   return (
-    <ThemeProvider theme={theme}>
-      <LangProvider lang={pageProps.lang} translations={pageProps.translations}>
-        {translationLoading && <Loading />}
+    <ConfigProvider>
+      <ThemeProvider theme={theme}>
+        <LangProvider
+          lang={pageProps.lang}
+          translations={pageProps.translations}
+        >
+          {translationLoading && <Loading />}
 
-        <Component {...pageProps} />
-      </LangProvider>
-    </ThemeProvider>
+          <Component {...pageProps} />
+        </LangProvider>
+      </ThemeProvider>
+    </ConfigProvider>
   );
 }
 
