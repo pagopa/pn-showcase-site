@@ -1,5 +1,6 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Map } from "react-map-gl/maplibre";
+import { useConfig } from "src/context/config-context";
 import { RaddOperator } from "src/model";
 
 type Props = {
@@ -7,11 +8,11 @@ type Props = {
 };
 
 const PickupPointsMap: React.FC<Props> = ({ points }) => {
-  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+  const { CLOUDFRONT_MAP_URL } = useConfig();
 
   return (
     <Map
-      mapStyle={`https://maps.geo.eu-central-1.amazonaws.com/v2/styles/Standard/descriptor?key=${API_KEY}`}
+      mapStyle={CLOUDFRONT_MAP_URL}
       initialViewState={{
         longitude: 12.482802,
         latitude: 41.895679,

@@ -1,3 +1,4 @@
 {
-  "API_BASE_URL": "https://webapi.dev.notifichedigitali.it"
+  "API_BASE_URL": "https://webapi.dev.notifichedigitali.it",
+  "CLOUDFRONT_MAP_URL": "https://dv249nb28g8ie.cloudfront.net/v2/styles/Standard/descriptor"
 }
