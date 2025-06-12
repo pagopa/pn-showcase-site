@@ -5,7 +5,6 @@ type Return = {
   userPosition: Coordinates | null;
   geocodingError: string | null;
   deniedAccess: boolean;
-  clearError: () => void;
 };
 
 const useCurrentPosition = (): Return => {
@@ -13,7 +12,10 @@ const useCurrentPosition = (): Return => {
   const [geocodingError, setGeocodingError] = useState<string | null>(null);
   const [deniedAccess, setDeniedAccess] = useState(false);
 
-  const clearError = () => setGeocodingError(null);
+  const clearErrors = () => {
+    setGeocodingError(null);
+    setDeniedAccess(false);
+  };
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -25,16 +27,23 @@ const useCurrentPosition = (): Return => {
       (position) => {
         const { latitude, longitude } = position.coords;
         setUserPosition({ latitude, longitude });
+        if (geocodingError || deniedAccess) {
+          clearErrors();
+        }
       },
       (error) => {
-        if (error.code !== error.PERMISSION_DENIED) {
-          setGeocodingError("geolocation-error");
-        } else {
+        if (error.code === error.PERMISSION_DENIED) {
           setDeniedAccess(true);
+          setGeocodingError(null);
+          return;
         }
+
+        setGeocodingError("geolocation-error");
+        setDeniedAccess(false);
       },
       {
         timeout: 10000,
+        enableHighAccuracy: true,
       }
     );
   }, []);
@@ -43,7 +52,6 @@ const useCurrentPosition = (): Return => {
     userPosition,
     geocodingError,
     deniedAccess,
-    clearError,
   };
 };
 

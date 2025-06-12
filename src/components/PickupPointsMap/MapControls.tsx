@@ -1,7 +1,7 @@
-import { Add, CopyAll, GpsFixed, GpsOff, Remove } from "@mui/icons-material";
-import { Box, Button, ButtonGroup, Paper, Stack } from "@mui/material";
+import { Add, GpsFixed, GpsOff, Remove } from "@mui/icons-material";
+import { Button, ButtonGroup, Paper, Stack, Typography } from "@mui/material";
 import { ButtonNaked } from "@pagopa/mui-italia";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMap } from "react-map-gl/maplibre";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
@@ -10,8 +10,10 @@ import SnackBar from "../SnackBar/SnackBar";
 const MapControls: React.FC = () => {
   const map = useMap();
   const { t } = useTranslation(["pickup"]);
-  const { deniedAccess, userPosition } = useCurrentPosition();
-  const [showDeniedSnackBar, setShowDeniedSnackBar] = useState(false);
+  const { deniedAccess, geocodingError, userPosition } = useCurrentPosition();
+  const [showErrorSnackBar, setShowErrorSnackBar] = useState(false);
+
+  const hasError = deniedAccess || geocodingError;
 
   const onClickZoomIn = () => {
     map.current?.zoomIn();
@@ -31,19 +33,45 @@ const MapControls: React.FC = () => {
       return;
     }
 
-    if (deniedAccess) {
-      setShowDeniedSnackBar(true);
+    if (hasError) {
+      setShowErrorSnackBar(true);
       return;
     }
   };
 
   const getGpsIcon = () => {
-    return deniedAccess ? (
+    return hasError ? (
       <GpsOff color="disabled" fontSize="small" />
     ) : (
       <GpsFixed color="primary" fontSize="small" />
     );
   };
+
+  const getErrorMessage = () => {
+    if (deniedAccess) {
+      return (
+        <Stack direction="column" justifyContent="start" spacing={1}>
+          <Typography variant="body2">{t("geolocation-denied")}</Typography>
+          <ButtonNaked
+            color="primary"
+            sx={{ fontSize: "16px", justifyContent: "flex-start" }}
+          >
+            {t("geolocation-denied-cta")}
+          </ButtonNaked>
+        </Stack>
+      );
+    }
+
+    if (geocodingError) {
+      return <Typography variant="body2">{t(`${geocodingError}`)}</Typography>;
+    }
+  };
+
+  useEffect(() => {
+    if (!showErrorSnackBar && hasError) {
+      setShowErrorSnackBar(true);
+    }
+  }, [geocodingError, deniedAccess]);
 
   return (
     <>
@@ -80,22 +108,11 @@ const MapControls: React.FC = () => {
       </Stack>
 
       <SnackBar
-        open={showDeniedSnackBar}
-        alertSeverity="warning"
-        message={
-          <Box display="flex" alignItems="center" gap={2}>
-            {t("geolocation-denied")}
-            <ButtonNaked
-              color="primary"
-              startIcon={<CopyAll />}
-              sx={{ fontSize: "16px" }}
-            >
-              {t("geolocation-denied-cta")}
-            </ButtonNaked>
-          </Box>
-        }
-        onClose={() => setShowDeniedSnackBar(false)}
-        snackBarPosition={{ vertical: "top", horizontal: "center" }}
+        open={showErrorSnackBar}
+        alertSeverity={deniedAccess ? "warning" : "error"}
+        message={getErrorMessage()}
+        onClose={() => setShowErrorSnackBar(false)}
+        snackBarPosition={{ vertical: "bottom", horizontal: "right" }}
       />
     </>
   );

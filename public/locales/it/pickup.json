@@ -46,9 +46,9 @@
   },
   "show-details": "Mostra dettagli",
   "reservation-call": "Per prenotare chiama il",
-  "geolocation-not-supported": "Il browser non supporta la geolocalizzazione",
-  "geolocation-error": "Il sistema ha riscontrato un errore nella geolocalizzazione",
-  "geolocation-denied": "La tua posizione può essere mostrata solo quando i servizi di localizzazione sono abilitati",
-  "geolocation-denied-cta": "Scopri come",
+  "geolocation-not-supported": "Questo browser non supporta la geolocalizzazione. Prova ad accedere con un altro browser per continuare.",
+  "geolocation-error": "Si è verificato un problema con la geolocalizzazione. Ricarica la pagina e riprova.",
+  "geolocation-denied": "La tua posizione può essere mostrata solo quando i servizi di localizzazione del browser sono abilitati.",
+  "geolocation-denied-cta": "Scopri come ripristinare la posizione",
   "show-more": "Carica altri risultati"
 }
