@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMap from "src/components/PickupPointsMap";
 import PickupPointsInfoDrawer from "src/components/Ritiro/PickupPointsInfoDrawer";
-import SnackBar from "src/components/SnackBar/SnackBar";
 import Tabs from "src/components/Tabs";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { getI18n } from "../../api/i18n";
@@ -44,7 +43,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
 
-  const { userPosition, geocodingError, clearError } = useCurrentPosition();
+  const { userPosition } = useCurrentPosition();
 
   let hasData = false;
 
@@ -95,13 +94,6 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
         type="text/javascript"
         id="iframe-resizer-child"
         strategy="beforeInteractive"
-      />
-
-      <SnackBar
-        open={!!geocodingError}
-        message={t(`${geocodingError}`)}
-        alertSeverity="error"
-        onClose={clearError}
       />
 
       <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>
