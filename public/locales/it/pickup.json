@@ -50,5 +50,8 @@
   "geolocation-error": "Si è verificato un problema con la geolocalizzazione. Ricarica la pagina e riprova.",
   "geolocation-denied": "La tua posizione può essere mostrata solo quando i servizi di localizzazione del browser sono abilitati.",
   "geolocation-denied-cta": "Scopri come ripristinare la posizione",
-  "show-more": "Carica altri risultati"
+  "show-more": "Carica altri risultati",
+  "map-loading-error-1": "Si è verificato un problema durante il caricamento della mappa.",
+  "map-loading-error-2": "Prova a ricaricarla oppure consulta direttamente la lista dei punti di ritiro disponibili.",
+  "map-loading-error-cta": "Prova di nuovo"
 }

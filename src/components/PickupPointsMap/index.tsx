@@ -1,13 +1,14 @@
+import { fitMapToPoints } from "@utils/map";
 import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
+import { useIsMobile } from "src/hook/useIsMobile";
 import { Coordinates, RaddOperator } from "src/model";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
+import MapError from "./MapError";
 import UserPositionController from "./UserPositionController";
-import { useIsMobile } from "src/hook/useIsMobile";
-import { fitMapToPoints } from "@utils/map";
 
 type Props = {
   points: Array<RaddOperator>;
@@ -24,6 +25,7 @@ const PickupPointsMap: React.FC<Props> = ({
   setSelectedPoint,
   toggleDrawer,
 }) => {
+  const [mapError, setMapError] = useState(false);
   const mapRef = useRef<MapRef>(null);
   const isMobile = useIsMobile();
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
@@ -89,10 +91,17 @@ const PickupPointsMap: React.FC<Props> = ({
     }
   }, [searchCoordinates]);
 
+  const handleRetry = () => {
+    setMapError(false);
+  };
+
+  if (mapError) {
+    return <MapError handleRetry={handleRetry} />;
+  }
+
   return (
     <Map
       ref={mapRef}
-      // mapStyle="https://dv249nb28g8ie.cloudfront.net/v2/styles/Standard/descriptor"
       mapStyle={`https://maps.geo.eu-central-1.amazonaws.com/v2/styles/Standard/descriptor?key=${API_KEY}`}
       initialViewState={{
         longitude: 12.482802,
@@ -100,6 +109,7 @@ const PickupPointsMap: React.FC<Props> = ({
         zoom: 10,
       }}
       minZoom={5}
+      onError={() => setMapError(true)}
       interactiveLayerIds={["unclustered-points"]}
       onClick={handleMapClick}
       onLoad={handleLoad}
