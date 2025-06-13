@@ -28,6 +28,7 @@ interface Props {
   renderValue?: (value: string, index: number) => React.ReactNode;
   onInputChange?: (value: string) => void;
   onSelect?: (value: string) => void;
+  avoidLocalFiltering?: boolean;
 }
 
 function isIosDevice() {
@@ -51,6 +52,7 @@ const MuiItaliaAutocomplete = ({
   renderValue,
   onInputChange,
   onSelect,
+  avoidLocalFiltering = false,
 }: Props) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -64,7 +66,7 @@ const MuiItaliaAutocomplete = ({
 
   const popperOpen = isOpen && !!inputValue;
   const filteredOptions =
-    inputValue.trim() === ""
+    inputValue.trim() === "" || avoidLocalFiltering
       ? options
       : options.filter((option) =>
           option.toLowerCase().includes(inputValue.toLowerCase())

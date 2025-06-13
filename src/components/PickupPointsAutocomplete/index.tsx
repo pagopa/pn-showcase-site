@@ -1,16 +1,18 @@
+import { Place } from "@mui/icons-material";
+import { Stack, Typography } from "@mui/material";
 import React, { useCallback, useState } from "react";
 import { AddressResult, Coordinates } from "src/model";
 import MuiItaliaAutocomplete from "../MuiItaliaAutocomplete";
-import { Stack, Typography } from "@mui/material";
-import { Place } from "@mui/icons-material";
 
 const BASE_URL = "https://webapi.dev.notifichedigitali.it/location";
 
 interface Props {
-  setTargetPoint: (coordinates: Coordinates) => void;
+  setSearchCoordinates: (coordinates: Coordinates) => void;
 }
 
-const PickupPointsAutocomplete: React.FC<Props> = ({ setTargetPoint }) => {
+const PickupPointsAutocomplete: React.FC<Props> = ({
+  setSearchCoordinates,
+}) => {
   const [addresses, setAddresses] = useState<AddressResult[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -51,7 +53,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({ setTargetPoint }) => {
 
       const coordinates: Coordinates = await response.json();
 
-      setTargetPoint(coordinates);
+      setSearchCoordinates(coordinates);
     } catch (error: any) {
       console.error("Error getting coordinates:", error);
     } finally {
@@ -91,6 +93,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({ setTargetPoint }) => {
   const options = addresses.map((addr) => addr.address.Label || "");
 
   const renderItem = (index: number) => {
+    console.log(index);
     const item = addresses[index];
     const placeType = item.placeType;
 
@@ -132,6 +135,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({ setTargetPoint }) => {
       renderValue={(_, index) => renderItem(index)}
       hasClearIcon
       hideArrow
+      avoidLocalFiltering
     />
   );
 };

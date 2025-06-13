@@ -5,6 +5,7 @@ import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 import Papa from "papaparse";
 import { useEffect, useState } from "react";
+import PickupPointsAutocomplete from "src/components/PickupPointsAutocomplete";
 import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMap from "src/components/PickupPointsMap";
 import PickupPointsInfoDrawer from "src/components/Ritiro/PickupPointsInfoDrawer";
@@ -12,7 +13,6 @@ import Tabs from "src/components/Tabs";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
-import PickupPointsAutocomplete from "src/components/PickupPointsAutocomplete";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -35,14 +35,15 @@ export async function getStaticProps({
 
 type MOBILE_TABS = "list" | "map";
 
-const MappaPuntiDiRitiroPage: NextPage = () => {
+const PickupPointsPage: NextPage = () => {
   const { t } = useTranslation(["pickup", "common"]);
 
   const [selectedTab, setSelectedTab] = useState<MOBILE_TABS>("list");
   const [points, setPoints] = useState<RaddOperator[]>([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
-  const [targetPoint, setTargetPoint] = useState<Coordinates | null>(null);
+  const [searchCoordinates, setSearchCoordinates] =
+    useState<Coordinates | null>(null);
 
   const handleChangeTab = (tabIndex: number) => {
     setSelectedTab(tabIndex === 1 ? "map" : "list");
@@ -104,7 +105,9 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
             {t("how-it-works")}
           </Link>
 
-          <PickupPointsAutocomplete setTargetPoint={setTargetPoint} />
+          <PickupPointsAutocomplete
+            setSearchCoordinates={setSearchCoordinates}
+          />
 
           <Box sx={{ display: { xs: "flex", md: "none" }, my: 3 }}>
             <Tabs
@@ -129,6 +132,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
               toggleDrawer={toggleDrawer}
               setSelectedPoint={setSelectedPoint}
               selectedPoint={selectedPoint}
+              searchCoordinates={searchCoordinates}
             />
           </Box>
         </Grid>
@@ -151,7 +155,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
               selectedPoint={selectedPoint}
               setSelectedPoint={setSelectedPoint}
               toggleDrawer={toggleDrawer}
-              targetPoint={targetPoint}
+              searchCoordinates={searchCoordinates}
             />
           </Box>
         </Grid>
@@ -166,4 +170,4 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
   );
 };
 
-export default MappaPuntiDiRitiroPage;
+export default PickupPointsPage;

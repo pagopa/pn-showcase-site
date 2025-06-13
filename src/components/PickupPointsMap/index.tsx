@@ -12,7 +12,7 @@ import { fitMapToPoints } from "@utils/map";
 type Props = {
   points: Array<RaddOperator>;
   selectedPoint: RaddOperator | null;
-  targetPoint: Coordinates | null;
+  searchCoordinates: Coordinates | null;
   setSelectedPoint: (point: RaddOperator | null) => void;
   toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
@@ -20,7 +20,7 @@ type Props = {
 const PickupPointsMap: React.FC<Props> = ({
   points,
   selectedPoint,
-  targetPoint,
+  searchCoordinates,
   setSelectedPoint,
   toggleDrawer,
 }) => {
@@ -84,10 +84,10 @@ const PickupPointsMap: React.FC<Props> = ({
   }, [selectedPoint, mapRef]);
 
   useEffect(() => {
-    if (targetPoint && mapRef.current) {
-      fitMapToPoints(targetPoint, points, mapRef.current);
+    if (searchCoordinates && mapRef.current) {
+      fitMapToPoints(searchCoordinates, points, mapRef.current);
     }
-  }, [targetPoint]);
+  }, [searchCoordinates]);
 
   return (
     <Map
