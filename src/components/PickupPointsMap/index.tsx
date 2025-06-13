@@ -1,13 +1,15 @@
+import { Typography } from "@mui/material";
 import { fitMapToPoints } from "@utils/map";
 import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
 import { useIsMobile } from "src/hook/useIsMobile";
+import { useTranslation } from "src/hook/useTranslation";
 import { Coordinates, RaddOperator } from "src/model";
+import ErrorBox from "../ErrorBox";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
-import MapError from "./MapError";
 import UserPositionController from "./UserPositionController";
 
 type Props = {
@@ -25,9 +27,10 @@ const PickupPointsMap: React.FC<Props> = ({
   setSelectedPoint,
   toggleDrawer,
 }) => {
-  const [mapError, setMapError] = useState(false);
+  const { t } = useTranslation(["pickup"]);
   const mapRef = useRef<MapRef>(null);
   const isMobile = useIsMobile();
+  const [mapError, setMapError] = useState(false);
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
   const handleLoad = async (event: MapLibreEvent) => {
@@ -96,7 +99,16 @@ const PickupPointsMap: React.FC<Props> = ({
   };
 
   if (mapError) {
-    return <MapError handleRetry={handleRetry} />;
+    return (
+      <ErrorBox handleRetry={handleRetry} retryLabel={t("retry-cta")}>
+        <Typography variant="body2" color="text.secondary" fontWeight={600}>
+          {t("map-loading-error-1")}
+        </Typography>
+        <Typography variant="body2" color="text.secondary" fontWeight={600}>
+          {t("map-loading-error-2")}
+        </Typography>
+      </ErrorBox>
+    );
   }
 
   return (
