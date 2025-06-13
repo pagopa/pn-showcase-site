@@ -44,7 +44,7 @@ function isIosDevice() {
 const MuiItaliaAutocomplete = ({
   options,
   label = "Cerca Indirizzo",
-  placeholder = "Cerca un indirizzo",
+  placeholder,
   noResultsText = "Nessun risultato",
   hideArrow = false,
   hasClearIcon,

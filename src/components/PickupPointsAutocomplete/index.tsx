@@ -1,8 +1,9 @@
 import { Place } from "@mui/icons-material";
-import { Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import React, { useCallback, useState } from "react";
 import { AddressResult, Coordinates } from "src/model";
 import MuiItaliaAutocomplete from "../MuiItaliaAutocomplete";
+import { useTranslation } from "src/hook/useTranslation";
 
 const BASE_URL = "https://webapi.dev.notifichedigitali.it/location";
 
@@ -13,6 +14,7 @@ interface Props {
 const PickupPointsAutocomplete: React.FC<Props> = ({
   setSearchCoordinates,
 }) => {
+  const { t } = useTranslation(["pickup"]);
   const [addresses, setAddresses] = useState<AddressResult[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -75,7 +77,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     } else {
       setAddresses([]);
     }
-  }, 300);
+  }, 500);
 
   const handleAddressSelect = (selectedAddress: string) => {
     const selectedResult = addresses.find(
@@ -111,14 +113,16 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     };
 
     return (
-      <Stack direction="row">
-        <Place sx={{ color: "text.secondary", fontSize: "16px" }} />
-        <Stack direction="column">
+      <Stack>
+        <Stack direction="row" display="flex" alignItems="center" spacing={1}>
+          <Place sx={{ color: "text.secondary", fontSize: "16px" }} />
+
           <Typography fontWeight="600">{getTitle()}</Typography>
-          <Typography variant="body2" color="text.secondary">
-            {getSubtitle()}
-          </Typography>
         </Stack>
+
+        <Typography variant="body2" color="text.secondary" ml={3}>
+          {getSubtitle()}
+        </Typography>
       </Stack>
     );
   };
@@ -126,9 +130,9 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
   return (
     <MuiItaliaAutocomplete
       options={options}
-      sx={{ mt: 2 }}
-      label="Cerca Indirizzo"
-      placeholder="Cerca indirizzo o città"
+      sx={{ mt: 4 }}
+      label={t("autocomplete-label")}
+      placeholder={t("autocomplete-label")}
       noResultsText={loading ? "Caricamento..." : "Nessun risultato"}
       onInputChange={handleInputChange}
       onSelect={handleAddressSelect}
