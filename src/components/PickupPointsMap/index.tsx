@@ -105,7 +105,6 @@ const PickupPointsMap: React.FC<Props> = ({
       onLoad={handleLoad}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      reuseMaps
       style={{ height: "100%", width: "100%", position: "relative" }}
     >
       <UserPositionController points={points} />

@@ -1,6 +1,6 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
-import { mapPoint, sortPointsByDistance } from "@utils/map";
+import { mapPoint } from "@utils/map";
 import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 import Papa from "papaparse";
@@ -8,9 +8,7 @@ import { useEffect, useState } from "react";
 import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMap from "src/components/PickupPointsMap";
 import PickupPointsInfoDrawer from "src/components/Ritiro/PickupPointsInfoDrawer";
-import SnackBar from "src/components/SnackBar/SnackBar";
 import Tabs from "src/components/Tabs";
-import useCurrentPosition from "src/hook/useCurrentPosition";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
@@ -46,10 +44,6 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
   const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
   const [targetPoint, setTargetPoint] = useState<Coordinates | null>(null);
 
-  const { userPosition, geocodingError, clearError } = useCurrentPosition();
-
-  let hasData = false;
-
   const handleChangeTab = (tabIndex: number) => {
     setSelectedTab(tabIndex === 1 ? "map" : "list");
   };
@@ -62,33 +56,25 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
   };
 
   useEffect(() => {
-    if (!hasData) {
-      hasData = true;
-      const csvFilePath = "/static/documents/radd-stores-registry.csv";
-      Papa.parse(csvFilePath, {
-        download: true,
-        header: true,
-        complete: (result) => {
-          if (result.data && result.data.length > 0) {
-            setPoints(
-              (result.data as Point[])
-                .filter((point) => point.latitudine && point.longitudine)
-                .map((e, index) => mapPoint(e, index))
-            );
-          }
-        },
-        error: (error) => {
-          console.error("Error parsing CSV:", error);
-        },
-      });
-    }
-  }, []);
+    const csvFilePath = "/static/documents/radd-stores-registry.csv";
+    Papa.parse(csvFilePath, {
+      download: true,
+      header: true,
+      complete: async (result) => {
+        if (result.data && result.data.length > 0) {
+          const data = result.data as Array<Point>;
+          const pickupPoints = data.map((point, index) =>
+            mapPoint(point, index)
+          );
 
-  useEffect(() => {
-    if (userPosition || targetPoint) {
-      setPoints(sortPointsByDistance(points, userPosition, targetPoint));
-    }
-  }, [userPosition, targetPoint]);
+          setPoints(pickupPoints);
+        }
+      },
+      error: (error) => {
+        console.error("Error parsing CSV:", error);
+      },
+    });
+  }, []);
 
   return (
     <>
@@ -97,13 +83,6 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
         type="text/javascript"
         id="iframe-resizer-child"
         strategy="beforeInteractive"
-      />
-
-      <SnackBar
-        open={!!geocodingError}
-        message={t(`${geocodingError}`)}
-        alertSeverity="error"
-        onClose={clearError}
       />
 
       <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>
@@ -150,8 +129,6 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
               toggleDrawer={toggleDrawer}
               setSelectedPoint={setSelectedPoint}
               selectedPoint={selectedPoint}
-              setPoints={setPoints}
-              userPosition={userPosition}
             />
           </Box>
         </Grid>

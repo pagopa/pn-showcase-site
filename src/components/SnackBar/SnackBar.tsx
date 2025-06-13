@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import {
   Alert,
   AlertColor,
@@ -50,7 +48,7 @@ const SnackBar: React.FC<Props> = ({
       <Alert
         severity={alertSeverity}
         sx={{
-          width: { xs: "calc(100vw - 10%)", md: "100%" },
+          width: { xs: "calc(100vw - 15%)", md: "360px" },
           "& .MuiAlert-message": {
             width: "100%",
           },

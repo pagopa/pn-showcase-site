@@ -82,7 +82,8 @@ const RitiroPage: NextPage = () => {
     }
   }, []);
 
-  const initialRaddOperators: RaddOperator[] = points.map((e) => ({
+  const initialRaddOperators: RaddOperator[] = points.map((e, index) => ({
+    id: index,
     type: e.tipologia,
     denomination: e.descrizione,
     city: e.città,
@@ -101,8 +102,6 @@ const RitiroPage: NextPage = () => {
     friday: e.venerdi,
     saturday: e.sabato,
     sunday: e.domenica,
-    latitude: Number(e.latitudine),
-    longitude: Number(e.longitudine),
   }));
 
   const handleInputChange = (event: any) => {

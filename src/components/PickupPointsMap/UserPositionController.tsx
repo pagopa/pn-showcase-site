@@ -2,7 +2,7 @@ import { fitMapToPoints } from "@utils/map";
 import React, { useEffect } from "react";
 import { Marker, useMap } from "react-map-gl/maplibre";
 import useCurrentPosition from "src/hook/useCurrentPosition";
-import { Coordinates, RaddOperator } from "src/model";
+import { RaddOperator } from "src/model";
 
 type Props = {
   points?: Array<RaddOperator>;
