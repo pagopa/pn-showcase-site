@@ -4,6 +4,8 @@ import { useTranslation } from "src/hook/useTranslation";
 import { AddressResult, Coordinates } from "src/model";
 import MuiItaliaAutocomplete from "../MuiItaliaAutocomplete";
 import AddressItem from "./AddressItem";
+import EmptyState from "./EmptyState";
+import ErrorState from "./ErrorState";
 
 const BASE_URL = "https://webapi.dev.notifichedigitali.it/location";
 const SEARCH_DELAY = 500;
@@ -26,46 +28,43 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation(["pickup"]);
   const [addresses, setAddresses] = useState<AddressResult[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [shouldShowEmptyState, setShouldShowEmptyState] = useState(false);
 
   const searchAddresses = async (query: string): Promise<void> => {
     try {
-      setLoading(true);
-
       const url = createApiUrl("searchAddress", { address: query });
       const response = await fetch(url);
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`Error status: ${response.status}`);
       }
 
       const data = await response.json();
       setAddresses(data.data || []);
+      setHasError(false);
     } catch (error) {
       console.error("Error searching addresses:", error);
       setAddresses([]);
-    } finally {
-      setLoading(false);
+      setHasError(true);
     }
   };
 
   const getCoordinates = async (placeId: string): Promise<void> => {
     try {
-      setLoading(true);
-
       const url = createApiUrl("getPlaceCoordinates", { placeId });
       const response = await fetch(url);
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`Error status: ${response.status}`);
       }
 
       const coordinates: Coordinates = await response.json();
       setSearchCoordinates(coordinates);
+      setHasError(false);
     } catch (error) {
       console.error("Error getting coordinates:", error);
-    } finally {
-      setLoading(false);
+      setHasError(true);
     }
   };
 
@@ -81,8 +80,10 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     debounce((query: string) => {
       if (query.length >= MIN_QUERY_LENGTH) {
         searchAddresses(query);
+        setShouldShowEmptyState(true);
       } else {
         setAddresses([]);
+        setShouldShowEmptyState(false);
       }
     }, SEARCH_DELAY),
     [debounce]
@@ -107,8 +108,13 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     return <AddressItem address={address} />;
   };
 
+  const renderEmptyState = () => {
+    if (!shouldShowEmptyState) return <></>;
+
+    return hasError ? <ErrorState /> : <EmptyState />;
+  };
+
   const options = addresses.map((addr) => addr.address.Label || "");
-  const noResultsText = loading ? "Caricamento..." : "Nessun risultato";
 
   return (
     <MuiItaliaAutocomplete
@@ -116,13 +122,13 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
       sx={{ mt: 4 }}
       label={t("autocomplete-label")}
       placeholder={t("autocomplete-label")}
-      noResultsText={noResultsText}
       onInputChange={handleInputChange}
       onSelect={handleAddressSelect}
       renderValue={(_, index) => renderItem(index)}
       hasClearIcon
       hideArrow
       avoidLocalFiltering
+      emptyState={renderEmptyState()}
     />
   );
 };

@@ -15,7 +15,7 @@ import {
   Theme,
   Typography,
 } from "@mui/material";
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import { MouseEvent, ReactNode, useEffect, useRef, useState } from "react";
 
 interface Props {
   options: string[];
@@ -24,11 +24,12 @@ interface Props {
   noResultsText?: string;
   hideArrow?: boolean;
   hasClearIcon?: boolean;
+  avoidLocalFiltering?: boolean;
+  emptyState?: ReactNode;
   sx?: SxProps<Theme>;
   renderValue?: (value: string, index: number) => React.ReactNode;
   onInputChange?: (value: string) => void;
   onSelect?: (value: string) => void;
-  avoidLocalFiltering?: boolean;
 }
 
 function isIosDevice() {
@@ -47,12 +48,13 @@ const MuiItaliaAutocomplete = ({
   placeholder,
   noResultsText = "Nessun risultato",
   hideArrow = false,
-  hasClearIcon,
+  hasClearIcon = false,
+  avoidLocalFiltering = false,
+  emptyState,
   sx,
   renderValue,
   onInputChange,
   onSelect,
-  avoidLocalFiltering = false,
 }: Props) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -257,6 +259,7 @@ const MuiItaliaAutocomplete = ({
             ref={listboxRef}
             role="listbox"
             aria-labelledby={inputId}
+            sx={{ p: 0 }}
           >
             {filteredOptions.length > 0 ? (
               filteredOptions.map((option, index) => (
@@ -283,8 +286,12 @@ const MuiItaliaAutocomplete = ({
                 </ListItem>
               ))
             ) : (
-              <ListItem role="presentation">
-                <Typography color="text.secondary">{noResultsText}</Typography>
+              <ListItem role="presentation" sx={{ p: 0 }}>
+                {emptyState || (
+                  <Typography color="text.secondary">
+                    {noResultsText}
+                  </Typography>
+                )}
               </ListItem>
             )}
           </List>
