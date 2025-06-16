@@ -1,4 +1,4 @@
 {
   "API_BASE_URL": "https://webapi.dev.notifichedigitali.it",
-  "CLOUDFRONT_MAP_URL": "https://maps.geo.eu-central-1.amazonaws.com/v2/styles/Standard/descriptor"
+  "CLOUDFRONT_MAP_URL": "https://d2xp89w05r7vx.cloudfront.net/v2/styles/Standard/descriptor"
 }
