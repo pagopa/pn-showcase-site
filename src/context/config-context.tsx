@@ -6,10 +6,17 @@ const urlPattern = /^(https?:\/\/)[a-z0-9._?=\-/]+$/i;
 
 export type ShowcaseConfig = {
   API_BASE_URL: string;
+  CLOUDFRONT_MAP_URL: string;
 };
 
-const isConfigValid = (config: ShowcaseConfig | null): config is ShowcaseConfig => {
-  return !!config && typeof config.API_BASE_URL === "string" && urlPattern.test(config.API_BASE_URL);
+const isConfigValid = (
+  config: ShowcaseConfig | null
+): config is ShowcaseConfig => {
+  return (
+    !!config &&
+    urlPattern.test(config.API_BASE_URL) &&
+    urlPattern.test(config.CLOUDFRONT_MAP_URL)
+  );
 };
 
 const ConfigContext = createContext<ShowcaseConfig | null>(null);
@@ -49,5 +56,7 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }) => {
   }
   if (!config) return <Loading />;
 
-  return <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>;
+  return (
+    <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>
+  );
 };

@@ -99,6 +99,8 @@ const RitiroPage: NextPage = () => {
     friday: e.venerdi,
     saturday: e.sabato,
     sunday: e.domenica,
+    latitude: Number(e.latitudine),
+    longitude: Number(e.longitudine),
   }));
 
   const handleInputChange = (event: any) => {
@@ -297,6 +299,11 @@ const RitiroPage: NextPage = () => {
         >
           {getContent()}
         </Stack>
+        <PointInfoDrawer
+          isOpen={isDrawerOpen}
+          toggleDrawer={toggleDrawer}
+          point={selectedPoint}
+        />
       </Box>
 
       <PointInfoDrawer
