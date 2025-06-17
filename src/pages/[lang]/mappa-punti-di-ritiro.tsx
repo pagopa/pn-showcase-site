@@ -1,5 +1,6 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
+import { sortPointsByDistance } from "@utils/map";
 import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 import Papa from "papaparse";
@@ -7,6 +8,7 @@ import { useEffect, useState } from "react";
 import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMap from "src/components/PickupPointsMap";
 import Tabs from "src/components/Tabs";
+import useCurrentPosition from "src/hook/useCurrentPosition";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
@@ -37,6 +39,8 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
 
   const [selectedTab, setSelectedTab] = useState<MOBILE_TABS>("list");
   const [points, setPoints] = useState<Point[]>([]);
+
+  const { userPosition } = useCurrentPosition();
 
   let hasData = false;
 
@@ -86,7 +90,9 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
       type: e.tipologia,
     }));
 
-  let rowsToSet: RaddOperator[] | null = initialRaddOperators;
+  let rowsToSet: RaddOperator[] | null = userPosition
+    ? sortPointsByDistance(initialRaddOperators, userPosition)
+    : initialRaddOperators;
 
   return (
     <>
@@ -104,6 +110,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
           <Typography mt={2} mb={1} color="textPrimary" variant="body2">
             {t("search.description_1")}
             <strong>{t("search.description_2")}</strong>.{" "}
+            {t("search.description_3")}
           </Typography>
 
           <Link

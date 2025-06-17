@@ -2,10 +2,10 @@
   "title": "SEND - Servizio Notifiche digitali | Punti di ritiro SEND",
   "description": "Cerca il Punto di ritiro SEND più vicino a te per ritirare una copia degli atti notificati o scoprire se c'è un avviso di avvenuta ricezione a te destinato",
   "search": {
-    "title": "Trova un Punto di ritiro SEND",
-    "description_1": "Quando ricevi una comunicazione a valore legale tramite SEND puoi ritirare una copia stampata dei documenti notificati presso gli ",
+    "title": "Cerca un Punto di ritiro SEND",
+    "description_1": "Quando ricevi una comunicazione a valore legale tramite SEND puoi richiedere una copia dei documenti notificati presso gli ",
     "description_2": "esercenti convenzionati",
-    "description_3": "Cerca i punti di ritiro più vicini a te.",
+    "description_3": "Il servizio è in attivazione progressiva su tutto il territorio nazionale.",
     "disclaimer": "Al momento puoi cercare solo fra i punti di ritiro presenti in alcuni Comuni italiani: il servizio è in attivazione progressiva su tutto il territorio nazionale.",
     "placeholder": "Cerca città, CAP o sigla provincia (es. RM per Roma)",
     "empty_state_1": "Non sembrano essere disponibili punti di ritiro SEND in questa località.",
@@ -46,5 +46,9 @@
   },
   "show-details": "Mostra dettagli",
   "reservation-call": "Per prenotare chiama il",
+  "geolocation-not-supported": "Questo browser non supporta la geolocalizzazione. Prova ad accedere con un altro browser per continuare.",
+  "geolocation-error": "Si è verificato un problema con la geolocalizzazione. Ricarica la pagina e riprova.",
+  "geolocation-denied": "La tua posizione può essere mostrata solo quando i servizi di localizzazione del browser sono abilitati.",
+  "geolocation-denied-cta": "Scopri come ripristinare la posizione",
   "show-more": "Carica altri risultati"
 }
