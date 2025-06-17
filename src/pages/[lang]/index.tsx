@@ -4,7 +4,6 @@ import { GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { getI18n } from "src/api/i18n";
-import { useConfig } from "src/context/config-context";
 import LangContext from "src/context/lang-context";
 import { LangCode } from "src/model";
 
@@ -30,7 +29,6 @@ export async function getStaticProps({
 const Homepage = () => {
   const { lang } = useContext(LangContext);
   const { push } = useRouter();
-  const config = useConfig();
 
   const redirectToInternalPage = (page: string) => {
     if (langCodes.includes(lang)) {
@@ -53,6 +51,12 @@ const Homepage = () => {
         Punti di ritiro
       </Button>
       <Button
+        onClick={() => redirectToInternalPage("/mappa-punti-di-ritiro")}
+        sx={{ width: "200px" }}
+      >
+        Mappa Punti di ritiro
+      </Button>
+      <Button
         onClick={() =>
           redirectToInternalPage(
             "/send-in-numeri-283d8d30-e558-4ef6-9083-8f4ef9f8b8c5"
@@ -62,9 +66,6 @@ const Homepage = () => {
       >
         SEND in numeri
       </Button>
-
-      {/* TODO remove */}
-      <p>API BASE URL: {config.API_BASE_URL}</p>
     </Stack>
   );
 };

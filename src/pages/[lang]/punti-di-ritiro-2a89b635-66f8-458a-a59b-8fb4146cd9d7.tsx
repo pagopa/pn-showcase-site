@@ -92,6 +92,8 @@ const RitiroPage: NextPage = () => {
     region: e.regione,
     cap: e.cap,
     contacts: e.telefono,
+    latitude: Number(e.latitudine),
+    longitude: Number(e.longitudine),
     monday: e.lunedi,
     tuesday: e.martedi,
     wednesday: e.mercoledi,
@@ -297,6 +299,11 @@ const RitiroPage: NextPage = () => {
         >
           {getContent()}
         </Stack>
+        <PointInfoDrawer
+          isOpen={isDrawerOpen}
+          toggleDrawer={toggleDrawer}
+          point={selectedPoint}
+        />
       </Box>
 
       <PointInfoDrawer
