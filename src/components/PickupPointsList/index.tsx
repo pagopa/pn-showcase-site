@@ -66,6 +66,8 @@ function PickupPointsList({
     if (listItems && targetIndex !== -1) {
       const targetItem = listItems[targetIndex];
       targetItem.scrollIntoView({ behavior: "smooth", block: "center" });
+    } else {
+      listContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -79,16 +81,14 @@ function PickupPointsList({
       return;
     }
 
-    if (isPointVisibleInCurrentList(selectedPoint)) {
-      // Point is visible so scroll to it
-      scrollToItem(selectedPoint);
-    } else {
-      // Point is not visible sort by this point
+    if (!isPointVisibleInCurrentList(selectedPoint)) {
       setCustomSortTarget({
         latitude: selectedPoint.latitude,
         longitude: selectedPoint.longitude,
       });
     }
+
+    scrollToItem(selectedPoint);
   }, [selectedPoint]);
 
   return (
