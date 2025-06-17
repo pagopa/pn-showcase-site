@@ -15,6 +15,12 @@ interface Props {
   setSearchCoordinates: (coordinates: Coordinates) => void;
 }
 
+interface FetchError {
+  type: "searchAddresses" | "getCoordinates";
+  lastQuery?: string;
+  lastPlaceId?: string;
+}
+
 const createApiUrl = (endpoint: string, params: Record<string, string>) => {
   const searchParams = new URLSearchParams();
   Object.entries(params).forEach(([key, value]) => {
@@ -28,12 +34,12 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation(["pickup"]);
   const [addresses, setAddresses] = useState<AddressResult[]>([]);
-  const [hasError, setHasError] = useState(false);
+  const [fetchError, setFetchError] = useState<FetchError | null>(null);
   const [shouldShowEmptyState, setShouldShowEmptyState] = useState(false);
 
   const searchAddresses = async (query: string): Promise<void> => {
     try {
-      const url = createApiUrl("searchAddress", { address: query });
+      const url = createApiUrl("searcAddress", { address: query });
       const response = await fetch(url);
 
       if (!response.ok) {
@@ -42,11 +48,13 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 
       const data = await response.json();
       setAddresses(data.data || []);
-      setHasError(false);
+      setFetchError(null);
     } catch (error) {
-      console.error("Error searching addresses:", error);
       setAddresses([]);
-      setHasError(true);
+      setFetchError({
+        type: "searchAddresses",
+        lastQuery: query,
+      });
     }
   };
 
@@ -61,10 +69,12 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 
       const coordinates: Coordinates = await response.json();
       setSearchCoordinates(coordinates);
-      setHasError(false);
+      setFetchError(null);
     } catch (error) {
-      console.error("Error getting coordinates:", error);
-      setHasError(true);
+      setFetchError({
+        type: "getCoordinates",
+        lastPlaceId: placeId,
+      });
     }
   };
 
@@ -108,10 +118,24 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     return <AddressItem address={address} />;
   };
 
+  const handleRetry = () => {
+    if (!fetchError) return;
+
+    if (fetchError.type === "searchAddresses" && fetchError.lastQuery) {
+      searchAddresses(fetchError.lastQuery);
+    } else if (fetchError.type === "getCoordinates" && fetchError.lastPlaceId) {
+      getCoordinates(fetchError.lastPlaceId);
+    }
+  };
+
   const renderEmptyState = () => {
     if (!shouldShowEmptyState) return <></>;
 
-    return hasError ? <ErrorState /> : <EmptyState />;
+    return fetchError ? (
+      <ErrorState handleRetry={handleRetry} />
+    ) : (
+      <EmptyState />
+    );
   };
 
   const options = addresses.map((addr) => addr.address.Label || "");
@@ -120,8 +144,8 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     <MuiItaliaAutocomplete
       options={options}
       sx={{ mt: 4 }}
-      label={t("autocomplete-label")}
-      placeholder={t("autocomplete-label")}
+      label={t("autocomplete.label")}
+      placeholder={t("autocomplete.label")}
       onInputChange={handleInputChange}
       onSelect={handleAddressSelect}
       renderValue={(_, index) => renderItem(index)}

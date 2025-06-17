@@ -114,7 +114,8 @@ const PickupPointsMap: React.FC<Props> = ({
   return (
     <Map
       ref={mapRef}
-      mapStyle={`https://maps.geo.eu-central-1.amazonaws.com/v2/styles/Standard/descriptor?key=${API_KEY}`}
+      // mapStyle={`https://maps.geo.eu-central-1.amazonaws.com/v2/styles/Standard/descriptor?key=${API_KEY}`}
+      mapStyle="https://d2xp89w05r7vx.cloudfront.net/v2/styles/Standard/descriptor"
       initialViewState={{
         longitude: 12.482802,
         latitude: 41.895679,

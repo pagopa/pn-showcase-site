@@ -55,5 +55,10 @@
   "map-loading-error-1": "Si è verificato un problema durante il caricamento della mappa.",
   "map-loading-error-2": "Prova a ricaricarla oppure consulta direttamente la lista dei punti di ritiro disponibili.",
   "fetch-csv-error": "Si è verificato un problema durante il caricamento dei risultati.",
-  "autocomplete-label": "Cerca indirizzo o città"
+  "autocomplete": {
+    "label": "Cerca indirizzo o città",
+    "fetch-error": "Si è verificato un problema durante il caricamento degli indirizzi.",
+    "empty-state-title": "Nessuna corrispondenza trovata",
+    "empty-state-description": "Controlla i dati inseriti oppure inserisci un altro indirizzo o città."
+  }
 }

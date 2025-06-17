@@ -1,7 +1,10 @@
 import { LocationOff } from "@mui/icons-material";
 import { Stack, Typography } from "@mui/material";
+import { useTranslation } from "src/hook/useTranslation";
 
 const EmptyState = () => {
+  const { t } = useTranslation(["pickup"]);
+
   return (
     <Stack
       spacing={1}
@@ -18,7 +21,7 @@ const EmptyState = () => {
     >
       <LocationOff sx={{ color: "text.secondary" }} />
       <Typography fontWeight={600} fontSize="18px" color="textSecondary">
-        Nessuna corrispondenza trovata
+        {t("autocomplete.empty-state-title")}
       </Typography>
       <Typography
         color="textSecondary"
@@ -26,7 +29,7 @@ const EmptyState = () => {
         fontSize="16px"
         fontWeight={400}
       >
-        Prova a modificare la tua ricerca cambiando l’indirizzo o città.
+        {t("autocomplete.empty-state-description")}
       </Typography>
     </Stack>
   );

@@ -1,8 +1,14 @@
 import { WarningAmber } from "@mui/icons-material";
-import { Stack, Typography } from "@mui/material";
-import { ButtonNaked } from "@pagopa/mui-italia";
+import { Button, Stack, Typography } from "@mui/material";
+import { useTranslation } from "src/hook/useTranslation";
 
-const ErrorState = () => {
+interface Props {
+  handleRetry: () => void;
+}
+
+const ErrorState: React.FC<Props> = ({ handleRetry }) => {
+  const { t } = useTranslation(["pickup"]);
+
   return (
     <Stack
       spacing={1}
@@ -24,9 +30,11 @@ const ErrorState = () => {
         fontSize="18px"
         fontWeight={600}
       >
-        Si è verificato un problema durante il caricamento degli indirizzi.
+        {t("autocomplete.fetch-error")}
       </Typography>
-      <ButtonNaked color="primary">Prova di nuovo</ButtonNaked>
+      <Button variant="naked" color="primary" onClick={handleRetry}>
+        {t("retry-cta")}
+      </Button>
     </Stack>
   );
 };
