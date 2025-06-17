@@ -2,11 +2,12 @@ import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
+import { useConfig } from "src/context/config-context";
+import { useIsMobile } from "src/hook/useIsMobile";
 import { RaddOperator } from "src/model";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
 import UserPositionController from "./UserPositionController";
-import { useIsMobile } from "src/hook/useIsMobile";
 
 type Props = {
   points: Array<RaddOperator>;
@@ -23,7 +24,7 @@ const PickupPointsMap: React.FC<Props> = ({
 }) => {
   const mapRef = useRef<MapRef>(null);
   const isMobile = useIsMobile();
-  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+  const { CLOUDFRONT_MAP_URL } = useConfig();
 
   const handleLoad = async (event: MapLibreEvent) => {
     const map = event.target;
@@ -83,7 +84,7 @@ const PickupPointsMap: React.FC<Props> = ({
   return (
     <Map
       ref={mapRef}
-      mapStyle={`https://maps.geo.eu-central-1.amazonaws.com/v2/styles/Standard/descriptor?key=${API_KEY}`}
+mapStyle={CLOUDFRONT_MAP_URL}
       initialViewState={{
         longitude: 12.482802,
         latitude: 41.895679,
