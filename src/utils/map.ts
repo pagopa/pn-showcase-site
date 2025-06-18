@@ -1,49 +1,98 @@
 import { LngLatBoundsLike } from "maplibre-gl";
 import { MapRef } from "react-map-gl/maplibre";
-import { Coordinates, RaddOperator } from "src/model";
+import { Coordinates, Point, RaddOperator } from "src/model";
 
 /**
- * Sorts an array of points by their distance from the user's coordinates using the Haversine formula.
+ * Sort an array of points by their distance from a reference point using the Haversine formula.
  *
- * @param {RaddOperator[]} rows - Array of points, each with latitude and longitude properties
- * @param {{ latitude: number, longitude: number }} userCoordinates - The user's current geographic location
- * @returns {Array<RaddOperator>} A new array of points augmented with distance values, sorted by proximity to the user
+ * The function handles two different reference points:
+ * - Sorting reference: Uses targetPoint if provided, otherwise userCoordinates
+ * - Distance display: Uses userCoordinates if provided, otherwise targetPoint
+ *
+ * @param {RaddOperator[]} rows - Array of points
+ * @param {Coordinates | null} userCoordinates - The user location
+ * @param {Coordinates | null} targetPoint - Optional target point for sorting reference
+ * @returns {Array<RaddOperator>} A new array of points with distance values (in km),
+ * sorted by proximity to the sorting reference point
  */
 export function sortPointsByDistance(
   rows: RaddOperator[],
-  userCoordinates: {
-    latitude: number;
-    longitude: number;
-  }
+  userCoordinates: Coordinates | null,
+  targetPoint: Coordinates | null = null
 ): Array<RaddOperator> {
+  const sortingReference = targetPoint || userCoordinates;
+  const distanceReference = userCoordinates || targetPoint;
+
+  if (!sortingReference) {
+    return rows;
+  }
+
   return rows
     .map((row) => {
-      if (!row.latitude || !row.longitude) return undefined;
-      const toRad = (value: number) => (value * Math.PI) / 180;
-      const R = 6371;
+      const sortingDistance = calculateDistance(
+        sortingReference.latitude,
+        sortingReference.longitude,
+        row.latitude,
+        row.longitude
+      );
 
-      const dLat = toRad(row.latitude - userCoordinates.latitude);
-      const dLon = toRad(row.longitude - userCoordinates.longitude);
+      // Calculate distance for display (from user position if available)
+      const displayDistance = distanceReference
+        ? calculateDistance(
+            distanceReference.latitude,
+            distanceReference.longitude,
+            row.latitude,
+            row.longitude
+          )
+        : sortingDistance;
 
-      const lat1 = toRad(userCoordinates.latitude);
-      const lat2 = toRad(row.latitude);
-
-      const a =
-        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.sin(dLon / 2) *
-          Math.sin(dLon / 2) *
-          Math.cos(lat1) *
-          Math.cos(lat2);
-      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      const distance = R * c;
-
-      return { ...row, distance };
+      return {
+        ...row,
+        distance: displayDistance,
+        _sortingDistance: sortingDistance,
+      };
     })
     .filter(
       (item): item is Exclude<typeof item, undefined> => item !== undefined
     )
-    .sort((a, b) => a.distance - b.distance);
+    .sort((a, b) => a._sortingDistance - b._sortingDistance)
+    .map(({ _sortingDistance, ...item }) => item);
 }
+
+/**
+ * Calculates distance between two points using the Haversine formula.
+ *
+ * @param {number} lat1 - Latitude of the first point
+ * @param {number} lon1 - Longitude of the first point
+ * @param {number} lat2 - Latitude of the second point
+ * @param {number} lon2 - Longitude of the second point
+ * @returns {number} Distance between the two points in kilometers
+ */
+const calculateDistance = (
+  lat1: number,
+  lon1: number,
+  lat2: number,
+  lon2: number
+): number => {
+  const toRad = (value: number) => (value * Math.PI) / 180;
+  const R = 6371;
+
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+
+  const radLat1 = toRad(lat1);
+  const radLat2 = toRad(lat2);
+
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.sin(dLon / 2) *
+      Math.sin(dLon / 2) *
+      Math.cos(radLat1) *
+      Math.cos(radLat2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  return R * c;
+};
 
 /**
  * Adjusts the map viewport to include the user's position and the nearest points.
@@ -83,3 +132,32 @@ export const fitMapToPoints = (
     center: [userPosition.longitude, userPosition.latitude],
   });
 };
+
+/**
+ * Maps a CSV row (point) to the frontend model (RaddOperator)
+ *
+ * @param {Point} point - The point object from the CSV
+ * @param {number} index - The index of the point in the array
+ * @returns {RaddOperator} The mapped RaddOperator object
+ */
+export const mapPoint = (point: Point, index: number): RaddOperator => ({
+  id: index,
+  denomination: point.descrizione,
+  city: point.città,
+  address: point.via,
+  normalizedAddress: point.indirizzo_AWS.replace(", Italia", ""),
+  province: point.provincia,
+  region: point.regione,
+  cap: point.cap,
+  contacts: point.telefono,
+  latitude: Number(point.latitudine),
+  longitude: Number(point.longitudine),
+  monday: point.lunedi,
+  tuesday: point.martedi,
+  wednesday: point.mercoledi,
+  thursday: point.giovedi,
+  friday: point.venerdi,
+  saturday: point.sabato,
+  sunday: point.domenica,
+  type: point.tipologia,
+});

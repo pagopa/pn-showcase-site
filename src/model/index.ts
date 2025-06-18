@@ -16,6 +16,7 @@ export interface OpeningDays {
 }
 
 export interface RaddOperator extends OpeningDays, Coordinates {
+  id: number;
   denomination: string;
   type: string;
   city: string;

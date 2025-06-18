@@ -1,14 +1,14 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
-import { sortPointsByDistance } from "@utils/map";
+import { mapPoint } from "@utils/map";
 import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 import Papa from "papaparse";
 import { useEffect, useState } from "react";
 import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMap from "src/components/PickupPointsMap";
+import PickupPointsInfoDrawer from "src/components/Ritiro/PickupPointsInfoDrawer";
 import Tabs from "src/components/Tabs";
-import useCurrentPosition from "src/hook/useCurrentPosition";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
@@ -38,61 +38,41 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
   const { t } = useTranslation(["pickup", "common"]);
 
   const [selectedTab, setSelectedTab] = useState<MOBILE_TABS>("list");
-  const [points, setPoints] = useState<Point[]>([]);
-
-  const { userPosition } = useCurrentPosition();
-
-  let hasData = false;
+  const [points, setPoints] = useState<RaddOperator[]>([]);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
 
   const handleChangeTab = (tabIndex: number) => {
     setSelectedTab(tabIndex === 1 ? "map" : "list");
   };
 
-  useEffect(() => {
-    if (!hasData) {
-      hasData = true;
-      const csvFilePath = "/static/documents/radd-stores-registry.csv";
-      Papa.parse(csvFilePath, {
-        download: true,
-        header: true,
-        complete: (result) => {
-          if (result.data && result.data.length > 0) {
-            setPoints(result.data as Point[]);
-          }
-        },
-        error: (error) => {
-          console.error("Error parsing CSV:", error);
-        },
-      });
+  const toggleDrawer = (open: boolean, pickupPoint?: RaddOperator | null) => {
+    setIsDrawerOpen(open);
+    if (pickupPoint) {
+      setSelectedPoint(pickupPoint);
     }
+  };
+
+  useEffect(() => {
+    const csvFilePath = "/static/documents/radd-stores-registry.csv";
+    Papa.parse(csvFilePath, {
+      download: true,
+      header: true,
+      complete: async (result) => {
+        if (result.data && result.data.length > 0) {
+          const data = result.data as Array<Point>;
+          const pickupPoints = data.map((point, index) =>
+            mapPoint(point, index)
+          );
+
+          setPoints(pickupPoints);
+        }
+      },
+      error: (error) => {
+        console.error("Error parsing CSV:", error);
+      },
+    });
   }, []);
-
-  const initialRaddOperators: RaddOperator[] = points
-    .filter((point) => point.latitudine && point.longitudine)
-    .map((e) => ({
-      denomination: e.descrizione,
-      city: e.città,
-      address: e.via,
-      normalizedAddress: e.indirizzo_AWS.replace(", Italia", ""),
-      province: e.provincia,
-      region: e.regione,
-      cap: e.cap,
-      contacts: e.telefono,
-      latitude: Number(e.latitudine),
-      longitude: Number(e.longitudine),
-      monday: e.lunedi,
-      tuesday: e.martedi,
-      wednesday: e.mercoledi,
-      thursday: e.giovedi,
-      friday: e.venerdi,
-      saturday: e.sabato,
-      sunday: e.domenica,
-      type: e.tipologia,
-    }));
-
-  let rowsToSet: RaddOperator[] | null = userPosition
-    ? sortPointsByDistance(initialRaddOperators, userPosition)
-    : initialRaddOperators;
 
   return (
     <>
@@ -140,7 +120,12 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
               },
             }}
           >
-            <PickupPointsList rows={rowsToSet} />
+            <PickupPointsList
+              points={points}
+              toggleDrawer={toggleDrawer}
+              setSelectedPoint={setSelectedPoint}
+              selectedPoint={selectedPoint}
+            />
           </Box>
         </Grid>
 
@@ -157,10 +142,21 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
           }}
         >
           <Box sx={{ width: "100%", height: "1000px" }}>
-            <PickupPointsMap points={rowsToSet} />
+            <PickupPointsMap
+              points={points}
+              selectedPoint={selectedPoint}
+              setSelectedPoint={setSelectedPoint}
+              toggleDrawer={toggleDrawer}
+            />
           </Box>
         </Grid>
       </Grid>
+
+      <PickupPointsInfoDrawer
+        isOpen={isDrawerOpen}
+        point={selectedPoint}
+        toggleDrawer={toggleDrawer}
+      />
     </>
   );
 };

@@ -82,7 +82,8 @@ const RitiroPage: NextPage = () => {
     }
   }, []);
 
-  const initialRaddOperators: RaddOperator[] = points.map((e) => ({
+  const initialRaddOperators: RaddOperator[] = points.map((e, index) => ({
+    id: index,
     type: e.tipologia,
     denomination: e.descrizione,
     city: e.città,
@@ -299,11 +300,6 @@ const RitiroPage: NextPage = () => {
         >
           {getContent()}
         </Stack>
-        <PointInfoDrawer
-          isOpen={isDrawerOpen}
-          toggleDrawer={toggleDrawer}
-          point={selectedPoint}
-        />
       </Box>
 
       <PointInfoDrawer

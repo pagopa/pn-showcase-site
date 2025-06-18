@@ -31,7 +31,12 @@ export const unclusteredPointLayer: LayerProps = {
   source: "stores",
   filter: ["!=", "cluster", true],
   layout: {
-    "icon-image": "base-marker",
+    "icon-image": [
+      "case",
+      ["get", "isSelected"],
+      "selected-marker",
+      "base-marker",
+    ],
     "icon-size": ["interpolate", ["linear"], ["zoom"], 10, 0.8, 15, 1],
     "icon-allow-overlap": true,
     "icon-ignore-placement": true,
