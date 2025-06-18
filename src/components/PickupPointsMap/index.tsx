@@ -84,7 +84,7 @@ const PickupPointsMap: React.FC<Props> = ({
   return (
     <Map
       ref={mapRef}
-mapStyle={CLOUDFRONT_MAP_URL}
+      mapStyle={CLOUDFRONT_MAP_URL}
       initialViewState={{
         longitude: 12.482802,
         latitude: 41.895679,
