@@ -50,7 +50,7 @@ const MapControls: React.FC = () => {
   };
 
   const navigateToAssistancePage = () => {
-    window.open(GEOLOCATION_ASSISTANCE_URL, "_blank");
+    window.open(GEOLOCATION_ASSISTANCE_URL, "_blank", "noopener,noreferrer");
   };
 
   const getErrorMessage = () => {
