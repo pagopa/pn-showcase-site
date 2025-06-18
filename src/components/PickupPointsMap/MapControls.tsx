@@ -6,10 +6,12 @@ import { useMap } from "react-map-gl/maplibre";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
 import SnackBar from "../SnackBar/SnackBar";
+import { useConfig } from "src/context/config-context";
 
 const MapControls: React.FC = () => {
   const map = useMap();
   const { t } = useTranslation(["pickup"]);
+  const { GEOLOCATION_ASSISTANCE_URL } = useConfig();
   const { deniedAccess, geocodingError, userPosition } = useCurrentPosition();
   const [showErrorSnackBar, setShowErrorSnackBar] = useState(false);
 
@@ -47,6 +49,10 @@ const MapControls: React.FC = () => {
     );
   };
 
+  const navigateToAssistancePage = () => {
+    window.open(GEOLOCATION_ASSISTANCE_URL, "_blank");
+  };
+
   const getErrorMessage = () => {
     if (deniedAccess) {
       return (
@@ -55,6 +61,7 @@ const MapControls: React.FC = () => {
           <ButtonNaked
             color="primary"
             sx={{ fontSize: "16px", justifyContent: "flex-start" }}
+            onClick={() => navigateToAssistancePage()}
           >
             {t("geolocation-denied-cta")}
           </ButtonNaked>

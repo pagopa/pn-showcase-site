@@ -2,11 +2,13 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Loading from "src/components/loading";
+
 const urlPattern = /^(https?:\/\/)[a-z0-9._?=\-/]+$/i;
 
 export type ShowcaseConfig = {
   API_BASE_URL: string;
   CLOUDFRONT_MAP_URL: string;
+  GEOLOCATION_ASSISTANCE_URL: string;
 };
 
 const isConfigValid = (
@@ -15,7 +17,8 @@ const isConfigValid = (
   return (
     !!config &&
     urlPattern.test(config.API_BASE_URL) &&
-    urlPattern.test(config.CLOUDFRONT_MAP_URL)
+    urlPattern.test(config.CLOUDFRONT_MAP_URL) &&
+    urlPattern.test(config.GEOLOCATION_ASSISTANCE_URL)
   );
 };
 
