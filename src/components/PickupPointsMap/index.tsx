@@ -1,6 +1,6 @@
 import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
 import { useConfig } from "src/context/config-context";
 import { useIsMobile } from "src/hook/useIsMobile";
@@ -25,6 +25,7 @@ const PickupPointsMap: React.FC<Props> = ({
   const mapRef = useRef<MapRef>(null);
   const isMobile = useIsMobile();
   const { CLOUDFRONT_MAP_URL } = useConfig();
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const handleLoad = async (event: MapLibreEvent) => {
     const map = event.target;
@@ -34,6 +35,7 @@ const PickupPointsMap: React.FC<Props> = ({
     );
     map.addImage("base-marker", baseMaker.data);
     map.addImage("selected-marker", selectedMarker.data);
+    setImagesLoaded(true);
   };
 
   const handleMapClick = (event: MapLayerMouseEvent) => {
@@ -100,7 +102,9 @@ const PickupPointsMap: React.FC<Props> = ({
     >
       <UserPositionController points={points} />
       <MapControls />
-      <Clusters points={points} selectedPoint={selectedPoint} />
+      {imagesLoaded && (
+        <Clusters points={points} selectedPoint={selectedPoint} />
+      )}
     </Map>
   );
 };
