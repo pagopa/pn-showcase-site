@@ -286,7 +286,7 @@ const MuiItaliaAutocomplete = ({
                 </ListItem>
               ))
             ) : (
-              <ListItem role="presentation" sx={{ p: 0 }}>
+              <ListItem role="option" sx={{ p: 0 }}>
                 {emptyState || (
                   <Typography color="text.secondary">
                     {noResultsText}

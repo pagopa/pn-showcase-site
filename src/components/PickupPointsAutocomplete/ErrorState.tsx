@@ -1,12 +1,8 @@
 import { WarningAmber } from "@mui/icons-material";
-import { Button, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { useTranslation } from "src/hook/useTranslation";
 
-interface Props {
-  handleRetry: () => void;
-}
-
-const ErrorState: React.FC<Props> = ({ handleRetry }) => {
+const ErrorState: React.FC = () => {
   const { t } = useTranslation(["pickup"]);
 
   return (
@@ -32,9 +28,6 @@ const ErrorState: React.FC<Props> = ({ handleRetry }) => {
       >
         {t("autocomplete.fetch-error")}
       </Typography>
-      <Button variant="naked" color="primary" onClick={handleRetry}>
-        {t("retry-cta")}
-      </Button>
     </Stack>
   );
 };

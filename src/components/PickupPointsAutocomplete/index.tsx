@@ -15,12 +15,6 @@ interface Props {
   setSearchCoordinates: (coordinates: Coordinates) => void;
 }
 
-interface FetchError {
-  type: "searchAddresses" | "getCoordinates";
-  lastQuery?: string;
-  lastPlaceId?: string;
-}
-
 const createApiUrl = (endpoint: string, params: Record<string, string>) => {
   const searchParams = new URLSearchParams();
   Object.entries(params).forEach(([key, value]) => {
@@ -34,12 +28,13 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation(["pickup"]);
   const [addresses, setAddresses] = useState<AddressResult[]>([]);
-  const [fetchError, setFetchError] = useState<FetchError | null>(null);
+  const [fetchError, setFetchError] = useState<boolean>(false);
   const [shouldShowEmptyState, setShouldShowEmptyState] = useState(false);
 
   const searchAddresses = async (query: string): Promise<void> => {
     try {
-      const url = createApiUrl("searcAddress", { address: query });
+      setFetchError(false);
+      const url = createApiUrl("searchAddress", { address: query });
       const response = await fetch(url);
 
       if (!response.ok) {
@@ -48,18 +43,15 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 
       const data = await response.json();
       setAddresses(data.data || []);
-      setFetchError(null);
     } catch (error) {
       setAddresses([]);
-      setFetchError({
-        type: "searchAddresses",
-        lastQuery: query,
-      });
+      setFetchError(true);
     }
   };
 
   const getCoordinates = async (placeId: string): Promise<void> => {
     try {
+      setFetchError(false);
       const url = createApiUrl("getPlaceCoordinates", { placeId });
       const response = await fetch(url);
 
@@ -69,12 +61,8 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 
       const coordinates: Coordinates = await response.json();
       setSearchCoordinates(coordinates);
-      setFetchError(null);
     } catch (error) {
-      setFetchError({
-        type: "getCoordinates",
-        lastPlaceId: placeId,
-      });
+      setFetchError(true);
     }
   };
 
@@ -118,24 +106,10 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     return <AddressItem address={address} />;
   };
 
-  const handleRetry = () => {
-    if (!fetchError) return;
-
-    if (fetchError.type === "searchAddresses" && fetchError.lastQuery) {
-      searchAddresses(fetchError.lastQuery);
-    } else if (fetchError.type === "getCoordinates" && fetchError.lastPlaceId) {
-      getCoordinates(fetchError.lastPlaceId);
-    }
-  };
-
   const renderEmptyState = () => {
     if (!shouldShowEmptyState) return <></>;
 
-    return fetchError ? (
-      <ErrorState handleRetry={handleRetry} />
-    ) : (
-      <EmptyState />
-    );
+    return fetchError ? <ErrorState /> : <EmptyState />;
   };
 
   const options = addresses.map((addr) => addr.address.Label || "");

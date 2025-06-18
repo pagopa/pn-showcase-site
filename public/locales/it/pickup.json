@@ -52,13 +52,13 @@
   "geolocation-denied-cta": "Scopri come ripristinare la posizione",
   "show-more": "Carica altri risultati",
   "retry-cta": "Prova di nuovo",
-  "map-loading-error-1": "Si è verificato un problema durante il caricamento della mappa.",
-  "map-loading-error-2": "Prova a ricaricarla oppure consulta direttamente la lista dei punti di ritiro disponibili.",
+  "map-loading-error-1": "Qualcosa non va nel caricamento della mappa.",
+  "map-loading-error-2": "Premi “Prova di nuovo”. Nel frattempo puoi consultare i Punti di ritiro SEND dalla lista.",
   "fetch-csv-error": "Si è verificato un problema durante il caricamento dei risultati.",
   "autocomplete": {
     "label": "Cerca indirizzo o città",
-    "fetch-error": "Si è verificato un problema durante il caricamento degli indirizzi.",
-    "empty-state-title": "Nessuna corrispondenza trovata",
+    "fetch-error": "Qualcosa non va nel caricamento degli indirizzi. Riprova.",
+    "empty-state-title": "Non ci sono corrispondenze da mostrare",
     "empty-state-description": "Controlla i dati inseriti oppure inserisci un altro indirizzo o città."
   }
 }
