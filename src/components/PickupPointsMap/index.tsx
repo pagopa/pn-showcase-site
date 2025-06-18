@@ -11,6 +11,7 @@ import ErrorBox from "../ErrorBox";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
 import UserPositionController from "./UserPositionController";
+import { useConfig } from "src/context/config-context";
 
 type Props = {
   points: Array<RaddOperator>;
@@ -31,7 +32,8 @@ const PickupPointsMap: React.FC<Props> = ({
   const mapRef = useRef<MapRef>(null);
   const isMobile = useIsMobile();
   const [mapError, setMapError] = useState(false);
-  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+  const { CLOUDFRONT_MAP_URL } = useConfig();
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const handleLoad = async (event: MapLibreEvent) => {
     const map = event.target;
@@ -41,6 +43,7 @@ const PickupPointsMap: React.FC<Props> = ({
     );
     map.addImage("base-marker", baseMaker.data);
     map.addImage("selected-marker", selectedMarker.data);
+    setImagesLoaded(true);
   };
 
   const handleMapClick = (event: MapLayerMouseEvent) => {
@@ -114,8 +117,7 @@ const PickupPointsMap: React.FC<Props> = ({
   return (
     <Map
       ref={mapRef}
-      // mapStyle={`https://maps.geo.eu-central-1.amazonaws.com/v2/styles/Standard/descriptor?key=${API_KEY}`}
-      mapStyle="https://d2xp89w05r7vx.cloudfront.net/v2/styles/Standard/descriptor"
+      mapStyle={CLOUDFRONT_MAP_URL}
       initialViewState={{
         longitude: 12.482802,
         latitude: 41.895679,
@@ -132,7 +134,9 @@ const PickupPointsMap: React.FC<Props> = ({
     >
       <UserPositionController points={points} />
       <MapControls />
-      <Clusters points={points} selectedPoint={selectedPoint} />
+      {imagesLoaded && (
+        <Clusters points={points} selectedPoint={selectedPoint} />
+      )}
     </Map>
   );
 };

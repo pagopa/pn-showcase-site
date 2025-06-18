@@ -36,3 +36,6 @@ yarn-error.log*
 
 # store locator csv
 /public/static/documents/radd-stores-registry.csv
+
+# conf
+/public/conf/config.json
