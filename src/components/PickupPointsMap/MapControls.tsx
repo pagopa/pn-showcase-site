@@ -1,12 +1,18 @@
 import { Add, GpsFixed, GpsOff, Remove } from "@mui/icons-material";
-import { Button, ButtonGroup, Paper, Stack, Typography } from "@mui/material";
-import { ButtonNaked } from "@pagopa/mui-italia";
+import {
+  Button,
+  ButtonGroup,
+  Link,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import { useMap } from "react-map-gl/maplibre";
+import { useConfig } from "src/context/config-context";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
 import SnackBar from "../SnackBar/SnackBar";
-import { useConfig } from "src/context/config-context";
 
 const MapControls: React.FC = () => {
   const map = useMap();
@@ -49,22 +55,20 @@ const MapControls: React.FC = () => {
     );
   };
 
-  const navigateToAssistancePage = () => {
-    window.open(GEOLOCATION_ASSISTANCE_URL, "_blank", "noopener,noreferrer");
-  };
-
   const getErrorMessage = () => {
     if (deniedAccess) {
       return (
         <Stack direction="column" justifyContent="start" spacing={1}>
           <Typography variant="body2">{t("geolocation-denied")}</Typography>
-          <ButtonNaked
+          <Link
             color="primary"
-            sx={{ fontSize: "16px", justifyContent: "flex-start" }}
-            onClick={() => navigateToAssistancePage()}
+            href={GEOLOCATION_ASSISTANCE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{ fontSize: "16px", fontWeight: 700, textDecoration: "none" }}
           >
             {t("geolocation-denied-cta")}
-          </ButtonNaked>
+          </Link>
         </Stack>
       );
     }
