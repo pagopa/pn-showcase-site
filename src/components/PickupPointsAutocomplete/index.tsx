@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 
 import { useTranslation } from "src/hook/useTranslation";
 import { AddressResult, Coordinates } from "src/model";
@@ -30,6 +30,8 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
   const [addresses, setAddresses] = useState<AddressResult[]>([]);
   const [fetchError, setFetchError] = useState<boolean>(false);
   const [shouldShowEmptyState, setShouldShowEmptyState] = useState(false);
+
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const searchAddresses = async (query: string): Promise<void> => {
     try {
@@ -66,16 +68,12 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     }
   };
 
-  const debounce = useCallback((func: Function, delay: number) => {
-    let timeoutId: NodeJS.Timeout;
-    return (...args: any[]) => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => func.apply(null, args), delay);
-    };
-  }, []);
+  const debouncedSearch = useCallback((query: string) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
 
-  const debouncedSearch = useCallback(
-    debounce((query: string) => {
+    timeoutRef.current = setTimeout(() => {
       if (query.length >= MIN_QUERY_LENGTH) {
         searchAddresses(query);
         setShouldShowEmptyState(true);
@@ -83,13 +81,8 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
         setAddresses([]);
         setShouldShowEmptyState(false);
       }
-    }, SEARCH_DELAY),
-    [debounce]
-  );
-
-  const handleInputChange = (value: string): void => {
-    debouncedSearch(value);
-  };
+    }, SEARCH_DELAY);
+  }, []);
 
   const handleAddressSelect = (selectedAddress: string): void => {
     const selectedResult = addresses.find(
@@ -120,7 +113,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
       sx={{ mt: 4 }}
       label={t("autocomplete.label")}
       placeholder={t("autocomplete.label")}
-      onInputChange={handleInputChange}
+      onInputChange={debouncedSearch}
       onSelect={handleAddressSelect}
       renderOption={(_, index) => renderItem(index)}
       hasClearIcon
