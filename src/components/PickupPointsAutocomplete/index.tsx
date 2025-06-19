@@ -84,16 +84,6 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     }, SEARCH_DELAY);
   }, []);
 
-  const handleAddressSelect = (selectedAddress: string): void => {
-    const selectedResult = addresses.find(
-      (addr) => addr.address.Label === selectedAddress
-    );
-
-    if (selectedResult) {
-      getCoordinates(selectedResult.placeId);
-    }
-  };
-
   const renderItem = (index: number) => {
     const address = addresses[index];
     return <AddressItem address={address} />;
@@ -105,7 +95,10 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     return fetchError ? <ErrorState /> : <EmptyState />;
   };
 
-  const options = addresses.map((addr) => addr.address.Label || "");
+  const options = addresses.map((addr) => ({
+    id: addr.placeId,
+    label: addr.address.Label || "",
+  }));
 
   return (
     <MuiItaliaAutocomplete
@@ -114,7 +107,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
       label={t("autocomplete.label")}
       placeholder={t("autocomplete.label")}
       onInputChange={debouncedSearch}
-      onSelect={handleAddressSelect}
+      onSelect={(option) => getCoordinates(option.id.toString())}
       renderOption={(_, index) => renderItem(index)}
       hasClearIcon
       hideArrow

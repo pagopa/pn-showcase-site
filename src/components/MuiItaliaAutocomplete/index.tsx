@@ -17,8 +17,10 @@ import {
 } from "@mui/material";
 import { MouseEvent, ReactNode, useEffect, useRef, useState } from "react";
 
+type OptionType = { id: string | number; label: string };
+
 interface Props {
-  options: string[];
+  options: Array<OptionType>;
   label?: string;
   placeholder?: string;
   noResultsText?: string;
@@ -27,9 +29,9 @@ interface Props {
   avoidLocalFiltering?: boolean;
   emptyState?: ReactNode;
   sx?: SxProps<Theme>;
-  renderOption?: (value: string, index: number) => React.ReactNode;
+  renderOption?: (value: OptionType, index: number) => React.ReactNode;
   onInputChange?: (value: string) => void;
-  onSelect?: (value: string) => void;
+  onSelect?: (value: OptionType) => void;
 }
 
 function isIosDevice() {
@@ -71,7 +73,7 @@ const MuiItaliaAutocomplete = ({
     inputValue.trim() === "" || avoidLocalFiltering
       ? options
       : options.filter((option) =>
-          option.toLowerCase().includes(inputValue.toLowerCase())
+          option.label.toLowerCase().includes(inputValue.toLowerCase())
         );
 
   const handleInputBlur = () => {
@@ -89,8 +91,8 @@ const MuiItaliaAutocomplete = ({
     onInputChange?.(e.target.value);
   };
 
-  const handleOptionSelect = (option: string) => {
-    setInputValue(option);
+  const handleOptionSelect = (option: OptionType) => {
+    setInputValue(option.label);
     setIsOpen(false);
     setActiveIndex(-1);
     inputRef.current?.focus();
@@ -264,7 +266,7 @@ const MuiItaliaAutocomplete = ({
             {filteredOptions.length > 0 ? (
               filteredOptions.map((option, index) => (
                 <ListItem
-                  key={index}
+                  key={option.id}
                   id={`${listboxId}-option-${index}`}
                   role="option"
                   tabIndex={-1}
@@ -282,7 +284,7 @@ const MuiItaliaAutocomplete = ({
                   aria-posinset={index + 1}
                   aria-setsize={filteredOptions.length}
                 >
-                  {renderOption ? renderOption(option, index) : option}
+                  {renderOption ? renderOption(option, index) : option.label}
                 </ListItem>
               ))
             ) : (
