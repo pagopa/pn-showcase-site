@@ -1,5 +1,6 @@
 import React, { useCallback, useRef, useState } from "react";
 
+import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
 import { AddressResult, Coordinates } from "src/model";
 import MuiItaliaAutocomplete from "../MuiItaliaAutocomplete";
@@ -27,6 +28,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
   setSearchCoordinates,
 }) => {
   const { t } = useTranslation(["pickup"]);
+  const { userPosition } = useCurrentPosition();
   const [addresses, setAddresses] = useState<AddressResult[]>([]);
   const [fetchError, setFetchError] = useState<boolean>(false);
   const [shouldShowEmptyState, setShouldShowEmptyState] = useState(false);
@@ -105,7 +107,11 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
       options={options}
       sx={{ mt: 4 }}
       label={t("autocomplete.label")}
-      placeholder={t("autocomplete.label")}
+      placeholder={
+        userPosition
+          ? t("autocomplete.current-position")
+          : t("autocomplete.label")
+      }
       onInputChange={debouncedSearch}
       onSelect={(option) => getCoordinates(option.id.toString())}
       renderOption={(_, index) => renderItem(index)}
@@ -113,6 +119,16 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
       hideArrow
       avoidLocalFiltering
       emptyState={renderEmptyState()}
+      inputStyle={
+        userPosition
+          ? {
+              "&::placeholder": {
+                color: "textPrimary",
+                opacity: 1,
+              },
+            }
+          : undefined
+      }
     />
   );
 };
