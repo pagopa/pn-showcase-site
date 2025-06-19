@@ -122,7 +122,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
       placeholder={t("autocomplete.label")}
       onInputChange={handleInputChange}
       onSelect={handleAddressSelect}
-      renderValue={(_, index) => renderItem(index)}
+      renderOption={(_, index) => renderItem(index)}
       hasClearIcon
       hideArrow
       avoidLocalFiltering

@@ -27,7 +27,7 @@ interface Props {
   avoidLocalFiltering?: boolean;
   emptyState?: ReactNode;
   sx?: SxProps<Theme>;
-  renderValue?: (value: string, index: number) => React.ReactNode;
+  renderOption?: (value: string, index: number) => React.ReactNode;
   onInputChange?: (value: string) => void;
   onSelect?: (value: string) => void;
 }
@@ -52,7 +52,7 @@ const MuiItaliaAutocomplete = ({
   avoidLocalFiltering = false,
   emptyState,
   sx,
-  renderValue,
+  renderOption,
   onInputChange,
   onSelect,
 }: Props) => {
@@ -282,7 +282,7 @@ const MuiItaliaAutocomplete = ({
                   aria-posinset={index + 1}
                   aria-setsize={filteredOptions.length}
                 >
-                  {renderValue ? renderValue(option, index) : option}
+                  {renderOption ? renderOption(option, index) : option}
                 </ListItem>
               ))
             ) : (
