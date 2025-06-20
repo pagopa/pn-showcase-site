@@ -7,6 +7,7 @@ import MuiItaliaAutocomplete from "../MuiItaliaAutocomplete";
 import AddressItem from "./AddressItem";
 import EmptyState from "./EmptyState";
 import ErrorState from "./ErrorState";
+import LoadingState from "./LoadingState";
 
 const BASE_URL = "https://webapi.dev.notifichedigitali.it/location";
 const SEARCH_DELAY = 500;
@@ -32,11 +33,13 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
   const [addresses, setAddresses] = useState<AddressResult[]>([]);
   const [fetchError, setFetchError] = useState<boolean>(false);
   const [shouldShowEmptyState, setShouldShowEmptyState] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const searchAddresses = async (query: string): Promise<void> => {
     try {
+      setIsLoading(true);
       setFetchError(false);
       const url = createApiUrl("searchAddress", { address: query });
       const response = await fetch(url);
@@ -50,6 +53,8 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     } catch (error) {
       setAddresses([]);
       setFetchError(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -93,6 +98,8 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 
   const renderEmptyState = () => {
     if (!shouldShowEmptyState) return <></>;
+
+    if (isLoading) return <LoadingState />;
 
     return fetchError ? <ErrorState /> : <EmptyState />;
   };

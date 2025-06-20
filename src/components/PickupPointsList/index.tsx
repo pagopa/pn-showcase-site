@@ -7,6 +7,7 @@ import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useIsMobile } from "src/hook/useIsMobile";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, RaddOperator } from "../../model";
+import Skeletons from "./Skeletons";
 
 const PAGE_SIZE = 5;
 
@@ -98,6 +99,10 @@ function PickupPointsList({
       setCustomSortTarget(searchCoordinates);
     }
   }, [searchCoordinates]);
+
+  if (!points || points.length === 0) {
+    return <Skeletons />;
+  }
 
   return (
     <>
