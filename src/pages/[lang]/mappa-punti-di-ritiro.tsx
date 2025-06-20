@@ -5,13 +5,15 @@ import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 import Papa from "papaparse";
 import { useEffect, useState } from "react";
+import ErrorBox from "src/components/ErrorBox";
+import PickupPointsAutocomplete from "src/components/PickupPointsAutocomplete";
 import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMap from "src/components/PickupPointsMap";
 import PickupPointsInfoDrawer from "src/components/Ritiro/PickupPointsInfoDrawer";
 import Tabs from "src/components/Tabs";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
-import { LangCode, Point, RaddOperator } from "../../model";
+import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -34,13 +36,16 @@ export async function getStaticProps({
 
 type MOBILE_TABS = "list" | "map";
 
-const MappaPuntiDiRitiroPage: NextPage = () => {
+const PickupPointsPage: NextPage = () => {
   const { t } = useTranslation(["pickup", "common"]);
 
   const [selectedTab, setSelectedTab] = useState<MOBILE_TABS>("list");
   const [points, setPoints] = useState<RaddOperator[]>([]);
+  const [fetchError, setFetchError] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
+  const [searchCoordinates, setSearchCoordinates] =
+    useState<Coordinates | null>(null);
 
   const handleChangeTab = (tabIndex: number) => {
     setSelectedTab(tabIndex === 1 ? "map" : "list");
@@ -53,7 +58,7 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
     }
   };
 
-  useEffect(() => {
+  const getData = () => {
     const csvFilePath = "/static/documents/radd-stores-registry.csv";
     Papa.parse(csvFilePath, {
       download: true,
@@ -66,12 +71,18 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
           );
 
           setPoints(pickupPoints);
+          setFetchError(false);
         }
       },
       error: (error) => {
         console.error("Error parsing CSV:", error);
+        setFetchError(true);
       },
     });
+  };
+
+  useEffect(() => {
+    getData();
   }, []);
 
   return (
@@ -83,74 +94,92 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
         strategy="beforeInteractive"
       />
 
-      <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>
-        <Grid item xs={12} md={4}>
-          <Typography variant="h4">{t("search.title")}</Typography>
+      {!fetchError ? (
+        <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>
+          <Grid item xs={12} md={4}>
+            <Typography variant="h4">{t("search.title")}</Typography>
 
-          <Typography mt={2} mb={1} color="textPrimary" variant="body2">
-            {t("search.description_1")}
-            <strong>{t("search.description_2")}</strong>.{" "}
-            {t("search.description_3")}
-          </Typography>
+            <Typography mt={2} mb={1} color="textPrimary" variant="body2">
+              {t("search.description_1")}
+              <strong>{t("search.description_2")}</strong>.{" "}
+              {t("search.description_3")}
+            </Typography>
 
-          <Link
-            href="#come-funzionano-punti-di-ritiro"
-            color="primary"
-            fontWeight={700}
-            sx={{ textDecoration: "none" }}
-          >
-            {t("how-it-works")}
-          </Link>
+            <Link
+              href="#come-funzionano-punti-di-ritiro"
+              color="primary"
+              fontWeight={700}
+              sx={{ textDecoration: "none" }}
+            >
+              {t("how-it-works")}
+            </Link>
 
-          <Box sx={{ display: { xs: "flex", md: "none" }, my: 3 }}>
-            <Tabs
-              tabs={[t("tabs.list"), t("tabs.map")]}
-              onTabChange={handleChangeTab}
-              breakOnMobile={false}
-              buttonSize="small"
-              fullWidth
+            <PickupPointsAutocomplete
+              setSearchCoordinates={setSearchCoordinates}
             />
-          </Box>
 
-          <Box
+            <Box sx={{ display: { xs: "flex", md: "none" }, my: 3 }}>
+              <Tabs
+                tabs={[t("tabs.list"), t("tabs.map")]}
+                onTabChange={handleChangeTab}
+                breakOnMobile={false}
+                buttonSize="small"
+                fullWidth
+              />
+            </Box>
+
+            <Box
+              sx={{
+                display: {
+                  xs: selectedTab === "list" ? "block" : "none",
+                  md: "block",
+                },
+              }}
+            >
+              <PickupPointsList
+                points={points}
+                toggleDrawer={toggleDrawer}
+                setSelectedPoint={setSelectedPoint}
+                selectedPoint={selectedPoint}
+                searchCoordinates={searchCoordinates}
+              />
+            </Box>
+          </Grid>
+
+          <Grid
+            item
+            xs={12}
+            md={8}
             sx={{
+              width: "100%",
               display: {
-                xs: selectedTab === "list" ? "block" : "none",
+                xs: selectedTab === "map" ? "block" : "none",
                 md: "block",
               },
             }}
           >
-            <PickupPointsList
-              points={points}
-              toggleDrawer={toggleDrawer}
-              setSelectedPoint={setSelectedPoint}
-              selectedPoint={selectedPoint}
-            />
-          </Box>
+            <Box sx={{ width: "100%", height: "1000px" }}>
+              <PickupPointsMap
+                points={points}
+                selectedPoint={selectedPoint}
+                setSelectedPoint={setSelectedPoint}
+                toggleDrawer={toggleDrawer}
+                searchCoordinates={searchCoordinates}
+              />
+            </Box>
+          </Grid>
         </Grid>
-
-        <Grid
-          item
-          xs={12}
-          md={8}
-          sx={{
-            width: "100%",
-            display: {
-              xs: selectedTab === "map" ? "block" : "none",
-              md: "block",
-            },
-          }}
+      ) : (
+        <ErrorBox
+          handleRetry={getData}
+          retryLabel={t("retry-cta")}
+          sx={{ mt: 4, mb: 2, height: "1000px" }}
         >
-          <Box sx={{ width: "100%", height: "1000px" }}>
-            <PickupPointsMap
-              points={points}
-              selectedPoint={selectedPoint}
-              setSelectedPoint={setSelectedPoint}
-              toggleDrawer={toggleDrawer}
-            />
-          </Box>
-        </Grid>
-      </Grid>
+          <Typography variant="body2" color="text.secondary" fontWeight={600}>
+            {t("fetch-csv-error")}
+          </Typography>
+        </ErrorBox>
+      )}
 
       <PickupPointsInfoDrawer
         isOpen={isDrawerOpen}
@@ -161,4 +190,4 @@ const MappaPuntiDiRitiroPage: NextPage = () => {
   );
 };
 
-export default MappaPuntiDiRitiroPage;
+export default PickupPointsPage;

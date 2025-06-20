@@ -1,17 +1,22 @@
+import { Typography } from "@mui/material";
+import { fitMapToPoints } from "@utils/map";
 import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
-import { useConfig } from "src/context/config-context";
 import { useIsMobile } from "src/hook/useIsMobile";
-import { RaddOperator } from "src/model";
+import { useTranslation } from "src/hook/useTranslation";
+import { Coordinates, RaddOperator } from "src/model";
+import ErrorBox from "../ErrorBox";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
 import UserPositionController from "./UserPositionController";
+import { useConfig } from "src/context/config-context";
 
 type Props = {
   points: Array<RaddOperator>;
   selectedPoint: RaddOperator | null;
+  searchCoordinates: Coordinates | null;
   setSelectedPoint: (point: RaddOperator | null) => void;
   toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
@@ -19,11 +24,14 @@ type Props = {
 const PickupPointsMap: React.FC<Props> = ({
   points,
   selectedPoint,
+  searchCoordinates,
   setSelectedPoint,
   toggleDrawer,
 }) => {
+  const { t } = useTranslation(["pickup"]);
   const mapRef = useRef<MapRef>(null);
   const isMobile = useIsMobile();
+  const [mapError, setMapError] = useState(false);
   const { CLOUDFRONT_MAP_URL } = useConfig();
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
@@ -83,6 +91,29 @@ const PickupPointsMap: React.FC<Props> = ({
     }
   }, [selectedPoint, mapRef]);
 
+  useEffect(() => {
+    if (searchCoordinates && mapRef.current) {
+      fitMapToPoints(searchCoordinates, points, mapRef.current);
+    }
+  }, [searchCoordinates]);
+
+  const handleRetry = () => {
+    setMapError(false);
+  };
+
+  if (mapError) {
+    return (
+      <ErrorBox handleRetry={handleRetry} retryLabel={t("retry-cta")}>
+        <Typography variant="body2" color="text.secondary" fontWeight={600}>
+          {t("map-loading-error-1")}
+        </Typography>
+        <Typography variant="body2" color="text.secondary" fontWeight={600}>
+          {t("map-loading-error-2")}
+        </Typography>
+      </ErrorBox>
+    );
+  }
+
   return (
     <Map
       ref={mapRef}
@@ -93,6 +124,7 @@ const PickupPointsMap: React.FC<Props> = ({
         zoom: 10,
       }}
       minZoom={5}
+      onError={() => setMapError(true)}
       interactiveLayerIds={["unclustered-points"]}
       onClick={handleMapClick}
       onLoad={handleLoad}

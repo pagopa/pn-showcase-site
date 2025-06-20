@@ -97,23 +97,22 @@ const calculateDistance = (
 /**
  * Adjusts the map viewport to include the user's position and the nearest points.
  *
- * @param {Coordinates} userPosition - The current location of the user
+ * @param {Coordinates} coordinates - The coordinates of the point to center
  * @param {RaddOperator[]} points - A list of points to consider for fitting on the map
  * @param {MapRef} map - Map reference
  * @param {number} pointsToFit - The number of nearest points to include in the view
  */
 export const fitMapToPoints = (
-  userPosition: Coordinates,
+  coordinates: Coordinates,
   points: RaddOperator[],
   map: MapRef,
   pointsToFit: number = 5
 ) => {
-  const sortedPoints = sortPointsByDistance(points, userPosition);
-
+  const sortedPoints = sortPointsByDistance(points, coordinates);
   const targetPoints = sortedPoints.slice(0, pointsToFit);
 
   const allCoordinates = [
-    [userPosition.longitude, userPosition.latitude],
+    [coordinates.longitude, coordinates.latitude],
     ...targetPoints.map((point) => [point.longitude!, point.latitude!]),
   ];
 
@@ -129,7 +128,7 @@ export const fitMapToPoints = (
     padding: { top: 50, bottom: 50, left: 50, right: 50 },
     maxZoom: 15,
     duration: 1500,
-    center: [userPosition.longitude, userPosition.latitude],
+    // center: [coordinates.longitude, coordinates.latitude],
   });
 };
 

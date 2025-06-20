@@ -300,6 +300,11 @@ const RitiroPage: NextPage = () => {
         >
           {getContent()}
         </Stack>
+        <PointInfoDrawer
+          isOpen={isDrawerOpen}
+          toggleDrawer={toggleDrawer}
+          point={selectedPoint}
+        />
       </Box>
 
       <PointInfoDrawer

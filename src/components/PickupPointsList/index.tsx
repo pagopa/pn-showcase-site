@@ -13,6 +13,7 @@ const PAGE_SIZE = 5;
 type Props = {
   points: RaddOperator[];
   selectedPoint: RaddOperator | null;
+  searchCoordinates: Coordinates | null;
   toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
   setSelectedPoint: (point: RaddOperator | null) => void;
 };
@@ -20,6 +21,7 @@ type Props = {
 function PickupPointsList({
   points,
   selectedPoint,
+  searchCoordinates,
   toggleDrawer,
   setSelectedPoint,
 }: Props) {
@@ -90,6 +92,12 @@ function PickupPointsList({
 
     scrollToItem(selectedPoint);
   }, [selectedPoint]);
+
+  useEffect(() => {
+    if (searchCoordinates) {
+      setCustomSortTarget(searchCoordinates);
+    }
+  }, [searchCoordinates]);
 
   return (
     <>

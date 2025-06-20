@@ -1,26 +1,38 @@
-import { ArrowDropDown, ArrowDropUp, Search } from "@mui/icons-material";
+import {
+  ArrowDropDown,
+  ArrowDropUp,
+  Cancel,
+  Search,
+} from "@mui/icons-material";
 import {
   Box,
   List,
   ListItem,
   Paper,
   Popper,
-  Stack,
   SxProps,
   TextField,
   Theme,
   Typography,
 } from "@mui/material";
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import { MouseEvent, ReactNode, useEffect, useRef, useState } from "react";
+
+type OptionType = { id: string | number; label: string };
 
 interface Props {
-  options: string[];
+  options: Array<OptionType>;
   label?: string;
   placeholder?: string;
   noResultsText?: string;
   hideArrow?: boolean;
+  hasClearIcon?: boolean;
+  avoidLocalFiltering?: boolean;
+  emptyState?: ReactNode;
   sx?: SxProps<Theme>;
-  renderValue?: (value: string) => React.ReactNode;
+  inputStyle?: SxProps<Theme>;
+  renderOption?: (value: OptionType, index: number) => React.ReactNode;
+  onInputChange?: (value: string) => void;
+  onSelect?: (value: OptionType) => void;
 }
 
 function isIosDevice() {
@@ -36,11 +48,17 @@ function isIosDevice() {
 const MuiItaliaAutocomplete = ({
   options,
   label = "Cerca Indirizzo",
-  placeholder = "Cerca un indirizzo",
+  placeholder,
   noResultsText = "Nessun risultato",
   hideArrow = false,
+  hasClearIcon = false,
+  avoidLocalFiltering = false,
+  emptyState,
   sx,
-  renderValue,
+  inputStyle,
+  renderOption,
+  onInputChange,
+  onSelect,
 }: Props) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -54,10 +72,10 @@ const MuiItaliaAutocomplete = ({
 
   const popperOpen = isOpen && !!inputValue;
   const filteredOptions =
-    inputValue.trim() === ""
+    inputValue.trim() === "" || avoidLocalFiltering
       ? options
       : options.filter((option) =>
-          option.toLowerCase().includes(inputValue.toLowerCase())
+          option.label.toLowerCase().includes(inputValue.toLowerCase())
         );
 
   const handleInputBlur = () => {
@@ -72,13 +90,15 @@ const MuiItaliaAutocomplete = ({
     setInputValue(e.target.value);
     setIsOpen(true);
     setActiveIndex(-1);
+    onInputChange?.(e.target.value);
   };
 
-  const handleOptionSelect = (option: string) => {
-    setInputValue(option);
+  const handleOptionSelect = (option: OptionType) => {
+    setInputValue(option.label);
     setIsOpen(false);
     setActiveIndex(-1);
     inputRef.current?.focus();
+    onSelect?.(option);
   };
 
   const handleOptionMouseDown = (event: MouseEvent<HTMLLIElement>) => {
@@ -133,6 +153,46 @@ const MuiItaliaAutocomplete = ({
     }
   };
 
+  const handleClearValue = () => {
+    setInputValue("");
+    setIsOpen(false);
+    setActiveIndex(-1);
+    onInputChange?.("");
+  };
+
+  const handleToggleOpen = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const getEndInputAdornment = () => {
+    const showCloseIcon = hasClearIcon && inputValue;
+    const showArrowIcon = inputValue && !hideArrow;
+
+    return (
+      <Box sx={{ gap: 1, cursor: "pointer" }}>
+        {showCloseIcon && (
+          <Box
+            onClick={handleClearValue}
+            onMouseDown={(e) => e.preventDefault()}
+            aria-hidden="true"
+            sx={{ display: "flex", alignItems: "center" }}
+          >
+            <Cancel fontSize="small" sx={{ color: "text.secondary" }} />
+          </Box>
+        )}
+        {showArrowIcon && (
+          <Box
+            onClick={handleToggleOpen}
+            aria-hidden="true"
+            sx={{ display: "flex", alignItems: "center" }}
+          >
+            {isOpen ? <ArrowDropUp /> : <ArrowDropDown />}
+          </Box>
+        )}
+      </Box>
+    );
+  };
+
   useEffect(() => {
     if (isOpen && activeIndex >= 0 && listboxRef.current) {
       const optionElement = listboxRef.current.querySelector(
@@ -143,117 +203,106 @@ const MuiItaliaAutocomplete = ({
   }, [activeIndex, isOpen]);
 
   return (
-    <Stack>
-      <Box sx={{ zIndex: 1 }}>
-        <Box position="relative" width="100%" ref={containerRef} sx={sx}>
-          <TextField
-            fullWidth
-            inputRef={inputRef}
-            value={inputValue}
-            onChange={handleInputChange}
-            onKeyDown={handleKeyDown}
-            onBlur={handleInputBlur}
-            label={label}
-            placeholder={placeholder}
-            variant="outlined"
-            autoComplete="off"
-            inputProps={{
-              role: "combobox",
-              id: inputId,
-              "aria-expanded": popperOpen,
-              "aria-controls": listboxId,
-              "aria-autocomplete": "list",
-              "aria-activedescendant":
-                activeIndex >= 0
-                  ? `${listboxId}-option-${activeIndex}`
-                  : undefined,
-            }}
-            InputProps={{
-              startAdornment: <Search />,
-              endAdornment: inputValue && !hideArrow && (
-                <Box
-                  onClick={() => setIsOpen((prev) => !prev)}
-                  sx={{ cursor: "pointer" }}
-                  aria-hidden="true"
-                >
-                  {isOpen ? <ArrowDropUp /> : <ArrowDropDown />}
-                </Box>
-              ),
-            }}
-          />
+    <Box position="relative" width="100%" ref={containerRef} sx={sx}>
+      <TextField
+        fullWidth
+        inputRef={inputRef}
+        value={inputValue}
+        onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
+        onBlur={handleInputBlur}
+        label={label}
+        placeholder={placeholder}
+        variant="outlined"
+        autoComplete="off"
+        inputProps={{
+          role: "combobox",
+          id: inputId,
+          "aria-expanded": popperOpen,
+          "aria-controls": listboxId,
+          "aria-autocomplete": "list",
+          "aria-activedescendant":
+            activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined,
+          sx: inputStyle,
+        }}
+        InputProps={{
+          startAdornment: <Search />,
+          endAdornment: getEndInputAdornment(),
+        }}
+      />
 
-          <Popper
-            open={!!(isOpen && inputValue)}
-            anchorEl={containerRef.current}
-            keepMounted
-            placement="bottom-start"
-            modifiers={[
-              {
-                name: "sameWidth",
-                enabled: true,
-                phase: "beforeWrite",
-                requires: ["computeStyles"],
-                fn: ({ state }) => {
-                  state.styles.popper.width = `${state.rects.reference.width}px`;
-                },
-              },
-            ]}
-            style={{ zIndex: 1300 }}
-            role="presentation"
+      <Popper
+        open={!!(isOpen && inputValue)}
+        anchorEl={containerRef.current}
+        keepMounted
+        placement="bottom-start"
+        modifiers={[
+          {
+            name: "sameWidth",
+            enabled: true,
+            phase: "beforeWrite",
+            requires: ["computeStyles"],
+            fn: ({ state }) => {
+              state.styles.popper.width = `${state.rects.reference.width}px`;
+            },
+          },
+        ]}
+        style={{ zIndex: 1300 }}
+        role="presentation"
+      >
+        <Paper
+          elevation={4}
+          variant="elevation"
+          sx={{
+            maxHeight: "240px",
+            overflowY: "auto",
+            my: 1,
+          }}
+        >
+          <List
+            id={listboxId}
+            ref={listboxRef}
+            role="listbox"
+            aria-labelledby={inputId}
+            sx={{ p: 0 }}
           >
-            <Paper
-              elevation={4}
-              variant="elevation"
-              sx={{
-                maxHeight: "240px",
-                overflowY: "auto",
-                my: 1,
-              }}
-            >
-              <List
-                id={listboxId}
-                ref={listboxRef}
-                role="listbox"
-                aria-labelledby={inputId}
-              >
-                {filteredOptions.length > 0 ? (
-                  filteredOptions.map((option, index) => (
-                    <ListItem
-                      key={index}
-                      id={`${listboxId}-option-${index}`}
-                      role="option"
-                      tabIndex={-1}
-                      aria-selected={index === activeIndex}
-                      onClick={() => handleOptionSelect(option)}
-                      onMouseOver={() => setActiveIndex(index)}
-                      onMouseDown={handleOptionMouseDown}
-                      sx={{
-                        cursor: "pointer",
-                        backgroundColor:
-                          index === activeIndex
-                            ? "rgba(0, 0, 0, 0.08)"
-                            : "transparent",
-                      }}
-                      aria-posinset={index + 1}
-                      aria-setsize={filteredOptions.length}
-                    >
-                      {renderValue ? renderValue(option) : option}
-                    </ListItem>
-                  ))
-                ) : (
-                  <ListItem role="presentation">
-                    <Typography color="text.secondary">
-                      {noResultsText}
-                    </Typography>
-                  </ListItem>
+            {filteredOptions.length > 0 ? (
+              filteredOptions.map((option, index) => (
+                <ListItem
+                  key={option.id}
+                  id={`${listboxId}-option-${index}`}
+                  role="option"
+                  tabIndex={-1}
+                  aria-selected={index === activeIndex}
+                  onClick={() => handleOptionSelect(option)}
+                  onMouseOver={() => setActiveIndex(index)}
+                  onMouseDown={handleOptionMouseDown}
+                  sx={{
+                    cursor: "pointer",
+                    backgroundColor:
+                      index === activeIndex
+                        ? "rgba(0, 0, 0, 0.08)"
+                        : "transparent",
+                  }}
+                  aria-posinset={index + 1}
+                  aria-setsize={filteredOptions.length}
+                >
+                  {renderOption ? renderOption(option, index) : option.label}
+                </ListItem>
+              ))
+            ) : (
+              <ListItem role="option" sx={{ p: 0 }}>
+                {emptyState || (
+                  <Typography color="text.secondary">
+                    {noResultsText}
+                  </Typography>
                 )}
-              </List>
-            </Paper>
-          </Popper>
-        </Box>
-      </Box>
-      <Box height="300px" sx={{ backgroundColor: "red", zIndex: 2 }} />
-    </Stack>
+              </ListItem>
+            )}
+          </List>
+        </Paper>
+      </Popper>
+    </Box>
   );
 };
 
