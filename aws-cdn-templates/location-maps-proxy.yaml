@@ -1,0 +1,192 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'CloudFront distribution and API Gateway proxy for AWS Location Service Maps'
+
+Parameters:
+  ProjectName:
+    Type: String
+    Description: "A unique logical name for this stack, used to prefix all created resources."
+
+  LocationServiceApiKeySecretName:
+    Type: String
+    Description: "The name of the secret in AWS Secrets Manager that holds the Location Service API Key."
+
+  MapsWebDomain:
+    Type: String
+    Description: "The custom domain for the CloudFront distribution"
+
+  MapsWebCertificateArn:
+    Type: String
+    Description: "The ARN of the ACM certificate for the custom domain (must be in us-east-1)."
+
+  HostedZoneId:
+    Type: String
+    Description: "The ID of the Route 53 Hosted Zone for the custom domain."
+
+Resources:
+  StyleDescriptorProxyApi:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: !Sub "${ProjectName}-style-api"
+      Description: "Style descriptor proxy with URL rewriting for AWS Location Service"
+      EndpointConfiguration:
+        Types:
+          - REGIONAL
+
+  StyleProxyResource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      RestApiId: !Ref StyleDescriptorProxyApi
+      ParentId: !GetAtt StyleDescriptorProxyApi.RootResourceId
+      PathPart: '{proxy+}'
+
+  StyleProxyMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref StyleDescriptorProxyApi
+      ResourceId: !Ref StyleProxyResource
+      HttpMethod: GET
+      AuthorizationType: NONE
+      RequestParameters:
+        method.request.path.proxy: true
+      Integration:
+        Type: HTTP
+        IntegrationHttpMethod: GET
+        Uri: 'https://maps.geo.eu-central-1.amazonaws.com/{proxy}'
+        RequestParameters:
+          integration.request.path.proxy: 'method.request.path.proxy'
+          integration.request.querystring.key: !Sub "'{{resolve:secretsmanager:${LocationServiceApiKeySecretName}:SecretString:Key}}'"
+        IntegrationResponses:
+          - StatusCode: 200
+            ResponseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+              method.response.header.Cache-Control: "'no-cache, no-store, must-revalidate'"
+            ResponseTemplates:
+              application/json: !Sub |
+                #set($bodyContent = $input.body)
+                #set($step1 = $bodyContent.replace("https://maps.geo.eu-central-1.amazonaws.com", "https://${LocationProxyDistribution.DomainName}"))
+                #set($apiKeyToRemove = "?key={{resolve:secretsmanager:${LocationServiceApiKeySecretName}:SecretString:Key}}")
+                $step1.replace($apiKeyToRemove, "")
+      MethodResponses:
+        - StatusCode: 200
+          ResponseParameters:
+            method.response.header.Access-Control-Allow-Origin: true
+            method.response.header.Cache-Control: true
+
+  StyleProxyOptionsMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref StyleDescriptorProxyApi
+      ResourceId: !Ref StyleProxyResource
+      HttpMethod: OPTIONS
+      AuthorizationType: NONE
+      Integration:
+        Type: MOCK
+        IntegrationResponses:
+          - StatusCode: 200
+            ResponseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+              method.response.header.Access-Control-Allow-Methods: "'GET,HEAD,OPTIONS'"
+            ResponseTemplates:
+              application/json: ''
+        RequestTemplates:
+          application/json: '{"statusCode": 200}'
+      MethodResponses:
+        - StatusCode: 200
+          ResponseParameters:
+            method.response.header.Access-Control-Allow-Origin: true
+            method.response.header.Access-Control-Allow-Methods: true
+
+  StyleApiDeployment:
+    Type: AWS::ApiGateway::Deployment
+    DependsOn:
+      - StyleProxyMethod
+      - StyleProxyOptionsMethod
+    Properties:
+      RestApiId: !Ref StyleDescriptorProxyApi
+      StageName: 'v1'
+
+  AddApiKeyToAssetsFunction:
+    Type: AWS::CloudFront::Function
+    Properties:
+      Name: !Sub "${ProjectName}-add-api-key"
+      AutoPublish: true
+      FunctionCode: !Sub |
+        function handler(event) {
+          var request = event.request;
+          var querystring = request.querystring;
+          querystring['key'] = {
+            value: '{{resolve:secretsmanager:${LocationServiceApiKeySecretName}:SecretString:Key}}'
+          };
+          return request;
+        }
+      FunctionConfig:
+        Comment: 'Adds AWS Location Service API key to asset requests'
+        Runtime: 'cloudfront-js-1.0'
+
+  LocationProxyDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Comment: "Proxy for AWS Location Service"
+        Enabled: true
+        PriceClass: 'PriceClass_100'
+        Aliases:
+          - !Ref MapsWebDomain
+        ViewerCertificate:
+          AcmCertificateArn: !Ref MapsWebCertificateArn
+          MinimumProtocolVersion: TLSv1.2_2021
+          SslSupportMethod: sni-only
+        Origins:
+          - Id: 'StyleDescriptorApiOrigin'
+            DomainName: !Sub '${StyleDescriptorProxyApi}.execute-api.${AWS::Region}.amazonaws.com'
+            OriginPath: '/v1'
+            CustomOriginConfig:
+              HTTPPort: 443
+              HTTPSPort: 443
+              OriginProtocolPolicy: 'https-only'
+              OriginSSLProtocols:
+                - 'TLSv1.2'
+          - Id: 'LocationServiceAssetsOrigin'
+            DomainName: 'maps.geo.eu-central-1.amazonaws.com'
+            CustomOriginConfig:
+              HTTPPort: 443
+              HTTPSPort: 443
+              OriginProtocolPolicy: 'https-only'
+              OriginSSLProtocols:
+                - 'TLSv1.2'
+        DefaultCacheBehavior:
+          TargetOriginId: 'LocationServiceAssetsOrigin'
+          ViewerProtocolPolicy: 'redirect-to-https'
+          AllowedMethods: ['GET', 'HEAD', 'OPTIONS']
+          CachedMethods: ['GET', 'HEAD']
+          Compress: true
+          CachePolicyId: '4135ea2d-6df8-44a3-9df3-4b5a84be39ad' # CachingDisabled
+          OriginRequestPolicyId: 'b689b0a8-53d0-40ab-baf2-68738e2966ac' # AllViewer
+          FunctionAssociations:
+            - EventType: 'viewer-request'
+              FunctionARN: !GetAtt AddApiKeyToAssetsFunction.FunctionARN
+        CacheBehaviors:
+          - PathPattern: '/v2/styles/*/descriptor'
+            TargetOriginId: 'StyleDescriptorApiOrigin'
+            ViewerProtocolPolicy: 'redirect-to-https'
+            AllowedMethods: ['GET', 'HEAD', 'OPTIONS']
+            CachedMethods: ['GET', 'HEAD']
+            Compress: true
+            CachePolicyId: '4135ea2d-6df8-44a3-9df3-4b5a84be39ad' # CachingDisabled
+            OriginRequestPolicyId: '88a5eaf4-2fd4-4709-b370-b4c650ea3fcf' # AllViewerExceptHostHeader
+
+  Route53RecordForDistribution:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Name: !Ref MapsWebDomain
+      Type: A
+      HostedZoneId: !Ref HostedZoneId
+      AliasTarget:
+        DNSName: !GetAtt LocationProxyDistribution.DomainName
+        EvaluateTargetHealth: false
+        HostedZoneId: Z2FDTNDATAQYW2 # Cloudfront hosted zone ID 
+
+Outputs:
+  LocationProxyCloudFrontDomain:
+    Description: 'The domain name of the CloudFront distribution for the location proxy.'
+    Value: !GetAtt LocationProxyDistribution.DomainName
