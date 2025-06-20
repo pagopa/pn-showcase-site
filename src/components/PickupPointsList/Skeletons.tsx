@@ -1,8 +1,10 @@
-import { ListItem, Stack, Paper, Box, Skeleton, List } from "@mui/material";
+import { Box, List, ListItem, Paper, Skeleton, Stack } from "@mui/material";
 
-const Skeletons = () => (
+const SKELETON_LENGTH = 5;
+
+const Skeletons: React.FC = () => (
   <List sx={{ mt: 2 }}>
-    {Array.from({ length: 5 }).map((_, index) => (
+    {Array.from({ length: SKELETON_LENGTH }).map((_, index) => (
       <ListItem
         sx={{
           border: "1px solid",
