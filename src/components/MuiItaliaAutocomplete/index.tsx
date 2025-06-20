@@ -6,6 +6,7 @@ import {
 } from "@mui/icons-material";
 import {
   Box,
+  IconButton,
   List,
   ListItem,
   Paper,
@@ -16,6 +17,7 @@ import {
   Typography,
 } from "@mui/material";
 import { MouseEvent, ReactNode, useEffect, useRef, useState } from "react";
+import { useTranslation } from "../../hook/useTranslation";
 
 type OptionType = { id: string | number; label: string };
 
@@ -63,6 +65,7 @@ const MuiItaliaAutocomplete = ({
   const [inputValue, setInputValue] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number>(-1);
+  const { t } = useTranslation(["common"]);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -97,9 +100,13 @@ const MuiItaliaAutocomplete = ({
     setInputValue(option.label);
     setIsOpen(false);
     setActiveIndex(-1);
-    inputRef.current?.focus();
+    setInputFocus();
     onSelect?.(option);
   };
+
+  const setInputFocus = () => {
+    inputRef.current?.focus();
+  }
 
   const handleOptionMouseDown = (event: MouseEvent<HTMLLIElement>) => {
     // Safari triggers focusOut before click, but if you
@@ -171,14 +178,14 @@ const MuiItaliaAutocomplete = ({
     return (
       <Box sx={{ gap: 1, cursor: "pointer" }}>
         {showCloseIcon && (
-          <Box
+          <IconButton
+            size="small"
             onClick={handleClearValue}
             onMouseDown={(e) => e.preventDefault()}
-            aria-hidden="true"
-            sx={{ display: "flex", alignItems: "center" }}
+            aria-label={t("clear_text_aria_label")}
           >
             <Cancel fontSize="small" sx={{ color: "text.secondary" }} />
-          </Box>
+          </IconButton>
         )}
         {showArrowIcon && (
           <Box
@@ -205,6 +212,7 @@ const MuiItaliaAutocomplete = ({
   return (
     <Box position="relative" width="100%" ref={containerRef} sx={sx}>
       <TextField
+        onClick={setInputFocus}
         fullWidth
         inputRef={inputRef}
         value={inputValue}
