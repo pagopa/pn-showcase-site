@@ -3,10 +3,10 @@
   "description": "Trouvez le Point de retrait SEND le plus proche pour retirer une copie des actes notifiés ou pour savoir s’il existe un accusé de réception pour vous",
   "search": {
     "eyelet": "Obtenir une copie des actes notifiés",
-    "title": "Trouver un Point de retrait SEND",
-    "description_1": "Lorsque vous recevez une notification SEND, vous pouvez retirer une copie imprimée des documents notifiés auprès des ",
-    "description_2": "commerçants participants",
-    "description_3": "Trouvez les points de retrait les plus proches de chez vous.",
+    "title": "Rechercher un Point de retrait SEND",
+    "description_1": "Lorsque vous recevez un avis juridique par l’intermédiaire de SEND,  vous pouvez retirer une copie imprimée des documents notifiés auprès des ",
+    "description_2": "structures affiliées",
+    "description_3": "Le service est progressivement mis en place sur tout le territoire italien.",
     "disclaimer": "Pour l'instant, vous ne pouvez rechercher des points de collecte que dans certaines municipalités italiennes : le service est progressivement mis en place dans tout le pays.",
     "placeholder": "Ville, code postal ou abréviation région (p. ex. RM pour Rome)",
     "empty_state": " Il n’y a pas encore de points de retrait SEND activés dans cette ville."
@@ -21,6 +21,10 @@
     "title": "SEND - Servizio Notifiche Digitali | Comment fonctionnent les points de retrait",
     "description": "Découvrez comment fonctionne le service de retrait d’une copie des communications à valeur légale que vous recevez par l’intermédiaire de SEND"
   },
+  "book-alert-title": "Prenez rendez-vous au centre d’accompagnement fiscal (CAF)",
+  "book-alert-description": "Évitez les files d’attente, prenez rendez-vous et recevez de l’aide sans délai.",
+  "address": "Adresse",
+  "opening-hours": "Horaires d’ouverture",
   "days": {
     "monday": "Lundi",
     "tuesday": "Mardi",
@@ -29,5 +33,31 @@
     "friday": "Vendredi",
     "saturday": "Samedi",
     "sunday": "Dimanche"
+  },
+  "phone-number": "Contacts",
+  "get-directions": "Itinéraire",
+  "copy-informations": "Copier les informations",
+  "how-it-works": "En savoir plus",
+  "tabs": {
+    "list": "Elenco",
+    "map": "Mappa"
+  },
+  "show-details": "Voir les détails",
+  "reservation-call": "Per prenotare chiama il",
+  "geolocation-not-supported": "Ce navigateur ne prend pas en charge la géolocalisation. Veuillez essayer avec un autre navigateur.",
+  "geolocation-error": "Un problème est survenu avec la géolocalisation. Rechargez la page pour réessayer.",
+  "geolocation-denied": "Votre position ne peut s’afficher que si les services de géolocalisation sont activés.",
+  "geolocation-denied-cta": "Découvrir comment réactiver la géolocalisation",
+  "show-more": "Plus de résultats",
+  "retry-cta": "Réessayer",
+  "map-loading-error-1": "La carte est momentanément indisponible.",
+  "map-loading-error-2": "Appuyez sur « Réessayer ». Vous pouvez aussi consulter la liste des Points de retrait SEND.",
+  "fetch-csv-error": "Impossible de charger les résultats.",
+  "autocomplete": {
+    "label": "Recherche par adresse ou ville",
+    "fetch-error": "Impossible de charger les adresses. Réessayez.",
+    "empty-state-title": "Aucun résultat trouvé",
+    "empty-state-description": "Vérifiez les informations saisies ou entrez une autre adresse ou ville.",
+    "current-position": "Ma position"
   }
 }
