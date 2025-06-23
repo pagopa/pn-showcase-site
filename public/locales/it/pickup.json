@@ -61,5 +61,6 @@
     "empty-state-title": "Non ci sono corrispondenze da mostrare",
     "empty-state-description": "Controlla i dati inseriti oppure inserisci un altro indirizzo o città.",
     "current-position": "Posizione attuale"
-  }
+  },
+  "map-mobile-help-text": "Utilizza due dita per spostare la mappa"
 }

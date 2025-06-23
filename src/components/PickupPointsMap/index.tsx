@@ -11,6 +11,7 @@ import ErrorBox from "../ErrorBox";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
 import UserPositionController from "./UserPositionController";
+import { useIsMobile } from "src/hook/useIsMobile";
 
 type Props = {
   points: Array<RaddOperator>;
@@ -29,6 +30,7 @@ const PickupPointsMap: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation(["pickup"]);
   const mapRef = useRef<MapRef>(null);
+  const isMobile = useIsMobile();
   const [mapError, setMapError] = useState(false);
   const { CLOUDFRONT_MAP_URL } = useConfig();
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -126,6 +128,10 @@ const PickupPointsMap: React.FC<Props> = ({
       onLoad={handleLoad}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      cooperativeGestures={!!isMobile}
+      locale={{
+        "CooperativeGesturesHandler.MobileHelpText": t("map-mobile-help-text"),
+      }}
       style={{ height: "100%", width: "100%", position: "relative" }}
     >
       <UserPositionController points={points} />
