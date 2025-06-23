@@ -151,6 +151,9 @@ function PickupPointsList({
                         width: "fit-content",
                         alignItems: "center",
                         mt: 1,
+                        "&:hover": {
+                          textDecoration: "underline",
+                        },
                       }}
                       onClick={(e: React.MouseEvent) =>
                         handleShowDetails(e, point)
