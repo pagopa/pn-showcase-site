@@ -163,9 +163,18 @@ function PickupPointsList({
               />
 
               {userPosition && (
-                <Box display="flex" alignItems="flex-start" gap={0.5}>
+                <Box
+                  display="flex"
+                  alignItems="flex-start"
+                  gap={0.5}
+                  flexShrink={0}
+                >
                   <Place fontSize="small" sx={{ color: "text.secondary" }} />
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    whiteSpace="nowrap"
+                  >
                     {`${point.distance?.toFixed(1) || "-"} km`}
                   </Typography>
                 </Box>
