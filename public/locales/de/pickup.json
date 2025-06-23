@@ -11,53 +11,45 @@
     "placeholder": "Stadt, Postleitzahl oder Regionskürzel (z. B. RM für Rom)",
     "empty_state": " In dieser Stadt sind noch keine aktiven SEND-Abholstellen vorhanden."
   },
-  "infoblock": {
-    "title": "Was muss ich mitnehmen",
-    "description": "Für die Abholung der zugestellten Dokumente brauchst du immer deinen Personalausweis und deine Steuernummer.",
-    "details_text": "Für weitere Details siehe",
-    "details_link_text": "wie funktionieren die SEND-Abholstellen"
-  },
-  "how_it_works": {
-    "title": "SEND - Servizio Notifiche Digitali | Wie funktionieren die Abholstellen",
-    "description": "Entdecke, wie der Dienst funktioniert, um eine Kopie der rechtsgültigen Mitteilungen abzuholen, die du über SEND erhältst"
-  },
-  "book-alert-title": "Vereinbaren Sie einen Termin beim Steuerhilfezentrum (CAF)",
-  "book-alert-description": "Vermeiden Sie Warctezeiten: Vereinbaren Sie einen Termin und erhalten Sie Unterstützung ohne Anstehen.",
-  "address": "Adresse",
-  "opening-hours": "Öffnungszeiten",
-  "days": {
-    "monday": "Montag",
-    "tuesday": "Dienstag",
-    "wednesday": "Mittwoch",
-    "thursday": "Donnerstag",
-    "friday": "Freitag",
-    "saturday": "Samstag",
-    "sunday": "Sonntag"
-  },
-  "phone-number": "Kontakt",
-  "get-directions": "Route anzeigen",
-  "copy-informations": "Informationen kopieren",
   "how-it-works": "Wie es funktioniert",
-  "tabs": {
-    "list": "Elenco",
-    "map": "Mappa"
+  "drawer": {
+    "book-alert-title": "Vereinbaren Sie einen Termin beim Steuerhilfezentrum (CAF)",
+    "book-alert-description": "Vermeiden Sie Warctezeiten: Vereinbaren Sie einen Termin und erhalten Sie Unterstützung ohne Anstehen.",
+    "address": "Adresse",
+    "opening-hours": "Öffnungszeiten",
+    "phone-number": "Kontakt",
+    "get-directions": "Route anzeigen",
+    "copy-informations": "Informationen kopieren",
+    "reservation-call": "Zum Buchen rufen Sie die",
+    "days": {
+      "monday": "Montag",
+      "tuesday": "Dienstag",
+      "wednesday": "Mittwoch",
+      "thursday": "Donnerstag",
+      "friday": "Freitag",
+      "saturday": "Samstag",
+      "sunday": "Sonntag"
+    }
   },
-  "show-details": "Details anzeigen",
-  "reservation-call": "Per prenotare chiama il",
-  "geolocation-not-supported": "Dieser Browser unterstützt die Geolokalisierung nicht. Bitte verwenden Sie einen anderen Browser.",
-  "geolocation-error": "Ein Problem mit der Geolokalisierung ist aufgetreten. Bitte laden Sie die Seite neu und versuchen Sie es erneut.",
-  "geolocation-denied": "Ihr Standort kann nur angezeigt werden, wenn die Standortdienste des Browsers aktiviert sind.",
-  "geolocation-denied-cta": "Erfahren, wie man die Standortdienste aktiviert",
   "show-more": "Weitere Ergebnisse suchen",
-  "retry-cta": "Erneut versuchen",
-  "map-loading-error-1": "Fehler beim Laden der Karte.",
-  "map-loading-error-2": "Drücken Sie auf „Erneut versuchen“. In der Zwischenzeit können Sie die SEND-Abholstellen in der Liste ansehen.",
-  "fetch-csv-error": "Ein Problem ist beim Laden der Ergebnisse aufgetreten.",
+  "show-details": "Details anzeigen",
+  "tabs": {
+    "list": "Liste",
+    "map": "Karte"
+  },
   "autocomplete": {
     "label": "Nach Adresse oder Ort suchen",
     "fetch-error": "Fehler beim Laden der Adressen. Bitte versuchen Sie es erneut.",
     "empty-state-title": "Keine Übereinstimmungen gefunden",
     "empty-state-description": "Überprüfen Sie Ihre Eingaben oder geben Sie eine andere Adresse oder Stadt ein.",
     "current-position": "Aktueller Standort"
-  }
+  },
+  "geolocation-not-supported": "Dieser Browser unterstützt die Geolokalisierung nicht. Bitte verwenden Sie einen anderen Browser.",
+  "geolocation-error": "Ein Problem mit der Geolokalisierung ist aufgetreten. Bitte laden Sie die Seite neu und versuchen Sie es erneut.",
+  "geolocation-denied": "Ihr Standort kann nur angezeigt werden, wenn die Standortdienste des Browsers aktiviert sind.",
+  "geolocation-denied-cta": "Erfahren, wie man die Standortdienste aktiviert",
+  "retry-cta": "Erneut versuchen",
+  "map-loading-error-1": "Fehler beim Laden der Karte.",
+  "map-loading-error-2": "Drücken Sie auf „Erneut versuchen“. In der Zwischenzeit können Sie die SEND-Abholstellen in der Liste ansehen.",
+  "fetch-csv-error": "Ein Problem ist beim Laden der Ergebnisse aufgetreten."
 }
