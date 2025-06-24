@@ -42,9 +42,8 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const drawerWidth = isMobile ? "auto" : "400px";
 
-  const hasAlmostOneOpeningDay = OPENING_DAYS.some(
-    (day) => point && point[day]
-  );
+  const hasAlmostOneOpeningDay =
+    OPENING_DAYS.some((day) => point && point[day]) || point?.caf_opening_hours;
 
   const handleCloseDrawer = () => toggleDrawer(false, null);
 
@@ -161,22 +160,28 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
                   >
                     {t("drawer.opening-hours")}
                   </Typography>
-                  <Grid container>
-                    {OPENING_DAYS.map((day) => (
-                      <>
-                        <Grid item xs={4}>
-                          <Typography variant="body2">
-                            {t(`drawer.days.${day}`)}
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={8}>
-                          <Typography variant="body2">
-                            {formatHours(point[day]) || "-"}
-                          </Typography>
-                        </Grid>
-                      </>
-                    ))}
-                  </Grid>
+                  {point.caf_opening_hours ? (
+                    <Typography variant="body2">
+                      {point.caf_opening_hours}
+                    </Typography>
+                  ) : (
+                    <Grid container>
+                      {OPENING_DAYS.map((day) => (
+                        <>
+                          <Grid item xs={4}>
+                            <Typography variant="body2">
+                              {t(`drawer.days.${day}`)}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={8}>
+                            <Typography variant="body2">
+                              {formatHours(point[day]) || "-"}
+                            </Typography>
+                          </Grid>
+                        </>
+                      ))}
+                    </Grid>
+                  )}
                 </Stack>
               )}
 

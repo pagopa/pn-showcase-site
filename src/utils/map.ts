@@ -139,24 +139,31 @@ export const fitMapToPoints = (
  * @param {number} index - The index of the point in the array
  * @returns {RaddOperator} The mapped RaddOperator object
  */
-export const mapPoint = (point: Point, index: number): RaddOperator => ({
-  id: index,
-  denomination: point.descrizione,
-  city: point.città,
-  address: point.via,
-  normalizedAddress: point.indirizzo_AWS.replace(", Italia", ""),
-  province: point.provincia,
-  region: point.regione,
-  cap: point.cap,
-  contacts: point.telefono,
-  latitude: Number(point.latitudine),
-  longitude: Number(point.longitudine),
-  monday: point.lunedi,
-  tuesday: point.martedi,
-  wednesday: point.mercoledi,
-  thursday: point.giovedi,
-  friday: point.venerdi,
-  saturday: point.sabato,
-  sunday: point.domenica,
-  type: point.tipologia,
-});
+
+export const mapPoint = (point: Point, index: number): RaddOperator => {
+  if (!point.indirizzo_AWS) {
+    console.log(point);
+  }
+  return {
+    id: index,
+    denomination: point.descrizione,
+    city: point.città,
+    address: point.via,
+    normalizedAddress: point.indirizzo_AWS.replace(", Italia", ""),
+    province: point.provincia,
+    region: point.regione,
+    cap: point.cap,
+    contacts: point.telefono,
+    latitude: Number(point.latitudine),
+    longitude: Number(point.longitudine),
+    monday: point.lunedi,
+    tuesday: point.martedi,
+    wednesday: point.mercoledi,
+    thursday: point.giovedi,
+    friday: point.venerdi,
+    saturday: point.sabato,
+    sunday: point.domenica,
+    type: point.tipologia,
+    caf_opening_hours: point.caf_orari_apertura,
+  };
+};
