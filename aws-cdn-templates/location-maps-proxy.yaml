@@ -4,7 +4,8 @@ Description: 'CloudFront distribution and API Gateway proxy for AWS Location Ser
 Parameters:
   ProjectName:
     Type: String
-    Description: "A unique logical name for this stack, used to prefix all created resources."
+    Description: "logical name for this stack, used to prefix all created resources"
+    Default: pn-showcase-maps-proxy
 
   LocationServiceApiKeySecretName:
     Type: String
@@ -16,11 +17,29 @@ Parameters:
 
   MapsWebCertificateArn:
     Type: String
-    Description: "The ARN of the ACM certificate for the custom domain (must be in us-east-1)."
+    Description: "The ARN of the ACM certificate for the custom domain"
 
   HostedZoneId:
     Type: String
     Description: "The ID of the Route 53 Hosted Zone for the custom domain."
+  
+  StyleApiWafIpRateLimit:
+    Type: Number
+    Description: 'WAF rate limit per source IP address over a 10-minute period for the style descriptor API.'
+    Default: 5000
+  
+  StyleApiRateLimitEvaluationWindow:
+    Type: Number
+    Description: 'Style descrtiptor Api WAF evaluation time in seconds'
+    Default: 600
+  
+  AlarmSNSTopicArn:
+    Type: String
+    Description: ARN of alarm topic
+  
+  TemplateBucketBaseUrl:
+    Type: String
+    Description: 'The S3 bucket from which to fetch the templates used by this stack.'
 
 Resources:
   StyleDescriptorProxyApi:
@@ -63,7 +82,7 @@ Resources:
             ResponseTemplates:
               application/json: !Sub |
                 #set($bodyContent = $input.body)
-                #set($step1 = $bodyContent.replace("https://maps.geo.eu-central-1.amazonaws.com", "https://${LocationProxyDistribution.DomainName}"))
+                #set($step1 = $bodyContent.replace("https://maps.geo.eu-central-1.amazonaws.com", "https://${MapsWebDomain}"))
                 #set($apiKeyToRemove = "?key={{resolve:secretsmanager:${LocationServiceApiKeySecretName}:SecretString:Key}}")
                 $step1.replace($apiKeyToRemove, "")
       MethodResponses:
@@ -103,7 +122,36 @@ Resources:
       - StyleProxyOptionsMethod
     Properties:
       RestApiId: !Ref StyleDescriptorProxyApi
-      StageName: 'v1'
+
+  StyleApiStage:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      RestApiId: !Ref StyleDescriptorProxyApi
+      StageName: 'unique'
+      DeploymentId: !Ref StyleApiDeployment
+      AccessLogSetting:
+        DestinationArn: !GetAtt StyleApiLogGroup.Arn
+        Format: '{"requestId":"$context.requestId","ip":"$context.identity.sourceIp","caller":"$context.identity.caller","user":"$context.identity.user","requestTime":"$context.requestTime","httpMethod":"$context.httpMethod","resourcePath":"$context.resourcePath","status":"$context.status","protocol":"$context.protocol","responseLength":"$context.responseLength"}'
+
+  StyleApiLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub "/aws/apigateway/${ProjectName}-style-api"
+      RetentionInDays: 14
+  
+  # StyleApiWaf:
+  #   Type: AWS::CloudFormation::Stack
+  #   DependsOn: StyleApiStage
+  #   Properties:
+  #     TemplateURL: !Sub "${TemplateBucketBaseUrl}/fragments/public-enpoints-waf-acl.yaml"
+  #     Parameters:
+  #       WAFName: !Sub '${ProjectName}-style-descriptor-api-acl'
+  #       ResourceArn: !Sub "arn:${AWS::Partition}:apigateway:${AWS::Region}::/restapis/${StyleDescriptorProxyApi}/stages/unique"
+  #       ApiName: !Sub "${ProjectName}-style-api"
+  #       TargetType: APIGATEWAY
+  #       IpRateLimit: !Ref StyleApiWafIpRateLimit
+  #       RateLimitEvaluationWindowSec: !Ref StyleApiRateLimitEvaluationWindow
+  #       AlarmSNSTopicArn: !Ref AlarmSNSTopicArn
 
   AddApiKeyToAssetsFunction:
     Type: AWS::CloudFront::Function
@@ -139,7 +187,7 @@ Resources:
         Origins:
           - Id: 'StyleDescriptorApiOrigin'
             DomainName: !Sub '${StyleDescriptorProxyApi}.execute-api.${AWS::Region}.amazonaws.com'
-            OriginPath: '/v1'
+            OriginPath: '/unique'
             CustomOriginConfig:
               HTTPPort: 443
               HTTPSPort: 443
