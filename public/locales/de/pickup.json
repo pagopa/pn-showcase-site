@@ -29,5 +29,7 @@
     "friday": "Freitag",
     "saturday": "Samstag",
     "sunday": "Sonntag"
-  }
+  },
+  "address-copied": "Adresse in die Zwischenablage kopiert",
+  "map-mobile-help-text": "Benutze zwei Finger, um die Karte zu verschieben"
 }

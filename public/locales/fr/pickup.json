@@ -29,5 +29,7 @@
     "friday": "Vendredi",
     "saturday": "Samedi",
     "sunday": "Dimanche"
-  }
+  },
+  "address-copied": "Adresse copiée dans le presse-papiers",
+  "map-mobile-help-text": "Utilisez deux doigts pour déplacer la carte"
 }
