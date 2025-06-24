@@ -4,14 +4,13 @@ import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
-import { useIsMobile } from "src/hook/useIsMobile";
+import { useConfig } from "src/context/config-context";
 import { useTranslation } from "src/hook/useTranslation";
 import { Coordinates, RaddOperator } from "src/model";
 import ErrorBox from "../ErrorBox";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
 import UserPositionController from "./UserPositionController";
-import { useConfig } from "src/context/config-context";
 
 type Props = {
   points: Array<RaddOperator>;
@@ -30,7 +29,6 @@ const PickupPointsMap: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation(["pickup"]);
   const mapRef = useRef<MapRef>(null);
-  const isMobile = useIsMobile();
   const [mapError, setMapError] = useState(false);
   const { CLOUDFRONT_MAP_URL } = useConfig();
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -62,9 +60,7 @@ const PickupPointsMap: React.FC<Props> = ({
           duration: 1000,
         });
         setSelectedPoint(selectedPoint);
-        if (isMobile) {
-          toggleDrawer(true, selectedPoint);
-        }
+        toggleDrawer(true, selectedPoint);
       }
     }
   };

@@ -38,7 +38,7 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
   point,
   toggleDrawer,
 }) => {
-  const { t } = useTranslation(["pickup", "common"]);
+  const { t } = useTranslation(["pickup"]);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const drawerWidth = isMobile ? "auto" : "400px";
 
@@ -61,7 +61,7 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
     const parts = [point?.denomination, point?.normalizedAddress];
 
     if (hasAlmostOneOpeningDay) {
-      parts.push(`${t("opening-hours")} :`);
+      parts.push(`${t("drawer.opening-hours")} :`);
       parts.push(
         OPENING_DAYS.map(
           (day) => `${t(`days.${day}`)}: ${formatHours(point?.[day]) || "-"}`
@@ -69,7 +69,7 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
       );
     }
 
-    parts.push(`${t("reservation-call")} ${point?.contacts}`);
+    parts.push(`${t("drawer.reservation-call")} ${point?.contacts}`);
 
     const formattedText = parts.filter(Boolean).join("\n");
     navigator.clipboard.writeText(formattedText);
@@ -78,7 +78,7 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
   const formatHours = (openingHours?: string) => {
     if (!openingHours) return null;
 
-    return openingHours.replace("_", " / ");
+    return openingHours.replaceAll("_", " / ");
   };
 
   return (
@@ -119,10 +119,10 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
 
             <Alert severity="info">
               <Typography variant="body2" fontWeight={600}>
-                {t("book-alert-title")}
+                {t("drawer.book-alert-title")}
               </Typography>
               <Typography variant="body2">
-                {t("book-alert-description")}
+                {t("drawer.book-alert-description")}
               </Typography>
             </Alert>
 
@@ -133,7 +133,7 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
                   fontWeight={600}
                   color="textSecondary"
                 >
-                  {t("address")}
+                  {t("drawer.address")}
                 </Typography>
                 <Stack
                   direction="row"
@@ -159,14 +159,14 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
                     fontWeight={600}
                     color="textSecondary"
                   >
-                    {t("opening-hours")}
+                    {t("drawer.opening-hours")}
                   </Typography>
                   <Grid container>
                     {OPENING_DAYS.map((day) => (
                       <>
                         <Grid item xs={4}>
                           <Typography variant="body2">
-                            {t(`days.${day}`)}
+                            {t(`drawer.days.${day}`)}
                           </Typography>
                         </Grid>
                         <Grid item xs={8}>
@@ -186,7 +186,7 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
                   fontWeight={600}
                   color="textSecondary"
                 >
-                  {t("phone-number")}
+                  {t("drawer.phone-number")}
                 </Typography>
                 <Link
                   href={`tel:${point?.contacts}`}
@@ -218,10 +218,10 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
               fullWidth
               onClick={handleOpenGoogleMaps}
             >
-              {t("get-directions")}
+              {t("drawer.get-directions")}
             </Button>
             <Button variant="text" fullWidth onClick={handleCopyInformations}>
-              {t("copy-informations")}
+              {t("drawer.copy-informations")}
             </Button>
           </Stack>
         </Box>

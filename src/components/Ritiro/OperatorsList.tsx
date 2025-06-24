@@ -93,7 +93,7 @@ function OperatorsList({ rows, toggleDrawer }: Readonly<Props>) {
                     onClick={() => toggleDrawer(true, row)}
                     endIcon={<ArrowForwardIos />}
                   >
-                    {t("view_details")}
+                    {t("show-details")}
                   </ButtonNaked>
                 </Box>
               </Stack>
