@@ -78,7 +78,7 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
   const formatHours = (openingHours?: string) => {
     if (!openingHours) return null;
 
-    return openingHours.replace("_", " / ");
+    return openingHours.replaceAll("_", " / ");
   };
 
   return (
@@ -166,7 +166,7 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
                       <>
                         <Grid item xs={4}>
                           <Typography variant="body2">
-                            {t(`days.${day}`)}
+                            {t(`drawer.days.${day}`)}
                           </Typography>
                         </Grid>
                         <Grid item xs={8}>
