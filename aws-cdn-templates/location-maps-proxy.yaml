@@ -10,6 +10,7 @@ Parameters:
   LocationServiceApiKeySecretName:
     Type: String
     Description: "The name of the secret in AWS Secrets Manager that holds the Location Service API Key."
+    Default: pn-showcase-location-api-key
 
   MapsWebDomain:
     Type: String
