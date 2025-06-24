@@ -3,33 +3,55 @@
   "description": "Such die nächstgelegene SEND-Abholstelle, um eine Kopie der zugestellten Dokumente abzuholen oder zu erfahren, ob es eine Empfangsbestätigung für dich gibt",
   "search": {
     "eyelet": "Kopie der zugestellten Unterlagen erhalten",
-    "title": "Finde eine SEND-Abholstelle",
-    "description_1": "Wenn Sie eine SEND-Zustellung erhalten, können Sie bei teilnehmenden Geschäften eine gedruckte Kopie ",
-    "description_2": "der zugestellten Dokumente abholen",
-    "description_3": "Finden Sie die nächstgelegenen Abholstellen.",
+    "title": "Suche eine SEND-Abholstelle",
+    "description_1": "Wenn du eine rechtsgültige Mitteilung über SEND erhältst, kannst du dir ein gedrucktes Exemplar der zugestellten Dokumente bei ",
+    "description_2": "den vertraglich gebundenen Händlern abholen",
+    "description_3": "Der Dienst wird nach und nach in ganz Italien aktiviert.",
     "disclaimer": "Derzeit können Abholstellen nur in bestimmten italienischen Gemeinden gesucht werden: Der Dienst wird schrittweise im ganzen Land eingeführt.",
     "placeholder": "Stadt, Postleitzahl oder Regionskürzel (z. B. RM für Rom)",
     "empty_state": " In dieser Stadt sind noch keine aktiven SEND-Abholstellen vorhanden."
   },
-  "infoblock": {
-    "title": "Was muss ich mitnehmen",
-    "description": "Für die Abholung der zugestellten Dokumente brauchst du immer deinen Personalausweis und deine Steuernummer.",
-    "details_text": "Für weitere Details siehe",
-    "details_link_text": "wie funktionieren die SEND-Abholstellen"
+  "how-it-works": "Wie es funktioniert",
+  "drawer": {
+    "book-alert-title": "Vereinbaren Sie einen Termin beim Steuerhilfezentrum (CAF)",
+    "book-alert-description": "Vermeiden Sie Warctezeiten: Vereinbaren Sie einen Termin und erhalten Sie Unterstützung ohne Anstehen.",
+    "address": "Adresse",
+    "opening-hours": "Öffnungszeiten",
+    "phone-number": "Kontakt",
+    "get-directions": "Route anzeigen",
+    "copy-informations": "Informationen kopieren",
+    "reservation-call": "Zum Buchen rufen Sie die",
+    "days": {
+      "monday": "Montag",
+      "tuesday": "Dienstag",
+      "wednesday": "Mittwoch",
+      "thursday": "Donnerstag",
+      "friday": "Freitag",
+      "saturday": "Samstag",
+      "sunday": "Sonntag"
+    }
   },
-  "how_it_works": {
-    "title": "SEND - Servizio Notifiche Digitali | Wie funktionieren die Abholstellen",
-    "description": "Entdecke, wie der Dienst funktioniert, um eine Kopie der rechtsgültigen Mitteilungen abzuholen, die du über SEND erhältst"
+  "show-more": "Weitere Ergebnisse suchen",
+  "show-details": "Details anzeigen",
+  "tabs": {
+    "list": "Liste",
+    "map": "Karte"
   },
-  "days": {
-    "monday": "Montag",
-    "tuesday": "Dienstag",
-    "wednesday": "Mittwoch",
-    "thursday": "Donnerstag",
-    "friday": "Freitag",
-    "saturday": "Samstag",
-    "sunday": "Sonntag"
+  "autocomplete": {
+    "label": "Nach Adresse oder Ort suchen",
+    "fetch-error": "Fehler beim Laden der Adressen. Bitte versuchen Sie es erneut.",
+    "empty-state-title": "Keine Übereinstimmungen gefunden",
+    "empty-state-description": "Überprüfen Sie Ihre Eingaben oder geben Sie eine andere Adresse oder Stadt ein.",
+    "current-position": "Aktueller Standort"
   },
+  "geolocation-not-supported": "Dieser Browser unterstützt die Geolokalisierung nicht. Bitte verwenden Sie einen anderen Browser.",
+  "geolocation-error": "Ein Problem mit der Geolokalisierung ist aufgetreten. Bitte laden Sie die Seite neu und versuchen Sie es erneut.",
+  "geolocation-denied": "Ihr Standort kann nur angezeigt werden, wenn die Standortdienste des Browsers aktiviert sind.",
+  "geolocation-denied-cta": "Erfahren, wie man die Standortdienste aktiviert",
+  "retry-cta": "Erneut versuchen",
+  "map-loading-error-1": "Fehler beim Laden der Karte.",
+  "map-loading-error-2": "Drücken Sie auf „Erneut versuchen“. In der Zwischenzeit können Sie die SEND-Abholstellen in der Liste ansehen.",
+  "fetch-csv-error": "Ein Problem ist beim Laden der Ergebnisse aufgetreten.",
   "address-copied": "Adresse in die Zwischenablage kopiert",
   "map-mobile-help-text": "Benutze zwei Finger, um die Karte zu verschieben"
 }
