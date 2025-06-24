@@ -1,4 +1,5 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
+import { visuallyHidden } from "@mui/utils";
 import { langCodes } from "@utils/constants";
 import { mapPoint } from "@utils/map";
 import type { GetStaticPaths, NextPage } from "next";
@@ -128,6 +129,12 @@ const PickupPointsPage: NextPage = () => {
               />
             </Box>
 
+            <Box aria-live="polite" sx={visuallyHidden}>
+              {!points || points.length === 0
+                ? "Caricamento dei punti di ritiro"
+                : `Trovati ${points.length} punti di ritiro`}
+            </Box>
+
             <Box
               sx={{
                 display: {
@@ -135,6 +142,8 @@ const PickupPointsPage: NextPage = () => {
                   md: "block",
                 },
               }}
+              aria-busy={!points || points.length === 0}
+              role="region"
             >
               <PickupPointsList
                 points={points}

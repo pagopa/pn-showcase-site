@@ -1,5 +1,7 @@
 import React, { useCallback, useRef, useState } from "react";
 
+import { Box } from "@mui/material";
+import { visuallyHidden } from "@mui/utils";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
 import { AddressResult, Coordinates } from "src/model";
@@ -110,33 +112,43 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
   }));
 
   return (
-    <MuiItaliaAutocomplete
-      options={options}
-      sx={{ mt: 4 }}
-      label={t("autocomplete.label")}
-      placeholder={
-        userPosition
-          ? t("autocomplete.current-position")
-          : t("autocomplete.label")
-      }
-      onInputChange={debouncedSearch}
-      onSelect={(option) => getCoordinates(option.id.toString())}
-      renderOption={(_, index) => renderItem(index)}
-      hasClearIcon
-      hideArrow
-      avoidLocalFiltering
-      emptyState={renderEmptyState()}
-      inputStyle={
-        userPosition
-          ? {
-              "&::placeholder": {
-                color: "textPrimary",
-                opacity: 1,
-              },
-            }
-          : undefined
-      }
-    />
+    <>
+      <MuiItaliaAutocomplete
+        options={options}
+        sx={{ mt: 4 }}
+        label={t("autocomplete.label")}
+        placeholder={
+          userPosition
+            ? t("autocomplete.current-position")
+            : t("autocomplete.label")
+        }
+        onInputChange={debouncedSearch}
+        onSelect={(option) => getCoordinates(option.id.toString())}
+        renderOption={(_, index) => renderItem(index)}
+        hasClearIcon
+        hideArrow
+        avoidLocalFiltering
+        emptyState={renderEmptyState()}
+        inputStyle={
+          userPosition
+            ? {
+                "&::placeholder": {
+                  color: "textPrimary",
+                  opacity: 1,
+                },
+              }
+            : undefined
+        }
+      />
+
+      <Box aria-live="polite" sx={visuallyHidden}>
+        {isLoading && shouldShowEmptyState
+          ? "Caricamento degli indirizzi"
+          : shouldShowEmptyState && addresses.length > 0
+          ? `Trovati ${addresses.length} indirizzi`
+          : ""}
+      </Box>
+    </>
   );
 };
 
