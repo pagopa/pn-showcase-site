@@ -91,7 +91,6 @@ const PickupPointsPage: NextPage = () => {
         src="/iframe-resizer/child/index.umd.js"
         type="text/javascript"
         id="iframe-resizer-child"
-        strategy="beforeInteractive"
       />
 
       {!fetchError ? (
