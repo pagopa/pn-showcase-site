@@ -9,13 +9,13 @@ type Props = {
 const SearchedAddressLayer: React.FC<Props> = ({ searchCoordinates }) => {
   if (!searchCoordinates) return null;
 
-  const geojsonData = {
-    type: "FeatureCollection" as const,
+  const geojsonData: GeoJSON.GeoJSON = {
+    type: "FeatureCollection",
     features: [
       {
-        type: "Feature" as const,
+        type: "Feature",
         geometry: {
-          type: "Point" as const,
+          type: "Point",
           coordinates: [
             searchCoordinates.longitude,
             searchCoordinates.latitude,
