@@ -11,6 +11,9 @@ import ErrorBox from "../ErrorBox";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
 import UserPositionController from "./UserPositionController";
+import { useIsMobile } from "src/hook/useIsMobile";
+import SearchedAddressLayer from "./SearchedAddressLayer";
+import { MAP_MARKERS } from "@utils/constants";
 
 type Props = {
   points: Array<RaddOperator>;
@@ -29,19 +32,27 @@ const PickupPointsMap: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation(["pickup"]);
   const mapRef = useRef<MapRef>(null);
+  const isMobile = useIsMobile();
   const [mapError, setMapError] = useState(false);
   const { CLOUDFRONT_MAP_URL } = useConfig();
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const handleLoad = async (event: MapLibreEvent) => {
     const map = event.target;
-    const baseMaker = await map.loadImage("/static/images/map/base-marker.png");
-    const selectedMarker = await map.loadImage(
-      "/static/images/map/selected-marker.png"
-    );
-    map.addImage("base-marker", baseMaker.data);
-    map.addImage("selected-marker", selectedMarker.data);
-    setImagesLoaded(true);
+
+    try {
+      const imagePromises = MAP_MARKERS.map(({ path }) => map.loadImage(path));
+      const loadedImages = await Promise.all(imagePromises);
+
+      MAP_MARKERS.forEach(({ id }, index) => {
+        map.addImage(id, loadedImages[index].data);
+      });
+
+      setImagesLoaded(true);
+    } catch (error) {
+      console.error("Failed to load map images:", error);
+      setMapError(true);
+    }
   };
 
   const handleMapClick = (event: MapLayerMouseEvent) => {
@@ -126,12 +137,19 @@ const PickupPointsMap: React.FC<Props> = ({
       onLoad={handleLoad}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{ height: "100%", width: "100%", position: "relative" }}
+      cooperativeGestures={!!isMobile}
+      locale={{
+        "CooperativeGesturesHandler.MobileHelpText": t("map-mobile-help-text"),
+      }}
+      style={{ height: "100%", width: "100%" }}
     >
       <UserPositionController points={points} />
       <MapControls />
       {imagesLoaded && (
-        <Clusters points={points} selectedPoint={selectedPoint} />
+        <>
+          <Clusters points={points} selectedPoint={selectedPoint} />
+          <SearchedAddressLayer searchCoordinates={searchCoordinates} />
+        </>
       )}
     </Map>
   );

@@ -11,55 +11,48 @@
     "empty_state_1": "Non sembrano essere disponibili punti di ritiro SEND in questa località.",
     "empty_state_2": "Riprova scrivendo il nome della località per esteso oppure cerca tra i CAP o i Comuni limitrofi."
   },
-  "infoblock": {
-    "title": "Cosa portare",
-    "description": "Per ritirare i documenti notificati avrai sempre bisogno del tuo documento d'identità e del tuo codice fiscale.",
-    "details_text": "Per altri dettagli scopri",
-    "details_link_text": "come funzionano i punti di ritiro SEND"
-  },
-  "how_it_works": {
-    "title": "SEND - Servizio Notifiche Digitali | Come funzionano i punti di ritiro",
-    "description": "Scopri come funziona il servizio per ritirare sul territorio una copia delle comunicazioni a valore legale che ricevi tramite SEND"
-  },
   "loading-aria-label": "Caricamento dei Punti di ritiro in corso",
-  "view_details": "Vedi dettagli",
-  "book-alert-title": "Prenota il tuo appuntamento al CAF",
-  "book-alert-description": "Evita le attese, prenota e ricevi assistenza senza fare la fila.",
-  "address": "Indirizzo",
-  "opening-hours": "Orari di apertura",
-  "days": {
-    "monday": "Lunedì",
-    "tuesday": "Martedì",
-    "wednesday": "Mercoledì",
-    "thursday": "Giovedì",
-    "friday": "Venerdì",
-    "saturday": "Sabato",
-    "sunday": "Domenica"
-  },
-  "phone-number": "Numero di telefono",
-  "get-directions": "Ottieni indicazioni",
-  "copy-informations": "Copia informazioni",
   "how-it-works": "Scopri come funziona",
+  "drawer": {
+    "book-alert-title": "Prenota il tuo appuntamento al CAF",
+    "book-alert-description": "Evita le attese, prenota e ricevi assistenza senza fare la fila.",
+    "address": "Indirizzo",
+    "address-copied": "Indirizzo copiato negli appunti",
+    "opening-hours": "Orari di apertura",
+    "phone-number": "Numero di telefono",
+    "get-directions": "Ottieni indicazioni",
+    "copy-informations": "Copia informazioni",
+    "reservation-call": "Per prenotare chiama il",
+    "days": {
+      "monday": "Lunedì",
+      "tuesday": "Martedì",
+      "wednesday": "Mercoledì",
+      "thursday": "Giovedì",
+      "friday": "Venerdì",
+      "saturday": "Sabato",
+      "sunday": "Domenica"
+    }
+  },
+  "show-more": "Carica altri risultati",
+  "show-details": "Mostra dettagli",
   "tabs": {
     "list": "Elenco",
     "map": "Mappa"
   },
-  "show-details": "Mostra dettagli",
-  "reservation-call": "Per prenotare chiama il",
-  "geolocation-not-supported": "Questo browser non supporta la geolocalizzazione. Prova ad accedere con un altro browser per continuare.",
-  "geolocation-error": "Si è verificato un problema con la geolocalizzazione. Ricarica la pagina e riprova.",
-  "geolocation-denied": "La tua posizione può essere mostrata solo quando i servizi di localizzazione del browser sono abilitati.",
-  "geolocation-denied-cta": "Scopri come riattivare la posizione",
-  "show-more": "Carica altri risultati",
-  "retry-cta": "Prova di nuovo",
-  "map-loading-error-1": "Qualcosa non va nel caricamento della mappa.",
-  "map-loading-error-2": "Premi “Prova di nuovo”. Nel frattempo puoi consultare i Punti di ritiro SEND dalla lista.",
-  "fetch-csv-error": "Si è verificato un problema durante il caricamento dei risultati.",
   "autocomplete": {
     "label": "Cerca indirizzo o città",
     "fetch-error": "Qualcosa non va nel caricamento degli indirizzi. Riprova.",
     "empty-state-title": "Non ci sono corrispondenze da mostrare",
     "empty-state-description": "Controlla i dati inseriti oppure inserisci un altro indirizzo o città.",
     "current-position": "Posizione attuale"
-  }
+  },
+  "geolocation-not-supported": "Questo browser non supporta la geolocalizzazione. Prova ad accedere con un altro browser per continuare.",
+  "geolocation-error": "Si è verificato un problema con la geolocalizzazione. Ricarica la pagina e riprova.",
+  "geolocation-denied": "La tua posizione può essere mostrata solo quando i servizi di localizzazione del browser sono abilitati.",
+  "geolocation-denied-cta": "Scopri come riattivare la posizione",
+  "retry-cta": "Prova di nuovo",
+  "map-loading-error-1": "Qualcosa non va nel caricamento della mappa.",
+  "map-loading-error-2": "Premi “Prova di nuovo”. Nel frattempo puoi consultare i Punti di ritiro SEND dalla lista.",
+  "fetch-csv-error": "Si è verificato un problema durante il caricamento dei risultati.",
+  "map-mobile-help-text": "Utilizza due dita per spostare la mappa"
 }

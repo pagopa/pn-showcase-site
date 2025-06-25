@@ -1,4 +1,5 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
+import { visuallyHidden } from "@mui/utils";
 import { langCodes } from "@utils/constants";
 import { mapPoint } from "@utils/map";
 import type { GetStaticPaths, NextPage } from "next";
@@ -91,7 +92,6 @@ const PickupPointsPage: NextPage = () => {
         src="/iframe-resizer/child/index.umd.js"
         type="text/javascript"
         id="iframe-resizer-child"
-        strategy="beforeInteractive"
       />
 
       {!fetchError ? (
@@ -101,8 +101,7 @@ const PickupPointsPage: NextPage = () => {
 
             <Typography mt={2} mb={1} color="textPrimary" variant="body2">
               {t("search.description_1")}
-              <strong>{t("search.description_2")}</strong>.{" "}
-              {t("search.description_3")}
+              <b>{t("search.description_2")}</b>. {t("search.description_3")}
             </Typography>
 
             <Link
@@ -126,6 +125,12 @@ const PickupPointsPage: NextPage = () => {
                 buttonSize="small"
                 fullWidth
               />
+            </Box>
+
+            <Box aria-live="polite" sx={visuallyHidden}>
+              {!points || points.length === 0
+                ? "Caricamento dei punti di ritiro"
+                : `Trovati ${points.length} punti di ritiro`}
             </Box>
 
             <Box
@@ -157,8 +162,12 @@ const PickupPointsPage: NextPage = () => {
                 md: "block",
               },
             }}
+            aria-hidden="true"
           >
-            <Box sx={{ width: "100%", height: "1000px" }}>
+            <Box
+              sx={{ width: "100%", height: { xs: "500px", md: "1000px" } }}
+              tabIndex={-1}
+            >
               <PickupPointsMap
                 points={points}
                 selectedPoint={selectedPoint}
@@ -173,7 +182,7 @@ const PickupPointsPage: NextPage = () => {
         <ErrorBox
           handleRetry={getData}
           retryLabel={t("retry-cta")}
-          sx={{ mt: 4, mb: 2, height: "1000px" }}
+          sx={{ mt: 4, mb: 2, height: { xs: "500px", md: "1000px" } }}
         >
           <Typography variant="body2" color="text.secondary" fontWeight={600}>
             {t("fetch-csv-error")}

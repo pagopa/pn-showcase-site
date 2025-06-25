@@ -6,6 +6,8 @@ import {
 } from "@mui/icons-material";
 import {
   Box,
+  IconButton,
+  InputAdornment,
   List,
   ListItem,
   Paper,
@@ -16,6 +18,7 @@ import {
   Typography,
 } from "@mui/material";
 import { MouseEvent, ReactNode, useEffect, useRef, useState } from "react";
+import { useTranslation } from "../../hook/useTranslation";
 
 type OptionType = { id: string | number; label: string };
 
@@ -63,6 +66,7 @@ const MuiItaliaAutocomplete = ({
   const [inputValue, setInputValue] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number>(-1);
+  const { t } = useTranslation(["common"]);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -97,8 +101,12 @@ const MuiItaliaAutocomplete = ({
     setInputValue(option.label);
     setIsOpen(false);
     setActiveIndex(-1);
-    inputRef.current?.focus();
+    setInputFocus();
     onSelect?.(option);
+  };
+
+  const setInputFocus = () => {
+    inputRef.current?.focus();
   };
 
   const handleOptionMouseDown = (event: MouseEvent<HTMLLIElement>) => {
@@ -171,14 +179,14 @@ const MuiItaliaAutocomplete = ({
     return (
       <Box sx={{ gap: 1, cursor: "pointer" }}>
         {showCloseIcon && (
-          <Box
+          <IconButton
+            size="small"
             onClick={handleClearValue}
             onMouseDown={(e) => e.preventDefault()}
-            aria-hidden="true"
-            sx={{ display: "flex", alignItems: "center" }}
+            aria-label={t("clear_text_aria_label")}
           >
             <Cancel fontSize="small" sx={{ color: "text.secondary" }} />
-          </Box>
+          </IconButton>
         )}
         {showArrowIcon && (
           <Box
@@ -209,6 +217,7 @@ const MuiItaliaAutocomplete = ({
         inputRef={inputRef}
         value={inputValue}
         onChange={handleInputChange}
+        onClick={setInputFocus}
         onKeyDown={handleKeyDown}
         onBlur={handleInputBlur}
         label={label}
@@ -226,7 +235,11 @@ const MuiItaliaAutocomplete = ({
           sx: inputStyle,
         }}
         InputProps={{
-          startAdornment: <Search />,
+          startAdornment: (
+            <InputAdornment position="start">
+              <Search />
+            </InputAdornment>
+          ),
           endAdornment: getEndInputAdornment(),
         }}
       />
