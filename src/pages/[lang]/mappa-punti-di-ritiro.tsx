@@ -1,4 +1,5 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
+import { visuallyHidden } from "@mui/utils";
 import { langCodes } from "@utils/constants";
 import { mapPoint } from "@utils/map";
 import type { GetStaticPaths, NextPage } from "next";
@@ -91,7 +92,6 @@ const PickupPointsPage: NextPage = () => {
         src="/iframe-resizer/child/index.umd.js"
         type="text/javascript"
         id="iframe-resizer-child"
-        strategy="beforeInteractive"
       />
 
       {!fetchError ? (
@@ -127,6 +127,12 @@ const PickupPointsPage: NextPage = () => {
               />
             </Box>
 
+            <Box aria-live="polite" sx={visuallyHidden}>
+              {!points || points.length === 0
+                ? "Caricamento dei punti di ritiro"
+                : `Trovati ${points.length} punti di ritiro`}
+            </Box>
+
             <Box
               sx={{
                 display: {
@@ -158,7 +164,10 @@ const PickupPointsPage: NextPage = () => {
             }}
             aria-hidden="true"
           >
-            <Box sx={{ width: "100%", height: "1000px" }} tabIndex={-1}>
+            <Box
+              sx={{ width: "100%", height: { xs: "500px", md: "1000px" } }}
+              tabIndex={-1}
+            >
               <PickupPointsMap
                 points={points}
                 selectedPoint={selectedPoint}
@@ -173,7 +182,7 @@ const PickupPointsPage: NextPage = () => {
         <ErrorBox
           handleRetry={getData}
           retryLabel={t("retry-cta")}
-          sx={{ mt: 4, mb: 2, height: "1000px" }}
+          sx={{ mt: 4, mb: 2, height: { xs: "500px", md: "1000px" } }}
         >
           <Typography variant="body2" color="text.secondary" fontWeight={600}>
             {t("fetch-csv-error")}
