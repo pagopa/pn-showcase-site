@@ -7,6 +7,7 @@ import {
 import {
   Box,
   IconButton,
+  InputAdornment,
   List,
   ListItem,
   Paper,
@@ -106,7 +107,7 @@ const MuiItaliaAutocomplete = ({
 
   const setInputFocus = () => {
     inputRef.current?.focus();
-  }
+  };
 
   const handleOptionMouseDown = (event: MouseEvent<HTMLLIElement>) => {
     // Safari triggers focusOut before click, but if you
@@ -212,11 +213,11 @@ const MuiItaliaAutocomplete = ({
   return (
     <Box position="relative" width="100%" ref={containerRef} sx={sx}>
       <TextField
-        onClick={setInputFocus}
         fullWidth
         inputRef={inputRef}
         value={inputValue}
         onChange={handleInputChange}
+        onClick={setInputFocus}
         onKeyDown={handleKeyDown}
         onBlur={handleInputBlur}
         label={label}
@@ -234,7 +235,11 @@ const MuiItaliaAutocomplete = ({
           sx: inputStyle,
         }}
         InputProps={{
-          startAdornment: <Search />,
+          startAdornment: (
+            <InputAdornment position="start">
+              <Search />
+            </InputAdornment>
+          ),
           endAdornment: getEndInputAdornment(),
         }}
       />

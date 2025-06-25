@@ -101,8 +101,7 @@ const PickupPointsPage: NextPage = () => {
 
             <Typography mt={2} mb={1} color="textPrimary" variant="body2">
               {t("search.description_1")}
-              <strong>{t("search.description_2")}</strong>.{" "}
-              {t("search.description_3")}
+              <b>{t("search.description_2")}</b>. {t("search.description_3")}
             </Typography>
 
             <Link
@@ -157,8 +156,9 @@ const PickupPointsPage: NextPage = () => {
                 md: "block",
               },
             }}
+            aria-hidden="true"
           >
-            <Box sx={{ width: "100%", height: "1000px" }}>
+            <Box sx={{ width: "100%", height: "1000px" }} tabIndex={-1}>
               <PickupPointsMap
                 points={points}
                 selectedPoint={selectedPoint}
