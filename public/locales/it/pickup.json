@@ -17,6 +17,7 @@
     "book-alert-title": "Prenota il tuo appuntamento al CAF",
     "book-alert-description": "Evita le attese, prenota e ricevi assistenza senza fare la fila.",
     "address": "Indirizzo",
+    "address-copied": "Indirizzo copiato negli appunti",
     "opening-hours": "Orari di apertura",
     "phone-number": "Numero di telefono",
     "get-directions": "Ottieni indicazioni",
@@ -52,5 +53,6 @@
   "retry-cta": "Prova di nuovo",
   "map-loading-error-1": "Qualcosa non va nel caricamento della mappa.",
   "map-loading-error-2": "Premi “Prova di nuovo”. Nel frattempo puoi consultare i Punti di ritiro SEND dalla lista.",
-  "fetch-csv-error": "Si è verificato un problema durante il caricamento dei risultati."
+  "fetch-csv-error": "Si è verificato un problema durante il caricamento dei risultati.",
+  "map-mobile-help-text": "Utilizza due dita per spostare la mappa"
 }

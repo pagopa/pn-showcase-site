@@ -91,7 +91,6 @@ const PickupPointsPage: NextPage = () => {
         src="/iframe-resizer/child/index.umd.js"
         type="text/javascript"
         id="iframe-resizer-child"
-        strategy="beforeInteractive"
       />
 
       {!fetchError ? (
@@ -158,7 +157,7 @@ const PickupPointsPage: NextPage = () => {
               },
             }}
           >
-            <Box sx={{ width: "100%", height: "1000px" }}>
+            <Box sx={{ width: "100%", height: { xs: "500px", md: "1000px" } }}>
               <PickupPointsMap
                 points={points}
                 selectedPoint={selectedPoint}
@@ -173,7 +172,7 @@ const PickupPointsPage: NextPage = () => {
         <ErrorBox
           handleRetry={getData}
           retryLabel={t("retry-cta")}
-          sx={{ mt: 4, mb: 2, height: "1000px" }}
+          sx={{ mt: 4, mb: 2, height: { xs: "500px", md: "1000px" } }}
         >
           <Typography variant="body2" color="text.secondary" fontWeight={600}>
             {t("fetch-csv-error")}

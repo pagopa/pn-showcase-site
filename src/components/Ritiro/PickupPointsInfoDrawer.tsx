@@ -148,7 +148,10 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
                   >
                     {point.normalizedAddress}
                   </Typography>
-                  <CopyToClipboardButton value={point.normalizedAddress} />
+                  <CopyToClipboardButton
+                    value={point.normalizedAddress}
+                    tooltipTitle={t("drawer.address-copied")}
+                  />
                 </Stack>
               </Stack>
 
