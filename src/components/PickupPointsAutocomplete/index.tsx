@@ -118,9 +118,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
         sx={{ mt: 4 }}
         label={t("autocomplete.label")}
         placeholder={
-          userPosition
-            ? t("autocomplete.current-position")
-            : t("autocomplete.label")
+          userPosition ? t("autocomplete.current-position") : undefined
         }
         onInputChange={debouncedSearch}
         onSelect={(option) => getCoordinates(option.id.toString())}

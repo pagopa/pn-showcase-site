@@ -242,7 +242,7 @@ const RitiroPage: NextPage = () => {
           textAlign="center"
         >
           {t("search.description_1", { ns: "pickup" })}
-          <strong>{t("search.description_2", { ns: "pickup" })}</strong>. <br />
+          <b>{t("search.description_2", { ns: "pickup" })}</b>. <br />
           {t("search.description_3", { ns: "pickup" })}
         </Typography>
 
