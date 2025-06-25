@@ -7,6 +7,7 @@ import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useIsMobile } from "src/hook/useIsMobile";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, RaddOperator } from "../../model";
+import Skeletons from "./Skeletons";
 
 const PAGE_SIZE = 5;
 
@@ -99,6 +100,10 @@ function PickupPointsList({
     }
   }, [searchCoordinates]);
 
+  if (!points || points.length === 0) {
+    return <Skeletons />;
+  }
+
   return (
     <>
       <List
@@ -110,7 +115,6 @@ function PickupPointsList({
           mt: 2,
           pr: 1,
         }}
-        aria-live="polite"
       >
         {visibleItems.map((point, index) => {
           const isSelected = selectedPoint?.id === point.id;
