@@ -142,8 +142,6 @@ const PickupPointsPage: NextPage = () => {
                   md: "block",
                 },
               }}
-              aria-busy={!points || points.length === 0}
-              role="region"
             >
               <PickupPointsList
                 points={points}

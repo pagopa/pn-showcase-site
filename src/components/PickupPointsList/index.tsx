@@ -115,7 +115,6 @@ function PickupPointsList({
           mt: 2,
           pr: 1,
         }}
-        aria-live="polite"
       >
         {visibleItems.map((point, index) => {
           const isSelected = selectedPoint?.id === point.id;
