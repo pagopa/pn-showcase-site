@@ -83,7 +83,7 @@ Resources:
             ResponseTemplates:
               application/json: !Sub |
                 #set($bodyContent = $input.body)
-                #set($step1 = $bodyContent.replace("https://maps.geo.eu-central-1.amazonaws.com", "https://${MapsWebDomain}"))
+                #set($step1 = $bodyContent.replace("https://maps.geo.eu-central-1.amazonaws.com", "https://${MapsDomain}"))
                 #set($apiKeyToRemove = "?key={{resolve:secretsmanager:${LocationServiceApiKeySecretName}:SecretString:Key}}")
                 $step1.replace($apiKeyToRemove, "")
       MethodResponses:
@@ -180,9 +180,9 @@ Resources:
         Enabled: true
         PriceClass: 'PriceClass_100'
         Aliases:
-          - !Ref MapsWebDomain
+          - !Ref MapsDomain
         ViewerCertificate:
-          AcmCertificateArn: !Ref MapsWebCertificateArn
+          AcmCertificateArn: !Ref MapsCertificateArn
           MinimumProtocolVersion: TLSv1.2_2021
           SslSupportMethod: sni-only
         Origins:
@@ -227,7 +227,7 @@ Resources:
   Route53RecordForDistribution:
     Type: AWS::Route53::RecordSet
     Properties:
-      Name: !Ref MapsWebDomain
+      Name: !Ref MapsDomain
       Type: A
       HostedZoneId: !Ref CdnZoneId
       AliasTarget:
