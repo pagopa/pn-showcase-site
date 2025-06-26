@@ -12,11 +12,11 @@ Parameters:
     Description: "The name of the secret in AWS Secrets Manager that holds the Location Service API Key."
     Default: pn-showcase-location-api-key
 
-  MapsWebDomain:
+  MapsDomain:
     Type: String
     Description: "The custom domain for the CloudFront distribution"
 
-  MapsWebCertificateArn:
+  MapsCertificateArn:
     Type: String
     Description: "The ARN of the ACM certificate for the custom domain"
 
