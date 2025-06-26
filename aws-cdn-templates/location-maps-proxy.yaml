@@ -1,6 +1,9 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: 'CloudFront distribution and API Gateway proxy for AWS Location Service Maps'
 
+Transform:
+  - UpdateDeploymentTransform
+
 Parameters:
   ProjectName:
     Type: String
@@ -115,8 +118,9 @@ Resources:
           ResponseParameters:
             method.response.header.Access-Control-Allow-Origin: true
             method.response.header.Access-Control-Allow-Methods: true
-
-  StyleApiDeployment:
+  
+  # Deployment
+  PublicRestApiDeploymentPnPlaceholderEpochSeconds:
     Type: AWS::ApiGateway::Deployment
     DependsOn:
       - StyleProxyMethod
