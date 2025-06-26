@@ -120,7 +120,7 @@ Resources:
             method.response.header.Access-Control-Allow-Methods: true
   
   # Deployment
-  PublicRestApiDeploymentPnPlaceholderEpochSeconds:
+  StyleApiDeploymentPnPlaceholderEpochSeconds:
     Type: AWS::ApiGateway::Deployment
     DependsOn:
       - StyleProxyMethod
@@ -133,7 +133,7 @@ Resources:
     Properties:
       RestApiId: !Ref StyleDescriptorProxyApi
       StageName: 'unique'
-      DeploymentId: !Ref StyleApiDeployment
+      DeploymentId: !Ref StyleApiDeploymentPnPlaceholderEpochSeconds
       AccessLogSetting:
         DestinationArn: !GetAtt StyleApiLogGroup.Arn
         Format: '{"requestId":"$context.requestId","ip":"$context.identity.sourceIp","caller":"$context.identity.caller","user":"$context.identity.user","requestTime":"$context.requestTime","httpMethod":"$context.httpMethod","resourcePath":"$context.resourcePath","status":"$context.status","protocol":"$context.protocol","responseLength":"$context.responseLength"}'
