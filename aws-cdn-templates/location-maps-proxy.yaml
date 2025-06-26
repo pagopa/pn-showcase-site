@@ -20,7 +20,7 @@ Parameters:
     Type: String
     Description: "The ARN of the ACM certificate for the custom domain"
 
-  HostedZoneId:
+  CdnZoneId:
     Type: String
     Description: "The ID of the Route 53 Hosted Zone for the custom domain."
   
@@ -229,7 +229,7 @@ Resources:
     Properties:
       Name: !Ref MapsWebDomain
       Type: A
-      HostedZoneId: !Ref HostedZoneId
+      HostedZoneId: !Ref CdnZoneId
       AliasTarget:
         DNSName: !GetAtt LocationProxyDistribution.DomainName
         EvaluateTargetHealth: false
