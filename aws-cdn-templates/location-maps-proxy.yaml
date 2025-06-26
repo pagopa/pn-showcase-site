@@ -144,19 +144,19 @@ Resources:
       LogGroupName: !Sub "/aws/apigateway/${ProjectName}-style-api"
       RetentionInDays: 14
   
-  # StyleApiWaf:
-  #   Type: AWS::CloudFormation::Stack
-  #   DependsOn: StyleApiStage
-  #   Properties:
-  #     TemplateURL: !Sub "${TemplateBucketBaseUrl}/fragments/public-enpoints-waf-acl.yaml"
-  #     Parameters:
-  #       WAFName: !Sub '${ProjectName}-style-descriptor-api-acl'
-  #       ResourceArn: !Sub "arn:${AWS::Partition}:apigateway:${AWS::Region}::/restapis/${StyleDescriptorProxyApi}/stages/unique"
-  #       ApiName: !Sub "${ProjectName}-style-api"
-  #       TargetType: APIGATEWAY
-  #       IpRateLimit: !Ref StyleApiWafIpRateLimit
-  #       RateLimitEvaluationWindowSec: !Ref StyleApiRateLimitEvaluationWindow
-  #       AlarmSNSTopicArn: !Ref AlarmSNSTopicArn
+  StyleApiWaf:
+    Type: AWS::CloudFormation::Stack
+    DependsOn: StyleApiStage
+    Properties:
+      TemplateURL: !Sub "${TemplateBucketBaseUrl}/fragments/public-enpoints-waf-acl.yaml"
+      Parameters:
+        WAFName: !Sub '${ProjectName}-style-descriptor-api-acl'
+        ResourceArn: !Sub "arn:${AWS::Partition}:apigateway:${AWS::Region}::/restapis/${StyleDescriptorProxyApi}/stages/unique"
+        ApiName: !Sub "${ProjectName}-style-api"
+        TargetType: APIGATEWAY
+        IpRateLimit: !Ref StyleApiWafIpRateLimit
+        RateLimitEvaluationWindowSec: !Ref StyleApiRateLimitEvaluationWindow
+        AlarmSNSTopicArn: !Ref AlarmSNSTopicArn
 
   AddApiKeyToAssetsFunction:
     Type: AWS::CloudFront::Function
