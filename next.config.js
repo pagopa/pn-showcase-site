@@ -2,7 +2,7 @@ const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 
 const nextConfig = {
   output: "export",
-  reactStrictMode: false,
+  reactStrictMode: true,
   trailingSlash: true,
   distDir: "build",
   transpilePackages: ["@pagopa/mui-italia"],
@@ -29,7 +29,7 @@ const nextConfig = {
 module.exports = (phase, { defaultConfig }) => ({
   ...defaultConfig,
   ...nextConfig,
-  reactStrictMode: false,
+  reactStrictMode: true,
   pageExtensions: ["ts", "tsx", "js", "jsx"]
     .map((extension) => {
       const isDevServer = phase === PHASE_DEVELOPMENT_SERVER;
