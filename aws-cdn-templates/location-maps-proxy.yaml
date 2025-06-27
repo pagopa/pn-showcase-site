@@ -45,6 +45,14 @@ Parameters:
     Type: String
     Description: 'The S3 bucket from which to fetch the templates used by this stack.'
 
+  AccessLogsBucket:
+    Type: String
+    Description: "S3 bucket for CloudFront access logs. If '-', logging is disabled."
+    Default: '-'
+
+Conditions:
+  HasLogsBucket: !Not [ !Equals [ !Ref AccessLogsBucket, "-" ] ]
+
 Resources:
   StyleDescriptorProxyApi:
     Type: AWS::ApiGateway::RestApi
@@ -189,6 +197,11 @@ Resources:
           AcmCertificateArn: !Ref MapsCertificateArn
           MinimumProtocolVersion: TLSv1.2_2021
           SslSupportMethod: sni-only
+        Logging: !If
+          - HasLogsBucket
+          - Bucket: !Sub '${AccessLogsBucket}.s3.eu-south-1.amazonaws.com'
+            IncludeCookies: false
+          - !Ref AWS::NoValue
         Origins:
           - Id: 'StyleDescriptorApiOrigin'
             DomainName: !Sub '${StyleDescriptorProxyApi}.execute-api.${AWS::Region}.amazonaws.com'
