@@ -135,6 +135,31 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
               </Stack>
             </Stack>
 
+            <Stack spacing={1}>
+              <Typography
+                variant="body2"
+                fontWeight={600}
+                color="textSecondary"
+              >
+                {t("drawer.phone-number")}
+              </Typography>
+              <Link
+                href={`tel:${point?.contacts}`}
+                style={{ textDecoration: "none" }}
+              >
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
+                  <Typography variant="body2" fontWeight={700} color="primary">
+                    {point.contacts}
+                  </Typography>
+                  <Phone color="primary" />
+                </Stack>
+              </Link>
+            </Stack>
+
             {hasAlmostOneOpeningDay && (
               <Stack spacing={1}>
                 <Typography
@@ -162,31 +187,6 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
                 </Grid>
               </Stack>
             )}
-
-            <Stack spacing={1}>
-              <Typography
-                variant="body2"
-                fontWeight={600}
-                color="textSecondary"
-              >
-                {t("drawer.phone-number")}
-              </Typography>
-              <Link
-                href={`tel:${point?.contacts}`}
-                style={{ textDecoration: "none" }}
-              >
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  justifyContent="space-between"
-                >
-                  <Typography variant="body2" fontWeight={700} color="primary">
-                    {point.contacts}
-                  </Typography>
-                  <Phone color="primary" />
-                </Stack>
-              </Link>
-            </Stack>
           </Stack>
 
           <Stack direction="column" spacing={2} sx={{ mt: 5 }}>
