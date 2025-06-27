@@ -1,5 +1,4 @@
-import { ArrowForwardIos } from "@mui/icons-material";
-import { Chip, Stack, TablePagination, TableSortLabel } from "@mui/material";
+import { Stack, TablePagination, TableSortLabel } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,15 +6,12 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { ButtonNaked } from "@pagopa/mui-italia";
 import { useRef, useState } from "react";
-import { useTranslation } from "../../hook/useTranslation";
 import { RaddOperator } from "../../model";
 import CustomPagination from "../CustomPagination";
 
 type Props = {
   rows: RaddOperator[];
-  toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
 
 function stableSort(array: any[], comparator: (a: any, b: any) => number) {
@@ -44,8 +40,7 @@ function descendingComparator(a: any, b: any, orderBy: string) {
   return 0;
 }
 
-function OperatorsTable({ rows, toggleDrawer }: Readonly<Props>) {
-  const { t } = useTranslation(["pickup"]);
+function OperatorsTable({ rows }: Readonly<Props>) {
   const [orderBy, setOrderBy] = useState("city");
   const [order, setOrder] = useState<"asc" | "desc">("asc");
 
@@ -54,7 +49,7 @@ function OperatorsTable({ rows, toggleDrawer }: Readonly<Props>) {
     getComparator(order, orderBy)
   );
 
-  const keys = ["denomination", "city", "address", "contacts", ""];
+  const keys = ["denomination", "city", "address", "contacts"];
   const columnNames: { [key: string]: string } = {
     denomination: "Denominazione",
     city: "Città",
@@ -134,15 +129,6 @@ function OperatorsTable({ rows, toggleDrawer }: Readonly<Props>) {
                   </TableCell>
                   <TableCell>{row.address}</TableCell>
                   <TableCell>{row.contacts}</TableCell>
-                  <TableCell>
-                    <ButtonNaked
-                      color="primary"
-                      onClick={() => toggleDrawer(true, row)}
-                      endIcon={<ArrowForwardIos />}
-                    >
-                      {t("show-details")}
-                    </ButtonNaked>
-                  </TableCell>
                 </TableRow>
               ))}
           </TableBody>
