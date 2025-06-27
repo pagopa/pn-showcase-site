@@ -17,6 +17,7 @@ type Props = {
   searchCoordinates: Coordinates | null;
   toggleDialog: (open: boolean, pickupPoint: RaddOperator | null) => void;
   setSelectedPoint: (point: RaddOperator | null) => void;
+  isVisible: boolean;
 };
 
 function PickupPointsList({
@@ -25,6 +26,7 @@ function PickupPointsList({
   searchCoordinates,
   toggleDialog,
   setSelectedPoint,
+  isVisible,
 }: Props) {
   const { t } = useTranslation(["pickup"]);
   const listContainerRef = useRef<HTMLUListElement | null>(null);
@@ -68,7 +70,7 @@ function PickupPointsList({
 
     if (listItems && targetIndex !== -1) {
       const targetItem = listItems[targetIndex];
-      targetItem.scrollIntoView({ behavior: "smooth", block: "end" });
+      targetItem.scrollIntoView({ behavior: "smooth", block: "center" });
     } else {
       listContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -79,6 +81,10 @@ function PickupPointsList({
   };
 
   useEffect(() => {
+    if (!isVisible) {
+      return;
+    }
+
     if (!selectedPoint) {
       setCustomSortTarget(null);
       return;
@@ -89,11 +95,10 @@ function PickupPointsList({
         latitude: selectedPoint.latitude,
         longitude: selectedPoint.longitude,
       });
-      return;
     }
 
     scrollToItem(selectedPoint);
-  }, [selectedPoint]);
+  }, [selectedPoint, isVisible]);
 
   useEffect(() => {
     if (searchCoordinates) {

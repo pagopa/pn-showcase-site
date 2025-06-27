@@ -147,6 +147,7 @@ const PickupPointsPage: NextPage = () => {
                 setSelectedPoint={setSelectedPoint}
                 selectedPoint={selectedPoint}
                 searchCoordinates={searchCoordinates}
+                isVisible={selectedTab === "list"}
               />
             </Box>
           </Grid>
