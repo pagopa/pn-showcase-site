@@ -16,6 +16,7 @@
     "book-alert-title": "Vereinbaren Sie einen Termin beim Steuerhilfezentrum (CAF)",
     "book-alert-description": "Vermeiden Sie Warctezeiten: Vereinbaren Sie einen Termin und erhalten Sie Unterstützung ohne Anstehen.",
     "address": "Adresse",
+    "address-copied": "Adresse in die Zwischenablage kopiert",
     "opening-hours": "Öffnungszeiten",
     "phone-number": "Kontakt",
     "get-directions": "Route anzeigen",
@@ -51,5 +52,6 @@
   "retry-cta": "Erneut versuchen",
   "map-loading-error-1": "Fehler beim Laden der Karte.",
   "map-loading-error-2": "Drücken Sie auf „Erneut versuchen“. In der Zwischenzeit können Sie die SEND-Abholstellen in der Liste ansehen.",
-  "fetch-csv-error": "Ein Problem ist beim Laden der Ergebnisse aufgetreten."
+  "fetch-csv-error": "Ein Problem ist beim Laden der Ergebnisse aufgetreten.",
+  "map-mobile-help-text": "Benutze zwei Finger, um die Karte zu verschieben"
 }

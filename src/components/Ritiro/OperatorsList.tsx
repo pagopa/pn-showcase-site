@@ -1,4 +1,3 @@
-import { ArrowForwardIos } from "@mui/icons-material";
 import {
   Box,
   List,
@@ -8,19 +7,15 @@ import {
   TablePagination,
   Typography,
 } from "@mui/material";
-import { ButtonNaked } from "@pagopa/mui-italia";
 import { useRef, useState } from "react";
-import { useTranslation } from "../../hook/useTranslation";
 import { RaddOperator } from "../../model";
 import CustomPagination from "../CustomPagination";
 
 type Props = {
   rows: RaddOperator[];
-  toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
 
-function OperatorsList({ rows, toggleDrawer }: Readonly<Props>) {
-  const { t } = useTranslation(["pickup"]);
+function OperatorsList({ rows }: Readonly<Props>) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -86,15 +81,6 @@ function OperatorsList({ rows, toggleDrawer }: Readonly<Props>) {
                 <Box mb={1}>
                   <Typography variant="body2">Telefono</Typography>
                   <Typography variant="subtitle1">{row.contacts}</Typography>
-                </Box>
-                <Box mb={1}>
-                  <ButtonNaked
-                    color="primary"
-                    onClick={() => toggleDrawer(true, row)}
-                    endIcon={<ArrowForwardIos />}
-                  >
-                    {t("show-details")}
-                  </ButtonNaked>
                 </Box>
               </Stack>
             </ListItem>

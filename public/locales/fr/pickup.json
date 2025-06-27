@@ -16,6 +16,7 @@
     "book-alert-title": "Prenez rendez-vous au centre d’accompagnement fiscal (CAF)",
     "book-alert-description": "Évitez les files d’attente, prenez rendez-vous et recevez de l’aide sans délai.",
     "address": "Adresse",
+    "address-copied": "Adresse copiée dans le presse-papiers",
     "opening-hours": "Horaires d’ouverture",
     "phone-number": "Contacts",
     "get-directions": "Itinéraire",
@@ -51,5 +52,6 @@
   "retry-cta": "Réessayer",
   "map-loading-error-1": "La carte est momentanément indisponible.",
   "map-loading-error-2": "Appuyez sur « Réessayer ». Vous pouvez aussi consulter la liste des Points de retrait SEND.",
-  "fetch-csv-error": "Impossible de charger les résultats."
+  "fetch-csv-error": "Impossible de charger les résultats.",
+  "map-mobile-help-text": "Utilisez deux doigts pour déplacer la carte"
 }

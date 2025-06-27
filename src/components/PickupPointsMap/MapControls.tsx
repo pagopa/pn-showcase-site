@@ -92,7 +92,12 @@ const MapControls: React.FC = () => {
         sx={{ position: "absolute", top: 24, right: 24 }}
       >
         <Paper elevation={4}>
-          <Button onClick={onGeolocateUser} sx={{ width: "48px" }}>
+          <Button
+            onClick={onGeolocateUser}
+            sx={{ width: "48px" }}
+            tabIndex={-1}
+            aria-hidden="true"
+          >
             {getGpsIcon()}
           </Button>
         </Paper>
@@ -108,10 +113,10 @@ const MapControls: React.FC = () => {
               borderRadius: 4,
             }}
           >
-            <Button onClick={onClickZoomIn}>
+            <Button onClick={onClickZoomIn} tabIndex={-1} aria-hidden="true">
               <Add color="primary" fontSize="small" />
             </Button>
-            <Button onClick={onClickZoomOut}>
+            <Button onClick={onClickZoomOut} tabIndex={-1} aria-hidden="true">
               <Remove color="primary" fontSize="small" />
             </Button>
           </ButtonGroup>
@@ -123,7 +128,7 @@ const MapControls: React.FC = () => {
         alertSeverity={deniedAccess ? "warning" : "error"}
         message={getErrorMessage()}
         onClose={() => setShowErrorSnackBar(false)}
-        snackBarPosition={{ vertical: "bottom", horizontal: "right" }}
+        snackBarPosition={{ vertical: "top", horizontal: "center" }}
       />
     </>
   );

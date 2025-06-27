@@ -1,0 +1,6 @@
+{
+  "Parameters" : {
+    "StyleApiWafIpRateLimit": "3000",
+    "LocationServiceApiKeySecretName": "pn-showcase-location-api-key-dev"
+  }
+}

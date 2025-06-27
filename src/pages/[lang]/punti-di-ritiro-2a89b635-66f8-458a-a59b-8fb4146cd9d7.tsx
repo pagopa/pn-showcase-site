@@ -21,7 +21,6 @@ import { useEffect, useState } from "react";
 import { getI18n } from "../../api/i18n";
 import OperatorsList from "../../components/Ritiro/OperatorsList";
 import OperatorsTable from "../../components/Ritiro/OperatorsTable";
-import PointInfoDrawer from "../../components/Ritiro/PickupPointsInfoDrawer";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
 
@@ -56,8 +55,6 @@ const RitiroPage: NextPage = () => {
     []
   );
   const [isSearchFailed, setIsSearchFailed] = useState<boolean>(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
 
   let hasData = false;
   useEffect(() => {
@@ -143,11 +140,6 @@ const RitiroPage: NextPage = () => {
     setFilteredOperators(initialRaddOperators);
   };
 
-  const toggleDrawer = (open: boolean, pickupPoint: RaddOperator | null) => {
-    setIsDrawerOpen(open);
-    setSelectedPoint(pickupPoint);
-  };
-
   let rowsToSet: RaddOperator[] | null = null;
 
   if (filteredOperators.length > 0) {
@@ -187,7 +179,6 @@ const RitiroPage: NextPage = () => {
         <OperatorsList
           key={JSON.stringify(initialRaddOperators)}
           rows={rowsToSet}
-          toggleDrawer={toggleDrawer}
         />
       );
     } else {
@@ -195,7 +186,6 @@ const RitiroPage: NextPage = () => {
         <OperatorsTable
           key={JSON.stringify(filteredOperators)}
           rows={rowsToSet}
-          toggleDrawer={toggleDrawer}
         />
       );
     }
@@ -242,7 +232,7 @@ const RitiroPage: NextPage = () => {
           textAlign="center"
         >
           {t("search.description_1", { ns: "pickup" })}
-          <strong>{t("search.description_2", { ns: "pickup" })}</strong>. <br />
+          <b>{t("search.description_2", { ns: "pickup" })}</b>. <br />
           {t("search.description_3", { ns: "pickup" })}
         </Typography>
 
@@ -300,18 +290,7 @@ const RitiroPage: NextPage = () => {
         >
           {getContent()}
         </Stack>
-        <PointInfoDrawer
-          isOpen={isDrawerOpen}
-          toggleDrawer={toggleDrawer}
-          point={selectedPoint}
-        />
       </Box>
-
-      <PointInfoDrawer
-        isOpen={isDrawerOpen}
-        toggleDrawer={toggleDrawer}
-        point={selectedPoint}
-      />
     </>
   );
 };

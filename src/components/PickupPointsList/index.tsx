@@ -1,5 +1,5 @@
 import { Place, Refresh } from "@mui/icons-material";
-import { Box, List, ListItem, Paper, Stack, Typography } from "@mui/material";
+import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 import { ButtonNaked } from "@pagopa/mui-italia";
 import { sortPointsByDistance } from "@utils/map";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -7,6 +7,7 @@ import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useIsMobile } from "src/hook/useIsMobile";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, RaddOperator } from "../../model";
+import Skeletons from "./Skeletons";
 
 const PAGE_SIZE = 5;
 
@@ -14,16 +15,18 @@ type Props = {
   points: RaddOperator[];
   selectedPoint: RaddOperator | null;
   searchCoordinates: Coordinates | null;
-  toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
+  toggleDialog: (open: boolean, pickupPoint: RaddOperator | null) => void;
   setSelectedPoint: (point: RaddOperator | null) => void;
+  isVisible: boolean;
 };
 
 function PickupPointsList({
   points,
   selectedPoint,
   searchCoordinates,
-  toggleDrawer,
+  toggleDialog,
   setSelectedPoint,
+  isVisible,
 }: Props) {
   const { t } = useTranslation(["pickup"]);
   const listContainerRef = useRef<HTMLUListElement | null>(null);
@@ -38,7 +41,7 @@ function PickupPointsList({
   const onSelectPoint = (point: RaddOperator) => {
     setSelectedPoint(point);
     if (isMobile) {
-      toggleDrawer(true, point);
+      toggleDialog(true, point);
     }
   };
 
@@ -48,7 +51,7 @@ function PickupPointsList({
 
   const handleShowDetails = (e: React.MouseEvent, point: RaddOperator) => {
     e.stopPropagation();
-    toggleDrawer(true, point);
+    toggleDialog(true, point);
   };
 
   const sortedItems = useMemo(() => {
@@ -67,7 +70,7 @@ function PickupPointsList({
 
     if (listItems && targetIndex !== -1) {
       const targetItem = listItems[targetIndex];
-      targetItem.scrollIntoView({ behavior: "smooth", block: "center" });
+      targetItem.scrollIntoView({ behavior: "smooth", block: "nearest" });
     } else {
       listContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -78,6 +81,10 @@ function PickupPointsList({
   };
 
   useEffect(() => {
+    if (!isVisible) {
+      return;
+    }
+
     if (!selectedPoint) {
       setCustomSortTarget(null);
       return;
@@ -91,7 +98,7 @@ function PickupPointsList({
     }
 
     scrollToItem(selectedPoint);
-  }, [selectedPoint]);
+  }, [selectedPoint, isVisible]);
 
   useEffect(() => {
     if (searchCoordinates) {
@@ -99,18 +106,21 @@ function PickupPointsList({
     }
   }, [searchCoordinates]);
 
+  if (!points || points.length === 0) {
+    return <Skeletons />;
+  }
+
   return (
     <>
       <List
         ref={listContainerRef}
         sx={{
-          maxHeight: "800px",
-          overflowY: { xs: "none", lg: "auto" },
+          maxHeight: { xs: "480px", lg: "750px" },
+          overflowY: "auto",
           p: 0,
           mt: 2,
           pr: 1,
         }}
-        aria-live="polite"
       >
         {visibleItems.map((point, index) => {
           const isSelected = selectedPoint?.id === point.id;
@@ -119,87 +129,85 @@ function PickupPointsList({
             <ListItem
               key={`${point.denomination}-${point.id}-${index}`}
               onClick={() => onSelectPoint(point)}
+              alignItems="flex-start"
               sx={{
                 border: isSelected ? "2px solid" : "1px solid",
                 borderColor: isSelected ? "#2185E9" : "divider",
                 borderRadius: "8px",
                 my: 2,
-                p: 0,
+                p: 3,
                 cursor: "pointer",
+                backgroundColor: isSelected ? "#0073E614" : "transparent",
+                "&:hover": {
+                  backgroundColor: "#0073e61f",
+                },
               }}
             >
-              <Stack
-                component={Paper}
-                width="100%"
-                sx={{
-                  p: 3,
-                  borderRadius: "8px",
-                  backgroundColor: isSelected ? "#0073E614" : "transparent",
-                  "&:hover": {
-                    backgroundColor: "#0073e61f",
-                  },
-                }}
-              >
-                <Box
-                  display="flex"
-                  justifyContent="space-between"
-                  alignItems="flex-start"
-                >
-                  <Box mb={1}>
-                    <Typography variant="body1" fontWeight={600}>
-                      {point.denomination}
-                    </Typography>
-                    <Typography variant="body2" fontSize="14px">
+              <ListItemText
+                primary={
+                  <Typography variant="body1" fontWeight={600}>
+                    {point.denomination}
+                  </Typography>
+                }
+                secondary={
+                  <>
+                    <Typography variant="body2" fontSize="14px" component="div">
                       {point.normalizedAddress}
                     </Typography>
-                  </Box>
-
-                  {userPosition && (
-                    <Stack
-                      direction="row"
-                      spacing={1}
-                      alignItems="center"
-                      justifyContent="flex-end"
+                    <ButtonNaked
+                      color="primary"
+                      sx={{
+                        justifyContent: "flex-start",
+                        width: "fit-content",
+                        alignItems: "center",
+                        mt: 1,
+                        "&:hover": {
+                          textDecoration: "underline",
+                        },
+                      }}
+                      onClick={(e: React.MouseEvent) =>
+                        handleShowDetails(e, point)
+                      }
                     >
-                      <Place
-                        fontSize="small"
-                        sx={{ color: "text.secondary" }}
-                      />
-                      <Typography variant="body2" color="text.secondary">
-                        km {point.distance?.toFixed(1) || "-"}
-                      </Typography>
-                    </Stack>
-                  )}
-                </Box>
+                      {t("show-details")}
+                    </ButtonNaked>
+                  </>
+                }
+              />
 
-                <ButtonNaked
-                  color="primary"
-                  sx={{
-                    justifyContent: "flex-start",
-                    width: "fit-content",
-                    alignItems: "center",
-                  }}
-                  onClick={(e: React.MouseEvent) => handleShowDetails(e, point)}
+              {userPosition && (
+                <Box
+                  display="flex"
+                  alignItems="flex-start"
+                  gap={0.5}
+                  flexShrink={0}
                 >
-                  {t("show-details")}
-                </ButtonNaked>
-              </Stack>
+                  <Place fontSize="small" sx={{ color: "text.secondary" }} />
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    whiteSpace="nowrap"
+                  >
+                    {`${point.distance?.toFixed(1) || "-"} km`}
+                  </Typography>
+                </Box>
+              )}
             </ListItem>
           );
         })}
-
-        {visibleItems.length < sortedItems.length && (
-          <Box sx={{ display: "flex", justifyContent: "center", my: 2 }}>
-            <ButtonNaked
-              color="primary"
-              onClick={handleShowMore}
-              startIcon={<Refresh />}
-            >
-              {t("show-more")}
-            </ButtonNaked>
-          </Box>
-        )}
       </List>
+
+      {visibleItems.length < sortedItems.length && (
+        <Box sx={{ display: "flex", justifyContent: "center", my: 2 }}>
+          <ButtonNaked
+            color="primary"
+            onClick={handleShowMore}
+            startIcon={<Refresh />}
+          >
+            {t("show-more")}
+          </ButtonNaked>
+        </Box>
+      )}
     </>
   );
 }

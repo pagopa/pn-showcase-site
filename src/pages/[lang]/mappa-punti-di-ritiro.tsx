@@ -1,4 +1,5 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
+import { visuallyHidden } from "@mui/utils";
 import { langCodes } from "@utils/constants";
 import { mapPoint } from "@utils/map";
 import type { GetStaticPaths, NextPage } from "next";
@@ -9,7 +10,7 @@ import ErrorBox from "src/components/ErrorBox";
 import PickupPointsAutocomplete from "src/components/PickupPointsAutocomplete";
 import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMap from "src/components/PickupPointsMap";
-import PickupPointsInfoDrawer from "src/components/Ritiro/PickupPointsInfoDrawer";
+import PickupPointsInfoDialog from "src/components/Ritiro/PickupPointsInfoDialog";
 import Tabs from "src/components/Tabs";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
@@ -51,7 +52,7 @@ const PickupPointsPage: NextPage = () => {
     setSelectedTab(tabIndex === 1 ? "map" : "list");
   };
 
-  const toggleDrawer = (open: boolean, pickupPoint?: RaddOperator | null) => {
+  const toggleDialog = (open: boolean, pickupPoint?: RaddOperator | null) => {
     setIsDrawerOpen(open);
     if (pickupPoint) {
       setSelectedPoint(pickupPoint);
@@ -91,7 +92,6 @@ const PickupPointsPage: NextPage = () => {
         src="/iframe-resizer/child/index.umd.js"
         type="text/javascript"
         id="iframe-resizer-child"
-        strategy="beforeInteractive"
       />
 
       {!fetchError ? (
@@ -101,8 +101,7 @@ const PickupPointsPage: NextPage = () => {
 
             <Typography mt={2} mb={1} color="textPrimary" variant="body2">
               {t("search.description_1")}
-              <strong>{t("search.description_2")}</strong>.{" "}
-              {t("search.description_3")}
+              <b>{t("search.description_2")}</b>. {t("search.description_3")}
             </Typography>
 
             <Link
@@ -128,6 +127,12 @@ const PickupPointsPage: NextPage = () => {
               />
             </Box>
 
+            <Box aria-live="polite" sx={visuallyHidden}>
+              {!points || points.length === 0
+                ? "Caricamento dei punti di ritiro"
+                : `Trovati ${points.length} punti di ritiro`}
+            </Box>
+
             <Box
               sx={{
                 display: {
@@ -138,10 +143,11 @@ const PickupPointsPage: NextPage = () => {
             >
               <PickupPointsList
                 points={points}
-                toggleDrawer={toggleDrawer}
+                toggleDialog={toggleDialog}
                 setSelectedPoint={setSelectedPoint}
                 selectedPoint={selectedPoint}
                 searchCoordinates={searchCoordinates}
+                isVisible={selectedTab === "list"}
               />
             </Box>
           </Grid>
@@ -157,13 +163,17 @@ const PickupPointsPage: NextPage = () => {
                 md: "block",
               },
             }}
+            aria-hidden="true"
           >
-            <Box sx={{ width: "100%", height: "1000px" }}>
+            <Box
+              sx={{ width: "100%", height: { xs: "500px", md: "1070px" } }}
+              tabIndex={-1}
+            >
               <PickupPointsMap
                 points={points}
                 selectedPoint={selectedPoint}
                 setSelectedPoint={setSelectedPoint}
-                toggleDrawer={toggleDrawer}
+                toggleDialog={toggleDialog}
                 searchCoordinates={searchCoordinates}
               />
             </Box>
@@ -173,7 +183,7 @@ const PickupPointsPage: NextPage = () => {
         <ErrorBox
           handleRetry={getData}
           retryLabel={t("retry-cta")}
-          sx={{ mt: 4, mb: 2, height: "1000px" }}
+          sx={{ mt: 4, mb: 2, height: { xs: "500px", md: "1000px" } }}
         >
           <Typography variant="body2" color="text.secondary" fontWeight={600}>
             {t("fetch-csv-error")}
@@ -181,10 +191,10 @@ const PickupPointsPage: NextPage = () => {
         </ErrorBox>
       )}
 
-      <PickupPointsInfoDrawer
+      <PickupPointsInfoDialog
         isOpen={isDrawerOpen}
         point={selectedPoint}
-        toggleDrawer={toggleDrawer}
+        toggleDialog={toggleDialog}
       />
     </>
   );
