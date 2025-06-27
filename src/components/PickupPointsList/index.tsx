@@ -68,7 +68,7 @@ function PickupPointsList({
 
     if (listItems && targetIndex !== -1) {
       const targetItem = listItems[targetIndex];
-      targetItem.scrollIntoView({ behavior: "smooth", block: "center" });
+      targetItem.scrollIntoView({ behavior: "smooth", block: "end" });
     } else {
       listContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -89,6 +89,7 @@ function PickupPointsList({
         latitude: selectedPoint.latitude,
         longitude: selectedPoint.longitude,
       });
+      return;
     }
 
     scrollToItem(selectedPoint);
