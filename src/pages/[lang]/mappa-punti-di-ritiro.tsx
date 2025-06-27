@@ -165,7 +165,7 @@ const PickupPointsPage: NextPage = () => {
             aria-hidden="true"
           >
             <Box
-              sx={{ width: "100%", height: { xs: "500px", md: "1000px" } }}
+              sx={{ width: "100%", height: { xs: "700px", md: "1000px" } }}
               tabIndex={-1}
             >
               <PickupPointsMap

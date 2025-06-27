@@ -3,6 +3,7 @@ import {
   Alert,
   Box,
   Button,
+  Dialog,
   Divider,
   Drawer,
   Grid,
@@ -82,19 +83,7 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
   };
 
   return (
-    <Drawer
-      anchor={isMobile ? "bottom" : "left"}
-      open={isOpen}
-      onClose={handleCloseDrawer}
-      sx={{
-        width: drawerWidth,
-        [`& .MuiDrawer-paper`]: {
-          width: drawerWidth,
-          borderTopRightRadius: isMobile ? 8 : 0,
-          borderTopLeftRadius: isMobile ? 8 : 0,
-        },
-      }}
-    >
+    <Dialog open={isOpen} onClose={handleCloseDrawer}>
       {point && (
         <Box
           display="flex"
@@ -229,7 +218,7 @@ const PickupPointsInfoDrawer: React.FC<Props> = ({
           </Stack>
         </Box>
       )}
-    </Drawer>
+    </Dialog>
   );
 };
 

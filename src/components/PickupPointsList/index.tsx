@@ -1,5 +1,12 @@
-import { Place, Refresh } from "@mui/icons-material";
-import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { ChevronLeft, ChevronRight, Place } from "@mui/icons-material";
+import {
+  Box,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import { ButtonNaked } from "@pagopa/mui-italia";
 import { sortPointsByDistance } from "@utils/map";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -28,10 +35,12 @@ function PickupPointsList({
 }: Props) {
   const { t } = useTranslation(["pickup"]);
   const listContainerRef = useRef<HTMLUListElement | null>(null);
-  const [numberOfRows, setNumberOfRows] = useState(PAGE_SIZE);
+  const [currentPage, setCurrentPage] = useState(1);
   const [customSortTarget, setCustomSortTarget] = useState<Coordinates | null>(
     null
   );
+
+  const totalPages = Math.ceil(points.length / PAGE_SIZE);
 
   const { userPosition } = useCurrentPosition();
   const isMobile = useIsMobile();
@@ -43,8 +52,18 @@ function PickupPointsList({
     }
   };
 
-  const handleShowMore = () => {
-    setNumberOfRows((prev) => prev + PAGE_SIZE);
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+      listContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+      listContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const handleShowDetails = (e: React.MouseEvent, point: RaddOperator) => {
@@ -57,24 +76,12 @@ function PickupPointsList({
   }, [points, userPosition, customSortTarget]);
 
   const visibleItems = useMemo(() => {
-    return sortedItems.slice(0, numberOfRows);
-  }, [sortedItems, numberOfRows]);
+    const startIndex = (currentPage - 1) * PAGE_SIZE;
+    const endIndex = startIndex + PAGE_SIZE;
+    return sortedItems.slice(startIndex, endIndex);
+  }, [sortedItems, currentPage]);
 
-  const scrollToItem = (targetPoint: RaddOperator) => {
-    const listItems = listContainerRef.current?.querySelectorAll("li");
-    const targetIndex = visibleItems.findIndex(
-      (item) => item.id === targetPoint.id
-    );
-
-    if (listItems && targetIndex !== -1) {
-      const targetItem = listItems[targetIndex];
-      targetItem.scrollIntoView({ behavior: "smooth", block: "center" });
-    } else {
-      listContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
-
-  const isPointVisibleInCurrentList = (point: RaddOperator): boolean => {
+  const isPointVisibleInCurrentPage = (point: RaddOperator): boolean => {
     return visibleItems.some((item) => item.id === point.id);
   };
 
@@ -84,21 +91,25 @@ function PickupPointsList({
       return;
     }
 
-    if (!isPointVisibleInCurrentList(selectedPoint)) {
+    if (!isPointVisibleInCurrentPage(selectedPoint)) {
       setCustomSortTarget({
         latitude: selectedPoint.latitude,
         longitude: selectedPoint.longitude,
       });
+      setCurrentPage(1);
     }
-
-    scrollToItem(selectedPoint);
   }, [selectedPoint]);
 
   useEffect(() => {
     if (searchCoordinates) {
       setCustomSortTarget(searchCoordinates);
+      setCurrentPage(1);
     }
   }, [searchCoordinates]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [points]);
 
   if (!points || points.length === 0) {
     return <Skeletons />;
@@ -109,8 +120,6 @@ function PickupPointsList({
       <List
         ref={listContainerRef}
         sx={{
-          maxHeight: { xs: "100%", lg: "800px" },
-          overflowY: { xs: "none", lg: "auto" },
           p: 0,
           mt: 2,
           pr: 1,
@@ -191,15 +200,26 @@ function PickupPointsList({
         })}
       </List>
 
-      {visibleItems.length < sortedItems.length && (
-        <Box sx={{ display: "flex", justifyContent: "center", my: 2 }}>
-          <ButtonNaked
-            color="primary"
-            onClick={handleShowMore}
-            startIcon={<Refresh />}
+      {totalPages > 1 && (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            mt: 2,
+            px: 1,
+          }}
+        >
+          <IconButton onClick={handlePreviousPage} disabled={currentPage === 1}>
+            <ChevronLeft />
+          </IconButton>
+
+          <IconButton
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
           >
-            {t("show-more")}
-          </ButtonNaked>
+            <ChevronRight />
+          </IconButton>
         </Box>
       )}
     </>
