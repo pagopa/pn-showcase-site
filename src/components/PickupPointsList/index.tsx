@@ -15,16 +15,18 @@ type Props = {
   points: RaddOperator[];
   selectedPoint: RaddOperator | null;
   searchCoordinates: Coordinates | null;
-  toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
+  toggleDialog: (open: boolean, pickupPoint: RaddOperator | null) => void;
   setSelectedPoint: (point: RaddOperator | null) => void;
+  isVisible: boolean;
 };
 
 function PickupPointsList({
   points,
   selectedPoint,
   searchCoordinates,
-  toggleDrawer,
+  toggleDialog,
   setSelectedPoint,
+  isVisible,
 }: Props) {
   const { t } = useTranslation(["pickup"]);
   const listContainerRef = useRef<HTMLUListElement | null>(null);
@@ -39,7 +41,7 @@ function PickupPointsList({
   const onSelectPoint = (point: RaddOperator) => {
     setSelectedPoint(point);
     if (isMobile) {
-      toggleDrawer(true, point);
+      toggleDialog(true, point);
     }
   };
 
@@ -49,7 +51,7 @@ function PickupPointsList({
 
   const handleShowDetails = (e: React.MouseEvent, point: RaddOperator) => {
     e.stopPropagation();
-    toggleDrawer(true, point);
+    toggleDialog(true, point);
   };
 
   const sortedItems = useMemo(() => {
@@ -68,7 +70,7 @@ function PickupPointsList({
 
     if (listItems && targetIndex !== -1) {
       const targetItem = listItems[targetIndex];
-      targetItem.scrollIntoView({ behavior: "smooth", block: "center" });
+      targetItem.scrollIntoView({ behavior: "smooth", block: "nearest" });
     } else {
       listContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -79,6 +81,10 @@ function PickupPointsList({
   };
 
   useEffect(() => {
+    if (!isVisible) {
+      return;
+    }
+
     if (!selectedPoint) {
       setCustomSortTarget(null);
       return;
@@ -92,7 +98,7 @@ function PickupPointsList({
     }
 
     scrollToItem(selectedPoint);
-  }, [selectedPoint]);
+  }, [selectedPoint, isVisible]);
 
   useEffect(() => {
     if (searchCoordinates) {
@@ -109,8 +115,8 @@ function PickupPointsList({
       <List
         ref={listContainerRef}
         sx={{
-          maxHeight: { xs: "100%", lg: "800px" },
-          overflowY: { xs: "none", lg: "auto" },
+          maxHeight: { xs: "480px", lg: "750px" },
+          overflowY: "auto",
           p: 0,
           mt: 2,
           pr: 1,

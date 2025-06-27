@@ -20,7 +20,7 @@ type Props = {
   selectedPoint: RaddOperator | null;
   searchCoordinates: Coordinates | null;
   setSelectedPoint: (point: RaddOperator | null) => void;
-  toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
+  toggleDialog: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
 
 const PickupPointsMap: React.FC<Props> = ({
@@ -28,7 +28,7 @@ const PickupPointsMap: React.FC<Props> = ({
   selectedPoint,
   searchCoordinates,
   setSelectedPoint,
-  toggleDrawer,
+  toggleDialog,
 }) => {
   const { t } = useTranslation(["pickup"]);
   const mapRef = useRef<MapRef>(null);
@@ -71,7 +71,7 @@ const PickupPointsMap: React.FC<Props> = ({
           duration: 1000,
         });
         setSelectedPoint(selectedPoint);
-        toggleDrawer(true, selectedPoint);
+        toggleDialog(true, selectedPoint);
       }
     }
   };

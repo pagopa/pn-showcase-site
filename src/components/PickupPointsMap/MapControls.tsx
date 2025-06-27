@@ -128,7 +128,7 @@ const MapControls: React.FC = () => {
         alertSeverity={deniedAccess ? "warning" : "error"}
         message={getErrorMessage()}
         onClose={() => setShowErrorSnackBar(false)}
-        snackBarPosition={{ vertical: "bottom", horizontal: "right" }}
+        snackBarPosition={{ vertical: "top", horizontal: "center" }}
       />
     </>
   );
