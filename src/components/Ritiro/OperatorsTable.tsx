@@ -15,7 +15,7 @@ import CustomPagination from "../CustomPagination";
 
 type Props = {
   rows: RaddOperator[];
-  toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
+  toggleDialog: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
 
 function stableSort(array: any[], comparator: (a: any, b: any) => number) {
@@ -44,7 +44,7 @@ function descendingComparator(a: any, b: any, orderBy: string) {
   return 0;
 }
 
-function OperatorsTable({ rows, toggleDrawer }: Readonly<Props>) {
+function OperatorsTable({ rows, toggleDialog }: Readonly<Props>) {
   const { t } = useTranslation(["pickup"]);
   const [orderBy, setOrderBy] = useState("city");
   const [order, setOrder] = useState<"asc" | "desc">("asc");
@@ -137,7 +137,7 @@ function OperatorsTable({ rows, toggleDrawer }: Readonly<Props>) {
                   <TableCell>
                     <ButtonNaked
                       color="primary"
-                      onClick={() => toggleDrawer(true, row)}
+                      onClick={() => toggleDialog(true, row)}
                       endIcon={<ArrowForwardIos />}
                     >
                       {t("show-details")}

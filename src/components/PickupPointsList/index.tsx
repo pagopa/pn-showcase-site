@@ -15,7 +15,7 @@ type Props = {
   points: RaddOperator[];
   selectedPoint: RaddOperator | null;
   searchCoordinates: Coordinates | null;
-  toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
+  toggleDialog: (open: boolean, pickupPoint: RaddOperator | null) => void;
   setSelectedPoint: (point: RaddOperator | null) => void;
 };
 
@@ -23,7 +23,7 @@ function PickupPointsList({
   points,
   selectedPoint,
   searchCoordinates,
-  toggleDrawer,
+  toggleDialog,
   setSelectedPoint,
 }: Props) {
   const { t } = useTranslation(["pickup"]);
@@ -39,7 +39,7 @@ function PickupPointsList({
   const onSelectPoint = (point: RaddOperator) => {
     setSelectedPoint(point);
     if (isMobile) {
-      toggleDrawer(true, point);
+      toggleDialog(true, point);
     }
   };
 
@@ -49,7 +49,7 @@ function PickupPointsList({
 
   const handleShowDetails = (e: React.MouseEvent, point: RaddOperator) => {
     e.stopPropagation();
-    toggleDrawer(true, point);
+    toggleDialog(true, point);
   };
 
   const sortedItems = useMemo(() => {
@@ -109,8 +109,10 @@ function PickupPointsList({
       <List
         ref={listContainerRef}
         sx={{
-          maxHeight: { xs: "100%", lg: "800px" },
-          overflowY: { xs: "none", lg: "auto" },
+          // maxHeight: { xs: "800px", lg: "800px" },
+          // overflowY: { xs: "auto", lg: "auto" },
+          maxHeight: "750px",
+          overflowY: "auto",
           p: 0,
           mt: 2,
           pr: 1,

@@ -16,10 +16,10 @@ import CustomPagination from "../CustomPagination";
 
 type Props = {
   rows: RaddOperator[];
-  toggleDrawer: (open: boolean, pickupPoint: RaddOperator | null) => void;
+  toggleDialog: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
 
-function OperatorsList({ rows, toggleDrawer }: Readonly<Props>) {
+function OperatorsList({ rows, toggleDialog }: Readonly<Props>) {
   const { t } = useTranslation(["pickup"]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -90,7 +90,7 @@ function OperatorsList({ rows, toggleDrawer }: Readonly<Props>) {
                 <Box mb={1}>
                   <ButtonNaked
                     color="primary"
-                    onClick={() => toggleDrawer(true, row)}
+                    onClick={() => toggleDialog(true, row)}
                     endIcon={<ArrowForwardIos />}
                   >
                     {t("show-details")}

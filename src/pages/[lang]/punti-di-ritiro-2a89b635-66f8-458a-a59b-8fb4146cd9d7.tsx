@@ -21,7 +21,7 @@ import { useEffect, useState } from "react";
 import { getI18n } from "../../api/i18n";
 import OperatorsList from "../../components/Ritiro/OperatorsList";
 import OperatorsTable from "../../components/Ritiro/OperatorsTable";
-import PointInfoDrawer from "../../components/Ritiro/PickupPointsInfoDrawer";
+import PointInfoDrawer from "../../components/Ritiro/PickupPointsInfoDialog";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode, Point, RaddOperator } from "../../model";
 
@@ -143,7 +143,7 @@ const RitiroPage: NextPage = () => {
     setFilteredOperators(initialRaddOperators);
   };
 
-  const toggleDrawer = (open: boolean, pickupPoint: RaddOperator | null) => {
+  const toggleDialog = (open: boolean, pickupPoint: RaddOperator | null) => {
     setIsDrawerOpen(open);
     setSelectedPoint(pickupPoint);
   };
@@ -187,7 +187,7 @@ const RitiroPage: NextPage = () => {
         <OperatorsList
           key={JSON.stringify(initialRaddOperators)}
           rows={rowsToSet}
-          toggleDrawer={toggleDrawer}
+          toggleDialog={toggleDialog}
         />
       );
     } else {
@@ -195,7 +195,7 @@ const RitiroPage: NextPage = () => {
         <OperatorsTable
           key={JSON.stringify(filteredOperators)}
           rows={rowsToSet}
-          toggleDrawer={toggleDrawer}
+          toggleDialog={toggleDialog}
         />
       );
     }
@@ -302,14 +302,14 @@ const RitiroPage: NextPage = () => {
         </Stack>
         <PointInfoDrawer
           isOpen={isDrawerOpen}
-          toggleDrawer={toggleDrawer}
+          toggleDialog={toggleDialog}
           point={selectedPoint}
         />
       </Box>
 
       <PointInfoDrawer
         isOpen={isDrawerOpen}
-        toggleDrawer={toggleDrawer}
+        toggleDialog={toggleDialog}
         point={selectedPoint}
       />
     </>

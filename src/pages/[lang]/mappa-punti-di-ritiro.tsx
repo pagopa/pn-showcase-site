@@ -10,7 +10,7 @@ import ErrorBox from "src/components/ErrorBox";
 import PickupPointsAutocomplete from "src/components/PickupPointsAutocomplete";
 import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMap from "src/components/PickupPointsMap";
-import PickupPointsInfoDrawer from "src/components/Ritiro/PickupPointsInfoDrawer";
+import PickupPointsInfoDialog from "src/components/Ritiro/PickupPointsInfoDialog";
 import Tabs from "src/components/Tabs";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
@@ -52,7 +52,7 @@ const PickupPointsPage: NextPage = () => {
     setSelectedTab(tabIndex === 1 ? "map" : "list");
   };
 
-  const toggleDrawer = (open: boolean, pickupPoint?: RaddOperator | null) => {
+  const toggleDialog = (open: boolean, pickupPoint?: RaddOperator | null) => {
     setIsDrawerOpen(open);
     if (pickupPoint) {
       setSelectedPoint(pickupPoint);
@@ -143,7 +143,7 @@ const PickupPointsPage: NextPage = () => {
             >
               <PickupPointsList
                 points={points}
-                toggleDrawer={toggleDrawer}
+                toggleDialog={toggleDialog}
                 setSelectedPoint={setSelectedPoint}
                 selectedPoint={selectedPoint}
                 searchCoordinates={searchCoordinates}
@@ -172,7 +172,7 @@ const PickupPointsPage: NextPage = () => {
                 points={points}
                 selectedPoint={selectedPoint}
                 setSelectedPoint={setSelectedPoint}
-                toggleDrawer={toggleDrawer}
+                toggleDialog={toggleDialog}
                 searchCoordinates={searchCoordinates}
               />
             </Box>
@@ -190,10 +190,10 @@ const PickupPointsPage: NextPage = () => {
         </ErrorBox>
       )}
 
-      <PickupPointsInfoDrawer
+      <PickupPointsInfoDialog
         isOpen={isDrawerOpen}
         point={selectedPoint}
-        toggleDrawer={toggleDrawer}
+        toggleDialog={toggleDialog}
       />
     </>
   );
