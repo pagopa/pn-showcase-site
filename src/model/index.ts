@@ -1,5 +1,10 @@
 import { langCodes } from "../utils/constants";
 
+export interface Coordinates {
+  latitude: number;
+  longitude: number;
+}
+
 export interface OpeningDays {
   monday: string;
   tuesday: string;
@@ -10,7 +15,8 @@ export interface OpeningDays {
   sunday: string;
 }
 
-export interface RaddOperator extends OpeningDays {
+export interface RaddOperator extends OpeningDays, Coordinates {
+  id: number;
   denomination: string;
   type: string;
   city: string;
@@ -20,8 +26,6 @@ export interface RaddOperator extends OpeningDays {
   region: string;
   cap: string;
   contacts: string;
-  latitude: number;
-  longitude: number;
   distance?: number;
 }
 
@@ -59,3 +63,30 @@ export interface I18n {
   [key: string]: I18n | string;
 }
 // ------------ //
+
+// Result of searchAddress API
+export interface AddressResult {
+  placeId: string;
+  placeType: string;
+  address: Address;
+}
+
+interface Address {
+  Label?: string;
+  Country?: {
+    Code2?: string;
+    Code3?: string;
+    Name?: string;
+  };
+  Region?: {
+    Name?: string;
+  };
+  SubRegion?: {
+    Code?: string;
+    Name?: string;
+  };
+  Locality?: string;
+  District?: string;
+  PostalCode?: string;
+  Street?: string;
+}

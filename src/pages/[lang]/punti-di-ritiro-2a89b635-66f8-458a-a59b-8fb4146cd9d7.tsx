@@ -82,7 +82,8 @@ const RitiroPage: NextPage = () => {
     }
   }, []);
 
-  const initialRaddOperators: RaddOperator[] = points.map((e) => ({
+  const initialRaddOperators: RaddOperator[] = points.map((e, index) => ({
+    id: index,
     type: e.tipologia,
     denomination: e.descrizione,
     city: e.città,
@@ -92,6 +93,8 @@ const RitiroPage: NextPage = () => {
     region: e.regione,
     cap: e.cap,
     contacts: e.telefono,
+    latitude: Number(e.latitudine),
+    longitude: Number(e.longitudine),
     monday: e.lunedi,
     tuesday: e.martedi,
     wednesday: e.mercoledi,
@@ -99,8 +102,6 @@ const RitiroPage: NextPage = () => {
     friday: e.venerdi,
     saturday: e.sabato,
     sunday: e.domenica,
-    latitude: Number(e.latitudine),
-    longitude: Number(e.longitudine),
   }));
 
   const handleInputChange = (event: any) => {
@@ -241,7 +242,7 @@ const RitiroPage: NextPage = () => {
           textAlign="center"
         >
           {t("search.description_1", { ns: "pickup" })}
-          <strong>{t("search.description_2", { ns: "pickup" })}</strong>. <br />
+          <b>{t("search.description_2", { ns: "pickup" })}</b>. <br />
           {t("search.description_3", { ns: "pickup" })}
         </Typography>
 
