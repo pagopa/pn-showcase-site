@@ -141,9 +141,6 @@ export const fitMapToPoints = (
  */
 
 export const mapPoint = (point: Point, index: number): RaddOperator => {
-  if (!point.indirizzo_AWS) {
-    console.log(point);
-  }
   return {
     id: index,
     denomination: point.descrizione,
