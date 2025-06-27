@@ -1,5 +1,5 @@
 {
   "API_BASE_URL": "https://webapi.dev.notifichedigitali.it",
-  "CLOUDFRONT_MAP_URL": "https://d2xp89w05r7vx.cloudfront.net/v2/styles/Standard/descriptor",
+  "CLOUDFRONT_MAP_URL": "https://maps.dev.notifichedigitali.it/v2/styles/Standard/descriptor",
   "GEOLOCATION_ASSISTANCE_URL": "https://assistenza.notifichedigitali.it/hc/it/articles/35963953795217-Come-riattivare-la-geolocalizzazione-del-browser-per-cercare-un-Punto-di-ritiro-SEND"
 }
