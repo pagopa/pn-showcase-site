@@ -27,6 +27,7 @@ export interface RaddOperator extends OpeningDays, Coordinates {
   cap: string;
   contacts: string;
   distance?: number;
+  caf_opening_hours?: string;
 }
 
 export interface Point {
@@ -48,6 +49,7 @@ export interface Point {
   domenica: string;
   latitudine: string;
   longitudine: string;
+  caf_orari_apertura?: string;
 }
 
 export type PaginationData = {

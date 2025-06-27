@@ -159,4 +159,5 @@ export const mapPoint = (point: Point, index: number): RaddOperator => ({
   saturday: point.sabato,
   sunday: point.domenica,
   type: point.tipologia,
+  caf_opening_hours: point.caf_orari_apertura,
 });
