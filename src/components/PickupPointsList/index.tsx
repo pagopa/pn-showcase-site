@@ -70,7 +70,7 @@ function PickupPointsList({
 
     if (listItems && targetIndex !== -1) {
       const targetItem = listItems[targetIndex];
-      targetItem.scrollIntoView({ behavior: "smooth", block: "center" });
+      targetItem.scrollIntoView({ behavior: "smooth", block: "nearest" });
     } else {
       listContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
     }
