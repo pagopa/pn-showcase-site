@@ -109,9 +109,7 @@ function PickupPointsList({
       <List
         ref={listContainerRef}
         sx={{
-          // maxHeight: { xs: "800px", lg: "800px" },
-          // overflowY: { xs: "auto", lg: "auto" },
-          maxHeight: "750px",
+          maxHeight: { xs: "480px", lg: "750px" },
           overflowY: "auto",
           p: 0,
           mt: 2,
