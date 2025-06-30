@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from "react";
 
 import { Box } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
+import { useConfig } from "src/context/config-context";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
 import { AddressResult, Coordinates } from "src/model";
@@ -11,7 +12,6 @@ import EmptyState from "./EmptyState";
 import ErrorState from "./ErrorState";
 import LoadingState from "./LoadingState";
 
-const BASE_URL = "https://webapi.dev.notifichedigitali.it/location";
 const SEARCH_DELAY = 500;
 const MIN_QUERY_LENGTH = 3;
 
@@ -24,7 +24,7 @@ const createApiUrl = (endpoint: string, params: Record<string, string>) => {
   Object.entries(params).forEach(([key, value]) => {
     searchParams.append(key, value);
   });
-  return `${BASE_URL}/${endpoint}?${searchParams.toString()}`;
+  return `${endpoint}?${searchParams.toString()}`;
 };
 
 const PickupPointsAutocomplete: React.FC<Props> = ({
@@ -37,13 +37,16 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
   const [shouldShowEmptyState, setShouldShowEmptyState] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const { API_BASE_URL } = useConfig();
+
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const searchAddresses = async (query: string): Promise<void> => {
     try {
       setIsLoading(true);
       setFetchError(false);
-      const url = createApiUrl("searchAddress", { address: query });
+      const endpoint = `${API_BASE_URL}/location/searchAddress`;
+      const url = createApiUrl(endpoint, { address: query });
       const response = await fetch(url);
 
       if (!response.ok) {
@@ -63,7 +66,8 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
   const getCoordinates = async (placeId: string): Promise<void> => {
     try {
       setFetchError(false);
-      const url = createApiUrl("getPlaceCoordinates", { placeId });
+      const endpoint = `${API_BASE_URL}/location/getPlaceCoordinates`;
+      const url = createApiUrl(endpoint, { placeId });
       const response = await fetch(url);
 
       if (!response.ok) {
