@@ -58,11 +58,16 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
 
     if (hasAlmostOneOpeningDay) {
       parts.push(`${t("drawer.opening-hours")} :`);
-      parts.push(
-        OPENING_DAYS.map(
-          (day) => `${t(`days.${day}`)}: ${formatHours(point?.[day]) || "-"}`
-        ).join("\n")
-      );
+      if (point?.caf_opening_hours) {
+        parts.push(point.caf_opening_hours);
+      } else {
+        parts.push(
+          OPENING_DAYS.map(
+            (day) =>
+              `${t(`drawer.days.${day}`)}: ${formatHours(point?.[day]) || "-"}`
+          ).join("\n")
+        );
+      }
     }
 
     parts.push(`${t("drawer.reservation-call")} ${point?.contacts}`);
