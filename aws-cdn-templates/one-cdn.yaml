@@ -404,7 +404,7 @@ Resources:
             Override: true
           # add_header Referrer-Policy "no-referrer";
           ReferrerPolicy:
-            ReferrerPolicy: "no-referrer"
+            ReferrerPolicy: "strict-origin-when-cross-origin"
             Override: true
           # add_header Strict-Transport-Security "max-age=31536000";
           StrictTransportSecurity:
