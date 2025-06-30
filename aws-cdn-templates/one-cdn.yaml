@@ -387,7 +387,11 @@ Resources:
                     worker-src blob: ; \
                     child-src blob: ; \
                     font-src 'self'; \
-                    frame-ancestors 'self' https://${WebBaseDnsZoneName}/ https://${CmsCloudfrontDistName}/ https://preview.b2bportals.pagopa.it/  ; \
+                    frame-ancestors 'self' \
+                    https://${WebBaseDnsZoneName}/ \ 
+                    https://${CmsCloudfrontDistName}/ \ 
+                    https://preview.b2bportals.pagopa.it/ \ 
+                    https://staging.send.b2bportals.pagopa.it/ ; \
                     img-src 'self' https://assets.cdn.io.italia.it/ data: blob:"
             Override: true
           # add_header X-Content-Type-Options "nosniff";
