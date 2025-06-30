@@ -57,7 +57,7 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
     const parts = [point?.denomination, point?.normalizedAddress];
 
     if (hasAlmostOneOpeningDay) {
-      parts.push(`${t("drawer.opening-hours")} :`);
+      parts.push(`${t("drawer.opening-hours")}:`);
       if (point?.caf_opening_hours) {
         parts.push(point.caf_opening_hours);
       } else {
