@@ -38,7 +38,6 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
   toggleDialog,
 }) => {
   const { t } = useTranslation(["pickup"]);
-  const dialogRef = useRef<HTMLDivElement>(null);
 
   const hasAlmostOneOpeningDay =
     OPENING_DAYS.some((day) => point && point[day]) || point?.caf_opening_hours;
@@ -85,31 +84,37 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
 
   useEffect(() => {
     if (isOpen && point) {
-      const timer = setTimeout(() => {
-        if (dialogRef.current) {
-          try {
-            dialogRef.current.scrollIntoView({
-              block: "center",
+      const isMobile =
+        window.innerWidth <= 768 ||
+        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        );
+
+      const timer = setTimeout(
+        () => {
+          const dialogElement = document.querySelector(".MuiDialog-paper");
+
+          if (dialogElement) {
+            dialogElement.scrollIntoView({
+              block: isMobile ? "start" : "center",
               behavior: "smooth",
+              inline: "center",
             });
-          } catch (e) {
-            dialogRef.current.scrollIntoView();
+
+            if (isMobile) {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
           }
-        }
-      }, 100);
+        },
+        isMobile ? 200 : 100
+      );
 
       return () => clearTimeout(timer);
     }
   }, [isOpen, point]);
 
   return (
-    <Dialog
-      open={isOpen}
-      onClose={handleCloseDialog}
-      PaperProps={{
-        ref: dialogRef,
-      }}
-    >
+    <Dialog open={isOpen} onClose={handleCloseDialog}>
       {point && (
         <Box sx={{ p: 2 }}>
           <Box display="flex" justifyContent="flex-end">
