@@ -1,5 +1,6 @@
-import { Box, Grid, Link, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
+import { ButtonNaked } from "@pagopa/mui-italia";
 import { langCodes } from "@utils/constants";
 import { mapPoint } from "@utils/map";
 import type { GetStaticPaths, NextPage } from "next";
@@ -15,7 +16,6 @@ import Tabs from "src/components/Tabs";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
-import { ButtonNaked } from "@pagopa/mui-italia";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -44,7 +44,7 @@ const PickupPointsPage: NextPage = () => {
   const [selectedTab, setSelectedTab] = useState<MOBILE_TABS>("list");
   const [points, setPoints] = useState<RaddOperator[]>([]);
   const [fetchError, setFetchError] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
   const [searchCoordinates, setSearchCoordinates] =
     useState<Coordinates | null>(null);
@@ -53,22 +53,25 @@ const PickupPointsPage: NextPage = () => {
     setSelectedTab(tabIndex === 1 ? "map" : "list");
   };
 
-  const toggleDialog = (open: boolean, pickupPoint?: RaddOperator | null) => {
-    setIsDrawerOpen(open);
-    if (pickupPoint) {
-      setSelectedPoint(pickupPoint);
+  const scrollToTarget = (event: MouseEvent | null, target: string) => {
+    if (event) {
+      event.preventDefault();
     }
-  };
-
-  const scrollToAnchor = (e: MouseEvent, anchor: string) => {
-    e.preventDefault();
     window.parent.postMessage(
       {
         type: "scrollTo",
-        target: anchor,
+        target,
       },
       "*"
     );
+  };
+
+  const toggleDialog = (open: boolean, pickupPoint?: RaddOperator | null) => {
+    scrollToTarget(null, "pickup-point-iframe");
+    setIsDialogOpen(open);
+    if (pickupPoint) {
+      setSelectedPoint(pickupPoint);
+    }
   };
 
   const getData = () => {
@@ -125,7 +128,7 @@ const PickupPointsPage: NextPage = () => {
                 mt: 1,
               }}
               onClick={(e: MouseEvent) =>
-                scrollToAnchor(e, "come-funzionano-punti-di-ritiro")
+                scrollToTarget(e, "come-funzionano-punti-di-ritiro")
               }
             >
               {t("how-it-works")}
@@ -215,7 +218,7 @@ const PickupPointsPage: NextPage = () => {
       )}
 
       <PickupPointsInfoDialog
-        isOpen={isDrawerOpen}
+        isOpen={isDialogOpen}
         point={selectedPoint}
         toggleDialog={toggleDialog}
       />
