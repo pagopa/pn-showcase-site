@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { CopyToClipboardButton } from "@pagopa/mui-italia";
 import Link from "next/link";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { OpeningDays, RaddOperator } from "src/model";
 import { useTranslation } from "../../hook/useTranslation";
 
@@ -81,22 +81,6 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
 
     return openingHours.replaceAll("_", " / ");
   };
-
-  useEffect(() => {
-    if (isOpen) {
-      const timer = setTimeout(() => {
-        const dialogElement = document.querySelector(".MuiDialog-paper");
-
-        if (dialogElement) {
-          dialogElement.scrollIntoView({
-            block: "nearest",
-          });
-        }
-      }, 200);
-
-      return () => clearTimeout(timer);
-    }
-  }, [isOpen, point]);
 
   return (
     <Dialog open={isOpen} onClose={handleCloseDialog}>
