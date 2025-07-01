@@ -50,6 +50,15 @@ Parameters:
     Description: "S3 bucket for CloudFront access logs. If '-', logging is disabled."
     Default: '-'
 
+  CloudFrontWebAclName:
+    Type: String
+    Description: "The name of the WebACL in us-east-1 to associate with CloudFront."
+    Default: 'pn-showcase-maps-proxy-acl'
+
+  CloudFrontWebAclId:
+    Type: String
+    Description: "The ID of the WebACL in us-east-1 to associate with CloudFront."
+
 Conditions:
   HasLogsBucket: !Not [ !Equals [ !Ref AccessLogsBucket, "-" ] ]
 
@@ -191,6 +200,7 @@ Resources:
         Comment: "Proxy for AWS Location Service"
         Enabled: true
         PriceClass: 'PriceClass_100'
+        WebACLId: !Sub 'arn:aws:wafv2:us-east-1:${AWS::AccountId}:global/webacl/${CloudFrontWebAclName}/${CloudFrontWebAclId}'
         Aliases:
           - !Ref MapsDomain
         ViewerCertificate:
