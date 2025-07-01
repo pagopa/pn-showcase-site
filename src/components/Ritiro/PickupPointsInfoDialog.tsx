@@ -87,10 +87,14 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
     if (isOpen && point) {
       const timer = setTimeout(() => {
         if (dialogRef.current) {
-          dialogRef.current.scrollIntoView({
-            block: "center",
-            behavior: "smooth",
-          });
+          try {
+            dialogRef.current.scrollIntoView({
+              block: "center",
+              behavior: "smooth",
+            });
+          } catch (e) {
+            dialogRef.current.scrollIntoView();
+          }
         }
       }, 100);
 
