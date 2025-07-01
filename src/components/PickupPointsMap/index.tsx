@@ -110,7 +110,11 @@ const PickupPointsMap: React.FC<Props> = ({
 
   if (mapError) {
     return (
-      <ErrorBox handleRetry={handleRetry} retryLabel={t("retry-cta")}>
+      <ErrorBox
+        handleRetry={handleRetry}
+        retryLabel={t("retry-cta")}
+        sx={{ px: { xs: 2, md: 4 } }}
+      >
         <Typography variant="body2" color="text.secondary" fontWeight={600}>
           {t("map-loading-error-1")}
         </Typography>

@@ -15,6 +15,7 @@ import Tabs from "src/components/Tabs";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
+import { ButtonNaked } from "@pagopa/mui-italia";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -57,6 +58,17 @@ const PickupPointsPage: NextPage = () => {
     if (pickupPoint) {
       setSelectedPoint(pickupPoint);
     }
+  };
+
+  const scrollToAnchor = (e: MouseEvent, anchor: string) => {
+    e.preventDefault();
+    window.parent.postMessage(
+      {
+        type: "scrollTo",
+        target: anchor,
+      },
+      "*"
+    );
   };
 
   const getData = () => {
@@ -104,14 +116,20 @@ const PickupPointsPage: NextPage = () => {
               <b>{t("search.description_2")}</b>. {t("search.description_3")}
             </Typography>
 
-            <Link
-              href="#come-funzionano-punti-di-ritiro"
+            <ButtonNaked
               color="primary"
-              fontWeight={700}
-              sx={{ textDecoration: "none" }}
+              sx={{
+                textDecoration: "none",
+                fontWeight: 700,
+                fontSize: "16px",
+                mt: 1,
+              }}
+              onClick={(e: MouseEvent) =>
+                scrollToAnchor(e, "come-funzionano-punti-di-ritiro")
+              }
             >
               {t("how-it-works")}
-            </Link>
+            </ButtonNaked>
 
             <PickupPointsAutocomplete
               setSearchCoordinates={setSearchCoordinates}
@@ -183,7 +201,12 @@ const PickupPointsPage: NextPage = () => {
         <ErrorBox
           handleRetry={getData}
           retryLabel={t("retry-cta")}
-          sx={{ mt: 4, mb: 2, height: { xs: "500px", md: "1000px" } }}
+          sx={{
+            mt: 4,
+            mb: 2,
+            height: { xs: "500px", md: "1000px" },
+            textAlign: "center",
+          }}
         >
           <Typography variant="body2" color="text.secondary" fontWeight={600}>
             {t("fetch-csv-error")}
