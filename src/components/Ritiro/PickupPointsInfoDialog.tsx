@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { CopyToClipboardButton } from "@pagopa/mui-italia";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { OpeningDays, RaddOperator } from "src/model";
 import { useTranslation } from "../../hook/useTranslation";
 
@@ -38,6 +38,7 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
   toggleDialog,
 }) => {
   const { t } = useTranslation(["pickup"]);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const hasAlmostOneOpeningDay =
     OPENING_DAYS.some((day) => point && point[day]) || point?.caf_opening_hours;
@@ -77,8 +78,29 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
     return openingHours.replaceAll("_", " / ");
   };
 
+  useEffect(() => {
+    if (isOpen && point) {
+      const timer = setTimeout(() => {
+        if (dialogRef.current) {
+          dialogRef.current.scrollIntoView({
+            block: "center",
+            behavior: "smooth",
+          });
+        }
+      }, 100);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, point]);
+
   return (
-    <Dialog open={isOpen} onClose={handleCloseDialog}>
+    <Dialog
+      open={isOpen}
+      onClose={handleCloseDialog}
+      PaperProps={{
+        ref: dialogRef,
+      }}
+    >
       {point && (
         <Box sx={{ p: 2 }}>
           <Box display="flex" justifyContent="flex-end">
