@@ -26,6 +26,7 @@ const ErrorBox: React.FC<Props> = ({
         backgroundColor: "#F5F5F5",
         justifyContent: "center",
         alignItems: "center",
+        textAlign: "center",
         ...sx,
       }}
     >
