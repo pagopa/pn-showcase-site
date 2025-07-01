@@ -83,31 +83,16 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    if (isOpen && point) {
-      const isMobile =
-        window.innerWidth <= 768 ||
-        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        );
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        const dialogElement = document.querySelector(".MuiDialog-paper");
 
-      const timer = setTimeout(
-        () => {
-          const dialogElement = document.querySelector(".MuiDialog-paper");
-
-          if (dialogElement) {
-            dialogElement.scrollIntoView({
-              block: isMobile ? "start" : "center",
-              behavior: "smooth",
-              inline: "center",
-            });
-
-            if (isMobile) {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }
-          }
-        },
-        isMobile ? 200 : 100
-      );
+        if (dialogElement) {
+          dialogElement.scrollIntoView({
+            block: "nearest",
+          });
+        }
+      }, 200);
 
       return () => clearTimeout(timer);
     }
