@@ -173,6 +173,9 @@ function PickupPointsList({
                     </ButtonNaked>
                   </>
                 }
+                secondaryTypographyProps={{
+                  component: "div",
+                }}
               />
 
               {userPosition && (
