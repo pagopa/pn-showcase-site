@@ -61,6 +61,7 @@ Parameters:
 
 Conditions:
   HasLogsBucket: !Not [ !Equals [ !Ref AccessLogsBucket, "-" ] ]
+  CreateCloudfrontWafAlarms: !Not [ !Equals [ !Ref AlarmSNSTopicArn, "" ] ]
 
 Resources:
   StyleDescriptorProxyApi:
@@ -263,6 +264,30 @@ Resources:
         DNSName: !GetAtt LocationProxyDistribution.DomainName
         EvaluateTargetHealth: false
         HostedZoneId: Z2FDTNDATAQYW2 # Cloudfront hosted zone ID 
+
+  CloudFrontWafAggregateAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Condition: CreateCloudfrontWafAlarms
+    Properties:
+      AlarmName: !Sub "${CloudFrontWebAclName}-Aggregate-BlockedRequests"
+      AlarmDescription: "Alarm for when any rule in the CloudFront WAF blocks a request."
+      Namespace: "AWS/WAFV2"
+      MetricName: "BlockedRequests"
+      Dimensions:
+        - Name: "Region"
+          Value: "us-east-1"
+        - Name: "WebACL"
+          Value: !Ref CloudFrontWebAclName
+      Statistic: "Sum"
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 1
+      ComparisonOperator: "GreaterThanOrEqualToThreshold"
+      TreatMissingData: "notBreaching"
+      AlarmActions:
+        - !Ref AlarmSNSTopicArn
+      OKActions:
+        - !Ref AlarmSNSTopicArn
 
 Outputs:
   LocationProxyCloudFrontDomain:
