@@ -278,6 +278,8 @@ Resources:
           Value: "us-east-1"
         - Name: "WebACL"
           Value: !Ref CloudFrontWebAclName
+        - Name: "Rule"
+          Value: "GlobalRateBasedRule"
       Statistic: "Sum"
       Period: 300
       EvaluationPeriods: 1
