@@ -5,7 +5,7 @@ import { visuallyHidden } from "@mui/utils";
 import { useConfig } from "src/context/config-context";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
-import { AddressResult, Coordinates } from "src/model";
+import { AddressResult, Coordinates, RaddOperator } from "src/model";
 import MuiItaliaAutocomplete from "../MuiItaliaAutocomplete";
 import AddressItem from "./AddressItem";
 import EmptyState from "./EmptyState";
@@ -17,6 +17,7 @@ const MIN_QUERY_LENGTH = 3;
 
 interface Props {
   setSearchCoordinates: (coordinates: Coordinates) => void;
+  setSelectedPoint: (point: RaddOperator | null) => void;
 }
 
 const createApiUrl = (endpoint: string, params: Record<string, string>) => {
@@ -29,6 +30,7 @@ const createApiUrl = (endpoint: string, params: Record<string, string>) => {
 
 const PickupPointsAutocomplete: React.FC<Props> = ({
   setSearchCoordinates,
+  setSelectedPoint,
 }) => {
   const { t } = useTranslation(["pickup"]);
   const { userPosition } = useCurrentPosition();
@@ -76,6 +78,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 
       const coordinates: Coordinates = await response.json();
       setSearchCoordinates(coordinates);
+      setSelectedPoint(null);
     } catch (error) {
       setFetchError(true);
     }
