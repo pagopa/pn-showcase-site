@@ -145,6 +145,10 @@ const PickupPointsMap: React.FC<Props> = ({
       locale={{
         "CooperativeGesturesHandler.MobileHelpText": t("map-mobile-help-text"),
       }}
+      maxBounds={[
+        [6.6272658, 35.2889616],
+        [18.7844746, 47.0921462],
+      ]}
       style={{ height: "100%", width: "100%" }}
     >
       <UserPositionController points={points} />
