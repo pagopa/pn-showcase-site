@@ -1,4 +1,4 @@
-import { LngLatBoundsLike } from "maplibre-gl";
+import { LngLatBounds } from "maplibre-gl";
 import { MapRef } from "react-map-gl/maplibre";
 import { Coordinates, Point, RaddOperator } from "src/model";
 
@@ -108,27 +108,33 @@ export const fitMapToPoints = (
   map: MapRef,
   pointsToFit: number = 5
 ) => {
-  const sortedPoints = sortPointsByDistance(points, coordinates);
-  const targetPoints = sortedPoints.slice(0, pointsToFit);
+  const sortedPoints = sortPointsByDistance(points, coordinates, null);
+  const targetPoints = sortedPoints.slice(
+    0,
+    Math.min(pointsToFit, sortedPoints.length)
+  );
 
-  const allCoordinates = [
-    [coordinates.longitude, coordinates.latitude],
-    ...targetPoints.map((point) => [point.longitude!, point.latitude!]),
-  ];
+  let bounds = new LngLatBounds();
+  targetPoints.forEach((point) => {
+    bounds.extend([point.longitude, point.latitude]);
+  });
 
-  const lngs = allCoordinates.map((coord) => coord[0]);
-  const lats = allCoordinates.map((coord) => coord[1]);
+  const center = [coordinates.longitude, coordinates.latitude];
+  const northeast = bounds.getNorthEast();
+  const southwest = bounds.getSouthWest();
 
-  const bounds: LngLatBoundsLike = [
-    [Math.min(...lngs), Math.min(...lats)],
-    [Math.max(...lngs), Math.max(...lats)],
-  ];
+  const offset = {
+    ne: [center[0] - northeast.lng, center[1] - northeast.lat],
+    sw: [center[0] - southwest.lng, center[1] - southwest.lat],
+  };
+
+  bounds.extend([center[0] + offset.ne[0], center[1] + offset.ne[1]]);
+  bounds.extend([center[0] + offset.sw[0], center[1] + offset.sw[1]]);
 
   map.fitBounds(bounds, {
-    padding: { top: 50, bottom: 50, left: 50, right: 50 },
+    padding: 80,
     maxZoom: 15,
     duration: 1500,
-    // center: [coordinates.longitude, coordinates.latitude],
   });
 };
 
