@@ -13,12 +13,13 @@ import {
 import { CopyToClipboardButton } from "@pagopa/mui-italia";
 import Link from "next/link";
 import React from "react";
-import { OpeningDays, RaddOperator } from "src/model";
+import { Coordinates, OpeningDays, RaddOperator } from "src/model";
 import { useTranslation } from "../../hook/useTranslation";
 
 type Props = {
   isOpen: boolean;
   point: RaddOperator | null;
+  searchCoordinates: Coordinates | null;
   toggleDialog: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
 
@@ -35,6 +36,7 @@ const OPENING_DAYS: (keyof OpeningDays)[] = [
 const PickupPointsInfoDialog: React.FC<Props> = ({
   isOpen,
   point,
+  searchCoordinates,
   toggleDialog,
 }) => {
   const { t } = useTranslation(["pickup"]);
@@ -47,9 +49,13 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
   const handleOpenGoogleMaps = () => {
     if (!point) return;
 
+    const origin = searchCoordinates
+      ? `${searchCoordinates.latitude},${searchCoordinates.longitude}`
+      : "";
+
     const url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
       point?.normalizedAddress
-    )}`;
+    )}${origin ? `&origin=${encodeURIComponent(origin)}` : ""}`;
     window.open(url, "_blank");
   };
 
