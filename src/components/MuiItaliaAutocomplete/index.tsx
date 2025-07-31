@@ -19,8 +19,7 @@ import {
 } from "@mui/material";
 import { MouseEvent, ReactNode, useEffect, useRef, useState } from "react";
 import { useTranslation } from "../../hook/useTranslation";
-
-type OptionType = { id: string | number; label: string };
+import { OptionType } from "src/model";
 
 interface Props {
   options: Array<OptionType>;
@@ -36,6 +35,7 @@ interface Props {
   renderOption?: (value: OptionType, index: number) => React.ReactNode;
   onInputChange?: (value: string) => void;
   onSelect?: (value: OptionType) => void;
+  preventSetValue?: (value: OptionType) => boolean;
 }
 
 function isIosDevice() {
@@ -62,6 +62,7 @@ const MuiItaliaAutocomplete = ({
   renderOption,
   onInputChange,
   onSelect,
+  preventSetValue,
 }: Props) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -74,7 +75,6 @@ const MuiItaliaAutocomplete = ({
   const listboxId = "autocomplete-listbox";
   const inputId = "autocomplete-input";
 
-  const popperOpen = isOpen && !!inputValue;
   const filteredOptions =
     inputValue.trim() === "" || avoidLocalFiltering
       ? options
@@ -98,15 +98,17 @@ const MuiItaliaAutocomplete = ({
   };
 
   const handleOptionSelect = (option: OptionType) => {
-    setInputValue(option.label);
-    setIsOpen(false);
+    setInputFocus(false);
     setActiveIndex(-1);
-    setInputFocus();
     onSelect?.(option);
+    if (!(preventSetValue && preventSetValue(option))) {
+      setInputValue(option.label);
+    }
   };
 
-  const setInputFocus = () => {
+  const setInputFocus = (open: boolean = true) => {
     inputRef.current?.focus();
+    setIsOpen(open);
   };
 
   const handleOptionMouseDown = (event: MouseEvent<HTMLLIElement>) => {
@@ -161,7 +163,9 @@ const MuiItaliaAutocomplete = ({
     }
   };
 
-  const handleClearValue = () => {
+  const handleClearValue = (e: React.MouseEvent) => {
+    // e.stopPropagation();
+    // e.preventDefault();
     setInputValue("");
     setIsOpen(false);
     setActiveIndex(-1);
@@ -217,7 +221,7 @@ const MuiItaliaAutocomplete = ({
         inputRef={inputRef}
         value={inputValue}
         onChange={handleInputChange}
-        onClick={setInputFocus}
+        onClick={() => setInputFocus(true)}
         onKeyDown={handleKeyDown}
         onBlur={handleInputBlur}
         label={label}
@@ -227,7 +231,7 @@ const MuiItaliaAutocomplete = ({
         inputProps={{
           role: "combobox",
           id: inputId,
-          "aria-expanded": popperOpen,
+          "aria-expanded": isOpen,
           "aria-controls": listboxId,
           "aria-autocomplete": "list",
           "aria-activedescendant":
@@ -245,7 +249,7 @@ const MuiItaliaAutocomplete = ({
       />
 
       <Popper
-        open={!!(isOpen && inputValue)}
+        open={isOpen}
         anchorEl={containerRef.current}
         keepMounted
         placement="bottom-start"

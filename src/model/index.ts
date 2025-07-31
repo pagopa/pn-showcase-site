@@ -92,3 +92,5 @@ interface Address {
   PostalCode?: string;
   Street?: string;
 }
+
+export type OptionType = { id: string | number; label: string };

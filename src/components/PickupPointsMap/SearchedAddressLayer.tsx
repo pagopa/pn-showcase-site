@@ -1,5 +1,6 @@
 import React from "react";
 import { Layer, Marker, Source } from "react-map-gl/maplibre";
+import useCurrentPosition from "src/hook/useCurrentPosition";
 import { Coordinates } from "src/model";
 
 type Props = {
@@ -7,7 +8,13 @@ type Props = {
 };
 
 const SearchedAddressLayer: React.FC<Props> = ({ searchCoordinates }) => {
-  if (!searchCoordinates) return null;
+  const { userPosition } = useCurrentPosition();
+
+  const isCurrentPosition =
+    searchCoordinates?.latitude === userPosition?.latitude &&
+    searchCoordinates?.longitude === userPosition?.longitude;
+
+  if (!searchCoordinates || isCurrentPosition) return null;
 
   const geojsonData: GeoJSON.GeoJSON = {
     type: "FeatureCollection",

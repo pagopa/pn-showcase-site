@@ -18,10 +18,11 @@ import { Coordinates, Point, RaddOperator } from "src/model";
 export function sortPointsByDistance(
   rows: RaddOperator[],
   userCoordinates: Coordinates | null,
-  targetPoint: Coordinates | null = null
+  targetPoint: Coordinates | null = null,
+  searchedAddress: Coordinates | null = null
 ): Array<RaddOperator> {
   const sortingReference = targetPoint || userCoordinates;
-  const distanceReference = userCoordinates || targetPoint;
+  const distanceReference = searchedAddress || userCoordinates;
 
   if (!sortingReference) {
     return rows;

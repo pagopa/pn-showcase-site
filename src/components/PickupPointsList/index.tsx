@@ -55,8 +55,13 @@ function PickupPointsList({
   };
 
   const sortedItems = useMemo(() => {
-    return sortPointsByDistance(points, userPosition, customSortTarget);
-  }, [points, userPosition, customSortTarget]);
+    return sortPointsByDistance(
+      points,
+      userPosition,
+      customSortTarget,
+      searchCoordinates
+    );
+  }, [points, userPosition, customSortTarget, searchCoordinates]);
 
   const visibleItems = useMemo(() => {
     return sortedItems.slice(0, numberOfRows);
@@ -172,7 +177,7 @@ function PickupPointsList({
                 }}
               />
 
-              {userPosition && (
+              {(userPosition || searchCoordinates) && (
                 <Box
                   display="flex"
                   alignItems="flex-start"
