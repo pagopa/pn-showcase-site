@@ -190,7 +190,9 @@ function PickupPointsList({
                     color="text.secondary"
                     whiteSpace="nowrap"
                   >
-                    {`${point.distance?.toFixed(1) || "-"} km`}
+                    {`${
+                      point.distance?.toFixed(1).replace(".", ",") || "-"
+                    } km`}
                   </Typography>
                 </Box>
               )}
