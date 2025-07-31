@@ -162,3 +162,14 @@ export const mapPoint = (point: Point, index: number): RaddOperator => ({
   type: point.tipologia,
   caf_opening_hours: point.caf_orari_apertura,
 });
+
+export const areCoordinatesEqual = (
+  coordinates1: Coordinates | null,
+  coordinates2: Coordinates | null
+): boolean => {
+  if (!coordinates1 || !coordinates2) return false;
+  return (
+    coordinates1.latitude === coordinates2.latitude &&
+    coordinates1.longitude === coordinates2.longitude
+  );
+};

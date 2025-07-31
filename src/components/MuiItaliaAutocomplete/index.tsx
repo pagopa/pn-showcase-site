@@ -35,7 +35,7 @@ interface Props {
   renderOption?: (value: OptionType, index: number) => React.ReactNode;
   onInputChange?: (value: string) => void;
   onSelect?: (value: OptionType) => void;
-  preventSetValue?: (value: OptionType) => boolean;
+  setInputValueOnSelect?: (option: OptionType) => string | null;
 }
 
 function isIosDevice() {
@@ -62,7 +62,7 @@ const MuiItaliaAutocomplete = ({
   renderOption,
   onInputChange,
   onSelect,
-  preventSetValue,
+  setInputValueOnSelect,
 }: Props) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -101,7 +101,13 @@ const MuiItaliaAutocomplete = ({
     setInputFocus(false);
     setActiveIndex(-1);
     onSelect?.(option);
-    if (!(preventSetValue && preventSetValue(option))) {
+
+    if (setInputValueOnSelect) {
+      const newValue = setInputValueOnSelect(option);
+      if (newValue !== null) {
+        setInputValue(newValue);
+      }
+    } else {
       setInputValue(option.label);
     }
   };
@@ -163,9 +169,7 @@ const MuiItaliaAutocomplete = ({
     }
   };
 
-  const handleClearValue = (e: React.MouseEvent) => {
-    // e.stopPropagation();
-    // e.preventDefault();
+  const handleClearValue = () => {
     setInputValue("");
     setIsOpen(false);
     setActiveIndex(-1);

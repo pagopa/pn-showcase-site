@@ -3,6 +3,7 @@ import React, { useCallback, useRef, useState } from "react";
 import { GpsFixed } from "@mui/icons-material";
 import { Box } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
+import { areCoordinatesEqual } from "@utils/map";
 import { useConfig } from "src/context/config-context";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
@@ -23,6 +24,7 @@ const MIN_QUERY_LENGTH = 3;
 const CURRENT_POSITION_OPTION_ID = "userPosition";
 
 interface Props {
+  searchCoordinates: Coordinates | null;
   setSearchCoordinates: (coordinates: Coordinates) => void;
   setSelectedPoint: (point: RaddOperator | null) => void;
 }
@@ -36,6 +38,7 @@ const createApiUrl = (endpoint: string, params: Record<string, string>) => {
 };
 
 const PickupPointsAutocomplete: React.FC<Props> = ({
+  searchCoordinates,
   setSearchCoordinates,
   setSelectedPoint,
 }) => {
@@ -101,6 +104,12 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
   };
 
   const debouncedSearch = useCallback((query: string) => {
+    if (!query) {
+      setAddresses([]);
+      setShouldShowEmptyState(false);
+      return;
+    }
+
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
@@ -154,6 +163,23 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     }
   };
 
+  const getPlaceholder = () => {
+    if (
+      (searchCoordinates &&
+        areCoordinatesEqual(userPosition, searchCoordinates)) ||
+      (userPosition && !searchCoordinates)
+    ) {
+      return t("autocomplete.current-position");
+    }
+
+    return undefined;
+  };
+
+  const currentPositionHandler = (option: OptionType) =>
+    showCurrentPositionOption && option.id === CURRENT_POSITION_OPTION_ID
+      ? ""
+      : option.label;
+
   const options = [];
 
   if (showCurrentPositionOption) {
@@ -176,9 +202,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
         options={options}
         sx={{ mt: 4 }}
         label={t("autocomplete.label")}
-        placeholder={
-          userPosition ? t("autocomplete.current-position") : undefined
-        }
+        placeholder={getPlaceholder()}
         onInputChange={debouncedSearch}
         onSelect={handleSelect}
         renderOption={renderItem}
@@ -196,12 +220,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
               }
             : undefined
         }
-        preventSetValue={(option) =>
-          !!(
-            showCurrentPositionOption &&
-            option.id === CURRENT_POSITION_OPTION_ID
-          )
-        }
+        setInputValueOnSelect={currentPositionHandler}
       />
 
       <Box aria-live="polite" sx={visuallyHidden}>

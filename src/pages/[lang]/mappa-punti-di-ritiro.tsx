@@ -135,6 +135,7 @@ const PickupPointsPage: NextPage = () => {
             </ButtonNaked>
 
             <PickupPointsAutocomplete
+              searchCoordinates={searchCoordinates}
               setSearchCoordinates={setSearchCoordinates}
               setSelectedPoint={setSelectedPoint}
             />
