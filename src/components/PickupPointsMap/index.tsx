@@ -1,19 +1,19 @@
 import { Typography } from "@mui/material";
+import { MAP_MARKERS } from "@utils/constants";
 import { fitMapToPoints } from "@utils/map";
 import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
-import { useConfig } from "src/context/config-context";
+import { useIsMobile } from "src/hook/useIsMobile";
 import { useTranslation } from "src/hook/useTranslation";
 import { Coordinates, RaddOperator } from "src/model";
+import useLocalizedStyleDescriptor from "../../hook/useLocalizedStyleDescriptor";
 import ErrorBox from "../ErrorBox";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
-import UserPositionController from "./UserPositionController";
-import { useIsMobile } from "src/hook/useIsMobile";
 import SearchedAddressLayer from "./SearchedAddressLayer";
-import { MAP_MARKERS } from "@utils/constants";
+import UserPositionController from "./UserPositionController";
 
 type Props = {
   points: Array<RaddOperator>;
@@ -34,8 +34,9 @@ const PickupPointsMap: React.FC<Props> = ({
   const mapRef = useRef<MapRef>(null);
   const isMobile = useIsMobile();
   const [mapError, setMapError] = useState(false);
-  const { CLOUDFRONT_MAP_URL } = useConfig();
   const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  const localizedStyleDescriptor = useLocalizedStyleDescriptor({ setMapError });
 
   const handleLoad = async (event: MapLibreEvent) => {
     const map = event.target;
@@ -128,7 +129,7 @@ const PickupPointsMap: React.FC<Props> = ({
   return (
     <Map
       ref={mapRef}
-      mapStyle={CLOUDFRONT_MAP_URL}
+      mapStyle={localizedStyleDescriptor}
       initialViewState={{
         longitude: 12.482802,
         latitude: 41.895679,
