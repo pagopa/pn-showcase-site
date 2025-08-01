@@ -12,9 +12,14 @@ import { useMap } from "react-map-gl/maplibre";
 import { useConfig } from "src/context/config-context";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
+import { Coordinates } from "src/model";
 import SnackBar from "../SnackBar/SnackBar";
 
-const MapControls: React.FC = () => {
+type Props = {
+  setSearchCoordinates: (coordinates: Coordinates) => void;
+};
+
+const MapControls: React.FC<Props> = ({ setSearchCoordinates }) => {
   const map = useMap();
   const { t } = useTranslation(["pickup"]);
   const { GEOLOCATION_ASSISTANCE_URL } = useConfig();
@@ -33,11 +38,7 @@ const MapControls: React.FC = () => {
 
   const onGeolocateUser = async () => {
     if (userPosition) {
-      map.current?.flyTo({
-        center: [userPosition.longitude, userPosition.latitude],
-        zoom: 15,
-        essential: true,
-      });
+      setSearchCoordinates(userPosition);
       return;
     }
 

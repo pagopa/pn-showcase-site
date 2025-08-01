@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { GpsFixed } from "@mui/icons-material";
 import { Box } from "@mui/material";
@@ -175,10 +175,10 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     return undefined;
   };
 
-  const currentPositionHandler = (option: OptionType) =>
-    showCurrentPositionOption && option.id === CURRENT_POSITION_OPTION_ID
-      ? ""
-      : option.label;
+  // const currentPositionHandler = (option: OptionType) =>
+  //   showCurrentPositionOption && option.id === CURRENT_POSITION_OPTION_ID
+  //     ? ""
+  //     : option.label;
 
   const options = [];
 
@@ -195,6 +195,13 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
       label: addr.address.Label || "",
     });
   });
+
+  useEffect(() => {
+    if (areCoordinatesEqual(userPosition, searchCoordinates)) {
+      setAddresses([]);
+      setShouldShowEmptyState(false);
+    }
+  }, [userPosition, searchCoordinates]);
 
   return (
     <>
@@ -220,7 +227,10 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
               }
             : undefined
         }
-        setInputValueOnSelect={currentPositionHandler}
+        // setInputValueOnSelect={currentPositionHandler}
+        overridenInputvalue={
+          areCoordinatesEqual(userPosition, searchCoordinates) ? "" : undefined
+        }
       />
 
       <Box aria-live="polite" sx={visuallyHidden}>

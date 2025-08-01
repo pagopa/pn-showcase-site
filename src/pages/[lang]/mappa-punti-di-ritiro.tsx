@@ -198,6 +198,7 @@ const PickupPointsPage: NextPage = () => {
                 setSelectedPoint={setSelectedPoint}
                 toggleDialog={toggleDialog}
                 searchCoordinates={searchCoordinates}
+                setSearchCoordinates={setSearchCoordinates}
               />
             </Box>
           </Grid>

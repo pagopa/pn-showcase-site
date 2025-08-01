@@ -32,6 +32,7 @@ interface Props {
   emptyState?: ReactNode;
   sx?: SxProps<Theme>;
   inputStyle?: SxProps<Theme>;
+  overridenInputvalue?: string;
   renderOption?: (value: OptionType, index: number) => React.ReactNode;
   onInputChange?: (value: string) => void;
   onSelect?: (value: OptionType) => void;
@@ -59,12 +60,15 @@ const MuiItaliaAutocomplete = ({
   emptyState,
   sx,
   inputStyle,
+  overridenInputvalue,
   renderOption,
   onInputChange,
   onSelect,
   setInputValueOnSelect,
 }: Props) => {
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>(
+    overridenInputvalue || ""
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number>(-1);
   const { t } = useTranslation(["common"]);
@@ -217,6 +221,12 @@ const MuiItaliaAutocomplete = ({
       optionElement?.scrollIntoView({ block: "nearest" });
     }
   }, [activeIndex, isOpen]);
+
+  useEffect(() => {
+    if (overridenInputvalue !== undefined) {
+      setInputValue(overridenInputvalue);
+    }
+  }, [overridenInputvalue]);
 
   return (
     <Box position="relative" width="100%" ref={containerRef} sx={sx}>

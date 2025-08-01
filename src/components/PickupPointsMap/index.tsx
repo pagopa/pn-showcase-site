@@ -1,25 +1,26 @@
 import { Typography } from "@mui/material";
+import { MAP_MARKERS } from "@utils/constants";
 import { fitMapToPoints } from "@utils/map";
 import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
 import { useConfig } from "src/context/config-context";
+import { useIsMobile } from "src/hook/useIsMobile";
 import { useTranslation } from "src/hook/useTranslation";
 import { Coordinates, RaddOperator } from "src/model";
 import ErrorBox from "../ErrorBox";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
-import UserPositionController from "./UserPositionController";
-import { useIsMobile } from "src/hook/useIsMobile";
 import SearchedAddressLayer from "./SearchedAddressLayer";
-import { MAP_MARKERS } from "@utils/constants";
+import UserPositionController from "./UserPositionController";
 
 type Props = {
   points: Array<RaddOperator>;
   selectedPoint: RaddOperator | null;
   searchCoordinates: Coordinates | null;
   setSelectedPoint: (point: RaddOperator | null) => void;
+  setSearchCoordinates: (coordinates: Coordinates) => void;
   toggleDialog: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
 
@@ -28,6 +29,7 @@ const PickupPointsMap: React.FC<Props> = ({
   selectedPoint,
   searchCoordinates,
   setSelectedPoint,
+  setSearchCoordinates,
   toggleDialog,
 }) => {
   const { t } = useTranslation(["pickup"]);
@@ -148,7 +150,7 @@ const PickupPointsMap: React.FC<Props> = ({
       style={{ height: "100%", width: "100%" }}
     >
       <UserPositionController points={points} />
-      <MapControls />
+      <MapControls setSearchCoordinates={setSearchCoordinates} />
       {imagesLoaded && (
         <>
           <Clusters points={points} selectedPoint={selectedPoint} />
