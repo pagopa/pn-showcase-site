@@ -175,10 +175,10 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     return undefined;
   };
 
-  // const currentPositionHandler = (option: OptionType) =>
-  //   showCurrentPositionOption && option.id === CURRENT_POSITION_OPTION_ID
-  //     ? ""
-  //     : option.label;
+  const currentPositionHandler = (option: OptionType) =>
+    showCurrentPositionOption && option.id === CURRENT_POSITION_OPTION_ID
+      ? ""
+      : option.label;
 
   const options = [];
 
@@ -227,7 +227,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
               }
             : undefined
         }
-        // setInputValueOnSelect={currentPositionHandler}
+        setInputValueOnSelect={currentPositionHandler}
         overridenInputvalue={
           areCoordinatesEqual(userPosition, searchCoordinates) ? "" : undefined
         }
