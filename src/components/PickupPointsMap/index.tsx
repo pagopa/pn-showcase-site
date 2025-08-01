@@ -103,6 +103,7 @@ const PickupPointsMap: React.FC<Props> = ({
   useEffect(() => {
     if (searchCoordinates && mapRef.current) {
       fitMapToPoints(searchCoordinates, points, mapRef.current);
+      setSelectedPoint(null);
     }
   }, [searchCoordinates]);
 
