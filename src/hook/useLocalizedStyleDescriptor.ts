@@ -98,10 +98,10 @@ const useLocalizedStyleDescriptor = ({ setMapError }: Props) => {
 
         const styleObject: StyleSpecification = await response.json();
 
-        let localizedStyle = styleObject;
-        if (preferredLanguage !== "en") {
-          localizedStyle = setPreferredLanguage(styleObject, preferredLanguage);
-        }
+        const localizedStyle = setPreferredLanguage(
+          styleObject,
+          preferredLanguage
+        );
 
         setStyleDescriptor(localizedStyle);
       } catch (error) {

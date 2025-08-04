@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { CircularProgress, Stack, Typography } from "@mui/material";
 import { MAP_MARKERS } from "@utils/constants";
 import { fitMapToPoints } from "@utils/map";
 import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
@@ -36,7 +36,7 @@ const PickupPointsMap: React.FC<Props> = ({
   const [mapError, setMapError] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  const localizedStyleDescriptor = useLocalizedStyleDescriptor({ setMapError });
+  const styleDescriptor = useLocalizedStyleDescriptor({ setMapError });
 
   const handleLoad = async (event: MapLibreEvent) => {
     const map = event.target;
@@ -126,10 +126,28 @@ const PickupPointsMap: React.FC<Props> = ({
     );
   }
 
+  if (!styleDescriptor) {
+    return (
+      <Stack
+        sx={{
+          height: "100%",
+          width: "100%",
+          position: "relative",
+          backgroundColor: "#F5F5F5",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
+        <CircularProgress />
+      </Stack>
+    );
+  }
+
   return (
     <Map
       ref={mapRef}
-      mapStyle={localizedStyleDescriptor}
+      mapStyle={styleDescriptor}
       initialViewState={{
         longitude: 12.482802,
         latitude: 41.895679,
