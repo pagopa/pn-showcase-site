@@ -38,7 +38,7 @@ const SearchedAddressLayer: React.FC<Props> = ({ searchCoordinates }) => {
         type="symbol"
         layout={{
           "icon-image": "searched-marker",
-          "icon-size": ["interpolate", ["linear"], ["zoom"], 10, 0.8, 15, 1],
+          "icon-size": ["interpolate", ["linear"], ["zoom"], 10, 0.4, 15, 0.5],
           "icon-allow-overlap": true,
           "icon-ignore-placement": true,
         }}
