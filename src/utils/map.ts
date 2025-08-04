@@ -114,25 +114,31 @@ export const fitMapToPoints = (
     Math.min(pointsToFit, sortedPoints.length)
   );
 
-  let bounds = new LngLatBounds();
-  targetPoints.forEach((point) => {
-    bounds.extend([point.longitude, point.latitude]);
-  });
+  const distances = targetPoints.map((point) =>
+    calculateDistance(
+      coordinates.latitude,
+      coordinates.longitude,
+      point.latitude,
+      point.longitude
+    )
+  );
+  const maxDistance = Math.max(...distances);
 
-  const center = [coordinates.longitude, coordinates.latitude];
-  const northeast = bounds.getNorthEast();
-  const southwest = bounds.getSouthWest();
+  // Converts distance into degrees (approximation: 1° ≈ 111km) and add 10% for padding
+  const radiusInDegrees = (maxDistance * 1.1) / 111;
 
-  const offset = {
-    ne: [center[0] - northeast.lng, center[1] - northeast.lat],
-    sw: [center[0] - southwest.lng, center[1] - southwest.lat],
-  };
+  const bounds = new LngLatBounds();
 
-  bounds.extend([center[0] + offset.ne[0], center[1] + offset.ne[1]]);
-  bounds.extend([center[0] + offset.sw[0], center[1] + offset.sw[1]]);
+  bounds.extend([
+    coordinates.longitude - radiusInDegrees,
+    coordinates.latitude - radiusInDegrees,
+  ]);
+  bounds.extend([
+    coordinates.longitude + radiusInDegrees,
+    coordinates.latitude + radiusInDegrees,
+  ]);
 
   map.fitBounds(bounds, {
-    padding: 80,
     maxZoom: 15,
     duration: 1500,
   });
