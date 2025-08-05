@@ -1,39 +1,556 @@
 {
-  "last_run": "2024-02-28T10:00:21.369161",
-  "nb_version": "1.0.0",
-  "enti_attivi": 2680,
-  "tipologie_atto": 24,
-  "top10_cat_enti": [
-    { "categoria_ente": "Regioni", "num_iun": 1576977 },
-    { "categoria_ente": "Utility", "num_iun": 339689 },
-    { "categoria_ente": "Comuni", "num_iun": 115544 },
+  "last_run": "2025-08-03T13:06:46.457767",
+  "enti_attivi": 5527,
+  "perc_enti_attivi": 0.61,
+  "perc_comuni_attivi": 0.99,
+  "geo_comuni": [
     {
-      "categoria_ente": "Pubbliche Amministrazioni Centrali",
-      "num_iun": 18079
+      "regione": "Emilia-Romagna",
+      "num_comuni_tot": 330,
+      "num_comuni_attivi": 221,
+      "perc_comuni_attivi": 0.67
     },
-    { "categoria_ente": "Enti Comunali", "num_iun": 8 },
-    { "categoria_ente": "Salute Locale", "num_iun": 3 },
-    { "categoria_ente": "Altri Enti Territoriali", "num_iun": 2 }
-  ],
-  "top10_cat_enti_n_enti": [
-    { "categoria_ente": "Comuni", "num_enti": 2663 },
-    { "categoria_ente": "Utility", "num_enti": 7 },
-    { "categoria_ente": "Enti Comunali", "num_enti": 4 },
-    { "categoria_ente": "Regioni", "num_enti": 3 },
-    { "categoria_ente": "Altri Enti Territoriali", "num_enti": 1 },
-    { "categoria_ente": "Pubbliche Amministrazioni Centrali", "num_enti": 1 },
-    { "categoria_ente": "Salute Locale", "num_enti": 1 }
+    {
+      "regione": "Liguria",
+      "num_comuni_tot": 234,
+      "num_comuni_attivi": 147,
+      "perc_comuni_attivi": 0.63
+    },
+    {
+      "regione": "Lazio",
+      "num_comuni_tot": 378,
+      "num_comuni_attivi": 271,
+      "perc_comuni_attivi": 0.72
+    },
+    {
+      "regione": "Sicilia",
+      "num_comuni_tot": 391,
+      "num_comuni_attivi": 312,
+      "perc_comuni_attivi": 0.8
+    },
+    {
+      "regione": "Toscana",
+      "num_comuni_tot": 273,
+      "num_comuni_attivi": 206,
+      "perc_comuni_attivi": 0.75
+    },
+    {
+      "regione": "Abruzzo",
+      "num_comuni_tot": 305,
+      "num_comuni_attivi": 222,
+      "perc_comuni_attivi": 0.73
+    },
+    {
+      "regione": "Piemonte",
+      "num_comuni_tot": 1180,
+      "num_comuni_attivi": 750,
+      "perc_comuni_attivi": 0.64
+    },
+    {
+      "regione": "Calabria",
+      "num_comuni_tot": 404,
+      "num_comuni_attivi": 293,
+      "perc_comuni_attivi": 0.73
+    },
+    {
+      "regione": "Veneto",
+      "num_comuni_tot": 560,
+      "num_comuni_attivi": 404,
+      "perc_comuni_attivi": 0.72
+    },
+    {
+      "regione": "Lombardia",
+      "num_comuni_tot": 1502,
+      "num_comuni_attivi": 1032,
+      "perc_comuni_attivi": 0.69
+    },
+    {
+      "regione": "Valle d'Aosta/Vall\u00e9e d'Aoste",
+      "num_comuni_tot": 74,
+      "num_comuni_attivi": 50,
+      "perc_comuni_attivi": 0.68
+    },
+    {
+      "regione": "Puglia",
+      "num_comuni_tot": 257,
+      "num_comuni_attivi": 221,
+      "perc_comuni_attivi": 0.86
+    },
+    {
+      "regione": "Sardegna",
+      "num_comuni_tot": 377,
+      "num_comuni_attivi": 227,
+      "perc_comuni_attivi": 0.6
+    },
+    {
+      "regione": "Umbria",
+      "num_comuni_tot": 92,
+      "num_comuni_attivi": 72,
+      "perc_comuni_attivi": 0.78
+    },
+    {
+      "regione": "Molise",
+      "num_comuni_tot": 136,
+      "num_comuni_attivi": 113,
+      "perc_comuni_attivi": 0.83
+    },
+    {
+      "regione": "Friuli-Venezia Giulia",
+      "num_comuni_tot": 215,
+      "num_comuni_attivi": 148,
+      "perc_comuni_attivi": 0.69
+    },
+    {
+      "regione": "Marche",
+      "num_comuni_tot": 225,
+      "num_comuni_attivi": 158,
+      "perc_comuni_attivi": 0.7
+    },
+    {
+      "regione": "Basilicata",
+      "num_comuni_tot": 131,
+      "num_comuni_attivi": 117,
+      "perc_comuni_attivi": 0.89
+    },
+    {
+      "regione": "Trentino-Alto Adige/S\u00fcdtirol",
+      "num_comuni_tot": 282,
+      "num_comuni_attivi": 56,
+      "perc_comuni_attivi": 0.2
+    },
+    {
+      "regione": "Campania",
+      "num_comuni_tot": 550,
+      "num_comuni_attivi": 440,
+      "perc_comuni_attivi": 0.8
+    }
   ],
   "top10_ambiti": [
-    { "ambito": "Recupero Bolli non Pagati", "num_iun": 1573843 },
-    { "ambito": "Riscossione Coattiva", "num_iun": 339450 },
-    { "ambito": "Tributi", "num_iun": 78025 },
-    { "ambito": "Polizia Locale", "num_iun": 41050 },
-    { "ambito": "Decreto", "num_iun": 17115 },
-    { "ambito": "Anagrafe", "num_iun": 381 },
-    { "ambito": "Ordinanze", "num_iun": 164 },
-    { "ambito": "Scuola", "num_iun": 99 },
-    { "ambito": "Ufficio Tecnico / SUAP", "num_iun": 73 },
-    { "ambito": "Patrimonio", "num_iun": 67 }
+    {
+      "ambito": "Recupero Bolli non Pagati",
+      "num_iun": 7296636,
+      "ranking": 1,
+      "categoria_ente": null
+    },
+    {
+      "ambito": "Polizia Locale",
+      "num_iun": 5304824,
+      "ranking": 2,
+      "categoria_ente": null
+    },
+    {
+      "ambito": "Contributi",
+      "num_iun": 2385106,
+      "ranking": 3,
+      "categoria_ente": null
+    },
+    {
+      "ambito": "Riscossione Coattiva",
+      "num_iun": 2164074,
+      "ranking": 4,
+      "categoria_ente": null
+    },
+    {
+      "ambito": "Tributi",
+      "num_iun": 1675169,
+      "ranking": 5,
+      "categoria_ente": null
+    },
+    {
+      "ambito": "Avvisi di addebito",
+      "num_iun": 233835,
+      "ranking": 6,
+      "categoria_ente": null
+    },
+    {
+      "ambito": "Decreto",
+      "num_iun": 190671,
+      "ranking": 7,
+      "categoria_ente": null
+    },
+    {
+      "ambito": "Patrimonio",
+      "num_iun": 66634,
+      "ranking": 8,
+      "categoria_ente": null
+    },
+    {
+      "ambito": "Polizia Provinciale",
+      "num_iun": 24458,
+      "ranking": 9,
+      "categoria_ente": null
+    },
+    {
+      "ambito": "Scuola",
+      "num_iun": 22590,
+      "ranking": 10,
+      "categoria_ente": null
+    },
+    {
+      "ambito": "Polizia Locale",
+      "num_iun": 52717,
+      "ranking": 1,
+      "categoria_ente": "Altri enti territoriali"
+    },
+    {
+      "ambito": "Riscossione Coattiva",
+      "num_iun": 4745,
+      "ranking": 2,
+      "categoria_ente": "Altri enti territoriali"
+    },
+    {
+      "ambito": "Tributi",
+      "num_iun": 2707,
+      "ranking": 3,
+      "categoria_ente": "Altri enti territoriali"
+    },
+    {
+      "ambito": "Scuola",
+      "num_iun": 162,
+      "ranking": 4,
+      "categoria_ente": "Altri enti territoriali"
+    },
+    {
+      "ambito": "Ordinanze",
+      "num_iun": 136,
+      "ranking": 5,
+      "categoria_ente": "Altri enti territoriali"
+    },
+    {
+      "ambito": "Non definito",
+      "num_iun": 4,
+      "ranking": 6,
+      "categoria_ente": "Altri enti territoriali"
+    },
+    {
+      "ambito": "Patrimonio",
+      "num_iun": 2,
+      "ranking": 7,
+      "categoria_ente": "Altri enti territoriali"
+    },
+    {
+      "ambito": "Gestione Morosit\u00e0",
+      "num_iun": 1,
+      "ranking": 8,
+      "categoria_ente": "Altri enti territoriali"
+    },
+    {
+      "ambito": "Polizia Locale",
+      "num_iun": 5200547,
+      "ranking": 1,
+      "categoria_ente": "Comuni"
+    },
+    {
+      "ambito": "Tributi",
+      "num_iun": 1167281,
+      "ranking": 2,
+      "categoria_ente": "Comuni"
+    },
+    {
+      "ambito": "Riscossione Coattiva",
+      "num_iun": 47427,
+      "ranking": 3,
+      "categoria_ente": "Comuni"
+    },
+    {
+      "ambito": "Patrimonio",
+      "num_iun": 46585,
+      "ranking": 4,
+      "categoria_ente": "Comuni"
+    },
+    {
+      "ambito": "Scuola",
+      "num_iun": 17539,
+      "ranking": 5,
+      "categoria_ente": "Comuni"
+    },
+    {
+      "ambito": "Anagrafe",
+      "num_iun": 15940,
+      "ranking": 6,
+      "categoria_ente": "Comuni"
+    },
+    {
+      "ambito": "Ordinanze",
+      "num_iun": 4428,
+      "ranking": 7,
+      "categoria_ente": "Comuni"
+    },
+    {
+      "ambito": "Ufficio Tecnico / SUAP",
+      "num_iun": 887,
+      "ranking": 8,
+      "categoria_ente": "Comuni"
+    },
+    {
+      "ambito": "Polizia Provinciale",
+      "num_iun": 92,
+      "ranking": 9,
+      "categoria_ente": "Comuni"
+    },
+    {
+      "ambito": "Non definito",
+      "num_iun": 65,
+      "ranking": 10,
+      "categoria_ente": "Comuni"
+    },
+    {
+      "ambito": "Revoca benefici",
+      "num_iun": 1336,
+      "ranking": 1,
+      "categoria_ente": "Consorzi universitari"
+    },
+    {
+      "ambito": "Accertamenti",
+      "num_iun": 119,
+      "ranking": 2,
+      "categoria_ente": "Consorzi universitari"
+    },
+    {
+      "ambito": "Polizia Locale",
+      "num_iun": 4,
+      "ranking": 1,
+      "categoria_ente": "Enti comunali"
+    },
+    {
+      "ambito": "Tributi",
+      "num_iun": 3,
+      "ranking": 2,
+      "categoria_ente": "Enti comunali"
+    },
+    {
+      "ambito": "Scuola",
+      "num_iun": 1,
+      "ranking": 3,
+      "categoria_ente": "Enti comunali"
+    },
+    {
+      "ambito": "Professionisti",
+      "num_iun": 6558,
+      "ranking": 1,
+      "categoria_ente": "Ordini, collegi e consigli professionali"
+    },
+    {
+      "ambito": "Contributi",
+      "num_iun": 2385083,
+      "ranking": 1,
+      "categoria_ente": "Pubbliche amministrazioni centrali"
+    },
+    {
+      "ambito": "Avvisi di addebito",
+      "num_iun": 233831,
+      "ranking": 2,
+      "categoria_ente": "Pubbliche amministrazioni centrali"
+    },
+    {
+      "ambito": "Decreto",
+      "num_iun": 190670,
+      "ranking": 3,
+      "categoria_ente": "Pubbliche amministrazioni centrali"
+    },
+    {
+      "ambito": "Esercito Italiano",
+      "num_iun": 2780,
+      "ranking": 4,
+      "categoria_ente": "Pubbliche amministrazioni centrali"
+    },
+    {
+      "ambito": "Polizia Locale",
+      "num_iun": 956,
+      "ranking": 5,
+      "categoria_ente": "Pubbliche amministrazioni centrali"
+    },
+    {
+      "ambito": "Provvedimenti",
+      "num_iun": 4,
+      "ranking": 6,
+      "categoria_ente": "Pubbliche amministrazioni centrali"
+    },
+    {
+      "ambito": "Polizia Locale",
+      "num_iun": 32768,
+      "ranking": 1,
+      "categoria_ente": "Province"
+    },
+    {
+      "ambito": "Polizia Provinciale",
+      "num_iun": 24366,
+      "ranking": 2,
+      "categoria_ente": "Province"
+    },
+    {
+      "ambito": "Riscossione Coattiva",
+      "num_iun": 4304,
+      "ranking": 3,
+      "categoria_ente": "Province"
+    },
+    {
+      "ambito": "Ordinanze",
+      "num_iun": 27,
+      "ranking": 4,
+      "categoria_ente": "Province"
+    },
+    {
+      "ambito": "Violazioni",
+      "num_iun": 22,
+      "ranking": 5,
+      "categoria_ente": "Province"
+    },
+    {
+      "ambito": "Non definito",
+      "num_iun": 1,
+      "ranking": 6,
+      "categoria_ente": "Province"
+    },
+    {
+      "ambito": "Revoca benefici",
+      "num_iun": 1,
+      "ranking": 7,
+      "categoria_ente": "Province"
+    },
+    {
+      "ambito": "Tributi",
+      "num_iun": 1,
+      "ranking": 8,
+      "categoria_ente": "Province"
+    },
+    {
+      "ambito": "Recupero Bolli non Pagati",
+      "num_iun": 7086987,
+      "ranking": 1,
+      "categoria_ente": "Regioni"
+    },
+    {
+      "ambito": "Esenzioni Bolli Auto",
+      "num_iun": 13254,
+      "ranking": 2,
+      "categoria_ente": "Regioni"
+    },
+    {
+      "ambito": "Tributi",
+      "num_iun": 3130,
+      "ranking": 3,
+      "categoria_ente": "Regioni"
+    },
+    {
+      "ambito": "Polizia Locale",
+      "num_iun": 4,
+      "ranking": 4,
+      "categoria_ente": "Regioni"
+    },
+    {
+      "ambito": "Recupero ticket esenzione da reddito",
+      "num_iun": 10234,
+      "ranking": 1,
+      "categoria_ente": "Salute locale"
+    },
+    {
+      "ambito": "Ordinanze",
+      "num_iun": 26,
+      "ranking": 2,
+      "categoria_ente": "Salute locale"
+    },
+    {
+      "ambito": "Polizia Locale",
+      "num_iun": 2,
+      "ranking": 3,
+      "categoria_ente": "Salute locale"
+    },
+    {
+      "ambito": "Scuola",
+      "num_iun": 1,
+      "ranking": 4,
+      "categoria_ente": "Salute locale"
+    },
+    {
+      "ambito": "Scuola",
+      "num_iun": 4887,
+      "ranking": 1,
+      "categoria_ente": "Universit\u00e0"
+    },
+    {
+      "ambito": "Tributi",
+      "num_iun": 213,
+      "ranking": 2,
+      "categoria_ente": "Universit\u00e0"
+    },
+    {
+      "ambito": "Accertamenti",
+      "num_iun": 196,
+      "ranking": 3,
+      "categoria_ente": "Universit\u00e0"
+    },
+    {
+      "ambito": "Riscossione coattiva",
+      "num_iun": 122,
+      "ranking": 4,
+      "categoria_ente": "Universit\u00e0"
+    },
+    {
+      "ambito": "Non definito",
+      "num_iun": 3,
+      "ranking": 5,
+      "categoria_ente": "Universit\u00e0"
+    },
+    {
+      "ambito": "Revoca benefici",
+      "num_iun": 1,
+      "ranking": 6,
+      "categoria_ente": "Universit\u00e0"
+    },
+    {
+      "ambito": "Riscossione Coattiva",
+      "num_iun": 2104377,
+      "ranking": 1,
+      "categoria_ente": "Riscossori e altro"
+    },
+    {
+      "ambito": "Tributi",
+      "num_iun": 482833,
+      "ranking": 2,
+      "categoria_ente": "Riscossori e altro"
+    },
+    {
+      "ambito": "Recupero Bolli non Pagati",
+      "num_iun": 209648,
+      "ranking": 3,
+      "categoria_ente": "Riscossori e altro"
+    },
+    {
+      "ambito": "Patrimonio",
+      "num_iun": 18463,
+      "ranking": 4,
+      "categoria_ente": "Riscossori e altro"
+    },
+    {
+      "ambito": "Polizia Locale",
+      "num_iun": 17826,
+      "ranking": 5,
+      "categoria_ente": "Riscossori e altro"
+    },
+    {
+      "ambito": "Anagrafe",
+      "num_iun": 1008,
+      "ranking": 6,
+      "categoria_ente": "Riscossori e altro"
+    },
+    {
+      "ambito": "Non definito",
+      "num_iun": 940,
+      "ranking": 7,
+      "categoria_ente": "Riscossori e altro"
+    },
+    {
+      "ambito": "Gestione misure agevolative",
+      "num_iun": 1,
+      "ranking": 8,
+      "categoria_ente": "Riscossori e altro"
+    },
+    {
+      "ambito": "Ordinanze",
+      "num_iun": 1,
+      "ranking": 9,
+      "categoria_ente": "Riscossori e altro"
+    }
   ]
 }

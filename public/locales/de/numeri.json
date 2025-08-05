@@ -1,60 +1,123 @@
 {
-  "title": "SEND - Servizio Notifiche Digitali | SEND in Zahlen",
-  "description": "Daten über die gesendeten Zustellungen, über die Körperschaften, die SEND nutzen, und über die Arten der erbrachten Dienste",
+  "title": "SEND - Digitaler Benachrichtigungsdienst | Die Zahlen von SEND",
+  "description": "Entdecken Sie die Daten zu versendeten Benachrichtigungen, Behörden, die SEND nutzen, und Arten von Dienstleistungsdaten",
   "hero": {
-    "title": "SEND in Zahlen",
-    "last_update": "Letzte Aktualisierung"
+    "eyelet": "Daten und Leistung",
+    "title": "Entdecken Sie die Zahlen von SEND",
+    "last_update": "Letzte Aktualisierung",
+    "alert": "Die Daten sind auf dati.gov.it verfügbar",
+    "website": "Zur Website"
   },
   "total": "Gesamt",
   "sent_notifications": {
-    "title": "Gesendete Zustellungen",
-    "description": "Die folgenden Daten beziehen sich auf die Zustellungen von Körperschaften der öffentlichen Verwaltung",
+    "title": "Versendete SEND-Benachrichtigungen",
+    "description": "Die Daten beziehen sich auf rechtsgültige Mitteilungen, die von teilnehmenden Behörden versendet wurden.",
     "total": {
       "name": "insgesamt",
-      "title": "Zustellungen insgesamt",
-      "description": "Über SEND gesendete Zustellungen"
+      "title": "Gesamtzahl versendeter SEND-Benachrichtigungen",
+      "description": "Eine SEND-Benachrichtigung ist eine rechtsgültige Mitteilung, die offiziell von einer Verwaltung ausgestellt wird. Sie kann digital oder analog zugestellt werden."
     },
     "digital": {
       "name": "digital",
-      "title": "Digitale Zustellungen insgesamt",
-      "description": "Über digitale Kanäle an die Empfänger gesendete Zustellungen"
+      "title": "Anzahl digitaler SEND-Benachrichtigungen",
+      "description": "SEND-Benachrichtigungen, die an Empfänger über zertifizierte digitale Kanäle versendet wurden."
     },
     "analog": {
       "name": "analog",
-      "title": "Analoge Zustellungen insgesamt",
-      "description": "Per Einschreiben in Papierform an die Empfänger gesendete Zustellungen"
+      "title": "Anzahl analoger SEND-Benachrichtigungen",
+      "description": "SEND-Benachrichtigungen, die analog versendet wurden, da zertifizierte digitale Kanäle des Empfängers fehlen."
+    },
+    "pieChart": {
+      "tooltip": {
+        "type": "Art der Benachrichtigung",
+        "number": "Anzahl der Benachrichtigungen"
+      }
     },
     "trend": {
-      "title": "Verlauf der Zustellungen",
-      "description_1": "Verlauf",
-      "description_2": "der Zustellungen",
+      "title": "Entwicklung der SEND-Benachrichtigungen",
+      "description": "Entwicklung der Anzahl von SEND-Benachrichtigungen, die offiziell von einer teilnehmenden Behörde ausgestellt wurden.",
+      "description_1": "Entwicklung",
+      "description_2": "der Benachrichtigungen",
       "monthly": "monatlich",
-      "aggregate": "kumulativ"
+      "aggregate": "kumuliert",
+      "total": "gesamt",
+      "digital": "digital",
+      "analog": "analog",
+      "tooltip": {
+        "month": "Monat",
+        "aggregate": "Kumulierte Benachrichtigungen",
+        "monthly": "Monatliche Benachrichtigungen"
+      },
+      "note": "Der kumulierte Wert ist die fortschreitende Summe einer Menge über die Zeit."
     }
   },
-  "authorities_and_types": {
-    "title": "Körperschaften und Art der gesendeten Zustellungen",
-    "description": "Folgende Daten zeigen, wie viele Körperschaften SEND nutzen und für welche Art von Dienstleistungen",
-    "authorities": {
+
+  "entities": {
+    "title": "Behörden auf SEND",
+    "description": "Teilnehmende Behörden, die seit dem Start des Dienstes mindestens eine SEND-Benachrichtigung versendet haben.",
+    "active": {
       "total": {
-        "title": "Aktive Körperschaften insgesamt",
-        "description": "Körperschaften, die mindestens eine Zustellung gesendet haben"
+        "title": "Gesamtzahl der Behörden auf SEND",
+        "description": "Gesamtanzahl der Behörden, die mindestens eine SEND-Benachrichtigung versendet haben."
       },
-      "main_cat": {
-        "title": "Hauptkategorien aktiver Körperschaften",
-        "description": "Nach Anzahl aktiver Körperschaften sortierte Körperschaftskategorien"
+      "municipalities": {
+        "title": "Prozentsatz der Gemeinden an der Gesamtzahl der Behörden auf SEND"
+      },
+      "geographic_distribution": {
+        "title": "Geografische Verteilung der Gemeinden auf SEND",
+        "description": "Das Diagramm zeigt die Verteilung der Gemeinden in den verschiedenen Regionen, die Größe der Blasen zeigt das Volumen der aktiven Gemeinden pro Region an."
+      },
+      "tooltip": {
+        "region": "Region",
+        "municipalities": "Gemeinden",
+        "percentage": "Prozentsatz der Gemeinden im Verhältnis zur Gesamtzahl der Gemeinden pro Region"
       }
+    }
+  },
+
+  "notification_types": {
+    "title": "Hauptbereiche der SEND-Benachrichtigungen",
+    "description": "Kategorien der am häufigsten versendeten SEND-Benachrichtigungen.",
+    "main_scopes": {
+      "title": "Nach Art der teilnehmenden Behörde filtern.",
+      "notes": "* verschieden von jenen, deren Benachrichtigung über SEND gemäß Art. 26, Abs. 17 D.L. 76/2020 ausgeschlossen ist"
     },
-    "notification_types": {
-      "total": {
-        "title": "Art der gesendeten Zustellungen",
-        "description": "Die Art steht für den Zuständigkeitsbereich der Zustellung (z.B. Bußgelder, Steuern, Register usw.)."
-      },
-      "main_scopes": {
-        "title": "Wichtigste Bereiche",
-        "description": "Nach Anzahl hinterlegter Zustellungen ab Einführung von SEND sortierte Dienste",
-        "notes": "* hiervon ausgenommen sind diejenigen, deren Zustellung durch SEND gemäß Art.26, Abs. 17 des GvD 76/2020 ausgeschlossen ist"
-      }
+    "tooltip": {
+      "category": "Bereich",
+      "notifications": "Benachrichtigungen"
+    },
+    "tutte": {
+      "name": "Alle"
+    },
+    "comuni": {
+      "name": "Gemeinden"
+    },
+    "riscossori": {
+      "name": "Eintreiber und andere"
+    },
+    "altri_enti": {
+      "name": "Andere Gebietskörperschaften"
+    },
+    "province": {
+      "name": "Provinzen"
+    },
+    "regioni": {
+      "name": "Regionen"
+    },
+    "comunali": {
+      "name": "Gemeindebehörden"
+    },
+    "ordini": {
+      "name": "Berufsverbände, Kammern und Berufsräte"
+    },
+    "amministrazioni": {
+      "name": "Zentrale öffentliche Verwaltungen"
+    },
+    "universita": {
+      "name": "Universitäten"
+    },
+    "consorzi": {
+      "name": "Universitätskonsortien"
     }
   }
 }

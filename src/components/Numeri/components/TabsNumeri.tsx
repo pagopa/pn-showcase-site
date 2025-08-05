@@ -11,6 +11,7 @@ import {
   Paper,
   Popper,
 } from "@mui/material";
+import { dashboardColors } from "../shared/colors";
 import { useTabBehavior } from "src/hook/useTabBehavior";
 
 type Props = {
@@ -23,14 +24,14 @@ type Props = {
   breakpoint?: Breakpoint;
 };
 
-const Tabs = ({
+const TabsNumeri = ({
   tabs,
   fullWidth = false,
-  buttonSize = "large",
+  buttonSize = "small",
   breakOnMobile = true,
   onTabChange,
-  initialTab = 0,
-  breakpoint = "lg",
+  initialTab = 3,
+  breakpoint = "xs",
 }: Props) => {
   const {
     currentTab,
@@ -43,14 +44,29 @@ const Tabs = ({
   } = useTabBehavior(initialTab, breakpoint, onTabChange);
 
   return (
-    <Box sx={{ textAlign: "center", width: fullWidth ? "100%" : "auto" }}>
+    <Box
+      sx={{
+        textAlign: "left",
+        width: fullWidth ? "100%" : "auto",
+      }}
+    >
       {(!isMobile || !breakOnMobile) && (
         <ButtonGroup color="primary" fullWidth={fullWidth}>
           {tabs.map((tab, index) => (
             <Button
               sx={{
+                borderColor: dashboardColors.get("blue-io-200"),
+                color: dashboardColors.get("blue-io"),
+                "&:hover": {
+                  color: dashboardColors.get("blue-io"),
+                },
+
+                borderWidth: 1,
+                fontWeight: 700,
                 backgroundColor:
-                  currentTab === index ? "rgba(0, 115, 230, 0.08)" : undefined,
+                  currentTab === index
+                    ? dashboardColors.get("blue-io-50")
+                    : undefined,
               }}
               onClick={() => handleChangeTab(index)}
               size={buttonSize}
@@ -65,8 +81,32 @@ const Tabs = ({
       {isMobile && breakOnMobile && (
         <>
           <ButtonGroup ref={anchorRef}>
-            <Button onClick={handleToggleDropdown}>{tabs[currentTab]}</Button>
             <Button
+              onClick={handleToggleDropdown}
+              size={buttonSize}
+              sx={{
+                borderColor: dashboardColors.get("blue-io-200"),
+                color: dashboardColors.get("blue-io"),
+                fontWeight: 700,
+                borderWidth: 1,
+
+                "&:hover": {
+                  color: dashboardColors.get("blue-io"),
+                },
+              }}
+            >
+              {tabs[currentTab]}
+            </Button>
+            <Button
+              size={buttonSize}
+              sx={{
+                borderColor: dashboardColors.get("blue-io-200"),
+                color: dashboardColors.get("blue-io"),
+                fontWeight: 700,
+                "&:hover": {
+                  color: dashboardColors.get("blue-io"),
+                },
+              }}
               aria-controls={dropdownOpen ? "split-button-menu" : undefined}
               aria-expanded={dropdownOpen ? "true" : undefined}
               aria-haspopup="menu"
@@ -95,6 +135,13 @@ const Tabs = ({
                     <MenuList id="split-button-menu" autoFocusItem>
                       {tabs.map((tab, index) => (
                         <MenuItem
+                          sx={{
+                            color: dashboardColors.get("blue-io"),
+                            "&.Mui-selected": {
+                              color: dashboardColors.get("blue-io"),
+                            },
+                            fontWeight: 700,
+                          }}
                           key={tab}
                           selected={index === currentTab}
                           onClick={() => handleChangeTab(index)}
@@ -114,4 +161,4 @@ const Tabs = ({
   );
 };
 
-export default Tabs;
+export default TabsNumeri;

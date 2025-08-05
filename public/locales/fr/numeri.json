@@ -1,60 +1,123 @@
 {
-  "title": "SEND - Servizio Notifiche Digitali | SEND en chiffres",
-  "description": "Découvrez les données sur les notifications envoyées, les entités qui utilisent SEND et les types de services",
+  "title": "SEND - Service de Notifications Numériques | Les chiffres de SEND",
+  "description": "Découvrez les données relatives aux notifications envoyées, aux entités utilisant SEND et aux types de données de services",
   "hero": {
-    "title": "SEND en chiffres",
-    "last_update": "Dernière mise à jour"
+    "eyelet": "Données et performances",
+    "title": "Découvrez les chiffres de SEND",
+    "last_update": "Dernière mise à jour",
+    "alert": "Les données sont disponibles sur dati.gov.it",
+    "website": "Aller au site"
   },
   "total": "Total",
   "sent_notifications": {
-    "title": "Notifications envoyées",
-    "description": "Les données suivantes se réfèrent aux notifications envoyées par les organismes de l’administration publique",
+    "title": "Notifications SEND envoyées",
+    "description": "Les données se réfèrent aux communications à valeur légale envoyées par les entités participantes.",
     "total": {
-      "name": "au total",
-      "title": "Total notifications",
-      "description": "Notifications envoyées via SEND"
+      "name": "globales",
+      "title": "Total des notifications SEND envoyées",
+      "description": "Une notification SEND est une communication à valeur légale émise officiellement par une administration. Elle peut être délivrée en mode numérique ou analogique."
     },
     "digital": {
       "name": "numériques",
-      "title": "Total notifications numériques",
-      "description": "Notifications envoyées aux destinataires via les canaux numériques"
+      "title": "Nombre de notifications SEND numériques",
+      "description": "Notifications SEND émises aux destinataires via des canaux numériques certifiés."
     },
     "analog": {
       "name": "analogiques",
-      "title": "Total notifications analogiques",
-      "description": "Notifications envoyées aux destinataires par lettre recommandée au format papier"
+      "title": "Nombre de notifications SEND analogiques",
+      "description": "Notifications SEND émises en mode analogique en raison de l'absence de canaux numériques certifiés du destinataire."
+    },
+    "pieChart": {
+      "tooltip": {
+        "type": "Type de notification",
+        "number": "Nombre de notifications"
+      }
     },
     "trend": {
-      "title": "Évolution des notifications",
+      "title": "Évolution des notifications SEND",
+      "description": "Évolution du nombre de notifications SEND émises officiellement par une entité participante.",
       "description_1": "Évolution",
       "description_2": "des notifications",
       "monthly": "mensuelle",
-      "aggregate": "cumulative"
+      "aggregate": "cumulé",
+      "total": "global",
+      "digital": "numériques",
+      "analog": "analogiques",
+      "tooltip": {
+        "month": "Mois",
+        "aggregate": "Notifications cumulées",
+        "monthly": "Notifications mensuelles"
+      },
+      "note": "La valeur cumulée est la somme progressive d'une quantité dans le temps."
     }
   },
-  "authorities_and_types": {
-    "title": "Organismes et typologies de notifications envoyées",
-    "description": "Les données suivantes montrent combien d’organismes utilisent SEND et pour quel type de services",
-    "authorities": {
+
+  "entities": {
+    "title": "Entités sur SEND",
+    "description": "Entités participantes qui ont envoyé au moins une notification SEND depuis le lancement du service.",
+    "active": {
       "total": {
-        "title": "Total organismes activés",
-        "description": "Organismes ayant envoyé au moins une notification"
+        "title": "Total des entités sur SEND",
+        "description": "Nombre total des entités qui ont envoyé au moins une notification SEND."
       },
-      "main_cat": {
-        "title": "Principales catégories d’organismes activés",
-        "description": "Catégories d’organismes classées par nombre d’organismes activés"
+      "municipalities": {
+        "title": "Pourcentage de communes sur le total des entités sur SEND"
+      },
+      "geographic_distribution": {
+        "title": "Distribution géographique des communes sur SEND",
+        "description": "Le graphique montre la distribution des communes dans les différentes régions, la taille des bulles indique le volume des communes actives par région."
+      },
+      "tooltip": {
+        "region": "Région",
+        "municipalities": "Communes",
+        "percentage": "Pourcentage de communes par rapport au total des communes par région"
       }
+    }
+  },
+
+  "notification_types": {
+    "title": "Principaux domaines des notifications SEND",
+    "description": "Catégories de notifications SEND les plus envoyées.",
+    "main_scopes": {
+      "title": "Filtrer par type d'entité participante.",
+      "notes": "* différent/e de ceux dont la notification est exclue via SEND selon l'art. 26, alinéa 17 D.L. 76/2020"
     },
-    "notification_types": {
-      "total": {
-        "title": "Typologies de notifications envoyées",
-        "description": "Le typologie représente la sphère à laquelle appartient la notification (ex. : amendes, taxes, registre, etc.)"
-      },
-      "main_scopes": {
-        "title": "Domaines principaux",
-        "description": "Services classés par nombre de notifications déposées depuis l’adoption de SEND",
-        "notes": "* autre que ceux dont la notification est exclue via SEND en vertu de l’article 26, alinéa 17 du D.L. 76/2020"
-      }
+    "tooltip": {
+      "category": "Domaine",
+      "notifications": "Notifications"
+    },
+    "tutte": {
+      "name": "Toutes"
+    },
+    "comuni": {
+      "name": "Communes"
+    },
+    "riscossori": {
+      "name": "Percepteurs et autres"
+    },
+    "altri_enti": {
+      "name": "Autres entités territoriales"
+    },
+    "province": {
+      "name": "Provinces"
+    },
+    "regioni": {
+      "name": "Régions"
+    },
+    "comunali": {
+      "name": "Entités communales"
+    },
+    "ordini": {
+      "name": "Ordres, collèges et conseils professionnels"
+    },
+    "amministrazioni": {
+      "name": "Administrations publiques centrales"
+    },
+    "universita": {
+      "name": "Universités"
+    },
+    "consorzi": {
+      "name": "Consortiums universitaires"
     }
   }
 }
