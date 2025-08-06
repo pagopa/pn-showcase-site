@@ -36,7 +36,10 @@ const PickupPointsMap: React.FC<Props> = ({
   const [mapError, setMapError] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  const styleDescriptor = useLocalizedStyleDescriptor({ setMapError });
+  const styleDescriptor = useLocalizedStyleDescriptor({
+    language: "it",
+    setMapError,
+  });
 
   const handleLoad = async (event: MapLibreEvent) => {
     const map = event.target;

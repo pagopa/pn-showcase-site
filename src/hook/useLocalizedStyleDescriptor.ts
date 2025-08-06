@@ -3,6 +3,7 @@ import { ImmutableLike, StyleSpecification } from "react-map-gl/maplibre";
 import { useConfig } from "src/context/config-context";
 
 type Props = {
+  language: string;
   setMapError: (error: boolean) => void;
 };
 
@@ -77,13 +78,15 @@ const setPreferredLanguage = (
   return nextStyle;
 };
 
-const useLocalizedStyleDescriptor = ({ setMapError }: Props) => {
+/**
+ * This hook translates the map style to the preferred language
+ * https://docs.aws.amazon.com/location/latest/developerguide/how-to-set-preferred-language-map.html
+ */
+const useLocalizedStyleDescriptor = ({ language, setMapError }: Props) => {
   const { CLOUDFRONT_MAP_URL } = useConfig();
   const [styleDescriptor, setStyleDescriptor] = useState<
     string | StyleSpecification | ImmutableLike<StyleSpecification> | undefined
   >(undefined);
-
-  const language = "it";
 
   useEffect(() => {
     const getStyleWithPreferredLanguage = async (preferredLanguage: string) => {
