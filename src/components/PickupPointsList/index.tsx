@@ -86,7 +86,7 @@ function PickupPointsList({
     }
 
     if (!selectedPoint) {
-      setCustomSortTarget(null);
+      setCustomSortTarget(searchCoordinates || null);
       return;
     }
 
@@ -98,13 +98,7 @@ function PickupPointsList({
     }
 
     scrollToItem(selectedPoint);
-  }, [selectedPoint, isVisible]);
-
-  useEffect(() => {
-    if (searchCoordinates) {
-      setCustomSortTarget(searchCoordinates);
-    }
-  }, [searchCoordinates]);
+  }, [selectedPoint, searchCoordinates, isVisible]);
 
   if (!points || points.length === 0) {
     return <Skeletons />;
