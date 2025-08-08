@@ -109,6 +109,8 @@ export const fitMapToPoints = (
   map: MapRef,
   pointsToFit: number = 5
 ) => {
+  if (!points.length) return;
+
   const sortedPoints = sortPointsByDistance(points, coordinates, null);
   const targetPoints = sortedPoints.slice(
     0,
@@ -128,21 +130,25 @@ export const fitMapToPoints = (
   // Converts distance into degrees (approximation: 1° ≈ 111km) and add 10% for padding
   const radiusInDegrees = (maxDistance * 1.1) / 111;
 
-  const bounds = new LngLatBounds();
+  try {
+    const bounds = new LngLatBounds();
 
-  bounds.extend([
-    coordinates.longitude - radiusInDegrees,
-    coordinates.latitude - radiusInDegrees,
-  ]);
-  bounds.extend([
-    coordinates.longitude + radiusInDegrees,
-    coordinates.latitude + radiusInDegrees,
-  ]);
+    bounds.extend([
+      coordinates.longitude - radiusInDegrees,
+      coordinates.latitude - radiusInDegrees,
+    ]);
+    bounds.extend([
+      coordinates.longitude + radiusInDegrees,
+      coordinates.latitude + radiusInDegrees,
+    ]);
 
-  map.fitBounds(bounds, {
-    maxZoom: 15,
-    duration: 1500,
-  });
+    map.fitBounds(bounds, {
+      maxZoom: 15,
+      duration: 1500,
+    });
+  } catch (e) {
+    console.error("Unable to fit map to points", e);
+  }
 };
 
 /**

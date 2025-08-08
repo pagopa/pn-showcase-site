@@ -105,7 +105,7 @@ const PickupPointsMap: React.FC<Props> = ({
       fitMapToPoints(searchCoordinates, points, mapRef.current);
       setSelectedPoint(null);
     }
-  }, [searchCoordinates]);
+  }, [searchCoordinates, points, mapRef]);
 
   const handleRetry = () => {
     setMapError(false);
