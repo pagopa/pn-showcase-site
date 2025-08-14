@@ -52,13 +52,6 @@ export interface Point {
   caf_orari_apertura?: string;
 }
 
-export type PaginationData = {
-  size: number;
-  totalElements: number;
-  numOfDisplayedPages: number;
-  currentPage: number;
-};
-
 // localization //
 export type LangCode = (typeof langCodes)[number];
 export interface I18n {
