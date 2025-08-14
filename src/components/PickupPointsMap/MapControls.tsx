@@ -7,19 +7,26 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { areCoordinatesEqual, fitMapToPoints } from "@utils/map";
 import { useEffect, useState } from "react";
 import { useMap } from "react-map-gl/maplibre";
 import { useConfig } from "src/context/config-context";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
-import { Coordinates } from "src/model";
+import { Coordinates, RaddOperator } from "src/model";
 import SnackBar from "../SnackBar/SnackBar";
 
 type Props = {
+  points: Array<RaddOperator>;
+  searchCoordinates: Coordinates | null;
   setSearchCoordinates: (coordinates: Coordinates) => void;
 };
 
-const MapControls: React.FC<Props> = ({ setSearchCoordinates }) => {
+const MapControls: React.FC<Props> = ({
+  points,
+  searchCoordinates,
+  setSearchCoordinates,
+}) => {
   const map = useMap();
   const { t } = useTranslation(["pickup"]);
   const { GEOLOCATION_ASSISTANCE_URL } = useConfig();
@@ -38,6 +45,9 @@ const MapControls: React.FC<Props> = ({ setSearchCoordinates }) => {
 
   const onGeolocateUser = async () => {
     if (userPosition) {
+      if (areCoordinatesEqual(userPosition, searchCoordinates) && map.current) {
+        return fitMapToPoints(userPosition, points, map.current);
+      }
       setSearchCoordinates(userPosition);
       return;
     }

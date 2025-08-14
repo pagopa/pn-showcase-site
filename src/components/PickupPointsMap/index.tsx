@@ -3,7 +3,7 @@ import { MAP_MARKERS } from "@utils/constants";
 import { fitMapToPoints } from "@utils/map";
 import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
 import { useConfig } from "src/context/config-context";
 import { useIsMobile } from "src/hook/useIsMobile";
@@ -16,6 +16,7 @@ import SearchedAddressLayer from "./SearchedAddressLayer";
 import UserPositionController from "./UserPositionController";
 
 type Props = {
+  mapRef?: React.RefObject<MapRef>;
   points: Array<RaddOperator>;
   selectedPoint: RaddOperator | null;
   searchCoordinates: Coordinates | null;
@@ -25,6 +26,7 @@ type Props = {
 };
 
 const PickupPointsMap: React.FC<Props> = ({
+  mapRef,
   points,
   selectedPoint,
   searchCoordinates,
@@ -33,7 +35,7 @@ const PickupPointsMap: React.FC<Props> = ({
   toggleDialog,
 }) => {
   const { t } = useTranslation(["pickup"]);
-  const mapRef = useRef<MapRef>(null);
+
   const isMobile = useIsMobile();
   const [mapError, setMapError] = useState(false);
   const { CLOUDFRONT_MAP_URL } = useConfig();
@@ -91,7 +93,7 @@ const PickupPointsMap: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    if (selectedPoint && mapRef.current) {
+    if (selectedPoint && mapRef?.current) {
       mapRef.current.flyTo({
         center: [selectedPoint.longitude, selectedPoint.latitude],
         zoom: 17,
@@ -101,7 +103,7 @@ const PickupPointsMap: React.FC<Props> = ({
   }, [selectedPoint, mapRef]);
 
   useEffect(() => {
-    if (searchCoordinates && mapRef.current) {
+    if (searchCoordinates && mapRef?.current) {
       fitMapToPoints(searchCoordinates, points, mapRef.current);
       setSelectedPoint(null);
     }
@@ -151,7 +153,11 @@ const PickupPointsMap: React.FC<Props> = ({
       style={{ height: "100%", width: "100%" }}
     >
       <UserPositionController points={points} />
-      <MapControls setSearchCoordinates={setSearchCoordinates} />
+      <MapControls
+        points={points}
+        searchCoordinates={searchCoordinates}
+        setSearchCoordinates={setSearchCoordinates}
+      />
       {imagesLoaded && (
         <>
           <Clusters points={points} selectedPoint={selectedPoint} />

@@ -3,7 +3,8 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { GpsFixed } from "@mui/icons-material";
 import { Box } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
-import { areCoordinatesEqual } from "@utils/map";
+import { areCoordinatesEqual, fitMapToPoints } from "@utils/map";
+import { MapRef } from "react-map-gl/maplibre";
 import { useConfig } from "src/context/config-context";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
@@ -24,6 +25,8 @@ const MIN_QUERY_LENGTH = 3;
 const CURRENT_POSITION_OPTION_ID = "userPosition";
 
 interface Props {
+  mapRef?: React.RefObject<MapRef>;
+  points: RaddOperator[];
   searchCoordinates: Coordinates | null;
   setSearchCoordinates: (coordinates: Coordinates) => void;
   setSelectedPoint: (point: RaddOperator | null) => void;
@@ -38,6 +41,8 @@ const createApiUrl = (endpoint: string, params: Record<string, string>) => {
 };
 
 const PickupPointsAutocomplete: React.FC<Props> = ({
+  mapRef,
+  points,
   searchCoordinates,
   setSearchCoordinates,
   setSelectedPoint,
@@ -99,6 +104,12 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
   const handleCurrentPosition = () => {
     if (userPosition) {
       setSelectedPoint(null);
+      if (
+        areCoordinatesEqual(userPosition, searchCoordinates) &&
+        mapRef?.current
+      ) {
+        return fitMapToPoints(userPosition, points, mapRef.current);
+      }
       setSearchCoordinates(userPosition);
     }
   };
