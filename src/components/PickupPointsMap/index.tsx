@@ -1,14 +1,14 @@
-import { Typography } from "@mui/material";
+import { CircularProgress, Stack, Typography } from "@mui/material";
 import { MAP_MARKERS } from "@utils/constants";
 import { fitMapToPoints } from "@utils/map";
 import { GeoJSONSource, MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useState } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
-import { useConfig } from "src/context/config-context";
 import { useIsMobile } from "src/hook/useIsMobile";
 import { useTranslation } from "src/hook/useTranslation";
 import { Coordinates, RaddOperator } from "src/model";
+import useLocalizedStyleDescriptor from "../../hook/useLocalizedStyleDescriptor";
 import ErrorBox from "../ErrorBox";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
@@ -38,8 +38,12 @@ const PickupPointsMap: React.FC<Props> = ({
 
   const isMobile = useIsMobile();
   const [mapError, setMapError] = useState(false);
-  const { CLOUDFRONT_MAP_URL } = useConfig();
   const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  const styleDescriptor = useLocalizedStyleDescriptor({
+    language: "it",
+    setMapError,
+  });
 
   const handleLoad = async (event: MapLibreEvent) => {
     const map = event.target;
@@ -142,10 +146,28 @@ const PickupPointsMap: React.FC<Props> = ({
     );
   }
 
+  if (!styleDescriptor) {
+    return (
+      <Stack
+        sx={{
+          height: "100%",
+          width: "100%",
+          position: "relative",
+          backgroundColor: "#F5F5F5",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
+        <CircularProgress />
+      </Stack>
+    );
+  }
+
   return (
     <Map
       ref={mapRef}
-      mapStyle={CLOUDFRONT_MAP_URL}
+      mapStyle={styleDescriptor}
       initialViewState={{
         longitude: 12.482802,
         latitude: 41.895679,
