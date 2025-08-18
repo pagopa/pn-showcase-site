@@ -229,6 +229,7 @@ const PickupPointsPage: NextPage = () => {
         isOpen={isDialogOpen}
         point={selectedPoint}
         toggleDialog={toggleDialog}
+        searchCoordinates={searchCoordinates}
       />
     </>
   );
