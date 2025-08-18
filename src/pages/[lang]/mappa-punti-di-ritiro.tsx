@@ -6,7 +6,7 @@ import { mapPoint } from "@utils/map";
 import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 import Papa from "papaparse";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ErrorBox from "src/components/ErrorBox";
 import PickupPointsAutocomplete from "src/components/PickupPointsAutocomplete";
 import PickupPointsList from "src/components/PickupPointsList";
@@ -16,6 +16,7 @@ import Tabs from "src/components/Tabs";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
+import { MapRef } from "react-map-gl/maplibre";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -41,6 +42,7 @@ type MOBILE_TABS = "list" | "map";
 const PickupPointsPage: NextPage = () => {
   const { t } = useTranslation(["pickup", "common"]);
 
+  const mapRef = useRef<MapRef>(null);
   const [selectedTab, setSelectedTab] = useState<MOBILE_TABS>("list");
   const [points, setPoints] = useState<RaddOperator[]>([]);
   const [fetchError, setFetchError] = useState(false);
@@ -135,6 +137,9 @@ const PickupPointsPage: NextPage = () => {
             </ButtonNaked>
 
             <PickupPointsAutocomplete
+              mapRef={mapRef}
+              points={points}
+              searchCoordinates={searchCoordinates}
               setSearchCoordinates={setSearchCoordinates}
               setSelectedPoint={setSelectedPoint}
             />
@@ -192,11 +197,13 @@ const PickupPointsPage: NextPage = () => {
               tabIndex={-1}
             >
               <PickupPointsMap
+                mapRef={mapRef}
                 points={points}
                 selectedPoint={selectedPoint}
                 setSelectedPoint={setSelectedPoint}
                 toggleDialog={toggleDialog}
                 searchCoordinates={searchCoordinates}
+                setSearchCoordinates={setSearchCoordinates}
               />
             </Box>
           </Grid>
