@@ -1,7 +1,7 @@
 import { CircularProgress, Stack, Typography } from "@mui/material";
 import { MAP_MARKERS } from "@utils/constants";
 import { fitMapToPoints } from "@utils/map";
-import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
+import { GeoJSONSource, MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
@@ -59,16 +59,18 @@ const PickupPointsMap: React.FC<Props> = ({
     }
   };
 
-  const handleMapClick = (event: MapLayerMouseEvent) => {
+  const handleMapClick = async (event: MapLayerMouseEvent) => {
     if (event.features && event.features.length > 0) {
       const feature = event.features[0];
       const map = event.target;
+      const geometry = feature.geometry as GeoJSON.Geometry & {
+        coordinates: [number, number];
+      };
 
       if (feature.layer.id === "unclustered-points") {
-        const selectedPoint = JSON.parse(feature.properties.point);
-        const geometry = feature.geometry as GeoJSON.Geometry & {
-          coordinates: [number, number];
-        };
+        const selectedPoint: RaddOperator = JSON.parse(
+          feature.properties.point
+        );
         map.flyTo({
           center: geometry.coordinates,
           zoom: 15,
@@ -76,6 +78,16 @@ const PickupPointsMap: React.FC<Props> = ({
         });
         setSelectedPoint(selectedPoint);
         toggleDialog(true, selectedPoint);
+      }
+
+      if (feature.layer.id === "cluster-points" && feature.properties.cluster) {
+        const clusterId = feature.properties.cluster_id;
+        const source: GeoJSONSource | undefined = map.getSource("stores");
+        const zoom = await source?.getClusterExpansionZoom(clusterId);
+        map.easeTo({
+          center: geometry.coordinates,
+          zoom,
+        });
       }
     }
   };
@@ -158,7 +170,7 @@ const PickupPointsMap: React.FC<Props> = ({
       }}
       minZoom={5}
       onError={() => setMapError(true)}
-      interactiveLayerIds={["unclustered-points"]}
+      interactiveLayerIds={["unclustered-points", "cluster-points"]}
       onClick={handleMapClick}
       onLoad={handleLoad}
       onMouseEnter={handleMouseEnter}

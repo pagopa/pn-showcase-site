@@ -146,7 +146,7 @@ function PickupPointsList({
                 secondary={
                   <>
                     <Typography variant="body2" fontSize="14px" component="div">
-                      {point.normalizedAddress}
+                      {`${point.address}, ${point.cap} ${point.city}`}
                     </Typography>
                     <ButtonNaked
                       color="primary"

@@ -48,13 +48,15 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
     if (!point) return;
 
     const url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-      point?.normalizedAddress
+      cafAddress
     )}`;
     window.open(url, "_blank");
   };
 
+  const cafAddress = `${point?.address}, ${point?.cap} ${point?.city}`
+
   const handleCopyInformations = () => {
-    const parts = [point?.denomination, point?.normalizedAddress];
+    const parts = [point?.denomination, cafAddress];
 
     if (hasAlmostOneOpeningDay) {
       parts.push(`${t("drawer.opening-hours")}:`);
@@ -129,10 +131,10 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
                   color="primary"
                   textOverflow="ellipsis"
                 >
-                  {point.normalizedAddress}
+                  {cafAddress}
                 </Typography>
                 <CopyToClipboardButton
-                  value={point.normalizedAddress}
+                  value={cafAddress}
                   tooltipTitle={t("drawer.address-copied")}
                   sx={{ m: 0, p: 0 }}
                 />
