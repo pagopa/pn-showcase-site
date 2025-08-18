@@ -1,4 +1,4 @@
-import { LngLatBoundsLike } from "maplibre-gl";
+import { LngLatBounds } from "maplibre-gl";
 import { MapRef } from "react-map-gl/maplibre";
 import { Coordinates, Point, RaddOperator } from "src/model";
 
@@ -108,27 +108,39 @@ export const fitMapToPoints = (
   map: MapRef,
   pointsToFit: number = 5
 ) => {
-  const sortedPoints = sortPointsByDistance(points, coordinates);
-  const targetPoints = sortedPoints.slice(0, pointsToFit);
+  const sortedPoints = sortPointsByDistance(points, coordinates, null);
+  const targetPoints = sortedPoints.slice(
+    0,
+    Math.min(pointsToFit, sortedPoints.length)
+  );
 
-  const allCoordinates = [
-    [coordinates.longitude, coordinates.latitude],
-    ...targetPoints.map((point) => [point.longitude!, point.latitude!]),
-  ];
+  const distances = targetPoints.map((point) =>
+    calculateDistance(
+      coordinates.latitude,
+      coordinates.longitude,
+      point.latitude,
+      point.longitude
+    )
+  );
+  const maxDistance = Math.max(...distances);
 
-  const lngs = allCoordinates.map((coord) => coord[0]);
-  const lats = allCoordinates.map((coord) => coord[1]);
+  // Converts distance into degrees (approximation: 1° ≈ 111km) and add 10% for padding
+  const radiusInDegrees = (maxDistance * 1.1) / 111;
 
-  const bounds: LngLatBoundsLike = [
-    [Math.min(...lngs), Math.min(...lats)],
-    [Math.max(...lngs), Math.max(...lats)],
-  ];
+  const bounds = new LngLatBounds();
+
+  bounds.extend([
+    coordinates.longitude - radiusInDegrees,
+    coordinates.latitude - radiusInDegrees,
+  ]);
+  bounds.extend([
+    coordinates.longitude + radiusInDegrees,
+    coordinates.latitude + radiusInDegrees,
+  ]);
 
   map.fitBounds(bounds, {
-    padding: { top: 50, bottom: 50, left: 50, right: 50 },
     maxZoom: 15,
     duration: 1500,
-    // center: [coordinates.longitude, coordinates.latitude],
   });
 };
 

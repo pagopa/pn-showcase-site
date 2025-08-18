@@ -136,6 +136,7 @@ const PickupPointsPage: NextPage = () => {
 
             <PickupPointsAutocomplete
               setSearchCoordinates={setSearchCoordinates}
+              setSelectedPoint={setSelectedPoint}
             />
 
             <Box sx={{ display: { xs: "flex", md: "none" }, my: 3 }}>
