@@ -70,7 +70,7 @@ function PickupPointsList({
   const scrollToItem = (targetPoint: RaddOperator) => {
     const listItems = listContainerRef.current?.querySelectorAll("li");
     const targetIndex = visibleItems.findIndex(
-      (item) => item.id === targetPoint.id
+      (item) => item.locationId === targetPoint.locationId
     );
 
     if (listItems && targetIndex !== -1) {
@@ -82,7 +82,7 @@ function PickupPointsList({
   };
 
   const isPointVisibleInCurrentList = (point: RaddOperator): boolean => {
-    return visibleItems.some((item) => item.id === point.id);
+    return visibleItems.some((item) => item.locationId === point.locationId);
   };
 
   useEffect(() => {
@@ -122,11 +122,11 @@ function PickupPointsList({
         }}
       >
         {visibleItems.map((point, index) => {
-          const isSelected = selectedPoint?.id === point.id;
+          const isSelected = selectedPoint?.locationId === point.locationId;
 
           return (
             <ListItem
-              key={`${point.denomination}-${point.id}-${index}`}
+              key={`${point.denomination}-${point.locationId}-${index}`}
               onClick={() => onSelectPoint(point)}
               alignItems="flex-start"
               sx={{
@@ -151,7 +151,7 @@ function PickupPointsList({
                 secondary={
                   <>
                     <Typography variant="body2" fontSize="14px" component="div">
-                      {`${point.address}, ${point.cap} ${point.city}`}
+                      {point.address}
                     </Typography>
                     <ButtonNaked
                       color="primary"

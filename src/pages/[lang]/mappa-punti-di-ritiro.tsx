@@ -11,7 +11,7 @@ import ErrorBox from "src/components/ErrorBox";
 import PickupPointsAutocomplete from "src/components/PickupPointsAutocomplete";
 import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMap from "src/components/PickupPointsMap";
-import PickupPointsInfoDialog from "src/components/Ritiro/PickupPointsInfoDialog";
+import PickupPointsInfoDialog from "src/components/PickupPointsInfoDialog";
 import Tabs from "src/components/Tabs";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
@@ -84,9 +84,7 @@ const PickupPointsPage: NextPage = () => {
       complete: async (result) => {
         if (result.data && result.data.length > 0) {
           const data = result.data as Array<Point>;
-          const pickupPoints = data.map((point, index) =>
-            mapPoint(point, index)
-          );
+          const pickupPoints = data.map((point) => mapPoint(point));
 
           setPoints(pickupPoints);
           setFetchError(false);
