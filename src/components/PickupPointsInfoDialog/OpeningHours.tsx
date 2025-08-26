@@ -22,7 +22,7 @@ const OpeningHours: React.FC<Props> = ({ point }) => {
         {t("drawer.opening-hours")}
       </Typography>
       <ListItem sx={{ px: 0 }}>
-        {point?.rawOpeningHours ? (
+        {point.rawOpeningHours ? (
           <ListItemText
             primary={
               <Typography variant="body2">{point.rawOpeningHours}</Typography>
@@ -39,7 +39,7 @@ const OpeningHours: React.FC<Props> = ({ point }) => {
                 </Grid>
                 <Grid item xs={9} py={1}>
                   <Typography variant="body2">
-                    {formatHours(point?.[day]) || "-"}
+                    {formatHours(point[day]) || "-"}
                   </Typography>
                 </Grid>
               </React.Fragment>

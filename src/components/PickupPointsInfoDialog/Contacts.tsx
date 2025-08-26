@@ -29,7 +29,7 @@ interface ContactItem {
 const Contacts: React.FC<Props> = ({ point }) => {
   const { t } = useTranslation(["pickup"]);
 
-  const [firstPhone, secondPhone] = point?.contacts?.split("_") || [];
+  const [firstPhone, secondPhone] = point.contacts.split("_");
 
   const contacts: ContactItem[] = [];
 
