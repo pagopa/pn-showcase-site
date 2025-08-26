@@ -1,5 +1,7 @@
+import { areCoordinatesEqual } from "@utils/map";
 import React from "react";
-import { Layer, Marker, Source } from "react-map-gl/maplibre";
+import { Layer, Source } from "react-map-gl/maplibre";
+import useCurrentPosition from "src/hook/useCurrentPosition";
 import { Coordinates } from "src/model";
 
 type Props = {
@@ -7,7 +9,14 @@ type Props = {
 };
 
 const SearchedAddressLayer: React.FC<Props> = ({ searchCoordinates }) => {
-  if (!searchCoordinates) return null;
+  const { userPosition } = useCurrentPosition();
+
+  if (
+    !searchCoordinates ||
+    areCoordinatesEqual(searchCoordinates, userPosition)
+  ) {
+    return null;
+  }
 
   const geojsonData: GeoJSON.GeoJSON = {
     type: "FeatureCollection",

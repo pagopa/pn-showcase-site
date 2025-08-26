@@ -1,41 +1,49 @@
-import { Typography } from "@mui/material";
+import { CircularProgress, Stack, Typography } from "@mui/material";
+import { MAP_MARKERS } from "@utils/constants";
 import { fitMapToPoints } from "@utils/map";
-import { MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
+import { GeoJSONSource, MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
-import { useConfig } from "src/context/config-context";
+import { useIsMobile } from "src/hook/useIsMobile";
 import { useTranslation } from "src/hook/useTranslation";
 import { Coordinates, RaddOperator } from "src/model";
+import useLocalizedStyleDescriptor from "../../hook/useLocalizedStyleDescriptor";
 import ErrorBox from "../ErrorBox";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
-import UserPositionController from "./UserPositionController";
-import { useIsMobile } from "src/hook/useIsMobile";
 import SearchedAddressLayer from "./SearchedAddressLayer";
-import { MAP_MARKERS } from "@utils/constants";
+import UserPositionController from "./UserPositionController";
 
 type Props = {
+  mapRef?: React.RefObject<MapRef>;
   points: Array<RaddOperator>;
   selectedPoint: RaddOperator | null;
   searchCoordinates: Coordinates | null;
   setSelectedPoint: (point: RaddOperator | null) => void;
+  setSearchCoordinates: (coordinates: Coordinates) => void;
   toggleDialog: (open: boolean, pickupPoint: RaddOperator | null) => void;
 };
 
 const PickupPointsMap: React.FC<Props> = ({
+  mapRef,
   points,
   selectedPoint,
   searchCoordinates,
   setSelectedPoint,
+  setSearchCoordinates,
   toggleDialog,
 }) => {
   const { t } = useTranslation(["pickup"]);
-  const mapRef = useRef<MapRef>(null);
+
   const isMobile = useIsMobile();
   const [mapError, setMapError] = useState(false);
-  const { CLOUDFRONT_MAP_URL } = useConfig();
   const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  const styleDescriptor = useLocalizedStyleDescriptor({
+    language: "it",
+    setMapError,
+  });
 
   const handleLoad = async (event: MapLibreEvent) => {
     const map = event.target;
@@ -55,16 +63,18 @@ const PickupPointsMap: React.FC<Props> = ({
     }
   };
 
-  const handleMapClick = (event: MapLayerMouseEvent) => {
+  const handleMapClick = async (event: MapLayerMouseEvent) => {
     if (event.features && event.features.length > 0) {
       const feature = event.features[0];
       const map = event.target;
+      const geometry = feature.geometry as GeoJSON.Geometry & {
+        coordinates: [number, number];
+      };
 
       if (feature.layer.id === "unclustered-points") {
-        const selectedPoint = JSON.parse(feature.properties.point);
-        const geometry = feature.geometry as GeoJSON.Geometry & {
-          coordinates: [number, number];
-        };
+        const selectedPoint: RaddOperator = JSON.parse(
+          feature.properties.point
+        );
         map.flyTo({
           center: geometry.coordinates,
           zoom: 15,
@@ -72,6 +82,16 @@ const PickupPointsMap: React.FC<Props> = ({
         });
         setSelectedPoint(selectedPoint);
         toggleDialog(true, selectedPoint);
+      }
+
+      if (feature.layer.id === "cluster-points" && feature.properties.cluster) {
+        const clusterId = feature.properties.cluster_id;
+        const source: GeoJSONSource | undefined = map.getSource("stores");
+        const zoom = await source?.getClusterExpansionZoom(clusterId);
+        map.easeTo({
+          center: geometry.coordinates,
+          zoom,
+        });
       }
     }
   };
@@ -89,7 +109,7 @@ const PickupPointsMap: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    if (selectedPoint && mapRef.current) {
+    if (selectedPoint && mapRef?.current) {
       mapRef.current.flyTo({
         center: [selectedPoint.longitude, selectedPoint.latitude],
         zoom: 17,
@@ -99,10 +119,11 @@ const PickupPointsMap: React.FC<Props> = ({
   }, [selectedPoint, mapRef]);
 
   useEffect(() => {
-    if (searchCoordinates && mapRef.current) {
+    if (searchCoordinates && mapRef?.current) {
       fitMapToPoints(searchCoordinates, points, mapRef.current);
+      setSelectedPoint(null);
     }
-  }, [searchCoordinates]);
+  }, [searchCoordinates, points, mapRef]);
 
   const handleRetry = () => {
     setMapError(false);
@@ -125,10 +146,28 @@ const PickupPointsMap: React.FC<Props> = ({
     );
   }
 
+  if (!styleDescriptor) {
+    return (
+      <Stack
+        sx={{
+          height: "100%",
+          width: "100%",
+          position: "relative",
+          backgroundColor: "#F5F5F5",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
+        <CircularProgress />
+      </Stack>
+    );
+  }
+
   return (
     <Map
       ref={mapRef}
-      mapStyle={CLOUDFRONT_MAP_URL}
+      mapStyle={styleDescriptor}
       initialViewState={{
         longitude: 12.482802,
         latitude: 41.895679,
@@ -136,7 +175,7 @@ const PickupPointsMap: React.FC<Props> = ({
       }}
       minZoom={5}
       onError={() => setMapError(true)}
-      interactiveLayerIds={["unclustered-points"]}
+      interactiveLayerIds={["unclustered-points", "cluster-points"]}
       onClick={handleMapClick}
       onLoad={handleLoad}
       onMouseEnter={handleMouseEnter}
@@ -148,7 +187,11 @@ const PickupPointsMap: React.FC<Props> = ({
       style={{ height: "100%", width: "100%" }}
     >
       <UserPositionController points={points} />
-      <MapControls />
+      <MapControls
+        points={points}
+        searchCoordinates={searchCoordinates}
+        setSearchCoordinates={setSearchCoordinates}
+      />
       {imagesLoaded && (
         <>
           <Clusters points={points} selectedPoint={selectedPoint} />
