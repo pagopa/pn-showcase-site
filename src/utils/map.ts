@@ -155,19 +155,18 @@ export const fitMapToPoints = (
  * Maps a CSV row (point) to the frontend model (RaddOperator)
  *
  * @param {Point} point - The point object from the CSV
- * @param {number} index - The index of the point in the array
  * @returns {RaddOperator} The mapped RaddOperator object
  */
-export const mapPoint = (point: Point, index: number): RaddOperator => ({
-  id: index,
+export const mapPoint = (point: Point): RaddOperator => ({
+  locationId: point.locationId,
+  external_codes: point.codici_esterni,
   denomination: point.descrizione,
   city: point.città,
-  address: point.via,
-  normalizedAddress: point.indirizzo_AWS.replace(", Italia", ""),
+  address: point.indirizzo_originale,
+  normalizedAddress: point.indirizzo_normalizzato,
   province: point.provincia,
-  region: point.regione,
   cap: point.cap,
-  contacts: point.telefono,
+  contacts: point.telefoni,
   latitude: Number(point.latitudine),
   longitude: Number(point.longitudine),
   monday: point.lunedi,
@@ -178,7 +177,10 @@ export const mapPoint = (point: Point, index: number): RaddOperator => ({
   saturday: point.sabato,
   sunday: point.domenica,
   type: point.tipologia,
-  caf_opening_hours: point.caf_orari_apertura,
+  rawOpeningHours: point.orari_apertura,
+  appointmentRequired: point.richiede_appuntamento === "si",
+  email: point.email,
+  website: point.website,
 });
 
 export const areCoordinatesEqual = (
