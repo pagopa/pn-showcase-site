@@ -60,13 +60,6 @@ export interface Point {
   website: string;
 }
 
-export type PaginationData = {
-  size: number;
-  totalElements: number;
-  numOfDisplayedPages: number;
-  currentPage: number;
-};
-
 // localization //
 export type LangCode = (typeof langCodes)[number];
 export interface I18n {
