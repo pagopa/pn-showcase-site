@@ -14,11 +14,12 @@
   "how-it-works": "En savoir plus",
   "drawer": {
     "book-alert-title": "Prenez rendez-vous au centre d’accompagnement fiscal (CAF)",
+    "required-book-alert-title": "Ce centre d’accompagnement fiscal (CAF) reçoit uniquement sur rendez-vous.",
     "book-alert-description": "Évitez les files d’attente, prenez rendez-vous et recevez de l’aide sans délai.",
     "address": "Adresse",
     "address-copied": "Adresse copiée dans le presse-papiers",
     "opening-hours": "Horaires d’ouverture",
-    "phone-number": "Contacts",
+    "contacts": "Contacts",
     "get-directions": "Itinéraire",
     "copy-informations": "Copier les informations",
     "reservation-call": "Pour réserver, appelez le",
@@ -30,7 +31,10 @@
       "friday": "Vendredi",
       "saturday": "Samedi",
       "sunday": "Dimanche"
-    }
+    },
+    "or": "ou",
+    "location-id": "Identifiant de l’agence du centre d’accompagnement fiscal (CAF)",
+    "external-codes": "Codes associés à l’agence"
   },
   "show-more": "Plus de résultats",
   "show-details": "Voir les détails",

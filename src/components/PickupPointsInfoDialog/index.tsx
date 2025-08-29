@@ -73,13 +73,15 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
     }
 
     sections.push(
-      `${t("drawer.reservation-call")} ${point.contacts.split("_").join(" o ")}`
+      `${t("drawer.reservation-call")} ${point.contacts
+        .split("_")
+        .join(` ${t("drawer.or")} `)}`
     );
 
     sections.push(
       [
-        `ID: ${point.locationId}`,
-        `Codice Esterno: ${point.external_codes}`,
+        `${t("drawer.location-id")}: ${point.locationId}`,
+        `${t("drawer.external-codes")}: ${point.external_codes}`,
       ].join("\n")
     );
 
@@ -106,7 +108,7 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
             xs: "auto",
             md: "600px",
           },
-          maxHeight: "80vh",
+          maxHeight: { xs: "550px", md: "650px" },
           display: "flex",
           flexDirection: "column",
         },
