@@ -32,7 +32,10 @@
       "friday": "Venerdì",
       "saturday": "Sabato",
       "sunday": "Domenica"
-    }
+    },
+    "or": "o",
+    "location-id": "ID sede CAF",
+    "external-codes": "Codici associati alla sede"
   },
   "show-more": "Carica altri risultati",
   "show-details": "Mostra dettagli",

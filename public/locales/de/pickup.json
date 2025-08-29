@@ -14,11 +14,12 @@
   "how-it-works": "Wie es funktioniert",
   "drawer": {
     "book-alert-title": "Vereinbaren Sie einen Termin beim Steuerhilfezentrum (CAF)",
+    "required-book-alert-title": "Dieses Steuerhilfezentrum (CAF) empfängt nur nach Terminvereinbarung.",
     "book-alert-description": "Vermeiden Sie Warctezeiten: Vereinbaren Sie einen Termin und erhalten Sie Unterstützung ohne Anstehen.",
     "address": "Adresse",
     "address-copied": "Adresse in die Zwischenablage kopiert",
     "opening-hours": "Öffnungszeiten",
-    "phone-number": "Kontakt",
+    "contacts": "Kontakt",
     "get-directions": "Route anzeigen",
     "copy-informations": "Informationen kopieren",
     "reservation-call": "Zum Buchen rufen Sie die",
@@ -30,7 +31,10 @@
       "friday": "Freitag",
       "saturday": "Samstag",
       "sunday": "Sonntag"
-    }
+    },
+    "or": "oder",
+    "location-id": "ID der Geschäftsstelle des Steuerhilfezentrums (CAF)",
+    "external-codes": "Codes der Geschäftsstelle"
   },
   "show-more": "Weitere Ergebnisse suchen",
   "show-details": "Details anzeigen",
