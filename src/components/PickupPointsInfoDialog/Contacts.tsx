@@ -97,7 +97,12 @@ const Contacts: React.FC<Props> = ({ point }) => {
                     variant="body2"
                     fontWeight={700}
                     color="primary"
-                    sx={{ ml: 1 }}
+                    sx={{
+                      ml: 1,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
                   >
                     {contact.text}
                   </Typography>
