@@ -7,9 +7,6 @@ import {
 import {
   Box,
   IconButton,
-  InputAdornment,
-  List,
-  ListItem,
   Paper,
   Popper,
   SxProps,
@@ -17,9 +14,12 @@ import {
   Theme,
   Typography,
 } from "@mui/material";
-import { MouseEvent, ReactNode, useEffect, useRef, useState } from "react";
-import { useTranslation } from "../../hook/useTranslation";
+import { visuallyHidden } from "@mui/utils";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { OptionType } from "src/model";
+import { useTranslation } from "../../hook/useTranslation";
+import AutocompleteContent from "./AutocompleteContent";
+import MultiSelectChips from "./MultiSelectChips";
 
 interface Props {
   options: Array<OptionType>;
@@ -30,12 +30,13 @@ interface Props {
   hasClearIcon?: boolean;
   avoidLocalFiltering?: boolean;
   emptyState?: ReactNode;
+  multiple?: boolean;
   sx?: SxProps<Theme>;
   inputStyle?: SxProps<Theme>;
   overridenInputvalue?: string;
   renderOption?: (value: OptionType, index: number) => React.ReactNode;
   onInputChange?: (value: string) => void;
-  onSelect?: (value: OptionType) => void;
+  onSelect?: (value: OptionType | OptionType[]) => void;
   setInputValueOnSelect?: (option: OptionType) => string | null;
 }
 
@@ -51,13 +52,14 @@ function isIosDevice() {
 
 const MuiItaliaAutocomplete = ({
   options,
-  label = "Cerca Indirizzo",
+  label,
   placeholder,
   noResultsText = "Nessun risultato",
   hideArrow = false,
   hasClearIcon = false,
   avoidLocalFiltering = false,
   emptyState,
+  multiple = false,
   sx,
   inputStyle,
   overridenInputvalue,
@@ -71,6 +73,7 @@ const MuiItaliaAutocomplete = ({
   );
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number>(-1);
+  const [selectedOptions, setSelectedOptions] = useState<OptionType[]>([]);
   const { t } = useTranslation(["common"]);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -87,10 +90,10 @@ const MuiItaliaAutocomplete = ({
         );
 
   const handleInputBlur = () => {
-    const focusingAnOption = activeIndex !== -1;
     const keepMenuOpen = isOpen && isIosDevice();
-    if (!focusingAnOption && !keepMenuOpen) {
+    if (!keepMenuOpen) {
       setIsOpen(false);
+      setActiveIndex(-1);
     }
   };
 
@@ -102,33 +105,51 @@ const MuiItaliaAutocomplete = ({
   };
 
   const handleOptionSelect = (option: OptionType) => {
-    setInputFocus(false);
-    setActiveIndex(-1);
-    onSelect?.(option);
+    if (multiple) {
+      const isAlreadySelected = selectedOptions.some(
+        (selected) => selected.id === option.id
+      );
 
-    if (setInputValueOnSelect) {
-      const newValue = setInputValueOnSelect(option);
-      if (newValue !== null) {
-        setInputValue(newValue);
+      let newSelectedOptions: OptionType[];
+      if (isAlreadySelected) {
+        newSelectedOptions = selectedOptions.filter(
+          (selected) => selected.id !== option.id
+        );
+      } else {
+        newSelectedOptions = [...selectedOptions, option];
       }
+
+      setSelectedOptions(newSelectedOptions);
+      setInputValue("");
+      setActiveIndex(-1);
+      onSelect?.(newSelectedOptions);
     } else {
-      setInputValue(option.label);
+      setInputFocus(false);
+      setActiveIndex(-1);
+      onSelect?.(option);
+
+      if (setInputValueOnSelect) {
+        const newValue = setInputValueOnSelect(option);
+        if (newValue !== null) {
+          setInputValue(newValue);
+        }
+      } else {
+        setInputValue(option.label);
+      }
     }
+  };
+
+  const handleChipDelete = (optionToRemove: OptionType) => {
+    const newSelectedOptions = selectedOptions.filter(
+      (option) => option.id !== optionToRemove.id
+    );
+    setSelectedOptions(newSelectedOptions);
+    onSelect?.(newSelectedOptions);
   };
 
   const setInputFocus = (open: boolean = true) => {
     inputRef.current?.focus();
     setIsOpen(open);
-  };
-
-  const handleOptionMouseDown = (event: MouseEvent<HTMLLIElement>) => {
-    // Safari triggers focusOut before click, but if you
-    // preventDefault on mouseDown, you can stop that from happening.
-    // If this is removed, clicking on an option in Safari will trigger
-    // `handleOptionBlur`, which closes the menu, and the click will
-    // trigger on the element underneath instead.
-    // See: http://stackoverflow.com/questions/7621711/how-to-prevent-blur-running-when-clicking-a-link-in-jquery
-    event.preventDefault();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -175,6 +196,10 @@ const MuiItaliaAutocomplete = ({
 
   const handleClearValue = () => {
     setInputValue("");
+    if (multiple) {
+      setSelectedOptions([]);
+      onSelect?.([]);
+    }
     setIsOpen(false);
     setActiveIndex(-1);
     onInputChange?.("");
@@ -184,12 +209,34 @@ const MuiItaliaAutocomplete = ({
     setIsOpen((prev) => !prev);
   };
 
+  const getStartInputAdornment = () => {
+    return (
+      <>
+        <Search sx={{ color: "text.secondary" }} />
+        {multiple && selectedOptions.length > 0 && (
+          <MultiSelectChips
+            selectedOptions={selectedOptions}
+            handleChipDelete={handleChipDelete}
+          />
+        )}
+      </>
+    );
+  };
+
   const getEndInputAdornment = () => {
-    const showCloseIcon = hasClearIcon && inputValue;
-    const showArrowIcon = inputValue && !hideArrow;
+    const showCloseIcon =
+      hasClearIcon && (inputValue || (multiple && selectedOptions.length > 0));
+    const showArrowIcon = !hideArrow;
 
     return (
-      <Box sx={{ gap: 1, cursor: "pointer" }}>
+      <Box
+        sx={{
+          gap: 1,
+          cursor: "pointer",
+          justifyContent: "flex-start",
+          alignItems: "flex-start",
+        }}
+      >
         {showCloseIcon && (
           <IconButton
             size="small"
@@ -239,7 +286,7 @@ const MuiItaliaAutocomplete = ({
         onKeyDown={handleKeyDown}
         onBlur={handleInputBlur}
         label={label}
-        placeholder={placeholder}
+        placeholder={multiple && selectedOptions.length > 0 ? "" : placeholder}
         variant="outlined"
         autoComplete="off"
         inputProps={{
@@ -250,17 +297,36 @@ const MuiItaliaAutocomplete = ({
           "aria-autocomplete": "list",
           "aria-activedescendant":
             activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined,
+          "aria-haspopup": "listbox",
           sx: inputStyle,
         }}
         InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <Search />
-            </InputAdornment>
-          ),
+          startAdornment: getStartInputAdornment(),
           endAdornment: getEndInputAdornment(),
         }}
+        sx={{
+          "& .MuiInputBase-root": {
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            gap: 0.5,
+            py: 1,
+            pr: 1,
+          },
+          "& .MuiInputBase-input": {
+            flex: "1 1 60px",
+            margin: "8px 0",
+            minWidth: "30px",
+            padding: 0,
+            boxSizing: "border-box",
+          },
+        }}
       />
+
+      <Box aria-live="polite" sx={visuallyHidden}>
+        {selectedOptions.length > 0 &&
+          `${selectedOptions.map((opt) => opt.label).join(", ")} selected`}
+      </Box>
 
       <Popper
         open={isOpen}
@@ -290,47 +356,27 @@ const MuiItaliaAutocomplete = ({
             my: 1,
           }}
         >
-          <List
-            id={listboxId}
-            ref={listboxRef}
-            role="listbox"
-            aria-labelledby={inputId}
-            sx={{ p: 0 }}
-          >
-            {filteredOptions.length > 0 ? (
-              filteredOptions.map((option, index) => (
-                <ListItem
-                  key={option.id}
-                  id={`${listboxId}-option-${index}`}
-                  role="option"
-                  tabIndex={-1}
-                  aria-selected={index === activeIndex}
-                  onClick={() => handleOptionSelect(option)}
-                  onMouseOver={() => setActiveIndex(index)}
-                  onMouseDown={handleOptionMouseDown}
-                  sx={{
-                    cursor: "pointer",
-                    backgroundColor:
-                      index === activeIndex
-                        ? "rgba(0, 0, 0, 0.08)"
-                        : "transparent",
-                  }}
-                  aria-posinset={index + 1}
-                  aria-setsize={filteredOptions.length}
-                >
-                  {renderOption ? renderOption(option, index) : option.label}
-                </ListItem>
-              ))
-            ) : (
-              <ListItem role="option" sx={{ p: 0 }}>
-                {emptyState || (
-                  <Typography color="text.secondary">
-                    {noResultsText}
-                  </Typography>
-                )}
-              </ListItem>
-            )}
-          </List>
+          {filteredOptions.length > 0 ? (
+            <AutocompleteContent
+              multiple={multiple}
+              filteredOptions={filteredOptions}
+              selectedOptions={selectedOptions}
+              isOptionSelected={() => false}
+              handleOptionSelect={handleOptionSelect}
+              listboxId={listboxId}
+              listboxRef={listboxRef}
+              inputId={inputId}
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
+              renderOption={renderOption}
+            />
+          ) : (
+            <Box sx={{ p: 0 }}>
+              {emptyState || (
+                <Typography color="text.secondary">{noResultsText}</Typography>
+              )}
+            </Box>
+          )}
         </Paper>
       </Popper>
     </Box>
