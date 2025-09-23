@@ -1,5 +1,4 @@
 import {
-  Box,
   Checkbox,
   FormControlLabel,
   FormGroup,
@@ -49,6 +48,15 @@ const AutocompleteContent: React.FC<Props> = ({
     event.preventDefault();
   };
 
+  const handleOptionClick = (
+    event: MouseEvent<HTMLLIElement | HTMLLabelElement>,
+    option: OptionType
+  ) => {
+    event.preventDefault();
+    event.stopPropagation();
+    handleOptionSelect(option);
+  };
+
   const isOptionSelected = (option: OptionType) => {
     return multiple
       ? selectedOptions.some((selected) => selected.id === option.id)
@@ -64,7 +72,7 @@ const AutocompleteContent: React.FC<Props> = ({
             id={`${listboxId}-option-${index}`}
             role="option"
             aria-selected={isOptionSelected(option)}
-            onClick={() => handleOptionSelect(option)}
+            onClick={(event) => handleOptionClick(event, option)}
             onMouseOver={() => setActiveIndex(index)}
             onMouseDown={handleOptionMouseDown}
             aria-posinset={index + 1}
@@ -78,7 +86,18 @@ const AutocompleteContent: React.FC<Props> = ({
                 sx={{ mr: 2, ml: "auto" }}
               />
             }
-            sx={{ py: 1, mr: 0.5 }}
+            slotProps={{
+              typography: {
+                ml: 2,
+              },
+            }}
+            sx={{
+              py: 1,
+              mr: 0,
+              ml: 0,
+              backgroundColor:
+                index === activeIndex ? "rgba(0, 0, 0, 0.08)" : "transparent",
+            }}
           />
         ))}
       </FormGroup>
@@ -100,7 +119,7 @@ const AutocompleteContent: React.FC<Props> = ({
           role="option"
           tabIndex={-1}
           aria-selected={isOptionSelected(option)}
-          onClick={() => handleOptionSelect(option)}
+          onClick={(event) => handleOptionClick(event, option)}
           onMouseOver={() => setActiveIndex(index)}
           onMouseDown={handleOptionMouseDown}
           sx={{

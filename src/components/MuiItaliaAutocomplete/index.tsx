@@ -1,12 +1,13 @@
 import {
-  ArrowDropDown,
-  ArrowDropUp,
-  Cancel,
+  Close,
+  KeyboardArrowDown,
+  KeyboardArrowUp,
   Search,
 } from "@mui/icons-material";
 import {
   Box,
   IconButton,
+  OutlinedInputProps,
   Paper,
   Popper,
   SxProps,
@@ -33,6 +34,7 @@ interface Props {
   multiple?: boolean;
   sx?: SxProps<Theme>;
   inputStyle?: SxProps<Theme>;
+  inputProps?: Partial<OutlinedInputProps>;
   overridenInputvalue?: string;
   renderOption?: (value: OptionType, index: number) => React.ReactNode;
   onInputChange?: (value: string) => void;
@@ -62,6 +64,7 @@ const MuiItaliaAutocomplete = ({
   multiple = false,
   sx,
   inputStyle,
+  inputProps,
   overridenInputvalue,
   renderOption,
   onInputChange,
@@ -224,19 +227,11 @@ const MuiItaliaAutocomplete = ({
   };
 
   const getEndInputAdornment = () => {
-    const showCloseIcon =
-      hasClearIcon && (inputValue || (multiple && selectedOptions.length > 0));
-    const showArrowIcon = !hideArrow;
+    const showCloseIcon = hasClearIcon && inputValue;
+    const showArrowIcon = !showCloseIcon && !hideArrow;
 
     return (
-      <Box
-        sx={{
-          gap: 1,
-          cursor: "pointer",
-          justifyContent: "flex-start",
-          alignItems: "flex-start",
-        }}
-      >
+      <Box sx={{ gap: 1, cursor: "pointer" }}>
         {showCloseIcon && (
           <IconButton
             size="small"
@@ -244,7 +239,7 @@ const MuiItaliaAutocomplete = ({
             onMouseDown={(e) => e.preventDefault()}
             aria-label={t("clear_text_aria_label")}
           >
-            <Cancel fontSize="small" sx={{ color: "text.secondary" }} />
+            <Close fontSize="small" sx={{ color: "text.secondary" }} />
           </IconButton>
         )}
         {showArrowIcon && (
@@ -253,7 +248,7 @@ const MuiItaliaAutocomplete = ({
             aria-hidden="true"
             sx={{ display: "flex", alignItems: "center" }}
           >
-            {isOpen ? <ArrowDropUp /> : <ArrowDropDown />}
+            {isOpen ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
           </Box>
         )}
       </Box>
@@ -298,20 +293,21 @@ const MuiItaliaAutocomplete = ({
           "aria-activedescendant":
             activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined,
           "aria-haspopup": "listbox",
-          sx: inputStyle,
         }}
         InputProps={{
           startAdornment: getStartInputAdornment(),
           endAdornment: getEndInputAdornment(),
+          ...inputProps,
         }}
         sx={{
           "& .MuiInputBase-root": {
             display: "flex",
             flexWrap: "wrap",
             alignItems: "center",
-            gap: 0.5,
-            py: 1,
-            pr: 1,
+            gap: 1,
+            p: "12px",
+            borderRadius: "8px",
+            borderWidth: "2px",
           },
           "& .MuiInputBase-input": {
             flex: "1 1 60px",
@@ -320,6 +316,7 @@ const MuiItaliaAutocomplete = ({
             padding: 0,
             boxSizing: "border-box",
           },
+          ...inputStyle,
         }}
       />
 

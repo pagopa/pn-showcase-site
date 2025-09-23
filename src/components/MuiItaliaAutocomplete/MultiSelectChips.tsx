@@ -26,7 +26,7 @@ const MultiSelectChips: React.FC<Props> = ({
           key={option.id}
           variant="contained"
           size="small"
-          endIcon={<CloseIcon sx={{ color: "action.main" }} />}
+          endIcon={<CloseIcon sx={{ color: "#0B3EE3" }} />}
           onClick={() => handleChipDelete(option)}
           sx={{
             borderRadius: 8,
@@ -36,7 +36,7 @@ const MultiSelectChips: React.FC<Props> = ({
             height: 24,
             px: 1,
             "&:hover": {
-              backgroundColor: "#D1D7E0",
+              backgroundColor: "#D1D7E0 !important",
             },
           }}
         >

@@ -35,6 +35,16 @@ const options = [
   { label: "Verona", id: "VR" },
   { label: "Palermo", id: "PA" },
   { label: "Genova", id: "GE" },
+  { label: "Catania", id: "CT" },
+  { label: "Bari", id: "BA" },
+  { label: "Cagliari", id: "CA" },
+  { label: "L'Aquila", id: "AQ" },
+  { label: "Perugia", id: "PG" },
+  { label: "Ancona", id: "AN" },
+  { label: "Trieste", id: "TS" },
+  { label: "Trento", id: "TN" },
+  { label: "Bolzano", id: "BZ" },
+  { label: "Aosta", id: "AO" },
 ];
 
 const TestPage: NextPage = () => {
@@ -45,12 +55,8 @@ const TestPage: NextPage = () => {
       <MuiItaliaAutocomplete
         multiple
         options={options}
-        renderOption={(value) => (
-          <Typography variant="body2" color="primary">
-            {value.label}
-          </Typography>
-        )}
-        sx={{ width: "600px" }}
+        sx={{ maxWidth: "600px" }}
+        hasClearIcon
       />
     </Stack>
   );
