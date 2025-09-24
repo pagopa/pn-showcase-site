@@ -30,6 +30,7 @@ const MuiItaliaAutocomplete = ({
   hasClearIcon = false,
   avoidLocalFiltering = false,
   noResultsText = "Nessun risultato",
+  disabled = false,
   sx,
   inputStyle,
   slots = {},
@@ -79,6 +80,8 @@ const MuiItaliaAutocomplete = ({
         );
 
   const handleInputBlur = () => {
+    if (disabled) return;
+
     const focusingAnOption = activeIndex !== -1;
     const keepMenuOpen = isOpen && isIosDevice();
     if (!focusingAnOption && !keepMenuOpen) {
@@ -88,6 +91,8 @@ const MuiItaliaAutocomplete = ({
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (disabled) return;
+
     setInputValue(e.target.value);
     setIsOpen(true);
     setActiveIndex(-1);
@@ -95,6 +100,8 @@ const MuiItaliaAutocomplete = ({
   };
 
   const handleOptionSelect = (option: OptionType) => {
+    if (disabled) return;
+
     if (multiple) {
       const isAlreadySelected = selectedOptions.some(
         (selected) => selected.id === option.id
@@ -130,6 +137,8 @@ const MuiItaliaAutocomplete = ({
   };
 
   const handleChipDelete = (optionToRemove: OptionType) => {
+    if (disabled) return;
+
     const newSelectedOptions = selectedOptions.filter(
       (option) => option.id !== optionToRemove.id
     );
@@ -138,11 +147,15 @@ const MuiItaliaAutocomplete = ({
   };
 
   const setInputFocus = (open: boolean = true) => {
+    if (disabled) return;
+
     inputRef.current?.focus();
     setIsOpen(open);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (disabled) return;
+
     if (filteredOptions.length === 0) {
       if (e.key === "Escape") {
         setIsOpen(false);
@@ -185,6 +198,8 @@ const MuiItaliaAutocomplete = ({
   };
 
   const handleClearValue = () => {
+    if (disabled) return;
+
     setInputValue("");
     if (multiple) {
       setSelectedOptions([]);
@@ -196,6 +211,8 @@ const MuiItaliaAutocomplete = ({
   };
 
   const handleToggleOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (disabled) return;
+
     e.preventDefault();
     e.stopPropagation();
     setIsOpen((prev) => !prev);
@@ -203,32 +220,37 @@ const MuiItaliaAutocomplete = ({
 
   const getStartInputAdornment = () => {
     return (
-      <>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
         <StartIcon
-          sx={{ color: "text.secondary", ...startIconProps.sx }}
+          sx={{
+            color: disabled ? "text.disabled" : "text.secondary",
+            ...startIconProps.sx,
+          }}
           {...startIconProps}
         />
         {multiple && selectedOptions.length > 0 && (
           <MultiSelectChips
             selectedOptions={selectedOptions}
             handleChipDelete={handleChipDelete}
+            disabled={disabled}
           />
         )}
-      </>
+      </Box>
     );
   };
 
   const getEndInputAdornment = () => {
-    const showCloseIcon = hasClearIcon && inputValue;
-    const showArrowIcon = !showCloseIcon && !hideArrow;
+    const showCloseIcon = hasClearIcon && inputValue && !disabled;
+    const showArrowIcon = !hideArrow;
+
+    if (!showCloseIcon && !showArrowIcon) return null;
 
     return (
       <Box
         sx={{
-          cursor: "pointer",
-          position: "absolute",
-          right: 12,
-          top: 12,
+          display: "flex",
+          alignItems: "center",
+          gap: 0.5,
         }}
       >
         {showCloseIcon && (
@@ -237,12 +259,13 @@ const MuiItaliaAutocomplete = ({
             onClick={handleClearValue}
             onMouseDown={(e) => e.preventDefault()}
             aria-label={t("clear_text_aria_label")}
+            disabled={disabled}
+            sx={{
+              padding: 0,
+              color: "text.secondary",
+            }}
           >
-            <ClearIcon
-              fontSize="small"
-              sx={{ color: "text.secondary", ...clearIconProps.sx }}
-              {...clearIconProps}
-            />
+            <ClearIcon sx={{ ...clearIconProps.sx }} {...clearIconProps} />
           </IconButton>
         )}
         {showArrowIcon && (
@@ -250,7 +273,12 @@ const MuiItaliaAutocomplete = ({
             size="small"
             onClick={handleToggleOpen}
             aria-hidden="true"
-            sx={{ padding: 0.5, color: "text.secondary" }}
+            disabled={disabled}
+            sx={{
+              padding: 0,
+              color: disabled ? "text.disabled" : "text.secondary",
+              cursor: disabled ? "default" : "pointer",
+            }}
           >
             {isOpen ? (
               <CollapseIcon {...collapseIconProps} />
@@ -275,13 +303,19 @@ const MuiItaliaAutocomplete = ({
   };
 
   useEffect(() => {
+    if (disabled) {
+      setIsOpen(false);
+      setActiveIndex(-1);
+      return;
+    }
+
     if (isOpen && activeIndex >= 0 && listboxRef.current) {
       const optionElement = listboxRef.current.querySelector(
         `#${listboxId}-option-${activeIndex}`
       );
       optionElement?.scrollIntoView({ block: "nearest" });
     }
-  }, [activeIndex, isOpen]);
+  }, [activeIndex, isOpen, disabled]);
 
   useEffect(() => {
     if (overridenInputvalue !== undefined) {
@@ -303,6 +337,7 @@ const MuiItaliaAutocomplete = ({
         placeholder={multiple && selectedOptions.length > 0 ? "" : placeholder}
         variant="outlined"
         autoComplete="off"
+        disabled={disabled}
         inputProps={{
           role: "combobox",
           id: inputId,
@@ -312,6 +347,7 @@ const MuiItaliaAutocomplete = ({
           "aria-activedescendant":
             activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined,
           "aria-haspopup": "listbox",
+          "aria-disabled": disabled,
         }}
         InputProps={{
           startAdornment: getStartInputAdornment(),
@@ -325,10 +361,10 @@ const MuiItaliaAutocomplete = ({
             alignItems: "center",
             gap: 1,
             p: "12px",
-            paddingRight: hasClearIcon || !hideArrow ? "50px" : "12px",
             borderRadius: "8px",
             borderWidth: "2px",
             position: "relative",
+            backgroundColor: disabled ? "#F4F5F8" : "transparent",
           },
           "& .MuiInputBase-input": {
             flex: "1 1 60px",
@@ -347,7 +383,7 @@ const MuiItaliaAutocomplete = ({
       </Box>
 
       <Popper
-        open={isOpen}
+        open={isOpen && !disabled}
         anchorEl={containerRef.current}
         keepMounted
         placement="bottom-start"
