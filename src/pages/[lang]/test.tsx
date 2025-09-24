@@ -4,6 +4,7 @@ import type { GetStaticPaths, NextPage } from "next";
 import MuiItaliaAutocomplete from "src/components/MuiItaliaAutocomplete";
 import { getI18n } from "../../api/i18n";
 import { LangCode } from "../../model";
+import { AccountBalance } from "@mui/icons-material";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -57,6 +58,16 @@ const TestPage: NextPage = () => {
         options={options}
         sx={{ maxWidth: "600px" }}
         hasClearIcon
+        slots={{
+          startIcon: AccountBalance,
+        }}
+        slotProps={{
+          startIcon: {
+            sx: {
+              color: "#BBC2D6",
+            },
+          },
+        }}
       />
     </Stack>
   );

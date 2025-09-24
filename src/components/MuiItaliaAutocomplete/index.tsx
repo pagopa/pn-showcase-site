@@ -7,70 +7,39 @@ import {
 import {
   Box,
   IconButton,
-  OutlinedInputProps,
   Paper,
   Popper,
-  SxProps,
   TextField,
-  Theme,
   Typography,
 } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { OptionType } from "src/model";
 import { useTranslation } from "../../hook/useTranslation";
 import AutocompleteContent from "./AutocompleteContent";
 import MultiSelectChips from "./MultiSelectChips";
-
-interface Props {
-  options: Array<OptionType>;
-  label?: string;
-  placeholder?: string;
-  noResultsText?: string;
-  hideArrow?: boolean;
-  hasClearIcon?: boolean;
-  avoidLocalFiltering?: boolean;
-  emptyState?: ReactNode;
-  multiple?: boolean;
-  sx?: SxProps<Theme>;
-  inputStyle?: SxProps<Theme>;
-  inputProps?: Partial<OutlinedInputProps>;
-  overridenInputvalue?: string;
-  renderOption?: (value: OptionType, index: number) => React.ReactNode;
-  onInputChange?: (value: string) => void;
-  onSelect?: (value: OptionType | OptionType[]) => void;
-  setInputValueOnSelect?: (option: OptionType) => string | null;
-}
-
-function isIosDevice() {
-  return (
-    typeof navigator !== "undefined" &&
-    !!(
-      navigator.userAgent.match(/(iPod|iPhone|iPad)/g) &&
-      navigator.userAgent.match(/AppleWebKit/g)
-    )
-  );
-}
+import { MuiItaliaAutocompleteProps } from "./types";
+import { isIosDevice } from "./utils";
 
 const MuiItaliaAutocomplete = ({
   options,
   label,
   placeholder,
-  noResultsText = "Nessun risultato",
+  multiple = false,
   hideArrow = false,
   hasClearIcon = false,
   avoidLocalFiltering = false,
-  emptyState,
-  multiple = false,
+  noResultsText = "Nessun risultato",
   sx,
   inputStyle,
-  inputProps,
+  slots = {},
+  slotProps = {},
   overridenInputvalue,
   renderOption,
   onInputChange,
   onSelect,
   setInputValueOnSelect,
-}: Props) => {
+}: MuiItaliaAutocompleteProps) => {
   const [inputValue, setInputValue] = useState<string>(
     overridenInputvalue || ""
   );
@@ -85,6 +54,23 @@ const MuiItaliaAutocomplete = ({
   const listboxId = "autocomplete-listbox";
   const inputId = "autocomplete-input";
 
+  const {
+    startIcon: StartIcon = Search,
+    clearIcon: ClearIcon = Close,
+    expandIcon: ExpandIcon = KeyboardArrowDown,
+    collapseIcon: CollapseIcon = KeyboardArrowUp,
+    emptyState: EmptyState,
+  } = slots;
+
+  const {
+    startIcon: startIconProps = {},
+    clearIcon: clearIconProps = {},
+    expandIcon: expandIconProps = {},
+    collapseIcon: collapseIconProps = {},
+    emptyState: emptyStateProps = {},
+    input: inputProps = {},
+  } = slotProps;
+
   const filteredOptions =
     inputValue.trim() === "" || avoidLocalFiltering
       ? options
@@ -93,8 +79,9 @@ const MuiItaliaAutocomplete = ({
         );
 
   const handleInputBlur = () => {
+    const focusingAnOption = activeIndex !== -1;
     const keepMenuOpen = isOpen && isIosDevice();
-    if (!keepMenuOpen) {
+    if (!focusingAnOption && !keepMenuOpen) {
       setIsOpen(false);
       setActiveIndex(-1);
     }
@@ -208,14 +195,19 @@ const MuiItaliaAutocomplete = ({
     onInputChange?.("");
   };
 
-  const handleToggleOpen = () => {
+  const handleToggleOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
     setIsOpen((prev) => !prev);
   };
 
   const getStartInputAdornment = () => {
     return (
       <>
-        <Search sx={{ color: "text.secondary" }} />
+        <StartIcon
+          sx={{ color: "text.secondary", ...startIconProps.sx }}
+          {...startIconProps}
+        />
         {multiple && selectedOptions.length > 0 && (
           <MultiSelectChips
             selectedOptions={selectedOptions}
@@ -231,7 +223,14 @@ const MuiItaliaAutocomplete = ({
     const showArrowIcon = !showCloseIcon && !hideArrow;
 
     return (
-      <Box sx={{ gap: 1, cursor: "pointer" }}>
+      <Box
+        sx={{
+          cursor: "pointer",
+          position: "absolute",
+          right: 12,
+          top: 12,
+        }}
+      >
         {showCloseIcon && (
           <IconButton
             size="small"
@@ -239,18 +238,38 @@ const MuiItaliaAutocomplete = ({
             onMouseDown={(e) => e.preventDefault()}
             aria-label={t("clear_text_aria_label")}
           >
-            <Close fontSize="small" sx={{ color: "text.secondary" }} />
+            <ClearIcon
+              fontSize="small"
+              sx={{ color: "text.secondary", ...clearIconProps.sx }}
+              {...clearIconProps}
+            />
           </IconButton>
         )}
         {showArrowIcon && (
-          <Box
+          <IconButton
+            size="small"
             onClick={handleToggleOpen}
             aria-hidden="true"
-            sx={{ display: "flex", alignItems: "center" }}
+            sx={{ padding: 0.5, color: "text.secondary" }}
           >
-            {isOpen ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-          </Box>
+            {isOpen ? (
+              <CollapseIcon {...collapseIconProps} />
+            ) : (
+              <ExpandIcon {...expandIconProps} />
+            )}
+          </IconButton>
         )}
+      </Box>
+    );
+  };
+
+  const renderEmptyState = () => {
+    if (EmptyState) {
+      return <EmptyState {...emptyStateProps} />;
+    }
+    return (
+      <Box sx={{ p: 2 }}>
+        <Typography color="text.secondary">{noResultsText}</Typography>
       </Box>
     );
   };
@@ -306,8 +325,10 @@ const MuiItaliaAutocomplete = ({
             alignItems: "center",
             gap: 1,
             p: "12px",
+            paddingRight: hasClearIcon || !hideArrow ? "50px" : "12px",
             borderRadius: "8px",
             borderWidth: "2px",
+            position: "relative",
           },
           "& .MuiInputBase-input": {
             flex: "1 1 60px",
@@ -368,11 +389,7 @@ const MuiItaliaAutocomplete = ({
               renderOption={renderOption}
             />
           ) : (
-            <Box sx={{ p: 0 }}>
-              {emptyState || (
-                <Typography color="text.secondary">{noResultsText}</Typography>
-              )}
-            </Box>
+            renderEmptyState()
           )}
         </Paper>
       </Popper>
