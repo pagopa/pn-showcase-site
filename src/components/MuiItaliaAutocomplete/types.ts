@@ -36,6 +36,7 @@ export interface MuiItaliaAutocompleteProps {
   avoidLocalFiltering?: boolean;
   noResultsText?: string;
   disabled?: boolean;
+  required?: boolean;
   sx?: SxProps<Theme>;
   inputStyle?: SxProps<Theme>;
   slots?: AutocompleteSlots;

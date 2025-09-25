@@ -57,7 +57,9 @@ const TestPage: NextPage = () => {
         multiple
         options={options}
         sx={{ maxWidth: "600px" }}
+        label="Cerca una città"
         hasClearIcon
+        required
         slots={{
           startIcon: AccountBalance,
         }}

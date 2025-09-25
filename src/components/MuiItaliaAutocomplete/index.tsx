@@ -31,6 +31,7 @@ const MuiItaliaAutocomplete = ({
   avoidLocalFiltering = false,
   noResultsText = "Nessun risultato",
   disabled = false,
+  required = false,
   sx,
   inputStyle,
   slots = {},
@@ -56,7 +57,7 @@ const MuiItaliaAutocomplete = ({
   const inputId = "autocomplete-input";
 
   const {
-    startIcon: StartIcon = Search,
+    startIcon: StartIcon,
     clearIcon: ClearIcon = Close,
     expandIcon: ExpandIcon = KeyboardArrowDown,
     collapseIcon: CollapseIcon = KeyboardArrowUp,
@@ -219,15 +220,20 @@ const MuiItaliaAutocomplete = ({
   };
 
   const getStartInputAdornment = () => {
+    if (!StartIcon && (!multiple || selectedOptions.length === 0))
+      return undefined;
+
     return (
-      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-        <StartIcon
-          sx={{
-            color: disabled ? "text.disabled" : "text.secondary",
-            ...startIconProps.sx,
-          }}
-          {...startIconProps}
-        />
+      <>
+        {StartIcon && (
+          <StartIcon
+            sx={{
+              color: disabled ? "text.disabled" : "text.secondary",
+              ...startIconProps.sx,
+            }}
+            {...startIconProps}
+          />
+        )}
         {multiple && selectedOptions.length > 0 && (
           <MultiSelectChips
             selectedOptions={selectedOptions}
@@ -235,7 +241,7 @@ const MuiItaliaAutocomplete = ({
             disabled={disabled}
           />
         )}
-      </Box>
+      </>
     );
   };
 
@@ -338,6 +344,7 @@ const MuiItaliaAutocomplete = ({
         variant="outlined"
         autoComplete="off"
         disabled={disabled}
+        required={required}
         inputProps={{
           role: "combobox",
           id: inputId,

@@ -1,9 +1,10 @@
 import {
   Checkbox,
-  FormControlLabel,
-  FormGroup,
   List,
   ListItem,
+  ListItemButton,
+  ListItemText,
+  ListItemSecondaryAction,
 } from "@mui/material";
 import React, { MouseEvent } from "react";
 import { OptionType } from "src/model";
@@ -36,9 +37,7 @@ const AutocompleteContent: React.FC<Props> = ({
   setActiveIndex,
   renderOption,
 }) => {
-  const handleOptionMouseDown = (
-    event: MouseEvent<HTMLLIElement | HTMLLabelElement>
-  ) => {
+  const handleOptionMouseDown = (event: MouseEvent<HTMLDivElement>) => {
     // Safari triggers focusOut before click, but if you
     // preventDefault on mouseDown, you can stop that from happening.
     // If this is removed, clicking on an option in Safari will trigger
@@ -49,7 +48,7 @@ const AutocompleteContent: React.FC<Props> = ({
   };
 
   const handleOptionClick = (
-    event: MouseEvent<HTMLLIElement | HTMLLabelElement>,
+    event: MouseEvent<HTMLDivElement>,
     option: OptionType
   ) => {
     event.preventDefault();
@@ -63,47 +62,6 @@ const AutocompleteContent: React.FC<Props> = ({
       : inputValue === option.label;
   };
 
-  if (multiple) {
-    return (
-      <FormGroup>
-        {filteredOptions.map((option, index) => (
-          <FormControlLabel
-            key={option.id}
-            id={`${listboxId}-option-${index}`}
-            role="option"
-            aria-selected={isOptionSelected(option)}
-            onClick={(event) => handleOptionClick(event, option)}
-            onMouseOver={() => setActiveIndex(index)}
-            onMouseDown={handleOptionMouseDown}
-            aria-posinset={index + 1}
-            aria-setsize={filteredOptions.length}
-            labelPlacement="start"
-            label={renderOption ? renderOption(option, index) : option.label}
-            control={
-              <Checkbox
-                checked={isOptionSelected(option)}
-                size="small"
-                sx={{ mr: 2, ml: "auto" }}
-              />
-            }
-            slotProps={{
-              typography: {
-                ml: 2,
-              },
-            }}
-            sx={{
-              py: 1,
-              mr: 0,
-              ml: 0,
-              backgroundColor:
-                index === activeIndex ? "rgba(0, 0, 0, 0.08)" : "transparent",
-            }}
-          />
-        ))}
-      </FormGroup>
-    );
-  }
-
   return (
     <List
       id={listboxId}
@@ -115,26 +73,51 @@ const AutocompleteContent: React.FC<Props> = ({
       {filteredOptions.map((option, index) => (
         <ListItem
           key={option.id}
-          id={`${listboxId}-option-${index}`}
-          role="option"
-          tabIndex={-1}
-          aria-selected={isOptionSelected(option)}
-          onClick={(event) => handleOptionClick(event, option)}
-          onMouseOver={() => setActiveIndex(index)}
-          onMouseDown={handleOptionMouseDown}
+          disablePadding
           sx={{
-            cursor: "pointer",
             backgroundColor:
-              index === activeIndex
-                ? "rgba(0, 0, 0, 0.08)"
-                : isOptionSelected(option)
+              index === activeIndex ? "rgba(0, 0, 0, 0.08)" : "transparent",
+          }}
+        >
+          <ListItemButton
+            id={`${listboxId}-option-${index}`}
+            role="option"
+            tabIndex={-1}
+            aria-selected={isOptionSelected(option)}
+            onClick={(event) => handleOptionClick(event, option)}
+            onMouseOver={() => setActiveIndex(index)}
+            onMouseDown={handleOptionMouseDown}
+            aria-posinset={index + 1}
+            aria-setsize={filteredOptions.length}
+            sx={{
+              py: 1,
+              px: 2,
+              cursor: "pointer",
+              backgroundColor: isOptionSelected(option)
                 ? "rgba(25, 118, 210, 0.08)"
                 : "transparent",
-          }}
-          aria-posinset={index + 1}
-          aria-setsize={filteredOptions.length}
-        >
-          {renderOption ? renderOption(option, index) : option.label}
+              "&:hover": {
+                backgroundColor: "rgba(0, 0, 0, 0.04)",
+              },
+              ...(multiple && { pr: 6 }),
+            }}
+          >
+            <ListItemText
+              primary={
+                renderOption ? renderOption(option, index) : option.label
+              }
+              sx={{ margin: 0 }}
+            />
+            {multiple && (
+              <ListItemSecondaryAction>
+                <Checkbox
+                  checked={isOptionSelected(option)}
+                  size="small"
+                  sx={{ p: 0 }}
+                />
+              </ListItemSecondaryAction>
+            )}
+          </ListItemButton>
         </ListItem>
       ))}
     </List>
