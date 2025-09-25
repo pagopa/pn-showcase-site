@@ -278,7 +278,9 @@ const MuiItaliaAutocomplete = ({
           <IconButton
             size="small"
             onClick={handleToggleOpen}
-            aria-hidden="true"
+            aria-label={
+              isOpen ? t("collapse_aria_label") : t("expand_aria_label")
+            }
             disabled={disabled}
             sx={{
               padding: 0,

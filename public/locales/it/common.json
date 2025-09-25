@@ -1,3 +1,5 @@
 {
-  "clear_text_aria_label": "Cancella il testo inserito"
+  "clear_text_aria_label": "Cancella il testo inserito",
+  "collapse_aria_label": "Chiudi il menu",
+  "expand_aria_label": "Apri il menu"
 }
