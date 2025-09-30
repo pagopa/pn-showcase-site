@@ -14,6 +14,7 @@ interface AutocompleteSlots {
   expandIcon?: ComponentType<SvgIconProps>;
   collapseIcon?: ComponentType<SvgIconProps>;
   emptyState?: ComponentType;
+  loadingSkeleton?: ComponentType;
 }
 
 interface AutocompleteSlotProps {
@@ -24,6 +25,7 @@ interface AutocompleteSlotProps {
   collapseIcon?: SvgIconProps;
   emptyState?: Record<string, any>;
   input?: Partial<OutlinedInputProps>;
+  loadingSkeleton?: Record<string, any>;
 }
 
 export interface MuiItaliaAutocompleteProps {
@@ -37,6 +39,7 @@ export interface MuiItaliaAutocompleteProps {
   noResultsText?: string;
   disabled?: boolean;
   required?: boolean;
+  loading?: boolean;
   sx?: SxProps<Theme>;
   inputStyle?: SxProps<Theme>;
   slots?: AutocompleteSlots;

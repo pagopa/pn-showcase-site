@@ -1,27 +1,16 @@
-import {
-  Close,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-  Search,
-} from "@mui/icons-material";
-import {
-  Box,
-  IconButton,
-  Paper,
-  Popper,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Close, KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
+import { Box, IconButton, Paper, Popper, TextField } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { OptionType } from "src/model";
 import { useTranslation } from "../../hook/useTranslation";
 import AutocompleteContent from "./AutocompleteContent";
+import DefaultEmptyState from "./DefaultEmptyState";
 import MultiSelectChips from "./MultiSelectChips";
 import { MuiItaliaAutocompleteProps } from "./types";
 import { isIosDevice } from "./utils";
 
-const MuiItaliaAutocomplete = ({
+const MuiItaliaAutocomplete: React.FC<MuiItaliaAutocompleteProps> = ({
   options,
   label,
   placeholder,
@@ -29,9 +18,10 @@ const MuiItaliaAutocomplete = ({
   hideArrow = false,
   hasClearIcon = false,
   avoidLocalFiltering = false,
-  noResultsText = "Nessun risultato",
+  noResultsText = "Non ci sono corrispondenze da mostrare",
   disabled = false,
   required = false,
+  loading = false,
   sx,
   inputStyle,
   slots = {},
@@ -41,7 +31,7 @@ const MuiItaliaAutocomplete = ({
   onInputChange,
   onSelect,
   setInputValueOnSelect,
-}: MuiItaliaAutocompleteProps) => {
+}) => {
   const [inputValue, setInputValue] = useState<string>(
     overridenInputvalue || ""
   );
@@ -62,6 +52,7 @@ const MuiItaliaAutocomplete = ({
     expandIcon: ExpandIcon = KeyboardArrowDown,
     collapseIcon: CollapseIcon = KeyboardArrowUp,
     emptyState: EmptyState,
+    loadingSkeleton: LoadingSkeleton,
   } = slots;
 
   const {
@@ -71,6 +62,7 @@ const MuiItaliaAutocomplete = ({
     collapseIcon: collapseIconProps = {},
     emptyState: emptyStateProps = {},
     input: inputProps = {},
+    loadingSkeleton: loadingSkeletonProps = {},
   } = slotProps;
 
   const filteredOptions =
@@ -303,11 +295,8 @@ const MuiItaliaAutocomplete = ({
     if (EmptyState) {
       return <EmptyState {...emptyStateProps} />;
     }
-    return (
-      <Box sx={{ p: 2 }}>
-        <Typography color="text.secondary">{noResultsText}</Typography>
-      </Box>
-    );
+
+    return <DefaultEmptyState noResultsText={noResultsText} />;
   };
 
   useEffect(() => {
@@ -332,113 +321,126 @@ const MuiItaliaAutocomplete = ({
   }, [overridenInputvalue]);
 
   return (
-    <Box position="relative" width="100%" ref={containerRef} sx={sx}>
-      <TextField
-        fullWidth
-        inputRef={inputRef}
-        value={inputValue}
-        onChange={handleInputChange}
-        onClick={() => setInputFocus(true)}
-        onKeyDown={handleKeyDown}
-        onBlur={handleInputBlur}
-        label={label}
-        placeholder={multiple && selectedOptions.length > 0 ? "" : placeholder}
-        variant="outlined"
-        autoComplete="off"
-        disabled={disabled}
-        required={required}
-        inputProps={{
-          role: "combobox",
-          id: inputId,
-          "aria-expanded": isOpen,
-          "aria-controls": listboxId,
-          "aria-autocomplete": "list",
-          "aria-activedescendant":
-            activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined,
-          "aria-haspopup": "listbox",
-          "aria-disabled": disabled,
-        }}
-        InputProps={{
-          startAdornment: getStartInputAdornment(),
-          endAdornment: getEndInputAdornment(),
-          ...inputProps,
-        }}
-        sx={{
-          "& .MuiInputBase-root": {
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            gap: 1,
-            p: "12px",
-            borderRadius: "8px",
-            borderWidth: "2px",
-            position: "relative",
-            backgroundColor: disabled ? "#F4F5F8" : "transparent",
-          },
-          "& .MuiInputBase-input": {
-            flex: "1 1 60px",
-            margin: "8px 0",
-            minWidth: "30px",
-            padding: 0,
-            boxSizing: "border-box",
-          },
-          ...inputStyle,
-        }}
-      />
+    <>
+      <Box position="relative" width="100%" ref={containerRef} sx={sx}>
+        <TextField
+          fullWidth
+          inputRef={inputRef}
+          value={inputValue}
+          onChange={handleInputChange}
+          onClick={() => setInputFocus(true)}
+          onKeyDown={handleKeyDown}
+          onBlur={handleInputBlur}
+          label={label}
+          placeholder={
+            multiple && selectedOptions.length > 0 ? "" : placeholder
+          }
+          variant="outlined"
+          autoComplete="off"
+          disabled={disabled}
+          required={required}
+          inputProps={{
+            role: "combobox",
+            id: inputId,
+            "aria-expanded": isOpen,
+            "aria-controls": listboxId,
+            "aria-autocomplete": "list",
+            "aria-activedescendant":
+              activeIndex >= 0
+                ? `${listboxId}-option-${activeIndex}`
+                : undefined,
+            "aria-haspopup": "listbox",
+            "aria-disabled": disabled,
+          }}
+          InputProps={{
+            startAdornment: getStartInputAdornment(),
+            endAdornment: getEndInputAdornment(),
+            ...inputProps,
+          }}
+          sx={{
+            "& .MuiInputBase-root": {
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "12px",
+              p: "12px",
+              borderRadius: "8px",
+              borderWidth: "2px",
+              position: "relative",
+              backgroundColor: disabled ? "#F4F5F8" : "transparent",
+            },
+            "& .MuiInputBase-input": {
+              flex: "1 1 60px",
+              margin: "8px 0",
+              minWidth: "30px",
+              padding: 0,
+              boxSizing: "border-box",
+            },
+            ...inputStyle,
+          }}
+        />
+
+        <Popper
+          open={isOpen && !disabled}
+          anchorEl={containerRef.current}
+          keepMounted
+          placement="bottom-start"
+          modifiers={[
+            {
+              name: "sameWidth",
+              enabled: true,
+              phase: "beforeWrite",
+              requires: ["computeStyles"],
+              fn: ({ state }) => {
+                state.styles.popper.width = `${state.rects.reference.width}px`;
+              },
+            },
+          ]}
+          style={{ zIndex: 1300 }}
+          role="presentation"
+        >
+          <Paper
+            elevation={4}
+            variant="elevation"
+            sx={{
+              maxHeight: "240px",
+              overflowY: "auto",
+              my: 1,
+            }}
+          >
+            {filteredOptions.length > 0 ? (
+              <AutocompleteContent
+                multiple={multiple}
+                filteredOptions={filteredOptions}
+                selectedOptions={selectedOptions}
+                isOptionSelected={() => false}
+                handleOptionSelect={handleOptionSelect}
+                listboxId={listboxId}
+                listboxRef={listboxRef}
+                inputId={inputId}
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+                renderOption={renderOption}
+                loading={loading}
+                LoadingSkeleton={LoadingSkeleton}
+                loadingSkeletonProps={loadingSkeletonProps}
+              />
+            ) : (
+              renderEmptyState()
+            )}
+          </Paper>
+        </Popper>
+      </Box>
 
       <Box aria-live="polite" sx={visuallyHidden}>
         {selectedOptions.length > 0 &&
           `${selectedOptions.map((opt) => opt.label).join(", ")} selected`}
       </Box>
 
-      <Popper
-        open={isOpen && !disabled}
-        anchorEl={containerRef.current}
-        keepMounted
-        placement="bottom-start"
-        modifiers={[
-          {
-            name: "sameWidth",
-            enabled: true,
-            phase: "beforeWrite",
-            requires: ["computeStyles"],
-            fn: ({ state }) => {
-              state.styles.popper.width = `${state.rects.reference.width}px`;
-            },
-          },
-        ]}
-        style={{ zIndex: 1300 }}
-        role="presentation"
-      >
-        <Paper
-          elevation={4}
-          variant="elevation"
-          sx={{
-            maxHeight: "240px",
-            overflowY: "auto",
-            my: 1,
-          }}
-        >
-          {filteredOptions.length > 0 ? (
-            <AutocompleteContent
-              multiple={multiple}
-              filteredOptions={filteredOptions}
-              selectedOptions={selectedOptions}
-              isOptionSelected={() => false}
-              handleOptionSelect={handleOptionSelect}
-              listboxId={listboxId}
-              listboxRef={listboxRef}
-              inputId={inputId}
-              activeIndex={activeIndex}
-              setActiveIndex={setActiveIndex}
-              renderOption={renderOption}
-            />
-          ) : (
-            renderEmptyState()
-          )}
-        </Paper>
-      </Popper>
-    </Box>
+      <Box aria-live="polite" sx={visuallyHidden}>
+        {loading && t("loading_aria_label")}
+      </Box>
+    </>
   );
 };
 

@@ -158,12 +158,10 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     return <AddressItem address={address} />;
   };
 
-  const renderEmptyState = () => {
-    if (!shouldShowEmptyState) return <></>;
-
-    if (isLoading) return <LoadingState />;
-
-    return fetchError ? <ErrorState /> : <EmptyState />;
+  const getEmptyStateComponent = () => {
+    if (!shouldShowEmptyState) return () => <></>;
+    if (isLoading) return () => <LoadingState />;
+    return fetchError ? () => <ErrorState /> : () => <EmptyState />;
   };
 
   const handleSelect = (option: any) => {
@@ -227,7 +225,9 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
         hasClearIcon
         hideArrow
         avoidLocalFiltering
-        emptyState={renderEmptyState()}
+        slots={{
+          emptyState: getEmptyStateComponent(),
+        }}
         inputStyle={
           userPosition
             ? {

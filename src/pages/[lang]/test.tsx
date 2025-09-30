@@ -1,10 +1,10 @@
+import { AccountBalance } from "@mui/icons-material";
 import { Stack, Typography } from "@mui/material";
 import { langCodes } from "@utils/constants";
 import type { GetStaticPaths, NextPage } from "next";
 import MuiItaliaAutocomplete from "src/components/MuiItaliaAutocomplete";
 import { getI18n } from "../../api/i18n";
 import { LangCode } from "../../model";
-import { AccountBalance } from "@mui/icons-material";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
