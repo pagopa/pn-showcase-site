@@ -3,7 +3,7 @@
   "width": 120,
   "height": 116,
   "data": {
-    "url": "https://gist.githubusercontent.com/StefanoFrontini/79ed190a28fe85d75e694feda550f9c5/raw/43ea3abaa2c5ec920f6222e29f797f23a3abd011/dashboard-send-sezione1.json",
+    "url": "https://gist.githubusercontent.com/StefanoFrontini/79ed190a28fe85d75e694feda550f9c5/raw/17a5db29b2a19a22c8ee44b25bd8540cff930d06/dashboard-send-sezione1.json",
     "format": { "property": "totale_notifiche" }
   },
   "params": [{ "name": "year", "value": null }],
@@ -12,17 +12,40 @@
     {
       "calculate": "datum.type_notification == 'ANALOG' ? 'Analogica' : 'Digitale'",
       "as": "type"
+    },
+    {
+      "joinaggregate": [{ "op": "sum", "field": "num_iun", "as": "total" }]
+    },
+    {
+      "calculate": "datum.num_iun / datum.total",
+      "as": "percentage"
     }
   ],
-  "mark": {
-    "type": "arc",
-    "innerRadius": 65,
-    "outerRadius": 110,
-    "padAngle": 0.04,
-    "cornerRadius": 5
-  },
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 65,
+        "outerRadius": 110,
+        "padAngle": 0.04,
+        "cornerRadius": 5
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "radius": 123,
+        "fill": "#0B3EE3",
+        "fontWeight": "bold",
+        "fontSize": 14
+      },
+      "encoding": {
+        "text": { "field": "percentage", "type": "nominal", "format": ".0%" }
+      }
+    }
+  ],
   "encoding": {
-    "theta": { "field": "num_iun", "type": "quantitative" },
+    "theta": { "field": "num_iun", "type": "quantitative", "stack": true },
     "color": {
       "field": "type",
       "type": "nominal",

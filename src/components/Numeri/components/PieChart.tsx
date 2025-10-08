@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import embed, { Result } from "vega-embed";
 import { TopLevelSpec } from "vega-lite";
 import chartConfig from "../shared/chart-config";
+import { removeGraphicsSymbolRole } from "../shared/removeGraphicsSymbolRole";
 
 type Props = {
   spec: TopLevelSpec;
@@ -18,15 +19,24 @@ const PieChart = ({ spec, yearSignal }: Props) => {
       return;
     }
     embed(chartContent.current, spec, chartConfig)
-      .then(setChart)
+      .then((result) => {
+        setChart(result);
+        setTimeout(() => removeGraphicsSymbolRole(chartContent), 100);
+      })
       .catch(console.error);
   }, [spec]);
 
   useEffect(() => {
-    if (chart === null) {
+    if (chart === null || !chartContent.current) {
       return;
     }
-    chart.view.signal("year", yearSignal).runAsync().catch(console.error);
+    chart.view
+      .signal("year", yearSignal)
+      .runAsync()
+      .then(() => {
+        setTimeout(() => removeGraphicsSymbolRole(chartContent), 100);
+      })
+      .catch(console.error);
   }, [chart, yearSignal]);
 
   return <Box ref={chartContent} id="chart-content"></Box>;

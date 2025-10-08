@@ -21,12 +21,14 @@ export default function PieChartWrapper({ spec, yearSignal }: Props) {
       const tooltip = [];
       tooltip[0] = {
         ...spec.encoding.tooltip[0],
-        title: t("sent_notifications.pieChart.tooltip.type"),
+        title: t("sent_notifications.pieChart.tooltip.type", { ns: "numeri" }),
       };
       tooltip[1] = {
         ...spec.encoding.tooltip[1],
 
-        title: t("sent_notifications.pieChart.tooltip.number"),
+        title: t("sent_notifications.pieChart.tooltip.number", {
+          ns: "numeri",
+        }),
       };
       return {
         ...spec,

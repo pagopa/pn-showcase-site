@@ -1,6 +1,6 @@
 {
-  "title": "SEND - Storitev Digitalnih Obvestil | Številke SEND",
-  "description": "Odkrijte podatke o poslanih obvestilih, subjektih, ki uporabljajo SEND, in vrstah podatkov storitev",
+  "title": "SEND - Servizio Notifiche Digitali | Številke SEND",
+  "description": "Odkrijte podatke o poslanih obvestilih, organizacijah, ki uporabljajo SEND, in vrstah storitev",
   "hero": {
     "eyelet": "Podatki in učinkovitost",
     "title": "Odkrijte številke SEND",
@@ -8,24 +8,28 @@
     "alert": "Podatki so na voljo na dati.gov.it",
     "website": "Pojdi na spletno stran"
   },
-  "total": "Skupaj",
+  "total": "Skupno",
   "sent_notifications": {
-    "title": "Poslana SEND obvestila",
-    "description": "Podatki se nanašajo na pravno veljavna sporočila, poslana s strani sodelujočih subjektov.",
+    "title": "Poslana obvestila SEND",
+    "description": "Podatki se nanašajo na pravno veljavne komunikacije, ki jih pošljejo sodelujoče organizacije.",
+    "filters": "Uporabite spodnje izbirnike za filtriranje tega razdelka za želeno časovno obdobje.",
+    "screen_readers": "Prikazano obdobje podatkov:",
     "total": {
       "name": "skupno",
-      "title": "Skupno število poslanih SEND obvestil",
-      "description": "SEND obvestilo je pravno veljavno sporočilo, ki ga uradno izda uprava. Lahko se dostavi digitalno ali analogno."
+      "title": "Skupaj poslana obvestila SEND",
+      "description": "Obvestilo SEND je pravno veljavna komunikacija, ki jo uradno izda uprava. Lahko se dostavi digitalno ali analogno.",
+      "title_2": "Skupaj poslanih obvestil od julija 2023",
+      "description_2": "Skupaj poslanih obvestil od prvega leta delovanja platforme"
     },
     "digital": {
       "name": "digitalna",
-      "title": "Število digitalnih SEND obvestil",
-      "description": "SEND obvestila, izdana prejemnikom preko certificiranih digitalnih kanalov."
+      "title": "Število digitalnih obvestil SEND",
+      "description": "Obvestila SEND, izdana prejemnikom preko certificiranih digitalnih kanalov."
     },
     "analog": {
       "name": "analogna",
-      "title": "Število analognih SEND obvestil",
-      "description": "SEND obvestila, izdana v analogni obliki zaradi odsotnosti certificiranih digitalnih kanalov prejemnika."
+      "title": "Število analognih obvestil SEND",
+      "description": "Obvestila SEND, izdana v analogni obliki zaradi odsotnosti certificiranih digitalnih kanalov prejemnika."
     },
     "pieChart": {
       "tooltip": {
@@ -34,10 +38,11 @@
       }
     },
     "trend": {
-      "title": "Trend SEND obvestil",
-      "description": "Trend števila SEND obvestil, uradno izdanih s strani sodelujočega subjekta.",
-      "description_1": "Trend",
-      "description_2": "obvestil",
+      "title": "Trend obvestil SEND",
+      "description": "Trend števila obvestil SEND, ki jih je uradno izdala sodelujoča organizacija.",
+      "description_1": "Napredovanje",
+      "description_2": "",
+      "description_3": "obvestil",
       "monthly": "mesečno",
       "aggregate": "kumulativno",
       "total": "skupno",
@@ -48,39 +53,50 @@
         "aggregate": "Kumulativna obvestila",
         "monthly": "Mesečna obvestila"
       },
-      "note": "Kumulativna vrednost je postopna vsota količine skozi čas."
+      "note": "Kumulativna vrednost je progresivna vsota količine skozi čas."
     }
   },
 
   "entities": {
-    "title": "Subjekti na SEND",
-    "description": "Sodelujoči subjekti, ki so poslali vsaj eno SEND obvestilo od začetka storitve.",
+    "title": "Organizacije na SEND",
+    "description": "Sodelujoče organizacije, ki so poslale najmanj eno obvestilo SEND od zagona storitve.",
     "active": {
       "total": {
-        "title": "Skupno število subjektov na SEND",
-        "description": "Skupno število subjektov, ki so poslali vsaj eno SEND obvestilo."
+        "title": "Skupne organizacije na SEND",
+        "description": "Skupno število organizacij, ki so poslale najmanj eno obvestilo SEND.",
+        "description_1": "v primerjavi s prejšnjim letom"
       },
       "municipalities": {
-        "title": "Odstotek občin od skupnega števila subjektov na SEND"
+        "title": "Odstotek občin od skupnega števila organizacij na SEND"
       },
       "geographic_distribution": {
         "title": "Geografska porazdelitev občin na SEND",
-        "description": "Graf prikazuje porazdelitev občin v različnih regijah, velikost mehurčkov označuje obseg aktivnih občin na regijo."
+        "description": "Graf prikazuje porazdelitev občin, ki uporabljajo SEND, kot kategorijo entitet z največjim številom udeležencev.",
+        "description_1": "Prikaži vrednost",
+        "absolute": {
+          "name": "absolutno",
+          "description": "Velikost mehurčkov označuje obseg aktivnih občin na regijo"
+        },
+        "percentage": {
+          "name": "odstotek",
+          "description": "Obarvanje prikazuje odstotek aktivnih občin v vsaki regiji."
+        }
       },
       "tooltip": {
         "region": "Regija",
         "municipalities": "Občine",
-        "percentage": "Odstotek občin glede na skupno število občin na regijo"
+        "percentage": "Odstotek občin glede na skupno število občin na regijo."
       }
     }
   },
 
   "notification_types": {
-    "title": "Glavna področja SEND obvestil",
-    "description": "Kategorije najbolj pošiljanih SEND obvestil.",
+    "title": "Glavna področja obvestil SEND",
+    "description": "Najbolj poslane kategorije obvestil SEND.",
     "main_scopes": {
-      "title": "Filtriraj po vrsti sodelujočega subjekta.",
-      "notes": "* drugačen/a od tistih, katerih obvestilo je izključeno preko SEND v skladu s čl. 26, odst. 17 D.L. 76/2020"
+      "title": "Filtriraj po vrsti sodelujoče organizacije.",
+      "note_1": "* drugače od tistih, katerih obveščanje je izključeno preko SEND v skladu s členom 26, odstavek 17 zakonskega odloka št. 76/2020",
+      "note_2": "Grafikon prikazuje glavna območja s petimi ali več poslanimi obvestili"
     },
     "tooltip": {
       "category": "Področje",
@@ -93,10 +109,10 @@
       "name": "Občine"
     },
     "riscossori": {
-      "name": "Izterjatori in drugi"
+      "name": "Izterjivalci in drugi"
     },
     "altri_enti": {
-      "name": "Drugi teritorialni subjekti"
+      "name": "Druge teritorialne organizacije"
     },
     "province": {
       "name": "Province"
@@ -104,11 +120,14 @@
     "regioni": {
       "name": "Regije"
     },
+    "salute": {
+      "name": "Lokalno zdravstvo"
+    },
     "comunali": {
-      "name": "Občinski subjekti"
+      "name": "Občinske organizacije"
     },
     "ordini": {
-      "name": "Poklicni redi, kolegiji in sveti"
+      "name": "Redovi, kolegiji in strokovni sveti"
     },
     "amministrazioni": {
       "name": "Centralne javne uprave"

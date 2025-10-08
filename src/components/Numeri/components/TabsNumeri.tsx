@@ -12,7 +12,9 @@ import {
   Popper,
 } from "@mui/material";
 import { dashboardColors } from "../shared/colors";
+import CardText from "./CardText";
 import { useTabBehavior } from "src/hook/useTabBehavior";
+import { useTranslation } from "src/hook/useTranslation";
 
 type Props = {
   tabs: Array<string>;
@@ -42,41 +44,68 @@ const TabsNumeri = ({
     handleToggleDropdown,
     handleCloseDropdown,
   } = useTabBehavior(initialTab, breakpoint, onTabChange);
+  const { t } = useTranslation(["numeri"]);
 
   return (
     <Box
       sx={{
         textAlign: "left",
         width: fullWidth ? "100%" : "auto",
+        position: "relative",
       }}
     >
+      {/* This element is invisible but is read by screen readers. It notifies the user that the data has been updated when the button is clicked */}
+      <Box
+        component="span"
+        sx={{
+          position: "absolute",
+          width: "1px",
+          height: "1px",
+          padding: 0,
+          overflow: "hidden",
+          clip: "rect(0, 0, 0, 0)",
+          whiteSpace: "nowrap",
+          border: 0,
+        }}
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        {`${t("sent_notifications.screen_readers")} ${tabs[currentTab]}.`}
+      </Box>
       {(!isMobile || !breakOnMobile) && (
-        <ButtonGroup color="primary" fullWidth={fullWidth}>
-          {tabs.map((tab, index) => (
-            <Button
-              sx={{
-                borderColor: dashboardColors.get("blue-io-200"),
-                color: dashboardColors.get("blue-io"),
-                "&:hover": {
+        <>
+          <CardText sx={{ mb: 1.5 }}>
+            {t("sent_notifications.filters")}
+          </CardText>
+          <ButtonGroup color="primary" fullWidth={fullWidth} role="tablist">
+            {tabs.map((tab, index) => (
+              <Button
+                sx={{
+                  borderColor: dashboardColors.get("blue-io-200"),
                   color: dashboardColors.get("blue-io"),
-                },
+                  "&:hover": {
+                    color: dashboardColors.get("blue-io"),
+                  },
 
-                borderWidth: 1,
-                fontWeight: 700,
-                backgroundColor:
-                  currentTab === index
-                    ? dashboardColors.get("blue-io-50")
-                    : undefined,
-              }}
-              onClick={() => handleChangeTab(index)}
-              size={buttonSize}
-              value={index}
-              key={tab}
-            >
-              {tab}
-            </Button>
-          ))}
-        </ButtonGroup>
+                  borderWidth: 1,
+                  fontWeight: 700,
+                  backgroundColor:
+                    currentTab === index
+                      ? dashboardColors.get("blue-io-50")
+                      : undefined,
+                }}
+                onClick={() => handleChangeTab(index)}
+                size={buttonSize}
+                value={index}
+                key={tab}
+                role="tab"
+                aria-selected={currentTab === index}
+              >
+                {tab}
+              </Button>
+            ))}
+          </ButtonGroup>
+        </>
       )}
       {isMobile && breakOnMobile && (
         <>

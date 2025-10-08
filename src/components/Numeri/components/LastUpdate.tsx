@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import lastUpdateSpec from "../assets/data/last-update.vl.json";
 import { dashboardColors } from "../shared/colors";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
-import KpiWrapper from "./KpiWrapper";
+import KpiWrapperDate from "./KpiWrapperDate";
 
 const LastUpdate = ({ children }: { children: React.ReactNode }) => (
   <Stack direction="row" alignItems="center" spacing={0}>
@@ -14,7 +14,7 @@ const LastUpdate = ({ children }: { children: React.ReactNode }) => (
     <Typography
       sx={{ color: dashboardColors.get("secondary"), fontSize: "0.875rem" }}
     >
-      <KpiWrapper spec={toVegaLiteSpec(lastUpdateSpec)} />
+      <KpiWrapperDate spec={toVegaLiteSpec(lastUpdateSpec)} />
     </Typography>
   </Stack>
 );

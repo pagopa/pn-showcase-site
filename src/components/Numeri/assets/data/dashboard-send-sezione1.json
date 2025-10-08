@@ -1,21 +1,21 @@
 {
-  "last_run": "2025-08-03T13:06:46.457767",
+  "last_run": "2025-10-02T08:56:58.527107",
   "totale_notifiche": [
-    { "year": "2024", "type_notification": "ANALOG", "num_iun": 7366934 },
-    { "year": "2025", "type_notification": "ANALOG", "num_iun": 6563137 },
+    { "year": "2024", "type_notification": "ANALOG", "num_iun": 7366923 },
+    { "year": "2025", "type_notification": "ANALOG", "num_iun": 8544231 },
     { "year": "2023", "type_notification": "DIGITAL", "num_iun": 365625 },
-    { "year": "2024", "type_notification": "DIGITAL", "num_iun": 1581413 },
+    { "year": "2024", "type_notification": "DIGITAL", "num_iun": 1581411 },
     { "year": "2023", "type_notification": "ANALOG", "num_iun": 1530048 },
-    { "year": "2025", "type_notification": "DIGITAL", "num_iun": 2014952 },
-    { "year": null, "type_notification": "ANALOG", "num_iun": 15460119 },
-    { "year": null, "type_notification": "DIGITAL", "num_iun": 3961990 }
+    { "year": "2025", "type_notification": "DIGITAL", "num_iun": 2626576 },
+    { "year": null, "type_notification": "ANALOG", "num_iun": 17441202 },
+    { "year": null, "type_notification": "DIGITAL", "num_iun": 4573612 }
   ],
   "notifiche_per_mese": [
     {
       "month": "2024-09",
-      "num_iun_analog": 745519,
+      "num_iun_analog": 745517,
       "num_iun_digital": 181562,
-      "num_iun_total": 927081
+      "num_iun_total": 927079
     },
     {
       "month": "2023-08",
@@ -26,8 +26,8 @@
     {
       "month": "2024-02",
       "num_iun_analog": 67599,
-      "num_iun_digital": 19868,
-      "num_iun_total": 87467
+      "num_iun_digital": 19867,
+      "num_iun_total": 87466
     },
     {
       "month": "2023-12",
@@ -37,9 +37,9 @@
     },
     {
       "month": "2025-04",
-      "num_iun_analog": 1073576,
-      "num_iun_digital": 235189,
-      "num_iun_total": 1308765
+      "num_iun_analog": 1073573,
+      "num_iun_digital": 235188,
+      "num_iun_total": 1308761
     },
     {
       "month": "2023-11",
@@ -49,15 +49,15 @@
     },
     {
       "month": "2025-01",
-      "num_iun_analog": 397787,
+      "num_iun_analog": 397786,
       "num_iun_digital": 162818,
-      "num_iun_total": 560605
+      "num_iun_total": 560604
     },
     {
       "month": "2025-08",
-      "num_iun_analog": 43902,
-      "num_iun_digital": 15608,
-      "num_iun_total": 59510
+      "num_iun_analog": 597622,
+      "num_iun_digital": 233950,
+      "num_iun_total": 831572
     },
     {
       "month": "2023-07",
@@ -67,9 +67,9 @@
     },
     {
       "month": "2024-08",
-      "num_iun_analog": 211343,
+      "num_iun_analog": 211342,
       "num_iun_digital": 85294,
-      "num_iun_total": 296637
+      "num_iun_total": 296636
     },
     {
       "month": "2023-10",
@@ -91,9 +91,9 @@
     },
     {
       "month": "2024-12",
-      "num_iun_analog": 2143489,
+      "num_iun_analog": 2143487,
       "num_iun_digital": 272737,
-      "num_iun_total": 2416226
+      "num_iun_total": 2416224
     },
     {
       "month": "2024-03",
@@ -103,63 +103,69 @@
     },
     {
       "month": "2024-05",
-      "num_iun_analog": 321248,
+      "num_iun_analog": 321247,
       "num_iun_digital": 57900,
-      "num_iun_total": 379148
+      "num_iun_total": 379147
     },
     {
       "month": "2025-06",
-      "num_iun_analog": 1129089,
-      "num_iun_digital": 289563,
-      "num_iun_total": 1418652
+      "num_iun_analog": 1129064,
+      "num_iun_digital": 289561,
+      "num_iun_total": 1418625
     },
     {
       "month": "2025-02",
-      "num_iun_analog": 540973,
-      "num_iun_digital": 182106,
-      "num_iun_total": 723079
+      "num_iun_analog": 540971,
+      "num_iun_digital": 182102,
+      "num_iun_total": 723073
     },
     {
       "month": "2024-11",
-      "num_iun_analog": 493345,
+      "num_iun_analog": 493344,
       "num_iun_digital": 138042,
-      "num_iun_total": 631387
+      "num_iun_total": 631386
     },
     {
       "month": "2024-10",
-      "num_iun_analog": 744932,
+      "num_iun_analog": 744930,
       "num_iun_digital": 172444,
-      "num_iun_total": 917376
+      "num_iun_total": 917374
     },
     {
       "month": "2025-03",
-      "num_iun_analog": 868111,
+      "num_iun_analog": 868113,
       "num_iun_digital": 233309,
-      "num_iun_total": 1101420
+      "num_iun_total": 1101422
     },
     {
       "month": "2024-07",
-      "num_iun_analog": 1301881,
+      "num_iun_analog": 1301880,
       "num_iun_digital": 406360,
-      "num_iun_total": 1708241
+      "num_iun_total": 1708240
     },
     {
       "month": "2025-07",
-      "num_iun_analog": 1721831,
-      "num_iun_digital": 652056,
-      "num_iun_total": 2373887
+      "num_iun_analog": 1721806,
+      "num_iun_digital": 652044,
+      "num_iun_total": 2373850
     },
     {
       "month": "2024-04",
-      "num_iun_analog": 83857,
-      "num_iun_digital": 33200,
-      "num_iun_total": 117057
+      "num_iun_analog": 83856,
+      "num_iun_digital": 33199,
+      "num_iun_total": 117055
+    },
+    {
+      "month": "2025-09",
+      "num_iun_analog": 1427439,
+      "num_iun_digital": 393302,
+      "num_iun_total": 1820741
     },
     {
       "month": "2025-05",
-      "num_iun_analog": 787868,
-      "num_iun_digital": 244303,
-      "num_iun_total": 1032171
+      "num_iun_analog": 787857,
+      "num_iun_digital": 244302,
+      "num_iun_total": 1032159
     },
     {
       "month": "2024-01",

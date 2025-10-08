@@ -1,14 +1,19 @@
 import { Box, MenuItem, Select, Stack, Typography } from "@mui/material";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { TopLevelSpec } from "vega-lite";
 import { useTranslation } from "../../../hook/useTranslation";
-import downloadSpec from "../assets/data/download.vl.json";
 import { dashboardColors } from "../shared/colors";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
+import barChartSpec from "../assets/data/bar_chart.vl.json";
+import lineChartSpec from "../assets/data/line_chart.vl.json";
 import CardText from "./CardText";
 import CardTitle from "./CardTitle";
 import KpiCard from "./KpiCard";
-import NotificationsTrendChart from "./NotificationsTrendChart";
+import NotificationsTrendLineChart from "./NotificationsTrendLineChart";
+import NotificationsTrendBarChart from "./NotificationsTrendBarChart";
+import { swapComponent } from "./swapComponent";
+
+import LangContext from "src/context/lang-context";
 
 type Props = {
   selYear: number | null;
@@ -22,6 +27,8 @@ type OptionsTotalDigitalAnalog = (typeof optionsTotalDigitalAnalog)[number];
 
 const NotificationsTrend = ({ selYear }: Props) => {
   const { t } = useTranslation(["numeri"]);
+  const { lang } = useContext(LangContext);
+  const isSwapped = lang === "en" || lang === "de";
 
   const [curOptionCumulativeMonthly, setCurOptionCumulativeMonthly] =
     useState<OptionsCumulativeMonthly>(optionsCumulativeMonthly[0]);
@@ -37,6 +44,20 @@ const NotificationsTrend = ({ selYear }: Props) => {
     option: OptionsTotalDigitalAnalog
   ) => {
     setCurOptionTotalDigitalAnalog(option);
+  };
+  const lowerCaseFirstLetter = (bool: boolean) => (val: string) => {
+    if (bool) {
+      return String(val).charAt(0).toLowerCase() + String(val).slice(1);
+    } else {
+      return val;
+    }
+  };
+  const handleFirstLetter = (bool: boolean) => (val: string) => {
+    if (bool) {
+      return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+    } else {
+      return String(val).charAt(0).toLowerCase() + String(val).slice(1);
+    }
   };
 
   function translateTooltip(spec: TopLevelSpec) {
@@ -66,15 +87,21 @@ const NotificationsTrend = ({ selYear }: Props) => {
         const translatedTooltip = [
           {
             ...tooltips[0],
-            title: t("sent_notifications.trend.tooltip.month"),
+            title: t("sent_notifications.trend.tooltip.month", {
+              ns: "numeri",
+            }),
           },
           {
             ...tooltips[1],
-            title: t("sent_notifications.trend.tooltip.aggregate"),
+            title: t("sent_notifications.trend.tooltip.aggregate", {
+              ns: "numeri",
+            }),
           },
           {
             ...tooltips[2],
-            title: t("sent_notifications.trend.tooltip.monthly"),
+            title: t("sent_notifications.trend.tooltip.monthly", {
+              ns: "numeri",
+            }),
           },
         ];
 
@@ -104,82 +131,110 @@ const NotificationsTrend = ({ selYear }: Props) => {
           alignItems="flex-start"
         >
           <Stack direction="row" spacing={1} alignItems={"center"}>
-            <CardText>
-              {t("sent_notifications.trend.description_1", { ns: "numeri" })}
-            </CardText>
-
-            <Select
-              value={curOptionCumulativeMonthly}
-              size="small"
-              sx={{
-                fontSize: 14,
-                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: dashboardColors.get("blue-io"),
-                },
-              }}
-              onChange={(e: any) =>
-                handleOptionCumulativeMonthly(e.target.value)
-              }
-            >
-              {optionsCumulativeMonthly.map((option) => (
-                <MenuItem
-                  key={option}
-                  value={option}
-                  sx={{
-                    "&.Mui-selected": { color: dashboardColors.get("blue-io") },
-                  }}
-                >
-                  {t(`sent_notifications.trend.${option}`, {
-                    ns: "numeri",
-                  })}
-                </MenuItem>
-              ))}
-            </Select>
+            {swapComponent(isSwapped)(
+              <CardText>
+                {lowerCaseFirstLetter(isSwapped)(
+                  t("sent_notifications.trend.description_1", { ns: "numeri" })
+                )}
+              </CardText>,
+              <Select
+                value={curOptionCumulativeMonthly}
+                size="small"
+                sx={{
+                  fontSize: 14,
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: dashboardColors.get("blue-io"),
+                  },
+                }}
+                onChange={(e: any) =>
+                  handleOptionCumulativeMonthly(e.target.value)
+                }
+              >
+                {optionsCumulativeMonthly.map((option) => (
+                  <MenuItem
+                    key={option}
+                    value={option}
+                    sx={{
+                      "&.Mui-selected": {
+                        color: dashboardColors.get("blue-io"),
+                      },
+                    }}
+                  >
+                    {handleFirstLetter(isSwapped)(
+                      t(`sent_notifications.trend.${option}`, {
+                        ns: "numeri",
+                      })
+                    )}
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
           </Stack>
-          <Stack direction="row" spacing={1} alignItems={"center"}>
-            <Typography variant="caption" color="textSecondary">
-              {" "}
-              {t("sent_notifications.trend.description_2", { ns: "numeri" })}
-            </Typography>
-            <Select
-              size={"small"}
-              sx={{
-                fontSize: 14,
-                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: dashboardColors.get("blue-io"),
-                },
-              }}
-              value={curOptionTotalDigitalAnalog}
-              onChange={(e: any) =>
-                handleOptionsTotalDigitalAnalog(e.target.value)
-              }
-            >
-              {optionsTotalDigitalAnalog.map((option) => (
-                <MenuItem
-                  key={option}
-                  value={option}
-                  sx={{
-                    "&.Mui-selected": { color: dashboardColors.get("blue-io") },
-                  }}
-                >
-                  {t(`sent_notifications.${option}.name`, {
+          <Stack
+            direction="row"
+            spacing={isSwapped ? 1 : 0.5}
+            alignItems={"center"}
+          >
+            <CardText>
+              {t("sent_notifications.trend.description_2", {
+                ns: "numeri",
+              })}
+            </CardText>
+            <Stack direction="row" spacing={1} alignItems={"center"}>
+              {swapComponent(isSwapped)(
+                <CardText>
+                  {t("sent_notifications.trend.description_3", {
                     ns: "numeri",
                   })}
-                </MenuItem>
-              ))}
-            </Select>
+                </CardText>,
+                <Select
+                  size={"small"}
+                  sx={{
+                    fontSize: 14,
+                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                      borderColor: dashboardColors.get("blue-io"),
+                    },
+                  }}
+                  value={curOptionTotalDigitalAnalog}
+                  onChange={(e: any) =>
+                    handleOptionsTotalDigitalAnalog(e.target.value)
+                  }
+                >
+                  {optionsTotalDigitalAnalog.map((option) => (
+                    <MenuItem
+                      key={option}
+                      value={option}
+                      sx={{
+                        "&.Mui-selected": {
+                          color: dashboardColors.get("blue-io"),
+                        },
+                      }}
+                    >
+                      {t(`sent_notifications.trend.${option}`, {
+                        ns: "numeri",
+                      })}
+                    </MenuItem>
+                  ))}
+                </Select>
+              )}
+            </Stack>
           </Stack>
         </Stack>
 
         <Box sx={{ height: "22rem" }}>
-          <NotificationsTrendChart
-            spec={translateTooltip(toVegaLiteSpec(downloadSpec))}
-            cumulativeSignal={
-              curOptionCumulativeMonthly === "aggregate" ? true : false
-            }
-            filterSignal={curOptionTotalDigitalAnalog}
-            yearSignal={selYear}
-          />
+          {curOptionCumulativeMonthly === "aggregate" ? (
+            <NotificationsTrendLineChart
+              filterSignal={curOptionTotalDigitalAnalog}
+              yearSignal={selYear}
+              spec={translateTooltip(toVegaLiteSpec(lineChartSpec))}
+            />
+          ) : (
+            <NotificationsTrendBarChart
+              filterSignal={curOptionTotalDigitalAnalog}
+              yearSignal={selYear}
+              spec={translateTooltip(toVegaLiteSpec(barChartSpec))}
+            />
+          )}
         </Box>
         {curOptionCumulativeMonthly === "aggregate" && (
           <Typography

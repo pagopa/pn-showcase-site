@@ -55,7 +55,7 @@
     },
     {
       "data": {
-        "url": "https://gist.githubusercontent.com/StefanoFrontini/a71f6def4ea6f834bb1ae53984c816b9/raw/3abf0312839a1efc80d7f06e4cad450dfb539f42/dashboard-send-sezione2.json",
+        "url": "https://gist.githubusercontent.com/StefanoFrontini/a71f6def4ea6f834bb1ae53984c816b9/raw/47eacce73f19dff1d20e42a8629934477fc3c00a/dashboard-send-sezione2.json",
         "format": { "property": "geo_comuni" }
       },
       "transform": [

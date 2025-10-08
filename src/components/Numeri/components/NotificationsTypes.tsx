@@ -12,16 +12,17 @@ import NotificationsTypesChart from "./NotificationsTypesChart";
 
 const categoriesMap = new Map([
   ["tutte", null],
-  ["comuni", "Comuni"],
-  ["riscossori", "Riscossori e altro"],
   ["altri_enti", "Altri enti territoriali"],
-  ["province", "Province"],
-  ["regioni", "Regioni"],
+  ["comuni", "Comuni"],
+  ["consorzi", "Consorzi universitari"],
   ["comunali", "Enti comunali"],
   ["ordini", "Ordini, collegi e consigli professionali"],
+  ["province", "Province"],
   ["amministrazioni", "Pubbliche amministrazioni centrali"],
+  ["regioni", "Regioni"],
+  ["riscossori", "Riscossori e altro"],
+  ["salute", "Salute locale"],
   ["universita", "Università"],
-  ["consorzi", "Consorzi universitari"],
 ]);
 
 type OptionsCategories = {
@@ -55,12 +56,17 @@ const NotificationsTypes = () => {
 
     const translatedTooltips = tooltips.map((tooltip) => {
       if (tooltip.field === "ambito") {
-        return { ...tooltip, title: t("notification_types.tooltip.category") };
+        return {
+          ...tooltip,
+          title: t("notification_types.tooltip.category", { ns: "numeri" }),
+        };
       }
       if (tooltip.field === "num_iun") {
         return {
           ...tooltip,
-          title: t("notification_types.tooltip.notifications"),
+          title: t("notification_types.tooltip.notifications", {
+            ns: "numeri",
+          }),
         };
       }
       return tooltip;
@@ -131,7 +137,16 @@ const NotificationsTypes = () => {
               lineHeight: "1.125rem",
             }}
           >
-            {t("notification_types.main_scopes.notes", { ns: "numeri" })}
+            {t("notification_types.main_scopes.note_1", { ns: "numeri" })}
+          </Typography>
+          <Typography
+            sx={{
+              color: dashboardColors.get("grey-650"),
+              fontSize: "0.875rem",
+              lineHeight: "1.125rem",
+            }}
+          >
+            {t("notification_types.main_scopes.note_2", { ns: "numeri" })}
           </Typography>
         </Stack>
       </KpiCard>

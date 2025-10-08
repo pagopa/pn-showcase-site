@@ -1,31 +1,37 @@
 {
-  "title": "SEND - Service de Notifications Numériques | Les chiffres de SEND",
-  "description": "Découvrez les données relatives aux notifications envoyées, aux entités utilisant SEND et aux types de données de services",
+  "title": "SEND - Servizio Notifiche Digitali | SEND en chiffres",
+  "description": "Découvrez les données sur les notifications envoyées, les organismes qui utilisent SEND et les types de services",
   "hero": {
     "eyelet": "Données et performances",
-    "title": "Découvrez les chiffres de SEND",
+    "title": "SEND en chiffres",
+    "description": "Cette page contient des données relatives à la plateforme de notification ",
+    "description_2": "SEND",
+    "description_3": ", mises à jour quotidiennement.",
     "last_update": "Dernière mise à jour",
     "alert": "Les données sont disponibles sur dati.gov.it",
-    "website": "Aller au site"
+    "website": "Voir les données"
   },
   "total": "Total",
   "sent_notifications": {
     "title": "Notifications SEND envoyées",
-    "description": "Les données se réfèrent aux communications à valeur légale envoyées par les entités participantes.",
+    "description": "Les données concernent les communications à valeur juridique envoyées par les organismes participants.",
+    "filters": "Utilisez les sélecteurs ci-dessous pour filtrer cette section pour la période de référence souhaitée.",
     "total": {
-      "name": "globales",
-      "title": "Total des notifications SEND envoyées",
-      "description": "Une notification SEND est une communication à valeur légale émise officiellement par une administration. Elle peut être délivrée en mode numérique ou analogique."
+      "name": "total",
+      "title": "Nombre total de notifications SEND envoyées",
+      "description": "Une notification SEND est une communication à valeur juridique émise officiellement par un organisme. Elle peut être délivrée de manière numérique ou analogique.",
+      "title_2": "Nombre total de notifications depuis juillet 2023",
+      "description_2": "Nombre total de notifications envoyées depuis la première année d'exploitation de la plateforme"
     },
     "digital": {
       "name": "numériques",
       "title": "Nombre de notifications SEND numériques",
-      "description": "Notifications SEND émises aux destinataires via des canaux numériques certifiés."
+      "description": "Notifications SEND envoyées aux destinataires via des canaux numériques certifiés"
     },
     "analog": {
       "name": "analogiques",
       "title": "Nombre de notifications SEND analogiques",
-      "description": "Notifications SEND émises en mode analogique en raison de l'absence de canaux numériques certifiés du destinataire."
+      "description": "Notifications SEND envoyées de manière analogique en l’absence de canaux numériques certifiés du destinataire"
     },
     "pieChart": {
       "tooltip": {
@@ -35,12 +41,13 @@
     },
     "trend": {
       "title": "Évolution des notifications SEND",
-      "description": "Évolution du nombre de notifications SEND émises officiellement par une entité participante.",
+      "description": "Évolution du nombre de notifications SEND officiellement émises par un organisme participant.",
       "description_1": "Évolution",
-      "description_2": "des notifications",
+      "description_2": "des",
+      "description_3": "notifications",
       "monthly": "mensuelle",
-      "aggregate": "cumulé",
-      "total": "global",
+      "aggregate": "cumulée",
+      "total": "totales",
       "digital": "numériques",
       "analog": "analogiques",
       "tooltip": {
@@ -53,24 +60,35 @@
   },
 
   "entities": {
-    "title": "Entités sur SEND",
-    "description": "Entités participantes qui ont envoyé au moins une notification SEND depuis le lancement du service.",
+    "title": "Organismes sur SEND",
+    "description": "Organismes participants ayant envoyé au moins une notification SEND depuis le lancement du service.",
+    "screen_readers": "Période de données affichée:",
     "active": {
       "total": {
-        "title": "Total des entités sur SEND",
-        "description": "Nombre total des entités qui ont envoyé au moins une notification SEND."
+        "title": "Nombre total d’organismes sur SEND",
+        "description": "Nombre total d’organismes ayant envoyé au moins une notification SEND",
+        "description_1": "par rapport à l'année précédente"
       },
       "municipalities": {
-        "title": "Pourcentage de communes sur le total des entités sur SEND"
+        "title": "Pourcentage de communes par rapport au nombre total d’organismes sur SEND"
       },
       "geographic_distribution": {
-        "title": "Distribution géographique des communes sur SEND",
-        "description": "Le graphique montre la distribution des communes dans les différentes régions, la taille des bulles indique le volume des communes actives par région."
+        "title": "Répartition géographique des communes sur SEND",
+        "description": "Le graphique montre la répartition des communes adhérant à SEND, en tant que catégorie d'entités avec le plus grand nombre de membres.",
+        "description_1": "Afficher la valeur",
+        "absolute": {
+          "name": "absolue",
+          "description": "La taille des bulles indique le volume des communes actives par région."
+        },
+        "percentage": {
+          "name": "pourcentage",
+          "description": "La coloration montre le pourcentage de communes actives dans chaque région."
+        }
       },
       "tooltip": {
         "region": "Région",
         "municipalities": "Communes",
-        "percentage": "Pourcentage de communes par rapport au total des communes par région"
+        "percentage": "Pourcentage de communes par rapport au nombre total de communes dans la région"
       }
     }
   },
@@ -79,30 +97,34 @@
     "title": "Principaux domaines des notifications SEND",
     "description": "Catégories de notifications SEND les plus envoyées.",
     "main_scopes": {
-      "title": "Filtrer par type d'entité participante.",
-      "notes": "* différent/e de ceux dont la notification est exclue via SEND selon l'art. 26, alinéa 17 D.L. 76/2020"
+      "title": "Filtrer par type d’organisme participant",
+      "note_1": "* différent(e) de ceux dont la notification est exclue via SEND conformément à l’art. 26, alinéa 17 du D.L. 76/2020",
+      "note_2": "Le graphique inclut les principaux domaines avec un nombre de notifications envoyées égal ou supérieur à 5"
     },
     "tooltip": {
       "category": "Domaine",
       "notifications": "Notifications"
     },
     "tutte": {
-      "name": "Toutes"
+      "name": "Tous"
     },
     "comuni": {
       "name": "Communes"
     },
     "riscossori": {
-      "name": "Percepteurs et autres"
+      "name": "Collecteurs d’impôts et autres"
     },
     "altri_enti": {
-      "name": "Autres entités territoriales"
+      "name": "Autres autorités locales"
     },
     "province": {
       "name": "Provinces"
     },
     "regioni": {
       "name": "Régions"
+    },
+    "salute": {
+      "name": "Santé locale"
     },
     "comunali": {
       "name": "Entités communales"

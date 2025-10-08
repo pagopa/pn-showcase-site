@@ -1,7 +1,13 @@
-import { Typography } from "@mui/material";
+import { SxProps, Typography } from "@mui/material";
 import { dashboardColors } from "../shared/colors";
 
-export default function CardText({ children }: { children: React.ReactNode }) {
+export default function CardText({
+  children,
+  sx,
+}: {
+  children: React.ReactNode;
+  sx?: SxProps;
+}) {
   return (
     <Typography
       sx={{
@@ -9,6 +15,7 @@ export default function CardText({ children }: { children: React.ReactNode }) {
         fontWeight: 400,
         fontSize: "0.875rem",
         lineHeight: "1.125rem",
+        ...sx,
       }}
     >
       {children}

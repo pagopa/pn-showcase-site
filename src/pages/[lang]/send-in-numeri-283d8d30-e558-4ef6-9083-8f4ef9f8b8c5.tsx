@@ -1,6 +1,6 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from "next";
 
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import Script from "next/script";
 import { useState } from "react";
 import Head from "next/head";
@@ -15,7 +15,7 @@ import notificationsAnalogSpec from "../../components/Numeri/assets/data/notific
 import notificationsDigitalSpec from "../../components/Numeri/assets/data/notifications-digital.vl.json";
 import notificationsTotalSpec from "../../components/Numeri/assets/data/notifications-total.vl.json";
 import entitiesActiveSpec from "../../components/Numeri/assets/data/entities-active.vl.json";
-import municipalitiesActivePercSpec from "../../components/Numeri/assets/data/municipalities-active-perc.vl.json";
+import entitiesActivePercSpec from "../../components/Numeri/assets/data/entities-active-perc.vl.json";
 import pieChartDigitalSpec from "../../components/Numeri/assets/data/pie-chart-digital.vl.json";
 import { langCodes } from "@utils/constants";
 import Icons from "src/components/Numeri/components/Icons";
@@ -28,9 +28,7 @@ import { toVegaLiteSpec } from "src/components/Numeri/shared/toVegaLiteSpec";
 import CardText from "src/components/Numeri/components/CardText";
 import CardTitle from "src/components/Numeri/components/CardTitle";
 import KpiWrapper from "src/components/Numeri/components/KpiWrapper";
-import MapChart from "src/components/Numeri/components/MapChart";
 import NotificationsTypes from "src/components/Numeri/components/NotificationsTypes";
-import SquareBracketWrapper from "src/components/Numeri/components/SquareBracketWrapper";
 import SvgDefs from "src/components/Numeri/components/SvgDefs";
 
 import AlertWrapper from "src/components/Numeri/components/AlertWrapper";
@@ -39,6 +37,9 @@ import FormatKpi from "src/components/Numeri/components/FormatKpi";
 import FormatTitle from "src/components/Numeri/components/FormatTitle";
 import PieChartWrapper from "src/components/Numeri/components/PieChartWrapper";
 import { getVegaLocale } from "src/components/Numeri/shared/getVegaLocale";
+import KpiEntitiesPerc from "src/components/Numeri/components/KpiEntitiesPerc";
+import Maps from "src/components/Numeri/components/Maps";
+import { dashboardColors } from "src/components/Numeri/shared/colors";
 
 type Tabs = {
   id: number | null;
@@ -77,8 +78,6 @@ const years = Array.from({ length: numYear }, (_, i) => curYear - i).map(
   (y) => ({ id: y, label: String(y) })
 );
 
-const tabs: Array<Tabs> = [{ id: null, label: "Totale" }, ...years].reverse();
-
 const SendInNumbers = ({
   vegaLocale,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -95,6 +94,10 @@ const SendInNumbers = ({
     }
     setSelYear(tabs[tab].id);
   };
+  const tabs: Array<Tabs> = [
+    { id: null, label: t("total") },
+    ...years,
+  ].reverse();
 
   return (
     <>
@@ -121,25 +124,58 @@ const SendInNumbers = ({
         }}
         marginX={17.7}
       >
-        <Box component="header" sx={{ py: 11 }}>
-          <Stack
-            direction={{ xs: "column", md: "row" }}
-            spacing={{ xs: 6, md: 0 }}
-            justifyContent="space-between"
-            alignItems={"center"}
-          >
-            <Stack direction="column" spacing={2}>
-              <FormatEyelet>{t("hero.eyelet")}</FormatEyelet>
-              <FormatTitle>{t("hero.title")}</FormatTitle>
-              <LastUpdate>{t("hero.last_update", { ns: "numeri" })}</LastUpdate>
-            </Stack>
-            <Box flex={"0 0 32%"}>
-              <AlertWrapper buttonText={t("hero.website")}>
-                {t("hero.alert")}
-              </AlertWrapper>
-            </Box>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          spacing={{ xs: 6, md: 0 }}
+          justifyContent="space-between"
+          alignItems={"center"}
+          component="header"
+          sx={{ py: 11 }}
+        >
+          <Stack direction="column" spacing={2} flex={"0 0 52%"}>
+            <FormatEyelet>{t("hero.eyelet", { ns: "numeri" })}</FormatEyelet>
+            <FormatTitle>{t("hero.title", { ns: "numeri" })}</FormatTitle>
+            <Typography
+              component="p"
+              sx={{
+                color: dashboardColors.get("secondary"),
+                fontSize: "1.125rem",
+                fontWeight: 400,
+                lineHeight: "1.5rem",
+              }}
+            >
+              {t("hero.description", { ns: "numeri" }) + " "}
+              <Typography
+                component="span"
+                sx={{
+                  color: dashboardColors.get("secondary"),
+                  fontSize: "inherit",
+                  fontWeight: 600,
+                  lineHeight: "1.5rem",
+                }}
+              >
+                {t("hero.description_2", { ns: "numeri" })}
+              </Typography>
+              <Typography
+                component="span"
+                sx={{
+                  color: dashboardColors.get("secondary"),
+                  fontSize: "inherit",
+                  fontWeight: 400,
+                  lineHeight: "1.5rem",
+                }}
+              >
+                {t("hero.description_3", { ns: "numeri" })}
+              </Typography>
+            </Typography>
+            <LastUpdate>{t("hero.last_update", { ns: "numeri" })}</LastUpdate>
           </Stack>
-        </Box>
+          <Box flex={"0 0 32%"}>
+            <AlertWrapper buttonText={t("hero.website", { ns: "numeri" })}>
+              {t("hero.alert")}
+            </AlertWrapper>
+          </Box>
+        </Stack>
         <Box component="main" paddingTop={6}>
           <SectionLayout
             title={t("sent_notifications.title")}
@@ -153,7 +189,7 @@ const SendInNumbers = ({
               direction={{ xs: "column", sm: "row" }}
               spacing={{ xs: 2, md: 6 }}
             >
-              <Box sx={{ flex: "0 0 30.602%" }}>
+              <Box sx={{ flex: "0 0 30.602%", display: "flex" }}>
                 <KpiCard>
                   <Stack direction={"column"} spacing={2}>
                     <Icons.ForwardToInboxIcon />
@@ -163,9 +199,21 @@ const SendInNumbers = ({
                         yearSignal={selYear}
                       />
                     </FormatKpi>
-                    <CardTitle>{t("sent_notifications.total.title")}</CardTitle>
+                    <CardTitle>
+                      {selYear === null
+                        ? t("sent_notifications.total.title_2", {
+                            ns: "numeri",
+                          })
+                        : t("sent_notifications.total.title", { ns: "numeri" })}
+                    </CardTitle>
                     <CardText>
-                      {t("sent_notifications.total.description")}
+                      {selYear === null
+                        ? t("sent_notifications.total.description_2", {
+                            ns: "numeri",
+                          })
+                        : t("sent_notifications.total.description", {
+                            ns: "numeri",
+                          })}
                     </CardText>
                   </Stack>
                 </KpiCard>
@@ -210,10 +258,14 @@ const SendInNumbers = ({
                           </FormatKpi>
                         </Stack>
                         <CardTitle>
-                          {t("sent_notifications.digital.title")}
+                          {t("sent_notifications.digital.title", {
+                            ns: "numeri",
+                          })}
                         </CardTitle>
                         <CardText>
-                          {t("sent_notifications.digital.description")}
+                          {t("sent_notifications.digital.description", {
+                            ns: "numeri",
+                          })}
                         </CardText>
                       </Stack>
                       <Stack direction={"column"} spacing={1}>
@@ -247,7 +299,9 @@ const SendInNumbers = ({
                           {t("sent_notifications.analog.title")}
                         </CardTitle>
                         <CardText>
-                          {t("sent_notifications.analog.description")}
+                          {t("sent_notifications.analog.description", {
+                            ns: "numeri",
+                          })}
                         </CardText>
                       </Stack>
                     </Stack>
@@ -279,51 +333,39 @@ const SendInNumbers = ({
             >
               <Stack flex={"0 0 30.602%"} direction={"column"} spacing={6}>
                 <KpiCard>
-                  <Stack direction={"column"} spacing={1} width={"100%"}>
+                  <Stack direction={"column"} spacing={1}>
                     <Icons.AccountBalanceIcon />
-                    <CardTitle>{t("entities.active.total.title")}</CardTitle>
+                    <CardTitle>
+                      {t("entities.active.total.title", { ns: "numeri" })}
+                    </CardTitle>
                     <CardText>
-                      {t("entities.active.total.description")}
+                      {t("entities.active.total.description", {
+                        ns: "numeri",
+                      })}
                     </CardText>
                     <FormatKpi>
                       <KpiWrapper spec={toVegaLiteSpec(entitiesActiveSpec)} />
                     </FormatKpi>
-                  </Stack>
-                </KpiCard>
-                <KpiCard>
-                  <Stack direction={"column"} spacing={1} width={"100%"}>
-                    <Icons.ThingsToDoIcon />
-                    <CardTitle>
-                      {t("entities.active.municipalities.title")}
-                    </CardTitle>
-                    <FormatKpi>
-                      <SquareBracketWrapper>
-                        <KpiWrapper
-                          spec={toVegaLiteSpec(municipalitiesActivePercSpec)}
-                        />
-                      </SquareBracketWrapper>
-                    </FormatKpi>
+                    <KpiEntitiesPerc
+                      spec={toVegaLiteSpec(entitiesActivePercSpec)}
+                    >
+                      {t("entities.active.total.description_1", {
+                        ns: "numeri",
+                      })}
+                    </KpiEntitiesPerc>
                   </Stack>
                 </KpiCard>
               </Stack>
               <Box flex={"1 1 0"}>
                 <KpiCard>
-                  <Box marginBottom={1}>
-                    <CardTitle>
-                      {t("entities.active.geographic_distribution.title")}
-                    </CardTitle>
-                  </Box>
-                  <CardText>
-                    {t("entities.active.geographic_distribution.description")}
-                  </CardText>
-                  <MapChart />
+                  <Maps />
                 </KpiCard>
               </Box>
             </Stack>
           </SectionLayout>
           <SectionLayout
-            title={t("notification_types.title")}
-            text={t("notification_types.description")}
+            title={t("notification_types.title", { ns: "numeri" })}
+            text={t("notification_types.description", { ns: "numeri" })}
           >
             <NotificationsTypes />
           </SectionLayout>
