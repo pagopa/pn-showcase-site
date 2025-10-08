@@ -16,30 +16,35 @@ export interface OpeningDays {
 }
 
 export interface RaddOperator extends OpeningDays, Coordinates {
-  id: number;
+  locationId: string;
+  external_codes: string;
   denomination: string;
   type: string;
   city: string;
   address: string;
   normalizedAddress: string;
   province: string;
-  region: string;
   cap: string;
   contacts: string;
   distance?: number;
-  caf_opening_hours?: string;
+  rawOpeningHours: string;
+  appointmentRequired: boolean;
+  email: string;
+  website: string;
 }
 
 export interface Point {
+  locationId: string;
+  codici_esterni: string;
   descrizione: string;
   tipologia: string;
   città: string;
-  via: string;
-  indirizzo_AWS: string;
+  indirizzo_originale: string;
+  indirizzo_normalizzato: string;
   provincia: string;
   regione: string;
   cap: string;
-  telefono: string;
+  telefoni: string;
   lunedi: string;
   martedi: string;
   mercoledi: string;
@@ -49,15 +54,11 @@ export interface Point {
   domenica: string;
   latitudine: string;
   longitudine: string;
-  caf_orari_apertura?: string;
+  orari_apertura: string;
+  richiede_appuntamento: string;
+  email: string;
+  website: string;
 }
-
-export type PaginationData = {
-  size: number;
-  totalElements: number;
-  numOfDisplayedPages: number;
-  currentPage: number;
-};
 
 // localization //
 export type LangCode = (typeof langCodes)[number];
@@ -92,3 +93,5 @@ interface Address {
   PostalCode?: string;
   Street?: string;
 }
+
+export type OptionType = { id: string | number; label: string };

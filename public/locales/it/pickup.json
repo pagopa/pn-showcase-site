@@ -15,11 +15,12 @@
   "how-it-works": "Scopri come funziona",
   "drawer": {
     "book-alert-title": "Prenota il tuo appuntamento al CAF",
+    "required-book-alert-title": "Questo CAF riceve solo su appuntamento",
     "book-alert-description": "Evita le attese, prenota e ricevi assistenza senza fare la fila.",
     "address": "Indirizzo",
     "address-copied": "Indirizzo copiato negli appunti",
     "opening-hours": "Orari di apertura",
-    "phone-number": "Numero di telefono",
+    "contacts": "Contatti",
     "get-directions": "Ottieni indicazioni",
     "copy-informations": "Copia informazioni",
     "reservation-call": "Per prenotare chiama il",
@@ -31,7 +32,10 @@
       "friday": "Venerdì",
       "saturday": "Sabato",
       "sunday": "Domenica"
-    }
+    },
+    "or": "o",
+    "location-id": "ID sede CAF",
+    "external-codes": "Codici associati alla sede"
   },
   "show-more": "Carica altri risultati",
   "show-details": "Mostra dettagli",
@@ -44,7 +48,8 @@
     "fetch-error": "Qualcosa non va nel caricamento degli indirizzi. Riprova.",
     "empty-state-title": "Non ci sono corrispondenze da mostrare",
     "empty-state-description": "Controlla i dati inseriti oppure inserisci un altro indirizzo o città.",
-    "current-position": "Posizione attuale"
+    "current-position": "Posizione attuale",
+    "current-position-cta": "Usa posizione attuale"
   },
   "geolocation-not-supported": "Questo browser non supporta la geolocalizzazione. Prova ad accedere con un altro browser per continuare.",
   "geolocation-error": "Si è verificato un problema con la geolocalizzazione. Ricarica la pagina e riprova.",
