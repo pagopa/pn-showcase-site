@@ -19,10 +19,8 @@ export interface RaddOperator extends OpeningDays, Coordinates {
   locationId: string;
   external_codes: string;
   denomination: string;
-  type: string;
   city: string;
   address: string;
-  normalizedAddress: string;
   province: string;
   cap: string;
   contacts: string;
@@ -39,8 +37,7 @@ export interface Point {
   descrizione: string;
   tipologia: string;
   città: string;
-  indirizzo_originale: string;
-  indirizzo_normalizzato: string;
+  indirizzo: string;
   provincia: string;
   regione: string;
   cap: string;
