@@ -17,6 +17,7 @@ import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
 import { MapRef } from "react-map-gl/maplibre";
+import Head from "next/head";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -108,6 +109,10 @@ const PickupPointsPage: NextPage = () => {
         type="text/javascript"
         id="iframe-resizer-child"
       />
+
+      <Head>
+        <meta name="robots" content="noindex,nofollow" />
+      </Head>
 
       {!fetchError ? (
         <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>

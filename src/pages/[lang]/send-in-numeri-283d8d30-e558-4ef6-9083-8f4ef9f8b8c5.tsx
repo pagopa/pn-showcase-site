@@ -15,6 +15,7 @@ import { curYear, firstYear } from "../../components/Numeri/shared/constants";
 import Tabs from "../../components/Tabs";
 import { useTranslation } from "../../hook/useTranslation";
 import { LangCode } from "../../model";
+import Head from "next/head";
 
 type Tabs = {
   id: number | null;
@@ -70,6 +71,10 @@ const SendInNumbers: NextPage = () => {
         type="text/javascript"
         id="iframe-resizer-child"
       />
+
+      <Head>
+        <meta name="robots" content="noindex,nofollow" />
+      </Head>
 
       <Box mt={8}>
         <Typography

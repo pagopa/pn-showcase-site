@@ -1,4 +1,0 @@
-User-agent: *
-
-Disallow: /*/mappa-punti-di-ritiro
-Disallow: /*/send-in-numeri-283d8d30-e558-4ef6-9083-8f4ef9f8b8c5
