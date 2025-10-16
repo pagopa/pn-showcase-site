@@ -108,10 +108,10 @@
     "comuni": {
       "name": "Občine"
     },
-    "riscossori": {
+    "riscossori_e_altro": {
       "name": "Izterjivalci in drugi"
     },
-    "altri_enti": {
+    "altri_enti_territoriali": {
       "name": "Druge teritorialne organizacije"
     },
     "province": {
@@ -120,23 +120,41 @@
     "regioni": {
       "name": "Regije"
     },
-    "salute": {
+    "salute_locale": {
       "name": "Lokalno zdravstvo"
     },
     "comunali": {
       "name": "Občinske organizacije"
     },
-    "ordini": {
+    "ordini,_collegi_e_consigli_professionali": {
       "name": "Redovi, kolegiji in strokovni sveti"
     },
-    "amministrazioni": {
+    "pubbliche_amministrazioni_centrali": {
       "name": "Centralne javne uprave"
     },
-    "universita": {
+    "università": {
       "name": "Univerze"
     },
-    "consorzi": {
+    "consorzi_universitari": {
       "name": "Univerzitetni konzorciji"
+    },
+    "aci": {
+      "name": "ACI"
+    },
+    "ricerca": {
+      "name": "Raziskave"
+    },
+    "salute_centrale": {
+      "name": "Centralno zdravstvo"
+    },
+    "salute_regionale": {
+      "name": "Regionalno zdravstvo"
+    },
+    "salute_servizi": {
+      "name": "Zdravstvene storitve"
+    },
+    "scuola": {
+      "name": "Šola"
     }
   }
 }

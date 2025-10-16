@@ -111,10 +111,10 @@
     "comuni": {
       "name": "Communes"
     },
-    "riscossori": {
+    "riscossori_e_altro": {
       "name": "Collecteurs d’impôts et autres"
     },
-    "altri_enti": {
+    "altri_enti_territoriali": {
       "name": "Autres autorités locales"
     },
     "province": {
@@ -123,23 +123,41 @@
     "regioni": {
       "name": "Régions"
     },
-    "salute": {
+    "salute_locale": {
       "name": "Santé locale"
     },
     "comunali": {
       "name": "Entités communales"
     },
-    "ordini": {
+    "ordini,_collegi_e_consigli_professionali": {
       "name": "Ordres, collèges et conseils professionnels"
     },
-    "amministrazioni": {
+    "pubbliche_amministrazioni_centrali": {
       "name": "Administrations publiques centrales"
     },
-    "universita": {
+    "università": {
       "name": "Universités"
     },
-    "consorzi": {
+    "consorzi_universitari": {
       "name": "Consortiums universitaires"
+    },
+    "aci": {
+      "name": "ACI"
+    },
+    "ricerca": {
+      "name": "Recherche"
+    },
+    "salute_centrale": {
+      "name": "Santé centrale"
+    },
+    "salute_regionale": {
+      "name": "Santé régionale"
+    },
+    "salute_servizi": {
+      "name": "Services de santé"
+    },
+    "scuola": {
+      "name": "École"
     }
   }
 }

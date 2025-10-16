@@ -111,10 +111,10 @@
     "comuni": {
       "name": "Comuni"
     },
-    "riscossori": {
+    "riscossori_e_altro": {
       "name": "Riscossori e altro"
     },
-    "altri_enti": {
+    "altri_enti_territoriali": {
       "name": "Altri enti territoriali"
     },
     "province": {
@@ -123,23 +123,41 @@
     "regioni": {
       "name": "Regioni"
     },
-    "salute": {
+    "salute_locale": {
       "name": "Salute locale"
     },
     "comunali": {
       "name": "Enti comunali"
     },
-    "ordini": {
+    "ordini,_collegi_e_consigli_professionali": {
       "name": "Ordini, collegi e consigli professionali"
     },
-    "amministrazioni": {
+    "pubbliche_amministrazioni_centrali": {
       "name": "Pubbliche amministrazioni centrali"
     },
-    "universita": {
+    "università": {
       "name": "Università"
     },
-    "consorzi": {
+    "consorzi_universitari": {
       "name": "Consorzi universitari"
+    },
+    "aci": {
+      "name": "ACI"
+    },
+    "ricerca": {
+      "name": "Ricerca"
+    },
+    "salute_centrale": {
+      "name": "Salute centrale"
+    },
+    "salute_regionale": {
+      "name": "Salute regionale"
+    },
+    "salute_servizi": {
+      "name": "Salute servizi"
+    },
+    "scuola": {
+      "name": "Scuola"
     }
   }
 }

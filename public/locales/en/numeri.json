@@ -111,10 +111,10 @@
     "comuni": {
       "name": "Municipalities"
     },
-    "riscossori": {
+    "riscossori_e_altro": {
       "name": "Tax collectors and others"
     },
-    "altri_enti": {
+    "altri_enti_territoriali": {
       "name": "Other local authorities"
     },
     "province": {
@@ -123,23 +123,41 @@
     "regioni": {
       "name": "Regions"
     },
-    "salute": {
+    "salute_locale": {
       "name": "Local Healthcare"
     },
     "comunali": {
       "name": "Municipal entities"
     },
-    "ordini": {
+    "ordini,_collegi_e_consigli_professionali": {
       "name": "Professional orders, associations and councils"
     },
-    "amministrazioni": {
+    "pubbliche_amministrazioni_centrali": {
       "name": "Central public administrations"
     },
-    "universita": {
+    "università": {
       "name": "Universities"
     },
-    "consorzi": {
+    "consorzi_universitari": {
       "name": "University consortia"
+    },
+    "aci": {
+      "name": "ACI"
+    },
+    "ricerca": {
+      "name": "Research"
+    },
+    "salute_centrale": {
+      "name": "Central Healthcare"
+    },
+    "salute_regionale": {
+      "name": "Regional Healthcare"
+    },
+    "salute_servizi": {
+      "name": "Healthcare Services"
+    },
+    "scuola": {
+      "name": "School"
     }
   }
 }

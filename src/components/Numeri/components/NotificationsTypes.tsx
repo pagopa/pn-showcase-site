@@ -1,40 +1,34 @@
 import { Box, MenuItem, Select, Stack, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TopLevelSpec } from "vega-lite";
 import { useTranslation } from "../../../hook/useTranslation";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import topAreasSpec from "../assets/data/top-areas.vl.json";
 import { dashboardColors } from "../shared/colors";
+import { url } from "../shared/constants";
+import type { SectionTwoData } from "../shared/jsonTypes";
 import CardText from "./CardText";
 import KpiCard from "./KpiCard";
-
 import NotificationsTypesChart from "./NotificationsTypesChart";
 
-const categoriesMap = new Map([
-  ["tutte", null],
-  ["altri_enti", "Altri enti territoriali"],
-  ["comuni", "Comuni"],
-  ["consorzi", "Consorzi universitari"],
-  ["comunali", "Enti comunali"],
-  ["ordini", "Ordini, collegi e consigli professionali"],
-  ["province", "Province"],
-  ["amministrazioni", "Pubbliche amministrazioni centrali"],
-  ["regioni", "Regioni"],
-  ["riscossori", "Riscossori e altro"],
-  ["salute", "Salute locale"],
-  ["universita", "Università"],
-]);
-
-type OptionsCategories = {
-  tag: string;
-  label: string | null;
-};
-const options: Array<OptionsCategories> = Array.from(
-  categoriesMap.entries()
-).map(([tag, label]) => ({ tag, label }));
+function generateTag(str: string | null): string {
+  if (str === null) {
+    return "tutte";
+  }
+  return str.toLowerCase().replace(/ /g, "_");
+}
 
 const NotificationsTypes = () => {
   const { t } = useTranslation(["numeri"]);
+  const [categories, setCategories] = useState<Record<
+    string,
+    string | null
+  > | null>(null);
+  const [curOption, setCurOption] = useState<string>("tutte");
+
+  const handleOptions = (id: string) => {
+    setCurOption(id);
+  };
 
   function translateTooltip(spec: TopLevelSpec) {
     if (!("layer" in spec)) {
@@ -87,11 +81,36 @@ const NotificationsTypes = () => {
     } as TopLevelSpec;
   }
 
-  const [curOption, setCurOption] = useState<string>(options[0].tag);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(url);
+        const jsonData: SectionTwoData = await response.json();
+        const cat = jsonData.top10_ambiti.reduce(
+          (acc: Record<string, string | null>, item) => {
+            if (!(generateTag(item.categoria_ente) in acc)) {
+              acc[generateTag(item.categoria_ente)] = item.categoria_ente;
+            }
+            return acc;
+          },
+          {}
+        );
+        setCategories(cat);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    void fetchData();
+  }, []);
 
-  const handleOptions = (id: string) => {
-    setCurOption(id);
-  };
+  if (!categories) {
+    return null;
+  }
+  const optionCategories = Object.entries(categories).map(([tag, label]) => ({
+    tag,
+    label,
+  }));
+
   return (
     <Box sx={{ height: "49rem" }}>
       <KpiCard>
@@ -112,7 +131,7 @@ const NotificationsTypes = () => {
               value={curOption}
               onChange={(e: any) => handleOptions(e.target.value)}
             >
-              {options.map((option) => (
+              {optionCategories.map((option) => (
                 <MenuItem
                   key={option.tag}
                   value={option.tag}
@@ -128,7 +147,7 @@ const NotificationsTypes = () => {
 
           <NotificationsTypesChart
             spec={translateTooltip(toVegaLiteSpec(topAreasSpec))}
-            categorySignal={categoriesMap.get(curOption) ?? null}
+            categorySignal={categories[curOption] ?? null}
           />
           <Typography
             sx={{

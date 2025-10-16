@@ -1,2 +1,4 @@
 export const curYear = new Date().getFullYear();
 export const firstYear = curYear - 2;
+export const url =
+  "https://gist.githubusercontent.com/StefanoFrontini/a71f6def4ea6f834bb1ae53984c816b9/raw/47eacce73f19dff1d20e42a8629934477fc3c00a/dashboard-send-sezione2.json";
