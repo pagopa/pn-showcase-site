@@ -1,0 +1,60 @@
+{
+  "title": "SEND - Servizio Notifiche Digitali | SEND en chiffres",
+  "description": "Découvrez les données sur les notifications envoyées, les entités qui utilisent SEND et les types de services",
+  "hero": {
+    "title": "SEND en chiffres",
+    "last_update": "Dernière mise à jour"
+  },
+  "total": "Total",
+  "sent_notifications": {
+    "title": "Notifications envoyées",
+    "description": "Les données suivantes se réfèrent aux notifications envoyées par les organismes de l’administration publique",
+    "total": {
+      "name": "au total",
+      "title": "Total notifications",
+      "description": "Notifications envoyées via SEND"
+    },
+    "digital": {
+      "name": "numériques",
+      "title": "Total notifications numériques",
+      "description": "Notifications envoyées aux destinataires via les canaux numériques"
+    },
+    "analog": {
+      "name": "analogiques",
+      "title": "Total notifications analogiques",
+      "description": "Notifications envoyées aux destinataires par lettre recommandée au format papier"
+    },
+    "trend": {
+      "title": "Évolution des notifications",
+      "description_1": "Évolution",
+      "description_2": "des notifications",
+      "monthly": "mensuelle",
+      "aggregate": "cumulative"
+    }
+  },
+  "authorities_and_types": {
+    "title": "Organismes et typologies de notifications envoyées",
+    "description": "Les données suivantes montrent combien d’organismes utilisent SEND et pour quel type de services",
+    "authorities": {
+      "total": {
+        "title": "Total organismes activés",
+        "description": "Organismes ayant envoyé au moins une notification"
+      },
+      "main_cat": {
+        "title": "Principales catégories d’organismes activés",
+        "description": "Catégories d’organismes classées par nombre d’organismes activés"
+      }
+    },
+    "notification_types": {
+      "total": {
+        "title": "Typologies de notifications envoyées",
+        "description": "Le typologie représente la sphère à laquelle appartient la notification (ex. : amendes, taxes, registre, etc.)"
+      },
+      "main_scopes": {
+        "title": "Domaines principaux",
+        "description": "Services classés par nombre de notifications déposées depuis l’adoption de SEND",
+        "notes": "* autre que ceux dont la notification est exclue via SEND en vertu de l’article 26, alinéa 17 du D.L. 76/2020"
+      }
+    }
+  }
+}

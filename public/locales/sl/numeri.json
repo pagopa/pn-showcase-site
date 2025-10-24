@@ -1,0 +1,60 @@
+{
+  "title": "SEND - Servizio Notifiche Digitali | Številke SEND",
+  "description": "Odkrijte podatke v zvezi s poslanimi obvestili, organizacijami, ki uporabljajo SEND, in vrstami podatkovnih storitev",
+  "hero": {
+    "title": "SEND v številkah",
+    "last_update": "Zadnja posodobitev"
+  },
+  "total": "Skupno",
+  "sent_notifications": {
+    "title": "Poslana obvestila",
+    "description": "Naslednji podatki se nanašajo na obvestila subjektov javne uprave",
+    "total": {
+      "name": "skupno",
+      "title": "Skupaj obvestila",
+      "description": "Obvestila poslana prek SEND"
+    },
+    "digital": {
+      "name": "digitalna",
+      "title": "Skupaj digitalna obvestila",
+      "description": "Obvestila, poslana prejemnikom prek digitalnih kanalov"
+    },
+    "analog": {
+      "name": "analogna",
+      "title": "Skupaj analogna obvestila",
+      "description": "Obvestila poslana prejemnikom s priporočenim pismom v papirni obliki."
+    },
+    "trend": {
+      "title": "Napredovanje obvestil",
+      "description_1": "Napredovanje",
+      "description_2": "obvestil",
+      "monthly": "mesečno",
+      "aggregate": "skupno"
+    }
+  },
+  "authorities_and_types": {
+    "title": "Organizacije in vrste poslanih obvestil",
+    "description": "Naslednji podatki prikazujejo, koliko organizacij uporablja SEND in za katere vrste storitev",
+    "authorities": {
+      "total": {
+        "title": "Skupno število aktivnih organizacij",
+        "description": "Organizacije, ki so poslale vsaj eno obvestilo"
+      },
+      "main_cat": {
+        "title": "Glavne kategorije aktivnih organizacij",
+        "description": "Kategorije organizacij, razvrščene po številu aktivnih organizacij"
+      }
+    },
+    "notification_types": {
+      "total": {
+        "title": "Vrste poslanih obvestil",
+        "description": "Vrsta predstavlja področje, kateri pripada obvestilo (npr. globe, davki, matični urad itd.)"
+      },
+      "main_scopes": {
+        "title": "Glavna področja",
+        "description": "Storitve razvrščene po številu obvestil, vloženih od sprejetja SEND",
+        "notes": "* drugačen od tistih, katerih obveščanje je izključeno iz SEND v skladu s členom 26, odstavek 17, zakonskega odloka št. 76/2020"
+      }
+    }
+  }
+}

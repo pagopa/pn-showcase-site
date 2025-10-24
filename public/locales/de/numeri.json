@@ -1,0 +1,60 @@
+{
+  "title": "SEND - Servizio Notifiche Digitali | SEND in Zahlen",
+  "description": "Daten über die gesendeten Zustellungen, über die Körperschaften, die SEND nutzen, und über die Arten der erbrachten Dienste",
+  "hero": {
+    "title": "SEND in Zahlen",
+    "last_update": "Letzte Aktualisierung"
+  },
+  "total": "Gesamt",
+  "sent_notifications": {
+    "title": "Gesendete Zustellungen",
+    "description": "Die folgenden Daten beziehen sich auf die Zustellungen von Körperschaften der öffentlichen Verwaltung",
+    "total": {
+      "name": "insgesamt",
+      "title": "Zustellungen insgesamt",
+      "description": "Über SEND gesendete Zustellungen"
+    },
+    "digital": {
+      "name": "digital",
+      "title": "Digitale Zustellungen insgesamt",
+      "description": "Über digitale Kanäle an die Empfänger gesendete Zustellungen"
+    },
+    "analog": {
+      "name": "analog",
+      "title": "Analoge Zustellungen insgesamt",
+      "description": "Per Einschreiben in Papierform an die Empfänger gesendete Zustellungen"
+    },
+    "trend": {
+      "title": "Verlauf der Zustellungen",
+      "description_1": "Verlauf",
+      "description_2": "der Zustellungen",
+      "monthly": "monatlich",
+      "aggregate": "kumulativ"
+    }
+  },
+  "authorities_and_types": {
+    "title": "Körperschaften und Art der gesendeten Zustellungen",
+    "description": "Folgende Daten zeigen, wie viele Körperschaften SEND nutzen und für welche Art von Dienstleistungen",
+    "authorities": {
+      "total": {
+        "title": "Aktive Körperschaften insgesamt",
+        "description": "Körperschaften, die mindestens eine Zustellung gesendet haben"
+      },
+      "main_cat": {
+        "title": "Hauptkategorien aktiver Körperschaften",
+        "description": "Nach Anzahl aktiver Körperschaften sortierte Körperschaftskategorien"
+      }
+    },
+    "notification_types": {
+      "total": {
+        "title": "Art der gesendeten Zustellungen",
+        "description": "Die Art steht für den Zuständigkeitsbereich der Zustellung (z.B. Bußgelder, Steuern, Register usw.)."
+      },
+      "main_scopes": {
+        "title": "Wichtigste Bereiche",
+        "description": "Nach Anzahl hinterlegter Zustellungen ab Einführung von SEND sortierte Dienste",
+        "notes": "* hiervon ausgenommen sind diejenigen, deren Zustellung durch SEND gemäß Art.26, Abs. 17 des GvD 76/2020 ausgeschlossen ist"
+      }
+    }
+  }
+}

@@ -33,3 +33,9 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# store locator csv
+/public/static/documents/radd-stores-registry.csv
+
+# conf
+/public/conf/config.json

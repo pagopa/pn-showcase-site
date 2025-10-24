@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 120,
+  "height": 116,
+  "data": {
+    "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione1.json",
+    "format": { "property": "totale_notifiche" }
+  },
+  "params": [{ "name": "year", "value": null }],
+  "transform": [
+    { "filter": "year == datum.year || year === +datum.year" },
+    {
+      "calculate": "datum.type_notification == 'ANALOG' ? 'Analogica' : 'Digitale'",
+      "as": "type"
+    }
+  ],
+  "mark": "arc",
+  "encoding": {
+    "theta": { "field": "num_iun", "type": "quantitative" },
+    "color": {
+      "field": "type",
+      "type": "nominal",
+      "legend": null,
+      "scale": {
+        "domain": ["Digitale", "Analogica"],
+        "range": ["#D9D9D9", "#0073E6"]
+      }
+    },
+    "tooltip": [
+      { "field": "type", "type": "nominal", "title": "Tipo di notifica" },
+      {
+        "field": "num_iun",
+        "type": "quantitative",
+        "title": "Numero di notifiche"
+      }
+    ]
+  },
+  "view": { "stroke": null }
+}

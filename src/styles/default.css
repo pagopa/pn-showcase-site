@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Titillium Web", sans-serif;
+  color: #17324d;
+}
+
+.showcasePadding .MuiContainer-root {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.MuiPopperUnstyled-root .MuiAutocomplete-paper {
+  box-shadow: 5px 5px 20px 0px #e1e0e0;
+}
+
+.MuiOutlinedInput-root:has(#textFilter) {
+  padding-right: 0;
+}

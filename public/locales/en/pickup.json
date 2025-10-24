@@ -1,0 +1,32 @@
+{
+  "title": "SEND - Servizio Notifiche digitali | SEND collection points",
+  "description": "Search for the SEND collection point closest to you to collect a copy of the notified documents or discover if there is a notification of receipt intended for you",
+  "search": {
+    "title": "Find a SEND collection point",
+    "description_1": "When you receive a legal communication via SEND, you can collect a printed copy of the notified documents at ",
+    "description_2": "participating merchants",
+    "description_3": "Search for the collection point closest to you.",
+    "disclaimer": "Currently you can only search for collection points located in the Municipalities of Bari, Taranto and Parma: the service is being activated progressively in the rest of the country.",
+    "placeholder": "Search by city or ZIP CODE",
+    "empty_state": " There are no SEND collection points active in this city."
+  },
+  "infoblock": {
+    "title": "What to bring with you",
+    "description": "To collect the notified documents, you will always need your identity card and your tax code.",
+    "details_text": "For more details, learn about",
+    "details_link_text": "how the SEND collection points function"
+  },
+  "how_it_works": {
+    "title": "SEND - Servizio Notifiche digitali | How the collection points function",
+    "description": "Learn about how the service functions for collecting a copy of the legal communication that you receive via SEND in the territory"
+  },
+  "days": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday"
+  }
+}
