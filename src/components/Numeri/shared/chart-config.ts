@@ -1,19 +1,12 @@
-import { expressionFunction, formatLocale, timeFormatLocale } from "vega";
+import { expressionFunction } from "vega";
 import { EmbedOptions } from "vega-embed";
 
 // BUG: https://github.com/vega/vega-embed/issues/473
 // vega.expressionInterpreter = expressionInterpreter;
 
-import itLocale from "../assets/data/it-IT-locale.json";
-import itTimeLocale from "../assets/data/it-IT-time-locale.json";
-
 import italiaTheme from "../assets/data/italia-theme.json";
 
 import { cacheLoader } from "./vega-cache-loader";
-
-// Set default locale
-formatLocale({ ...itLocale, nan: "–" });
-timeFormatLocale(itTimeLocale);
 
 // Add custom expressions
 // REF: https://github.com/vega/vega/issues/3207
@@ -28,6 +21,7 @@ const chartConfig: EmbedOptions = {
       fontWeight: 600,
       anchor: "start",
     },
+
     header: {
       ...italiaTheme.header,
       title: null,

@@ -4,58 +4,160 @@
   "hero": {
     "eyelet": "Dati e performance",
     "title": "Scopri i numeri di SEND",
-    "last_update": "Ultimo aggiornamento"
+    "description": "In questa pagina sono disponibili i dati relativi alla piattaforma delle notifiche",
+    "description_2": "SEND",
+    "description_3": ", aggiornati quotidianamente.",
+    "last_update": "Ultimo aggiornamento",
+    "alert": "I dati sono disponibili su dati.gov.it",
+    "website": "Vai al sito"
   },
   "total": "Totale",
   "sent_notifications": {
-    "title": "Notifiche inviate",
-    "description": "I seguenti dati si riferiscono alle notifiche inviate dagli enti della pubblica amministrazione",
+    "title": "Notifiche SEND inviate",
+    "description": "La notifica SEND è una comunicazione a valore legale emessa in via ufficiale da un'amministrazione. Può essere recapitata in modalità digitale o analogica.",
+    "filters": "Tramite i selettori sotto riportati, è possibile filtrare solo questa sezione per il periodo di riferimento desiderato.",
+    "screen_readers": "Periodo dati visualizzato:",
     "total": {
       "name": "complessive",
-      "title": "Totale notifiche",
-      "description": "Notifiche inviate tramite SEND"
+      "title": "Totale notifiche inviate",
+      "description": "Totale delle notifiche inviate nel periodo di riferimento considerato.",
+      "title_2": "Totale notifiche inviate da Luglio 2023",
+      "description_2": "Totale delle notifiche inviate dal primo anno di operatività della piattaforma."
     },
     "digital": {
       "name": "digitali",
-      "title": "Totale notifiche digitali",
-      "description": "Notifiche inviate ai destinatari tramite canali digitali"
+      "title": "Numero di notifiche SEND digitali",
+      "description": "Notifiche SEND trasmesse ai destinatari tramite canali digitali certificati."
     },
     "analog": {
       "name": "analogiche",
-      "title": "Totale notifiche analogiche",
-      "description": "Notifiche inviate ai destinatari tramite raccomandata cartacea"
+      "title": "Numero di notifiche SEND analogiche",
+      "description": "Notifiche SEND trasmesse in modalità analogica per assenza di canali digitali certificati del destinatario."
+    },
+    "pieChart": {
+      "tooltip": {
+        "type": "Tipo di notifica",
+        "number": "Numero di notifiche"
+      }
     },
     "trend": {
-      "title": "Andamento delle notifiche",
+      "title": "Andamento delle notifiche SEND",
+      "description": "Andamento del numero di notifiche inviate tramite SEND dagli enti aderenti.",
       "description_1": "Andamento",
-      "description_2": "delle notifiche",
+      "description_2": "delle",
+      "description_3": "notifiche",
       "monthly": "mensile",
-      "aggregate": "cumulato"
+      "aggregate": "cumulato",
+      "total": "complessivo",
+      "digital": "digitali",
+      "analog": "analogiche",
+      "tooltip": {
+        "month": "Mese",
+        "aggregate": "Notifiche cumulate",
+        "monthly": "Notifiche mensili"
+      },
+      "note": "Il valore cumulato è la somma progressiva di una quantità nel tempo."
     }
   },
-  "authorities_and_types": {
-    "title": "Enti e tipologie di notifica inviate",
-    "description": "I seguenti dati mostrano quanti Enti stanno utilizzando SEND e per quale tipologia di servizi",
-    "authorities": {
+
+  "entities": {
+    "title": "Enti su SEND",
+    "description": "Enti aderenti che hanno inviato almeno una notifica SEND dall'avvio del servizio.",
+    "active": {
       "total": {
-        "title": "Totale enti attivi",
-        "description": "Enti che hanno inviato almeno una notifica"
+        "title": "Totale enti su SEND",
+        "description": "Numero complessivo degli enti che hanno inviato almeno una notifica SEND.",
+        "description_1": "rispetto all'anno precedente"
       },
-      "main_cat": {
-        "title": "Principali categorie di enti attivi",
-        "description": "Categorie di enti ordinate per numero di enti attivi"
+      "municipalities": {
+        "title": "Percentuale di comuni sul totale degli enti su SEND"
+      },
+      "geographic_distribution": {
+        "title": "Distribuzione geografica dei comuni su SEND",
+        "description": "Il grafico mostra la distribuzione dei comuni che hanno inviato almeno una notifica SEND.",
+        "description_1": "Visualizza valore",
+        "absolute": {
+          "name": "assoluto",
+          "description": "La dimensione delle bolle indica il volume dei comuni attivi per regione."
+        },
+        "percentage": {
+          "name": "percentuale",
+          "description": "La colorazione mostra la percentuale di comuni attivi in ciascuna regione."
+        }
+      },
+      "tooltip": {
+        "region": "Regione",
+        "municipalities": "Comuni",
+        "percentage": "Percentuale comuni rispetto al totale dei comuni per regione."
       }
+    }
+  },
+
+  "notification_types": {
+    "title": "Principali ambiti di notifiche SEND",
+    "description": "Numero di notifiche SEND inviate suddivise per categoria ed ambito.",
+    "main_scopes": {
+      "title": "Filtra per tipologia di ente aderente.",
+      "note_1": "* è rimessa all'ente aderente la verifica che l'atto non rientri tra quelli la cui notificazione è esclusa tramite SEND ai sensi dell’art.26, comma 17 D.L. 76/2020.",
+      "note_2": "La rappresentazione include i principali ambiti con un numero di notifiche inviate uguale o superiore a 5."
     },
-    "notification_types": {
-      "total": {
-        "title": "Tipologie di notifiche inviate",
-        "description": "La tipologia rappresenta la sfera di appartenenza della notifica (es. multe, tributi, anagrafe etc.)"
-      },
-      "main_scopes": {
-        "title": "Principali ambiti",
-        "description": "Servizi ordinati per numero di notifiche depositate a partire dall'adozione di SEND",
-        "notes": "* diversa/o da quelli la cui notificazione è esclusa tramite SEND ai sensi dell’art.26, comma 17 D.L. 76/2020"
-      }
+    "tooltip": {
+      "category": "Ambito",
+      "notifications": "Notifiche"
+    },
+    "tutte": {
+      "name": "Tutte"
+    },
+    "comuni": {
+      "name": "Comuni"
+    },
+    "riscossori_e_altro": {
+      "name": "Riscossori e altro"
+    },
+    "altri_enti_territoriali": {
+      "name": "Altri enti territoriali"
+    },
+    "province": {
+      "name": "Province"
+    },
+    "regioni": {
+      "name": "Regioni"
+    },
+    "salute_locale": {
+      "name": "Salute locale"
+    },
+    "comunali": {
+      "name": "Enti comunali"
+    },
+    "ordini,_collegi_e_consigli_professionali": {
+      "name": "Ordini, collegi e consigli professionali"
+    },
+    "pubbliche_amministrazioni_centrali": {
+      "name": "Pubbliche amministrazioni centrali"
+    },
+    "università": {
+      "name": "Università"
+    },
+    "consorzi_universitari": {
+      "name": "Consorzi universitari"
+    },
+    "aci": {
+      "name": "ACI"
+    },
+    "ricerca": {
+      "name": "Ricerca"
+    },
+    "salute_centrale": {
+      "name": "Salute centrale"
+    },
+    "salute_regionale": {
+      "name": "Salute regionale"
+    },
+    "salute_servizi": {
+      "name": "Salute servizi"
+    },
+    "scuola": {
+      "name": "Scuola"
     }
   }
 }

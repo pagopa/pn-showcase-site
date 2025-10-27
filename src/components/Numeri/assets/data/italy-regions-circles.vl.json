@@ -1,0 +1,102 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": "container",
+  "padding": 5,
+
+  "datasets": {
+    "regions_coordinates": [
+      { "regione": "Marche", "longitude": 13.5765, "latitude": 43.6167 },
+      { "regione": "Liguria", "longitude": 8.93, "latitude": 44.4115 },
+      { "regione": "Veneto", "longitude": 11.8768, "latitude": 45.4345 },
+      { "regione": "Lombardia", "longitude": 9.69, "latitude": 45.4642 },
+      { "regione": "Molise", "longitude": 14.6667, "latitude": 41.6667 },
+      { "regione": "Lazio", "longitude": 12.4964, "latitude": 41.9028 },
+      { "regione": "Piemonte", "longitude": 7.6869, "latitude": 45.0703 },
+      {
+        "regione": "Trentino-Alto Adige/Südtirol",
+        "longitude": 11.1217,
+        "latitude": 46.4993
+      },
+      { "regione": "Sicilia", "longitude": 13.3615, "latitude": 38.1157 },
+      { "regione": "Abruzzo", "longitude": 13.6184, "latitude": 42.3512 },
+      { "regione": "Campania", "longitude": 14.2681, "latitude": 40.8518 },
+      { "regione": "Calabria", "longitude": 16.255, "latitude": 39.3088 },
+      {
+        "regione": "Emilia-Romagna",
+        "longitude": 11.3426,
+        "latitude": 44.4949
+      },
+      { "regione": "Toscana", "longitude": 11.2558, "latitude": 43.4696 },
+      { "regione": "Basilicata", "longitude": 15.805, "latitude": 40.6395 },
+      { "regione": "Sardegna", "longitude": 9.1217, "latitude": 40.2153 },
+      { "regione": "Puglia", "longitude": 16.8698, "latitude": 41.1258 },
+      { "regione": "Umbria", "longitude": 12.3888, "latitude": 43.1122 },
+      {
+        "regione": "Valle d'Aosta/Vallée d'Aoste",
+        "longitude": 7.4167,
+        "latitude": 45.7372
+      },
+      {
+        "regione": "Friuli-Venezia Giulia",
+        "longitude": 13.3768,
+        "latitude": 46.1495
+      }
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/openpolis/geojson-italy/refs/heads/master/topojson/limits_IT_regions.topo.json",
+        "format": { "type": "topojson", "feature": "regions" }
+      },
+      "projection": { "type": "mercator" },
+      "mark": { "type": "geoshape", "fill": "#E6E6E6", "stroke": "#6D8BEE" }
+    },
+    {
+      "data": {
+        "url": "https://gist.githubusercontent.com/StefanoFrontini/a71f6def4ea6f834bb1ae53984c816b9/raw/5336a0d1a4d7de5d16370c42db1c25c9e1be914b/dashboard-send-sezione2.json",
+        "format": { "property": "geo_comuni" }
+      },
+      "transform": [
+        {
+          "lookup": "regione",
+          "from": {
+            "data": { "name": "regions_coordinates" },
+            "key": "regione",
+            "fields": ["longitude", "latitude"]
+          }
+        }
+      ],
+      "projection": { "type": "mercator" },
+      "mark": "circle",
+      "encoding": {
+        "longitude": { "field": "longitude", "type": "quantitative" },
+        "latitude": { "field": "latitude", "type": "quantitative" },
+        "size": {
+          "field": "num_comuni_attivi",
+          "type": "quantitative",
+          "scale": { "range": [0, 2000] },
+          "legend": null
+        },
+        "opacity": { "value": 1 },
+        "color": { "value": "#0B3EE3" },
+        "tooltip": [
+          { "field": "regione", "type": "nominal", "title": "Regione" },
+          {
+            "field": "num_comuni_attivi",
+            "format": ",",
+            "type": "quantitative",
+            "title": "Comuni"
+          },
+          {
+            "field": "perc_comuni_attivi",
+            "format": ".0%",
+            "type": "quantitative",
+            "title": "Percentuale comuni rispetto al totale dei comuni per regione"
+          }
+        ]
+      }
+    }
+  ]
+}

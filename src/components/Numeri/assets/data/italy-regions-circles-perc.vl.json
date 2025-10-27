@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": "container",
+  "padding": 5,
+  "data": {
+    "url": "https://gist.githubusercontent.com/StefanoFrontini/a71f6def4ea6f834bb1ae53984c816b9/raw/5336a0d1a4d7de5d16370c42db1c25c9e1be914b/dashboard-send-sezione2.json",
+    "format": { "property": "geo_comuni" }
+  },
+
+  "transform": [
+    {
+      "lookup": "regione",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/openpolis/geojson-italy/refs/heads/master/topojson/limits_IT_regions.topo.json",
+          "format": { "type": "topojson", "feature": "regions" }
+        },
+        "key": "properties.reg_name",
+        "fields": ["type", "properties", "geometry"]
+      }
+    }
+  ],
+  "projection": { "type": "mercator" },
+  "mark": { "type": "geoshape", "stroke": "#fff", "strokeWidth": 0.5 },
+  "encoding": {
+    "color": {
+      "field": "perc_comuni_attivi",
+      "type": "quantitative",
+      "scale": {
+        "range": ["#b6c5f7", "#0B3EE3"]
+      },
+      "legend": null
+    },
+    "tooltip": [
+      { "field": "regione", "type": "nominal", "title": "Regione" },
+      {
+        "field": "num_comuni_attivi",
+        "format": ",",
+        "type": "quantitative",
+        "title": "Comuni"
+      },
+      {
+        "field": "perc_comuni_attivi",
+        "format": ".0%",
+        "type": "quantitative",
+        "title": "Percentuale comuni rispetto al totale dei comuni per regione"
+      }
+    ]
+  }
+}

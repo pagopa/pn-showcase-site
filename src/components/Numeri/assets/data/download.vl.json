@@ -4,7 +4,7 @@
   "height": "container",
   "padding": 5,
   "data": {
-    "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione1.json",
+    "url": "https://gist.githubusercontent.com/StefanoFrontini/79ed190a28fe85d75e694feda550f9c5/raw/3bbb945e5e21b8a65c024b0096ea24fa7fb83d0b/dashboard-send-sezione1.json",
     "format": { "property": "notifiche_per_mese" }
   },
   "params": [
@@ -38,32 +38,156 @@
       "as": "metric_value"
     }
   ],
-  "mark": { "type": "bar", "width": { "band": 0.7 } },
-  "encoding": {
-    "y": {
-      "field": "metric_value",
-      "type": "quantitative",
-      "axis": { "format": "~s" }
-    },
-    "x": {
-      "field": "month",
-      "type": "ordinal",
-      "timeUnit": "yearmonth",
-      "axis": { "format": "%b %Y" }
-    },
-    "tooltip": [
-      {
-        "field": "month",
-        "type": "temporal",
-        "title": "Mese",
-        "format": "%m/%Y"
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "width": { "band": 0.7 },
+        "cornerRadius": 5,
+        "fill": "#0B3EE3"
       },
-      { "field": "cumulative", "title": "Notifiche cumulate", "format": "," },
-      {
-        "field": "num_iun_total",
-        "title": "Notifiche mensili",
-        "format": ","
+      "transform": [{ "filter": "!is_cumulative" }],
+      "encoding": {
+        "y": {
+          "field": "metric_value",
+          "type": "quantitative",
+          "axis": { "format": "~s" }
+        },
+        "x": {
+          "field": "month",
+          "type": "ordinal",
+          "timeUnit": "yearmonth",
+          "axis": { "format": "%b %Y" }
+        },
+        "tooltip": [
+          {
+            "field": "month",
+            "type": "temporal",
+            "title": "Mese",
+            "format": "%m/%Y"
+          },
+          {
+            "field": "cumulative",
+            "title": "Notifiche cumulate",
+            "format": ","
+          },
+          {
+            "field": "metric_value",
+            "title": "Notifiche mensili",
+            "format": ","
+          }
+        ]
       }
-    ]
-  }
+    },
+    {
+      "mark": {
+        "type": "rect",
+        "width": { "band": 0.7 },
+        "color": "transparent",
+        "tooltip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "month",
+          "type": "ordinal",
+          "timeUnit": "yearmonth"
+        },
+        "y": {
+          "field": "metric_value",
+          "type": "quantitative"
+        },
+        "y2": {
+          "value": 0
+        },
+        "tooltip": [
+          {
+            "field": "month",
+            "type": "temporal",
+            "title": "Mese",
+            "format": "%m/%Y"
+          },
+          {
+            "field": "cumulative",
+            "title": "Notifiche cumulate",
+            "format": ","
+          },
+          {
+            "field": "notification_value",
+            "title": "Notifiche mensili",
+            "format": ","
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "area",
+        "line": {
+          "color": "#0B3EE3"
+        },
+        "color": {
+          "x1": 1,
+          "y1": 1,
+          "x2": 1,
+          "y2": 0,
+          "stops": [
+            {
+              "offset": 0,
+              "color": "white"
+            },
+            {
+              "offset": 1,
+              "color": "#0B3EE3"
+            }
+          ],
+          "gradient": "linear"
+        }
+      },
+      "transform": [{ "filter": "is_cumulative" }],
+      "encoding": {
+        "y": {
+          "field": "metric_value",
+          "type": "quantitative",
+          "axis": {
+            "format": "~s",
+            "labelFontWeight": 600,
+            "labelFont": "Titillium Web, sans-serif",
+            "domain": false
+          }
+        },
+        "x": {
+          "field": "month",
+          "type": "temporal",
+          "timeUnit": "yearmonthdate",
+          "axis": {
+            "labelExpr": "year === null ? timeFormat(datum.value, '%b %Y') : timeFormat(datum.value, '%b')",
+            "gridDash": [4, 4],
+            "labelFontWeight": 600,
+            "labelFont": "Titillium Web, sans-serif",
+            "labelOverlap": "parity",
+            "tickDash": [4, 4]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "month",
+            "type": "temporal",
+            "title": "Mese",
+            "format": "%m/%Y"
+          },
+          {
+            "field": "cumulative",
+            "title": "Notifiche cumulate",
+            "format": ","
+          },
+          {
+            "field": "notification_value",
+            "title": "Notifiche mensili",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ]
 }

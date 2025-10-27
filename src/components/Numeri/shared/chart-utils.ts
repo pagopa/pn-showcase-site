@@ -38,7 +38,9 @@ export function searchTree(
   matchingKey: keyof VegaScene | keyof VegaSceneGroup,
   matchingValue: string
 ): VegaScene | VegaSceneGroup | null {
-  if (!("items" in element)) return null;
+  if (!("items" in element)) {
+    return null;
+  }
   if (isVegaScene(element) && isMatchingKeyInVegaScene(element, matchingKey)) {
     if (element[matchingKey] === matchingValue) {
       return element;
@@ -55,7 +57,9 @@ export function searchTree(
   let result: VegaScene | VegaSceneGroup | null = null;
   for (const item of element.items) {
     result = searchTree(item, matchingKey, matchingValue);
-    if (result) break;
+    if (result) {
+      break;
+    }
   }
   return result;
 }
@@ -66,7 +70,9 @@ export function searchTree(
  * @returns {vegaSpec} The converted Vega spec
  */
 export function toVegaSpec(chartSpec: VegaLiteSpec | VegaSpec): VegaSpec {
-  if (!chartSpec.$schema) return {};
+  if (!chartSpec.$schema) {
+    return {};
+  }
   const { library } = vegaUrlParser(chartSpec.$schema);
   const vgSpec =
     library === "vega-lite"
@@ -121,9 +127,11 @@ export async function searchScenegraph(
  */
 export async function getMarks(
   chartSpec: VegaLiteSpec | VegaSpec
-): Promise<VegaScene[] | VegaSceneGroup[]> {
+): Promise<Array<VegaScene> | Array<VegaSceneGroup>> {
   const marks = await searchScenegraph(chartSpec, "role", "mark");
-  if (marks === null) return [];
+  if (marks === null) {
+    return [];
+  }
   if ("items" in marks) {
     return marks.items;
   }

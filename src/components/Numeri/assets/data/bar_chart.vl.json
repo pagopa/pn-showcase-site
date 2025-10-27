@@ -1,0 +1,128 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": "container",
+  "padding": 5,
+  "data": {
+    "url": "https://gist.githubusercontent.com/StefanoFrontini/79ed190a28fe85d75e694feda550f9c5/raw/3bbb945e5e21b8a65c024b0096ea24fa7fb83d0b/dashboard-send-sezione1.json",
+    "format": { "property": "notifiche_per_mese" }
+  },
+  "params": [
+    { "name": "notification_type", "value": "total" },
+    {
+      "name": "year",
+      "value": null
+    }
+  ],
+  "transform": [
+    {
+      "filter": "year(datum.month) === year || year === null"
+    },
+    {
+      "calculate": "datum['num_iun_' + notification_type]",
+      "as": "notification_value"
+    },
+    {
+      "window": [
+        {
+          "op": "sum",
+          "field": "notification_value",
+          "as": "cumulative"
+        }
+      ],
+      "sort": [{ "field": "month" }]
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "width": { "band": 0.7 },
+        "cornerRadius": 5,
+        "fill": "#0B3EE3"
+      },
+      "encoding": {
+        "y": {
+          "field": "notification_value",
+          "type": "quantitative",
+          "axis": {
+            "format": "~s",
+            "labelFontWeight": 600,
+            "labelFont": "Titillium Web, sans-serif"
+          }
+        },
+        "x": {
+          "field": "month",
+          "type": "ordinal",
+          "timeUnit": "yearmonth",
+          "axis": {
+            "format": "%b %Y",
+            "grid": false,
+            "labelFontWeight": 600,
+            "labelFont": "Titillium Web, sans-serif",
+            "labelOverlap": "parity",
+            "tickDash": [4, 4]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "month",
+            "type": "temporal",
+            "title": "Mese",
+            "format": "%m/%Y"
+          },
+          {
+            "field": "cumulative",
+            "title": "Notifiche cumulate",
+            "format": ","
+          },
+          {
+            "field": "notification_value",
+            "title": "Notifiche mensili",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rect",
+        "width": { "band": 0.7 },
+        "color": "transparent",
+        "tooltip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "month",
+          "type": "ordinal",
+          "timeUnit": "yearmonth"
+        },
+        "y": {
+          "field": "notification_value",
+          "type": "quantitative"
+        },
+        "y2": {
+          "value": 0
+        },
+        "tooltip": [
+          {
+            "field": "month",
+            "type": "temporal",
+            "title": "Mese",
+            "format": "%m/%Y"
+          },
+          {
+            "field": "cumulative",
+            "title": "Notifiche cumulate",
+            "format": ","
+          },
+          {
+            "field": "notification_value",
+            "title": "Notifiche mensili",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ]
+}
