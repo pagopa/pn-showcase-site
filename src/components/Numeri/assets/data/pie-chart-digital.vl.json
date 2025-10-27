@@ -3,7 +3,7 @@
   "width": 120,
   "height": 116,
   "data": {
-    "url": "https://gist.githubusercontent.com/StefanoFrontini/79ed190a28fe85d75e694feda550f9c5/raw/17a5db29b2a19a22c8ee44b25bd8540cff930d06/dashboard-send-sezione1.json",
+    "url": "https://gist.githubusercontent.com/StefanoFrontini/79ed190a28fe85d75e694feda550f9c5/raw/3bbb945e5e21b8a65c024b0096ea24fa7fb83d0b/dashboard-send-sezione1.json",
     "format": { "property": "totale_notifiche" }
   },
   "params": [{ "name": "year", "value": null }],
