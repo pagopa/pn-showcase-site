@@ -14,6 +14,7 @@ export default function AlertButton({
       }}
       href="https://www.dati.gov.it/view-dataset?Cerca=&tags_set=send&tags=send&ordinamento=&organization=pagopa-s-p-a"
       size="small"
+      target="_parent"
     >
       {children}
     </Button>

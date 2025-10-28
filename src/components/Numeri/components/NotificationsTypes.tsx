@@ -121,6 +121,12 @@ const NotificationsTypes = () => {
             </CardText>
 
             <Select
+              MenuProps={{
+                autoFocus: false,
+                disableAutoFocusItem: true,
+                disableEnforceFocus: true,
+                disableAutoFocus: true,
+              }}
               size={"small"}
               sx={{
                 fontSize: 14,
