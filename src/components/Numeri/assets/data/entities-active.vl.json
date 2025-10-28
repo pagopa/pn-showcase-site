@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url": "https://gist.githubusercontent.com/StefanoFrontini/a71f6def4ea6f834bb1ae53984c816b9/raw/5336a0d1a4d7de5d16370c42db1c25c9e1be914b/dashboard-send-sezione2.json"
+    "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione2.json"
   },
   "mark": "text",
   "encoding": {
