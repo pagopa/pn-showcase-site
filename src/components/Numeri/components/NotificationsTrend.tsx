@@ -140,6 +140,12 @@ const NotificationsTrend = ({ selYear }: Props) => {
               <Select
                 value={curOptionCumulativeMonthly}
                 size="small"
+                MenuProps={{
+                  autoFocus: false,
+                  disableAutoFocusItem: true,
+                  disableEnforceFocus: true,
+                  disableAutoFocus: true,
+                }}
                 sx={{
                   fontSize: 14,
                   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
@@ -189,6 +195,12 @@ const NotificationsTrend = ({ selYear }: Props) => {
                 </CardText>,
                 <Select
                   size={"small"}
+                  MenuProps={{
+                    autoFocus: false,
+                    disableAutoFocusItem: true,
+                    disableEnforceFocus: true,
+                    disableAutoFocus: true,
+                  }}
                   sx={{
                     fontSize: 14,
                     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {

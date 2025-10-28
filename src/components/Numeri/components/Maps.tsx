@@ -139,6 +139,12 @@ export default function Maps() {
           {t("entities.active.geographic_distribution.description_1")}
         </CardText>
         <Select
+          MenuProps={{
+            autoFocus: false,
+            disableAutoFocusItem: true,
+            disableEnforceFocus: true,
+            disableAutoFocus: true,
+          }}
           value={curMapOption}
           sx={{
             fontSize: 14,
