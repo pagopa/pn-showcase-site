@@ -1,0 +1,44 @@
+{
+  "dateTime": "%A, %e. %B %Y, %X",
+  "date": "%d. %m. %Y",
+  "time": "%H:%M:%S",
+  "periods": ["AM", "PM"],
+  "days": [
+    "nedelja",
+    "ponedeljek",
+    "torek",
+    "sreda",
+    "četrtek",
+    "petek",
+    "sobota"
+  ],
+  "shortDays": ["ned", "pon", "tor", "sre", "čet", "pet", "sob"],
+  "months": [
+    "januar",
+    "februar",
+    "marec",
+    "april",
+    "maj",
+    "junij",
+    "julij",
+    "avgust",
+    "september",
+    "oktober",
+    "november",
+    "december"
+  ],
+  "shortMonths": [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "maj",
+    "jun",
+    "jul",
+    "avg",
+    "sep",
+    "okt",
+    "nov",
+    "dec"
+  ]
+}

@@ -10,7 +10,7 @@ type Props = {
   filterSignal: string;
   yearSignal: number | null;
 };
-const CumulativeChart = ({
+const NotificationsTrendChart = ({
   spec,
   cumulativeSignal,
   filterSignal,
@@ -20,23 +20,39 @@ const CumulativeChart = ({
   const chartContent = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!chartContent.current) return;
-    embed(chartContent.current, spec, chartConfig).then(setChart);
+    if (!chartContent.current) {
+      return;
+    }
+    embed(chartContent.current, spec, chartConfig)
+      .then(setChart)
+      .catch(console.error);
   }, [spec]);
 
   useEffect(() => {
-    if (chart === null) return;
-    chart.view.signal("is_cumulative", cumulativeSignal).runAsync();
+    if (chart === null) {
+      return;
+    }
+    chart.view
+      .signal("is_cumulative", cumulativeSignal)
+      .runAsync()
+      .catch(console.error);
   }, [chart, cumulativeSignal]);
 
   useEffect(() => {
-    if (chart === null) return;
-    chart.view.signal("notification_type", filterSignal).runAsync();
+    if (chart === null) {
+      return;
+    }
+    chart.view
+      .signal("notification_type", filterSignal)
+      .runAsync()
+      .catch(console.error);
   }, [chart, filterSignal]);
 
   useEffect(() => {
-    if (chart === null) return;
-    chart.view.signal("year", yearSignal).runAsync();
+    if (chart === null) {
+      return;
+    }
+    chart.view.signal("year", yearSignal).runAsync().catch(console.error);
   }, [chart, yearSignal]);
 
   return (
@@ -47,4 +63,4 @@ const CumulativeChart = ({
     ></Box>
   );
 };
-export default CumulativeChart;
+export default NotificationsTrendChart;
