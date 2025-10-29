@@ -1,0 +1,145 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": "container",
+  "padding": 5,
+  "data": {
+    "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione1.json",
+    "format": { "property": "notifiche_per_mese" }
+  },
+  "params": [
+    { "name": "notification_type", "value": "total" },
+    {
+      "name": "year",
+      "value": null
+    }
+  ],
+  "transform": [
+    {
+      "filter": "year(datum.month) === year || year === null"
+    },
+    {
+      "calculate": "datum['num_iun_' + notification_type]",
+      "as": "notification_value"
+    },
+    {
+      "window": [
+        {
+          "op": "sum",
+          "field": "notification_value",
+          "as": "cumulative"
+        }
+      ],
+      "sort": [{ "field": "month" }]
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "line": {
+          "color": "#0B3EE3"
+        },
+        "color": {
+          "x1": 1,
+          "y1": 1,
+          "x2": 1,
+          "y2": 0,
+          "stops": [
+            {
+              "offset": 0,
+              "color": "white"
+            },
+            {
+              "offset": 1,
+              "color": "#0B3EE3"
+            }
+          ],
+          "gradient": "linear"
+        }
+      },
+      "encoding": {
+        "y": {
+          "field": "cumulative",
+          "type": "quantitative",
+          "axis": {
+            "format": "~s",
+            "labelFontWeight": 600,
+            "labelFont": "Titillium Web, sans-serif",
+            "domain": false
+          }
+        },
+        "x": {
+          "field": "month",
+          "type": "ordinal",
+          "timeUnit": "yearmonth",
+          "axis": {
+            "format": "%b %Y",
+            "grid": false,
+            "labelFontWeight": 600,
+            "labelFont": "Titillium Web, sans-serif",
+            "labelOverlap": "parity",
+            "tickDash": [4, 4]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "month",
+            "type": "temporal",
+            "title": "Mese",
+            "format": "%m/%Y"
+          },
+          {
+            "field": "cumulative",
+            "title": "Notifiche cumulate",
+            "format": ","
+          },
+          {
+            "field": "notification_value",
+            "title": "Notifiche mensili",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rect",
+        "color": "transparent",
+        "tooltip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "month",
+          "type": "temporal",
+          "timeUnit": "yearmonth"
+        },
+        "y": {
+          "field": "cumulative",
+          "type": "quantitative"
+        },
+        "y2": {
+          "value": 0
+        },
+        "tooltip": [
+          {
+            "field": "month",
+            "type": "temporal",
+            "title": "Mese",
+            "format": "%m/%Y"
+          },
+          {
+            "field": "cumulative",
+            "title": "Notifiche cumulate",
+            "format": ","
+          },
+          {
+            "field": "notification_value",
+            "title": "Notifiche mensili",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ]
+}
