@@ -4,6 +4,9 @@
   "hero": {
     "eyelet": "Podatki in učinkovitost",
     "title": "Odkrijte številke SEND",
+    "description": "Na tej strani so na voljo podatki o platformi za obvestila",
+    "description_2": "SEND",
+    "description_3": ", ki se dnevno posodabljajo.",
     "last_update": "Zadnja posodobitev",
     "alert": "Podatki so na voljo na dati.gov.it",
     "website": "Pojdi na spletno stran"
