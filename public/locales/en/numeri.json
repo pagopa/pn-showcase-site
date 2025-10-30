@@ -1,60 +1,163 @@
 {
   "title": "SEND - Servizio Notifiche Digitali | SEND in numbers",
-  "description": "Learn about the data related to send notifications, institutions that are using SEND and the type of data services",
+  "description": "Learn about the data related to sent notifications, institutions that are using SEND and service types",
   "hero": {
+    "eyelet": "Data and performance",
     "title": "SEND in numbers",
-    "last_update": "Last update"
+    "description": "On this page, you can find daily updated data for the",
+    "description_2": "SEND",
+    "description_3": " notifification platform.",
+    "last_update": "Last update",
+    "alert": "Data is available on dati.gov.it",
+    "website": "See data"
   },
   "total": "Total",
   "sent_notifications": {
-    "title": "Sent notifications",
-    "description": "The following data refer to the notifications sent by the institutions of the public administration",
+    "title": "SEND notifications sent",
+    "description": "The data refers to legally binding communications sent by participating institutions.",
+    "filters": "Use the selectors below to filter this section for the desired time period.",
+    "screen_readers": "Displayed data period:",
     "total": {
       "name": "total",
-      "title": "Total notifications",
-      "description": "Notifications sent via SEND"
+      "title": "Total SEND notifications sent",
+      "description": "A SEND notification is a legally binding communication officially issued by an institution. It can be delivered digitally or in paper form.",
+      "title_2": "Total notifications sent since July 2023",
+      "description_2": "Total notifications sent since the platform's first year of operation"
     },
     "digital": {
       "name": "digital",
-      "title": "Total digital notifications",
-      "description": "Notifications sent to recipients via digital channels"
+      "title": "Number of digital SEND notifications",
+      "description": "SEND notifications sent to recipients via certified digital channels"
     },
     "analog": {
       "name": "analog",
-      "title": "Total analog notifications",
-      "description": "Notifications sent to recipients via registered mail"
+      "title": "Number of analog SEND notifications",
+      "description": "SEND notifications sent in paper form due to the absence of certified digital channels for the recipient"
+    },
+    "pieChart": {
+      "tooltip": {
+        "type": "Notification type",
+        "number": "Number of notifications"
+      }
     },
     "trend": {
-      "title": "Progress of the notifications",
-      "description_1": "Progress",
-      "description_2": "of the notifications",
+      "title": "SEND notifications trend",
+      "description": "Trend of SEND notifications officially issued by a participating institution.",
+      "description_1": "Trend",
+      "description_2": "of",
+      "description_3": "notifications",
       "monthly": "monthly",
-      "aggregate": "cumulative"
+      "aggregate": "cumulative",
+      "total": "total",
+      "digital": "digital",
+      "analog": "analog",
+      "tooltip": {
+        "month": "Month",
+        "aggregate": "Cumulative notifications",
+        "monthly": "Monthly notifications"
+      },
+      "note": "The cumulative value is the progressive sum of a quantity over time."
     }
   },
-  "authorities_and_types": {
-    "title": "Institutions and types of notifications sent",
-    "description": "The following data shows how many institutions are using SEND, and for what type of service",
-    "authorities": {
+
+  "entities": {
+    "title": "Institutions on SEND",
+    "description": "Participating institutions that have sent at least one SEND notification since the service launch.",
+    "active": {
       "total": {
-        "title": "Total active institutions",
-        "description": "Institutions that have sent at least one notification"
+        "title": "Total institutions on SEND",
+        "description": "Total number of institutions that have sent at least one SEND notification.",
+        "description_1": "compared to the previous year"
       },
-      "main_cat": {
-        "title": "Main categories of active institutions",
-        "description": "Category of institutions, ordered by number of active institutions"
+      "municipalities": {
+        "title": "Percentage of municipalities over total institutions on SEND"
+      },
+      "geographic_distribution": {
+        "title": "Geographic distribution of municipalities on SEND",
+        "description": "The chart shows the distribution of municipalities using SEND, as the entity category with the highest number of participants.",
+        "description_1": "Display value",
+        "absolute": {
+          "name": "absolute",
+          "description": "Bubble size indicates the number of municipalities per region."
+        },
+        "percentage": {
+          "name": "percentage",
+          "description": "The coloring shows the percentage of active municipalities in each region."
+        }
+      },
+      "tooltip": {
+        "region": "Region",
+        "municipalities": "Municipalities",
+        "percentage": "Percentage of municipalities compared to the total number of municipalities in the region"
       }
+    }
+  },
+
+  "notification_types": {
+    "title": "Main areas of SEND notifications",
+    "description": "Most frequently sent categories of SEND notifications.",
+    "main_scopes": {
+      "title": "Filter by type of participating institution",
+      "note_1": "*different from those whose notification is excluded via SEND under Art. 26, paragraph 17 D.L. 76/2020",
+      "note_2": "The chart includes the main sectors with 5 or more notifications sent."
     },
-    "notification_types": {
-      "total": {
-        "title": "Type of sent notifications",
-        "description": "The type represents the scope of application of the notification (e.g. ticket, taxes, registry office, etc.)"
-      },
-      "main_scopes": {
-        "title": "Main areas",
-        "description": "Services ordered by number of deposited notifications, starting from the adoption of SEND",
-        "notes": "* other than those whose notification is excluded via SEND pursuant to art.26, para. 17 of D.L. 76/2020"
-      }
+    "tooltip": {
+      "category": "Area",
+      "notifications": "Notifications"
+    },
+    "tutte": {
+      "name": "All"
+    },
+    "comuni": {
+      "name": "Municipalities"
+    },
+    "riscossori_e_altro": {
+      "name": "Tax collectors and others"
+    },
+    "altri_enti_territoriali": {
+      "name": "Other local authorities"
+    },
+    "province": {
+      "name": "Provinces"
+    },
+    "regioni": {
+      "name": "Regions"
+    },
+    "salute_locale": {
+      "name": "Local Healthcare"
+    },
+    "comunali": {
+      "name": "Municipal entities"
+    },
+    "ordini,_collegi_e_consigli_professionali": {
+      "name": "Professional orders, associations and councils"
+    },
+    "pubbliche_amministrazioni_centrali": {
+      "name": "Central public administrations"
+    },
+    "università": {
+      "name": "Universities"
+    },
+    "consorzi_universitari": {
+      "name": "University consortia"
+    },
+    "aci": {
+      "name": "ACI"
+    },
+    "ricerca": {
+      "name": "Research"
+    },
+    "salute_centrale": {
+      "name": "Central Healthcare"
+    },
+    "salute_regionale": {
+      "name": "Regional Healthcare"
+    },
+    "salute_servizi": {
+      "name": "Healthcare Services"
+    },
+    "scuola": {
+      "name": "School"
     }
   }
 }
