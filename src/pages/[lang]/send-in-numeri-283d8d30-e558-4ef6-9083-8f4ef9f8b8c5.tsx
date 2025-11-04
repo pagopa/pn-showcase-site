@@ -103,6 +103,7 @@ const SendInNumbers = ({
     <>
       <Head>
         <title>{t("title")}</title>
+        <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Script
         src="/iframe-resizer/child/index.umd.js"
