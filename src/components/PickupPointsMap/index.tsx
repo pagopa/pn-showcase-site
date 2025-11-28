@@ -57,6 +57,14 @@ const PickupPointsMap: React.FC<Props> = ({
       });
 
       setImagesLoaded(true);
+
+      const attributionLinks = document.querySelectorAll(
+        ".maplibregl-ctrl-attrib a"
+      );
+      attributionLinks.forEach((link) => {
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+      });
     } catch (error) {
       console.error("Failed to load map images:", error);
       setMapError(true);
