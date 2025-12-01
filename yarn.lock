@@ -824,10 +824,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@pagopa/mui-italia@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@pagopa/mui-italia/-/mui-italia-1.6.1.tgz#ffeb35bc58ee4702b4d9a7b5e7fe6b1634cd0902"
-  integrity sha512-v3O16kSn4JHDJiNVOHKYklIeVRACKpmxnqrj6o6Y8qtURycVJmiMHAGW7uoNbw2yK1+ymJ+C7MSoZphXijKPFA==
+"@pagopa/mui-italia@2.1.0-RC.4":
+  version "2.1.0-RC.4"
+  resolved "https://registry.yarnpkg.com/@pagopa/mui-italia/-/mui-italia-2.1.0-RC.4.tgz#3370167560b3ecd18a5e5f86189e319dd3269e77"
+  integrity sha512-HYPGyJdgO5L0mr7LGUj9LqRAUlw/RChSpeUupVrOWiJFBPtIdOleBspuqqjdH+f0r8NREQAQJu0LTqaOw0a65w==
   dependencies:
     "@fontsource/dm-mono" "^4.5.10"
     "@fontsource/titillium-web" "^4.5.9"

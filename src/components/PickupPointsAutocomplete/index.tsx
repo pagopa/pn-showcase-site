@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
-import { GpsFixed } from "@mui/icons-material";
+import { GpsFixed, Search } from "@mui/icons-material";
 import { Box } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
+import { Autocomplete } from "@pagopa/mui-italia";
 import { areCoordinatesEqual, fitMapToPoints } from "@utils/map";
 import { MapRef } from "react-map-gl/maplibre";
 import { useConfig } from "src/context/config-context";
@@ -14,7 +15,6 @@ import {
   OptionType,
   RaddOperator,
 } from "src/model";
-import MuiItaliaAutocomplete from "../MuiItaliaAutocomplete";
 import AddressItem from "./AddressItem";
 import EmptyState from "./EmptyState";
 import ErrorState from "./ErrorState";
@@ -53,6 +53,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
   const [fetchError, setFetchError] = useState<boolean>(false);
   const [shouldShowEmptyState, setShouldShowEmptyState] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [inputValue, setInputValue] = useState<string>("");
 
   const { API_BASE_URL } = useConfig();
 
@@ -115,6 +116,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
   };
 
   const debouncedSearch = useCallback((query: string) => {
+    setInputValue(query);
     if (!query) {
       setAddresses([]);
       setShouldShowEmptyState(false);
@@ -167,8 +169,10 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
   };
 
   const handleSelect = (option: any) => {
+    setInputValue(option.label);
     if (option.id === CURRENT_POSITION_OPTION_ID) {
       handleCurrentPosition();
+      setInputValue("");
     } else {
       getCoordinates(option.id.toString());
     }
@@ -186,10 +190,10 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     return undefined;
   };
 
-  const currentPositionHandler = (option: OptionType) =>
-    showCurrentPositionOption && option.id === CURRENT_POSITION_OPTION_ID
-      ? ""
-      : option.label;
+  // const currentPositionHandler = (option: OptionType) =>
+  //   showCurrentPositionOption && option.id === CURRENT_POSITION_OPTION_ID
+  //     ? ""
+  //     : option.label;
 
   const options = [];
 
@@ -209,6 +213,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 
   useEffect(() => {
     if (areCoordinatesEqual(userPosition, searchCoordinates)) {
+      setInputValue("");
       setAddresses([]);
       setShouldShowEmptyState(false);
     }
@@ -216,7 +221,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 
   return (
     <>
-      <MuiItaliaAutocomplete
+      {/* <MuiItaliaAutocomplete
         options={options}
         sx={{ mt: 4 }}
         label={t("autocomplete.label")}
@@ -242,6 +247,28 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
         overridenInputvalue={
           areCoordinatesEqual(userPosition, searchCoordinates) ? "" : undefined
         }
+      /> */}
+
+      <Autocomplete<OptionType>
+        options={options}
+        inputValue={inputValue}
+        onInputChange={debouncedSearch}
+        label={t("autocomplete.label")}
+        placeholder={getPlaceholder()}
+        onChange={handleSelect}
+        renderOption={renderItem}
+        handleFiltering={(options) => options}
+        slots={{ startIcon: Search }}
+        slotProps={{ toggleButton: { hidden: true } }}
+        sx={{
+          mt: 4,
+          ...(userPosition && {
+            "& ::placeholder": {
+              color: "textPrimary",
+              opacity: 1,
+            },
+          }),
+        }}
       />
 
       <Box aria-live="polite" sx={visuallyHidden}>
