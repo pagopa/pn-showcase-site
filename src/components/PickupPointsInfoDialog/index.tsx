@@ -137,8 +137,10 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
               }book-alert-title`
             )}
           </Typography>
-          <Typography variant="body2">
-            {t("drawer.book-alert-description")}
+          <Typography variant="body2" whiteSpace="pre-line">
+            {t("drawer.book-alert-description_1")}{" "}
+            <strong>{t("drawer.notification-cost")}</strong>{" "}
+            {t("drawer.book-alert-description_2")}
           </Typography>
         </Alert>
 

@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Alert, Box, Grid, Typography } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
 import { ButtonNaked } from "@pagopa/mui-italia";
 import { langCodes } from "@utils/constants";
@@ -130,7 +130,6 @@ const PickupPointsPage: NextPage = () => {
                 textDecoration: "none",
                 fontWeight: 700,
                 fontSize: "16px",
-                mt: 1,
               }}
               onClick={(e: MouseEvent) =>
                 scrollToTarget(e, "come-funzionano-punti-di-ritiro")
@@ -138,6 +137,10 @@ const PickupPointsPage: NextPage = () => {
             >
               {t("how-it-works")}
             </ButtonNaked>
+
+            <Alert severity="info" sx={{ my: { xs: 4, md: 3 } }}>
+              {t("notification-cost-info")}
+            </Alert>
 
             <PickupPointsAutocomplete
               mapRef={mapRef}
