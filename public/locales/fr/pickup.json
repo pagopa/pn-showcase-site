@@ -12,7 +12,7 @@
     "empty_state": " Il n’y a pas encore de points de retrait SEND activés dans cette ville."
   },
   "how-it-works": "En savoir plus",
-  "notification-cost-info": "Les frais d’impression s’élèvent à 1,40 € hors TVA. Les frais accessoires ne sont pas inclus dans le prix SEND.",
+  "activation-in-progress": "Les frais d’impression s’élèvent à 1,40 € hors TVA. Les frais accessoires ne sont pas inclus dans le prix SEND.",
   "drawer": {
     "book-alert-title": "Prenez rendez-vous au centre d’accompagnement fiscal (CAF)",
     "required-book-alert-title": "Ce centre d’accompagnement fiscal (CAF) reçoit uniquement sur rendez-vous.",

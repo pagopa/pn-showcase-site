@@ -12,7 +12,7 @@
     "empty_state": " In dieser Stadt sind noch keine aktiven SEND-Abholstellen vorhanden."
   },
   "how-it-works": "Wie es funktioniert",
-  "notification-cost-info": "Die Druckkosten betragen 1,40 € zuzüglich MwSt. Nebenkosten sind nicht im SEND-Preis enthalten.",
+  "activation-in-progress": "Die Druckkosten betragen 1,40 € zuzüglich MwSt. Nebenkosten sind nicht im SEND-Preis enthalten.",
   "drawer": {
     "book-alert-title": "Vereinbaren Sie einen Termin beim Steuerhilfezentrum (CAF)",
     "required-book-alert-title": "Dieses Steuerhilfezentrum (CAF) empfängt nur nach Terminvereinbarung.",

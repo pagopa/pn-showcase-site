@@ -139,7 +139,7 @@ const PickupPointsPage: NextPage = () => {
             </ButtonNaked>
 
             <Alert severity="info" sx={{ my: { xs: 4, md: 3 } }}>
-              {t("notification-cost-info")}
+              {t("activation-in-progress")}
             </Alert>
 
             <PickupPointsAutocomplete
