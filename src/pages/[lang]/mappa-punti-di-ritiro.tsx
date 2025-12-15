@@ -18,6 +18,7 @@ import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
 import { MapRef } from "react-map-gl/maplibre";
 import Head from "next/head";
+import { parseTranslation } from "@utils/translations";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -120,8 +121,7 @@ const PickupPointsPage: NextPage = () => {
             <Typography variant="h4">{t("search.title")}</Typography>
 
             <Typography mt={2} mb={1} color="textPrimary" variant="body2">
-              {t("search.description_1")}
-              <b>{t("search.description_2")}</b>. {t("search.description_3")}
+              {parseTranslation(t("search.description"))}
             </Typography>
 
             <ButtonNaked
