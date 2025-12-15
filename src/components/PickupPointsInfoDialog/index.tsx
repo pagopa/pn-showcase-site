@@ -17,6 +17,7 @@ import { useTranslation } from "../../hook/useTranslation";
 import Address from "./Address";
 import Contacts from "./Contacts";
 import OpeningHours from "./OpeningHours";
+import { parseTranslation } from "@utils/translations";
 
 type Props = {
   isOpen: boolean;
@@ -137,8 +138,8 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
               }book-alert-title`
             )}
           </Typography>
-          <Typography variant="body2">
-            {t("drawer.book-alert-description")}
+          <Typography variant="body2" whiteSpace="pre-line">
+            {parseTranslation(t("drawer.book-alert-description"))}
           </Typography>
         </Alert>
 
