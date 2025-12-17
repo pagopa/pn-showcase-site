@@ -1,751 +1,1328 @@
 <!DOCTYPE html>
 <html lang="it">
-    <head>
-        <meta charset="UTF-8" />
-        <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-        <title>SEND</title>
-        <meta name="description" content="Servizio notifiche digitali per il cittadino">
-        <link rel="icon" href="assets/icon/favicon.png" type="image/png" size="16x16">
-        <!--Boostrap italia css e js-->
-        <link rel="stylesheet" href="assets/fonts.css" />
-        <link rel="stylesheet" href="assets/bootstrap-italia.min.css" />
-        <script src="assets/bootstrap-italia.bundle.min.js"></script>
-        <!--CSS e js custom-->
-        <link rel="stylesheet" href="style.css" />
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <header class="pb-5">
-        <nav class="css-guf6my position-fixed top-0 w-100">
-            <div class="css-i51fkh">
-                <a class="navbar-brand mb-0 small text-dark fw-bold" href="#">PagoPA S.p.A.</a>
-            </div>
-        </nav>
-        </header>
-        
-        <main class="my-5 container">
-            <div class="row justify-content-center">
-                 <div class="col-xl-9">
-                    <section class="container mb-4 pb-2">
-                        <h1 class="h2">Informativa del trattamento dei dati personali</h1>
-                    </section>
-                    <section id="inBreve" class="container mb-5">
-                        <h2 class="h3">In breve: cosa devi sapere</h2>
-                        <p>
-                            <i>Hai poco tempo? Ecco le informazioni essenziali a colpo d’occhio.</i>
-                        </p>
-                        <table class="table table-custom d-lg-block d-none">
-                            <thead class="bg-dark text-white">
-                                <tr>
-                                <th class="border-end">Domanda</th>
-                                <th>Risposta</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="border-end">
-                                        <strong> Chi gestisce i miei dati? </strong>
-                                    </td>
-                                    <td>
-                                        <p class="mb-0">
-                                        <strong>PagoPA S.p.A.</strong> (Titolare) gestisce la piattaforma tecnologica. Le <span class="text-primary fw-bold">Pubbliche Amministrazioni (PA)</span> usano la piattaforma per inviarti le notifiche (chiamate PA Mittenti).
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="border-end">
-                                        <strong>Perché trattiamo questi dati? </strong>
-                                    </td>
-                                    <td>
-                                        <p class="mb-0">
-                                            Per identificarti, permetterti di gestire le notifiche (invio/ricezione), le deleghe e per garantirti la sicurezza del servizio.
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="border-end">
-                                        <strong> Quali dati usiamo? </strong>
-                                    </td>
-                                    <td>
-                                        <p class="mb-0">
-                                            Dati anagrafici (da SPID/CIE), dati di contatto (PEC/email), dati relativi agli atti notificati e dati tecnici di navigazione.
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="border-end">
-                                        <strong> Per quanto tempo li trattiamo? </strong>
-                                    </td>
-                                    <td>
-                                        <p class="mb-0">
-                                        I tempi variano in base al dato: dai <strong>90 giorni</strong> per i dati di navigazione fino ai <strong>10 anni</strong> per gli atti con valore legale.
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="border-end">
-                                        <strong>Quali sono i miei diritti? </strong>
-                                    </td>
-                                    <td>
-                                        <p class="mb-0">
-                                            Hai il pieno controllo: puoi accedere ai dati, correggerli, opporti al trattamento o revocare i consensi 
-                                            (es. per il Domicilio di Piattaforma).       
-                                        </p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="bg-gray inBreve__item border-radius-5 d-lg-none p-md-4 p-3">
-                                <h3 class="fs-20 text-primary">Chi gestisce i miei dati?</h3>
-                                <p class="mb-0">
-                                    <strong>PagoPA S.p.A.</strong> (Titolare) gestisce la piattaforma tecnologica. Le <span class="text-primary fw-bold">Pubbliche Amministrazioni (PA)</span> usano la piattaforma per inviarti le notifiche (chiamate PA Mittenti).
-                                </p>
-                            <hr class="my-3">
-                                <h3 class="fs-20 text-primary">Quali dati raccogliete?</h3>
-                                <p class="mb-0">
-                                    Per identificarti, permetterti di gestire le notifiche (invio/ricezione), le deleghe e per garantirti la sicurezza del servizio.
-                                </p>
-                            <hr class="my-3">
-                                <h3 class="fs-20 text-primary">Quali dati usiamo?</h3>
-                                <p class="mb-0">
-                                    Dati anagrafici (da SPID/CIE), dati di contatto (PEC/email), dati relativi agli atti notificati e dati tecnici di navigazione.
-                                </p>
-                            <hr class="my-3">
-                                <h3 class="fs-20 text-primary">Per quanto tempo li trattiamo?</h3>
-                                <p class="mb-0">
-                                    I tempi variano in base al dato: dai <strong>90 giorni</strong> per i dati di navigazione fino ai <strong>10 anni</strong> per gli atti con valore legale.
-                                </p>
-                            <hr class="my-3">
-                                <h3 class="fs-20 text-primary">Quali sono i miei diritti?</h3>
-                                <p class="mb-0">
-                                    Hai il pieno controllo: puoi accedere ai dati, correggerli, opporti al trattamento o revocare i consensi (es. per il Domicilio di Piattaforma).
-                                </p>
-                        </div>
-                    </section>
-                    <section  id="infoEstesa" class="container mb-5">
-                        <h2 class="h3">
-                            Informativa estesa
-                        </h2>
-                        <p><i>Vuoi saperne di più? Ti diamo maggiori dettagli su come tratteremo i tuoi dati spiegandotelo in modo semplice.</i></p>
-                        <div class="accordion border-0" id="accordionInformativa">
-                            <div  id="titolare" class="accordion-item accordion-item--custom">
-                                <h3 class="accordion-header p-0">
-                                    <button class="accordion-button border-0" type="button" data-bs-toggle="collapse" data-bs-target="#titolareAccordion" aria-expanded="true" aria-controls="titolareAccordion">
-                                        1. Chi decide come vengono usati i tuoi dati? (Il Titolare)
-                                    </button>
-                                </h3>
-                                <div id="titolareAccordion" class="accordion-collapse collapse show border-0" data-bs-parent="#accordionInformativa">
-                                    <div class="accordion-body">
-                                        <p>
-                                            <button type="button" data-info="1" class="btn-normal text-dark bg-primary-50 border-0 fw-bold">Il titolare del trattamento</button>
-                                            è PagoPA S.p.A. (di seguito anche "Noi" o "La società").
-                                        </p>
-                                        <ul class="mb-0">
-                                            <li><strong>Chi siamo: </strong>una società pubblica che gestisce l'infrastruttura digitale per i servizi pubblici.</li>
-                                            <li><strong>Dove siamo:</strong> Roma, Piazza Colonna n. 370, CAP 00187.</li>
-                                            <li><strong>Come contattarci:</strong> per domande generali, usa il 
-                                                <a href="https://privacyportal-de.onetrust.com/webform/77f17844-04c3-4969-a11d-462ee77acbe1/9ab6533d-be4a-482e-929a-0d8d2ab29df8" target="_blank"></a>
-                                                form di assistenza sul sito.
-                                            </li>
-                                        </ul>
-                                        <div data-box="1" class="messaggio-info">
-                                            <div class="messaggio-info__content">
-                                                <img class="d-lg-none d-block ms-auto close-button" src="assets/icon/close-button.svg" alt="" width="25">
-                                                <img class="messaggio-info__icon d-lg-block d-none" src="assets/icon/arrow-mesage.svg" alt="">
-                                                <h6>Titolare del trattamento</h6>
-                                                soggetto che decide le finalità e i mezzi con cui i tuoi dati vengono gestiti
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div  id="dpo" class="accordion-item accordion-item--custom">
-                                <h3 class="accordion-header p-0">
-                                    <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#dpoAccordion" aria-expanded="false" aria-controls="dpoAccordion">
-                                        2. Chi controlla che la tua privacy sia rispettata? (Il DPO)                                
-                                    </button>
-                                </h3>
-                                <div id="dpoAccordion" class="accordion-collapse collapse border-0" data-bs-parent="#accordionInformativa">
-                                    <div class="accordion-body">
-                                        <p>
-                                            Abbiamo nominato un 
-                                            <button type="button" data-info="2" class="btn-normal text-dark bg-primary-50 border-0 fw-bold">un Responsabile della Protezione dei Dati (Data Protection Officer - DPO). </button>
-                                                Se hai dubbi specifici o vuoi esercitare i tuoi diritti, contatta direttamente il DPO:                                    </p>
-                                        <ul class="mb-0">
-                                            <li><strong>E-mail:</strong> <a href="mailto:dpo@pagopa.it">dpo@pagopa.it</a></li>
-                                            <li><strong>PEC:</strong> <a href="mailto:">dpo@pec.pagopa.it</a></li>
-                                            <li><strong>Indirizzo postale:</strong> PagoPA S.p.A., Via Sardegna n. 38 - 00187, Roma. </li>
-                                        </ul>
-                                        <div data-box="2" class="messaggio-info">
-                                            <div class="messaggio-info__content">
-                                                <img class="d-lg-none d-block ms-auto close-button" src="assets/icon/close-button.svg" alt="" width="25">
-                                                <img class="messaggio-info__icon d-lg-block d-none" src="assets/icon/arrow-mesage.svg" alt="">
-                                                <h6>Data Protection Officer - DPO</h6>
-                                                figura indipendente che vigila sul rispetto delle normative privacy
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div  id="datiRaccolti" class="accordion-item accordion-item--custom">
-                                <h3 class="accordion-header p-0">
-                                    <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#datiRaccoltiAccordion" aria-expanded="false" aria-controls="datiRaccoltiAccordion">
-                                        3. Quali dati raccogliamo e perché?                                
-                                    </button>
-                                </h3>
-                                <div id="datiRaccoltiAccordion" class="accordion-collapse collapse border-0" data-bs-parent="#accordionInformativa">
-                                    <div class="accordion-body">
-                                        <p class=" mb-4"> 
-                                           Trattiamo diverse categorie di dati per farti usare la Piattaforma in sicurezza. Si tratta ad esempio dei dati:
-                                        </p>
-                                        <div class="accordion-body-section border-top pt-4 mb-4">
-                                            <h3 class="fs-20 fw-bold text-dark">A. Dati anagrafici</h3>
-                                            <ul class="mb-0">
-                                                <li>
-                                                    <strong>Dati: </strong>
-                                                    Nome, cognome, data di nascita, codice fiscale.
-                                                </li>
-                                                 <li>
-                                                    <strong>Fonte: </strong>
-                                                    Li otteniamo quando accedi con <strong>SPID</strong> o <strong>CIE</strong>.
-                                                </li>
-                                                <li>
-                                                    <strong>Perché: </strong>
-                                                    Per identificarti in modo univoco, farti accedere e garantire la sicurezza del sistema.
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="accordion-body-section border-top pt-4 mb-4">
-                                            <h3 class="fs-20 fw-bold text-dark">B. Dati di notifica e deleghe</h3>
-                                            <ul class="mb-0">
-                                                <li>
-                                                    <strong>Dati: </strong><br>
-                                                     - Nome, cognome e CF del destinatario e di eventuali <strong>delegati</strong>.<br> 
-                                                     - Recapiti digitali (es. PEC) e codici OTP.<br> 
-                                                     - Atti oggetto di notifica, codice IUN, dati di pagamento e avvisi di ricezione.<br> 
-                                                     - Dati per trovare il tuo indirizzo fisico (tramite banca dati ANPR) o digitale (registri PEC).<br> 
-                                                </li>
-                                                <li>
-                                                    <strong>Perché: </strong> 
-                                                    Per gestire le tue preferenze, le deleghe, inviarti le notifiche e semplificare tutto il processo.
-                                                </li>
-                                            </ul>
-                                        </div>            
-                                        <div class="accordion-body-section border-top pt-4 mb-4">
-                                            <h3 class="fs-20 fw-bold text-dark">C. Dati di navigazione (come navigare)</h3>
-                                            <ul class="mb-0">
-                                                <li>
-                                                    <strong>Dati: </strong>
-                                                    Indirizzo IP, tipo di dispositivo, browser, orario della richiesta, indirizzi URI/URL e altri parametri tecnici.
-                                                </li>
-                                                <li>
-                                                    <strong>Perchè: </strong> 
-                                                    Sono necessari per far funzionare il sito (protocolli di internet), c
-                                                    ontrollare che tutto vada bene (diagnostica) e difendere i nostri diritti e la sicurezza.<br>
-                                                    <div class="mt-2">
-                                                        <i><strong>Nota:</strong> Memorizziamo anche dati anonimi per statistiche (es. pagine più visitate) per migliorare il sito.</i>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="accordion-body-section border-top pt-4 mb-4">
-                                            <h3 class="fs-20 fw-bold text-dark">D. Dati che ci comunichi tu</h3>
-                                            <p>
-                                                Se ci scrivi via email o compili i moduli di contatto, tratteremo il tuo indirizzo e il contenuto del messaggio esclusivamente per risponderti.
-                                            </p>
-                                        </div>                   
-                                    </div>
-                                </div>
-                            </div>
-                            <div  id="diritto" class="accordion-item accordion-item--custom">
-                                <h3 class="accordion-header p-0">
-                                    <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#dirittoAccordion" aria-expanded="true" aria-controls="dirittoAccordion">
-                                        4. Perché possiamo trattare i tuoi dati? (Base Giuridica)                                
-                                    </button>
-                                </h3>
-                                <div id="dirittoAccordion" class="accordion-collapse collapse border-0" data-bs-parent="#accordionInformativa">
-                                    <div class="accordion-body">
-                                        <p>
-                                            Il trattamento è legittimo perché si basa su:
-                                        </p>
-                                        <ol class="mb-0">
-                                            <li>
-                                                <strong>Compito di Interesse Pubblico:: </strong> <br/>
-                                                La gestione della Piattaforma è un nostro compito istituzionale (previsto dal GDPR art. 6.1.e).
-                                            </li>
-                                            <li>
-                                                <strong>Contratto: </strong><br/>
-                                                Per l'accesso, la registrazione e la gestione delle deleghe (GDPR art. 6.1.b).
-                                            </li>  
-                                            <li>
-                                                <strong>Consenso: </strong><br/>
-                                                necessario per l'inserimento del 
-                                                <button type="button" data-info="10" class="btn-normal text-dark bg-primary-50 border-0 fw-bold">Domicilio Digitale di Piattaforma </button>
-                                                (che prevale sugli altri recapiti).<br>
-                                                <i>Puoi revocare questo consenso quando vuoi</i>
-                                            </li>                                        
-                                        </ol>
-                                        <div data-box="10" class="messaggio-info">
-                                            <div class="messaggio-info__content">
-                                                <img class="d-lg-none d-block ms-auto close-button" src="assets/icon/close-button.svg" alt="" width="25">
-                                                <img class="messaggio-info__icon d-lg-block d-none" src="assets/icon/arrow-mesage.svg" alt="">
-                                                <h6>Domicilio Digitale di Piattaforma</h6>
-                                                è un indirizzo PEC (Posta Elettronica Certificata) o un servizio elettronico di recapito certificato.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div  id="comunicazione" class="accordion-item accordion-item--custom">
-                                <h3 class="accordion-header p-0">
-                                    <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#comunicazioneAccordion" aria-expanded="true" aria-controls="comunicazioneAccordion">
-                                        5. A chi comunichiamo i tuoi dati?                                
-                                    </button>
-                                </h3>
-                                <div id="comunicazioneAccordion" class="accordion-collapse collapse border-0" data-bs-parent="#accordionInformativa">
-                                    <div class="accordion-body">
-                                        <p>
-                                            I tuoi dati non vengono diffusi, ma possono essere comunicati a:
-                                        </p>
-                                        <ul class="mb-0">
-                                            <li>
-                                                <strong><button type="button" data-info="11" class="btn-normal text-dark bg-primary-50 border-0 fw-bold">Fornitori (Responsabili del trattamento)</button>: </strong>
-                                               soggetti che lavorano per noi (es. servizi tecnici) seguendo nostre istruzioni. Puoi chiedere l'elenco completo tramite questo <a href="https://privacyportal-de.onetrust.com/webform/77f17844-04c3-4969-a11d-462ee77acbe1/9ab6533d-be4a-482e-929a-0d8d2ab29df8" target="_blank" rel="noopener noreferrer">form</a>.
-                                            </li>
-                                            <li>
-                                                <strong>Altri destinatari:</strong><br/>
-                                                se necessario per legge o per compiti di interesse pubblico (es. le PA Mittenti).
-                                            </li>                                        
-                                           
-                                        </ul>
-                                        <div data-box="11" class="messaggio-info">
-                                            <div class="messaggio-info__content">
-                                                <img class="d-lg-none d-block ms-auto close-button" src="assets/icon/close-button.svg" alt="" width="25">
-                                                <img class="messaggio-info__icon d-lg-block d-none" src="assets/icon/arrow-mesage.svg" alt="">
-                                                <h6>Responsabili del Trattamento</h6>
-                                                cioè degli Enti che trattano i tuoi dati per nostro conto
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div  id="europa" class="accordion-item accordion-item--custom">
-                                <h3 class="accordion-header p-0">
-                                    <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#europaAccordion" aria-expanded="true" aria-controls="europaAccordion">
-                                        6. I dati vanno fuori dall'Europa?                               
-                                    </button>
-                                </h3>
-                                <div id="europaAccordion" class="accordion-collapse collapse border-0" data-bs-parent="#accordionInformativa">
-                                    <div class="accordion-body">
-                                        <p>
-                                            Per far funzionare correttamente SEND, ci affidiamo a fornitori tecnici. Questi fornitori devono garantirci misure di sicurezza adeguate per proteggere i tuoi diritti.<br>
-                                            Alcuni di loro potrebbero trasferire i dati al di fuori dello Spazio Economico Europeo. Se questo accade, PagoPA tutela i tuoi dati seguendo <span class="text-primary">regole severe</span> (artt. 44-49 GDPR):
-                                        </p>
-                                        <ul class="mb-0">
-                                            <li>
-                                                <strong>Controlli continui:</strong> Valutiamo periodicamente l'impatto di questi trasferimenti per assicurarci che siano sicuri.
-                                            </li>
-                                            <li>
-                                                <strong>Garanzie legali:</strong> Utilizziamo strumenti e contratti specifici per mantenere alto il livello di protezione dei tuoi diritti, ovunque vadano i dati.
-                                            </li>                                        
-                                        </ul>
-                                        <p><strong>Importante:</strong> Se non esistono garanzie o misure idonee per proteggere i tuoi dati in un determinato paese, <strong>PagoPA non effettuerà il trasferimento.</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div  id="tempo" class="accordion-item accordion-item--custom">
-                                <h3 class="accordion-header p-0">
-                                    <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#tempoAccordion" aria-expanded="true" aria-controls="tempoAccordion">
-                                        7. Per quanto tempo conserviamo i dati?                           
-                                    </button>
-                                </h3>
-                                <div id="tempoAccordion" class="accordion-collapse collapse border-0" data-bs-parent="#accordionInformativa">
-                                    <div class="accordion-body">
-                                        <p>
-                                            Non teniamo i tuoi dati per sempre, ma solo per tempi precisi stabiliti in base alla necessità e alla legge:                           
-                                        </p>
-                                        <table class="table table-custom  d-lg-block d-none">
-                                            <thead class="bg-dark text-white">
-                                                <tr>
-                                                <th class="border-end w-25">Tipologia di dato</th>
-                                                <th class="border-end w-25">Tempo di Conservazione</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="border-end">
-                                                        <strong> Log accesso (SPID/CIE) </strong>
-                                                    </td>
-                                                    <td class="border-end">
-                                                        <p class="mb-0">
-                                                            <strong>24 mesi</strong>
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="border-end">
-                                                        <strong> Log di sistema </strong>
-                                                    </td>
-                                                    <td class="border-end">
-                                                        <p class="mb-0">
-                                                            <strong>3 anni</strong>
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="border-end">
-                                                        <button type="button" data-info="12" class="btn-normal text-dark bg-primary-50 border-0 fw-bold">Audit log specifici sugli Atti Opponibili ai terzi </button>
-                                                    </td>
-                                                    <td class="border-end">
-                                                        <p class="mb-0">
-                                                            <strong>10 anni</strong> alla <button type="button" data-info="16" class="btn-normal text-dark bg-primary-50 border-0 fw-bold">data di perfezionamento della notifica</button>.
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="border-end">
-                                                        <strong> Dati di navigazione </strong>
-                                                    </td>
-                                                    <td class="border-end">
-                                                        <p class="mb-0">
-                                                            <strong>90 giorni</strong>
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="border-end">
-                                                        <strong> Audit log (generici) </strong>
-                                                    </td>
-                                                    <td class="border-end">
-                                                        <p class="mb-0">
-                                                            <strong>5 anni</strong>
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-
-                                        <div class="inBreve__item border-radius-5 d-lg-none">
-                                            <!--Box al posto della tabella-->
-                                                <h3 class="fs-20 text-primary">Log accesso (SPID/CIE)</h3>
-                                                <h4 class="h6">24 mesi</h4>
-                                        <hr class="my-3">
-                                                <h3 class="fs-20 text-primary">Log di sistema</h3>
-                                                <h4 class="h6">3 anni</h4>
-                                        <hr class="my-3">
-                                                <h3 class="fs-20 text-primary">
-                                                    <button type="button" data-info="12" 
-                                                    class="btn-normal text-dark bg-primary-50 border-0 fw-bold">
-                                                    <span class="text-primary">Audit log specifici sugli Atti Opponibili ai terzi </span></button>
-                                                </h3>
-                                                <h4 class="h6">10 anni</h4>
-                                                <p class="mb-0">
-                                                    dalla <button type="button" data-info="16" 
-                                                    class="btn-normal text-dark bg-primary-50 border-0 fw-bold">
-                                                    <span class="text-primary">data di perfezionamento della notifica</span></button>
-                                                    .
-                                                </p>
-                                        <hr class="my-3">
-                                                <h3 class="fs-20 text-primary">Dati di navigazione</h3>
-                                                <h4 class="h6">90 giorni</h4>
-                                        <hr class="my-3">
-                                                <h3 class="fs-20 text-primary">Audit log (generici)</h3>
-                                                <h4 class="h6">5 anni</h4>
-                                        </div>
-                                        <div data-box="12" class="messaggio-info">
-                                            <div class="messaggio-info__content">
-                                                <img class="d-lg-none d-block ms-auto close-button" src="assets/icon/close-button.svg" alt="" width="25">
-                                                <img class="messaggio-info__icon d-lg-block d-none" src="assets/icon/arrow-mesage.svg" alt="">
-                                                <h6>Audit log specifici sugli Atti Opponibili ai terzi </h6>
-                                                "tracce digitali" (audit log) che dimostrano che la notifica è avvenuta correttamente e ha valore legale (cioè è "opponibile a terzi"), insieme ai dati tecnici necessari per far funzionare i link e i codici QR dei tuoi documenti.
-                                            </div>
-                                        </div>
-                                        <div data-box="16" class="messaggio-info">
-                                            <div class="messaggio-info__content">
-                                                <img class="d-lg-none d-block ms-auto close-button" src="assets/icon/close-button.svg" alt="" width="25">
-                                                <img class="messaggio-info__icon d-lg-block d-none" src="assets/icon/arrow-mesage.svg" alt="">
-                                                <h6>Data di perfezionamento della notifica</h6>
-                                                ovvero il momento esatto in cui la notifica risulta legalmente consegnata.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div  id="diritti" class="accordion-item accordion-item--custom">
-                                <h3 class="accordion-header p-0">
-                                    <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#dirittiAccordion" aria-expanded="false" aria-controls="dirittiAccordion">
-                                         8. I tuoi diritti                              
-                                    </button>
-                                </h3>
-                                <div id="dirittiAccordion" class="accordion-collapse collapse border-0" data-bs-parent="#accordionInformativa">
-                                    <div class="accordion-body">
-                                        <p>
-                                            Tu sei il padrone dei tuoi dati. Il GDPR ti riconosce una serie di diritti che puoi esercitare gratuitamente:                                  </p>
-                                        <ul class="mb-0">
-                                            <li>
-                                                <strong>Accesso:</strong> 
-                                                puoi chiederci: "State trattando i miei dati?" e, se sì, ottenerne una copia.
-                                            </li>
-                                            <li>
-                                                <strong>Rettifica:</strong> 
-                                                puoi correggere dati sbagliati o aggiornare quelli vecchi.
-                                            </li>
-                                            <li>
-                                                <strong>Cancellazione (Oblio):</strong> 
-                                                puoi chiedere di cancellare i tuoi dati se non servono più o se li stiamo trattando illegittimamente.
-                                            </li>
-                                            <li>
-                                                <strong>Limitazione:</strong> 
-                                                puoi chiederci di "congelare" i dati (tenerli ma non usarli) in attesa di verifiche.
-                                            </li>
-                                            <li>
-                                                <strong>Opposizione:</strong> 
-                                                puoi opporti al trattamento per motivi legati alla tua situazione particolare, anche se il trattamento è di interesse pubblico.
-                                            </li>
-                                            <li>
-                                                <strong>Portabilità:</strong> 
-                                                puoi chiedere di ricevere i tuoi dati in un formato facile da leggere per trasferirli altrove (ove applicabile).
-                                            </li>
-                                            <li>
-                                                <strong>Revoca:</strong> 
-                                                nel caso in cui il trattamento sia basato sul <strong>consenso</strong>, puoi revocarlo in qualsiasi momento.
-                                            </li>
-                                        </ul>
-                                        <p>
-                                            Puoi trasmetterci la tua richiesta per esercitare i tuoi diritti compilando questo 
-                                            <a href="https://privacyportal-de.onetrust.com/webform/77f17844-04c3-4969-a11d-462ee77acbe1/9ab6533d-be4a-482e-929a-0d8d2ab29df8" target="_blank" rel="noopener noreferrer">
-                                                form online
-                                            </a>. 
-                                        </p>
-                                       <p class="mb-0">
-                                            <strong>Reclamo: </strong>
-                                            Se pensi che i tuoi diritti siano stati violati, puoi rivolgerti all’Autorità Garante per la Protezione dei Dati Personali
-                                            <a href="http://" target="_blank" rel="noopener noreferrer">(www.garanteprivacy.it)</a> .
-                                       </p>
-
-                                    </div>
-                                </div>
-                            </div>
-                             <div  id="cookie" class="accordion-item accordion-item--custom">
-                                <h3 class="accordion-header p-0">
-                                    <button class="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#cookieAccordion" aria-expanded="false" aria-controls="cookieAccordion">
-                                        9. Cookie e Tecnologie di Tracciamento           
-                                    </button>
-                                </h3>
-                                <div id="cookieAccordion" class="accordion-collapse collapse border-0" data-bs-parent="#accordionInformativa">
-                                    <div class="accordion-body">
-                                        <p>
-                                        La nostra Società rispetta la tua privacy: non salviamo né accediamo a informazioni sul tuo dispositivo (computer, smartphone o tablet) senza il tuo consenso, a meno che non sia strettamente necessario per far funzionare correttamente questo Sito.
-                                                                            
-                                            </p>
-                                            <h4 class="h6 fw-bold">Cosa sono i cookie</h4>
-                                            <p>Utilizziamo i "cookie" e tecnologie simili (come local storage e session storage) per archiviare brevi stringhe di testo nel tuo browser mentre navighi</p>
-                                            <p>Questi strumenti possono essere classificati in base a tre criteri:</p>
-                                            <ul class="mb-0">
-                                            <li>
-                                                <strong>Provenienza: </strong> <br/>
-                                                - <i>Di prima parte:</i> se gestiti direttamente da noi.<br>
-                                                - <i>Di terze parti:</i> se gestiti da fornitori esterni i cui servizi sono integrati nel nostro Sito.
-
-                                            </li>
-                                            <li>
-                                                <strong>Durata: </strong> <br/>
-                                                - <i>Di sessione:</i> si cancellano automaticamente quando chiudi il browser.<br/>
-                                                - <i>Persistenti:</i> rimangono memorizzati fino a una data prefissata, per riconoscerti nelle visite successive.
-                                            </li>
-                                            <li>
-                                                <strong>Funzione:</strong> <br/>
-                                                - <i>Strettamente necessari (Tecnici):</i> indispensabili per navigare e usare il sito.<br/>
-                                                - <i>Opzionali:</i> utili per migliorare l'esperienza (es. funzionalità avanzate o statistiche), ma non essenziali.
-
-                                            </li>
-                                        </ul>
-                                        <h4 class="h6 fw-bold pt-4">Nota sui Cookie Statistici (Analytics)</h4>
-                                        <p class="">
-                                            In linea con le indicazioni del Garante Privacy (Linee guida del 10 giugno 2021), 
-                                            i cookie utilizzati per <button type="button" data-info="6" class="btn-normal text-dark bg-primary-50 border-0 fw-bold">statistiche aggregate</button> 
-                                            possono essere equiparati ai cookie tecnici (quindi non richiedono il tuo consenso preventivo) se rispettano determinate condizioni di anonimato.
-                                        </p>
-                                        <h4 class="h6 fw-bold pt-4">Come puoi gestire i cookie </h4>
-                                        <p class="">
-                                            Puoi visualizzare o cancellare i cookie in qualsiasi momento attraverso le impostazioni del tuo browser.
-                                        </p>
-                                        <h4 class="h6 fw-bold pt-4">Attenzione </h4>
-                                        <p class="">
-                                            La cancellazione dei cookie "strettamente necessari" potrebbe causare malfunzionamenti del Sito (ad esempio, potresti essere disconnesso improvvisamente dalla tua area riservata).
-                                        </p>
-                                        <h4 class="h6 fw-bold pt-4">Elenco dei cookie utilizzati  </h4>
-                                        <p class="">
-                                            Nell'informativa tecnica ufficiale trovi la lista dettagliata dei cookie attivi su questo Sito, con indicazione della loro origine e durata.
-                                        </p>
-                                        <div data-box="6" class="messaggio-info">
-                                            <div class="messaggio-info__content">
-                                                <img class="d-lg-none d-block ms-auto close-button" src="assets/icon/close-button.svg" alt="" width="25">
-                                                <img class="messaggio-info__icon d-lg-block d-none" src="assets/icon/arrow-mesage.svg" alt="">
-                                                <h6>Statistiche aggregate</h6>
-                                                Le <strong>statistiche aggregate</strong> sono analisi di dati raggruppati in un unico insieme generale (come totali, medie o percentuali), trattati in modo tale che <strong>non sia più possibile risalire all'identità del singolo utente</strong> o alle sue azioni personali.
-                                            </div>
-                                        </div>
-                                    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section id="informativaTecnica" class="container mb-5">
-                        <h2 class="h3">Informativa tecnica ufficiale</h2>
-                        <p>
-                        <i>Le informazioni riportate nei paragrafi precedenti sono una sintesi semplificata che abbiamo realizzato per agevolare l’utente nella comprensione di come tratteremo i suoi dati. 
-                            La nostra informativa ufficiale può essere scaricata <a href="https://privacyportal-de.onetrust.com/webform/77f17844-04c3-4969-a11d-462ee77acbe1/9ab6533d-be4a-482e-929a-0d8d2ab29df8" target="_blank">cliccando qui</a>.<br/> 
-                            In caso di contenziosi, reclami o controlli dell’Autorità garante l’informativa tecnica Ufficiale sarà l’unico riferimento.</i>
-                        </p>
-                         <p>
-                            <i>Data di aggiornamento: 15/12/2025</i>
-                        </p>
-                    </section>
-                 </div>
-            </div>
-        </main>
-        <button class="btn btn-primary menu-anchor__button d-md-block d-none">
-            Indice del trattamento
-        </button>
-        <div class="menu-anchor d-md-block d-none border">
-
-            <nav class="menu-anchor__nav bg-gray p-3">
-                <img src="assets/icon/close-button.svg" alt="" class="menu-close" width="25px">
-                <h6 class="text-primary fw-bold">Indice del trattamento</h6>
-                <ul >
-                    <li><a class="small text-decoration-none text-dark fw-bold" href="#inBreve">In breve: cosa devi sapere</a></li>
-                    <li><a class="small text-decoration-none text-dark fw-bold" href="#titolare">Chi decide come vengono usati i tuoi dati?</a></li>
-                    <li><a class="small text-decoration-none text-dark fw-bold" href="#dpo">Chi controlla che la tua privacy sia rispettata? (Il DPO)</a></li>
-                    <li><a class="small text-decoration-none text-dark fw-bold" href="#datiRaccolti">Quali dati raccogliamo e perché?</a></li>
-                    <li><a class="small text-decoration-none text-dark fw-bold" href="#diritto">Perché possiamo trattare i tuoi dati? (Base Giuridica)</a></li>
-                    <li><a class="small text-decoration-none text-dark fw-bold" href="#comunicazione">A chi comunichiamo i tuoi dati?</a></li>
-                    <li><a class="small text-decoration-none text-dark fw-bold" href="#europa">I dati vanno fuori dall'Europa?</a></li>
-                    <li><a class="small text-decoration-none text-dark fw-bold" href="#tempo">Per quanto tempo conserviamo i dati?</a></li>
-                    <li><a class="small text-decoration-none text-dark fw-bold" href="#diritti">I tuoi diritti?</a></li>
-                    <li><a class="small text-decoration-none text-dark fw-bold" href="#cookie">Cookie e Tecnologie di Tracciamento</a></li>
-                    <li><a class="small text-decoration-none text-dark fw-bold" href="#informativaTecnica">Informativa tecnica</a></li>
-                </ul>
-            </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>SEND</title>
+    <meta
+      name="description"
+      content="Servizio notifiche digitali per il cittadino"
+    />
+    <link
+      rel="icon"
+      href="assets/icon/favicon.png"
+      type="image/png"
+      size="16x16"
+    />
+    <!--Boostrap italia css e js-->
+    <link rel="stylesheet" href="assets/fonts.css" />
+    <link rel="stylesheet" href="assets/bootstrap-italia.min.css" />
+    <script src="assets/bootstrap-italia.bundle.min.js"></script>
+    <!--CSS e js custom-->
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <header class="pb-5">
+      <nav class="css-guf6my position-fixed top-0 w-100">
+        <div class="css-i51fkh">
+          <a class="navbar-brand mb-0 small text-dark fw-bold" href="#"
+            >PagoPA S.p.A.</a
+          >
         </div>
-        <footer class="">
-            <div class="footer-container container-fluid">
-                <div class="row">
-                    <div class="col-md-3 pb-md-0 pb-5 text-lg-start text-center">
-                        <a class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cpxf9x my-1 d-inline-block"  aria-label="Link: vai al sito di PagoPA S.p.A." href="https://www.pagopa.it/it/">
-                            <svg viewBox="0 0 119 33" focusable="false" aria-labelledby="logo-pagoPA-company-titleID"
-                            role="img" class="css-zr5gjd"><path opacity=".4" fill-rule="evenodd" 
-                            clip-rule="evenodd" d="M114.338 25.099h3.718V2.324h-3.718v2.97a11.347 11.347 0 0 0-7.669-2.97 11.375 11.375 
+      </nav>
+    </header>
+
+    <main class="my-5 container">
+      <div class="row justify-content-center">
+        <div class="col-xl-9">
+          <section class="container mb-4 pb-2">
+            <h1 class="h2">Informativa del trattamento dei dati personali</h1>
+          </section>
+          <section id="inBreve" class="container mb-5">
+            <h2 class="h3">In breve: cosa devi sapere</h2>
+            <p>
+              <i
+                >Hai poco tempo? Ecco le informazioni essenziali a colpo
+                d’occhio.</i
+              >
+            </p>
+            <table class="table table-custom d-lg-block d-none">
+              <thead class="bg-dark text-white">
+                <tr>
+                  <th class="border-end">Domanda</th>
+                  <th>Risposta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="border-end">
+                    <strong> Chi gestisce i miei dati? </strong>
+                  </td>
+                  <td>
+                    <p class="mb-0">
+                      <strong>PagoPA S.p.A.</strong> (Titolare) gestisce la
+                      piattaforma tecnologica. Le
+                      <span class="text-primary fw-bold"
+                        >Pubbliche Amministrazioni (PA)</span
+                      >
+                      usano la piattaforma per inviarti le notifiche (chiamate
+                      PA Mittenti).
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border-end">
+                    <strong>Perché trattiamo questi dati? </strong>
+                  </td>
+                  <td>
+                    <p class="mb-0">
+                      Per identificarti, permetterti di gestire le notifiche
+                      (invio/ricezione), le deleghe e per garantirti la
+                      sicurezza del servizio.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border-end">
+                    <strong> Quali dati usiamo? </strong>
+                  </td>
+                  <td>
+                    <p class="mb-0">
+                      Dati anagrafici (da SPID/CIE), dati di contatto
+                      (PEC/email), dati relativi agli atti notificati e dati
+                      tecnici di navigazione.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border-end">
+                    <strong> Per quanto tempo li trattiamo? </strong>
+                  </td>
+                  <td>
+                    <p class="mb-0">
+                      I tempi variano in base al dato: dai
+                      <strong>90 giorni</strong> per i dati di navigazione fino
+                      ai <strong>10 anni</strong> per gli atti con valore
+                      legale.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="border-end">
+                    <strong>Quali sono i miei diritti? </strong>
+                  </td>
+                  <td>
+                    <p class="mb-0">
+                      Hai il pieno controllo: puoi accedere ai dati,
+                      correggerli, opporti al trattamento o revocare i consensi
+                      (es. per il Domicilio di Piattaforma).
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div
+              class="bg-gray inBreve__item border-radius-5 d-lg-none p-md-4 p-3"
+            >
+              <h3 class="fs-20 text-primary">Chi gestisce i miei dati?</h3>
+              <p class="mb-0">
+                <strong>PagoPA S.p.A.</strong> (Titolare) gestisce la
+                piattaforma tecnologica. Le
+                <span class="text-primary fw-bold"
+                  >Pubbliche Amministrazioni (PA)</span
+                >
+                usano la piattaforma per inviarti le notifiche (chiamate PA
+                Mittenti).
+              </p>
+              <hr class="my-3" />
+              <h3 class="fs-20 text-primary">Quali dati raccogliete?</h3>
+              <p class="mb-0">
+                Per identificarti, permetterti di gestire le notifiche
+                (invio/ricezione), le deleghe e per garantirti la sicurezza del
+                servizio.
+              </p>
+              <hr class="my-3" />
+              <h3 class="fs-20 text-primary">Quali dati usiamo?</h3>
+              <p class="mb-0">
+                Dati anagrafici (da SPID/CIE), dati di contatto (PEC/email),
+                dati relativi agli atti notificati e dati tecnici di
+                navigazione.
+              </p>
+              <hr class="my-3" />
+              <h3 class="fs-20 text-primary">Per quanto tempo li trattiamo?</h3>
+              <p class="mb-0">
+                I tempi variano in base al dato: dai
+                <strong>90 giorni</strong> per i dati di navigazione fino ai
+                <strong>10 anni</strong> per gli atti con valore legale.
+              </p>
+              <hr class="my-3" />
+              <h3 class="fs-20 text-primary">Quali sono i miei diritti?</h3>
+              <p class="mb-0">
+                Hai il pieno controllo: puoi accedere ai dati, correggerli,
+                opporti al trattamento o revocare i consensi (es. per il
+                Domicilio di Piattaforma).
+              </p>
+            </div>
+          </section>
+          <section id="infoEstesa" class="container mb-5">
+            <h2 class="h3">Informativa estesa</h2>
+            <p>
+              <i
+                >Vuoi saperne di più? Ti diamo maggiori dettagli su come
+                tratteremo i tuoi dati spiegandotelo in modo semplice.</i
+              >
+            </p>
+            <div class="accordion border-0" id="accordionInformativa">
+              <div id="titolare" class="accordion-item accordion-item--custom">
+                <h3 class="accordion-header p-0">
+                  <button
+                    class="accordion-button border-0"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#titolareAccordion"
+                    aria-expanded="true"
+                    aria-controls="titolareAccordion"
+                  >
+                    1. Chi decide come vengono usati i tuoi dati? (Il Titolare)
+                  </button>
+                </h3>
+                <div
+                  id="titolareAccordion"
+                  class="accordion-collapse collapse show border-0"
+                  data-bs-parent="#accordionInformativa"
+                >
+                  <div class="accordion-body">
+                    <p>
+                      <button
+                        type="button"
+                        data-info="1"
+                        class="btn-normal text-dark bg-primary-50 border-0 fw-bold"
+                      >
+                        Il titolare del trattamento
+                      </button>
+                      è PagoPA S.p.A. (di seguito anche "Noi" o "La società").
+                    </p>
+                    <ul class="mb-0">
+                      <li>
+                        <strong>Chi siamo: </strong>una società pubblica che
+                        gestisce l'infrastruttura digitale per i servizi
+                        pubblici.
+                      </li>
+                      <li>
+                        <strong>Dove siamo:</strong> Roma, Piazza Colonna n.
+                        370, CAP 00187.
+                      </li>
+                      <li>
+                        <strong>Come contattarci:</strong> per domande generali,
+                        usa il
+                        <a
+                          href="https://privacyportal-de.onetrust.com/webform/77f17844-04c3-4969-a11d-462ee77acbe1/9ab6533d-be4a-482e-929a-0d8d2ab29df8"
+                          target="_blank"
+                        ></a>
+                        form di assistenza sul sito.
+                      </li>
+                    </ul>
+                    <div data-box="1" class="messaggio-info">
+                      <div class="messaggio-info__content">
+                        <img
+                          class="d-lg-none d-block ms-auto close-button"
+                          src="assets/icon/close-button.svg"
+                          alt=""
+                          width="25"
+                        />
+                        <img
+                          class="messaggio-info__icon d-lg-block d-none"
+                          src="assets/icon/arrow-mesage.svg"
+                          alt=""
+                        />
+                        <h6>Titolare del trattamento</h6>
+                        soggetto che decide le finalità e i mezzi con cui i tuoi
+                        dati vengono gestiti
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="dpo" class="accordion-item accordion-item--custom">
+                <h3 class="accordion-header p-0">
+                  <button
+                    class="accordion-button collapsed border-0"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#dpoAccordion"
+                    aria-expanded="false"
+                    aria-controls="dpoAccordion"
+                  >
+                    2. Chi controlla che la tua privacy sia rispettata? (Il DPO)
+                  </button>
+                </h3>
+                <div
+                  id="dpoAccordion"
+                  class="accordion-collapse collapse border-0"
+                  data-bs-parent="#accordionInformativa"
+                >
+                  <div class="accordion-body">
+                    <p>
+                      Abbiamo nominato un
+                      <button
+                        type="button"
+                        data-info="2"
+                        class="btn-normal text-dark bg-primary-50 border-0 fw-bold"
+                      >
+                        un Responsabile della Protezione dei Dati (Data
+                        Protection Officer - DPO).
+                      </button>
+                      Se hai dubbi specifici o vuoi esercitare i tuoi diritti,
+                      contatta direttamente il DPO:
+                    </p>
+                    <ul class="mb-0">
+                      <li>
+                        <strong>E-mail:</strong>
+                        <a href="mailto:dpo@pagopa.it">dpo@pagopa.it</a>
+                      </li>
+                      <li>
+                        <strong>PEC:</strong>
+                        <a href="mailto:dpo@pec.pagopa.it">dpo@pec.pagopa.it</a>
+                      </li>
+                      <li>
+                        <strong>Indirizzo postale:</strong> PagoPA S.p.A., Via
+                        Sardegna n. 38 - 00187, Roma.
+                      </li>
+                    </ul>
+                    <div data-box="2" class="messaggio-info">
+                      <div class="messaggio-info__content">
+                        <img
+                          class="d-lg-none d-block ms-auto close-button"
+                          src="assets/icon/close-button.svg"
+                          alt=""
+                          width="25"
+                        />
+                        <img
+                          class="messaggio-info__icon d-lg-block d-none"
+                          src="assets/icon/arrow-mesage.svg"
+                          alt=""
+                        />
+                        <h6>Data Protection Officer - DPO</h6>
+                        figura indipendente che vigila sul rispetto delle
+                        normative privacy
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="datiRaccolti"
+                class="accordion-item accordion-item--custom"
+              >
+                <h3 class="accordion-header p-0">
+                  <button
+                    class="accordion-button collapsed border-0"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#datiRaccoltiAccordion"
+                    aria-expanded="false"
+                    aria-controls="datiRaccoltiAccordion"
+                  >
+                    3. Quali dati raccogliamo e perché?
+                  </button>
+                </h3>
+                <div
+                  id="datiRaccoltiAccordion"
+                  class="accordion-collapse collapse border-0"
+                  data-bs-parent="#accordionInformativa"
+                >
+                  <div class="accordion-body">
+                    <p class="mb-4">
+                      Trattiamo diverse categorie di dati per farti usare la
+                      Piattaforma in sicurezza. Si tratta ad esempio dei dati:
+                    </p>
+                    <div class="accordion-body-section border-top pt-4 mb-4">
+                      <h3 class="fs-20 fw-bold text-dark">
+                        A. Dati anagrafici
+                      </h3>
+                      <ul class="mb-0">
+                        <li>
+                          <strong>Dati: </strong>
+                          Nome, cognome, data di nascita, codice fiscale.
+                        </li>
+                        <li>
+                          <strong>Fonte: </strong>
+                          Li otteniamo quando accedi con <strong>SPID</strong> o
+                          <strong>CIE</strong>.
+                        </li>
+                        <li>
+                          <strong>Perché: </strong>
+                          Per identificarti in modo univoco, farti accedere e
+                          garantire la sicurezza del sistema.
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="accordion-body-section border-top pt-4 mb-4">
+                      <h3 class="fs-20 fw-bold text-dark">
+                        B. Dati di notifica e deleghe
+                      </h3>
+                      <ul class="mb-0">
+                        <li>
+                          <strong>Dati: </strong><br />
+                          - Nome, cognome e CF del destinatario e di eventuali
+                          <strong>delegati</strong>.<br />
+                          - Recapiti digitali (es. PEC) e codici OTP.<br />
+                          - Atti oggetto di notifica, codice IUN, dati di
+                          pagamento e avvisi di ricezione.<br />
+                          - Dati per trovare il tuo indirizzo fisico (tramite
+                          banca dati ANPR) o digitale (registri PEC).<br />
+                        </li>
+                        <li>
+                          <strong>Perché: </strong>
+                          Per gestire le tue preferenze, le deleghe, inviarti le
+                          notifiche e semplificare tutto il processo.
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="accordion-body-section border-top pt-4 mb-4">
+                      <h3 class="fs-20 fw-bold text-dark">
+                        C. Dati di navigazione (come navigare)
+                      </h3>
+                      <ul class="mb-0">
+                        <li>
+                          <strong>Dati: </strong>
+                          Indirizzo IP, tipo di dispositivo, browser, orario
+                          della richiesta, indirizzi URI/URL e altri parametri
+                          tecnici.
+                        </li>
+                        <li>
+                          <strong>Perchè: </strong>
+                          Sono necessari per far funzionare il sito (protocolli
+                          di internet), c ontrollare che tutto vada bene
+                          (diagnostica) e difendere i nostri diritti e la
+                          sicurezza.<br />
+                          <div class="mt-2">
+                            <i
+                              ><strong>Nota:</strong> Memorizziamo anche dati
+                              anonimi per statistiche (es. pagine più visitate)
+                              per migliorare il sito.</i
+                            >
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="accordion-body-section border-top pt-4 mb-4">
+                      <h3 class="fs-20 fw-bold text-dark">
+                        D. Dati che ci comunichi tu
+                      </h3>
+                      <p>
+                        Se ci scrivi via email o compili i moduli di contatto,
+                        tratteremo il tuo indirizzo e il contenuto del messaggio
+                        esclusivamente per risponderti.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="diritto" class="accordion-item accordion-item--custom">
+                <h3 class="accordion-header p-0">
+                  <button
+                    class="accordion-button collapsed border-0"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#dirittoAccordion"
+                    aria-expanded="true"
+                    aria-controls="dirittoAccordion"
+                  >
+                    4. Perché possiamo trattare i tuoi dati? (Base Giuridica)
+                  </button>
+                </h3>
+                <div
+                  id="dirittoAccordion"
+                  class="accordion-collapse collapse border-0"
+                  data-bs-parent="#accordionInformativa"
+                >
+                  <div class="accordion-body">
+                    <p>Il trattamento è legittimo perché si basa su:</p>
+                    <ol class="mb-0">
+                      <li>
+                        <strong>Compito di Interesse Pubblico:: </strong> <br />
+                        La gestione della Piattaforma è un nostro compito
+                        istituzionale (previsto dal GDPR art. 6.1.e).
+                      </li>
+                      <li>
+                        <strong>Contratto: </strong><br />
+                        Per l'accesso, la registrazione e la gestione delle
+                        deleghe (GDPR art. 6.1.b).
+                      </li>
+                      <li>
+                        <strong>Consenso: </strong><br />
+                        necessario per l'inserimento del
+                        <button
+                          type="button"
+                          data-info="10"
+                          class="btn-normal text-dark bg-primary-50 border-0 fw-bold"
+                        >
+                          Domicilio Digitale di Piattaforma
+                        </button>
+                        (che prevale sugli altri recapiti).<br />
+                        <i>Puoi revocare questo consenso quando vuoi</i>
+                      </li>
+                    </ol>
+                    <div data-box="10" class="messaggio-info">
+                      <div class="messaggio-info__content">
+                        <img
+                          class="d-lg-none d-block ms-auto close-button"
+                          src="assets/icon/close-button.svg"
+                          alt=""
+                          width="25"
+                        />
+                        <img
+                          class="messaggio-info__icon d-lg-block d-none"
+                          src="assets/icon/arrow-mesage.svg"
+                          alt=""
+                        />
+                        <h6>Domicilio Digitale di Piattaforma</h6>
+                        è un indirizzo PEC (Posta Elettronica Certificata) o un
+                        servizio elettronico di recapito certificato.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="comunicazione"
+                class="accordion-item accordion-item--custom"
+              >
+                <h3 class="accordion-header p-0">
+                  <button
+                    class="accordion-button collapsed border-0"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#comunicazioneAccordion"
+                    aria-expanded="true"
+                    aria-controls="comunicazioneAccordion"
+                  >
+                    5. A chi comunichiamo i tuoi dati?
+                  </button>
+                </h3>
+                <div
+                  id="comunicazioneAccordion"
+                  class="accordion-collapse collapse border-0"
+                  data-bs-parent="#accordionInformativa"
+                >
+                  <div class="accordion-body">
+                    <p>
+                      I tuoi dati non vengono diffusi, ma possono essere
+                      comunicati a:
+                    </p>
+                    <ul class="mb-0">
+                      <li>
+                        <strong
+                          ><button
+                            type="button"
+                            data-info="11"
+                            class="btn-normal text-dark bg-primary-50 border-0 fw-bold"
+                          >
+                            Fornitori (Responsabili del trattamento)</button
+                          >:
+                        </strong>
+                        soggetti che lavorano per noi (es. servizi tecnici)
+                        seguendo nostre istruzioni. Puoi chiedere l'elenco
+                        completo tramite questo
+                        <a
+                          href="https://privacyportal-de.onetrust.com/webform/77f17844-04c3-4969-a11d-462ee77acbe1/9ab6533d-be4a-482e-929a-0d8d2ab29df8"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >form</a
+                        >.
+                      </li>
+                      <li>
+                        <strong>Altri destinatari:</strong><br />
+                        se necessario per legge o per compiti di interesse
+                        pubblico (es. le PA Mittenti).
+                      </li>
+                    </ul>
+                    <div data-box="11" class="messaggio-info">
+                      <div class="messaggio-info__content">
+                        <img
+                          class="d-lg-none d-block ms-auto close-button"
+                          src="assets/icon/close-button.svg"
+                          alt=""
+                          width="25"
+                        />
+                        <img
+                          class="messaggio-info__icon d-lg-block d-none"
+                          src="assets/icon/arrow-mesage.svg"
+                          alt=""
+                        />
+                        <h6>Responsabili del Trattamento</h6>
+                        cioè degli Enti che trattano i tuoi dati per nostro
+                        conto
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="europa" class="accordion-item accordion-item--custom">
+                <h3 class="accordion-header p-0">
+                  <button
+                    class="accordion-button collapsed border-0"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#europaAccordion"
+                    aria-expanded="true"
+                    aria-controls="europaAccordion"
+                  >
+                    6. I dati vanno fuori dall'Europa?
+                  </button>
+                </h3>
+                <div
+                  id="europaAccordion"
+                  class="accordion-collapse collapse border-0"
+                  data-bs-parent="#accordionInformativa"
+                >
+                  <div class="accordion-body">
+                    <p>
+                      Per far funzionare correttamente SEND, ci affidiamo a
+                      fornitori tecnici. Questi fornitori devono garantirci
+                      misure di sicurezza adeguate per proteggere i tuoi
+                      diritti.<br />
+                      Alcuni di loro potrebbero trasferire i dati al di fuori
+                      dello Spazio Economico Europeo. Se questo accade, PagoPA
+                      tutela i tuoi dati seguendo
+                      <span class="text-primary">regole severe</span> (artt.
+                      44-49 GDPR):
+                    </p>
+                    <ul class="mb-0">
+                      <li>
+                        <strong>Controlli continui:</strong> Valutiamo
+                        periodicamente l'impatto di questi trasferimenti per
+                        assicurarci che siano sicuri.
+                      </li>
+                      <li>
+                        <strong>Garanzie legali:</strong> Utilizziamo strumenti
+                        e contratti specifici per mantenere alto il livello di
+                        protezione dei tuoi diritti, ovunque vadano i dati.
+                      </li>
+                    </ul>
+                    <p>
+                      <strong>Importante:</strong> Se non esistono garanzie o
+                      misure idonee per proteggere i tuoi dati in un determinato
+                      paese,
+                      <strong>PagoPA non effettuerà il trasferimento.</strong>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div id="tempo" class="accordion-item accordion-item--custom">
+                <h3 class="accordion-header p-0">
+                  <button
+                    class="accordion-button collapsed border-0"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#tempoAccordion"
+                    aria-expanded="true"
+                    aria-controls="tempoAccordion"
+                  >
+                    7. Per quanto tempo conserviamo i dati?
+                  </button>
+                </h3>
+                <div
+                  id="tempoAccordion"
+                  class="accordion-collapse collapse border-0"
+                  data-bs-parent="#accordionInformativa"
+                >
+                  <div class="accordion-body">
+                    <p>
+                      Non teniamo i tuoi dati per sempre, ma solo per tempi
+                      precisi stabiliti in base alla necessità e alla legge:
+                    </p>
+                    <table class="table table-custom d-lg-block d-none">
+                      <thead class="bg-dark text-white">
+                        <tr>
+                          <th class="border-end w-25">Tipologia di dato</th>
+                          <th class="border-end w-25">
+                            Tempo di Conservazione
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="border-end">
+                            <strong> Log accesso (SPID/CIE) </strong>
+                          </td>
+                          <td class="border-end">
+                            <p class="mb-0">
+                              <strong>24 mesi</strong>
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="border-end">
+                            <strong> Log di sistema </strong>
+                          </td>
+                          <td class="border-end">
+                            <p class="mb-0">
+                              <strong>3 anni</strong>
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="border-end">
+                            <button
+                              type="button"
+                              data-info="12"
+                              class="btn-normal text-dark bg-primary-50 border-0 fw-bold"
+                            >
+                              Audit log specifici sugli Atti Opponibili ai terzi
+                            </button>
+                          </td>
+                          <td class="border-end">
+                            <p class="mb-0">
+                              <strong>10 anni</strong> alla
+                              <button
+                                type="button"
+                                data-info="16"
+                                class="btn-normal text-dark bg-primary-50 border-0 fw-bold"
+                              >
+                                data di perfezionamento della notifica</button
+                              >.
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="border-end">
+                            <strong> Dati di navigazione </strong>
+                          </td>
+                          <td class="border-end">
+                            <p class="mb-0">
+                              <strong>90 giorni</strong>
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="border-end">
+                            <strong> Audit log (generici) </strong>
+                          </td>
+                          <td class="border-end">
+                            <p class="mb-0">
+                              <strong>5 anni</strong>
+                            </p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <div class="inBreve__item border-radius-5 d-lg-none">
+                      <!--Box al posto della tabella-->
+                      <h3 class="fs-20 text-primary">Log accesso (SPID/CIE)</h3>
+                      <h4 class="h6">24 mesi</h4>
+                      <hr class="my-3" />
+                      <h3 class="fs-20 text-primary">Log di sistema</h3>
+                      <h4 class="h6">3 anni</h4>
+                      <hr class="my-3" />
+                      <h3 class="fs-20 text-primary">
+                        <button
+                          type="button"
+                          data-info="12"
+                          class="btn-normal text-dark bg-primary-50 border-0 fw-bold"
+                        >
+                          <span class="text-primary"
+                            >Audit log specifici sugli Atti Opponibili ai terzi
+                          </span>
+                        </button>
+                      </h3>
+                      <h4 class="h6">10 anni</h4>
+                      <p class="mb-0">
+                        dalla
+                        <button
+                          type="button"
+                          data-info="16"
+                          class="btn-normal text-dark bg-primary-50 border-0 fw-bold"
+                        >
+                          <span class="text-primary"
+                            >data di perfezionamento della notifica</span
+                          >
+                        </button>
+                        .
+                      </p>
+                      <hr class="my-3" />
+                      <h3 class="fs-20 text-primary">Dati di navigazione</h3>
+                      <h4 class="h6">90 giorni</h4>
+                      <hr class="my-3" />
+                      <h3 class="fs-20 text-primary">Audit log (generici)</h3>
+                      <h4 class="h6">5 anni</h4>
+                    </div>
+                    <div data-box="12" class="messaggio-info">
+                      <div class="messaggio-info__content">
+                        <img
+                          class="d-lg-none d-block ms-auto close-button"
+                          src="assets/icon/close-button.svg"
+                          alt=""
+                          width="25"
+                        />
+                        <img
+                          class="messaggio-info__icon d-lg-block d-none"
+                          src="assets/icon/arrow-mesage.svg"
+                          alt=""
+                        />
+                        <h6>
+                          Audit log specifici sugli Atti Opponibili ai terzi
+                        </h6>
+                        "tracce digitali" (audit log) che dimostrano che la
+                        notifica è avvenuta correttamente e ha valore legale
+                        (cioè è "opponibile a terzi"), insieme ai dati tecnici
+                        necessari per far funzionare i link e i codici QR dei
+                        tuoi documenti.
+                      </div>
+                    </div>
+                    <div data-box="16" class="messaggio-info">
+                      <div class="messaggio-info__content">
+                        <img
+                          class="d-lg-none d-block ms-auto close-button"
+                          src="assets/icon/close-button.svg"
+                          alt=""
+                          width="25"
+                        />
+                        <img
+                          class="messaggio-info__icon d-lg-block d-none"
+                          src="assets/icon/arrow-mesage.svg"
+                          alt=""
+                        />
+                        <h6>Data di perfezionamento della notifica</h6>
+                        ovvero il momento esatto in cui la notifica risulta
+                        legalmente consegnata.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="diritti" class="accordion-item accordion-item--custom">
+                <h3 class="accordion-header p-0">
+                  <button
+                    class="accordion-button collapsed border-0"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#dirittiAccordion"
+                    aria-expanded="false"
+                    aria-controls="dirittiAccordion"
+                  >
+                    8. I tuoi diritti
+                  </button>
+                </h3>
+                <div
+                  id="dirittiAccordion"
+                  class="accordion-collapse collapse border-0"
+                  data-bs-parent="#accordionInformativa"
+                >
+                  <div class="accordion-body">
+                    <p>
+                      Tu sei il padrone dei tuoi dati. Il GDPR ti riconosce una
+                      serie di diritti che puoi esercitare gratuitamente:
+                    </p>
+                    <ul class="mb-0">
+                      <li>
+                        <strong>Accesso:</strong>
+                        puoi chiederci: "State trattando i miei dati?" e, se sì,
+                        ottenerne una copia.
+                      </li>
+                      <li>
+                        <strong>Rettifica:</strong>
+                        puoi correggere dati sbagliati o aggiornare quelli
+                        vecchi.
+                      </li>
+                      <li>
+                        <strong>Cancellazione (Oblio):</strong>
+                        puoi chiedere di cancellare i tuoi dati se non servono
+                        più o se li stiamo trattando illegittimamente.
+                      </li>
+                      <li>
+                        <strong>Limitazione:</strong>
+                        puoi chiederci di "congelare" i dati (tenerli ma non
+                        usarli) in attesa di verifiche.
+                      </li>
+                      <li>
+                        <strong>Opposizione:</strong>
+                        puoi opporti al trattamento per motivi legati alla tua
+                        situazione particolare, anche se il trattamento è di
+                        interesse pubblico.
+                      </li>
+                      <li>
+                        <strong>Portabilità:</strong>
+                        puoi chiedere di ricevere i tuoi dati in un formato
+                        facile da leggere per trasferirli altrove (ove
+                        applicabile).
+                      </li>
+                      <li>
+                        <strong>Revoca:</strong>
+                        nel caso in cui il trattamento sia basato sul
+                        <strong>consenso</strong>, puoi revocarlo in qualsiasi
+                        momento.
+                      </li>
+                    </ul>
+                    <p>
+                      Puoi trasmetterci la tua richiesta per esercitare i tuoi
+                      diritti compilando questo
+                      <a
+                        href="https://privacyportal-de.onetrust.com/webform/77f17844-04c3-4969-a11d-462ee77acbe1/9ab6533d-be4a-482e-929a-0d8d2ab29df8"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        form online </a
+                      >.
+                    </p>
+                    <p class="mb-0">
+                      <strong>Reclamo: </strong>
+                      Se pensi che i tuoi diritti siano stati violati, puoi
+                      rivolgerti all’Autorità Garante per la Protezione dei Dati
+                      Personali
+                      <a
+                        href="https://www.garanteprivacy.it"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >(www.garanteprivacy.it)</a
+                      >
+                      .
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div id="cookie" class="accordion-item accordion-item--custom">
+                <h3 class="accordion-header p-0">
+                  <button
+                    class="accordion-button collapsed border-0"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#cookieAccordion"
+                    aria-expanded="false"
+                    aria-controls="cookieAccordion"
+                  >
+                    9. Cookie e Tecnologie di Tracciamento
+                  </button>
+                </h3>
+                <div
+                  id="cookieAccordion"
+                  class="accordion-collapse collapse border-0"
+                  data-bs-parent="#accordionInformativa"
+                >
+                  <div class="accordion-body">
+                    <p>
+                      La nostra Società rispetta la tua privacy: non salviamo né
+                      accediamo a informazioni sul tuo dispositivo (computer,
+                      smartphone o tablet) senza il tuo consenso, a meno che non
+                      sia strettamente necessario per far funzionare
+                      correttamente questo Sito.
+                    </p>
+                    <h4 class="h6 fw-bold">Cosa sono i cookie</h4>
+                    <p>
+                      Utilizziamo i "cookie" e tecnologie simili (come local
+                      storage e session storage) per archiviare brevi stringhe
+                      di testo nel tuo browser mentre navighi
+                    </p>
+                    <p>
+                      Questi strumenti possono essere classificati in base a tre
+                      criteri:
+                    </p>
+                    <ul class="mb-0">
+                      <li>
+                        <strong>Provenienza: </strong> <br />
+                        - <i>Di prima parte:</i> se gestiti direttamente da
+                        noi.<br />
+                        - <i>Di terze parti:</i> se gestiti da fornitori esterni
+                        i cui servizi sono integrati nel nostro Sito.
+                      </li>
+                      <li>
+                        <strong>Durata: </strong> <br />
+                        - <i>Di sessione:</i> si cancellano automaticamente
+                        quando chiudi il browser.<br />
+                        - <i>Persistenti:</i> rimangono memorizzati fino a una
+                        data prefissata, per riconoscerti nelle visite
+                        successive.
+                      </li>
+                      <li>
+                        <strong>Funzione:</strong> <br />
+                        -
+                        <i>Strettamente necessari (Tecnici):</i> indispensabili
+                        per navigare e usare il sito.<br />
+                        - <i>Opzionali:</i> utili per migliorare l'esperienza
+                        (es. funzionalità avanzate o statistiche), ma non
+                        essenziali.
+                      </li>
+                    </ul>
+                    <h4 class="h6 fw-bold pt-4">
+                      Nota sui Cookie Statistici (Analytics)
+                    </h4>
+                    <p class="">
+                      In linea con le indicazioni del Garante Privacy (Linee
+                      guida del 10 giugno 2021), i cookie utilizzati per
+                      <button
+                        type="button"
+                        data-info="6"
+                        class="btn-normal text-dark bg-primary-50 border-0 fw-bold"
+                      >
+                        statistiche aggregate
+                      </button>
+                      possono essere equiparati ai cookie tecnici (quindi non
+                      richiedono il tuo consenso preventivo) se rispettano
+                      determinate condizioni di anonimato.
+                    </p>
+                    <h4 class="h6 fw-bold pt-4">Come puoi gestire i cookie</h4>
+                    <p class="">
+                      Puoi visualizzare o cancellare i cookie in qualsiasi
+                      momento attraverso le impostazioni del tuo browser.
+                    </p>
+                    <h4 class="h6 fw-bold pt-4">Attenzione</h4>
+                    <p class="">
+                      La cancellazione dei cookie "strettamente necessari"
+                      potrebbe causare malfunzionamenti del Sito (ad esempio,
+                      potresti essere disconnesso improvvisamente dalla tua area
+                      riservata).
+                    </p>
+                    <h4 class="h6 fw-bold pt-4">
+                      Elenco dei cookie utilizzati
+                    </h4>
+                    <p class="">
+                      Nell'informativa tecnica ufficiale trovi la lista
+                      dettagliata dei cookie attivi su questo Sito, con
+                      indicazione della loro origine e durata.
+                    </p>
+                    <div data-box="6" class="messaggio-info">
+                      <div class="messaggio-info__content">
+                        <img
+                          class="d-lg-none d-block ms-auto close-button"
+                          src="assets/icon/close-button.svg"
+                          alt=""
+                          width="25"
+                        />
+                        <img
+                          class="messaggio-info__icon d-lg-block d-none"
+                          src="assets/icon/arrow-mesage.svg"
+                          alt=""
+                        />
+                        <h6>Statistiche aggregate</h6>
+                        Le <strong>statistiche aggregate</strong> sono analisi
+                        di dati raggruppati in un unico insieme generale (come
+                        totali, medie o percentuali), trattati in modo tale che
+                        <strong
+                          >non sia più possibile risalire all'identità del
+                          singolo utente</strong
+                        >
+                        o alle sue azioni personali.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section id="informativaTecnica" class="container mb-5">
+            <h2 class="h3">Informativa tecnica ufficiale</h2>
+            <p>
+              <i
+                >Le informazioni riportate nei paragrafi precedenti sono una
+                sintesi semplificata che abbiamo realizzato per agevolare
+                l’utente nella comprensione di come tratteremo i suoi dati. La
+                nostra informativa ufficiale può essere scaricata
+                <a
+                  href="https://privacyportal-de.onetrust.com/webform/77f17844-04c3-4969-a11d-462ee77acbe1/9ab6533d-be4a-482e-929a-0d8d2ab29df8"
+                  target="_blank"
+                  >cliccando qui</a
+                >.<br />
+                In caso di contenziosi, reclami o controlli dell’Autorità
+                garante l’informativa tecnica Ufficiale sarà l’unico
+                riferimento.</i
+              >
+            </p>
+            <p>
+              <i>Data di aggiornamento: 15/12/2025</i>
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+    <button class="btn btn-primary menu-anchor__button d-md-block d-none">
+      Indice del documento
+    </button>
+    <div class="menu-anchor d-md-block d-none border">
+      <nav class="menu-anchor__nav bg-gray p-3">
+        <img
+          src="assets/icon/close-button.svg"
+          alt=""
+          class="menu-close"
+          width="25px"
+        />
+        <h6 class="text-primary fw-bold">Indice del documento</h6>
+        <ul>
+          <li>
+            <a
+              class="small text-decoration-none text-dark fw-bold"
+              href="#inBreve"
+              >In breve: cosa devi sapere</a
+            >
+          </li>
+          <li>
+            <a
+              class="small text-decoration-none text-dark fw-bold"
+              href="#titolare"
+              >Chi decide come vengono usati i tuoi dati?</a
+            >
+          </li>
+          <li>
+            <a class="small text-decoration-none text-dark fw-bold" href="#dpo"
+              >Chi controlla che la tua privacy sia rispettata? (Il DPO)</a
+            >
+          </li>
+          <li>
+            <a
+              class="small text-decoration-none text-dark fw-bold"
+              href="#datiRaccolti"
+              >Quali dati raccogliamo e perché?</a
+            >
+          </li>
+          <li>
+            <a
+              class="small text-decoration-none text-dark fw-bold"
+              href="#diritto"
+              >Perché possiamo trattare i tuoi dati? (Base Giuridica)</a
+            >
+          </li>
+          <li>
+            <a
+              class="small text-decoration-none text-dark fw-bold"
+              href="#comunicazione"
+              >A chi comunichiamo i tuoi dati?</a
+            >
+          </li>
+          <li>
+            <a
+              class="small text-decoration-none text-dark fw-bold"
+              href="#europa"
+              >I dati vanno fuori dall'Europa?</a
+            >
+          </li>
+          <li>
+            <a
+              class="small text-decoration-none text-dark fw-bold"
+              href="#tempo"
+              >Per quanto tempo conserviamo i dati?</a
+            >
+          </li>
+          <li>
+            <a
+              class="small text-decoration-none text-dark fw-bold"
+              href="#diritti"
+              >I tuoi diritti?</a
+            >
+          </li>
+          <li>
+            <a
+              class="small text-decoration-none text-dark fw-bold"
+              href="#cookie"
+              >Cookie e Tecnologie di Tracciamento</a
+            >
+          </li>
+          <li>
+            <a
+              class="small text-decoration-none text-dark fw-bold"
+              href="#informativaTecnica"
+              >Informativa tecnica</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <footer class="">
+      <div class="footer-container container-fluid">
+        <div class="row">
+          <div class="col-md-3 pb-md-0 pb-5 text-lg-start text-center">
+            <a
+              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cpxf9x my-1 d-inline-block"
+              aria-label="Link: vai al sito di PagoPA S.p.A."
+              href="https://www.pagopa.it/it/"
+            >
+              <svg
+                viewBox="0 0 119 33"
+                focusable="false"
+                aria-labelledby="logo-pagoPA-company-titleID"
+                role="img"
+                class="css-zr5gjd"
+              >
+                <path
+                  opacity=".4"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M114.338 25.099h3.718V2.324h-3.718v2.97a11.347 11.347 0 0 0-7.669-2.97 11.375 11.375 
                             0 0 0-9.528 5.15 11.334 11.334 0 0 1 1.86 6.237 11.33 11.33 0 0 1-1.86 6.238 11.377 11.377 0 0 0 9.528 
                             5.15c2.954 0 5.645-1.125 7.669-2.97v2.97ZM99 13.71a7.67 7.67 0 1 1 15.338 0 7.67 7.67 0 0 1-15.338 0ZM3.718 
                             5.294v-2.97H0v29.282h3.718v-9.477a11.345 11.345 0 0 0 7.67 2.97c3.985 0 7.493-2.049 9.527-5.15a11.334 11.334
                             0 0 1-1.859-6.238c0-2.303.684-4.446 1.86-6.237a11.377 11.377 0 0 0-9.529-5.15 11.346 11.346 0 0 0-7.669 2.97Zm0 
-                            8.417a7.669 7.669 0 1 1 15.338 0 7.669 7.669 0 0 1-15.338 0Z"></path><path opacity=".7" fill-rule="evenodd" clip-rule="evenodd" d="M41.83 5.304v-2.98h-3.718v2.97a11.346 11.346 0 0 0-7.669-2.97c-6.288 0-11.387 5.098-11.387 11.387 0 6.29 5.099 11.388 11.387 11.388 2.954 0 5.646-1.125 7.67-2.97v2.97h3.718v-2.925a11.39 11.39 0 0 1-3.719-8.435c0-3.342 1.434-6.348 3.719-8.435Zm-19.055 8.407a7.669 7.669 0 1 1 15.338 0 7.669 7.669 0 0 1-15.338 0ZM79.944 5.293V2.324h-3.719v2.97a11.358 11.358 0 0 1 3.719 8.417c0 3.335-1.434 6.335-3.719 8.418v9.477h3.719v-9.477a11.346 11.346 0 0 0 7.669 2.97C93.902 25.099 99 20 99 13.71S93.902 2.324 87.613 2.324a11.346 11.346 0 0 0-7.669 2.97Zm0 8.418a7.669 7.669 0 1 1 15.338 0 7.669 7.669 0 0 1-15.338 0Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M60.887 0v5.293l.157-.14a11.344 11.344 0 0 1 7.513-2.83c6.288 0 11.387 5.1 11.387 11.388 0 6.29-5.099 11.388-11.388 11.388a11.345 11.345 0 0 1-7.668-2.97v3.02c0 2.9-1.16 5.627-3.196 7.7l-.15.151-2.604-2.66c1.383-1.36 2.179-3.123 2.229-5.002l.002-.189v-2.975A11.333 11.333 0 0 1 49.5 25.15c-6.289 0-11.387-5.11-11.387-11.41 0-6.303 5.098-11.411 11.387-11.411 2.954 0 5.645 1.127 7.67 2.975V0h3.717ZM49.5 6.055c-4.235 0-7.669 3.44-7.669 7.684s3.434 7.685 7.67 7.685c4.235 0 7.668-3.44 7.668-7.685 0-4.244-3.433-7.684-7.669-7.684Zm11.388 7.656a7.669 7.669 0 1 1 15.338 0 7.669 7.669 0 0 1-15.338 0Z"></path><title id="logo-pagoPA-company-titleID">PagoPA</title>
-                            </svg>
-                        </a>
-                        <ul class="footer-menu">
-                            <li>
-                                <a href="https://www.pagopa.it/it/societa/chi-siamo">Chi siamo</a>
-                            </li>
-                            <li>
-                                <a href="https://www.pagopa.it/it/opportunita/pnrr/progetti">PNRR</a>
-                            </li>
-                            <li>
-                                <a href="https://www.pagopa.it/it/media">Media</a>
-                            </li>
-                            <li>
-                                <a href="https://www.pagopa.it/it/lavora-con-noi">Lavora con noi</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3 pb-md-0 pb-5 text-lg-start text-center d-lg-block d-none">
-
-                    </div>
-                    <div class="col-md-3 pb-md-0 pb-5 text-lg-start text-center">
-                        <div>
-                        <span class="text-uppercase">Risorse</span>
-                            <ul class="footer-menu">
-                                <li>
-                                    <a href="https://imprese.notifichedigitali.it/informativa-privacy">Informativa Privacy</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.pagopa.it/it/certificazioni/">Certificazioni</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.pagopa.it/it/politiche-per-la-sicurezza-delle-informazioni/">Sicurezza delle informazioni</a>
-                                </li>
-                                <li>
-                                    <a href="https://privacyportal-de.onetrust.com/webform/77f17844-04c3-4969-a11d-462ee77acbe1/9ab6533d-be4a-482e-929a-0d8d2ab29df8">
-                                    Diritto alla protezione dei dati personali
-                                </a>
-                                </li>
-                                <li>
-                                    <a href="https://pagopa.portaleamministrazionetrasparente.it/pagina0_home-page.html">Società trasparente</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.pagopa.it/it/responsible-disclosure-policy/">Responsible Disclosure Policy</a>
-                                </li>
-                                <li>
-                                    <a href="https://pagopa.portaleamministrazionetrasparente.it/pagina746_altri-contenuti.html">Modello 231</a>
-                                </li>
-                                <li>
-                                    <a href="https://imprese.notifichedigitali.it/termini-di-servizio">Termini e Condizioni</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="col-md-3 pb-md-0 pb-5 text-lg-start text-center">
-                        <div class="d-flex flex-column justify-content-between  h-100">
-                            <div>
-                                <span class="text-uppercase">Seguici su</span>
-                                <ul class="social-footer  d-flex justify-content-md-start justify-content-center">
-                                    <li>
-                                        <a href="https://www.linkedin.com/company/pagopa/" target="_blank">
-                                            <img src="assets/icon/linkedin.svg" alt="Linkedin">                                
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.instagram.com/pagopaspa/?hl=en" target="_blank">
-                                            <img src="assets/icon/instagram.svg" alt="Instagram">                                 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.threads.net/@pagopaspa" target="_blank">
-                                            <img src="assets/icon/threads.svg" alt="Threads">                                 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.youtube.com/channel/UCFBGOEJUPQ6t3xtZFc_UIEQ" target="_blank">
-                                            <img src="assets/icon/youtube.svg" alt="Youtube">                                 
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul class="footer-menu">
-                                    <li>
-                                        <a class="" aria-label="Vai al link: Accessibilità" href="https://form.agid.gov.it/view/94c974e0-9858-11f0-932b-b1f629ca861e">Accessibilità</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <div class="ue">
-                                <img src="assets/icon/ue-logo.svg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            8.417a7.669 7.669 0 1 1 15.338 0 7.669 7.669 0 0 1-15.338 0Z"
+                ></path>
+                <path
+                  opacity=".7"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M41.83 5.304v-2.98h-3.718v2.97a11.346 11.346 0 0 0-7.669-2.97c-6.288 0-11.387 5.098-11.387 11.387 0 6.29 5.099 11.388 11.387 11.388 2.954 0 5.646-1.125 7.67-2.97v2.97h3.718v-2.925a11.39 11.39 0 0 1-3.719-8.435c0-3.342 1.434-6.348 3.719-8.435Zm-19.055 8.407a7.669 7.669 0 1 1 15.338 0 7.669 7.669 0 0 1-15.338 0ZM79.944 5.293V2.324h-3.719v2.97a11.358 11.358 0 0 1 3.719 8.417c0 3.335-1.434 6.335-3.719 8.418v9.477h3.719v-9.477a11.346 11.346 0 0 0 7.669 2.97C93.902 25.099 99 20 99 13.71S93.902 2.324 87.613 2.324a11.346 11.346 0 0 0-7.669 2.97Zm0 8.418a7.669 7.669 0 1 1 15.338 0 7.669 7.669 0 0 1-15.338 0Z"
+                ></path>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M60.887 0v5.293l.157-.14a11.344 11.344 0 0 1 7.513-2.83c6.288 0 11.387 5.1 11.387 11.388 0 6.29-5.099 11.388-11.388 11.388a11.345 11.345 0 0 1-7.668-2.97v3.02c0 2.9-1.16 5.627-3.196 7.7l-.15.151-2.604-2.66c1.383-1.36 2.179-3.123 2.229-5.002l.002-.189v-2.975A11.333 11.333 0 0 1 49.5 25.15c-6.289 0-11.387-5.11-11.387-11.41 0-6.303 5.098-11.411 11.387-11.411 2.954 0 5.645 1.127 7.67 2.975V0h3.717ZM49.5 6.055c-4.235 0-7.669 3.44-7.669 7.684s3.434 7.685 7.67 7.685c4.235 0 7.668-3.44 7.668-7.685 0-4.244-3.433-7.684-7.669-7.684Zm11.388 7.656a7.669 7.669 0 1 1 15.338 0 7.669 7.669 0 0 1-15.338 0Z"
+                ></path>
+                <title id="logo-pagoPA-company-titleID">PagoPA</title>
+              </svg>
+            </a>
+            <ul class="footer-menu">
+              <li>
+                <a href="https://www.pagopa.it/it/societa/chi-siamo"
+                  >Chi siamo</a
+                >
+              </li>
+              <li>
+                <a href="https://www.pagopa.it/it/opportunita/pnrr/progetti"
+                  >PNRR</a
+                >
+              </li>
+              <li>
+                <a href="https://www.pagopa.it/it/media">Media</a>
+              </li>
+              <li>
+                <a href="https://www.pagopa.it/it/lavora-con-noi"
+                  >Lavora con noi</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="col-md-3 pb-md-0 pb-5 text-lg-start text-center d-lg-block d-none"
+          ></div>
+          <div class="col-md-3 pb-md-0 pb-5 text-lg-start text-center">
+            <div>
+              <span class="text-uppercase">Risorse</span>
+              <ul class="footer-menu">
+                <li>
+                  <a
+                    href="https://cittadini.notifichedigitali.it/informativa-privacy"
+                    >Informativa Privacy</a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.pagopa.it/it/certificazioni/"
+                    >Certificazioni</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.pagopa.it/it/politiche-per-la-sicurezza-delle-informazioni/"
+                    >Sicurezza delle informazioni</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://privacyportal-de.onetrust.com/webform/77f17844-04c3-4969-a11d-462ee77acbe1/9ab6533d-be4a-482e-929a-0d8d2ab29df8"
+                  >
+                    Diritto alla protezione dei dati personali
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://pagopa.portaleamministrazionetrasparente.it/pagina0_home-page.html"
+                    >Società trasparente</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.pagopa.it/it/responsible-disclosure-policy/"
+                    >Responsible Disclosure Policy</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://pagopa.portaleamministrazionetrasparente.it/pagina746_altri-contenuti.html"
+                    >Modello 231</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://imprese.notifichedigitali.it/termini-di-servizio"
+                    >Termini e Condizioni</a
+                  >
+                </li>
+              </ul>
             </div>
-            <div class="footer-info">
-                <div class="MuiContainer-root MuiContainer-maxWidthLg css-5of5il footer-info__content">
-                    <p class="MuiTypography-root MuiTypography-caption css-1d6rteh">
-                        <strong>PagoPA S.p.A.</strong> — società per azioni con socio unico - capitale sociale di euro 1,000,000 interamente versato - sede legale in Roma, Piazza Colonna 370,<br>
-                        CAP 00187 - n. di iscrizione a Registro Imprese di Roma, CF e P.IVA 15376371009
-                    </p>
-                </div>
+          </div>
+          <div class="col-md-3 pb-md-0 pb-5 text-lg-start text-center">
+            <div class="d-flex flex-column justify-content-between h-100">
+              <div>
+                <span class="text-uppercase">Seguici su</span>
+                <ul
+                  class="social-footer d-flex justify-content-md-start justify-content-center"
+                >
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/company/pagopa/"
+                      target="_blank"
+                    >
+                      <img src="assets/icon/linkedin.svg" alt="Linkedin" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.instagram.com/pagopaspa/?hl=en"
+                      target="_blank"
+                    >
+                      <img src="assets/icon/instagram.svg" alt="Instagram" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.threads.net/@pagopaspa"
+                      target="_blank"
+                    >
+                      <img src="assets/icon/threads.svg" alt="Threads" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/channel/UCFBGOEJUPQ6t3xtZFc_UIEQ"
+                      target="_blank"
+                    >
+                      <img src="assets/icon/youtube.svg" alt="Youtube" />
+                    </a>
+                  </li>
+                </ul>
+                <ul class="footer-menu">
+                  <li>
+                    <a
+                      class=""
+                      aria-label="Vai al link: Accessibilità"
+                      href="https://form.agid.gov.it/view/94c974e0-9858-11f0-932b-b1f629ca861e"
+                      >Accessibilità</a
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div class="ue">
+                <img src="assets/icon/ue-logo.svg" alt="" />
+              </div>
             </div>
-        </footer>
-    </body>
+          </div>
+        </div>
+      </div>
+      <div class="footer-info">
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg css-5of5il footer-info__content"
+        >
+          <p class="MuiTypography-root MuiTypography-caption css-1d6rteh">
+            <strong>PagoPA S.p.A.</strong> — società per azioni con socio unico
+            - capitale sociale di euro 1,000,000 interamente versato - sede
+            legale in Roma, Piazza Colonna 370,<br />
+            CAP 00187 - n. di iscrizione a Registro Imprese di Roma, CF e P.IVA
+            15376371009
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
