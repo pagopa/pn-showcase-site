@@ -117,7 +117,7 @@ function PickupPointsList({
           maxHeight: { xs: "480px", lg: "750px" },
           overflowY: "auto",
           p: 0,
-          mt: 2,
+          mt: 3,
           pr: 1,
         }}
       >
@@ -133,8 +133,8 @@ function PickupPointsList({
                 border: isSelected ? "2px solid" : "1px solid",
                 borderColor: isSelected ? "#2185E9" : "divider",
                 borderRadius: "8px",
-                my: 2,
                 p: 3,
+                mb: 2,
                 cursor: "pointer",
                 backgroundColor: isSelected ? "#0073E614" : "transparent",
                 "&:hover": {
