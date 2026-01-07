@@ -10,28 +10,8 @@ body {
   padding-right: 32px;
 }
 
-#ritiroPagination {
-  .MuiTablePagination-toolbar {
-    padding: 0;
-
-    .MuiTablePagination-actions,
-    .MuiTablePagination-selectLabel,
-    .MuiTablePagination-displayedRows {
-      display: none;
-    }
-
-    .MuiTablePagination-select {
-      padding-left: 0;
-    }
-  }
-}
-
 .MuiPopperUnstyled-root .MuiAutocomplete-paper {
   box-shadow: 5px 5px 20px 0px #e1e0e0;
-}
-
-#ritiroPagination_page_mobile ul {
-  justify-content: flex-end;
 }
 
 .MuiOutlinedInput-root:has(#textFilter) {

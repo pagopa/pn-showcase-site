@@ -17,6 +17,11 @@ const useCurrentPosition = (): Return => {
     setDeniedAccess(false);
   };
 
+  const truncateCoordinate = (coord: number, decimals: number = 4): number => {
+    const factor = Math.pow(10, decimals);
+    return Math.trunc(coord * factor) / factor;
+  };
+
   useEffect(() => {
     if (!navigator.geolocation) {
       setGeocodingError("geolocation-not-supported");
@@ -26,7 +31,10 @@ const useCurrentPosition = (): Return => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
-        setUserPosition({ latitude, longitude });
+        setUserPosition({
+          latitude: truncateCoordinate(latitude, 4),
+          longitude: truncateCoordinate(longitude, 4),
+        });
         if (geocodingError || deniedAccess) {
           clearErrors();
         }

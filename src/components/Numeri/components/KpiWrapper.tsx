@@ -9,30 +9,29 @@ import { getMarks } from "../shared/chart-utils";
 
 type Props = {
   spec: TopLevelSpec;
-  className?: string;
 };
 
 const isSceneText = (
   item: VegaScene | VegaSceneGroup | SceneText
 ): item is SceneText => "text" in item;
 
-const KpiWrapper = ({ spec, ...restProps }: Props): JSX.Element => {
+const KpiWrapper = ({ spec }: Props) => {
   const [text, setText] = useState("#");
 
   useEffect(() => {
-    getMarks(spec).then((marks) => {
-      if (!marks[0]) return;
-      if (isSceneText(marks[0])) {
-        setText(marks[0].text);
-      }
-    });
+    getMarks(spec)
+      .then((marks) => {
+        if (!marks[0]) {
+          return;
+        }
+        if (isSceneText(marks[0])) {
+          setText(marks[0].text);
+        }
+      })
+      .catch(console.error);
   });
 
-  return (
-    <p color="#fff" {...restProps}>
-      {text}
-    </p>
-  );
+  return <>{text}</>;
 };
 
 export default KpiWrapper;

@@ -16,7 +16,7 @@ const UserPositionControl: React.FC<Props> = ({ points = [] }) => {
     if (!userPosition || !map.current) return;
 
     fitMapToPoints(userPosition, points, map.current);
-  }, [map, userPosition]);
+  }, [map, userPosition, points]);
 
   if (userPosition) {
     return (

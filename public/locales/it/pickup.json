@@ -3,9 +3,7 @@
   "description": "Cerca il Punto di ritiro SEND più vicino a te per ritirare una copia degli atti notificati o scoprire se c'è un avviso di avvenuta ricezione a te destinato",
   "search": {
     "title": "Cerca un Punto di ritiro SEND",
-    "description_1": "Quando ricevi una comunicazione a valore legale tramite SEND puoi richiedere una copia dei documenti notificati presso gli ",
-    "description_2": "esercenti convenzionati",
-    "description_3": "Il servizio è in attivazione progressiva su tutto il territorio nazionale.",
+    "description": "Quando ricevi una notifica SEND, puoi richiedere la copia dei documenti notificati presso gli <strong>esercenti convenzionati</strong>. La stampa ha un costo di <strong>1,40 €</strong> + IVA (se prevista), eventuali spese per servizi aggiuntivi resi dall'esercente non sono incluse nel servizio di stampa e ritiro.",
     "disclaimer": "Al momento puoi cercare solo fra i punti di ritiro presenti in alcuni Comuni italiani: il servizio è in attivazione progressiva su tutto il territorio nazionale.",
     "placeholder": "Cerca città, CAP o sigla provincia (es. RM per Roma)",
     "empty_state_1": "Non sembrano essere disponibili punti di ritiro SEND in questa località.",
@@ -13,13 +11,15 @@
   },
   "loading-aria-label": "Caricamento dei Punti di ritiro in corso",
   "how-it-works": "Scopri come funziona",
+  "activation-in-progress": "Il servizio è in attivazione progressiva su tutto il territorio nazionale.",
   "drawer": {
     "book-alert-title": "Prenota il tuo appuntamento al CAF",
-    "book-alert-description": "Evita le attese, prenota e ricevi assistenza senza fare la fila.",
+    "required-book-alert-title": "Questo CAF riceve solo su appuntamento",
+    "book-alert-description": "Evita le attese, prenota e ricevi assistenza senza fare la fila.\nTi ricordiamo che il costo del servizio di stampa è di <strong>1,40 €</strong> (più IVA se prevista). Eventuali spese per servizi aggiuntivi resi dall'esercente non sono incluse nel servizio di stampa e ritiro.",
     "address": "Indirizzo",
     "address-copied": "Indirizzo copiato negli appunti",
     "opening-hours": "Orari di apertura",
-    "phone-number": "Numero di telefono",
+    "contacts": "Contatti",
     "get-directions": "Ottieni indicazioni",
     "copy-informations": "Copia informazioni",
     "reservation-call": "Per prenotare chiama il",
@@ -31,7 +31,10 @@
       "friday": "Venerdì",
       "saturday": "Sabato",
       "sunday": "Domenica"
-    }
+    },
+    "or": "o",
+    "location-id": "ID sede CAF",
+    "external-codes": "Codici associati alla sede"
   },
   "show-more": "Carica altri risultati",
   "show-details": "Mostra dettagli",
@@ -44,7 +47,8 @@
     "fetch-error": "Qualcosa non va nel caricamento degli indirizzi. Riprova.",
     "empty-state-title": "Non ci sono corrispondenze da mostrare",
     "empty-state-description": "Controlla i dati inseriti oppure inserisci un altro indirizzo o città.",
-    "current-position": "Posizione attuale"
+    "current-position": "Posizione attuale",
+    "current-position-cta": "Usa posizione attuale"
   },
   "geolocation-not-supported": "Questo browser non supporta la geolocalizzazione. Prova ad accedere con un altro browser per continuare.",
   "geolocation-error": "Si è verificato un problema con la geolocalizzazione. Ricarica la pagina e riprova.",

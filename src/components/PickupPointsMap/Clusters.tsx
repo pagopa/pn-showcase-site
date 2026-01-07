@@ -19,7 +19,7 @@ const Clusters: React.FC<RegionClusterProps> = ({ points, selectedPoint }) => {
       type: "Feature",
       properties: {
         point,
-        isSelected: selectedPoint?.id === point.id,
+        isSelected: selectedPoint?.locationId === point.locationId,
       },
       geometry: {
         type: "Point",

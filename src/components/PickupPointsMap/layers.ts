@@ -1,7 +1,7 @@
 import type { LayerProps } from "react-map-gl/maplibre";
 
 export const clusterLayer: LayerProps = {
-  id: "points",
+  id: "cluster-points",
   type: "circle",
   source: "stores",
   filter: ["==", "cluster", true],

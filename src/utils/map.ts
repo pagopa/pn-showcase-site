@@ -1,4 +1,4 @@
-import { LngLatBoundsLike } from "maplibre-gl";
+import { LngLatBounds } from "maplibre-gl";
 import { MapRef } from "react-map-gl/maplibre";
 import { Coordinates, Point, RaddOperator } from "src/model";
 
@@ -18,10 +18,11 @@ import { Coordinates, Point, RaddOperator } from "src/model";
 export function sortPointsByDistance(
   rows: RaddOperator[],
   userCoordinates: Coordinates | null,
-  targetPoint: Coordinates | null = null
+  targetPoint: Coordinates | null = null,
+  searchedAddress: Coordinates | null = null
 ): Array<RaddOperator> {
   const sortingReference = targetPoint || userCoordinates;
-  const distanceReference = userCoordinates || targetPoint;
+  const distanceReference = searchedAddress || userCoordinates;
 
   if (!sortingReference) {
     return rows;
@@ -108,47 +109,63 @@ export const fitMapToPoints = (
   map: MapRef,
   pointsToFit: number = 5
 ) => {
-  const sortedPoints = sortPointsByDistance(points, coordinates);
-  const targetPoints = sortedPoints.slice(0, pointsToFit);
+  if (!points.length) return;
 
-  const allCoordinates = [
-    [coordinates.longitude, coordinates.latitude],
-    ...targetPoints.map((point) => [point.longitude!, point.latitude!]),
-  ];
+  const sortedPoints = sortPointsByDistance(points, coordinates, null);
+  const targetPoints = sortedPoints.slice(
+    0,
+    Math.min(pointsToFit, sortedPoints.length)
+  );
 
-  const lngs = allCoordinates.map((coord) => coord[0]);
-  const lats = allCoordinates.map((coord) => coord[1]);
+  const distances = targetPoints.map((point) =>
+    calculateDistance(
+      coordinates.latitude,
+      coordinates.longitude,
+      point.latitude,
+      point.longitude
+    )
+  );
+  const maxDistance = Math.max(...distances);
 
-  const bounds: LngLatBoundsLike = [
-    [Math.min(...lngs), Math.min(...lats)],
-    [Math.max(...lngs), Math.max(...lats)],
-  ];
+  // Converts distance into degrees (approximation: 1° ≈ 111km) and add 10% for padding
+  const radiusInDegrees = (maxDistance * 1.1) / 111;
 
-  map.fitBounds(bounds, {
-    padding: { top: 50, bottom: 50, left: 50, right: 50 },
-    maxZoom: 15,
-    duration: 1500,
-    // center: [coordinates.longitude, coordinates.latitude],
-  });
+  try {
+    const bounds = new LngLatBounds();
+
+    bounds.extend([
+      coordinates.longitude - radiusInDegrees,
+      coordinates.latitude - radiusInDegrees,
+    ]);
+    bounds.extend([
+      coordinates.longitude + radiusInDegrees,
+      coordinates.latitude + radiusInDegrees,
+    ]);
+
+    map.fitBounds(bounds, {
+      maxZoom: 15,
+      duration: 1500,
+    });
+  } catch (e) {
+    console.error("Unable to fit map to points", e);
+  }
 };
 
 /**
  * Maps a CSV row (point) to the frontend model (RaddOperator)
  *
  * @param {Point} point - The point object from the CSV
- * @param {number} index - The index of the point in the array
  * @returns {RaddOperator} The mapped RaddOperator object
  */
-export const mapPoint = (point: Point, index: number): RaddOperator => ({
-  id: index,
+export const mapPoint = (point: Point): RaddOperator => ({
+  locationId: point.locationId,
+  external_codes: point.codici_esterni,
   denomination: point.descrizione,
   city: point.città,
-  address: point.via,
-  normalizedAddress: point.indirizzo_AWS.replace(", Italia", ""),
+  address: point.indirizzo,
   province: point.provincia,
-  region: point.regione,
   cap: point.cap,
-  contacts: point.telefono,
+  contacts: point.telefoni,
   latitude: Number(point.latitudine),
   longitude: Number(point.longitudine),
   monday: point.lunedi,
@@ -158,6 +175,19 @@ export const mapPoint = (point: Point, index: number): RaddOperator => ({
   friday: point.venerdi,
   saturday: point.sabato,
   sunday: point.domenica,
-  type: point.tipologia,
-  caf_opening_hours: point.caf_orari_apertura,
+  rawOpeningHours: point.orari_apertura,
+  appointmentRequired: point.richiede_appuntamento === "si",
+  email: point.email,
+  website: point.website,
 });
+
+export const areCoordinatesEqual = (
+  coordinates1: Coordinates | null,
+  coordinates2: Coordinates | null
+): boolean => {
+  if (!coordinates1 || !coordinates2) return false;
+  return (
+    coordinates1.latitude === coordinates2.latitude &&
+    coordinates1.longitude === coordinates2.longitude
+  );
+};

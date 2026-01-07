@@ -1,60 +1,165 @@
 {
   "title": "SEND - Servizio Notifiche Digitali | SEND in Zahlen",
-  "description": "Daten über die gesendeten Zustellungen, über die Körperschaften, die SEND nutzen, und über die Arten der erbrachten Dienste",
+  "description": "Entdecken Sie Daten über die gesendeten Zustellungen, Körperschaften, die SEND nutzen, und Dienstarten",
   "hero": {
+    "eyelet": "Daten und Leistung",
     "title": "SEND in Zahlen",
-    "last_update": "Letzte Aktualisierung"
+
+    "description": "Auf dieser Seite finden Sie täglich aktualisierte Daten zur ",
+    "description_2": "SEND",
+    "description_3": "-Benachrichtigungsplattform",
+    "last_update": "Letzte Aktualisierung",
+    "alert": "Die Daten sind auf dati.gov.it verfügbar",
+    "website": "Zur den Daten"
   },
   "total": "Gesamt",
   "sent_notifications": {
-    "title": "Gesendete Zustellungen",
-    "description": "Die folgenden Daten beziehen sich auf die Zustellungen von Körperschaften der öffentlichen Verwaltung",
+    "title": "Versandte SEND-Benachrichtigungen",
+    "description": "Die Daten beziehen sich auf rechtsverbindliche Mitteilungen, die von teilnehmenden Entitäten versandt wurden.",
+    "filters": "Mit den unten stehenden Selektoren können Sie diesen Abschnitt nach dem gewünschten Zeitraum filtern.",
+
+    "screen_readers": "Angezeigter Datenzeitraum:",
     "total": {
-      "name": "insgesamt",
-      "title": "Zustellungen insgesamt",
-      "description": "Über SEND gesendete Zustellungen"
+      "name": "Gesamtzahl",
+      "title": "Gesamtzahl der versandten SEND-Benachrichtigungen",
+      "description": "Eine SEND-Benachrichtigung ist eine rechtsverbindliche Mitteilung, die offiziell von einer Behörde ausgestellt wird. Sie kann digital oder analog zugestellt werden.",
+      "title_2": "Gesamt Benachrichtigungen seit Juli 2023",
+      "description_2": "Gesamt Benachrichtigungen seit dem ersten Betriebsjahr der Plattform."
     },
     "digital": {
       "name": "digital",
-      "title": "Digitale Zustellungen insgesamt",
-      "description": "Über digitale Kanäle an die Empfänger gesendete Zustellungen"
+      "title": "Anzahl der digitalen SEND-Benachrichtigungen",
+      "description": "SEND-Benachrichtigungen, die über zertifizierte digitale Kanäle an die Empfänger zugestellt wurden"
     },
     "analog": {
       "name": "analog",
-      "title": "Analoge Zustellungen insgesamt",
-      "description": "Per Einschreiben in Papierform an die Empfänger gesendete Zustellungen"
+      "title": "Anzahl der analogen SEND-Benachrichtigungen",
+      "description": "SEND-Benachrichtigungen, die analog zugestellt wurden, da keine zertifizierten digitalen Kanäle des Empfängers verfügbar waren"
+    },
+    "pieChart": {
+      "tooltip": {
+        "type": "Benachrichtigungstyp",
+        "number": "Anzahl der Benachrichtigungen"
+      }
     },
     "trend": {
-      "title": "Verlauf der Zustellungen",
-      "description_1": "Verlauf",
-      "description_2": "der Zustellungen",
+      "title": "Entwicklung der SEND-Benachrichtigungen",
+      "description": "Entwicklung der Anzahl der SEND-Benachrichtigungen, die offiziell von einer teilnehmenden Entität ausgestellt wurden.",
+      "description_1": "Entwicklung",
+      "description_2": "der",
+      "description_3": "Benachrichtigungen",
       "monthly": "monatlich",
-      "aggregate": "kumulativ"
+      "aggregate": "kumulativ",
+      "total": "Gesamtzahl",
+      "digital": "digital",
+      "analog": "analog",
+      "tooltip": {
+        "month": "Monat",
+        "aggregate": "Kumulierte Benachrichtigungen",
+        "monthly": "Monatliche Benachrichtigungen"
+      },
+      "note": "Der kumulative Wert ist die fortlaufende Summe einer Menge über die Zeit."
     }
   },
-  "authorities_and_types": {
-    "title": "Körperschaften und Art der gesendeten Zustellungen",
-    "description": "Folgende Daten zeigen, wie viele Körperschaften SEND nutzen und für welche Art von Dienstleistungen",
-    "authorities": {
+
+  "entities": {
+    "title": "Entitäten auf SEND",
+    "description": "Teilnehmende Entitäten, die seit Beginn des Dienstes mindestens eine SEND-Benachrichtigung versandt haben.",
+    "active": {
       "total": {
-        "title": "Aktive Körperschaften insgesamt",
-        "description": "Körperschaften, die mindestens eine Zustellung gesendet haben"
+        "title": "Gesamtzahl der Entitäten auf SEND",
+        "description": "Gesamtanzahl der Entitäten, die mindestens eine SEND-Benachrichtigung versandt haben.",
+        "description_1": "im Vergleich zum Vorjahr"
       },
-      "main_cat": {
-        "title": "Hauptkategorien aktiver Körperschaften",
-        "description": "Nach Anzahl aktiver Körperschaften sortierte Körperschaftskategorien"
+      "municipalities": {
+        "title": "Prozentsatz der Gemeinden an der Gesamtzahl der Entitäten auf SEND"
+      },
+      "geographic_distribution": {
+        "title": "Geografische Verteilung der Gemeinden auf SEND",
+        "description": "Die Grafik zeigt die Verteilung der Gemeinden, die SEND nutzen, als die Entitätskategorie mit der höchsten Beteiligung.",
+        "description_1": "Wert anzeigen",
+        "absolute": {
+          "name": "absolut",
+          "description": "Die Blasengröße zeigt die Anzahl der aktiven Gemeinden pro Region an."
+        },
+        "percentage": {
+          "name": "prozentual",
+          "description": "Die Färbung zeigt den Prozentsatz aktiver Gemeinden in jeder Region."
+        }
+      },
+      "tooltip": {
+        "region": "Region",
+        "municipalities": "Gemeinden",
+        "percentage": "Anteil der Gemeinden an der Gesamtzahl der Gemeinden in der Region"
       }
+    }
+  },
+
+  "notification_types": {
+    "title": "Hauptbereiche der SEND-Benachrichtigungen",
+    "description": "Am häufigsten versandte Kategorien von SEND-Benachrichtigungen.",
+    "main_scopes": {
+      "title": "Nach Typ der teilnehmenden Entität filtern",
+      "note_1": "*anders als diejenigen, deren Benachrichtigung gemäß Art. 26, Abs. 17 D.L. 76/2020 vom SEND-Verfahren ausgeschlossen ist.",
+      "note_2": "Die Grafik zeigt die Hauptbereiche mit fünf oder mehr versendeten Benachrichtigungen"
     },
-    "notification_types": {
-      "total": {
-        "title": "Art der gesendeten Zustellungen",
-        "description": "Die Art steht für den Zuständigkeitsbereich der Zustellung (z.B. Bußgelder, Steuern, Register usw.)."
-      },
-      "main_scopes": {
-        "title": "Wichtigste Bereiche",
-        "description": "Nach Anzahl hinterlegter Zustellungen ab Einführung von SEND sortierte Dienste",
-        "notes": "* hiervon ausgenommen sind diejenigen, deren Zustellung durch SEND gemäß Art.26, Abs. 17 des GvD 76/2020 ausgeschlossen ist"
-      }
+    "tooltip": {
+      "category": "Bereich",
+      "notifications": "Zustellungen"
+    },
+    "tutte": {
+      "name": "Alle"
+    },
+    "comuni": {
+      "name": "Gemeinden"
+    },
+    "riscossori_e_altro": {
+      "name": "Steuerbehörden und andere"
+    },
+    "altri_enti_territoriali": {
+      "name": "Andere Gebietskörperschaften"
+    },
+    "province": {
+      "name": "Provinzen"
+    },
+    "regioni": {
+      "name": "Regionen"
+    },
+    "salute_locale": {
+      "name": "Lokales Gesundheitswesen"
+    },
+    "comunali": {
+      "name": "Kommunale Einrichtungen"
+    },
+    "ordini,_collegi_e_consigli_professionali": {
+      "name": "Berufsorganisationen, Kammern und Berufsverbände"
+    },
+    "pubbliche_amministrazioni_centrali": {
+      "name": "Zentrale öffentliche Verwaltungen"
+    },
+    "università": {
+      "name": "Universitäten"
+    },
+    "consorzi_universitari": {
+      "name": "Universitätsverbünde"
+    },
+    "aci": {
+      "name": "ACI"
+    },
+    "ricerca": {
+      "name": "Forschung"
+    },
+    "salute_centrale": {
+      "name": "Zentrales Gesundheitswesen"
+    },
+    "salute_regionale": {
+      "name": "Regionales Gesundheitswesen"
+    },
+    "salute_servizi": {
+      "name": "Gesundheitsdienste"
+    },
+    "scuola": {
+      "name": "Schule"
     }
   }
 }

@@ -55,8 +55,13 @@ function PickupPointsList({
   };
 
   const sortedItems = useMemo(() => {
-    return sortPointsByDistance(points, userPosition, customSortTarget);
-  }, [points, userPosition, customSortTarget]);
+    return sortPointsByDistance(
+      points,
+      userPosition,
+      customSortTarget,
+      searchCoordinates
+    );
+  }, [points, userPosition, customSortTarget, searchCoordinates]);
 
   const visibleItems = useMemo(() => {
     return sortedItems.slice(0, numberOfRows);
@@ -65,7 +70,7 @@ function PickupPointsList({
   const scrollToItem = (targetPoint: RaddOperator) => {
     const listItems = listContainerRef.current?.querySelectorAll("li");
     const targetIndex = visibleItems.findIndex(
-      (item) => item.id === targetPoint.id
+      (item) => item.locationId === targetPoint.locationId
     );
 
     if (listItems && targetIndex !== -1) {
@@ -77,7 +82,7 @@ function PickupPointsList({
   };
 
   const isPointVisibleInCurrentList = (point: RaddOperator): boolean => {
-    return visibleItems.some((item) => item.id === point.id);
+    return visibleItems.some((item) => item.locationId === point.locationId);
   };
 
   useEffect(() => {
@@ -86,7 +91,7 @@ function PickupPointsList({
     }
 
     if (!selectedPoint) {
-      setCustomSortTarget(null);
+      setCustomSortTarget(searchCoordinates || null);
       return;
     }
 
@@ -98,13 +103,7 @@ function PickupPointsList({
     }
 
     scrollToItem(selectedPoint);
-  }, [selectedPoint, isVisible]);
-
-  useEffect(() => {
-    if (searchCoordinates) {
-      setCustomSortTarget(searchCoordinates);
-    }
-  }, [searchCoordinates]);
+  }, [selectedPoint, searchCoordinates, isVisible]);
 
   if (!points || points.length === 0) {
     return <Skeletons />;
@@ -118,24 +117,24 @@ function PickupPointsList({
           maxHeight: { xs: "480px", lg: "750px" },
           overflowY: "auto",
           p: 0,
-          mt: 2,
+          mt: 3,
           pr: 1,
         }}
       >
         {visibleItems.map((point, index) => {
-          const isSelected = selectedPoint?.id === point.id;
+          const isSelected = selectedPoint?.locationId === point.locationId;
 
           return (
             <ListItem
-              key={`${point.denomination}-${point.id}-${index}`}
+              key={`${point.denomination}-${point.locationId}-${index}`}
               onClick={() => onSelectPoint(point)}
               alignItems="flex-start"
               sx={{
                 border: isSelected ? "2px solid" : "1px solid",
                 borderColor: isSelected ? "#2185E9" : "divider",
                 borderRadius: "8px",
-                my: 2,
                 p: 3,
+                mb: 2,
                 cursor: "pointer",
                 backgroundColor: isSelected ? "#0073E614" : "transparent",
                 "&:hover": {
@@ -152,7 +151,7 @@ function PickupPointsList({
                 secondary={
                   <>
                     <Typography variant="body2" fontSize="14px" component="div">
-                      {point.normalizedAddress}
+                      {point.address}
                     </Typography>
                     <ButtonNaked
                       color="primary"
@@ -178,7 +177,7 @@ function PickupPointsList({
                 }}
               />
 
-              {userPosition && (
+              {(userPosition || searchCoordinates) && (
                 <Box
                   display="flex"
                   alignItems="flex-start"
@@ -191,7 +190,9 @@ function PickupPointsList({
                     color="text.secondary"
                     whiteSpace="nowrap"
                   >
-                    {`${point.distance?.toFixed(1) || "-"} km`}
+                    {`${
+                      point.distance?.toFixed(1).replace(".", ",") || "-"
+                    } km`}
                   </Typography>
                 </Box>
               )}

@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Alert, Box, Grid, Typography } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
 import { ButtonNaked } from "@pagopa/mui-italia";
 import { langCodes } from "@utils/constants";
@@ -6,16 +6,19 @@ import { mapPoint } from "@utils/map";
 import type { GetStaticPaths, NextPage } from "next";
 import Script from "next/script";
 import Papa from "papaparse";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ErrorBox from "src/components/ErrorBox";
 import PickupPointsAutocomplete from "src/components/PickupPointsAutocomplete";
 import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMap from "src/components/PickupPointsMap";
-import PickupPointsInfoDialog from "src/components/Ritiro/PickupPointsInfoDialog";
+import PickupPointsInfoDialog from "src/components/PickupPointsInfoDialog";
 import Tabs from "src/components/Tabs";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
+import { MapRef } from "react-map-gl/maplibre";
+import Head from "next/head";
+import { parseTranslation } from "@utils/translations";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -41,6 +44,7 @@ type MOBILE_TABS = "list" | "map";
 const PickupPointsPage: NextPage = () => {
   const { t } = useTranslation(["pickup", "common"]);
 
+  const mapRef = useRef<MapRef>(null);
   const [selectedTab, setSelectedTab] = useState<MOBILE_TABS>("list");
   const [points, setPoints] = useState<RaddOperator[]>([]);
   const [fetchError, setFetchError] = useState(false);
@@ -82,9 +86,7 @@ const PickupPointsPage: NextPage = () => {
       complete: async (result) => {
         if (result.data && result.data.length > 0) {
           const data = result.data as Array<Point>;
-          const pickupPoints = data.map((point, index) =>
-            mapPoint(point, index)
-          );
+          const pickupPoints = data.map((point) => mapPoint(point));
 
           setPoints(pickupPoints);
           setFetchError(false);
@@ -109,14 +111,17 @@ const PickupPointsPage: NextPage = () => {
         id="iframe-resizer-child"
       />
 
+      <Head>
+        <meta name="robots" content="noindex,nofollow" />
+      </Head>
+
       {!fetchError ? (
         <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>
           <Grid item xs={12} md={4}>
             <Typography variant="h4">{t("search.title")}</Typography>
 
             <Typography mt={2} mb={1} color="textPrimary" variant="body2">
-              {t("search.description_1")}
-              <b>{t("search.description_2")}</b>. {t("search.description_3")}
+              {parseTranslation(t("search.description"))}
             </Typography>
 
             <ButtonNaked
@@ -125,7 +130,6 @@ const PickupPointsPage: NextPage = () => {
                 textDecoration: "none",
                 fontWeight: 700,
                 fontSize: "16px",
-                mt: 1,
               }}
               onClick={(e: MouseEvent) =>
                 scrollToTarget(e, "come-funzionano-punti-di-ritiro")
@@ -134,8 +138,16 @@ const PickupPointsPage: NextPage = () => {
               {t("how-it-works")}
             </ButtonNaked>
 
+            <Alert severity="info" sx={{ my: { xs: 4, md: 3 } }}>
+              {t("activation-in-progress")}
+            </Alert>
+
             <PickupPointsAutocomplete
+              mapRef={mapRef}
+              points={points}
+              searchCoordinates={searchCoordinates}
               setSearchCoordinates={setSearchCoordinates}
+              setSelectedPoint={setSelectedPoint}
             />
 
             <Box sx={{ display: { xs: "flex", md: "none" }, my: 3 }}>
@@ -191,11 +203,13 @@ const PickupPointsPage: NextPage = () => {
               tabIndex={-1}
             >
               <PickupPointsMap
+                mapRef={mapRef}
                 points={points}
                 selectedPoint={selectedPoint}
                 setSelectedPoint={setSelectedPoint}
                 toggleDialog={toggleDialog}
                 searchCoordinates={searchCoordinates}
+                setSearchCoordinates={setSearchCoordinates}
               />
             </Box>
           </Grid>
@@ -221,6 +235,7 @@ const PickupPointsPage: NextPage = () => {
         isOpen={isDialogOpen}
         point={selectedPoint}
         toggleDialog={toggleDialog}
+        searchCoordinates={searchCoordinates}
       />
     </>
   );

@@ -12,18 +12,47 @@
     {
       "calculate": "datum.type_notification == 'ANALOG' ? 'Analogica' : 'Digitale'",
       "as": "type"
+    },
+    {
+      "joinaggregate": [{ "op": "sum", "field": "num_iun", "as": "total" }]
+    },
+    {
+      "calculate": "datum.num_iun / datum.total",
+      "as": "percentage"
     }
   ],
-  "mark": "arc",
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 65,
+        "outerRadius": 110,
+        "padAngle": 0.04,
+        "cornerRadius": 5
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "radius": 123,
+        "fill": "#0B3EE3",
+        "fontWeight": "bold",
+        "fontSize": 14
+      },
+      "encoding": {
+        "text": { "field": "percentage", "type": "nominal", "format": ".0%" }
+      }
+    }
+  ],
   "encoding": {
-    "theta": { "field": "num_iun", "type": "quantitative" },
+    "theta": { "field": "num_iun", "type": "quantitative", "stack": true },
     "color": {
       "field": "type",
       "type": "nominal",
       "legend": null,
       "scale": {
         "domain": ["Analogica", "Digitale"],
-        "range": ["#D9D9D9", "#0073E6"]
+        "range": ["url(#pattern_1)", "url(#pattern_2)"]
       }
     },
     "tooltip": [
@@ -31,7 +60,8 @@
       {
         "field": "num_iun",
         "type": "quantitative",
-        "title": "Numero di notifiche"
+        "title": "Numero di notifiche",
+        "format": ","
       }
     ]
   },

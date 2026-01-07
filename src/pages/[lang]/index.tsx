@@ -41,16 +41,6 @@ const Homepage = () => {
     <Stack spacing={1} sx={{ padding: 2 }}>
       <Typography>Homepage pn-showcase-site</Typography>
       <Button
-        onClick={() =>
-          redirectToInternalPage(
-            "/punti-di-ritiro-2a89b635-66f8-458a-a59b-8fb4146cd9d7"
-          )
-        }
-        sx={{ width: "200px" }}
-      >
-        Punti di ritiro
-      </Button>
-      <Button
         onClick={() => redirectToInternalPage("/mappa-punti-di-ritiro")}
         sx={{ width: "200px" }}
       >
