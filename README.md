@@ -15,7 +15,11 @@ This file is already included in `.gitignore`.
 
 Use the command `yarn dev` from root to start dev server.
 
-Use `yarn build && yarn start` to build and run the solution locally.
+## Build
+
+Use `yarn build` to build and run the solution locally.
+
+To start the build use `npx serve@latest build -l 3000`
 
 Open [http://localhost:3000](http://localhost:3000) with the browser to launch the app.
 

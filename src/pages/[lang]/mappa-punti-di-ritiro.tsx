@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Alert, Box, Grid, Typography } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
 import { ButtonNaked } from "@pagopa/mui-italia";
 import { langCodes } from "@utils/constants";
@@ -18,6 +18,7 @@ import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
 import { MapRef } from "react-map-gl/maplibre";
 import Head from "next/head";
+import { parseTranslation } from "@utils/translations";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -120,8 +121,7 @@ const PickupPointsPage: NextPage = () => {
             <Typography variant="h4">{t("search.title")}</Typography>
 
             <Typography mt={2} mb={1} color="textPrimary" variant="body2">
-              {t("search.description_1")}
-              <b>{t("search.description_2")}</b>. {t("search.description_3")}
+              {parseTranslation(t("search.description"))}
             </Typography>
 
             <ButtonNaked
@@ -130,7 +130,6 @@ const PickupPointsPage: NextPage = () => {
                 textDecoration: "none",
                 fontWeight: 700,
                 fontSize: "16px",
-                mt: 1,
               }}
               onClick={(e: MouseEvent) =>
                 scrollToTarget(e, "come-funzionano-punti-di-ritiro")
@@ -138,6 +137,10 @@ const PickupPointsPage: NextPage = () => {
             >
               {t("how-it-works")}
             </ButtonNaked>
+
+            <Alert severity="info" sx={{ my: { xs: 4, md: 3 } }}>
+              {t("activation-in-progress")}
+            </Alert>
 
             <PickupPointsAutocomplete
               mapRef={mapRef}

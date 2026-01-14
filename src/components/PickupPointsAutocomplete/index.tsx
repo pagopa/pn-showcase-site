@@ -218,7 +218,6 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     <>
       <MuiItaliaAutocomplete
         options={options}
-        sx={{ mt: 4 }}
         label={t("autocomplete.label")}
         placeholder={getPlaceholder()}
         onInputChange={debouncedSearch}
