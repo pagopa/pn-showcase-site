@@ -2,19 +2,35 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 120,
   "height": 116,
+  "padding": 25,
   "data": {
     "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione1.json",
-    "format": { "property": "totale_notifiche" }
+    "format": {
+      "property": "totale_notifiche"
+    }
   },
-  "params": [{ "name": "year", "value": null }],
+  "params": [
+    {
+      "name": "year",
+      "value": null
+    }
+  ],
   "transform": [
-    { "filter": "year == datum.year || year === +datum.year" },
+    {
+      "filter": "year == datum.year || year === +datum.year"
+    },
     {
       "calculate": "datum.type_notification == 'ANALOG' ? 'Analogica' : 'Digitale'",
       "as": "type"
     },
     {
-      "joinaggregate": [{ "op": "sum", "field": "num_iun", "as": "total" }]
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "num_iun",
+          "as": "total"
+        }
+      ]
     },
     {
       "calculate": "datum.num_iun / datum.total",
@@ -40,12 +56,25 @@
         "fontSize": 14
       },
       "encoding": {
-        "text": { "field": "percentage", "type": "nominal", "format": ".0%" }
+        "text": {
+          "field": "percentage",
+          "type": "nominal",
+          "format": ".0%"
+        },
+        "theta": {
+          "field": "num_iun",
+          "type": "quantitative",
+          "stack": true
+        }
       }
     }
   ],
   "encoding": {
-    "theta": { "field": "num_iun", "type": "quantitative", "stack": true },
+    "theta": {
+      "field": "num_iun",
+      "type": "quantitative",
+      "stack": true
+    },
     "color": {
       "field": "type",
       "type": "nominal",
@@ -56,7 +85,11 @@
       }
     },
     "tooltip": [
-      { "field": "type", "type": "nominal", "title": "Tipo di notifica" },
+      {
+        "field": "type",
+        "type": "nominal",
+        "title": "Tipo di notifica"
+      },
       {
         "field": "num_iun",
         "type": "quantitative",
@@ -65,5 +98,7 @@
       }
     ]
   },
-  "view": { "stroke": null }
+  "view": {
+    "stroke": null
+  }
 }
