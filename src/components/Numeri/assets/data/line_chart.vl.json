@@ -5,10 +5,15 @@
   "padding": 5,
   "data": {
     "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione1.json",
-    "format": { "property": "notifiche_per_mese" }
+    "format": {
+      "property": "notifiche_per_mese"
+    }
   },
   "params": [
-    { "name": "notification_type", "value": "total" },
+    {
+      "name": "notification_type",
+      "value": "total"
+    },
     {
       "name": "year",
       "value": null
@@ -30,7 +35,19 @@
           "as": "cumulative"
         }
       ],
-      "sort": [{ "field": "month" }]
+      "sort": [
+        {
+          "field": "month"
+        }
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "count",
+          "as": "total_records"
+        }
+      ]
     }
   ],
   "layer": [
@@ -81,25 +98,34 @@
             "labelOverlap": "parity",
             "tickDash": [4, 4]
           }
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.total_records == 1"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "opacity": 1,
+        "fill": "#0B3EE3",
+        "size": 100,
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "month",
+          "type": "ordinal",
+          "timeUnit": "yearmonth"
         },
-        "tooltip": [
-          {
-            "field": "month",
-            "type": "temporal",
-            "title": "Mese",
-            "format": "%m/%Y"
-          },
-          {
-            "field": "cumulative",
-            "title": "Notifiche cumulate",
-            "format": ","
-          },
-          {
-            "field": "notification_value",
-            "title": "Notifiche mensili",
-            "format": ","
-          }
-        ]
+        "y": {
+          "field": "cumulative",
+          "type": "quantitative"
+        }
       }
     },
     {
