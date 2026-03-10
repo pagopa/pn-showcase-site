@@ -3,8 +3,13 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { GpsFixed } from "@mui/icons-material";
 import { Box } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
-import { areCoordinatesEqual, fitMapToPoints } from "@utils/map";
 import { MapRef } from "react-map-gl/maplibre";
+import MuiItaliaAutocomplete from "../MuiItaliaAutocomplete";
+import AddressItem from "./AddressItem";
+import EmptyState from "./EmptyState";
+import ErrorState from "./ErrorState";
+import LoadingState from "./LoadingState";
+import { areCoordinatesEqual, fitMapToPoints } from "@utils/map";
 import { useConfig } from "src/context/config-context";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
@@ -14,11 +19,6 @@ import {
   OptionType,
   RaddOperator,
 } from "src/model";
-import MuiItaliaAutocomplete from "../MuiItaliaAutocomplete";
-import AddressItem from "./AddressItem";
-import EmptyState from "./EmptyState";
-import ErrorState from "./ErrorState";
-import LoadingState from "./LoadingState";
 
 const SEARCH_DELAY = 500;
 const MIN_QUERY_LENGTH = 3;
@@ -26,7 +26,7 @@ const CURRENT_POSITION_OPTION_ID = "userPosition";
 
 interface Props {
   mapRef?: React.RefObject<MapRef>;
-  points: RaddOperator[];
+  points: Array<RaddOperator>;
   searchCoordinates: Coordinates | null;
   setSearchCoordinates: (coordinates: Coordinates) => void;
   setSelectedPoint: (point: RaddOperator | null) => void;
@@ -49,7 +49,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation(["pickup"]);
   const { userPosition, deniedAccess } = useCurrentPosition();
-  const [addresses, setAddresses] = useState<AddressResult[]>([]);
+  const [addresses, setAddresses] = useState<Array<AddressResult>>([]);
   const [fetchError, setFetchError] = useState<boolean>(false);
   const [shouldShowEmptyState, setShouldShowEmptyState] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -127,7 +127,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 
     timeoutRef.current = setTimeout(() => {
       if (query.length >= MIN_QUERY_LENGTH) {
-        searchAddresses(query);
+        void searchAddresses(query);
         setShouldShowEmptyState(true);
       } else {
         setAddresses([]);
@@ -153,15 +153,21 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     }
 
     const address = addresses.find((addr) => addr.placeId === option.id);
-    if (!address) return null;
+    if (!address) {
+      return null;
+    }
 
     return <AddressItem address={address} />;
   };
 
   const renderEmptyState = () => {
-    if (!shouldShowEmptyState) return <></>;
+    if (!shouldShowEmptyState) {
+      return <></>;
+    }
 
-    if (isLoading) return <LoadingState />;
+    if (isLoading) {
+      return <LoadingState />;
+    }
 
     return fetchError ? <ErrorState /> : <EmptyState />;
   };
@@ -170,7 +176,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
     if (option.id === CURRENT_POSITION_OPTION_ID) {
       handleCurrentPosition();
     } else {
-      getCoordinates(option.id.toString());
+      void getCoordinates(option.id.toString());
     }
   };
 

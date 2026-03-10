@@ -1,8 +1,8 @@
-import { getInitialLocale } from "@utils/i18n";
+import { useEffect } from "react";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { getInitialLocale } from "@utils/i18n";
 
 const Index: NextPage = () => {
   const router = useRouter();
@@ -10,7 +10,7 @@ const Index: NextPage = () => {
   // language detection
   useEffect(() => {
     const detectedLng = getInitialLocale();
-    router.replace("/[lang]", `/${detectedLng}`);
+    void router.replace("/[lang]", `/${detectedLng}`);
   }, []);
 
   return (

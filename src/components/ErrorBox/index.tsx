@@ -15,34 +15,32 @@ const ErrorBox: React.FC<Props> = ({
   retryLabel,
   children,
   sx,
-}) => {
-  return (
-    <Stack
-      direction="column"
-      sx={{
-        height: "100%",
-        width: "100%",
-        position: "relative",
-        backgroundColor: "#F5F5F5",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        ...sx,
-      }}
-    >
-      <WarningAmber sx={{ color: "text.secondary", mb: 1 }} />
-      {children}
-      {handleRetry && (
-        <ButtonNaked
-          color="primary"
-          sx={{ fontWeight: 700, fontSize: "16px", mt: 1 }}
-          onClick={handleRetry}
-        >
-          {retryLabel}
-        </ButtonNaked>
-      )}
-    </Stack>
-  );
-};
+}) => (
+  <Stack
+    direction="column"
+    sx={{
+      height: "100%",
+      width: "100%",
+      position: "relative",
+      backgroundColor: "#F5F5F5",
+      justifyContent: "center",
+      alignItems: "center",
+      textAlign: "center",
+      ...sx,
+    }}
+  >
+    <WarningAmber sx={{ color: "text.secondary", mb: 1 }} />
+    {children}
+    {handleRetry && (
+      <ButtonNaked
+        color="primary"
+        sx={{ fontWeight: 700, fontSize: "16px", mt: 1 }}
+        onClick={handleRetry}
+      >
+        {retryLabel}
+      </ButtonNaked>
+    )}
+  </Stack>
+);
 
 export default ErrorBox;
