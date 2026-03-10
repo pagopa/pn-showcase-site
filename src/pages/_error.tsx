@@ -2,7 +2,9 @@ import { NextApiResponse } from "next";
 
 import { Typography } from "@mui/material";
 
-export default function Error({ statusCode }: { statusCode: string }) {
+type Props = Readonly<{ statusCode: string }>;
+
+export default function Error({ statusCode }: Props) {
   return (
     <Typography variant="body1">
       {statusCode
@@ -12,7 +14,6 @@ export default function Error({ statusCode }: { statusCode: string }) {
   );
 }
 
-// eslint-disable-next-line functional/immutable-data
 Error.getInitialProps = ({
   res,
   err,
@@ -20,6 +21,7 @@ Error.getInitialProps = ({
   res: NextApiResponse;
   err: { statusCode: number };
 }) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+  const errorCode = err ? err.statusCode : 404;
+  const statusCode = res ? res.statusCode : errorCode;
   return { statusCode };
 };

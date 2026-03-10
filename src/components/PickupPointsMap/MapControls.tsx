@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useMap } from "react-map-gl/maplibre";
 import { Add, GpsFixed, GpsOff, Remove } from "@mui/icons-material";
 import {
   Button,
@@ -7,14 +9,12 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import SnackBar from "../SnackBar/SnackBar";
 import { areCoordinatesEqual, fitMapToPoints } from "@utils/map";
-import { useEffect, useState } from "react";
-import { useMap } from "react-map-gl/maplibre";
 import { useConfig } from "src/context/config-context";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { useTranslation } from "src/hook/useTranslation";
 import { Coordinates, RaddOperator } from "src/model";
-import SnackBar from "../SnackBar/SnackBar";
 
 type Props = {
   points: Array<RaddOperator>;
@@ -58,13 +58,12 @@ const MapControls: React.FC<Props> = ({
     }
   };
 
-  const getGpsIcon = () => {
-    return hasError ? (
+  const getGpsIcon = () =>
+    hasError ? (
       <GpsOff color="disabled" fontSize="small" />
     ) : (
       <GpsFixed color="primary" fontSize="small" />
     );
-  };
 
   const getErrorMessage = () => {
     if (deniedAccess) {

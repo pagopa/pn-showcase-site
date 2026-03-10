@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-before-interactive-script-outside-document */
 import { ThemeProvider } from "@mui/system";
 import type { AppProps } from "next/app";
 

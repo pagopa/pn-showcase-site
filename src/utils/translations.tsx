@@ -4,10 +4,12 @@
  * @returns A React node with the parsed content
  */
 export function parseTranslation(text: string): React.ReactNode {
-  if (!text) return null;
+  if (!text) {
+    return null;
+  }
 
   const tagRegex = /<(\w+)>(.*?)<\/\1>|<br\s*\/?>/g;
-  const parts: React.ReactNode[] = [];
+  const parts: Array<React.ReactNode> = [];
   let lastIndex = 0;
   let match;
   let key = 0;

@@ -1,19 +1,19 @@
-import { CircularProgress, Stack, Typography } from "@mui/material";
-import { MAP_MARKERS } from "@utils/constants";
-import { fitMapToPoints } from "@utils/map";
-import { GeoJSONSource, MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
-import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useState } from "react";
 import { Map, MapRef } from "react-map-gl/maplibre";
-import { useIsMobile } from "src/hook/useIsMobile";
-import { useTranslation } from "src/hook/useTranslation";
-import { Coordinates, RaddOperator } from "src/model";
+import { CircularProgress, Stack, Typography } from "@mui/material";
+import { GeoJSONSource, MapLayerMouseEvent, MapLibreEvent } from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
 import useLocalizedStyleDescriptor from "../../hook/useLocalizedStyleDescriptor";
 import ErrorBox from "../ErrorBox";
 import Clusters from "./Clusters";
 import MapControls from "./MapControls";
 import SearchedAddressLayer from "./SearchedAddressLayer";
 import UserPositionController from "./UserPositionController";
+import { MAP_MARKERS } from "@utils/constants";
+import { fitMapToPoints } from "@utils/map";
+import { useIsMobile } from "src/hook/useIsMobile";
+import { useTranslation } from "src/hook/useTranslation";
+import { Coordinates, RaddOperator } from "src/model";
 
 type Props = {
   mapRef?: React.RefObject<MapRef>;
@@ -59,7 +59,7 @@ const PickupPointsMap: React.FC<Props> = ({
       setImagesLoaded(true);
 
       const attributionLinks = document.querySelectorAll(
-        ".maplibregl-ctrl-attrib a"
+        ".maplibregl-ctrl-attrib a",
       );
       attributionLinks.forEach((link) => {
         link.setAttribute("target", "_blank");
@@ -81,7 +81,7 @@ const PickupPointsMap: React.FC<Props> = ({
 
       if (feature.layer.id === "unclustered-points") {
         const selectedPoint: RaddOperator = JSON.parse(
-          feature.properties.point
+          feature.properties.point,
         );
         map.flyTo({
           center: geometry.coordinates,

@@ -12,15 +12,12 @@ export type ShowcaseConfig = {
 };
 
 const isConfigValid = (
-  config: ShowcaseConfig | null
-): config is ShowcaseConfig => {
-  return (
-    !!config &&
-    urlPattern.test(config.API_BASE_URL) &&
-    urlPattern.test(config.CLOUDFRONT_MAP_URL) &&
-    urlPattern.test(config.GEOLOCATION_ASSISTANCE_URL)
-  );
-};
+  config: ShowcaseConfig | null,
+): config is ShowcaseConfig =>
+  !!config &&
+  urlPattern.test(config.API_BASE_URL) &&
+  urlPattern.test(config.CLOUDFRONT_MAP_URL) &&
+  urlPattern.test(config.GEOLOCATION_ASSISTANCE_URL);
 
 const ConfigContext = createContext<ShowcaseConfig | null>(null);
 
@@ -37,7 +34,7 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    loadConfig();
+    void loadConfig();
   }, []);
 
   const loadConfig = async () => {
@@ -57,7 +54,9 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }) => {
   if (error) {
     return <p>Error loading configuration: {error}</p>;
   }
-  if (!config) return <Loading />;
+  if (!config) {
+    return <Loading />;
+  }
 
   return (
     <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>

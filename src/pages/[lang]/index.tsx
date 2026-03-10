@@ -1,20 +1,18 @@
-import { Button, Stack, Typography } from "@mui/material";
-import { langCodes } from "@utils/constants";
 import { GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import { useContext } from "react";
+import { Button, Stack, Typography } from "@mui/material";
+import { langCodes } from "@utils/constants";
 import { getI18n } from "src/api/i18n";
 import LangContext from "src/context/lang-context";
 import { LangCode } from "src/model";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: langCodes.map((lang) => ({
-      params: { lang },
-    })),
-    fallback: false,
-  };
-};
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: langCodes.map((lang) => ({
+    params: { lang },
+  })),
+  fallback: false,
+});
 
 export async function getStaticProps({
   params,
@@ -33,7 +31,7 @@ const Homepage = () => {
   const redirectToInternalPage = (page: string) => {
     if (langCodes.includes(lang)) {
       const separator = page.startsWith("/") ? "" : "/";
-      push(`/${lang}${separator}${page}`);
+      void push(`/${lang}${separator}${page}`);
     }
   };
 
@@ -49,7 +47,7 @@ const Homepage = () => {
       <Button
         onClick={() =>
           redirectToInternalPage(
-            "/send-in-numeri-283d8d30-e558-4ef6-9083-8f4ef9f8b8c5"
+            "/send-in-numeri-283d8d30-e558-4ef6-9083-8f4ef9f8b8c5",
           )
         }
         sx={{ width: "200px" }}

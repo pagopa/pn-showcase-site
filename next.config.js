@@ -5,9 +5,9 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   distDir: "build",
-  eslint: {
+  /* eslint: {
     ignoreDuringBuilds: true,
-  },
+  }, */
   transpilePackages: ["@pagopa/mui-italia"],
   modularizeImports: {
     "@mui/icons-material": {

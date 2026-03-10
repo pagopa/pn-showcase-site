@@ -1,6 +1,6 @@
-import { fitMapToPoints } from "@utils/map";
 import React, { useEffect } from "react";
 import { Marker, useMap } from "react-map-gl/maplibre";
+import { fitMapToPoints } from "@utils/map";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { RaddOperator } from "src/model";
 
@@ -13,7 +13,9 @@ const UserPositionControl: React.FC<Props> = ({ points = [] }) => {
   const { userPosition } = useCurrentPosition();
 
   useEffect(() => {
-    if (!userPosition || !map.current) return;
+    if (!userPosition || !map.current) {
+      return;
+    }
 
     fitMapToPoints(userPosition, points, map.current);
   }, [map, userPosition, points]);

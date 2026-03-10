@@ -1,6 +1,6 @@
+import React from "react";
 import { Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
 import { formatHours, OPENING_DAYS } from "@utils/openingHours";
-import React from "react";
 import { useTranslation } from "src/hook/useTranslation";
 import { RaddOperator } from "src/model";
 

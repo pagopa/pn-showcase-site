@@ -1,4 +1,4 @@
-import { DEFAULT_LANG } from "@utils/constants";
+import { ReactElement } from "react";
 import Document, {
   Html,
   Head,
@@ -7,12 +7,12 @@ import Document, {
   DocumentContext,
   DocumentInitialProps,
 } from "next/document";
-import { ReactElement } from "react";
 import { LangCode } from "../model";
+import { DEFAULT_LANG } from "@utils/constants";
 
 export default class MyDocument extends Document<{ lang: LangCode }> {
   static async getInitialProps(
-    ctx: DocumentContext
+    ctx: DocumentContext,
   ): Promise<DocumentInitialProps & { lang: LangCode }> {
     const { query } = ctx;
 

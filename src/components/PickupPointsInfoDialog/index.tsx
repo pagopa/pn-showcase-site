@@ -1,3 +1,4 @@
+import React from "react";
 import { Close, OpenInNew } from "@mui/icons-material";
 import {
   Alert,
@@ -9,15 +10,14 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { formatHours, OPENING_DAYS } from "@utils/openingHours";
-import React from "react";
-import { useIsMobile } from "src/hook/useIsMobile";
-import { Coordinates, RaddOperator } from "src/model";
 import { useTranslation } from "../../hook/useTranslation";
 import Address from "./Address";
 import Contacts from "./Contacts";
 import OpeningHours from "./OpeningHours";
+import { formatHours, OPENING_DAYS } from "@utils/openingHours";
 import { parseTranslation } from "@utils/translations";
+import { useIsMobile } from "src/hook/useIsMobile";
+import { Coordinates, RaddOperator } from "src/model";
 
 type Props = {
   isOpen: boolean;
@@ -41,7 +41,9 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
   const handleCloseDialog = () => toggleDialog(false, null);
 
   const handleOpenGoogleMaps = () => {
-    if (!point) return;
+    if (!point) {
+      return;
+    }
 
     const origin = searchCoordinates
       ? `${searchCoordinates.latitude},${searchCoordinates.longitude}`
@@ -55,7 +57,9 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
   };
 
   const handleCopyInformation = async () => {
-    if (!point) return;
+    if (!point) {
+      return;
+    }
 
     const sections = [];
 
@@ -67,7 +71,7 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
         point.rawOpeningHours ||
         OPENING_DAYS.map(
           (day) =>
-            `${t(`drawer.days.${day}`)}: ${formatHours(point[day]) || "-"}`
+            `${t(`drawer.days.${day}`)}: ${formatHours(point[day]) || "-"}`,
         ).join("\n");
 
       sections.push(`${hoursHeader}\n${hoursContent}`);
@@ -76,14 +80,14 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
     sections.push(
       `${t("drawer.reservation-call")} ${point.contacts
         .split("_")
-        .join(` ${t("drawer.or")} `)}`
+        .join(` ${t("drawer.or")} `)}`,
     );
 
     sections.push(
       [
         `${t("drawer.location-id")}: ${point.locationId}`,
         `${t("drawer.external-codes")}: ${point.external_codes}`,
-      ].join("\n")
+      ].join("\n"),
     );
 
     const formattedText = sections.join("\n\n");
@@ -95,7 +99,9 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
     }
   };
 
-  if (!point) return null;
+  if (!point) {
+    return null;
+  }
 
   return (
     <Dialog
@@ -135,7 +141,7 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
             {t(
               `drawer.${
                 point.appointmentRequired ? "required-" : ""
-              }book-alert-title`
+              }book-alert-title`,
             )}
           </Typography>
           <Typography variant="body2" whiteSpace="pre-line">
