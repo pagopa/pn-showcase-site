@@ -1,6 +1,6 @@
-import { areCoordinatesEqual } from "@utils/map";
 import React from "react";
 import { Layer, Source } from "react-map-gl/maplibre";
+import { areCoordinatesEqual } from "@utils/map";
 import useCurrentPosition from "src/hook/useCurrentPosition";
 import { Coordinates } from "src/model";
 

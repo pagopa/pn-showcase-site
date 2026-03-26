@@ -1,24 +1,24 @@
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Place, Refresh } from "@mui/icons-material";
 import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 import { ButtonNaked } from "@pagopa/mui-italia";
-import { sortPointsByDistance } from "@utils/map";
-import { useEffect, useMemo, useRef, useState } from "react";
-import useCurrentPosition from "src/hook/useCurrentPosition";
-import { useIsMobile } from "src/hook/useIsMobile";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, RaddOperator } from "../../model";
 import Skeletons from "./Skeletons";
+import { sortPointsByDistance } from "@utils/map";
+import useCurrentPosition from "src/hook/useCurrentPosition";
+import { useIsMobile } from "src/hook/useIsMobile";
 
 const PAGE_SIZE = 5;
 
-type Props = {
-  points: RaddOperator[];
+type Props = Readonly<{
+  points: Array<RaddOperator>;
   selectedPoint: RaddOperator | null;
   searchCoordinates: Coordinates | null;
   toggleDialog: (open: boolean, pickupPoint: RaddOperator | null) => void;
   setSelectedPoint: (point: RaddOperator | null) => void;
   isVisible: boolean;
-};
+}>;
 
 function PickupPointsList({
   points,
@@ -32,7 +32,7 @@ function PickupPointsList({
   const listContainerRef = useRef<HTMLUListElement | null>(null);
   const [numberOfRows, setNumberOfRows] = useState(PAGE_SIZE);
   const [customSortTarget, setCustomSortTarget] = useState<Coordinates | null>(
-    null
+    null,
   );
 
   const { userPosition } = useCurrentPosition();
@@ -54,23 +54,26 @@ function PickupPointsList({
     toggleDialog(true, point);
   };
 
-  const sortedItems = useMemo(() => {
-    return sortPointsByDistance(
-      points,
-      userPosition,
-      customSortTarget,
-      searchCoordinates
-    );
-  }, [points, userPosition, customSortTarget, searchCoordinates]);
+  const sortedItems = useMemo(
+    () =>
+      sortPointsByDistance(
+        points,
+        userPosition,
+        customSortTarget,
+        searchCoordinates,
+      ),
+    [points, userPosition, customSortTarget, searchCoordinates],
+  );
 
-  const visibleItems = useMemo(() => {
-    return sortedItems.slice(0, numberOfRows);
-  }, [sortedItems, numberOfRows]);
+  const visibleItems = useMemo(
+    () => sortedItems.slice(0, numberOfRows),
+    [sortedItems, numberOfRows],
+  );
 
   const scrollToItem = (targetPoint: RaddOperator) => {
     const listItems = listContainerRef.current?.querySelectorAll("li");
     const targetIndex = visibleItems.findIndex(
-      (item) => item.locationId === targetPoint.locationId
+      (item) => item.locationId === targetPoint.locationId,
     );
 
     if (listItems && targetIndex !== -1) {
@@ -81,9 +84,8 @@ function PickupPointsList({
     }
   };
 
-  const isPointVisibleInCurrentList = (point: RaddOperator): boolean => {
-    return visibleItems.some((item) => item.locationId === point.locationId);
-  };
+  const isPointVisibleInCurrentList = (point: RaddOperator): boolean =>
+    visibleItems.some((item) => item.locationId === point.locationId);
 
   useEffect(() => {
     if (!isVisible) {

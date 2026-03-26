@@ -1,4 +1,10 @@
-import { EmailOutlined, LanguageOutlined, Phone } from "@mui/icons-material";
+import React from "react";
+import {
+  EmailOutlined,
+  LanguageOutlined,
+  Phone,
+  SvgIconComponent,
+} from "@mui/icons-material";
 import {
   Divider,
   Link,
@@ -6,11 +12,8 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  SvgIconTypeMap,
   Typography,
 } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
-import React from "react";
 import { useTranslation } from "src/hook/useTranslation";
 import { RaddOperator } from "src/model";
 
@@ -20,7 +23,7 @@ type Props = {
 
 interface ContactItem {
   href: string;
-  icon: OverridableComponent<SvgIconTypeMap<{}, "svg">>;
+  icon: SvgIconComponent;
   text: string;
   target?: React.HTMLAttributeAnchorTarget;
   rel?: string;
@@ -31,7 +34,7 @@ const Contacts: React.FC<Props> = ({ point }) => {
 
   const [firstPhone, secondPhone] = point.contacts.split("_");
 
-  const contacts: ContactItem[] = [];
+  const contacts: Array<ContactItem> = [];
 
   if (firstPhone) {
     contacts.push({

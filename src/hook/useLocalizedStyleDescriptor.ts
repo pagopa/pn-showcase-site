@@ -10,13 +10,15 @@ type Props = {
 const recurseExpression = (
   exp: RegExp,
   prevPropertyRegex: RegExp,
-  nextProperty: string
+  nextProperty: string,
 ): any => {
-  if (!Array.isArray(exp)) return exp;
+  if (!Array.isArray(exp)) {
+    return exp;
+  }
 
   if (exp[0] !== "coalesce") {
     return exp.map((v) =>
-      recurseExpression(v, prevPropertyRegex, nextProperty)
+      recurseExpression(v, prevPropertyRegex, nextProperty),
     );
   }
 
@@ -33,7 +35,7 @@ const recurseExpression = (
 
   if (!isMatch) {
     return exp.map((v) =>
-      recurseExpression(v, prevPropertyRegex, nextProperty)
+      recurseExpression(v, prevPropertyRegex, nextProperty),
     );
   }
 
@@ -48,7 +50,7 @@ const recurseExpression = (
 const updateLayer = (
   layer: any,
   prevPropertyRegex: RegExp,
-  nextProperty: string
+  nextProperty: string,
 ) => ({
   ...layer,
   layout: {
@@ -56,23 +58,23 @@ const updateLayer = (
     "text-field": recurseExpression(
       layer.layout["text-field"],
       prevPropertyRegex,
-      nextProperty
+      nextProperty,
     ),
   },
 });
 
 const setPreferredLanguage = (
   style: StyleSpecification,
-  language: string
+  language: string,
 ): StyleSpecification => {
-  let nextStyle = { ...style };
+  const nextStyle = { ...style };
 
   nextStyle.layers = nextStyle.layers.map((layer) => {
     if (layer.type !== "symbol" || !layer?.layout?.["text-field"]) {
       return layer;
     }
 
-    return updateLayer(layer, /^name:([A-Za-z\-\_]+)$/g, `name:${language}`);
+    return updateLayer(layer, /^name:([A-Za-z\-_]+)$/g, `name:${language}`);
   });
 
   return nextStyle;
@@ -95,7 +97,7 @@ const useLocalizedStyleDescriptor = ({ language, setMapError }: Props) => {
 
         if (!response.ok) {
           throw new Error(
-            `Network response was not ok: ${response.statusText}`
+            `Network response was not ok: ${response.statusText}`,
           );
         }
 
@@ -103,7 +105,7 @@ const useLocalizedStyleDescriptor = ({ language, setMapError }: Props) => {
 
         const localizedStyle = setPreferredLanguage(
           styleObject,
-          preferredLanguage
+          preferredLanguage,
         );
 
         setStyleDescriptor(localizedStyle);
@@ -113,7 +115,7 @@ const useLocalizedStyleDescriptor = ({ language, setMapError }: Props) => {
       }
     };
 
-    getStyleWithPreferredLanguage(language);
+    void getStyleWithPreferredLanguage(language);
   }, [CLOUDFRONT_MAP_URL]);
 
   return styleDescriptor;

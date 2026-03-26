@@ -1,14 +1,14 @@
 import React from "react";
 import { Layer, Source } from "react-map-gl/maplibre";
-import { RaddOperator } from "src/model";
 import {
   clusterCountLayer,
   clusterLayer,
   unclusteredPointLayer,
 } from "./layers";
+import { RaddOperator } from "src/model";
 
 interface RegionClusterProps {
-  points: RaddOperator[];
+  points: Array<RaddOperator>;
   selectedPoint: RaddOperator | null;
 }
 

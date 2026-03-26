@@ -1,33 +1,31 @@
+import type { GetStaticPaths, NextPage } from "next";
+import Script from "next/script";
+import Head from "next/head";
+import Papa from "papaparse";
+import { useEffect, useRef, useState } from "react";
+import { MapRef } from "react-map-gl/maplibre";
 import { Alert, Box, Grid, Typography } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
 import { ButtonNaked } from "@pagopa/mui-italia";
+import { getI18n } from "../../api/i18n";
+import { useTranslation } from "../../hook/useTranslation";
+import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
 import { langCodes } from "@utils/constants";
 import { mapPoint } from "@utils/map";
-import type { GetStaticPaths, NextPage } from "next";
-import Script from "next/script";
-import Papa from "papaparse";
-import { useEffect, useRef, useState } from "react";
 import ErrorBox from "src/components/ErrorBox";
 import PickupPointsAutocomplete from "src/components/PickupPointsAutocomplete";
 import PickupPointsList from "src/components/PickupPointsList";
 import PickupPointsMap from "src/components/PickupPointsMap";
 import PickupPointsInfoDialog from "src/components/PickupPointsInfoDialog";
 import Tabs from "src/components/Tabs";
-import { getI18n } from "../../api/i18n";
-import { useTranslation } from "../../hook/useTranslation";
-import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
-import { MapRef } from "react-map-gl/maplibre";
-import Head from "next/head";
 import { parseTranslation } from "@utils/translations";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: langCodes.map((lang) => ({
-      params: { lang },
-    })),
-    fallback: false,
-  };
-};
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: langCodes.map((lang) => ({
+    params: { lang },
+  })),
+  fallback: false,
+});
 
 export async function getStaticProps({
   params,
@@ -46,7 +44,7 @@ const PickupPointsPage: NextPage = () => {
 
   const mapRef = useRef<MapRef>(null);
   const [selectedTab, setSelectedTab] = useState<MOBILE_TABS>("list");
-  const [points, setPoints] = useState<RaddOperator[]>([]);
+  const [points, setPoints] = useState<Array<RaddOperator>>([]);
   const [fetchError, setFetchError] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState<RaddOperator | null>(null);
@@ -66,7 +64,7 @@ const PickupPointsPage: NextPage = () => {
         type: "scrollTo",
         target,
       },
-      "*"
+      "*",
     );
   };
 

@@ -9,17 +9,17 @@ import { Coordinates, Point, RaddOperator } from "src/model";
  * - Sorting reference: Uses targetPoint if provided, otherwise userCoordinates
  * - Distance display: Uses userCoordinates if provided, otherwise targetPoint
  *
- * @param {RaddOperator[]} rows - Array of points
+ * @param {Array<RaddOperator>} rows - Array of points
  * @param {Coordinates | null} userCoordinates - The user location
  * @param {Coordinates | null} targetPoint - Optional target point for sorting reference
  * @returns {Array<RaddOperator>} A new array of points with distance values (in km),
  * sorted by proximity to the sorting reference point
  */
 export function sortPointsByDistance(
-  rows: RaddOperator[],
+  rows: Array<RaddOperator>,
   userCoordinates: Coordinates | null,
   targetPoint: Coordinates | null = null,
-  searchedAddress: Coordinates | null = null
+  searchedAddress: Coordinates | null = null,
 ): Array<RaddOperator> {
   const sortingReference = targetPoint || userCoordinates;
   const distanceReference = searchedAddress || userCoordinates;
@@ -28,36 +28,40 @@ export function sortPointsByDistance(
     return rows;
   }
 
-  return rows
-    .map((row) => {
-      const sortingDistance = calculateDistance(
-        sortingReference.latitude,
-        sortingReference.longitude,
-        row.latitude,
-        row.longitude
-      );
+  return (
+    rows
+      .map((row) => {
+        const sortingDistance = calculateDistance(
+          sortingReference.latitude,
+          sortingReference.longitude,
+          row.latitude,
+          row.longitude,
+        );
 
-      // Calculate distance for display (from user position if available)
-      const displayDistance = distanceReference
-        ? calculateDistance(
-            distanceReference.latitude,
-            distanceReference.longitude,
-            row.latitude,
-            row.longitude
-          )
-        : sortingDistance;
+        // Calculate distance for display (from user position if available)
+        const displayDistance = distanceReference
+          ? calculateDistance(
+              distanceReference.latitude,
+              distanceReference.longitude,
+              row.latitude,
+              row.longitude,
+            )
+          : sortingDistance;
 
-      return {
-        ...row,
-        distance: displayDistance,
-        _sortingDistance: sortingDistance,
-      };
-    })
-    .filter(
-      (item): item is Exclude<typeof item, undefined> => item !== undefined
-    )
-    .sort((a, b) => a._sortingDistance - b._sortingDistance)
-    .map(({ _sortingDistance, ...item }) => item);
+        return {
+          ...row,
+          distance: displayDistance,
+          _sortingDistance: sortingDistance,
+        };
+      })
+      .filter(
+        (item): item is Exclude<typeof item, undefined> => item !== undefined,
+      )
+      // eslint-disable-next-line no-underscore-dangle
+      .sort((a, b) => a._sortingDistance - b._sortingDistance)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .map(({ _sortingDistance, ...item }) => item)
+  );
 }
 
 /**
@@ -73,7 +77,7 @@ const calculateDistance = (
   lat1: number,
   lon1: number,
   lat2: number,
-  lon2: number
+  lon2: number,
 ): number => {
   const toRad = (value: number) => (value * Math.PI) / 180;
   const R = 6371;
@@ -99,22 +103,24 @@ const calculateDistance = (
  * Adjusts the map viewport to include the user's position and the nearest points.
  *
  * @param {Coordinates} coordinates - The coordinates of the point to center
- * @param {RaddOperator[]} points - A list of points to consider for fitting on the map
+ * @param {Array<RaddOperator>} points - A list of points to consider for fitting on the map
  * @param {MapRef} map - Map reference
  * @param {number} pointsToFit - The number of nearest points to include in the view
  */
 export const fitMapToPoints = (
   coordinates: Coordinates,
-  points: RaddOperator[],
+  points: Array<RaddOperator>,
   map: MapRef,
-  pointsToFit: number = 5
+  pointsToFit: number = 5,
 ) => {
-  if (!points.length) return;
+  if (!points.length) {
+    return;
+  }
 
   const sortedPoints = sortPointsByDistance(points, coordinates, null);
   const targetPoints = sortedPoints.slice(
     0,
-    Math.min(pointsToFit, sortedPoints.length)
+    Math.min(pointsToFit, sortedPoints.length),
   );
 
   const distances = targetPoints.map((point) =>
@@ -122,8 +128,8 @@ export const fitMapToPoints = (
       coordinates.latitude,
       coordinates.longitude,
       point.latitude,
-      point.longitude
-    )
+      point.longitude,
+    ),
   );
   const maxDistance = Math.max(...distances);
 
@@ -183,9 +189,11 @@ export const mapPoint = (point: Point): RaddOperator => ({
 
 export const areCoordinatesEqual = (
   coordinates1: Coordinates | null,
-  coordinates2: Coordinates | null
+  coordinates2: Coordinates | null,
 ): boolean => {
-  if (!coordinates1 || !coordinates2) return false;
+  if (!coordinates1 || !coordinates2) {
+    return false;
+  }
   return (
     coordinates1.latitude === coordinates2.latitude &&
     coordinates1.longitude === coordinates2.longitude
