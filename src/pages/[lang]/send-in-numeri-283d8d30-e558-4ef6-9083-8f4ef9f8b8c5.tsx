@@ -1,6 +1,7 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from "next";
 
 import { Box, Stack, Typography } from "@mui/material";
+import { MIAlert } from "@pagopa/mui-italia";
 import Script from "next/script";
 import { useState } from "react";
 import Head from "next/head";
@@ -31,7 +32,6 @@ import KpiWrapper from "src/components/Numeri/components/KpiWrapper";
 import NotificationsTypes from "src/components/Numeri/components/NotificationsTypes";
 import SvgDefs from "src/components/Numeri/components/SvgDefs";
 
-import AlertWrapper from "src/components/Numeri/components/AlertWrapper";
 import FormatEyelet from "src/components/Numeri/components/FormatEyelet";
 import FormatKpi from "src/components/Numeri/components/FormatKpi";
 import FormatTitle from "src/components/Numeri/components/FormatTitle";
@@ -75,7 +75,7 @@ export async function getStaticProps({
 
 const numYear = curYear - firstYear + 1;
 const years = Array.from({ length: numYear }, (_, i) => curYear - i).map(
-  (y) => ({ id: y, label: String(y) })
+  (y) => ({ id: y, label: String(y) }),
 );
 
 const SendInNumbers = ({
@@ -172,9 +172,15 @@ const SendInNumbers = ({
             <LastUpdate>{t("hero.last_update", { ns: "numeri" })}</LastUpdate>
           </Stack>
           <Box flex={"0 0 32%"}>
-            <AlertWrapper buttonText={t("hero.website", { ns: "numeri" })}>
-              {t("hero.alert")}
-            </AlertWrapper>
+            <MIAlert
+              severity="info"
+              description={t("hero.alert")}
+              action={{
+                label: t("hero.website", { ns: "numeri" }),
+                href: "https://www.dati.gov.it/view-dataset?Cerca=&tags_set=send&tags=send&ordinamento=&organization=pagopa-s-p-a",
+                target: "_parent",
+              }}
+            />
           </Box>
         </Stack>
         <Box component="main" paddingTop={6}>

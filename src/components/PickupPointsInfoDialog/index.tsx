@@ -1,4 +1,3 @@
-import React from "react";
 import { Close, OpenInNew } from "@mui/icons-material";
 import {
   Alert,
