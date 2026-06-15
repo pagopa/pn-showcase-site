@@ -19,8 +19,8 @@ const isSceneText = (
 ): item is SceneText => "text" in item;
 
 const KpiEntitiesPerc = ({ spec, children }: Props) => {
-  const [text, setText] = useState("#");
-  const parsedText = Number(text.replace(/%|#/g, ""));
+  const [text, setText] = useState<string | null>(null);
+  const parsedText = Number((text ?? "").replace(/%/g, ""));
   const isPositive = parsedText >= 0;
   function getParsedTextColor(num: number) {
     if (num > 0) {
@@ -42,17 +42,19 @@ const KpiEntitiesPerc = ({ spec, children }: Props) => {
   }
 
   useEffect(() => {
+    setText(null);
+  }, [spec]);
+
+  useEffect(() => {
     getMarks(spec)
       .then((marks) => {
-        if (!marks[0]) {
-          return;
-        }
-        if (isSceneText(marks[0])) {
-          setText(marks[0].text);
-        }
+        if (!marks[0]) return;
+        if (isSceneText(marks[0])) setText(marks[0].text);
       })
       .catch(console.error);
-  });
+  }, [spec]);
+
+  if (text === null) return null;
 
   return (
     <Stack direction={"row"} spacing={1} alignItems={"center"}>

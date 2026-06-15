@@ -3,6 +3,7 @@
   "width": "container",
   "height": "container",
   "padding": 5,
+  "params": [{ "name": "year", "value": null }],
 
   "datasets": {
     "regions_coordinates": [
@@ -47,7 +48,7 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/openpolis/geojson-italy/refs/heads/master/topojson/limits_IT_regions.topo.json",
+        "url": "/static/data/limits_IT_regions.topo.json",
         "format": { "type": "topojson", "feature": "regions" }
       },
       "projection": { "type": "mercator" },
@@ -59,6 +60,9 @@
         "format": { "property": "geo_comuni" }
       },
       "transform": [
+        {
+          "filter": "year === year(datum.year) || year === datum.year"
+        },
         {
           "lookup": "regione",
           "from": {

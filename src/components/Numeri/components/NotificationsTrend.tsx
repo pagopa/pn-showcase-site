@@ -5,7 +5,9 @@ import { useTranslation } from "../../../hook/useTranslation";
 import { dashboardColors } from "../shared/colors";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import barChartSpec from "../assets/data/bar_chart.vl.json";
+import barChartYearlySpec from "../assets/data/bar_chart_yearly.vl.json";
 import lineChartSpec from "../assets/data/line_chart.vl.json";
+import lineChartYearlySpec from "../assets/data/line_chart_yearly.vl.json";
 import CardText from "./CardText";
 import CardTitle from "./CardTitle";
 import KpiCard from "./KpiCard";
@@ -61,13 +63,17 @@ const NotificationsTrend = ({ selYear }: Props) => {
   };
 
   function translateTooltip(spec: TopLevelSpec) {
-    if (!("layer" in spec)) {
+    if (!("layer" in spec) || !Array.isArray(spec.layer)) {
       return spec;
     }
 
-    if (!Array.isArray(spec.layer)) {
-      return spec;
-    }
+    const titleMap: Record<string, string> = {
+      "Mese": t("sent_notifications.trend.tooltip.month", { ns: "numeri" }),
+      "Notifiche cumulate": t("sent_notifications.trend.tooltip.aggregate", { ns: "numeri" }),
+      "Notifiche mensili": t("sent_notifications.trend.tooltip.monthly", { ns: "numeri" }),
+      "Anno": t("sent_notifications.trend.tooltip.year", { ns: "numeri" }),
+      "Notifiche annuali": t("sent_notifications.trend.tooltip.yearly", { ns: "numeri" }),
+    };
 
     return {
       ...spec,
@@ -79,37 +85,14 @@ const NotificationsTrend = ({ selYear }: Props) => {
           return layer;
         }
 
-        const tooltips = layer.encoding.tooltip;
-        if (tooltips.length < 3) {
-          return layer;
-        }
-
-        const translatedTooltip = [
-          {
-            ...tooltips[0],
-            title: t("sent_notifications.trend.tooltip.month", {
-              ns: "numeri",
-            }),
-          },
-          {
-            ...tooltips[1],
-            title: t("sent_notifications.trend.tooltip.aggregate", {
-              ns: "numeri",
-            }),
-          },
-          {
-            ...tooltips[2],
-            title: t("sent_notifications.trend.tooltip.monthly", {
-              ns: "numeri",
-            }),
-          },
-        ];
-
         return {
           ...layer,
           encoding: {
             ...layer.encoding,
-            tooltip: translatedTooltip,
+            tooltip: (layer.encoding.tooltip as any[]).map((tip) => ({
+              ...tip,
+              title: titleMap[tip.title] ?? tip.title,
+            })),
           },
         };
       }),
@@ -167,9 +150,9 @@ const NotificationsTrend = ({ selYear }: Props) => {
                     }}
                   >
                     {handleFirstLetter(isSwapped)(
-                      t(`sent_notifications.trend.${option}`, {
-                        ns: "numeri",
-                      })
+                      option === "monthly" && selYear === null
+                        ? t("sent_notifications.trend.yearly", { ns: "numeri" })
+                        : t(`sent_notifications.trend.${option}`, { ns: "numeri" })
                     )}
                   </MenuItem>
                 ))}
@@ -238,13 +221,13 @@ const NotificationsTrend = ({ selYear }: Props) => {
             <NotificationsTrendLineChart
               filterSignal={curOptionTotalDigitalAnalog}
               yearSignal={selYear}
-              spec={translateTooltip(toVegaLiteSpec(lineChartSpec))}
+              spec={translateTooltip(toVegaLiteSpec(selYear === null ? lineChartYearlySpec : lineChartSpec))}
             />
           ) : (
             <NotificationsTrendBarChart
               filterSignal={curOptionTotalDigitalAnalog}
               yearSignal={selYear}
-              spec={translateTooltip(toVegaLiteSpec(barChartSpec))}
+              spec={translateTooltip(toVegaLiteSpec(selYear === null ? barChartYearlySpec : barChartSpec))}
             />
           )}
         </Box>

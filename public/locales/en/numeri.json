@@ -1,38 +1,39 @@
 {
   "title": "SEND - Servizio Notifiche Digitali | SEND in numbers",
-  "description": "Learn about the data related to sent notifications, institutions that are using SEND and service types",
+  "description": "Discover data relating to notifications sent, institutions using SEND and types of data services",
   "hero": {
     "eyelet": "Data and performance",
     "title": "SEND in numbers",
-    "description": "On this page, you can find daily updated data for the",
+    "description": "This page provides data relating to the notifications platform ",
     "description_2": "SEND",
-    "description_3": " notifification platform.",
+    "description_3": ", updated daily.",
     "last_update": "Last update",
     "alert": "Data is available on dati.gov.it",
     "website": "See data"
   },
-  "total": "Total",
+  "total": "All",
   "sent_notifications": {
     "title": "SEND notifications sent",
-    "description": "The data refers to legally binding communications sent by participating institutions.",
-    "filters": "Use the selectors below to filter this section for the desired time period.",
-    "screen_readers": "Displayed data period:",
+    "description": "A SEND notification is a legally binding communication officially issued by an institution. It can be delivered digitally or in paper form.",
+    "filters": "Through the Years filters, you can view the sections for the desired reference period.",
+    "screen_readers": "Data period displayed:",
     "total": {
       "name": "total",
       "title": "Total SEND notifications sent",
-      "description": "A SEND notification is a legally binding communication officially issued by an institution. It can be delivered digitally or in paper form.",
-      "title_2": "Total notifications sent since July 2023",
-      "description_2": "Total notifications sent since the platform's first year of operation"
+      "description": "Total SEND notifications sent in the reference period considered.",
+      "title_2": "Total SEND notifications sent since July 2023",
+      "description_2": "Total SEND notifications sent since the platform's first year of operation.",
+      "description_1": "compared to the previous year"
     },
     "digital": {
       "name": "digital",
       "title": "Number of digital SEND notifications",
-      "description": "SEND notifications sent to recipients via certified digital channels"
+      "description": "SEND notifications sent to recipients via certified digital channels."
     },
     "analog": {
       "name": "analog",
       "title": "Number of analog SEND notifications",
-      "description": "SEND notifications sent in paper form due to the absence of certified digital channels for the recipient"
+      "description": "SEND notifications sent in paper form due to the absence of certified digital channels for the recipient."
     },
     "pieChart": {
       "tooltip": {
@@ -42,11 +43,12 @@
     },
     "trend": {
       "title": "SEND notifications trend",
-      "description": "Trend of SEND notifications officially issued by a participating institution.",
+      "description": "Trend of the number of SEND notifications officially issued by a participating institution",
       "description_1": "Trend",
       "description_2": "of",
       "description_3": "notifications",
       "monthly": "monthly",
+      "yearly": "yearly",
       "aggregate": "cumulative",
       "total": "total",
       "digital": "digital",
@@ -54,9 +56,28 @@
       "tooltip": {
         "month": "Month",
         "aggregate": "Cumulative notifications",
-        "monthly": "Monthly notifications"
+        "monthly": "Monthly notifications",
+        "year": "Year",
+        "yearly": "Yearly notifications"
       },
       "note": "The cumulative value is the progressive sum of a quantity over time."
+    }
+  },
+
+  "avvisi": {
+    "title": "Notices sent",
+    "description": "Trend of the number of notices sent, i.e., messages informing when there is a SEND notification to read, sent via IO App, e-mail or SMS.",
+    "total": {
+      "title": "Total notices sent",
+      "description": "Total notices sent in the reference period considered.",
+      "title_2": "Total notices sent since July 2023",
+      "description_2": "Total notices sent since the platform's first year of operation."
+    },
+    "app_io": {
+      "title": "Notices sent via the IO App"
+    },
+    "email_sms": {
+      "title": "Notices sent via e-mail/SMS"
     }
   },
 
@@ -65,20 +86,20 @@
     "description": "Participating institutions that have sent at least one SEND notification since the service launch.",
     "active": {
       "total": {
-        "title": "Total institutions on SEND",
+        "title": "Total Institutions on SEND",
         "description": "Total number of institutions that have sent at least one SEND notification.",
         "description_1": "compared to the previous year"
       },
       "municipalities": {
-        "title": "Percentage of municipalities over total institutions on SEND"
+        "title": "Percentage of municipalities over total institutions on SEND"
       },
       "geographic_distribution": {
-        "title": "Geographic distribution of municipalities on SEND",
-        "description": "The chart shows the distribution of municipalities using SEND, as the entity category with the highest number of participants.",
+        "title": "Geographical distribution of municipalities on SEND",
+        "description": "The chart shows the distribution of municipalities across different regions.",
         "description_1": "Display value",
         "absolute": {
           "name": "absolute",
-          "description": "Bubble size indicates the number of municipalities per region."
+          "description": "Bubble size indicates the number of active municipalities per region."
         },
         "percentage": {
           "name": "percentage",
@@ -93,13 +114,20 @@
     }
   },
 
+  "atti": {
+    "title": "Main acts notified by SEND",
+    "description": "Number of the ten main acts* sent via SEND",
+    "note_1": "*different from those whose notification is excluded via SEND under Art. 26, paragraph 17 D.L. 76/2020.",
+    "note_2": "The representation includes the main acts with a number of sent notifications equal to or greater than 5."
+  },
+
   "notification_types": {
     "title": "Main areas of SEND notifications",
-    "description": "Most frequently sent categories of SEND notifications.",
+    "description": "Number of SEND notifications sent for the ten main areas, broken down by type of participating institution",
     "main_scopes": {
-      "title": "Filter by type of participating institution",
+      "title": "Filter by type of participating institution.",
       "note_1": "*different from those whose notification is excluded via SEND under Art. 26, paragraph 17 D.L. 76/2020",
-      "note_2": "The chart includes the main sectors with 5 or more notifications sent."
+      "note_2": "The representation includes the main areas with a number of sent notifications equal to or greater than 5."
     },
     "tooltip": {
       "category": "Area",
@@ -112,7 +140,7 @@
       "name": "Municipalities"
     },
     "riscossori_e_altro": {
-      "name": "Tax collectors and others"
+      "name": "Collectors and other"
     },
     "altri_enti_territoriali": {
       "name": "Other local authorities"
@@ -124,13 +152,13 @@
       "name": "Regions"
     },
     "salute_locale": {
-      "name": "Local Healthcare"
+      "name": "Local health"
     },
     "enti_comunali": {
-      "name": "Municipal entities"
+      "name": "Municipal institutions"
     },
     "ordini,_collegi_e_consigli_professionali": {
-      "name": "Professional orders, associations and councils"
+      "name": "Professional orders, colleges and councils"
     },
     "pubbliche_amministrazioni_centrali": {
       "name": "Central public administrations"
@@ -148,13 +176,13 @@
       "name": "Research"
     },
     "salute_centrale": {
-      "name": "Central Healthcare"
+      "name": "Central health"
     },
     "salute_regionale": {
-      "name": "Regional Healthcare"
+      "name": "Regional health"
     },
     "salute_servizi": {
-      "name": "Healthcare Services"
+      "name": "Health services"
     },
     "scuola": {
       "name": "School"
