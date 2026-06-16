@@ -1,74 +1,93 @@
 {
   "title": "SEND - Servizio Notifiche Digitali | SEND in Zahlen",
-  "description": "Entdecken Sie Daten über die gesendeten Zustellungen, Körperschaften, die SEND nutzen, und Dienstarten",
+  "description": "Entdecken Sie Daten zu gesendeten Benachrichtigungen, teilnehmenden Entitäten und Arten von Datendiensten",
   "hero": {
     "eyelet": "Daten und Leistung",
     "title": "SEND in Zahlen",
-
-    "description": "Auf dieser Seite finden Sie täglich aktualisierte Daten zur ",
+    "description": "Auf dieser Seite finden Sie Daten zur Benachrichtigungsplattform ",
     "description_2": "SEND",
-    "description_3": "-Benachrichtigungsplattform",
+    "description_3": ", die täglich aktualisiert werden.",
     "last_update": "Letzte Aktualisierung",
     "alert": "Die Daten sind auf dati.gov.it verfügbar",
-    "website": "Zur den Daten"
+    "website": "Zu den Daten"
   },
-  "total": "Gesamt",
+  "total": "Alle",
   "sent_notifications": {
     "title": "Versandte SEND-Benachrichtigungen",
-    "description": "Die Daten beziehen sich auf rechtsverbindliche Mitteilungen, die von teilnehmenden Entitäten versandt wurden.",
-    "filters": "Mit den unten stehenden Selektoren können Sie diesen Abschnitt nach dem gewünschten Zeitraum filtern.",
-
+    "description": "Eine SEND-Benachrichtigung ist eine rechtsverbindliche Mitteilung, die offiziell von einer Behörde ausgestellt wird. Sie kann digital oder analog zugestellt werden.",
+    "filters": "Mithilfe der Jahresfilter können Sie die Abschnitte für den gewünschten Bezugszeitraum anzeigen.",
     "screen_readers": "Angezeigter Datenzeitraum:",
     "total": {
-      "name": "Gesamtzahl",
+      "name": "insgesamt",
       "title": "Gesamtzahl der versandten SEND-Benachrichtigungen",
-      "description": "Eine SEND-Benachrichtigung ist eine rechtsverbindliche Mitteilung, die offiziell von einer Behörde ausgestellt wird. Sie kann digital oder analog zugestellt werden.",
-      "title_2": "Gesamt Benachrichtigungen seit Juli 2023",
-      "description_2": "Gesamt Benachrichtigungen seit dem ersten Betriebsjahr der Plattform."
+      "description": "Gesamtzahl der im betrachteten Bezugszeitraum versandten SEND-Benachrichtigungen.",
+      "title_2": "Gesamtzahl der seit Juli 2023 versandten SEND-Benachrichtigungen",
+      "description_2": "Gesamtzahl der seit dem ersten Betriebsjahr der Plattform versandten SEND-Benachrichtigungen.",
+      "description_1": "im Vergleich zum Vorjahr"
     },
     "digital": {
       "name": "digital",
       "title": "Anzahl der digitalen SEND-Benachrichtigungen",
-      "description": "SEND-Benachrichtigungen, die über zertifizierte digitale Kanäle an die Empfänger zugestellt wurden"
+      "description": "SEND-Benachrichtigungen, die über zertifizierte digitale Kanäle an die Empfänger zugestellt wurden."
     },
     "analog": {
       "name": "analog",
       "title": "Anzahl der analogen SEND-Benachrichtigungen",
-      "description": "SEND-Benachrichtigungen, die analog zugestellt wurden, da keine zertifizierten digitalen Kanäle des Empfängers verfügbar waren"
+      "description": "SEND-Benachrichtigungen, die analog zugestellt wurden, da keine zertifizierten digitalen Kanäle des Empfängers verfügbar waren."
     },
     "pieChart": {
       "tooltip": {
-        "type": "Benachrichtigungstyp",
+        "type": "Art der Benachrichtigung",
         "number": "Anzahl der Benachrichtigungen"
       }
     },
     "trend": {
       "title": "Entwicklung der SEND-Benachrichtigungen",
-      "description": "Entwicklung der Anzahl der SEND-Benachrichtigungen, die offiziell von einer teilnehmenden Entität ausgestellt wurden.",
+      "description": "Entwicklung der Anzahl der SEND-Benachrichtigungen, die offiziell von einer teilnehmenden Entität ausgestellt wurden",
       "description_1": "Entwicklung",
       "description_2": "der",
       "description_3": "Benachrichtigungen",
       "monthly": "monatlich",
-      "aggregate": "kumulativ",
+      "yearly": "jährlich",
+      "aggregate": "kumuliert",
       "total": "Gesamtzahl",
       "digital": "digital",
       "analog": "analog",
       "tooltip": {
         "month": "Monat",
         "aggregate": "Kumulierte Benachrichtigungen",
-        "monthly": "Monatliche Benachrichtigungen"
+        "monthly": "Monatliche Benachrichtigungen",
+        "year": "Jahr",
+        "yearly": "Jährliche Benachrichtigungen"
       },
-      "note": "Der kumulative Wert ist die fortlaufende Summe einer Menge über die Zeit."
+      "note": "Der kumulierte Wert ist die fortlaufende Summe einer Menge über die Zeit."
+    }
+  },
+
+  "avvisi": {
+    "title": "Versandte Hinweise",
+    "description": "Entwicklung der Anzahl der versandten Hinweise, d.h. Nachrichten, die darüber informieren, wenn eine SEND-Benachrichtigung zum Lesen vorliegt, versandt über die IO-App, E-Mail oder SMS.",
+    "total": {
+      "title": "Gesamtzahl der versandten Hinweise",
+      "description": "Gesamtzahl der im betrachteten Bezugszeitraum versandten Hinweise.",
+      "title_2": "Gesamtzahl der seit Juli 2023 versandten Hinweise",
+      "description_2": "Gesamtzahl der seit dem ersten Betriebsjahr der Plattform versandten Hinweise."
+    },
+    "app_io": {
+      "title": "Über die IO-App versandte Hinweise"
+    },
+    "email_sms": {
+      "title": "Per E-Mail/SMS versandte Hinweise"
     }
   },
 
   "entities": {
     "title": "Entitäten auf SEND",
-    "description": "Teilnehmende Entitäten, die seit Beginn des Dienstes mindestens eine SEND-Benachrichtigung versandt haben.",
+    "description": "Teilnehmende Entitäten, die seit Beginn des Dienstes mindestens eine SEND-Benachrichtigung versandt haben.",
     "active": {
       "total": {
         "title": "Gesamtzahl der Entitäten auf SEND",
-        "description": "Gesamtanzahl der Entitäten, die mindestens eine SEND-Benachrichtigung versandt haben.",
+        "description": "Gesamtzahl der Entitäten, die mindestens eine SEND-Benachrichtigung versandt haben.",
         "description_1": "im Vergleich zum Vorjahr"
       },
       "municipalities": {
@@ -76,14 +95,14 @@
       },
       "geographic_distribution": {
         "title": "Geografische Verteilung der Gemeinden auf SEND",
-        "description": "Die Grafik zeigt die Verteilung der Gemeinden, die SEND nutzen, als die Entitätskategorie mit der höchsten Beteiligung.",
+        "description": "Das Diagramm zeigt die Verteilung der Gemeinden in den verschiedenen Regionen.",
         "description_1": "Wert anzeigen",
         "absolute": {
-          "name": "absolut",
+          "name": "Absolut",
           "description": "Die Blasengröße zeigt die Anzahl der aktiven Gemeinden pro Region an."
         },
         "percentage": {
-          "name": "prozentual",
+          "name": "Prozentual",
           "description": "Die Färbung zeigt den Prozentsatz aktiver Gemeinden in jeder Region."
         }
       },
@@ -95,17 +114,24 @@
     }
   },
 
+  "atti": {
+    "title": "Wichtigste über SEND zugestellte Akte",
+    "description": "Anzahl der zehn wichtigsten Akte*, die über SEND versandt wurden",
+    "note_1": "*ausgenommen jene, deren Zustellung über SEND gemäß Art. 26, Abs. 17 Gesetzesdekret 76/2020 ausgeschlossen ist.",
+    "note_2": "Die Darstellung umfasst die wichtigsten Akte mit einer Anzahl von versandten Benachrichtigungen von 5 oder mehr."
+  },
+
   "notification_types": {
     "title": "Hauptbereiche der SEND-Benachrichtigungen",
-    "description": "Am häufigsten versandte Kategorien von SEND-Benachrichtigungen.",
+    "description": "Anzahl der versandten SEND-Benachrichtigungen für die zehn Hauptbereiche, aufgeschlüsselt nach Art der teilnehmenden Entität",
     "main_scopes": {
-      "title": "Nach Typ der teilnehmenden Entität filtern",
-      "note_1": "*anders als diejenigen, deren Benachrichtigung gemäß Art. 26, Abs. 17 D.L. 76/2020 vom SEND-Verfahren ausgeschlossen ist.",
-      "note_2": "Die Grafik zeigt die Hauptbereiche mit fünf oder mehr versendeten Benachrichtigungen"
+      "title": "Nach Art der teilnehmenden Entität filtern.",
+      "note_1": "*ausgenommen jene, deren Zustellung über SEND gemäß Art. 26, Abs. 17 Gesetzesdekret 76/2020 ausgeschlossen ist",
+      "note_2": "Die Darstellung umfasst die Hauptbereiche mit einer Anzahl von versandten Benachrichtigungen von 5 oder mehr."
     },
     "tooltip": {
       "category": "Bereich",
-      "notifications": "Zustellungen"
+      "notifications": "Benachrichtigungen"
     },
     "tutte": {
       "name": "Alle"
@@ -114,7 +140,7 @@
       "name": "Gemeinden"
     },
     "riscossori_e_altro": {
-      "name": "Steuerbehörden und andere"
+      "name": "Inkassobüros und andere"
     },
     "altri_enti_territoriali": {
       "name": "Andere Gebietskörperschaften"
@@ -126,13 +152,13 @@
       "name": "Regionen"
     },
     "salute_locale": {
-      "name": "Lokales Gesundheitswesen"
+      "name": "Lokale Gesundheit"
     },
     "enti_comunali": {
-      "name": "Kommunale Einrichtungen"
+      "name": "Gemeindeeinrichtungen"
     },
     "ordini,_collegi_e_consigli_professionali": {
-      "name": "Berufsorganisationen, Kammern und Berufsverbände"
+      "name": "Berufsverbände, Kollegien und Räte"
     },
     "pubbliche_amministrazioni_centrali": {
       "name": "Zentrale öffentliche Verwaltungen"
@@ -141,7 +167,7 @@
       "name": "Universitäten"
     },
     "consorzi_universitari": {
-      "name": "Universitätsverbünde"
+      "name": "Universitätskonsortien"
     },
     "aci": {
       "name": "ACI"
@@ -150,10 +176,10 @@
       "name": "Forschung"
     },
     "salute_centrale": {
-      "name": "Zentrales Gesundheitswesen"
+      "name": "Zentrale Gesundheit"
     },
     "salute_regionale": {
-      "name": "Regionales Gesundheitswesen"
+      "name": "Regionale Gesundheit"
     },
     "salute_servizi": {
       "name": "Gesundheitsdienste"

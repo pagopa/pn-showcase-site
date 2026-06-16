@@ -1,0 +1,20 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione1.json",
+    "format": { "property": "perc_notifiche" }
+  },
+  "params": [{ "name": "year", "value": null }],
+  "transform": [
+    { "filter": "year == datum.year || year === +datum.year" },
+    { "filter": "datum.perc_tot_notifiche !== null" }
+  ],
+  "mark": "text",
+  "encoding": {
+    "text": {
+      "field": "perc_tot_notifiche",
+      "type": "quantitative",
+      "format": ".0%"
+    }
+  }
+}

@@ -16,7 +16,11 @@ const percentageSpec = toVegaLiteSpec(mapJsonPercentageSpec);
 const mapSelection = ["absolute", "percentage"] as const;
 type MapSelection = (typeof mapSelection)[number];
 
-export default function Maps() {
+type Props = {
+  selYear?: number | null;
+};
+
+export default function Maps({ selYear }: Props) {
   const { t } = useTranslation(["numeri"]);
   const [curMapOption, setMapOption] = useState<MapSelection>("absolute");
   const handleOptionChange = (option: MapSelection) => {
@@ -173,7 +177,10 @@ export default function Maps() {
           <CardText>
             {t("entities.active.geographic_distribution.absolute.description")}
           </CardText>
-          <MapChart spec={translateMapTooltip(absoluteSpec)} />
+          <MapChart
+            spec={translateMapTooltip(absoluteSpec)}
+            yearSignal={selYear}
+          />
         </>
       ) : (
         <>
@@ -182,7 +189,10 @@ export default function Maps() {
               "entities.active.geographic_distribution.percentage.description"
             )}
           </CardText>
-          <MapChart spec={translatePercentageMapTooltip(percentageSpec)} />
+          <MapChart
+            spec={translatePercentageMapTooltip(percentageSpec)}
+            yearSignal={selYear}
+          />
         </>
       )}
     </Stack>

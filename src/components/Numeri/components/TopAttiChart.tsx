@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 import { useEffect, useRef, useState } from "react";
 import embed, { Result } from "vega-embed";
 import { TopLevelSpec } from "vega-lite";
@@ -10,7 +10,7 @@ type Props = {
   yearSignal?: number | null;
 };
 
-const MapChart = ({ spec, yearSignal }: Props) => {
+const TopAttiChart = ({ spec, yearSignal }: Props) => {
   const [chart, setChart] = useState<Result | null>(null);
   const chartContent = useRef<HTMLDivElement>(null);
 
@@ -18,19 +18,10 @@ const MapChart = ({ spec, yearSignal }: Props) => {
     if (!chartContent.current) {
       return;
     }
-    const options = {
-      ...chartConfig,
-    };
-    embed(chartContent.current, spec, options)
+    embed(chartContent.current, spec, chartConfig)
       .then((result) => {
         setChart(result);
-        result.view
-          .resize()
-          .runAsync()
-          .then(() => {
-            setTimeout(() => removeGraphicsSymbolRole(chartContent), 100);
-          })
-          .catch(console.error);
+        setTimeout(() => removeGraphicsSymbolRole(chartContent), 100);
       })
       .catch(console.error);
   }, [spec]);
@@ -51,13 +42,11 @@ const MapChart = ({ spec, yearSignal }: Props) => {
 
   return (
     <Box
-      sx={{
-        height: { xs: "25rem", sm: "37rem" },
-        width: "100%",
-        pt: { xs: "1rem", sm: "2rem" },
-      }}
+      sx={{ height: "100%", width: "100%" }}
       ref={chartContent}
+      id="chart-content-atti"
     ></Box>
   );
 };
-export default MapChart;
+
+export default TopAttiChart;

@@ -37,7 +37,7 @@ const KpiSignal = ({ spec, yearSignal }: Props) => {
         return "";
       }
       const marks = scene.items;
-      return isSceneText(marks[0]) ? marks[0].text : "";
+      return marks.length > 0 && isSceneText(marks[0]) ? marks[0].text : "";
     };
 
     setText(getText());

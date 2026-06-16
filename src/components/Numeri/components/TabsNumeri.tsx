@@ -24,6 +24,7 @@ type Props = {
   onTabChange: (v: number) => void;
   initialTab?: number;
   breakpoint?: Breakpoint;
+  showDescription?: boolean;
 };
 
 const TabsNumeri = ({
@@ -34,6 +35,7 @@ const TabsNumeri = ({
   onTabChange,
   initialTab = 3,
   breakpoint = "xs",
+  showDescription = true,
 }: Props) => {
   const {
     currentTab,
@@ -74,9 +76,11 @@ const TabsNumeri = ({
       </Box>
       {(!isMobile || !breakOnMobile) && (
         <>
-          <CardText sx={{ mb: 1.5 }}>
-            {t("sent_notifications.filters")}
-          </CardText>
+          {showDescription && (
+            <CardText sx={{ mb: 1.5 }}>
+              {t("sent_notifications.filters")}
+            </CardText>
+          )}
           <ButtonGroup color="primary" fullWidth={fullWidth} role="tablist">
             {tabs.map((tab, index) => (
               <Button

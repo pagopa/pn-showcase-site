@@ -5,10 +5,9 @@
   },
   "data": {
     "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione2.json",
-    "format": { "property": "top10_ambiti" }
+    "format": { "property": "top10_atti" }
   },
   "params": [
-    { "name": "category", "value": null },
     { "name": "year", "value": null }
   ],
   "transform": [
@@ -16,25 +15,18 @@
       "filter": "year === year(datum.year) || year === datum.year"
     },
     {
-      "filter": "datum.categoria_ente === category"
-    },
-    {
       "window": [{ "op": "rank", "as": "rank" }],
       "sort": [{ "field": "ranking", "order": "ascending" }]
     },
     {
       "filter": "datum.rank <= 10"
-    },
-    {
-      "calculate": "datum.ambito === 'Riscossione Coattiva' || datum.ambito === 'Ordinanze' || datum.ambito === 'Decreto' ? datum.ambito + '*' : datum.ambito",
-      "as": "ambito_label"
     }
   ],
   "height": 560,
   "width": "container",
   "encoding": {
     "y": {
-      "field": "ambito_label",
+      "field": "tipologia_atto",
       "sort": { "field": "ranking", "order": "ascending" },
       "scale": { "padding": 0 },
       "axis": {
@@ -68,7 +60,7 @@
       "mark": { "type": "bar", "tooltip": true, "color": "transparent" },
       "encoding": {
         "tooltip": [
-          { "field": "ambito", "title": "Ambito" },
+          { "field": "tipologia_atto", "title": "Atto" },
           {
             "field": "num_iun",
             "aggregate": "sum",
