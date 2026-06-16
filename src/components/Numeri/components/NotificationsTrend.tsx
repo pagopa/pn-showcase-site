@@ -89,7 +89,7 @@ const NotificationsTrend = ({ selYear }: Props) => {
           ...layer,
           encoding: {
             ...layer.encoding,
-            tooltip: (layer.encoding.tooltip as any[]).map((tip) => ({
+            tooltip: (layer.encoding.tooltip as Array<any>).map((tip) => ({
               ...tip,
               title: titleMap[tip.title] ?? tip.title,
             })),

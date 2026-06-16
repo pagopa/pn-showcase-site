@@ -15,7 +15,7 @@ type Props = {
 };
 
 const isSceneText = (
-  item: VegaScene | VegaSceneGroup | SceneText
+  item: VegaScene | VegaSceneGroup | SceneText,
 ): item is SceneText => "text" in item;
 
 const KpiEntitiesPerc = ({ spec, children }: Props) => {
@@ -48,13 +48,19 @@ const KpiEntitiesPerc = ({ spec, children }: Props) => {
   useEffect(() => {
     getMarks(spec)
       .then((marks) => {
-        if (!marks[0]) return;
-        if (isSceneText(marks[0])) setText(marks[0].text);
+        if (!marks[0]) {
+          return;
+        }
+        if (isSceneText(marks[0])) {
+          setText(marks[0].text);
+        }
       })
       .catch(console.error);
   }, [spec]);
 
-  if (text === null) return null;
+  if (text === null) {
+    return null;
+  }
 
   return (
     <Stack direction={"row"} spacing={1} alignItems={"center"}>
