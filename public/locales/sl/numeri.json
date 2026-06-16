@@ -9,20 +9,21 @@
     "description_3": ", ki se dnevno posodabljajo.",
     "last_update": "Zadnja posodobitev",
     "alert": "Podatki so na voljo na dati.gov.it",
-    "website": "Pojdi na spletno stran"
+    "website": "Poglej podatke"
   },
   "total": "Skupno",
   "sent_notifications": {
     "title": "Poslana obvestila SEND",
-    "description": "Podatki se nanašajo na pravno veljavne komunikacije, ki jih pošljejo sodelujoče organizacije.",
-    "filters": "Uporabite spodnje izbirnike za filtriranje tega razdelka za želeno časovno obdobje.",
+    "description": "Obvestilo SEND je pravno veljavna komunikacija, ki jo uradno izda uprava. Lahko se dostavi digitalno ali analogno.",
+    "filters": "S filtri let si lahko ogledate razdelke za željeno referenčno obdobje.",
     "screen_readers": "Prikazano obdobje podatkov:",
     "total": {
       "name": "skupno",
       "title": "Skupaj poslana obvestila SEND",
-      "description": "Obvestilo SEND je pravno veljavna komunikacija, ki jo uradno izda uprava. Lahko se dostavi digitalno ali analogno.",
+      "description": "Skupno število obvestil SEND, poslanih v obravnavanem referenčnem obdobju.",
       "title_2": "Skupaj poslanih obvestil od julija 2023",
-      "description_2": "Skupaj poslanih obvestil od prvega leta delovanja platforme"
+      "description_2": "Skupaj poslanih obvestil od prvega leta delovanja platforme.",
+      "description_1": "v primerjavi s prejšnjim letom"
     },
     "digital": {
       "name": "digitalna",
@@ -47,6 +48,7 @@
       "description_2": "",
       "description_3": "obvestil",
       "monthly": "mesečno",
+      "yearly": "letno",
       "aggregate": "kumulativno",
       "total": "skupno",
       "digital": "digitalna",
@@ -54,9 +56,28 @@
       "tooltip": {
         "month": "Mesec",
         "aggregate": "Kumulativna obvestila",
-        "monthly": "Mesečna obvestila"
+        "monthly": "Mesečna obvestila",
+        "year": "Leto",
+        "yearly": "Letna obvestila"
       },
       "note": "Kumulativna vrednost je progresivna vsota količine skozi čas."
+    }
+  },
+
+  "avvisi": {
+    "title": "Poslana opozorila",
+    "description": "Trend števila poslanih opozoril, tj. sporočil, ki obveščajo, ko je na voljo obvestilo SEND za branje, poslanih prek aplikacije IO, e-pošte ali SMS.",
+    "total": {
+      "title": "Skupno poslana opozorila",
+      "description": "Skupno število opozoril, poslanih v obravnavanem referenčnem obdobju.",
+      "title_2": "Skupno poslana opozorila od julija 2023",
+      "description_2": "Skupno število opozoril, poslanih od prvega leta delovanja platforme."
+    },
+    "app_io": {
+      "title": "Opozorila, poslana prek aplikacije IO"
+    },
+    "email_sms": {
+      "title": "Opozorila, poslana po e-pošti/SMS"
     }
   },
 
@@ -65,7 +86,7 @@
     "description": "Sodelujoče organizacije, ki so poslale najmanj eno obvestilo SEND od zagona storitve.",
     "active": {
       "total": {
-        "title": "Skupne organizacije na SEND",
+        "title": "Skupaj organizacije na SEND",
         "description": "Skupno število organizacij, ki so poslale najmanj eno obvestilo SEND.",
         "description_1": "v primerjavi s prejšnjim letom"
       },
@@ -74,11 +95,11 @@
       },
       "geographic_distribution": {
         "title": "Geografska porazdelitev občin na SEND",
-        "description": "Graf prikazuje porazdelitev občin, ki uporabljajo SEND, kot kategorijo entitet z največjim številom udeležencev.",
+        "description": "Graf prikazuje porazdelitev občin, ki so poslale najmanj eno obvestilo SEND.",
         "description_1": "Prikaži vrednost",
         "absolute": {
           "name": "absolutno",
-          "description": "Velikost mehurčkov označuje obseg aktivnih občin na regijo"
+          "description": "Velikost mehurčkov označuje število aktivnih občin na regijo."
         },
         "percentage": {
           "name": "odstotek",
@@ -93,13 +114,20 @@
     }
   },
 
+  "atti": {
+    "title": "Glavni akti, ki jih sporoča SEND",
+    "description": "Število desetih glavnih aktov*, poslanih prek SEND",
+    "note_1": "* drugačni od tistih, katerih uradno obvestilo je izključeno prek SEND v skladu s členom 26, odstavek 17 zakonskega odloka 76/2020.",
+    "note_2": "Prikaz vključuje glavne akte s številom poslanih obvestil, enakim ali večjim od 5."
+  },
+
   "notification_types": {
     "title": "Glavna področja obvestil SEND",
-    "description": "Najbolj poslane kategorije obvestil SEND.",
+    "description": "Število obvestil SEND, poslanih za deset glavnih področij, razčlenjenih po vrsti sodelujoče organizacije",
     "main_scopes": {
       "title": "Filtriraj po vrsti sodelujoče organizacije.",
-      "note_1": "* drugače od tistih, katerih obveščanje je izključeno preko SEND v skladu s členom 26, odstavek 17 zakonskega odloka št. 76/2020",
-      "note_2": "Grafikon prikazuje glavna območja s petimi ali več poslanimi obvestili"
+      "note_1": "* drugačni od tistih, katerih obveščanje je izključeno prek SEND v skladu s členom 26, odstavek 17 zakonskega odloka št. 76/2020",
+      "note_2": "Prikaz vključuje glavna področja s številom poslanih obvestil, enakim ali večjim od 5."
     },
     "tooltip": {
       "category": "Področje",

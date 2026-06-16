@@ -7,13 +7,16 @@
     "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione2.json",
     "format": { "property": "geo_comuni" }
   },
-
+  "params": [{ "name": "year", "value": null }],
   "transform": [
+    {
+      "filter": "year === year(datum.year) || year === datum.year"
+    },
     {
       "lookup": "regione",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/openpolis/geojson-italy/refs/heads/master/topojson/limits_IT_regions.topo.json",
+          "url": "/static/data/limits_IT_regions.topo.json",
           "format": { "type": "topojson", "feature": "regions" }
         },
         "key": "properties.reg_name",

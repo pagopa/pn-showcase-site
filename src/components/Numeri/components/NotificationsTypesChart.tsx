@@ -8,9 +8,10 @@ import { removeGraphicsSymbolRole } from "../shared/removeGraphicsSymbolRole";
 type Props = {
   spec: TopLevelSpec;
   categorySignal: string | null;
+  yearSignal?: number | null;
 };
 
-const NotificationsTypesChart = ({ spec, categorySignal }: Props) => {
+const NotificationsTypesChart = ({ spec, categorySignal, yearSignal }: Props) => {
   const [chart, setChart] = useState<Result | null>(null);
   const chartContent = useRef<HTMLDivElement>(null);
 
@@ -39,6 +40,20 @@ const NotificationsTypesChart = ({ spec, categorySignal }: Props) => {
       })
       .catch(console.error);
   }, [chart, categorySignal]);
+
+  useEffect(() => {
+    if (chart === null || yearSignal === undefined) {
+      return;
+    }
+    chart.view
+      .signal("year", yearSignal)
+      .resize()
+      .runAsync()
+      .then(() => {
+        setTimeout(() => removeGraphicsSymbolRole(chartContent), 100);
+      })
+      .catch(console.error);
+  }, [chart, yearSignal]);
 
   return (
     <Box

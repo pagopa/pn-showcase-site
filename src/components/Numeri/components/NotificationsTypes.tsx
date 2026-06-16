@@ -18,7 +18,11 @@ function generateTag(str: string | null): string {
   return str.toLowerCase().replace(/ /g, "_");
 }
 
-const NotificationsTypes = () => {
+type Props = {
+  selYear?: number | null;
+};
+
+const NotificationsTypes = ({ selYear }: Props) => {
   const { t } = useTranslation(["numeri"]);
   const [categories, setCategories] = useState<Record<
     string,
@@ -150,20 +154,22 @@ const NotificationsTypes = () => {
               ))}
             </Select>
           </Stack>
-
-          <NotificationsTypesChart
-            spec={translateTooltip(toVegaLiteSpec(topAreasSpec))}
-            categorySignal={categories[curOption] ?? null}
-          />
           <Typography
             sx={{
               color: dashboardColors.get("grey-650"),
               fontSize: "0.875rem",
               lineHeight: "1.125rem",
+              py: "1rem"
             }}
           >
             {t("notification_types.main_scopes.note_1", { ns: "numeri" })}
           </Typography>
+
+          <NotificationsTypesChart
+            spec={translateTooltip(toVegaLiteSpec(topAreasSpec))}
+            categorySignal={categories[curOption] ?? null}
+            yearSignal={selYear}
+          />
           <Typography
             sx={{
               color: dashboardColors.get("grey-650"),

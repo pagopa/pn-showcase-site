@@ -9,28 +9,22 @@
   },
   "params": [
     { "name": "notification_type", "value": "total" },
-    {
-      "name": "year",
-      "value": null
-    }
+    { "name": "year", "value": null }
   ],
   "transform": [
-    {
-      "filter": "year(datum.month) === year || year === null"
-    },
     {
       "calculate": "datum['num_iun_' + notification_type]",
       "as": "notification_value"
     },
     {
-      "window": [
-        {
-          "op": "sum",
-          "field": "notification_value",
-          "as": "cumulative"
-        }
+      "calculate": "toString(year(datum.month))",
+      "as": "year_val"
+    },
+    {
+      "aggregate": [
+        { "op": "sum", "field": "notification_value", "as": "annual_total" }
       ],
-      "sort": [{ "field": "month" }]
+      "groupby": ["year_val"]
     }
   ],
   "layer": [
@@ -43,7 +37,7 @@
       },
       "encoding": {
         "y": {
-          "field": "notification_value",
+          "field": "annual_total",
           "type": "quantitative",
           "axis": {
             "format": "~s",
@@ -53,33 +47,25 @@
           }
         },
         "x": {
-          "field": "month",
+          "field": "year_val",
           "type": "ordinal",
-          "timeUnit": "yearmonth",
+          "sort": "ascending",
           "axis": {
-            "format": "%b %Y",
             "grid": false,
             "labelFontWeight": 600,
             "labelFont": "Titillium Web, sans-serif",
-            "labelOverlap": "parity",
-            "tickDash": [4, 4]
+            "labelAngle": 0,
+            "title": null
           }
         },
         "tooltip": [
           {
-            "field": "month",
-            "type": "temporal",
-            "title": "Mese",
-            "format": "%m/%Y"
+            "field": "year_val",
+            "title": "Anno"
           },
           {
-            "field": "cumulative",
-            "title": "Notifiche cumulate",
-            "format": ","
-          },
-          {
-            "field": "notification_value",
-            "title": "Notifiche mensili",
+            "field": "annual_total",
+            "title": "Notifiche annuali",
             "format": ","
           }
         ]
@@ -94,12 +80,12 @@
       },
       "encoding": {
         "x": {
-          "field": "month",
+          "field": "year_val",
           "type": "ordinal",
-          "timeUnit": "yearmonth"
+          "sort": "ascending"
         },
         "y": {
-          "field": "notification_value",
+          "field": "annual_total",
           "type": "quantitative"
         },
         "y2": {
@@ -107,19 +93,12 @@
         },
         "tooltip": [
           {
-            "field": "month",
-            "type": "temporal",
-            "title": "Mese",
-            "format": "%m/%Y"
+            "field": "year_val",
+            "title": "Anno"
           },
           {
-            "field": "cumulative",
-            "title": "Notifiche cumulate",
-            "format": ","
-          },
-          {
-            "field": "notification_value",
-            "title": "Notifiche mensili",
+            "field": "annual_total",
+            "title": "Notifiche annuali",
             "format": ","
           }
         ]
