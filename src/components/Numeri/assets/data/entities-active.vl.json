@@ -1,10 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "data": {
-    "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione2.json"
+    "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione2.json",
+    "format": { "property": "enti_attivi" }
   },
+  "params": [{ "name": "year", "value": null }],
+  "transform": [
+    { "filter": "year === year(datum.year) || year === datum.year" }
+  ],
   "mark": "text",
   "encoding": {
-    "text": { "field": "enti_attivi", "type": "quantitative", "format": ",d" }
+    "text": { "field": "num_enti", "type": "quantitative", "format": ",d" }
   }
 }

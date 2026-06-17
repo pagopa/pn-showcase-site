@@ -4960,10 +4960,10 @@ vega-label@~2.1.0:
     vega-scenegraph "^5.1.0"
     vega-util "^2.1.0"
 
-vega-lite@^6.4.1:
-  version "6.4.1"
-  resolved "https://registry.yarnpkg.com/vega-lite/-/vega-lite-6.4.1.tgz#549634ecaefd46d00f17e7922577d0c97a4663c5"
-  integrity sha512-KO3ybHNouRK4A0al/+2fN9UqgTEfxrd/ntGLY933Hg5UOYotDVQdshR3zn7OfXwQ7uj0W96Vfa5R+QxO8am3IQ==
+vega-lite@^6.4.3:
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/vega-lite/-/vega-lite-6.4.3.tgz#9973d3afe1391fb08807bc2585e129e2daf7a36b"
+  integrity sha512-d/7hPjfz560UERaQuTmGgIVfXAe3g2hJWeC+igDeaGohUdEoNrHLXgR/yTOBT8vV/lIuuKnw+0/xWWblkDwkMQ==
   dependencies:
     json-stringify-pretty-compact "~4.0.0"
     tslib "~2.8.1"
@@ -5155,7 +5155,7 @@ vega-wordcloud@~5.1.0:
     vega-statistics "^2.0.0"
     vega-util "^2.1.0"
 
-vega@^6.0.0:
+vega@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/vega/-/vega-6.2.0.tgz#34c2de83b00e701e040029738b26f1ec992f327f"
   integrity sha512-BIwalIcEGysJdQDjeVUmMWB3e50jPDNAMfLJscjEvpunU9bSt7X1OYnQxkg3uBwuRRI4nWfFZO9uIW910nLeGw==

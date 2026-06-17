@@ -1,21 +1,36 @@
 export type SectionTwoData = {
   last_run: Date;
-  enti_attivi: number;
-  perc_enti_attivi: number;
+  enti: Array<EntiPerAnno>;
   geo_comuni: Array<GeoComuni>;
-  top10_ambiti: Array<Top10Ambiti>;
+  top10_ambiti: Array<Ambiti>;
+  top10_atti: Array<Atto>;
+};
+
+export type EntiPerAnno = {
+  year: string | null;
+  num_enti: number;
+  pct_variazione_vs_anno_prec: number | null;
 };
 
 export type GeoComuni = {
+  year: string | null;
   regione: string;
   num_comuni_tot: number;
   num_comuni_attivi: number;
   perc_comuni_attivi: number;
 };
 
-export type Top10Ambiti = {
+export type Ambiti = {
+  year: string | null;
+  categoria_ente: string | null;
   ambito: string;
   num_iun: number;
   ranking: number;
-  categoria_ente: null | string;
+};
+
+export type Atto = {
+  year: string | null;
+  atto: string;
+  num_iun: number;
+  ranking: number;
 };
