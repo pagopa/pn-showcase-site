@@ -1,6 +1,7 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from "next";
 
 import { Box, Stack, Typography } from "@mui/material";
+import { MIAlert } from "@pagopa/mui-italia";
 import Script from "next/script";
 import { useMemo, useState } from "react";
 import Head from "next/head";
@@ -23,6 +24,7 @@ import avvisiAppIoSpec from "../../components/Numeri/assets/data/avvisi-app-io.v
 import avvisiEmailSmsSpec from "../../components/Numeri/assets/data/avvisi-email-sms.vl.json";
 import pieChartAvvisiSpec from "../../components/Numeri/assets/data/pie-chart-avvisi.vl.json";
 import { langCodes } from "@utils/constants";
+import { isAlertVisibleWithTimezone } from "@utils/dateUtils";
 import Icons from "src/components/Numeri/components/Icons";
 import KpiCard from "src/components/Numeri/components/KpiCard";
 import KpiSignal from "src/components/Numeri/components/KpiSignal";
@@ -207,6 +209,15 @@ const SendInNumbers = ({
             </AlertWrapper>
           </Box>
         </Stack>
+        {isAlertVisibleWithTimezone() && (
+          <Box paddingTop={4}>
+            <MIAlert
+              severity="warning"
+              title={t("hero.maintenance_alert_title", { ns: "numeri" })}
+              description={t("hero.maintenance_alert", { ns: "numeri" })}
+            />
+          </Box>
+        )}
         <Box component="main" paddingTop={6}>
           <CardText sx={{ mb: 1.5 }}>
             {t("sent_notifications.filters", { ns: "numeri" })}

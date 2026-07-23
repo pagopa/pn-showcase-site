@@ -9,7 +9,9 @@
     "description_3": ", updated daily.",
     "last_update": "Last update",
     "alert": "Data is available on dati.gov.it",
-    "website": "See data"
+    "website": "See data",
+    "maintenance_alert_title": "Warning",
+    "maintenance_alert": "Scheduled maintenance is in progress and may cause delays in the availability of dashboard and open data. Please refer to the date shown on this page to check the latest available update. Updates will resume regularly once the maintenance is complete."
   },
   "total": "All",
   "sent_notifications": {

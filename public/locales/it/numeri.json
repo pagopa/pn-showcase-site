@@ -9,7 +9,9 @@
     "description_3": ", aggiornati quotidianamente.",
     "last_update": "Ultimo aggiornamento",
     "alert": "I dati sono disponibili su dati.gov.it",
-    "website": "Vai al sito"
+    "website": "Vai al sito",
+    "maintenance_alert_title": "Attenzione",
+    "maintenance_alert": "È in corso una manutenzione programmata che potrebbe comportare dei ritardi nella disponibilità dei dati su dashboard e open data. Fai riferimento alla data indicata su questa pagina per verificare l'ultimo aggiornamento disponibile. Gli aggiornamenti riprenderanno regolarmente al termine dell'intervento."
   },
   "total": "Tutti",
   "sent_notifications": {

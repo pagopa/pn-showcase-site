@@ -9,7 +9,9 @@
     "description_3": ", mises à jour quotidiennement.",
     "last_update": "Dernière mise à jour",
     "alert": "Les données sont disponibles sur dati.gov.it",
-    "website": "Voir les données"
+    "website": "Voir les données",
+    "maintenance_alert_title": "Attention",
+    "maintenance_alert": "Une maintenance programmée est en cours et pourrait entraîner des retards dans la disponibilité des données du tableau de bord et des données ouvertes. Veuillez vous référer à la date indiquée sur cette page pour vérifier la dernière mise à jour disponible. Les mises à jour reprendront normalement à la fin de l'intervention."
   },
   "total": "Tous",
   "sent_notifications": {

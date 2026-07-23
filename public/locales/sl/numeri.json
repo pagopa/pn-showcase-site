@@ -9,7 +9,9 @@
     "description_3": ", ki se dnevno posodabljajo.",
     "last_update": "Zadnja posodobitev",
     "alert": "Podatki so na voljo na dati.gov.it",
-    "website": "Poglej podatke"
+    "website": "Poglej podatke",
+    "maintenance_alert_title": "Pozor",
+    "maintenance_alert": "Poteka načrtovano vzdrževanje, ki lahko povzroči zamude pri razpoložljivosti podatkov na nadzorni plošči in odprtih podatkov. Za preverjanje zadnje razpoložljive posodobitve si oglejte datum, naveden na tej strani. Posodobitve se bodo redno nadaljevale po zaključku vzdrževanja."
   },
   "total": "Skupno",
   "sent_notifications": {

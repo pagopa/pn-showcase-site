@@ -9,7 +9,9 @@
     "description_3": ", die täglich aktualisiert werden.",
     "last_update": "Letzte Aktualisierung",
     "alert": "Die Daten sind auf dati.gov.it verfügbar",
-    "website": "Zu den Daten"
+    "website": "Zu den Daten",
+    "maintenance_alert_title": "Achtung",
+    "maintenance_alert": "Es findet eine geplante Wartung statt, die zu Verzögerungen bei der Verfügbarkeit der Daten im Dashboard und der Open Data führen kann. Bitte beachten Sie das auf dieser Seite angegebene Datum, um die letzte verfügbare Aktualisierung zu überprüfen. Die Aktualisierungen werden nach Abschluss der Wartung regelmäßig fortgesetzt."
   },
   "total": "Alle",
   "sent_notifications": {
