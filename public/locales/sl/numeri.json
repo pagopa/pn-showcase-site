@@ -67,8 +67,10 @@
   },
 
   "avvisi": {
-    "title": "Poslana opozorila",
-    "description": "Trend števila poslanih opozoril, tj. sporočil, ki obveščajo, ko je na voljo obvestilo SEND za branje, poslanih prek aplikacije IO, e-pošte ali SMS.",
+    "title": "Poslana vljudnostna opozorila",
+    "description": "Porazdelitev števila vljudnostnih opozoril, poslanih prek aplikacije IO, e-pošte ali SMS za obveščanje prejemnikov o prisotnosti obvestila SEND za branje.",
+    "note": "Vljudnostna opozorila obveščajo prejemnike o prisotnosti novega obvestila SEND za branje. Poslana so lahko prek aplikacije IO, e-pošte ali SMS, če je prejemnik aktiviral storitev na IO ali konfiguriral svoje kontaktne podatke na SEND. Več podrobnosti je na voljo na ",
+    "note_link": "tej povezavi",
     "total": {
       "title": "Skupno poslana opozorila",
       "description": "Skupno število opozoril, poslanih v obravnavanem referenčnem obdobju.",
@@ -114,6 +116,12 @@
         "percentage": "Odstotek občin glede na skupno število občin na regijo."
       }
     }
+  },
+
+  "categorie_enti": {
+    "title": "Glavne kategorije pošiljateljev",
+    "description": "Število obvestil SEND, ki so jih poslale institucije, razčlenjenih po makro kategorijah.",
+    "note_1": "Prikaz vključuje institucije s številom poslanih obvestil, enakim ali večjim od 5."
   },
 
   "atti": {

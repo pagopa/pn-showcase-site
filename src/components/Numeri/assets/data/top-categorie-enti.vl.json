@@ -1,0 +1,89 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "padding": {
+    "right": 5
+  },
+  "data": {
+    "url": "https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/send/dashboard-send-sezione2.json",
+    "format": { "property": "notif_enti_category" }
+  },
+  "params": [
+    { "name": "year", "value": null }
+  ],
+  "transform": [
+    {
+      "filter": "year === year(datum.year) || year === datum.year"
+    }
+  ],
+  "height": 560,
+  "width": "container",
+  "encoding": {
+    "y": {
+      "field": "categoria_ente",
+      "sort": { "field": "ranking", "order": "ascending" },
+      "scale": { "padding": 0 },
+      "axis": {
+        "domain": false,
+        "labelAlign": "left",
+        "labelLimit": 0,
+        "labelOffset": -20,
+        "labelPadding": 0,
+        "ticks": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "height": 19,
+        "color": "#0B3EE3",
+        "cornerRadius": 5
+      },
+      "encoding": {
+        "x": {
+          "field": "num_iun",
+          "type": "quantitative",
+          "aggregate": "sum",
+          "axis": { "format": "~s", "gridDash": [21, 35], "gridDashOffset": 38 }
+        }
+      }
+    },
+    {
+      "mark": { "type": "bar", "tooltip": true, "color": "transparent" },
+      "encoding": {
+        "tooltip": [
+          { "field": "categoria_ente", "title": "Categoria ente" },
+          {
+            "field": "num_iun",
+            "aggregate": "sum",
+            "title": "Notifiche",
+            "format": ",d"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 2,
+        "dy": 0
+      },
+      "encoding": {
+        "x": {
+          "field": "num_iun",
+          "type": "quantitative",
+          "aggregate": "sum"
+        },
+        "text": {
+          "field": "num_iun",
+          "type": "quantitative",
+          "aggregate": "sum",
+          "format": ",d"
+        }
+      }
+    }
+  ]
+}

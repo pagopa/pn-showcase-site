@@ -1,6 +1,6 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from "next";
 
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Link, Stack, Typography } from "@mui/material";
 import { MIAlert } from "@pagopa/mui-italia";
 import Script from "next/script";
 import { useMemo, useState } from "react";
@@ -47,6 +47,7 @@ import PieChartWrapper from "src/components/Numeri/components/PieChartWrapper";
 import { getVegaLocale } from "src/components/Numeri/shared/getVegaLocale";
 import KpiEntitiesPerc from "src/components/Numeri/components/KpiEntitiesPerc";
 import Maps from "src/components/Numeri/components/Maps";
+import TopCategorieEnti from "src/components/Numeri/components/TopCategorieEnti";
 import { dashboardColors } from "src/components/Numeri/shared/colors";
 
 type Tabs = {
@@ -391,6 +392,25 @@ const SendInNumbers = ({
           <SectionLayout
             title={t("avvisi.title")}
             text={t("avvisi.description")}
+            note={
+              <Typography
+                sx={{
+                  fontSize: "0.875rem",
+                  color: dashboardColors.get("grey-650"),
+                  lineHeight: "1.25rem",
+                }}
+              >
+                {t("avvisi.note")}
+                <Link
+                  href="https://assistenza.notifichedigitali.it/hc/it/articles/33410411666705-Cos-%C3%A8-l-avviso-di-cortesia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ fontWeight: 600, color: dashboardColors.get("blue-io"), textDecorationColor: dashboardColors.get("blue-io") }}
+                >
+                  {t("avvisi.note_link")}
+                </Link>
+              </Typography>
+            }
           >
             <Stack
               direction={{ xs: "column", sm: "row" }}
@@ -547,17 +567,70 @@ const SendInNumbers = ({
             </Stack>
           </SectionLayout>
           <SectionLayout
-            title={t("notification_types.title", { ns: "numeri" })}
-            text={t("notification_types.description", { ns: "numeri" })}
+            title={t("categorie_enti.title", { ns: "numeri" })}
+            text={t("categorie_enti.description", { ns: "numeri" })}
+            mb={4}
           >
-            <NotificationsTypes selYear={selYear} />
+            <TopCategorieEnti selYear={selYear} />
           </SectionLayout>
-          <SectionLayout
-            title={t("atti.title", { ns: "numeri" })}
-            text={t("atti.description", { ns: "numeri" })}
-          >
-            <TopAtti selYear={selYear} />
-          </SectionLayout>
+          <Box component="section" sx={{ marginBottom: 12 }}>
+            <KpiCard>
+              <Stack direction="column" spacing={6}>
+                <Box>
+                  <Typography
+                    component="h2"
+                    sx={{
+                      color: dashboardColors.get("primary"),
+                      fontSize: "2.375rem",
+                      fontWeight: 700,
+                      lineHeight: "3.125rem",
+                      mb: 1,
+                    }}
+                  >
+                    {t("notification_types.title", { ns: "numeri" })}
+                  </Typography>
+                  <Typography
+                    component="p"
+                    sx={{
+                      color: dashboardColors.get("primary"),
+                      fontSize: "1.125rem",
+                      fontWeight: 400,
+                      lineHeight: "1.5rem",
+                    }}
+                  >
+                    {t("notification_types.description", { ns: "numeri" })}
+                  </Typography>
+                </Box>
+                <NotificationsTypes selYear={selYear} />
+                <Box>
+                  <Typography
+                    component="h2"
+                    sx={{
+                      color: dashboardColors.get("primary"),
+                      fontSize: "2.375rem",
+                      fontWeight: 700,
+                      lineHeight: "3.125rem",
+                      mb: 1,
+                    }}
+                  >
+                    {t("atti.title", { ns: "numeri" })}
+                  </Typography>
+                  <Typography
+                    component="p"
+                    sx={{
+                      color: dashboardColors.get("primary"),
+                      fontSize: "1.125rem",
+                      fontWeight: 400,
+                      lineHeight: "1.5rem",
+                    }}
+                  >
+                    {t("atti.description", { ns: "numeri" })}
+                  </Typography>
+                </Box>
+                <TopAtti selYear={selYear} />
+              </Stack>
+            </KpiCard>
+          </Box>
         </Box>
       </Box>
     </>
