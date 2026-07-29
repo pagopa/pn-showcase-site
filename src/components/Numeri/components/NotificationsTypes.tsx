@@ -1,4 +1,4 @@
-import { Box, MenuItem, Select, Stack, Typography } from "@mui/material";
+import { MenuItem, Select, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { TopLevelSpec } from "vega-lite";
 import { useTranslation } from "../../../hook/useTranslation";
@@ -8,7 +8,6 @@ import { dashboardColors } from "../shared/colors";
 import { url } from "../shared/constants";
 import type { SectionTwoData } from "../shared/jsonTypes";
 import CardText from "./CardText";
-import KpiCard from "./KpiCard";
 import NotificationsTypesChart from "./NotificationsTypesChart";
 
 function generateTag(str: string | null): string {
@@ -116,9 +115,7 @@ const NotificationsTypes = ({ selYear }: Props) => {
   }));
 
   return (
-    <Box sx={{ height: "49rem" }}>
-      <KpiCard>
-        <Stack direction="column" spacing={2}>
+    <Stack direction="column" spacing={2}>
           <Stack direction="row" spacing={2} alignItems="center">
             <CardText>
               {t("notification_types.main_scopes.title", { ns: "numeri" })}
@@ -159,7 +156,15 @@ const NotificationsTypes = ({ selYear }: Props) => {
               color: dashboardColors.get("grey-650"),
               fontSize: "0.875rem",
               lineHeight: "1.125rem",
-              py: "1rem"
+            }}
+          >
+            {t("notification_types.main_scopes.note_2", { ns: "numeri" })}
+          </Typography>
+          <Typography
+            sx={{
+              color: dashboardColors.get("grey-650"),
+              fontSize: "0.875rem",
+              lineHeight: "1.125rem",
             }}
           >
             {t("notification_types.main_scopes.note_1", { ns: "numeri" })}
@@ -170,18 +175,7 @@ const NotificationsTypes = ({ selYear }: Props) => {
             categorySignal={categories[curOption] ?? null}
             yearSignal={selYear}
           />
-          <Typography
-            sx={{
-              color: dashboardColors.get("grey-650"),
-              fontSize: "0.875rem",
-              lineHeight: "1.125rem",
-            }}
-          >
-            {t("notification_types.main_scopes.note_2", { ns: "numeri" })}
-          </Typography>
-        </Stack>
-      </KpiCard>
-    </Box>
+    </Stack>
   );
 };
 export default NotificationsTypes;

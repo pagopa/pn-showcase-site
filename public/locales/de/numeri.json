@@ -9,7 +9,9 @@
     "description_3": ", die täglich aktualisiert werden.",
     "last_update": "Letzte Aktualisierung",
     "alert": "Die Daten sind auf dati.gov.it verfügbar",
-    "website": "Zu den Daten"
+    "website": "Zu den Daten",
+    "maintenance_alert_title": "Wartungsarbeiten im Gange",
+    "maintenance_alert": "Aufgrund einer geplanten Wartung kann es zu Verzögerungen bei der Aktualisierung der Daten im Dashboard und im Open-Data-Bereich kommen. Bitte beachten Sie das auf dieser Seite angegebene Datum für den Stand der letzten Aktualisierung. Nach Abschluss der Wartung werden die Daten wieder regelmäßig aktualisiert."
   },
   "total": "Alle",
   "sent_notifications": {
@@ -65,8 +67,10 @@
   },
 
   "avvisi": {
-    "title": "Versandte Hinweise",
-    "description": "Entwicklung der Anzahl der versandten Hinweise, d.h. Nachrichten, die darüber informieren, wenn eine SEND-Benachrichtigung zum Lesen vorliegt, versandt über die IO-App, E-Mail oder SMS.",
+    "title": "Versandte Höflichkeitshinweise",
+    "description": "Verteilung der Anzahl der versandten Höflichkeitshinweise über die IO-App, E-Mail oder SMS zur Information der Empfänger über das Vorhandensein einer SEND-Benachrichtigung zum Lesen.",
+    "note": "Höflichkeitshinweise informieren die Empfänger über das Vorhandensein einer neuen SEND-Benachrichtigung zum Lesen. Sie können über die IO-App, E-Mail oder SMS gesendet werden, wenn der Empfänger den Dienst auf IO aktiviert oder seine Kontaktdaten auf SEND konfiguriert hat. Weitere Details sind verfügbar unter ",
+    "note_link": "diesem Link",
     "total": {
       "title": "Gesamtzahl der versandten Hinweise",
       "description": "Gesamtzahl der im betrachteten Bezugszeitraum versandten Hinweise.",
@@ -112,6 +116,12 @@
         "percentage": "Anteil der Gemeinden an der Gesamtzahl der Gemeinden in der Region"
       }
     }
+  },
+
+  "categorie_enti": {
+    "title": "Wichtigste Kategorien sendender Institutionen",
+    "description": "Anzahl der von Institutionen versendeten SEND-Benachrichtigungen, aufgeteilt nach Makro-Kategorien.",
+    "note_1": "Die Darstellung umfasst Institutionen mit einer Anzahl von versandten Benachrichtigungen von 5 oder mehr."
   },
 
   "atti": {
