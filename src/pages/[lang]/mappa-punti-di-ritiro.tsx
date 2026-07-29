@@ -158,7 +158,7 @@ const PickupPointsPage: NextPage = () => {
               />
             </Box>
 
-            <Box aria-live="polite" sx={visuallyHidden}>
+            <Box aria-live="polite" sx={{ ...visuallyHidden }}>
               {!points || points.length === 0
                 ? "Caricamento dei punti di ritiro"
                 : `Trovati ${points.length} punti di ritiro`}
