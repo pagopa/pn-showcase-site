@@ -215,8 +215,9 @@ const SendInNumbers = ({
             <MIAlert
               severity="warning"
               title={t("hero.maintenance_alert_title", { ns: "numeri" })}
-              description={t("hero.maintenance_alert", { ns: "numeri" })}
-            />
+            >
+              {t("hero.maintenance_alert", { ns: "numeri" })}
+            </MIAlert>
           </Box>
         )}
         <Box component="main" paddingTop={6}>
