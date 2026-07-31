@@ -3,7 +3,7 @@ import type { GetStaticPaths, InferGetStaticPropsType } from "next";
 import { Box, Link, Stack, Typography } from "@mui/material";
 import { MIAlert } from "@pagopa/mui-italia";
 import Script from "next/script";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Head from "next/head";
 import { formatLocale, timeFormatLocale } from "vega";
 import { getI18n } from "../../api/i18n";
@@ -93,6 +93,15 @@ const SendInNumbers = ({
   const { t } = useTranslation(["numeri"]);
 
   const [selYear, setSelYear] = useState<number | null>(null);
+  // Evaluated after mount (not during render) so the first client render
+  // matches the static export's HTML, which freezes whatever this returned
+  // at build time. Checking it during render would otherwise mismatch as
+  // soon as real time crosses the alert window's start/end without a
+  // rebuild, causing a hydration error.
+  const [showAlert, setShowAlert] = useState(false);
+  useEffect(() => {
+    setShowAlert(isAlertVisibleWithTimezone());
+  }, []);
 
   formatLocale({ ...vegaLocale.formatLocale, nan: "–" });
   timeFormatLocale(vegaLocale.timeFormatLocale ?? {});
@@ -210,7 +219,7 @@ const SendInNumbers = ({
             </AlertWrapper>
           </Box>
         </Stack>
-        {isAlertVisibleWithTimezone() && (
+        {showAlert && (
           <Box paddingTop={4}>
             <MIAlert
               severity="warning"
