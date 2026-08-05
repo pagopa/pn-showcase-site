@@ -9,7 +9,9 @@
     "description_3": ", updated daily.",
     "last_update": "Last update",
     "alert": "Data is available on dati.gov.it",
-    "website": "See data"
+    "website": "See data",
+    "maintenance_alert_title": "Maintenance in progress",
+    "maintenance_alert": "Scheduled maintenance is in progress and may delay data updates on the dashboard and in open datasets. Please refer to the date shown on this page to check the latest update. Regular updates will resume once maintenance is complete."
   },
   "total": "All",
   "sent_notifications": {
@@ -65,8 +67,10 @@
   },
 
   "avvisi": {
-    "title": "Notices sent",
-    "description": "Trend of the number of notices sent, i.e., messages informing when there is a SEND notification to read, sent via IO App, e-mail or SMS.",
+    "title": "Courtesy notices sent",
+    "description": "Distribution of the number of courtesy notices sent via the IO app, e-mail or SMS to inform recipients of the presence of a SEND notification to read.",
+    "note": "Courtesy notices inform recipients of the presence of a new SEND notification to read. They can be sent via the IO app, e-mail or SMS if the recipient has activated the service on IO or configured their contact details on SEND. More details are available at ",
+    "note_link": "this link",
     "total": {
       "title": "Total notices sent",
       "description": "Total notices sent in the reference period considered.",
@@ -112,6 +116,12 @@
         "percentage": "Percentage of municipalities compared to the total number of municipalities in the region"
       }
     }
+  },
+
+  "categorie_enti": {
+    "title": "Main categories of sending institutions",
+    "description": "Number of SEND notifications sent by institutions, broken down by macro category.",
+    "note_1": "The representation includes institutions with a number of sent notifications equal to or greater than 5."
   },
 
   "atti": {

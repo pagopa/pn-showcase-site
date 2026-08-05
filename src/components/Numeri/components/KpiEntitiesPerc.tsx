@@ -15,7 +15,7 @@ type Props = {
 };
 
 const isSceneText = (
-  item: VegaScene | VegaSceneGroup | SceneText,
+  item: VegaScene | VegaSceneGroup | SceneText
 ): item is SceneText => "text" in item;
 
 const KpiEntitiesPerc = ({ spec, children }: Props) => {

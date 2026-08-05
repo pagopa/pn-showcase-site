@@ -1,9 +1,10 @@
 export type SectionTwoData = {
   last_run: Date;
-  enti: Array<EntiPerAnno>;
+  enti_attivi: Array<EntiPerAnno>;
   geo_comuni: Array<GeoComuni>;
   top10_ambiti: Array<Ambiti>;
   top10_atti: Array<Atto>;
+  notif_enti_category: Array<CategoriaEnte>;
 };
 
 export type EntiPerAnno = {
@@ -15,7 +16,6 @@ export type EntiPerAnno = {
 export type GeoComuni = {
   year: string | null;
   regione: string;
-  num_comuni_tot: number;
   num_comuni_attivi: number;
   perc_comuni_attivi: number;
 };
@@ -30,7 +30,14 @@ export type Ambiti = {
 
 export type Atto = {
   year: string | null;
-  atto: string;
+  tipologia_atto: string;
+  num_iun: number;
+  ranking: number;
+};
+
+export type CategoriaEnte = {
+  year: string | null;
+  categoria_ente: string;
   num_iun: number;
   ranking: number;
 };
