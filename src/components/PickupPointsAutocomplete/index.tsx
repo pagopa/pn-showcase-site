@@ -249,7 +249,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
         }
       />
 
-      <Box aria-live="polite" sx={visuallyHidden}>
+      <Box aria-live="polite" sx={{ ...visuallyHidden }}>
         {isLoading && shouldShowEmptyState
           ? "Caricamento degli indirizzi"
           : shouldShowEmptyState && addresses.length > 0
