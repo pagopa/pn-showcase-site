@@ -4,9 +4,9 @@ import Head from "next/head";
 import Papa from "papaparse";
 import { useEffect, useRef, useState } from "react";
 import { MapRef } from "react-map-gl/maplibre";
-import { Alert, Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
-import { ButtonNaked } from "@pagopa/mui-italia";
+import { ButtonNaked, MIAlert } from "@pagopa/mui-italia";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
@@ -136,9 +136,9 @@ const PickupPointsPage: NextPage = () => {
               {t("how-it-works")}
             </ButtonNaked>
 
-            <Alert severity="info" sx={{ my: { xs: 4, md: 3 } }}>
+            <MIAlert severity="info" sx={{ my: { xs: 4, md: 3 } }}>
               {t("activation-in-progress")}
-            </Alert>
+            </MIAlert>
 
             <PickupPointsAutocomplete
               mapRef={mapRef}

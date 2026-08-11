@@ -1002,10 +1002,10 @@
   resolved "https://registry.yarnpkg.com/@nolyfill/is-core-module/-/is-core-module-1.0.39.tgz#3dc35ba0f1e66b403c00b39344f870298ebb1c8e"
   integrity sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==
 
-"@pagopa/mui-italia@2.6.0-RC.3":
-  version "2.6.0-RC.3"
-  resolved "https://registry.yarnpkg.com/@pagopa/mui-italia/-/mui-italia-2.6.0-RC.3.tgz#5bdbbba57952e88845f4d3805ac7def337f7b00c"
-  integrity sha512-36LdMVYt80VBfZVjHOABnBd6SjB/4Z2JWr7g7oCXVrPafQWXefKYGs3JZciVc4AOtjqTY58DrLJBEzwMktIcvQ==
+"@pagopa/mui-italia@2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@pagopa/mui-italia/-/mui-italia-2.6.0.tgz#e0d07d7683547f87aec41050259d9058b69883ad"
+  integrity sha512-EM9gEnRjjQmkSPf5cE6dlMumwZMbXv1LEG7r1X2kQHfsF0XOJRkI6KYWJW0gEf7otnmWGx6s7XCxA1jbwkTnCg==
   dependencies:
     "@fontsource/dm-mono" "^4.5.10"
     "@fontsource/titillium-web" "^4.5.9"
