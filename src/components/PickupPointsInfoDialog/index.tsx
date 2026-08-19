@@ -2,14 +2,13 @@ import React from "react";
 import { Close, OpenInNew } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Dialog,
   IconButton,
   Paper,
   Stack,
   Typography,
 } from "@mui/material";
-import { MIAlert } from "@pagopa/mui-italia";
+import { MIAlert, MIButton } from "@pagopa/mui-italia";
 import { useTranslation } from "../../hook/useTranslation";
 import Address from "./Address";
 import Contacts from "./Contacts";
@@ -163,21 +162,21 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
           spacing={2}
           sx={{ p: 3 }}
         >
-          <Button
+          <MIButton
             variant="outlined"
             fullWidth={isMobile}
             onClick={handleCopyInformation}
           >
             {t("drawer.copy-informations")}
-          </Button>
-          <Button
+          </MIButton>
+          <MIButton
             variant="contained"
             endIcon={<OpenInNew fontSize="small" />}
             fullWidth={isMobile}
             onClick={handleOpenGoogleMaps}
           >
             {t("drawer.get-directions")}
-          </Button>
+          </MIButton>
         </Stack>
       </Paper>
     </Dialog>

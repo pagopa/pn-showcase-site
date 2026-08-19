@@ -2,7 +2,6 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import {
   Box,
   Breakpoint,
-  Button,
   ButtonGroup,
   ClickAwayListener,
   Grow,
@@ -11,6 +10,7 @@ import {
   Paper,
   Popper,
 } from "@mui/material";
+import { MIButton } from "@pagopa/mui-italia";
 import { useTabBehavior } from "src/hook/useTabBehavior";
 
 type Props = {
@@ -47,33 +47,36 @@ const Tabs = ({
       {(!isMobile || !breakOnMobile) && (
         <ButtonGroup color="primary" fullWidth={fullWidth}>
           {tabs.map((tab, index) => (
-            <Button
+            <MIButton
+              variant="outlined"
               sx={{
                 backgroundColor:
                   currentTab === index ? "rgba(0, 115, 230, 0.08)" : undefined,
               }}
               onClick={() => handleChangeTab(index)}
               size={buttonSize}
-              value={index}
               key={tab}
             >
               {tab}
-            </Button>
+            </MIButton>
           ))}
         </ButtonGroup>
       )}
       {isMobile && breakOnMobile && (
         <>
           <ButtonGroup ref={anchorRef}>
-            <Button onClick={handleToggleDropdown}>{tabs[currentTab]}</Button>
-            <Button
+            <MIButton variant="outlined" onClick={handleToggleDropdown}>
+              {tabs[currentTab]}
+            </MIButton>
+            <MIButton
+              variant="outlined"
               aria-controls={dropdownOpen ? "split-button-menu" : undefined}
               aria-expanded={dropdownOpen ? "true" : undefined}
               aria-haspopup="menu"
               onClick={handleToggleDropdown}
             >
               <ArrowDropDownIcon />
-            </Button>
+            </MIButton>
           </ButtonGroup>
           <Popper
             open={dropdownOpen}

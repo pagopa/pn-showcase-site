@@ -1,6 +1,6 @@
 import { WarningAmber } from "@mui/icons-material";
 import { Stack, SxProps, Theme } from "@mui/material";
-import { ButtonNaked } from "@pagopa/mui-italia";
+import { MIButton } from "@pagopa/mui-italia";
 import React, { ReactNode } from "react";
 
 type Props = {
@@ -32,13 +32,14 @@ const ErrorBox: React.FC<Props> = ({
     <WarningAmber sx={{ color: "text.secondary", mb: 1 }} />
     {children}
     {handleRetry && (
-      <ButtonNaked
+      <MIButton
+        variant="text"
         color="primary"
-        sx={{ fontWeight: 700, fontSize: "16px", mt: 1 }}
+        sx={{ mt: 1 }}
         onClick={handleRetry}
       >
         {retryLabel}
-      </ButtonNaked>
+      </MIButton>
     )}
   </Stack>
 );

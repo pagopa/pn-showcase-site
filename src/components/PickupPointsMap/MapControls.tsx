@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
 import { useMap } from "react-map-gl/maplibre";
 import { Add, GpsFixed, GpsOff, Remove } from "@mui/icons-material";
-import {
-  Button,
-  ButtonGroup,
-  Link,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { ButtonGroup, Link, Paper, Stack, Typography } from "@mui/material";
+import { MIButton } from "@pagopa/mui-italia";
 import SnackBar from "../SnackBar/SnackBar";
 import { areCoordinatesEqual, fitMapToPoints } from "@utils/map";
 import { useConfig } from "src/context/config-context";
@@ -102,20 +96,21 @@ const MapControls: React.FC<Props> = ({
         sx={{ position: "absolute", top: 24, right: 24 }}
       >
         <Paper elevation={4}>
-          <Button
+          <MIButton
+            variant="contained"
+            color="contrasted"
             onClick={onGeolocateUser}
             sx={{ width: "48px" }}
             tabIndex={-1}
             aria-hidden="true"
           >
             {getGpsIcon()}
-          </Button>
+          </MIButton>
         </Paper>
 
         <Paper elevation={4}>
           <ButtonGroup
             orientation="vertical"
-            variant="text"
             sx={{
               backgroundColor: "white",
               borderColor: "white",
@@ -123,12 +118,24 @@ const MapControls: React.FC<Props> = ({
               borderRadius: 4,
             }}
           >
-            <Button onClick={onClickZoomIn} tabIndex={-1} aria-hidden="true">
+            <MIButton
+              variant="contained"
+              color="contrasted"
+              onClick={onClickZoomIn}
+              tabIndex={-1}
+              aria-hidden="true"
+            >
               <Add color="primary" fontSize="small" />
-            </Button>
-            <Button onClick={onClickZoomOut} tabIndex={-1} aria-hidden="true">
+            </MIButton>
+            <MIButton
+              variant="contained"
+              color="contrasted"
+              onClick={onClickZoomOut}
+              tabIndex={-1}
+              aria-hidden="true"
+            >
               <Remove color="primary" fontSize="small" />
-            </Button>
+            </MIButton>
           </ButtonGroup>
         </Paper>
       </Stack>
