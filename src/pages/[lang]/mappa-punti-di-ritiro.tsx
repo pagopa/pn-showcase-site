@@ -127,12 +127,6 @@ const PickupPointsPage: NextPage = () => {
 
             <MIButton
               variant="text"
-              color="primary"
-              sx={{
-                textDecoration: "none",
-                fontWeight: 700,
-                fontSize: "16px",
-              }}
               onClick={(e) =>
                 scrollToTarget(e, "come-funzionano-punti-di-ritiro")
               }

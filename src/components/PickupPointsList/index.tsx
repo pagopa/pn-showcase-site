@@ -1,13 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Place, Refresh } from "@mui/icons-material";
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 import { MIButton } from "@pagopa/mui-italia";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, RaddOperator } from "../../model";
@@ -42,7 +35,6 @@ function PickupPointsList({
     null,
   );
 
-  const theme = useTheme();
   const { userPosition } = useCurrentPosition();
   const isMobile = useIsMobile();
 
@@ -139,7 +131,7 @@ function PickupPointsList({
               key={`${point.denomination}-${point.locationId}-${index}`}
               onClick={() => onSelectPoint(point)}
               alignItems="flex-start"
-              sx={{
+              sx={(theme) => ({
                 border: isSelected ? "2px solid" : "1px solid",
                 borderColor: isSelected ? theme.colors.blue[500] : "divider",
                 borderRadius: "8px",
@@ -152,7 +144,7 @@ function PickupPointsList({
                 "&:hover": {
                   backgroundColor: theme.colors.blue[50],
                 },
-              }}
+              })}
             >
               <ListItemText
                 primary={
@@ -167,7 +159,6 @@ function PickupPointsList({
                     </Typography>
                     <MIButton
                       variant="text"
-                      color="primary"
                       sx={{
                         mt: 1,
                         "&:hover": {
@@ -213,7 +204,6 @@ function PickupPointsList({
         <Box sx={{ display: "flex", justifyContent: "center", my: 2 }}>
           <MIButton
             variant="text"
-            color="primary"
             onClick={handleShowMore}
             startIcon={<Refresh />}
           >

@@ -69,7 +69,7 @@ const MapControls: React.FC<Props> = ({
             href={GEOLOCATION_ASSISTANCE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            sx={{ fontSize: "16px", fontWeight: 700, textDecoration: "none" }}
+            sx={{ fontWeight: 600, textDecoration: "none" }}
           >
             {t("geolocation-denied-cta")}
           </Link>
