@@ -111,6 +111,8 @@ const MapControls: React.FC<Props> = ({
         <Paper elevation={4}>
           <ButtonGroup
             orientation="vertical"
+            variant="contained"
+            color="inherit"
             sx={{
               backgroundColor: "white",
               borderColor: "white",
