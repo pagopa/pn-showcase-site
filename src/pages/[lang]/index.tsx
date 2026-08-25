@@ -1,7 +1,8 @@
 import { GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import { Button, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
+import { MIButton } from "@pagopa/mui-italia";
 import { langCodes } from "@utils/constants";
 import { getI18n } from "src/api/i18n";
 import LangContext from "src/context/lang-context";
@@ -36,15 +37,17 @@ const Homepage = () => {
   };
 
   return (
-    <Stack spacing={1} sx={{ padding: 2 }}>
+    <Stack spacing={2} sx={{ padding: 2 }}>
       <Typography>Homepage pn-showcase-site</Typography>
-      <Button
+      <MIButton
+        variant="text"
         onClick={() => redirectToInternalPage("/mappa-punti-di-ritiro")}
         sx={{ width: "200px" }}
       >
         Mappa Punti di ritiro
-      </Button>
-      <Button
+      </MIButton>
+      <MIButton
+        variant="text"
         onClick={() =>
           redirectToInternalPage(
             "/send-in-numeri-283d8d30-e558-4ef6-9083-8f4ef9f8b8c5",
@@ -53,7 +56,7 @@ const Homepage = () => {
         sx={{ width: "200px" }}
       >
         SEND in numeri
-      </Button>
+      </MIButton>
     </Stack>
   );
 };

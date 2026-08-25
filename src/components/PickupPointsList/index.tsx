@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Place, Refresh } from "@mui/icons-material";
 import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
-import { ButtonNaked } from "@pagopa/mui-italia";
+import { MIButton } from "@pagopa/mui-italia";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, RaddOperator } from "../../model";
 import Skeletons from "./Skeletons";
@@ -131,18 +131,20 @@ function PickupPointsList({
               key={`${point.denomination}-${point.locationId}-${index}`}
               onClick={() => onSelectPoint(point)}
               alignItems="flex-start"
-              sx={{
+              sx={(theme) => ({
                 border: isSelected ? "2px solid" : "1px solid",
-                borderColor: isSelected ? "#2185E9" : "divider",
+                borderColor: isSelected ? theme.colors.blue[500] : "divider",
                 borderRadius: "8px",
                 p: 3,
                 mb: 2,
                 cursor: "pointer",
-                backgroundColor: isSelected ? "#0073E614" : "transparent",
+                backgroundColor: isSelected
+                  ? theme.colors.blue[50]
+                  : "transparent",
                 "&:hover": {
-                  backgroundColor: "#0073e61f",
+                  backgroundColor: theme.colors.blue[50],
                 },
-              }}
+              })}
             >
               <ListItemText
                 primary={
@@ -155,23 +157,18 @@ function PickupPointsList({
                     <Typography variant="body2" fontSize="14px" component="div">
                       {point.address}
                     </Typography>
-                    <ButtonNaked
-                      color="primary"
+                    <MIButton
+                      variant="text"
                       sx={{
-                        justifyContent: "flex-start",
-                        width: "fit-content",
-                        alignItems: "center",
                         mt: 1,
                         "&:hover": {
                           textDecoration: "underline",
                         },
                       }}
-                      onClick={(e: React.MouseEvent) =>
-                        handleShowDetails(e, point)
-                      }
+                      onClick={(e) => handleShowDetails(e, point)}
                     >
                       {t("show-details")}
-                    </ButtonNaked>
+                    </MIButton>
                   </>
                 }
                 secondaryTypographyProps={{
@@ -205,13 +202,13 @@ function PickupPointsList({
 
       {visibleItems.length < sortedItems.length && (
         <Box sx={{ display: "flex", justifyContent: "center", my: 2 }}>
-          <ButtonNaked
-            color="primary"
+          <MIButton
+            variant="text"
             onClick={handleShowMore}
             startIcon={<Refresh />}
           >
             {t("show-more")}
-          </ButtonNaked>
+          </MIButton>
         </Box>
       )}
     </>

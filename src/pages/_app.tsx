@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@mui/system";
 import type { AppProps } from "next/app";
 
-import { theme } from "@pagopa/mui-italia";
+import { themeNext } from "@pagopa/mui-italia";
 
 import Loading from "../components/loading";
 import { LangProvider } from "../context/lang-context";
@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ConfigProvider>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={themeNext}>
         <LangProvider
           lang={pageProps.lang}
           translations={pageProps.translations}
