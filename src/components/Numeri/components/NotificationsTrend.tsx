@@ -3,6 +3,12 @@ import { useContext, useState } from "react";
 import { TopLevelSpec } from "vega-lite";
 import { useTranslation } from "../../../hook/useTranslation";
 import { dashboardColors } from "../shared/colors";
+import {
+  filterMenuItemSx,
+  filterMenuProps,
+  filterSelectSx,
+  SelectedCheck,
+} from "../shared/filterSelectStyles";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import barChartSpec from "../assets/data/bar_chart.vl.json";
 import barChartYearlySpec from "../assets/data/bar_chart_yearly.vl.json";
@@ -123,37 +129,20 @@ const NotificationsTrend = ({ selYear }: Props) => {
               <Select
                 value={curOptionCumulativeMonthly}
                 size="small"
-                MenuProps={{
-                  autoFocus: false,
-                  disableAutoFocusItem: true,
-                  disableEnforceFocus: true,
-                  disableAutoFocus: true,
-                }}
-                sx={{
-                  fontSize: 14,
-                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: dashboardColors.get("blue-io"),
-                  },
-                }}
+                MenuProps={filterMenuProps}
+                sx={filterSelectSx}
                 onChange={(e: any) =>
                   handleOptionCumulativeMonthly(e.target.value)
                 }
               >
                 {optionsCumulativeMonthly.map((option) => (
-                  <MenuItem
-                    key={option}
-                    value={option}
-                    sx={{
-                      "&.Mui-selected": {
-                        color: dashboardColors.get("blue-io"),
-                      },
-                    }}
-                  >
+                  <MenuItem key={option} value={option} sx={filterMenuItemSx}>
                     {handleFirstLetter(isSwapped)(
                       option === "monthly" && selYear === null
                         ? t("sent_notifications.trend.yearly", { ns: "numeri" })
                         : t(`sent_notifications.trend.${option}`, { ns: "numeri" })
                     )}
+                    {curOptionCumulativeMonthly === option && <SelectedCheck />}
                   </MenuItem>
                 ))}
               </Select>
@@ -178,36 +167,21 @@ const NotificationsTrend = ({ selYear }: Props) => {
                 </CardText>,
                 <Select
                   size={"small"}
-                  MenuProps={{
-                    autoFocus: false,
-                    disableAutoFocusItem: true,
-                    disableEnforceFocus: true,
-                    disableAutoFocus: true,
-                  }}
-                  sx={{
-                    fontSize: 14,
-                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: dashboardColors.get("blue-io"),
-                    },
-                  }}
+                  MenuProps={filterMenuProps}
+                  sx={filterSelectSx}
                   value={curOptionTotalDigitalAnalog}
                   onChange={(e: any) =>
                     handleOptionsTotalDigitalAnalog(e.target.value)
                   }
                 >
                   {optionsTotalDigitalAnalog.map((option) => (
-                    <MenuItem
-                      key={option}
-                      value={option}
-                      sx={{
-                        "&.Mui-selected": {
-                          color: dashboardColors.get("blue-io"),
-                        },
-                      }}
-                    >
+                    <MenuItem key={option} value={option} sx={filterMenuItemSx}>
                       {t(`sent_notifications.trend.${option}`, {
                         ns: "numeri",
                       })}
+                      {curOptionTotalDigitalAnalog === option && (
+                        <SelectedCheck />
+                      )}
                     </MenuItem>
                   ))}
                 </Select>

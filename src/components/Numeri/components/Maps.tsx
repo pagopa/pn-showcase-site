@@ -4,7 +4,12 @@ import { TopLevelSpec } from "vega-lite";
 import mapJsonAbsoluteSpec from "../assets/data/italy-regions-circles.vl.json";
 import mapJsonPercentageSpec from "../assets/data/italy-regions-circles-perc.vl.json";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
-import { dashboardColors } from "../shared/colors";
+import {
+  filterMenuItemSx,
+  filterMenuProps,
+  filterSelectSx,
+  SelectedCheck,
+} from "../shared/filterSelectStyles";
 import CardText from "./CardText";
 import CardTitle from "./CardTitle";
 import MapChart from "./MapChart";
@@ -143,31 +148,16 @@ export default function Maps({ selYear }: Props) {
           {t("entities.active.geographic_distribution.description_1")}
         </CardText>
         <Select
-          MenuProps={{
-            autoFocus: false,
-            disableAutoFocusItem: true,
-            disableEnforceFocus: true,
-            disableAutoFocus: true,
-          }}
+          MenuProps={filterMenuProps}
           value={curMapOption}
-          sx={{
-            fontSize: 14,
-            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: dashboardColors.get("blue-io"),
-            },
-          }}
+          sx={filterSelectSx}
           size="small"
           onChange={(e: any) => handleOptionChange(e.target.value)}
         >
           {options.map(({ tag, label }) => (
-            <MenuItem
-              sx={{
-                "&.Mui-selected": { color: dashboardColors.get("blue-io") },
-              }}
-              key={tag}
-              value={tag}
-            >
+            <MenuItem sx={filterMenuItemSx} key={tag} value={tag}>
               {label}
+              {curMapOption === tag && <SelectedCheck />}
             </MenuItem>
           ))}
         </Select>
