@@ -39,7 +39,6 @@ import NotificationsTypes from "src/components/Numeri/components/NotificationsTy
 import TopAtti from "src/components/Numeri/components/TopAtti";
 import SvgDefs from "src/components/Numeri/components/SvgDefs";
 
-import AlertWrapper from "src/components/Numeri/components/AlertWrapper";
 import FormatEyelet from "src/components/Numeri/components/FormatEyelet";
 import FormatKpi from "src/components/Numeri/components/FormatKpi";
 import FormatTitle from "src/components/Numeri/components/FormatTitle";
@@ -214,9 +213,17 @@ const SendInNumbers = ({
             <LastUpdate>{t("hero.last_update", { ns: "numeri" })}</LastUpdate>
           </Stack>
           <Box flex={"0 0 32%"}>
-            <AlertWrapper buttonText={t("hero.website", { ns: "numeri" })}>
+            <MIAlert
+              severity="info"
+              ctaWrapSize="tight"
+              action={{
+                label: t("hero.website", { ns: "numeri" }),
+                href: "https://www.dati.gov.it/view-dataset?Cerca=&tags_set=send&tags=send&ordinamento=&organization=pagopa-s-p-a",
+                target: "_parent",
+              }}
+            >
               {t("hero.alert")}
-            </AlertWrapper>
+            </MIAlert>
           </Box>
         </Stack>
         {showAlert && (
@@ -415,7 +422,11 @@ const SendInNumbers = ({
                   href="https://assistenza.notifichedigitali.it/hc/it/articles/33410411666705-Cos-%C3%A8-l-avviso-di-cortesia"
                   target="_blank"
                   rel="noopener noreferrer"
-                  sx={{ fontWeight: 600, color: dashboardColors.get("blue-io"), textDecorationColor: dashboardColors.get("blue-io") }}
+                  sx={{
+                    fontWeight: 600,
+                    color: dashboardColors.get("blue-io"),
+                    textDecorationColor: dashboardColors.get("blue-io"),
+                  }}
                 >
                   {t("avvisi.note_link")}
                 </Link>

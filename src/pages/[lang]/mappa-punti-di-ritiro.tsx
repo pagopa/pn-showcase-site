@@ -4,9 +4,9 @@ import Head from "next/head";
 import Papa from "papaparse";
 import { useEffect, useRef, useState } from "react";
 import { MapRef } from "react-map-gl/maplibre";
-import { Alert, Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
-import { ButtonNaked } from "@pagopa/mui-italia";
+import { MIAlert, MIButton } from "@pagopa/mui-italia";
 import { getI18n } from "../../api/i18n";
 import { useTranslation } from "../../hook/useTranslation";
 import { Coordinates, LangCode, Point, RaddOperator } from "../../model";
@@ -55,7 +55,10 @@ const PickupPointsPage: NextPage = () => {
     setSelectedTab(tabIndex === 1 ? "map" : "list");
   };
 
-  const scrollToTarget = (event: MouseEvent | null, target: string) => {
+  const scrollToTarget = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
+    target: string,
+  ) => {
     if (event) {
       event.preventDefault();
     }
@@ -116,29 +119,26 @@ const PickupPointsPage: NextPage = () => {
       {!fetchError ? (
         <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>
           <Grid item xs={12} md={4}>
-            <Typography variant="h4">{t("search.title")}</Typography>
+            <Typography variant="h4" component="h1">
+              {t("search.title")}
+            </Typography>
 
             <Typography mt={2} mb={1} color="textPrimary" variant="body2">
               {parseTranslation(t("search.description"))}
             </Typography>
 
-            <ButtonNaked
-              color="primary"
-              sx={{
-                textDecoration: "none",
-                fontWeight: 700,
-                fontSize: "16px",
-              }}
-              onClick={(e: MouseEvent) =>
+            <MIButton
+              variant="text"
+              onClick={(e) =>
                 scrollToTarget(e, "come-funzionano-punti-di-ritiro")
               }
             >
               {t("how-it-works")}
-            </ButtonNaked>
+            </MIButton>
 
-            <Alert severity="info" sx={{ my: { xs: 4, md: 3 } }}>
+            <MIAlert severity="info" sx={{ my: { xs: 4, md: 3 } }}>
               {t("activation-in-progress")}
-            </Alert>
+            </MIAlert>
 
             <PickupPointsAutocomplete
               mapRef={mapRef}
