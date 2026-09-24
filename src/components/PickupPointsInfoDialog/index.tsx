@@ -1,15 +1,14 @@
 import React from "react";
 import { Close, OpenInNew } from "@mui/icons-material";
 import {
-  Alert,
   Box,
-  Button,
   Dialog,
   IconButton,
   Paper,
   Stack,
   Typography,
 } from "@mui/material";
+import { MIAlert, MIButton } from "@pagopa/mui-italia";
 import { useTranslation } from "../../hook/useTranslation";
 import Address from "./Address";
 import Contacts from "./Contacts";
@@ -136,7 +135,7 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
           {point.denomination}
         </Typography>
 
-        <Alert severity="info" sx={{ my: 2 }}>
+        <MIAlert severity="info" sx={{ my: 2 }}>
           <Typography variant="body2" fontWeight={600}>
             {t(
               `drawer.${
@@ -147,7 +146,7 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
           <Typography variant="body2" whiteSpace="pre-line">
             {parseTranslation(t("drawer.book-alert-description"))}
           </Typography>
-        </Alert>
+        </MIAlert>
 
         <Address address={point.address} />
 
@@ -163,21 +162,21 @@ const PickupPointsInfoDialog: React.FC<Props> = ({
           spacing={2}
           sx={{ p: 3 }}
         >
-          <Button
+          <MIButton
             variant="outlined"
             fullWidth={isMobile}
             onClick={handleCopyInformation}
           >
             {t("drawer.copy-informations")}
-          </Button>
-          <Button
+          </MIButton>
+          <MIButton
             variant="contained"
             endIcon={<OpenInNew fontSize="small" />}
             fullWidth={isMobile}
             onClick={handleOpenGoogleMaps}
           >
             {t("drawer.get-directions")}
-          </Button>
+          </MIButton>
         </Stack>
       </Paper>
     </Dialog>
