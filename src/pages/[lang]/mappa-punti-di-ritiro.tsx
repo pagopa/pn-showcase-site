@@ -119,7 +119,9 @@ const PickupPointsPage: NextPage = () => {
       {!fetchError ? (
         <Grid container sx={{ mt: 4, mb: 2, px: 3 }} spacing={3}>
           <Grid item xs={12} md={4}>
-            <Typography variant="h4">{t("search.title")}</Typography>
+            <Typography variant="h4" component="h1">
+              {t("search.title")}
+            </Typography>
 
             <Typography mt={2} mb={1} color="textPrimary" variant="body2">
               {parseTranslation(t("search.description"))}
