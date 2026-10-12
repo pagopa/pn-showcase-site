@@ -5,6 +5,12 @@ import { useTranslation } from "../../../hook/useTranslation";
 import { toVegaLiteSpec } from "../shared/toVegaLiteSpec";
 import topAreasSpec from "../assets/data/top-areas.vl.json";
 import { dashboardColors } from "../shared/colors";
+import {
+  filterMenuItemSx,
+  filterMenuProps,
+  filterSelectSx,
+  SelectedCheck,
+} from "../shared/filterSelectStyles";
 import { url } from "../shared/constants";
 import type { SectionTwoData } from "../shared/jsonTypes";
 import CardText from "./CardText";
@@ -122,19 +128,9 @@ const NotificationsTypes = ({ selYear }: Props) => {
             </CardText>
 
             <Select
-              MenuProps={{
-                autoFocus: false,
-                disableAutoFocusItem: true,
-                disableEnforceFocus: true,
-                disableAutoFocus: true,
-              }}
+              MenuProps={filterMenuProps}
               size={"small"}
-              sx={{
-                fontSize: 14,
-                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: dashboardColors.get("blue-io"),
-                },
-              }}
+              sx={filterSelectSx}
               value={curOption}
               onChange={(e: any) => handleOptions(e.target.value)}
             >
@@ -142,11 +138,10 @@ const NotificationsTypes = ({ selYear }: Props) => {
                 <MenuItem
                   key={option.tag}
                   value={option.tag}
-                  sx={{
-                    "&.Mui-selected": { color: dashboardColors.get("blue-io") },
-                  }}
+                  sx={filterMenuItemSx}
                 >
                   {t(`notification_types.${option.tag}.name`, { ns: "numeri" })}
+                  {curOption === option.tag && <SelectedCheck />}
                 </MenuItem>
               ))}
             </Select>
