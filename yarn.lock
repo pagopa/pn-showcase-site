@@ -2562,9 +2562,7 @@ escape-string-regexp@^4.0.0:
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
 
 eslint-config-next@^15.5.24:
-  version "15.5.26"
-  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-15.5.26.tgz#57dd2f4f4c9fe1e59203fe0242234bf185acf09a"
-  integrity sha512-nekKvDmRQV8VRUhBTt2B/HFdgNR0vWKA/ao5W1L7lcaEvAXsuQYjIJqwLUGaux9uvXOrxnxLu5dQjnRnOixcfw==
+  version "15.5.27"
   dependencies:
     "@next/eslint-plugin-next" "15.5.26"
     "@rushstack/eslint-patch" "^1.10.3"
