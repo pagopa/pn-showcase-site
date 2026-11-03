@@ -81,50 +81,82 @@ const TabsNumeri = ({
               {t("sent_notifications.filters")}
             </CardText>
           )}
-          <ButtonGroup color="primary" fullWidth={fullWidth} role="tablist">
-            {tabs.map((tab, index) => (
-              <Button
-                sx={{
-                  borderColor: dashboardColors.get("blue-io-200"),
-                  color: dashboardColors.get("blue-io"),
-                  "&:hover": {
-                    color: dashboardColors.get("blue-io"),
-                  },
-
-                  borderWidth: 1,
-                  fontWeight: 700,
-                  backgroundColor:
-                    currentTab === index
-                      ? dashboardColors.get("blue-io-50")
-                      : undefined,
-                }}
-                onClick={() => handleChangeTab(index)}
-                size={buttonSize}
-                value={index}
-                key={tab}
-                role="tab"
-                aria-selected={currentTab === index}
-              >
-                {tab}
-              </Button>
-            ))}
+          <ButtonGroup
+            color="primary"
+            fullWidth={fullWidth}
+            role="tablist"
+            sx={{
+              "& .MuiButtonGroup-grouped": {
+                borderColor: dashboardColors.get("blue-io"),
+              },
+              "& .MuiButtonGroup-grouped:not(:last-of-type)": {
+                borderRightColor: dashboardColors.get("blue-io"),
+              },
+            }}
+          >
+            {tabs.map((tab, index) => {
+              const selected = currentTab === index;
+              return (
+                <Button
+                  sx={{
+                    borderColor: dashboardColors.get("blue-io"),
+                    borderWidth: 1,
+                    fontWeight: 700,
+                    color: selected
+                      ? "#fff"
+                      : dashboardColors.get("blue-io"),
+                    backgroundColor: selected
+                      ? dashboardColors.get("blue-io")
+                      : "#fff",
+                    "&:hover": {
+                      borderColor: dashboardColors.get("blue-io"),
+                      color: selected
+                        ? "#fff"
+                        : dashboardColors.get("blue-io"),
+                      backgroundColor: selected
+                        ? dashboardColors.get("blue-io-600")
+                        : dashboardColors.get("blue-io-50"),
+                    },
+                  }}
+                  onClick={() => handleChangeTab(index)}
+                  size={buttonSize}
+                  value={index}
+                  key={tab}
+                  role="tab"
+                  aria-selected={selected}
+                >
+                  {tab}
+                </Button>
+              );
+            })}
           </ButtonGroup>
         </>
       )}
       {isMobile && breakOnMobile && (
         <>
-          <ButtonGroup ref={anchorRef}>
+          <ButtonGroup
+            ref={anchorRef}
+            sx={{
+              "& .MuiButtonGroup-grouped": {
+                borderColor: dashboardColors.get("blue-io"),
+              },
+              "& .MuiButtonGroup-grouped:not(:last-of-type)": {
+                borderRightColor: dashboardColors.get("blue-io"),
+              },
+            }}
+          >
             <Button
               onClick={handleToggleDropdown}
               size={buttonSize}
               sx={{
-                borderColor: dashboardColors.get("blue-io-200"),
+                borderColor: dashboardColors.get("blue-io"),
                 color: dashboardColors.get("blue-io"),
                 fontWeight: 700,
                 borderWidth: 1,
 
                 "&:hover": {
                   color: dashboardColors.get("blue-io"),
+                  borderColor: dashboardColors.get("blue-io"),
                 },
               }}
             >
@@ -133,11 +165,12 @@ const TabsNumeri = ({
             <Button
               size={buttonSize}
               sx={{
-                borderColor: dashboardColors.get("blue-io-200"),
+                borderColor: dashboardColors.get("blue-io"),
                 color: dashboardColors.get("blue-io"),
                 fontWeight: 700,
                 "&:hover": {
                   color: dashboardColors.get("blue-io"),
+                  borderColor: dashboardColors.get("blue-io"),
                 },
               }}
               aria-controls={dropdownOpen ? "split-button-menu" : undefined}
@@ -170,10 +203,17 @@ const TabsNumeri = ({
                         <MenuItem
                           sx={{
                             color: dashboardColors.get("blue-io"),
+                            fontWeight: index === currentTab ? 700 : 400,
                             "&.Mui-selected": {
                               color: dashboardColors.get("blue-io"),
+                              fontWeight: 700,
+                              backgroundColor:
+                                dashboardColors.get("blue-io-50"),
                             },
-                            fontWeight: 700,
+                            "&.Mui-selected:hover": {
+                              backgroundColor:
+                                dashboardColors.get("blue-io-100"),
+                            },
                           }}
                           key={tab}
                           selected={index === currentTab}
