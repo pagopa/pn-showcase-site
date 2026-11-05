@@ -39,3 +39,6 @@ yarn-error.log*
 
 # conf
 /public/conf/config.json
+
+# Generated MapLibre worker assets
+/public/maplibre/
