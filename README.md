@@ -25,4 +25,4 @@ Open [http://localhost:3000](http://localhost:3000) with the browser to launch t
 
 ## Required configuration
 
-A version of node higher than LTS 18.9 is needed.
+A version of node higher than LTS 18.9 is needed
