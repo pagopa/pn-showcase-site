@@ -80,9 +80,7 @@ const PickupPointsMap: React.FC<Props> = ({
       };
 
       if (feature.layer.id === "unclustered-points") {
-        const selectedPoint: RaddOperator = JSON.parse(
-          feature.properties.point,
-        );
+        const selectedPoint = feature.properties.point as RaddOperator;
         map.flyTo({
           center: geometry.coordinates,
           zoom: 15,
@@ -175,6 +173,7 @@ const PickupPointsMap: React.FC<Props> = ({
   return (
     <Map
       ref={mapRef}
+      workerUrl="/maplibre/maplibre-gl-worker.mjs"
       mapStyle={styleDescriptor}
       initialViewState={{
         longitude: 12.482802,
