@@ -1,25 +1,22 @@
-const colors = [
-  "blue-io",
-  "blue-io-50",
-  "blue-io-100",
-  "blue-io-200",
-  "blue-io-600",
-  "primary",
-  "secondary",
-  "grey-650",
-  "grey-700",
-  "alert",
-  "alert-border",
-  "icon",
-  "success-100",
-  "success-850",
-  "error-100",
-  "error-850",
-  "yellow-100",
-  "yellow-850",
-] as const;
-
-type Colors = (typeof colors)[number];
+type Colors =
+  | "blue-io"
+  | "blue-io-50"
+  | "blue-io-100"
+  | "blue-io-200"
+  | "blue-io-600"
+  | "primary"
+  | "secondary"
+  | "grey-650"
+  | "grey-700"
+  | "alert"
+  | "alert-border"
+  | "icon"
+  | "success-100"
+  | "success-850"
+  | "error-100"
+  | "error-850"
+  | "yellow-100"
+  | "yellow-850";
 
 export const dashboardColors: ReadonlyMap<Colors, string> = new Map([
   ["blue-io", "#0B3EE3"],
