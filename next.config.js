@@ -36,8 +36,8 @@ module.exports = (phase, { defaultConfig }) => ({
   pageExtensions: ["ts", "tsx", "js", "jsx"]
     .map((extension) => {
       const isDevServer = phase === PHASE_DEVELOPMENT_SERVER;
-      const prodExtension = `(?<!dev\.)${extension}`;
-      const devExtension = `dev\.${extension}`;
+      const prodExtension = `(?<!dev\\.)${extension}`;
+      const devExtension = `dev\\.${extension}`;
       return isDevServer ? [devExtension, extension] : prodExtension;
     })
     .flat(),

@@ -74,7 +74,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
 
       const data = await response.json();
       setAddresses(data.data || []);
-    } catch (error) {
+    } catch {
       setAddresses([]);
       setFetchError(true);
     } finally {
@@ -96,7 +96,7 @@ const PickupPointsAutocomplete: React.FC<Props> = ({
       const coordinates: Coordinates = await response.json();
       setSearchCoordinates(coordinates);
       setSelectedPoint(null);
-    } catch (error) {
+    } catch {
       setFetchError(true);
     }
   };

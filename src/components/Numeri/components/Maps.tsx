@@ -18,8 +18,7 @@ import { useTranslation } from "src/hook/useTranslation";
 const absoluteSpec = toVegaLiteSpec(mapJsonAbsoluteSpec);
 const percentageSpec = toVegaLiteSpec(mapJsonPercentageSpec);
 
-const mapSelection = ["absolute", "percentage"] as const;
-type MapSelection = (typeof mapSelection)[number];
+type MapSelection = "absolute" | "percentage";
 
 type Props = {
   selYear?: number | null;
