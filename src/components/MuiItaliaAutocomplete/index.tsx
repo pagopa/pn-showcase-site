@@ -231,6 +231,7 @@ const MuiItaliaAutocomplete = ({
   return (
     <Box position="relative" width="100%" ref={containerRef} sx={sx}>
       <TextField
+        id={inputId}
         fullWidth
         inputRef={inputRef}
         value={inputValue}
@@ -244,7 +245,6 @@ const MuiItaliaAutocomplete = ({
         autoComplete="off"
         inputProps={{
           role: "combobox",
-          id: inputId,
           "aria-expanded": isOpen,
           "aria-controls": listboxId,
           "aria-autocomplete": "list",
@@ -294,7 +294,7 @@ const MuiItaliaAutocomplete = ({
             id={listboxId}
             ref={listboxRef}
             role="listbox"
-            aria-labelledby={inputId}
+            aria-labelledby={`${inputId}-label`}
             sx={{ p: 0 }}
           >
             {filteredOptions.length > 0 ? (
